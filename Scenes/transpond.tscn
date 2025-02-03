@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://kv3p5d4tp3k5"]
+
+[ext_resource type="Script" path="res://Scripts/Transpond.cs" id="1_glfj0"]
+[ext_resource type="Script" path="res://TranspondPivot.cs" id="1_ph1r0"]
+[ext_resource type="Texture2D" uid="uid://dwvosh05aqd6t" path="res://Sprites/line.png" id="2_12lal"]
+[ext_resource type="Texture2D" uid="uid://dr6yy7lfwewi3" path="res://Sprites/radtower.png" id="2_xfj8u"]
+[ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://icon.svg" id="4_4v2ox"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4gfr"]
+radius = 35.0571
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i4uwr"]
+b = Vector2(1319, -0.00127411)
+
+[node name="transpondRoot" type="Node2D"]
+script = ExtResource("1_glfj0")
+
+[node name="towers" type="Node2D" parent="."]
+
+[node name="tower1" type="Area2D" parent="towers"]
+position = Vector2(844, 205)
+collision_layer = 2
+
+[node name="towerCollisionShape" type="CollisionShape2D" parent="towers/tower1"]
+shape = SubResource("CircleShape2D_c4gfr")
+
+[node name="towerSprite" type="Sprite2D" parent="towers/tower1"]
+scale = Vector2(0.199219, 0.199219)
+texture = ExtResource("2_xfj8u")
+
+[node name="tower2" type="Area2D" parent="towers"]
+position = Vector2(220, 90)
+collision_layer = 2
+
+[node name="towerCollisionShape" type="CollisionShape2D" parent="towers/tower2"]
+shape = SubResource("CircleShape2D_c4gfr")
+
+[node name="towerSprite" type="Sprite2D" parent="towers/tower2"]
+scale = Vector2(0.199219, 0.199219)
+texture = ExtResource("2_xfj8u")
+
+[node name="tower3" type="Area2D" parent="towers"]
+position = Vector2(418, 548)
+collision_layer = 2
+
+[node name="towerCollisionShape" type="CollisionShape2D" parent="towers/tower3"]
+shape = SubResource("CircleShape2D_c4gfr")
+
+[node name="towerSprite" type="Sprite2D" parent="towers/tower3"]
+scale = Vector2(0.199219, 0.199219)
+texture = ExtResource("2_xfj8u")
+
+[node name="leftPivot" type="Node2D" parent="."]
+position = Vector2(50, 675)
+rotation = 4.71239
+script = ExtResource("1_ph1r0")
+isLeft = true
+
+[node name="lineSprite" type="Sprite2D" parent="leftPivot"]
+position = Vector2(660, 0)
+rotation = 1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("2_12lal")
+
+[node name="lineArea" type="Area2D" parent="leftPivot"]
+collision_mask = 2
+
+[node name="lineShape" type="CollisionShape2D" parent="leftPivot/lineArea"]
+shape = SubResource("SegmentShape2D_i4uwr")
+
+[node name="rightPivot" type="Node2D" parent="."]
+position = Vector2(1100, 675)
+rotation = 4.71239
+script = ExtResource("1_ph1r0")
+
+[node name="lineSprite" type="Sprite2D" parent="rightPivot"]
+position = Vector2(660, 0)
+rotation = 1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("2_12lal")
+
+[node name="lineArea" type="Area2D" parent="rightPivot"]
+collision_mask = 2
+
+[node name="lineShape" type="CollisionShape2D" parent="rightPivot/lineArea"]
+shape = SubResource("SegmentShape2D_i4uwr")
+
+[node name="intersectIndicator" type="Sprite2D" parent="."]
+position = Vector2(-48.5, -48.5)
+scale = Vector2(0.242188, 0.242188)
+texture = ExtResource("4_4v2ox")
