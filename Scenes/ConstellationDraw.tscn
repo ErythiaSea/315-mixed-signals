@@ -6,12 +6,12 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xvvgj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps3eu"]
-size = Vector2(206.25, 161)
+size = Vector2(666.125, 372.5)
 
 [node name="ConstellationDraw" type="Node2D"]
 
 [node name="Gesture" type="Area2D" parent="."]
-position = Vector2(220, 141)
+position = Vector2(369, 210)
 priority = -1
 script = ExtResource("1_x8hkq")
 buttonForClassify = true
@@ -19,6 +19,5 @@ buttonForClassifyUI = "Gesture_Classify"
 
 [node name="DrawingCanavas" type="CollisionShape2D" parent="Gesture"]
 material = SubResource("CanvasItemMaterial_xvvgj")
-position = Vector2(-58, -18)
 shape = SubResource("RectangleShape2D_ps3eu")
 script = ExtResource("2_s1hja")

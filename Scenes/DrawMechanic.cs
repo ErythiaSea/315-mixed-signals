@@ -21,6 +21,9 @@ public partial class DrawMechanic : CollisionShape2D
         }
 
         GestureNode.Set("ClassifyGesture", true);
+
+       // DrawRect(this.Shape.GetRect(), Colors.Black, false, 1.0f, false);
+
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

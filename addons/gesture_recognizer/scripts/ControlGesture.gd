@@ -61,6 +61,9 @@ signal on_draw_exit()
 signal line_disappear(points : Array)
 var pointsDissapear
 
+#local Changed variables
+var lastPointCount
+
 #error
 var error : bool = false
 
@@ -137,30 +140,31 @@ func _process(delta):
 		if Input.is_action_just_released(customButtomUI):
 			stop_drawing()
 	
+	var canvas = get_node("DrawingCanavas")
+	var canvasShape = canvas.shape.get_rect()
+		
 	if onDrawing: # and ( != get_global_mouse_position()):
 		var a : Array = line.get_points();
 		if !a.is_empty():
 			if a.back() != get_global_mouse_position():
-				line.add_point(get_global_mouse_position())
-				if Outline:
-					outline.add_point(get_global_mouse_position())
+				if canvasShape.has_point(get_local_mouse_position()):
+					line.add_point(get_global_mouse_position())
+					if Outline:
+						outline.add_point(get_global_mouse_position())
 		else:
 			line.add_point(get_global_mouse_position())
 			if Outline:
 				outline.add_point(get_global_mouse_position())
-		
-		var canvas = get_node("DrawingCanavas")
-		var canvasShape = canvas.shape.get_rect()
-		
-		if(canvasShape == null || canvas == null) :
-			print("one has returned null")
-			
-		if !canvasShape.has_point(get_global_mouse_position()):
-			print("leaving canvas")
-			stop_drawing()
-			
-		print(canvasShape.position)
 	
+	if Input.is_action_just_pressed("Last_Stroke_Delete"):
+		if get_node("Line").get_child_count() > 0:
+			var children = get_node("Line").get_children()
+			children.back().queue_free()
+			
+			children = get_node("Outline").get_children()
+			children.back().queue_free()
+		
+					 
 	if buttonForClassify and Input.is_action_just_pressed(buttonForClassifyUI):
 		classify()
 
@@ -218,6 +222,8 @@ func stop_drawing():
 	
 	if line != null:
 		var smoothedPoints = smooth_points(line.get_points());
+		lastPointCount = line.get_points();
+		
 		line.set_points(smoothedPoints)
 		var length : float = 0;
 		for i in smoothedPoints.size():
