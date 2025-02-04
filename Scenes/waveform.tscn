@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b87ywndcfyhhl"]
+[gd_scene load_steps=3 format=3 uid="uid://7aoxy6ge3j3s"]
 
 [ext_resource type="Script" path="res://Scripts/WaveRender.cs" id="1_2ltar"]
 [ext_resource type="Script" path="res://Scripts/WaveformGame.cs" id="1_qsht6"]
@@ -7,13 +7,18 @@
 script = ExtResource("1_qsht6")
 
 [node name="realwave" type="Node2D" parent="."]
+position = Vector2(100, 350)
 script = ExtResource("1_2ltar")
+shapelength = 1000.0
+frequency = 10.0
+numPoints = 600
 waveColor = Color(0, 1, 0, 1)
 
 [node name="playerwave" type="Node2D" parent="."]
-position = Vector2(34, 357)
+position = Vector2(100, 350)
 script = ExtResource("1_2ltar")
-amplitude = 100.0
+shapelength = 1000.0
 wavelength = 200.0
-frequency = 1.0
+frequency = 10.0
+numPoints = 600
 waveColor = Color(0.960784, 0.239216, 1, 1)
