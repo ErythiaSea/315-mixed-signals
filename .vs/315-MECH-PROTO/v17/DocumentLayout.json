@@ -1,10 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\",
+  "WorkspaceRootPath": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\ajpay\\documents\\actual documents\\c\u002B\u002B\\des315\\315-mech-proto\\315-mech-proto\\scripts\\towers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\towers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\drawmechanic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\drawmechanic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,14 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Towers.cs",
-              "DocumentMoniker": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scripts\\Towers.cs",
-              "RelativeDocumentMoniker": "Scripts\\Towers.cs",
-              "ToolTip": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scripts\\Towers.cs",
-              "RelativeToolTip": "Scripts\\Towers.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Title": "DrawMechanic.cs",
+              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\DrawMechanic.cs",
+              "RelativeDocumentMoniker": "Scenes\\DrawMechanic.cs",
+              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\DrawMechanic.cs",
+              "RelativeToolTip": "Scenes\\DrawMechanic.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T20:24:04.752Z",
+              "WhenOpened": "2025-02-04T13:24:44.323Z",
               "EditorCaption": ""
             }
           ]

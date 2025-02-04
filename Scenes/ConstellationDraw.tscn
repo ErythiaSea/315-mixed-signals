@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc8lby5o1pvpv"]
+
+[ext_resource type="Script" path="res://addons/gesture_recognizer/scripts/ControlGesture.gd" id="1_x8hkq"]
+[ext_resource type="Script" path="res://Scenes/DrawMechanic.cs" id="2_s1hja"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xvvgj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps3eu"]
+size = Vector2(206.25, 161)
+
+[node name="ConstellationDraw" type="Node2D"]
+
+[node name="Gesture" type="Area2D" parent="."]
+position = Vector2(220, 141)
+priority = -1
+script = ExtResource("1_x8hkq")
+buttonForClassify = true
+buttonForClassifyUI = "Gesture_Classify"
+
+[node name="DrawingCanavas" type="CollisionShape2D" parent="Gesture"]
+material = SubResource("CanvasItemMaterial_xvvgj")
+position = Vector2(-58, -18)
+shape = SubResource("RectangleShape2D_ps3eu")
+script = ExtResource("2_s1hja")
