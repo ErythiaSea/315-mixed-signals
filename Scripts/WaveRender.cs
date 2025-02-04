@@ -18,11 +18,12 @@ public partial class WaveRender : Node2D
 	[Export] // Number of points in array (higher = better looking wave, more expensive)
     public int numPoints = 300;
 
-	[Export]
+	[Export] // some "static" (au comm sab)
 	public float randFactor = 0.0f;
-
-    [Export]
+    [Export] // color of the drawn line
     public Color waveColor;
+	[Export] // thickness of the drawn line
+	float lineThick = 1.0f;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -50,6 +51,8 @@ public partial class WaveRender : Node2D
 			points[i] = (new Vector2(x, y));
 		}
 
-		DrawPolyline(points, waveColor);
+
+
+		DrawPolyline(points, waveColor, lineThick);
     }
 }

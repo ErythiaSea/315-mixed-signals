@@ -10,15 +10,17 @@ script = ExtResource("1_qsht6")
 position = Vector2(100, 350)
 script = ExtResource("1_2ltar")
 shapelength = 1000.0
-frequency = 10.0
+frequency = 5.0
 numPoints = 600
 waveColor = Color(0, 1, 0, 1)
+lineThick = 3.0
 
 [node name="playerwave" type="Node2D" parent="."]
 position = Vector2(100, 350)
 script = ExtResource("1_2ltar")
 shapelength = 1000.0
 wavelength = 200.0
-frequency = 10.0
+frequency = 5.0
 numPoints = 600
 waveColor = Color(0.960784, 0.239216, 1, 1)
+lineThick = 2.0

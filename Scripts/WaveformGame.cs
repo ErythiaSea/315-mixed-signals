@@ -62,5 +62,6 @@ public partial class WaveformGame : Node2D
             alignedTimer += (float)delta;
             if (alignedTimer > 1.0f) tunedSignal = true;
         }
+        else alignedTimer = 0.0f;
     }
 }
