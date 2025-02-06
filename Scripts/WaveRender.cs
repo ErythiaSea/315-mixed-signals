@@ -51,8 +51,6 @@ public partial class WaveRender : Node2D
 			points[i] = (new Vector2(x, y));
 		}
 
-
-
 		DrawPolyline(points, waveColor, lineThick);
     }
 }

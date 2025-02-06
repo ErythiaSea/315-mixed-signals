@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cixmq26rxdm65"]
+
+[ext_resource type="PackedScene" uid="uid://dmeg24rp8xvw4" path="res://Scenes/player.tscn" id="1_a1jtl"]
+[ext_resource type="Texture2D" uid="uid://cw021kgj5lu3l" path="res://Sprites/dummymap.png" id="1_docoe"]
+
+[node name="World" type="Node2D"]
+
+[node name="Map" type="Sprite2D" parent="."]
+position = Vector2(575.25, 285)
+scale = Vector2(1.23056, 1.12037)
+texture = ExtResource("1_docoe")
+
+[node name="Player" parent="." instance=ExtResource("1_a1jtl")]
+position = Vector2(29, 381)
+
+[node name="Collision" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision"]
+build_mode = 1
+polygon = PackedVector2Array(-1, 374, 316, 366, 518, 330, 586, 328, 749, 276, 770, 248, 897, 246, 898, 95, 831, 90, 832, 77, 1144, 76, 1144, 92, 916, 95, 914, 246, 959, 243, 959, 271, 842, 282, 787, 299, 752, 325, 678, 358, 741, 384, 793, 407, 839, 436, 876, 458, 902, 468, 931, 476, 1006, 484, 1080, 489, 1093, 500, 1087, 513, 1067, 521, 875, 521, 830, 498, 782, 469, 742, 450, 689, 419, 637, 402, 588, 385, 523, 369, 326, 408, 253, 412, 153, 413, 44, 413, 0, 413)

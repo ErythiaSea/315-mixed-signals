@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\2201593\\Documents\\315-mech-proto\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\scripts\\waveformgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\waveformgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\scripts\\waverender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\waverender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\scripts\\waveformgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\waveformgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\scripts\\towers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,26 +34,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "WaveRender.cs",
               "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\WaveRender.cs",
               "RelativeDocumentMoniker": "Scripts\\WaveRender.cs",
               "ToolTip": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\WaveRender.cs",
               "RelativeToolTip": "Scripts\\WaveRender.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAQwAcAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwDUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-04T16:02:16.065Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "WaveformGame.cs",
               "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\WaveformGame.cs",
               "RelativeDocumentMoniker": "Scripts\\WaveformGame.cs",
               "ToolTip": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\WaveformGame.cs",
               "RelativeToolTip": "Scripts\\WaveformGame.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAwwDkAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-04T15:56:29.419Z",
               "EditorCaption": ""
