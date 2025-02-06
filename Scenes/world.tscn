@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cixmq26rxdm65"]
+[gd_scene load_steps=6 format=3 uid="uid://cixmq26rxdm65"]
 
 [ext_resource type="PackedScene" uid="uid://dmeg24rp8xvw4" path="res://Scenes/player.tscn" id="1_a1jtl"]
 [ext_resource type="Texture2D" uid="uid://cw021kgj5lu3l" path="res://Sprites/dummymap.png" id="1_docoe"]
+[ext_resource type="PackedScene" uid="uid://njjw6amv76bq" path="res://Scenes/restriction_box.tscn" id="3_fnmv4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbep2"]
+size = Vector2(126, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajnje"]
+size = Vector2(20, 161)
 
 [node name="World" type="Node2D"]
 
@@ -13,8 +20,25 @@ texture = ExtResource("1_docoe")
 [node name="Player" parent="." instance=ExtResource("1_a1jtl")]
 position = Vector2(29, 381)
 
-[node name="Collision" type="StaticBody2D" parent="."]
+[node name="WorldCollision" type="StaticBody2D" parent="."]
+collision_layer = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldCollision"]
 build_mode = 1
-polygon = PackedVector2Array(-1, 374, 316, 366, 518, 330, 586, 328, 749, 276, 770, 248, 897, 246, 898, 95, 831, 90, 832, 77, 1144, 76, 1144, 92, 916, 95, 914, 246, 959, 243, 959, 271, 842, 282, 787, 299, 752, 325, 678, 358, 741, 384, 793, 407, 839, 436, 876, 458, 902, 468, 931, 476, 1006, 484, 1080, 489, 1093, 500, 1087, 513, 1067, 521, 875, 521, 830, 498, 782, 469, 742, 450, 689, 419, 637, 402, 588, 385, 523, 369, 326, 408, 253, 412, 153, 413, 44, 413, 0, 413)
+polygon = PackedVector2Array(0, 381, 315, 379, 503, 341, 586, 340, 764, 278, 790, 256, 897, 251, 899, 86, 832, 85, 832, 77, 1144, 76, 1144, 87, 916, 87, 915, 251, 955, 251, 954, 268, 833, 274, 786, 294, 750, 319, 653, 363, 735, 393, 795, 418, 838, 444, 877, 466, 906, 478, 939, 495, 1008, 495, 1077, 495, 1087, 508, 1078, 518, 995, 518, 891, 510, 841, 480, 786, 454, 745, 425, 686, 410, 638, 397, 590, 378, 560, 360, 503, 360, 327, 397, 255, 406, 157, 406, 44, 406, 1, 405)
+
+[node name="FortsBox" type="Area2D" parent="."]
+position = Vector2(1016, 503)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FortsBox"]
+position = Vector2(7, 3)
+shape = SubResource("RectangleShape2D_gbep2")
+
+[node name="RestrictionBox" parent="." instance=ExtResource("3_fnmv4")]
+position = Vector2(908, 98)
+RestrictHorizontal = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RestrictionBox"]
+position = Vector2(0, 70.5)
+shape = SubResource("RectangleShape2D_ajnje")

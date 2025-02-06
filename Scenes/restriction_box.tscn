@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://njjw6amv76bq"]
+
+[ext_resource type="Script" path="res://Scripts/RestrictionBox.cs" id="1_arpt1"]
+
+[node name="RestrictionBox" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_arpt1")

@@ -59,8 +59,9 @@ down={
 
 [layer_names]
 
-2d_physics/layer_1="Lines"
-2d_physics/layer_2="Towers"
+2d_physics/layer_1="Player"
+2d_physics/layer_2="World"
+2d_physics/layer_3="Interactions"
 
 [rendering]
 

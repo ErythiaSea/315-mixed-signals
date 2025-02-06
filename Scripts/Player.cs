@@ -9,10 +9,17 @@ public partial class Player : CharacterBody2D
 	[Export]
 	float moveSpeed = 250.0f;
 
+    Sprite2D interactSprite;
+    Area2D interactArea;
+
+    public bool restrictHorizontal = false, restrictVertical = false;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-	}
+        interactArea = GetNode<Area2D>("InteractArea");
+        interactSprite = GetNode<Sprite2D>("InteractSprite");
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -36,6 +43,20 @@ public partial class Player : CharacterBody2D
             Velocity = Velocity + new Vector2(0, moveSpeed * yMovementFactor);
         }
 
+        interactSprite.Visible = false;
+        if (interactArea.HasOverlappingAreas()) {
+            interactSprite.Visible = true;
+            if (Input.IsActionJustPressed("print_intersect"))
+            {
+                interactArea.GetOverlappingAreas();
+            }
+        }
+
         MoveAndSlide();
+    }
+
+    void CheckRestrictions()
+    {
+        
     }
 }
