@@ -63,6 +63,7 @@ var pointsDissapear
 
 #local Changed variables
 var lastPointCount
+var CanvasNode
 
 #error
 var error : bool = false
@@ -85,6 +86,9 @@ func classify():
 
 func _ready():
 	
+	CanvasNode = get_node("DrawingCanavas")
+	if CanvasNode == null:
+		print("canvasnode null")
 	if customDir:
 		CloudRecognizer.customDir = true
 		CloudRecognizer.customDirUI = customDirUI
@@ -139,10 +143,10 @@ func _process(delta):
 			drawing()
 		if Input.is_action_just_released(customButtomUI):
 			stop_drawing()
-	
-	var canvas = get_node("DrawingCanavas")
-	var canvasShape = canvas.shape.get_rect()
-		
+
+
+	var canvasShape = CanvasNode.shape.get_rect()
+
 	if onDrawing: # and ( != get_global_mouse_position()):
 		var a : Array = line.get_points();
 		if !a.is_empty():
@@ -419,6 +423,10 @@ func distance(ubi1, ubi2):
 	pass
 
 func isDrawing() -> bool:
+	if !CanvasNode.isToggled:
+		print("toggled off")
+		return false;
+		
 	if onDrawing:
 		return true
 	else:

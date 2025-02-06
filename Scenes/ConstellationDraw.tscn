@@ -11,7 +11,7 @@ size = Vector2(666.125, 372.5)
 [node name="ConstellationDraw" type="Node2D"]
 
 [node name="Gesture" type="Area2D" parent="."]
-position = Vector2(369, 210)
+position = Vector2(580, 453)
 priority = -1
 script = ExtResource("1_x8hkq")
 buttonForClassify = true
@@ -21,3 +21,12 @@ buttonForClassifyUI = "Gesture_Classify"
 material = SubResource("CanvasItemMaterial_xvvgj")
 shape = SubResource("RectangleShape2D_ps3eu")
 script = ExtResource("2_s1hja")
+
+[node name="Borders" type="Sprite2D" parent="Gesture/DrawingCanavas"]
+
+[node name="ToggleOn" type="Marker2D" parent="Gesture"]
+
+[node name="ToggleOff" type="Marker2D" parent="Gesture"]
+position = Vector2(0, 140)
+
+[connection signal="draw" from="Gesture/DrawingCanavas" to="Gesture/DrawingCanavas" method="draw"]
