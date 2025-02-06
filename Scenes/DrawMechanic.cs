@@ -8,18 +8,20 @@ public partial class DrawMechanic : CollisionShape2D
     Marker2D ToggleOffPos;
     Marker2D ToggleOnPos;
 
-    bool isToggled = false;
-    bool isDoneMoving = true;
+    public bool isToggled = false;
+    public bool isDoneMoving = true;
     	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        //Gets off and on marker nodes for toggle positions
-        ToggleOffPos = this.GetNode<Marker2D>("../ToggleOff");
-        ToggleOnPos = this.GetNode<Marker2D>("../ToggleOn");
-
         GestureNode = this.GetParent<Area2D>();
+
+        //Gets off and on marker nodes for toggle positions
+        ToggleOffPos = GestureNode.GetNode<Marker2D>("../ToggleOff");
+        ToggleOnPos = GestureNode.GetNode<Marker2D>("../ToggleOn");
+      
+
         //Inital position of canvas will be toggled off
-        this.Position = ToggleOffPos.Position;
+        GestureNode.Position = ToggleOffPos.Position;
 
         //Loads the GDscript to allow use of it within c# in this script
         var Gesture = GD.Load<GDScript>("res://addons/gesture_recognizer/scripts/ControlGesture.gd");
@@ -39,6 +41,7 @@ public partial class DrawMechanic : CollisionShape2D
 
         if (Input.IsActionJustPressed("ToggleNotebook"))
         {
+            GD.Print("Moving has started");
             isToggled = !isToggled;
             isDoneMoving = false;
         }
@@ -48,7 +51,11 @@ public partial class DrawMechanic : CollisionShape2D
             CanvasToggle(delta);
         }
 
-        GD.Print(GestureNode.Position);
+        //if(GetNode("/root/Line") != null)
+        //{
+        //    GD.Print("Lines exist");
+        //}
+        //GD.Print(GestureNode.Position);
     }
 
     public void draw()
@@ -60,28 +67,30 @@ public partial class DrawMechanic : CollisionShape2D
 
     public void CanvasToggle(double delta)
     {
-        float InterpSpeed = (float)delta * 0.9f; 
+        float InterpSpeed = (float)delta * 10f; 
         //base this off of gesture position instead
         if (isToggled)
         {
-            if (!this.Position.IsEqualApprox(ToggleOnPos.Position))
+            if (Mathf.Abs(GestureNode.Position.Y - ToggleOnPos.Position.Y) > 0.5f)
             {
                 
-                this.Position = this.Position.Lerp(ToggleOnPos.Position, InterpSpeed);
+                GestureNode.Position = GestureNode.Position.Lerp(ToggleOnPos.Position, InterpSpeed);
             }
             else
             {
+                GD.Print("Moving has stopped");
                 isDoneMoving = true;
             }
         }
         else if (!isToggled)
         {
-            if (!this.Position.IsEqualApprox(ToggleOffPos.Position))
+            if (Mathf.Abs(GestureNode.Position.Y - ToggleOffPos.Position.Y) > 0.5f)
             {
-                this.Position = this.Position.Lerp(ToggleOffPos.Position, InterpSpeed);
+                GestureNode.Position = GestureNode.Position.Lerp(ToggleOffPos.Position, InterpSpeed);
             }
             else
             {
+                GD.Print("Moving has stopped");
                 isDoneMoving = true;
             }
         }

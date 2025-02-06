@@ -87,8 +87,7 @@ func classify():
 func _ready():
 	
 	CanvasNode = get_node("DrawingCanavas")
-	if CanvasNode == null:
-		print("canvasnode null")
+	
 	if customDir:
 		CloudRecognizer.customDir = true
 		CloudRecognizer.customDirUI = customDirUI
@@ -123,17 +122,20 @@ func _ready():
 		nn.add_child(create2Inst)
 	
 	if Outline and !lineCoverLine:
-		var outlineNode = Node.new()
+		var outlineNode = Node2D.new()
 		outlineNode.set_name("Outline")
 		add_child(outlineNode)
 	
-	var lineNode = Node.new()
+	var lineNode = Node2D.new()
+
 	lineNode.set_name("Line")
 	add_child(lineNode)
 	pass
 
 func _process(delta):
 	
+	
+		
 	if ClassifyGesture:
 		ClassifyGesture = false
 		classify()
@@ -150,16 +152,17 @@ func _process(delta):
 	if onDrawing: # and ( != get_global_mouse_position()):
 		var a : Array = line.get_points();
 		if !a.is_empty():
-			if a.back() != get_global_mouse_position():
-				if canvasShape.has_point(get_local_mouse_position()):
-					line.add_point(get_global_mouse_position())
+			if a.back() != get_local_mouse_position():
+				if canvasShape.has_point(get_local_mouse_position()) && CanvasNode.isDoneMoving && CanvasNode.isToggled:
+					line.add_point(get_local_mouse_position())
 					if Outline:
-						outline.add_point(get_global_mouse_position())
+						outline.add_point(get_local_mouse_position())
 		else:
-			line.add_point(get_global_mouse_position())
+			line.add_point(get_local_mouse_position())
 			if Outline:
-				outline.add_point(get_global_mouse_position())
+				outline.add_point(get_local_mouse_position())
 	
+				
 	if Input.is_action_just_pressed("Last_Stroke_Delete"):
 		if get_node("Line").get_child_count() > 0:
 			var children = get_node("Line").get_children()
@@ -216,7 +219,6 @@ func drawing():
 			get_node("Line").add_child(outline)
 	get_node("Line").add_child(line)
 	
-	print("drawing")
 	
 	pass
 
@@ -423,9 +425,6 @@ func distance(ubi1, ubi2):
 	pass
 
 func isDrawing() -> bool:
-	if !CanvasNode.isToggled:
-		print("toggled off")
-		return false;
 		
 	if onDrawing:
 		return true

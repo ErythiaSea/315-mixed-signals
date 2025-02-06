@@ -24,9 +24,10 @@ script = ExtResource("2_s1hja")
 
 [node name="Borders" type="Sprite2D" parent="Gesture/DrawingCanavas"]
 
-[node name="ToggleOn" type="Marker2D" parent="Gesture"]
+[node name="ToggleOn" type="Marker2D" parent="."]
+position = Vector2(580, 453)
 
-[node name="ToggleOff" type="Marker2D" parent="Gesture"]
-position = Vector2(0, 140)
+[node name="ToggleOff" type="Marker2D" parent="."]
+position = Vector2(580, 593)
 
 [connection signal="draw" from="Gesture/DrawingCanavas" to="Gesture/DrawingCanavas" method="draw"]
