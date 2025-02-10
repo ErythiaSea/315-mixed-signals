@@ -86,7 +86,7 @@ func classify():
 
 func _ready():
 	
-	CanvasNode = get_node("DrawingCanavas")
+	CanvasNode = get_node("DrawingCanvas")
 	
 	if customDir:
 		CloudRecognizer.customDir = true
@@ -147,13 +147,14 @@ func _process(delta):
 			stop_drawing()
 
 
-	var canvasShape = CanvasNode.shape.get_rect()
+	var canvasShape = CanvasNode.shape
 
 	if onDrawing: # and ( != get_global_mouse_position()):
 		var a : Array = line.get_points();
 		if !a.is_empty():
 			if a.back() != get_local_mouse_position():
-				if canvasShape.has_point(get_local_mouse_position()) && CanvasNode.isDoneMoving && CanvasNode.isToggled:
+				if CanvasNode.position.distance_to(get_local_mouse_position()) < canvasShape.radius:
+				#if canvasShape.has_point(get_local_mouse_position()) && CanvasNode.isDoneMoving && CanvasNode.isToggled:
 					line.add_point(get_local_mouse_position())
 					if Outline:
 						outline.add_point(get_local_mouse_position())

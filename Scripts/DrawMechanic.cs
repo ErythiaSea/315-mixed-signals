@@ -14,14 +14,14 @@ public partial class DrawMechanic : CollisionShape2D
 	public override void _Ready()
 	{
         GestureNode = this.GetParent<Area2D>();
-
+        
         //Gets off and on marker nodes for toggle positions
         ToggleOffPos = GestureNode.GetNode<Marker2D>("../ToggleOff");
         ToggleOnPos = GestureNode.GetNode<Marker2D>("../ToggleOn");
       
 
         //Inital position of canvas will be toggled off
-        GestureNode.Position = ToggleOffPos.Position;
+        //GestureNode.Position = ToggleOffPos.Position;
 
         //Loads the GDscript to allow use of it within c# in this script
         var Gesture = GD.Load<GDScript>("res://addons/gesture_recognizer/scripts/ControlGesture.gd");
@@ -31,7 +31,7 @@ public partial class DrawMechanic : CollisionShape2D
         GestureScript.Set("ClassifyGesture", true);
 
         //calls draw function linked to drawing signal, to draw the outline of collisionshape2D
-        draw();
+        //draw();
 
     }
 
@@ -58,17 +58,19 @@ public partial class DrawMechanic : CollisionShape2D
         //GD.Print(GestureNode.Position);
     }
 
-    public void draw()
-    {
-        RectangleShape2D shp = this.Shape as RectangleShape2D;
-        //new Rect2(this.Position, shp.Size)
-        DrawRect(this.Shape.GetRect(), Colors.Black, false, 1.0f, false);
-    }
+    //public void draw()
+    //{
 
+    //    CircleShape2D circleShape = this.Shape as CircleShape2D;
+    //    DrawCircle(this.Position,circleShape.Radius, Colors.Black, false, 1.0f, true);
+    //}
+
+
+    //Old toggle function
     public void CanvasToggle(double delta)
     {
         float InterpSpeed = (float)delta * 10f; 
-        //base this off of gesture position instead
+     
         if (isToggled)
         {
             if (Mathf.Abs(GestureNode.Position.Y - ToggleOnPos.Position.Y) > 0.5f)

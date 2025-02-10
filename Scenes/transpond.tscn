@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://kv3p5d4tp3k5"]
 
 [ext_resource type="Script" path="res://Scripts/Transpond.cs" id="1_glfj0"]
-[ext_resource type="Script" path="res://TranspondPivot.cs" id="1_ph1r0"]
+[ext_resource type="Script" path="res://Scripts/TranspondPivot.cs" id="1_ph1r0"]
 [ext_resource type="Texture2D" uid="uid://dwvosh05aqd6t" path="res://Sprites/line.png" id="2_12lal"]
 [ext_resource type="Texture2D" uid="uid://dr6yy7lfwewi3" path="res://Sprites/radtower.png" id="2_xfj8u"]
 [ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://icon.svg" id="4_4v2ox"]
