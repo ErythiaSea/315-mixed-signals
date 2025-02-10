@@ -21,14 +21,8 @@ void fragment() {
 	uv.x *= 1.706666667;
 	float c1 = circle(uv,0.4,0.01);
 	
-	if(c1 > 0.0){
-		discard;
-	}
-	else{
-		COLOR = vec4(vec3(c1),1.0f);
-	}
+	COLOR = vec4(vec3(c1),1.0f - c1);
 	
-
 }
 
 //void light() {

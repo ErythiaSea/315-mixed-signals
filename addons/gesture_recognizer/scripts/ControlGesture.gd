@@ -9,14 +9,14 @@ var line = null
 @export var minLengthLine : int = 15
 @export var lineWidth : int = 6
 @export var smooth : int = 3;
-@export var lineColor : Color = Color.ALICE_BLUE
+@export var lineColor : Color = Color(1,1,1,0.5)
 @export var widthCurve : Curve = null
 
 @export_subgroup("Outline")
 var outline = null
 @export var Outline : bool = true
 @export var outlineWidth : int = 6
-@export var outlineColor : Color = Color.BLACK
+@export var outlineColor : Color = Color(1,1,1,0.2)
 @export var lineCoverLine : bool = false
 
 var onDrawing : bool = false

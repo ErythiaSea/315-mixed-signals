@@ -5,22 +5,15 @@
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/ConstellationDraw.gdshader" id="3_djkxa"]
 [ext_resource type="Script" path="res://Scripts/ShaderScript/TextureShader.cs" id="4_ro1i3"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_13kgm"]
-shader = ExtResource("3_djkxa")
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xvvgj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uqcf2"]
 radius = 264.0
 
-[node name="ConstellationDraw" type="Node2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13kgm"]
+shader = ExtResource("3_djkxa")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_13kgm")
-offset_right = 1152.0
-offset_bottom = 648.0
-mouse_filter = 1
-script = ExtResource("4_ro1i3")
+[node name="ConstellationDraw" type="Node2D"]
 
 [node name="Gesture" type="Area2D" parent="."]
 position = Vector2(576, 324)
@@ -42,5 +35,12 @@ position = Vector2(580, 453)
 [node name="ToggleOff" type="Marker2D" parent="."]
 visible = false
 position = Vector2(580, 593)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_13kgm")
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 1
+script = ExtResource("4_ro1i3")
 
 [connection signal="draw" from="Gesture/DrawingCanvas" to="Gesture/DrawingCanvas" method="draw"]
