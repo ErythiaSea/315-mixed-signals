@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cixmq26rxdm65"]
+[gd_scene load_steps=9 format=3 uid="uid://cixmq26rxdm65"]
 
 [ext_resource type="PackedScene" uid="uid://dmeg24rp8xvw4" path="res://Scenes/player.tscn" id="1_a1jtl"]
 [ext_resource type="Texture2D" uid="uid://cw021kgj5lu3l" path="res://Sprites/dummymap.png" id="1_docoe"]
 [ext_resource type="PackedScene" uid="uid://njjw6amv76bq" path="res://Scenes/restriction_box.tscn" id="3_fnmv4"]
 [ext_resource type="Script" path="res://Scripts/InteractBox.cs" id="3_stlg6"]
 [ext_resource type="PackedScene" uid="uid://kv3p5d4tp3k5" path="res://Scenes/transpond.tscn" id="4_u3sge"]
+[ext_resource type="Texture2D" uid="uid://ctrbteu0rgebm" path="res://Sprites/tree.png" id="6_vrpvb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbep2"]
 size = Vector2(126, 22)
@@ -13,8 +14,10 @@ size = Vector2(126, 22)
 size = Vector2(20, 161)
 
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 
 [node name="Map" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(575.25, 285)
 scale = Vector2(1.23056, 1.12037)
 texture = ExtResource("1_docoe")
@@ -46,6 +49,11 @@ RestrictHorizontal = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RestrictionBox"]
 position = Vector2(0, 70.5)
 shape = SubResource("RectangleShape2D_ajnje")
+
+[node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(756, 336)
+scale = Vector2(0.151896, 0.151896)
+texture = ExtResource("6_vrpvb")
 
 [connection signal="body_entered" from="RestrictionBox" to="RestrictionBox" method="_OnBodyEntered"]
 [connection signal="body_exited" from="RestrictionBox" to="RestrictionBox" method="_OnBodyExited"]
