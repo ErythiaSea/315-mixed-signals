@@ -11,6 +11,7 @@ public partial class Player : CharacterBody2D
 
     Sprite2D interactSprite;
     Area2D interactArea;
+    AnimatedSprite2D playerSprite;
 
     public bool restrictHorizontal = false, restrictVertical = false;
     public bool canMove = true;
@@ -20,6 +21,7 @@ public partial class Player : CharacterBody2D
 	{
         interactArea = GetNode<Area2D>("InteractArea");
         interactSprite = GetNode<Sprite2D>("InteractSprite");
+        playerSprite = GetNode<AnimatedSprite2D>("PlayerSprite");
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,6 +47,16 @@ public partial class Player : CharacterBody2D
             }
         }
 
+        if (Velocity != Vector2.Zero)
+        {
+            playerSprite.Play();
+            if (Velocity.X != 0) playerSprite.FlipH = Velocity.X > 0;
+        }
+        else
+        {
+            playerSprite.Frame = 0;
+            playerSprite.Pause();
+        }
         MoveAndSlide();
     }
 
