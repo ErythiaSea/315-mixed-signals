@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cixmq26rxdm65"]
+[gd_scene load_steps=8 format=3 uid="uid://cixmq26rxdm65"]
 
 [ext_resource type="PackedScene" uid="uid://dmeg24rp8xvw4" path="res://Scenes/player.tscn" id="1_a1jtl"]
 [ext_resource type="Texture2D" uid="uid://cw021kgj5lu3l" path="res://Sprites/dummymap.png" id="1_docoe"]
 [ext_resource type="PackedScene" uid="uid://njjw6amv76bq" path="res://Scenes/restriction_box.tscn" id="3_fnmv4"]
+[ext_resource type="Script" path="res://Scripts/InteractBox.cs" id="3_stlg6"]
+[ext_resource type="PackedScene" uid="uid://kv3p5d4tp3k5" path="res://Scenes/transpond.tscn" id="4_u3sge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbep2"]
 size = Vector2(126, 22)
@@ -30,6 +32,8 @@ polygon = PackedVector2Array(0, 381, 315, 379, 503, 341, 586, 340, 764, 278, 790
 [node name="FortsBox" type="Area2D" parent="."]
 position = Vector2(1016, 503)
 collision_layer = 4
+script = ExtResource("3_stlg6")
+minigame = ExtResource("4_u3sge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FortsBox"]
 position = Vector2(7, 3)

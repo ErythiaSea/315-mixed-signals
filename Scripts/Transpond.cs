@@ -45,7 +45,15 @@ public partial class Transpond : Node2D
 			}
 			else GD.Print("Nuh uh!");
 		}
-	}
+
+        if (Input.IsActionJustPressed("close"))
+		{
+			Player plr = GetNode<Player>("../Player");
+			plr.canMove = true;
+			QueueFree();
+		}
+
+    }
 
 	public Vector2 CalcIntersect()
 	{

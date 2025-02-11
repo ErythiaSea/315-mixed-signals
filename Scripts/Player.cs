@@ -13,6 +13,7 @@ public partial class Player : CharacterBody2D
     Area2D interactArea;
 
     public bool restrictHorizontal = false, restrictVertical = false;
+    public bool canMove = true;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -24,8 +25,31 @@ public partial class Player : CharacterBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Velocity = Vector2.Zero;
+        Velocity = Vector2.Zero;
 
+        if (canMove) HandleInput();
+
+        interactSprite.Visible = false;
+        if (interactArea.HasOverlappingAreas()) {
+            foreach (Area2D area in interactArea.GetOverlappingAreas()) {
+                InteractBox interactBox = area as InteractBox;
+                if (interactBox != null)
+                {
+                    interactSprite.Visible = true;
+                    if (Input.IsActionJustPressed("print_intersect") && canMove)
+                    {
+                        interactBox.Interact(this);
+                        canMove = false;
+                    }
+                }
+            }
+        }
+
+        MoveAndSlide();
+    }
+
+    void HandleInput()
+    {
         if (!restrictHorizontal)
         {
             if (Input.IsActionPressed("left_pivot_ccw"))
@@ -49,22 +73,5 @@ public partial class Player : CharacterBody2D
                 Velocity = Velocity + new Vector2(0, moveSpeed * yMovementFactor);
             }
         }
-
-            interactSprite.Visible = false;
-        if (interactArea.HasOverlappingAreas()) {
-            //interactSprite.Visible = true;
-
-            if (Input.IsActionJustPressed("print_intersect"))
-            {
-                interactArea.GetOverlappingAreas();
-            }
-        }
-
-        MoveAndSlide();
-    }
-
-    void CheckRestrictions()
-    {
-        
     }
 }
