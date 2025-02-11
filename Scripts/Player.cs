@@ -25,27 +25,35 @@ public partial class Player : CharacterBody2D
 	public override void _Process(double delta)
 	{
 		Velocity = Vector2.Zero;
-        if (Input.IsActionPressed("left_pivot_ccw"))
+
+        if (!restrictHorizontal)
         {
-			Velocity = Velocity + new Vector2(moveSpeed, 0);
-        }
-        if (Input.IsActionPressed("left_pivot_cw"))
-        {
-            Velocity = Velocity + new Vector2(-moveSpeed, 0);
+            if (Input.IsActionPressed("left_pivot_ccw"))
+            {
+                Velocity = Velocity + new Vector2(moveSpeed, 0);
+            }
+            if (Input.IsActionPressed("left_pivot_cw"))
+            {
+                Velocity = Velocity + new Vector2(-moveSpeed, 0);
+            }
         }
 
-        if (Input.IsActionPressed("up"))
+        if (!restrictVertical)
         {
-            Velocity = Velocity + new Vector2(0, -moveSpeed * yMovementFactor);
-        }
-        if (Input.IsActionPressed("down"))
-        {
-            Velocity = Velocity + new Vector2(0, moveSpeed * yMovementFactor);
+            if (Input.IsActionPressed("up"))
+            {
+                Velocity = Velocity + new Vector2(0, -moveSpeed * yMovementFactor);
+            }
+            if (Input.IsActionPressed("down"))
+            {
+                Velocity = Velocity + new Vector2(0, moveSpeed * yMovementFactor);
+            }
         }
 
-        interactSprite.Visible = false;
+            interactSprite.Visible = false;
         if (interactArea.HasOverlappingAreas()) {
-            interactSprite.Visible = true;
+            //interactSprite.Visible = true;
+
             if (Input.IsActionJustPressed("print_intersect"))
             {
                 interactArea.GetOverlappingAreas();

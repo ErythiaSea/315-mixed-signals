@@ -16,12 +16,27 @@ public partial class RestrictionBox : Area2D
 	public override void _Process(double delta)
 	{
 		foreach (Node2D body in GetOverlappingBodies()) {
-			Player plr = body as Player;
-			if (plr != null)
-			{
-				plr.restrictHorizontal = RestrictHorizontal;
-				plr.restrictVertical = RestrictVertical;
-			}
+
 		}
 	}
+
+	void _OnBodyEntered(Node2D body)
+	{
+        Player plr = body as Player;
+        if (plr != null)
+        {
+            plr.restrictHorizontal = RestrictHorizontal;
+            plr.restrictVertical = RestrictVertical;
+        }
+    }
+
+    void _OnBodyExited(Node2D body)
+    {
+        Player plr = body as Player;
+        if (plr != null)
+        {
+            plr.restrictHorizontal = false;
+            plr.restrictVertical = false;
+        }
+    }
 }

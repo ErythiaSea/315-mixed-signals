@@ -42,3 +42,6 @@ RestrictHorizontal = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RestrictionBox"]
 position = Vector2(0, 70.5)
 shape = SubResource("RectangleShape2D_ajnje")
+
+[connection signal="body_entered" from="RestrictionBox" to="RestrictionBox" method="_OnBodyEntered"]
+[connection signal="body_exited" from="RestrictionBox" to="RestrictionBox" method="_OnBodyExited"]
