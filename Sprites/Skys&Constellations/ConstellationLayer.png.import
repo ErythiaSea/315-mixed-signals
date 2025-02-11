@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcop1hj6cxgm2"
-path="res://.godot/imported/cassiopeia.webp-bb6fa2eed101b68955e282a55dd9c3a4.ctex"
+uid="uid://d1vrrq6aeuaqk"
+path="res://.godot/imported/ConstellationLayer.png-294ee191dd4eafad5f276da61ec0b344.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/cassiopeia.webp"
-dest_files=["res://.godot/imported/cassiopeia.webp-bb6fa2eed101b68955e282a55dd9c3a4.ctex"]
+source_file="res://Sprites/Skys&Constellations/ConstellationLayer.png"
+dest_files=["res://.godot/imported/ConstellationLayer.png-294ee191dd4eafad5f276da61ec0b344.ctex"]
 
 [params]
 

@@ -64,7 +64,8 @@ var pointsDissapear
 #local Changed variables
 var lastPointCount
 var CanvasNode
-
+@export_subgroup("Camera Controls")
+@export var camSpeed : int
 #error
 var error : bool = false
 
@@ -134,7 +135,7 @@ func _ready():
 
 func _process(delta):
 	
-	
+	CameraInputEvents(delta);
 		
 	if ClassifyGesture:
 		ClassifyGesture = false
@@ -192,6 +193,19 @@ func _on_input_event(viewport, event, shape_idx):
 	
 	pass
 
+func CameraInputEvents(delta):
+	
+	#Update this later to only trigger when within this minigame
+	if Input.is_action_pressed("CameraDown"):
+		position = Vector2(position.x,position.y - camSpeed)
+	if Input.is_action_pressed("CameraUp"):
+		position = Vector2(position.x,position.y + camSpeed)
+	if Input.is_action_pressed("CameraLeft"):
+		position = Vector2(position.x - camSpeed,position.y)
+	if Input.is_action_pressed("CameraRight"):
+		position = Vector2(position.x + camSpeed,position.y)
+		
+	pass
 func drawing():
 	on_draw_enter.emit()
 	error = false

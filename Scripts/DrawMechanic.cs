@@ -3,16 +3,20 @@ using System;
 using System.ComponentModel.Design;
 public partial class DrawMechanic : CollisionShape2D
 {
+    //Objects
 	GodotObject GestureScript;
     Area2D GestureNode;
     Marker2D ToggleOffPos;
     Marker2D ToggleOnPos;
 
+    //old toggle bool
     public bool isToggled = false;
+
     public bool isDoneMoving = true;
-    	// Called when the node enters the scene tree for the first time.
+    // Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        //Gesture node reference
         GestureNode = this.GetParent<Area2D>();
         
         //Gets off and on marker nodes for toggle positions
@@ -50,12 +54,6 @@ public partial class DrawMechanic : CollisionShape2D
         {
             CanvasToggle(delta);
         }
-
-        //if(GetNode("/root/Line") != null)
-        //{
-        //    GD.Print("Lines exist");
-        //}
-        //GD.Print(GestureNode.Position);
     }
 
     //public void draw()
