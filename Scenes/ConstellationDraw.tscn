@@ -1,24 +1,96 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc7bsebj302f8"]
+[gd_scene load_steps=14 format=3 uid="uid://bc8lby5o1pvpv"]
 
 [ext_resource type="Script" path="res://addons/gesture_recognizer/scripts/ControlGesture.gd" id="1_x8hkq"]
-[ext_resource type="Script" path="res://Scenes/DrawMechanic.cs" id="2_s1hja"]
+[ext_resource type="Script" path="res://Scripts/DrawMechanic.cs" id="2_s1hja"]
+[ext_resource type="Shader" path="res://Scripts/ShaderScript/ConstellationDraw.gdshader" id="3_djkxa"]
+[ext_resource type="Texture2D" uid="uid://3pijp23csaa8" path="res://Sprites/Skys&Constellations/SkyLayer.png" id="3_vuskw"]
+[ext_resource type="Texture2D" uid="uid://dluxx0un1srrc" path="res://Sprites/Skys&Constellations/StarsLayer.png" id="4_irqg6"]
+[ext_resource type="Script" path="res://Scripts/ShaderScript/TextureShader.cs" id="4_ro1i3"]
+[ext_resource type="Shader" path="res://Scripts/ShaderScript/Glow.gdshader" id="5_a4mc0"]
+[ext_resource type="Texture2D" uid="uid://d1vrrq6aeuaqk" path="res://Sprites/Skys&Constellations/ConstellationLayer.png" id="5_ixwch"]
+[ext_resource type="Script" path="res://Scenes/ConstellationShader.cs" id="7_pw0ss"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xvvgj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps3eu"]
-size = Vector2(470.445, 263.844)
+[sub_resource type="CircleShape2D" id="CircleShape2D_uqcf2"]
+radius = 264.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e3ep4"]
+shader = ExtResource("5_a4mc0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13kgm"]
+shader = ExtResource("3_djkxa")
+shader_parameter/circle_r = null
+shader_parameter/circle_b = null
 
 [node name="ConstellationDraw" type="Node2D"]
 
+[node name="ToggleOn" type="Marker2D" parent="."]
+visible = false
+position = Vector2(580, 453)
+
+[node name="ToggleOff" type="Marker2D" parent="."]
+visible = false
+position = Vector2(580, 593)
+
 [node name="Gesture" type="Area2D" parent="."]
-position = Vector2(316, 209)
+position = Vector2(576, 324)
 priority = -1
 script = ExtResource("1_x8hkq")
+lineWidth = 3
+lineColor = Color(0.29219, 0.29219, 0.29219, 0.5)
 buttonForClassify = true
 buttonForClassifyUI = "Gesture_Classify"
+ClassifyGesture = true
+camSpeed = 30
 
-[node name="DrawingCanavas" type="CollisionShape2D" parent="Gesture"]
+[node name="DrawingCanvas" type="CollisionShape2D" parent="Gesture"]
 material = SubResource("CanvasItemMaterial_xvvgj")
-position = Vector2(0, 3)
-shape = SubResource("RectangleShape2D_ps3eu")
+shape = SubResource("CircleShape2D_uqcf2")
 script = ExtResource("2_s1hja")
+
+[node name="Camera2D" type="Camera2D" parent="Gesture"]
+
+[node name="Parallax" type="Node2D" parent="Gesture/Camera2D"]
+position = Vector2(3, 0)
+scale = Vector2(0.4, 0.4)
+
+[node name="Sky" type="Parallax2D" parent="Gesture/Camera2D/Parallax"]
+scroll_scale = Vector2(0.98, 0.98)
+repeat_times = 4
+
+[node name="SkySprite" type="Sprite2D" parent="Gesture/Camera2D/Parallax/Sky"]
+modulate = Color(0.721569, 0.745098, 1, 1)
+texture = ExtResource("3_vuskw")
+
+[node name="Stars" type="Parallax2D" parent="Gesture/Camera2D/Parallax"]
+scroll_scale = Vector2(0.97, 0.97)
+repeat_times = 4
+
+[node name="StarsSprite" type="Sprite2D" parent="Gesture/Camera2D/Parallax/Stars"]
+modulate = Color(0.894922, 0.894922, 0.894922, 1)
+texture = ExtResource("4_irqg6")
+
+[node name="Constellation" type="Parallax2D" parent="Gesture/Camera2D/Parallax"]
+scroll_scale = Vector2(0.95, 0.95)
+scroll_offset = Vector2(-117.5, 117.5)
+
+[node name="ConstellationSprite" type="Sprite2D" parent="Gesture/Camera2D/Parallax/Constellation"]
+modulate = Color(0.907942, 0.907942, 0.907942, 1)
+material = SubResource("ShaderMaterial_e3ep4")
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_ixwch")
+script = ExtResource("7_pw0ss")
+
+[node name="ColorRect" type="ColorRect" parent="Gesture"]
+material = SubResource("ShaderMaterial_13kgm")
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+mouse_filter = 1
+script = ExtResource("4_ro1i3")
+radius = 0.4
+blur = 0.04
+
+[connection signal="draw" from="Gesture/DrawingCanvas" to="Gesture/DrawingCanvas" method="draw"]
