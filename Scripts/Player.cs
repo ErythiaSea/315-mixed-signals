@@ -7,7 +7,7 @@ public partial class Player : CharacterBody2D
 	float yMovementFactor = 1.0f;
 
 	[Export]
-	float moveSpeed = 250.0f;
+	float moveSpeed = 1000.0f;
 
     Sprite2D interactSprite;
     Area2D interactArea;

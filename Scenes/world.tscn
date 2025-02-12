@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cixmq26rxdm65"]
+[gd_scene load_steps=9 format=3 uid="uid://cakg0jcv5c7b2"]
 
-[ext_resource type="PackedScene" uid="uid://dmeg24rp8xvw4" path="res://Scenes/player.tscn" id="1_a1jtl"]
+[ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/player.tscn" id="1_a1jtl"]
 [ext_resource type="Texture2D" uid="uid://cw021kgj5lu3l" path="res://Sprites/dummymap.png" id="1_docoe"]
-[ext_resource type="PackedScene" uid="uid://njjw6amv76bq" path="res://Scenes/restriction_box.tscn" id="3_fnmv4"]
+[ext_resource type="PackedScene" path="res://Scenes/restriction_box.tscn" id="3_fnmv4"]
 [ext_resource type="Script" path="res://Scripts/InteractBox.cs" id="3_stlg6"]
 [ext_resource type="PackedScene" uid="uid://kv3p5d4tp3k5" path="res://Scenes/transpond.tscn" id="4_u3sge"]
 [ext_resource type="Texture2D" uid="uid://ctrbteu0rgebm" path="res://Sprites/tree.png" id="6_vrpvb"]
