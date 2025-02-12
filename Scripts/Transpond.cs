@@ -20,6 +20,7 @@ public partial class Transpond : Node2D
 
         towers = GetNode("towers").GetChildren();
 		currentTower = towers.First();
+		GD.Print("len towers is: ", towers.Count);
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,7 +30,7 @@ public partial class Transpond : Node2D
 		if (lPivot.Rotation == rPivot.Rotation) intersectIndicator.Visible = false; // lines parallel
         else
 		{
-			intersectIndicator.Visible = true;
+			//intersectIndicator.Visible = true;
 			intersect = CalcIntersect();
 			intersectIndicator.Position = intersect;
 		}
@@ -40,12 +41,22 @@ public partial class Transpond : Node2D
 			if (lPivot.overlapsTower && rPivot.overlapsTower)
 			{
 				GD.Print("Tower found!");
-				idx = (idx + 1) % 3;
+				int ogIdx = idx;
+				do { idx = (int)(GD.Randi() % 7); } while (idx == ogIdx);
+				GD.Print(idx);
 				currentTower = towers[idx];
 			}
 			else GD.Print("Nuh uh!");
 		}
-	}
+
+        if (Input.IsActionJustPressed("close"))
+		{
+			Player plr = GetNode<Player>("../Player");
+			plr.canMove = true;
+			QueueFree();
+		}
+
+    }
 
 	public Vector2 CalcIntersect()
 	{

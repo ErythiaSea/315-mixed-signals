@@ -1,10 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\",
+  "WorkspaceRootPath": "C:\\Users\\2201593\\Documents\\315-mech-proto\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\ajpay\\documents\\actual documents\\c\u002B\u002B\\des315\\315-mech-proto\\315-mech-proto\\scripts\\towers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\towers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\scenes\\starnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\starnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\scripts\\transpond.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\transpond.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\scripts\\transpondpivot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\transpondpivot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,15 +35,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Towers.cs",
-              "DocumentMoniker": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scripts\\Towers.cs",
-              "RelativeDocumentMoniker": "Scripts\\Towers.cs",
-              "ToolTip": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scripts\\Towers.cs",
-              "RelativeToolTip": "Scripts\\Towers.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Title": "StarNode.cs",
+              "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scenes\\StarNode.cs",
+              "RelativeDocumentMoniker": "Scenes\\StarNode.cs",
+              "ToolTip": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scenes\\StarNode.cs",
+              "RelativeToolTip": "Scenes\\StarNode.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAowHEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T20:24:04.752Z",
+              "WhenOpened": "2025-02-12T20:23:48.894Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Transpond.cs",
+              "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\Transpond.cs",
+              "RelativeDocumentMoniker": "Scripts\\Transpond.cs",
+              "ToolTip": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\Transpond.cs",
+              "RelativeToolTip": "Scripts\\Transpond.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-12T17:37:06.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TranspondPivot.cs",
+              "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\TranspondPivot.cs",
+              "RelativeDocumentMoniker": "Scripts\\TranspondPivot.cs",
+              "ToolTip": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\TranspondPivot.cs",
+              "RelativeToolTip": "Scripts\\TranspondPivot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-12T17:21:42.903Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         },
