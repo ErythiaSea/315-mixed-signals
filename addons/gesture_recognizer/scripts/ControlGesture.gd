@@ -66,6 +66,12 @@ var lastPointCount
 var CanvasNode
 @export_subgroup("Camera Controls")
 @export var camSpeed : int
+
+signal Completed
+
+
+var targetGesture : String
+var isComplete : bool = false
 #error
 var error : bool = false
 
@@ -82,11 +88,17 @@ func classify():
 				nameGest = CloudRecognizer.classify(gestureResource)
 				var distCloud =  CloudRecognizer.dist()
 				gesture_name.emit(nameGest, distCloud)
+				if nameGest == targetGesture:
+					isComplete = true;
+					
 		reset_gesture_data()
 	pass
 
 func _ready():
 	
+	var constellation = get_node("Camera2D/Parallax/Constellation")
+	targetGesture = constellation.get_child(0).name
+	isComplete = false
 	CanvasNode = get_node("DrawingCanvas")
 	
 	if customDir:
@@ -135,6 +147,11 @@ func _ready():
 
 func _process(delta):
 	
+	if isComplete == true:
+		Completed.emit()
+		print("Constellation completed")
+		
+		
 	CameraInputEvents(delta);
 		
 	if ClassifyGesture:

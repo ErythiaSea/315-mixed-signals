@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bc8lby5o1pvpv"]
+[gd_scene load_steps=15 format=3 uid="uid://bc8lby5o1pvpv"]
 
 [ext_resource type="Script" path="res://addons/gesture_recognizer/scripts/ControlGesture.gd" id="1_x8hkq"]
 [ext_resource type="Script" path="res://Scripts/DrawMechanic.cs" id="2_s1hja"]
@@ -9,6 +9,7 @@
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/Glow.gdshader" id="5_a4mc0"]
 [ext_resource type="Texture2D" uid="uid://d1vrrq6aeuaqk" path="res://Sprites/Skys&Constellations/ConstellationLayer.png" id="5_ixwch"]
 [ext_resource type="Script" path="res://Scenes/ConstellationShader.cs" id="7_pw0ss"]
+[ext_resource type="PackedScene" uid="uid://b825svgcyjyn" path="res://Scenes/StarNode.scn" id="8_qlffe"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xvvgj"]
 
@@ -75,12 +76,32 @@ texture = ExtResource("4_irqg6")
 scroll_scale = Vector2(0.95, 0.95)
 scroll_offset = Vector2(-117.5, 117.5)
 
-[node name="ConstellationSprite" type="Sprite2D" parent="Gesture/Camera2D/Parallax/Constellation"]
+[node name="Cancer" type="Sprite2D" parent="Gesture/Camera2D/Parallax/Constellation"]
 modulate = Color(0.907942, 0.907942, 0.907942, 1)
 material = SubResource("ShaderMaterial_e3ep4")
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_ixwch")
 script = ExtResource("7_pw0ss")
+
+[node name="StarNode" parent="Gesture/Camera2D/Parallax/Constellation" instance=ExtResource("8_qlffe")]
+position = Vector2(-182.5, -397.5)
+scale = Vector2(2.5, 2.5)
+
+[node name="StarNode2" parent="Gesture/Camera2D/Parallax/Constellation" instance=ExtResource("8_qlffe")]
+position = Vector2(0, 160)
+scale = Vector2(2.5, 2.5)
+
+[node name="StarNode3" parent="Gesture/Camera2D/Parallax/Constellation" instance=ExtResource("8_qlffe")]
+position = Vector2(37.5, -165)
+scale = Vector2(2.5, 2.5)
+
+[node name="StarNode4" parent="Gesture/Camera2D/Parallax/Constellation" instance=ExtResource("8_qlffe")]
+position = Vector2(342.5, -332.5)
+scale = Vector2(2.5, 2.5)
+
+[node name="StarNode5" parent="Gesture/Camera2D/Parallax/Constellation" instance=ExtResource("8_qlffe")]
+position = Vector2(502.5, -485)
+scale = Vector2(2.5, 2.5)
 
 [node name="ColorRect" type="ColorRect" parent="Gesture"]
 material = SubResource("ShaderMaterial_13kgm")
@@ -93,4 +114,9 @@ script = ExtResource("4_ro1i3")
 radius = 0.4
 blur = 0.04
 
+[connection signal="Completed" from="Gesture" to="Gesture/Camera2D/Parallax/Constellation/StarNode" method="DisplayCodeNumbers"]
+[connection signal="Completed" from="Gesture" to="Gesture/Camera2D/Parallax/Constellation/StarNode2" method="DisplayCodeNumbers"]
+[connection signal="Completed" from="Gesture" to="Gesture/Camera2D/Parallax/Constellation/StarNode3" method="DisplayCodeNumbers"]
+[connection signal="Completed" from="Gesture" to="Gesture/Camera2D/Parallax/Constellation/StarNode4" method="DisplayCodeNumbers"]
+[connection signal="Completed" from="Gesture" to="Gesture/Camera2D/Parallax/Constellation/StarNode5" method="DisplayCodeNumbers"]
 [connection signal="draw" from="Gesture/DrawingCanvas" to="Gesture/DrawingCanvas" method="draw"]
