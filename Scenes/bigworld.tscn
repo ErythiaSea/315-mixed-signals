@@ -68,8 +68,7 @@ position = Vector2(0, 70.5)
 shape = SubResource("RectangleShape2D_ajnje")
 
 [node name="Tree" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(756, 336)
+position = Vector2(267, 370)
 scale = Vector2(0.151896, 0.151896)
 texture = ExtResource("6_ygacr")
 

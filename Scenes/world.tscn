@@ -13,7 +13,7 @@ size = Vector2(126, 22)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajnje"]
 size = Vector2(20, 161)
 
-[node name="World" type="Node2D"]
+[node name="World2" type="Node2D"]
 y_sort_enabled = true
 
 [node name="Map" type="Sprite2D" parent="."]
