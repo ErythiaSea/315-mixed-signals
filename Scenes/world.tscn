@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cakg0jcv5c7b2"]
+[gd_scene load_steps=12 format=3 uid="uid://cakg0jcv5c7b2"]
 
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/player.tscn" id="1_a1jtl"]
 [ext_resource type="Texture2D" uid="uid://cw021kgj5lu3l" path="res://Sprites/dummymap.png" id="1_docoe"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/InteractBox.cs" id="3_stlg6"]
 [ext_resource type="PackedScene" uid="uid://kv3p5d4tp3k5" path="res://Scenes/transpond.tscn" id="4_u3sge"]
 [ext_resource type="PackedScene" uid="uid://bc8lby5o1pvpv" path="res://Scenes/ConstellationDraw.tscn" id="5_pgjbs"]
+[ext_resource type="PackedScene" uid="uid://7aoxy6ge3j3s" path="res://Scenes/waveform.tscn" id="6_1jfg7"]
 [ext_resource type="Texture2D" uid="uid://ctrbteu0rgebm" path="res://Sprites/tree.png" id="6_vrpvb"]
 [ext_resource type="Texture2D" uid="uid://din6bfgvj8ksj" path="res://Sprites/telescope.png" id="7_ekvxx"]
 
@@ -46,13 +47,21 @@ position = Vector2(7, 3)
 shape = SubResource("RectangleShape2D_gbep2")
 
 [node name="TelescopeBox" type="Area2D" parent="."]
-position = Vector2(1016, 503)
+position = Vector2(868, 80)
 collision_layer = 4
 script = ExtResource("3_stlg6")
 minigame = ExtResource("5_pgjbs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TelescopeBox"]
-position = Vector2(-152, -422)
+shape = SubResource("RectangleShape2D_gbep2")
+
+[node name="WaveformBox" type="Area2D" parent="."]
+position = Vector2(1095, 82)
+collision_layer = 4
+script = ExtResource("3_stlg6")
+minigame = ExtResource("6_1jfg7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaveformBox"]
 shape = SubResource("RectangleShape2D_gbep2")
 
 [node name="RestrictionBox" parent="." instance=ExtResource("3_fnmv4")]
