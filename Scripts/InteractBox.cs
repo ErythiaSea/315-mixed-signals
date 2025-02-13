@@ -8,15 +8,17 @@ public partial class InteractBox : Area2D
 
     [Export]
     bool loadInCurrent = true;
+    [Export]
+    public bool active = true;
 
     public virtual void Interact(Player plrRef)
     {
+        if (!active) return;
         if (loadInCurrent)
         {
             Node2D instancedGame = (Node2D)scene.Instantiate();
             GetParent().AddChild(instancedGame);
             instancedGame.ZIndex = 3;
-
         }
         else
         {

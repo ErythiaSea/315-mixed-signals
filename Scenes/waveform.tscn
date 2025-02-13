@@ -31,3 +31,10 @@ frequency = 5.0
 numPoints = 600
 waveColor = Color(0.960784, 0.239216, 1, 1)
 lineThick = 2.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 12.0
+offset_top = 612.0
+offset_right = 561.0
+offset_bottom = 687.0
+text = "[A]/[D] - Change Amplitude     [J]/[L] - Change Wavelength     [ESC] - Close"

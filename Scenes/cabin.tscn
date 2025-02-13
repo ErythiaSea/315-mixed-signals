@@ -81,3 +81,10 @@ loadInCurrent = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
 shape = SubResource("RectangleShape2D_lvk1a")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 12.0
+offset_top = 612.0
+offset_right = 561.0
+offset_bottom = 687.0
+text = "WASD - Move    Space - Interact"

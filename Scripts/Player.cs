@@ -35,7 +35,7 @@ public partial class Player : CharacterBody2D
         if (interactArea.HasOverlappingAreas()) {
             foreach (Area2D area in interactArea.GetOverlappingAreas()) {
                 InteractBox interactBox = area as InteractBox;
-                if (interactBox != null)
+                if (interactBox != null && interactBox.active)
                 {
                     interactSprite.Visible = true;
                     if (Input.IsActionJustPressed("print_intersect") && canMove)
