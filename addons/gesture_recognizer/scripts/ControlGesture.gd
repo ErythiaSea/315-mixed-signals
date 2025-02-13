@@ -84,13 +84,14 @@ func classify():
 		create.visible = true
 	else:
 		if !LUT.is_empty():
+			print("lut not empty")	
 			if !error:
 				nameGest = CloudRecognizer.classify(gestureResource)
 				var distCloud =  CloudRecognizer.dist()
 				gesture_name.emit(nameGest, distCloud)
 				if nameGest == targetGesture:
 					isComplete = true;
-					
+					print("Complete")
 		reset_gesture_data()
 	pass
 
@@ -166,7 +167,7 @@ func _process(delta):
 
 	var canvasShape = CanvasNode.shape
 
-	if onDrawing && get_node("Line").get_child_count() > 0: # and ( != get_global_mouse_position()):
+	if onDrawing: # and ( != get_global_mouse_position()):
 		var a : Array = line.get_points();
 		if !a.is_empty():
 			if a.back() != get_local_mouse_position():
@@ -190,7 +191,8 @@ func _process(delta):
 			children.back().queue_free()
 		
 					 
-	if buttonForClassify and Input.is_action_just_pressed(buttonForClassifyUI) && !onDrawing:
+	if buttonForClassify and Input.is_action_just_pressed(buttonForClassifyUI):
+		print("bUTTON")
 		classify()
 
 func _on_input_event(viewport, event, shape_idx):
