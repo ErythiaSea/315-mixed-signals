@@ -7,17 +7,31 @@ public partial class RestrictionBox : Area2D
 	bool RestrictHorizontal = false;
 	[Export]
 	bool RestrictVertical = false;
+
+    bool startChecked = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-	}
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		foreach (Node2D body in GetOverlappingBodies()) {
-
-		}
+        // this in ready to see if player spawns in restriction box
+        if (!startChecked)
+        {
+            foreach (Node2D body in GetOverlappingBodies())
+            {
+                Player plr = body as Player;
+                if (plr != null)
+                {
+                    GD.Print("gaming");
+                    plr.restrictHorizontal = RestrictHorizontal;
+                    plr.restrictVertical = RestrictVertical;
+                }
+            }
+            startChecked = true;
+        }
 	}
 
 	void _OnBodyEntered(Node2D body)

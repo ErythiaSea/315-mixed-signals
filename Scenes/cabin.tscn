@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://bmbgph6qm47x0"]
+
+[ext_resource type="Texture2D" uid="uid://bwiibe8j7vfgh" path="res://Sprites/room_base.png" id="1_ppr70"]
+[ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/player.tscn" id="2_b0y3o"]
+[ext_resource type="PackedScene" uid="uid://njjw6amv76bq" path="res://Scenes/restriction_box.tscn" id="3_lsh4n"]
+[ext_resource type="Script" path="res://Scripts/InteractBox.cs" id="4_r0utk"]
+[ext_resource type="PackedScene" uid="uid://kv3p5d4tp3k5" path="res://Scenes/transpond.tscn" id="5_f36pu"]
+[ext_resource type="PackedScene" uid="uid://7aoxy6ge3j3s" path="res://Scenes/waveform.tscn" id="6_tcgnf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1gcl"]
+size = Vector2(1171, 80.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82mfh"]
+size = Vector2(1174, 49.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6btsi"]
+size = Vector2(1204.5, 69.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvk1a"]
+size = Vector2(65, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cchka"]
+size = Vector2(65, 17)
+
+[node name="Cabin" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576.222, 323.5)
+scale = Vector2(0.301389, 0.301389)
+texture = ExtResource("1_ppr70")
+
+[node name="Player" parent="." instance=ExtResource("2_b0y3o")]
+position = Vector2(316, 579)
+moveSpeed = 250.0
+
+[node name="WorldCollision" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape1" type="CollisionShape2D" parent="WorldCollision"]
+position = Vector2(576, 555.25)
+shape = SubResource("RectangleShape2D_g1gcl")
+
+[node name="CollisionShape2" type="CollisionShape2D" parent="WorldCollision"]
+position = Vector2(578, 637.813)
+shape = SubResource("RectangleShape2D_82mfh")
+
+[node name="RestrictionBox" parent="." instance=ExtResource("3_lsh4n")]
+RestrictVertical = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RestrictionBox"]
+position = Vector2(572.75, 608)
+shape = SubResource("RectangleShape2D_6btsi")
+debug_color = Color(0.868377, 0.232756, 0.664164, 0.42)
+
+[node name="FortsBox" type="Area2D" parent="."]
+position = Vector2(519, 604)
+collision_layer = 4
+script = ExtResource("4_r0utk")
+minigame = ExtResource("5_f36pu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FortsBox"]
+shape = SubResource("RectangleShape2D_lvk1a")
+
+[node name="WaveformBox" type="Area2D" parent="."]
+position = Vector2(645, 603)
+collision_layer = 4
+script = ExtResource("4_r0utk")
+minigame = ExtResource("6_tcgnf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaveformBox"]
+shape = SubResource("RectangleShape2D_cchka")
