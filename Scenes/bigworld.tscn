@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1i0ycm6mhwuh"]
+[gd_scene load_steps=8 format=3 uid="uid://b1i0ycm6mhwuh"]
 
 [ext_resource type="Texture2D" uid="uid://dtyvowjy0eiwl" path="res://Sprites/bigtestmap.png" id="1_efadn"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/player.tscn" id="2_at0ci"]
 [ext_resource type="Script" path="res://Scripts/InteractBox.cs" id="3_jua78"]
-[ext_resource type="PackedScene" uid="uid://kv3p5d4tp3k5" path="res://Scenes/transpond.tscn" id="4_w1s70"]
 [ext_resource type="PackedScene" uid="uid://njjw6amv76bq" path="res://Scenes/restriction_box.tscn" id="5_w3l88"]
 [ext_resource type="Texture2D" uid="uid://ctrbteu0rgebm" path="res://Sprites/tree.png" id="6_ygacr"]
 
@@ -61,7 +60,6 @@ polygon = PackedVector2Array(1184, 620, 1443, 632, 1725, 549, 1785, 568, 1980, 7
 position = Vector2(920, 190)
 collision_layer = 4
 script = ExtResource("3_jua78")
-minigame = ExtResource("4_w1s70")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FortsBox"]
 position = Vector2(7, 3)

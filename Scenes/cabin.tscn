@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=13 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Texture2D" uid="uid://bwiibe8j7vfgh" path="res://Sprites/room_base.png" id="1_ppr70"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/player.tscn" id="2_b0y3o"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/InteractBox.cs" id="4_r0utk"]
 [ext_resource type="PackedScene" uid="uid://kv3p5d4tp3k5" path="res://Scenes/transpond.tscn" id="5_f36pu"]
 [ext_resource type="PackedScene" uid="uid://7aoxy6ge3j3s" path="res://Scenes/waveform.tscn" id="6_tcgnf"]
+[ext_resource type="PackedScene" uid="uid://cakg0jcv5c7b2" path="res://Scenes/world.tscn" id="7_hv5iq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1gcl"]
 size = Vector2(1171, 80.75)
@@ -30,7 +31,8 @@ scale = Vector2(0.301389, 0.301389)
 texture = ExtResource("1_ppr70")
 
 [node name="Player" parent="." instance=ExtResource("2_b0y3o")]
-position = Vector2(316, 579)
+position = Vector2(315, 565)
+scale = Vector2(2, 2)
 moveSpeed = 250.0
 
 [node name="WorldCollision" type="StaticBody2D" parent="."]
@@ -56,7 +58,7 @@ debug_color = Color(0.868377, 0.232756, 0.664164, 0.42)
 position = Vector2(519, 604)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-minigame = ExtResource("5_f36pu")
+scene = ExtResource("5_f36pu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FortsBox"]
 shape = SubResource("RectangleShape2D_lvk1a")
@@ -65,7 +67,17 @@ shape = SubResource("RectangleShape2D_lvk1a")
 position = Vector2(645, 603)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-minigame = ExtResource("6_tcgnf")
+scene = ExtResource("6_tcgnf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaveformBox"]
 shape = SubResource("RectangleShape2D_cchka")
+
+[node name="LevelChange" type="Area2D" parent="."]
+position = Vector2(1129, 603)
+collision_layer = 4
+script = ExtResource("4_r0utk")
+scene = ExtResource("7_hv5iq")
+loadInCurrent = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
+shape = SubResource("RectangleShape2D_lvk1a")

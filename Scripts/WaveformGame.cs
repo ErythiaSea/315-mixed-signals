@@ -4,7 +4,7 @@ using System;
 public partial class WaveformGame : Node2D
 {
 	WaveRender playerWave, realWave;
-    float targetWavelength;
+    float targetWavelength, targetAmplitude;
 
     float tolerance = 2.0f;
     float alignedTimer = 0.0f;
@@ -22,6 +22,9 @@ public partial class WaveformGame : Node2D
     {
         targetWavelength = (GD.Randf() * 200.0f) + 10.0f;
         realWave.wavelength = targetWavelength;
+
+        targetAmplitude = (GD.Randf() * 150.0f) + 100.0f;
+        realWave.amplitude = targetAmplitude;
         tunedSignal = false; alignedTimer = 0.0f;
     }
 
@@ -30,12 +33,11 @@ public partial class WaveformGame : Node2D
 	{
         if (Input.IsActionPressed("left_pivot_cw"))
         {
-            playerWave.amplitude += 0.01f;
+            playerWave.amplitude += 0.5f;
         }
         if (Input.IsActionPressed("left_pivot_ccw"))
         {
-            playerWave.amplitude -= 0.01f;
-            newWavelength();
+            playerWave.amplitude -= 0.5f;
         }
         if (Input.IsActionPressed("right_pivot_cw"))
         {
@@ -44,12 +46,12 @@ public partial class WaveformGame : Node2D
         if (Input.IsActionPressed("right_pivot_ccw"))
         {
             playerWave.wavelength -= 0.5f;
-            //GD.Print(playerWave.wavelength);
         }
         if (Input.IsActionPressed("print_intersect"))
         {
             GD.Print("target w: ", targetWavelength, ", current: ", playerWave.wavelength);
             GD.Print(Mathf.Abs(playerWave.wavelength - targetWavelength));
+            GD.Print("amp:", playerWave.amplitude);
         }
 
         if (tunedSignal)
@@ -57,7 +59,7 @@ public partial class WaveformGame : Node2D
             GD.Print("Task complete!");
             newWavelength();
         }
-        if (Mathf.Abs(playerWave.wavelength - targetWavelength) < 2.0f)
+        if (Mathf.Abs(playerWave.wavelength - targetWavelength) < tolerance && Mathf.Abs(playerWave.amplitude - targetAmplitude) < tolerance)
         {
             alignedTimer += (float)delta;
             if (alignedTimer > 1.0f) tunedSignal = true;
@@ -66,10 +68,15 @@ public partial class WaveformGame : Node2D
 
 		if (Input.IsActionJustPressed("close"))
 		{
-			Player plr = GetNode<Player>("../Player");
-			plr.canMove = true;
-			GD.Print("we freeing");
-			QueueFree();
+            close();
 		}
 	}
+
+    void close()
+    {
+        Player plr = GetNode<Player>("../Player");
+        plr.canMove = true;
+        GD.Print("we freeing");
+        QueueFree();
+    }
 }
