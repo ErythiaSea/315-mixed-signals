@@ -1,34 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\",
+  "WorkspaceRootPath": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\ajpay\\documents\\actual documents\\c\u002B\u002B\\des315\\315-mech-proto\\315-mech-proto\\scripts\\drawmechanic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\drawmechanic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\ajpay\\documents\\actual documents\\c\u002B\u002B\\des315\\315-mech-proto\\315-mech-proto\\scripts\\transpond.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\transpond.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\ajpay\\documents\\actual documents\\c\u002B\u002B\\des315\\315-mech-proto\\315-mech-proto\\scenes\\starnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\starnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\starnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\ajpay\\documents\\actual documents\\c\u002B\u002B\\des315\\315-mech-proto\\315-mech-proto\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\ajpay\\documents\\actual documents\\c\u002B\u002B\\des315\\315-mech-proto\\315-mech-proto\\scripts\\interactbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\interactbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\ajpay\\documents\\actual documents\\c\u002B\u002B\\des315\\315-mech-proto\\315-mech-proto\\scenes\\constellationshader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\constellationshader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\ajpay\\documents\\actual documents\\c\u002B\u002B\\des315\\315-mech-proto\\315-mech-proto\\scripts\\towers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\towers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,113 +22,19 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "StarNode.cs",
-              "DocumentMoniker": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scenes\\StarNode.cs",
-              "RelativeDocumentMoniker": "Scenes\\StarNode.cs",
-              "ToolTip": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scenes\\StarNode.cs",
-              "RelativeToolTip": "Scenes\\StarNode.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAgwCcAAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T01:52:38.129Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DrawMechanic.cs",
-              "DocumentMoniker": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scripts\\DrawMechanic.cs",
-              "RelativeDocumentMoniker": "Scripts\\DrawMechanic.cs",
-              "ToolTip": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scripts\\DrawMechanic.cs",
-              "RelativeToolTip": "Scripts\\DrawMechanic.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAgwD4AAAAWAAAAAAAAAA==",
+              "Title": "StarNode.cs",
+              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\StarNode.cs",
+              "RelativeDocumentMoniker": "Scenes\\StarNode.cs",
+              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\StarNode.cs",
+              "RelativeToolTip": "Scenes\\StarNode.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAowBUAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T01:51:59.646Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "InteractBox.cs",
-              "DocumentMoniker": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scripts\\InteractBox.cs",
-              "RelativeDocumentMoniker": "Scripts\\InteractBox.cs",
-              "ToolTip": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scripts\\InteractBox.cs",
-              "RelativeToolTip": "Scripts\\InteractBox.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T23:05:21.309Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Transpond.cs",
-              "DocumentMoniker": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scripts\\Transpond.cs",
-              "RelativeDocumentMoniker": "Scripts\\Transpond.cs",
-              "ToolTip": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scripts\\Transpond.cs",
-              "RelativeToolTip": "Scripts\\Transpond.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAgwDgAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T23:05:17.59Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Player.cs",
-              "DocumentMoniker": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scripts\\Player.cs",
-              "RelativeDocumentMoniker": "Scripts\\Player.cs",
-              "ToolTip": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scripts\\Player.cs",
-              "RelativeToolTip": "Scripts\\Player.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAQwCgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T23:02:36.61Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ConstellationShader.cs",
-              "DocumentMoniker": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scenes\\ConstellationShader.cs",
-              "RelativeDocumentMoniker": "Scenes\\ConstellationShader.cs",
-              "ToolTip": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scenes\\ConstellationShader.cs",
-              "RelativeToolTip": "Scenes\\ConstellationShader.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T23:01:17.361Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Towers.cs",
-              "DocumentMoniker": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scripts\\Towers.cs",
-              "RelativeDocumentMoniker": "Scripts\\Towers.cs",
-              "ToolTip": "C:\\Users\\ajpay\\Documents\\Actual Documents\\C\u002B\u002B\\DES315\\315-mech-proto\\315-mech-proto\\Scripts\\Towers.cs",
-              "RelativeToolTip": "Scripts\\Towers.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-03T20:24:04.752Z",
+              "WhenOpened": "2025-02-13T10:51:42.889Z",
               "EditorCaption": ""
             }
           ]

@@ -76,7 +76,7 @@ texture = ExtResource("4_irqg6")
 scroll_scale = Vector2(0.95, 0.95)
 scroll_offset = Vector2(-117.5, 117.5)
 
-[node name="Cancer" type="Sprite2D" parent="Gesture/Camera2D/Parallax/Constellation"]
+[node name="cancer" type="Sprite2D" parent="Gesture/Camera2D/Parallax/Constellation"]
 modulate = Color(0.907942, 0.907942, 0.907942, 1)
 material = SubResource("ShaderMaterial_e3ep4")
 scale = Vector2(0.8, 0.8)
