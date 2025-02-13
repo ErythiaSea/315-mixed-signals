@@ -19,7 +19,8 @@ public partial class Transpond : Node2D
         rPivot = GetNode<TranspondPivot>("rightPivot");
 
         towers = GetNode("towers").GetChildren();
-		currentTower = towers.First();
+        idx = (int)(GD.Randi() % 7);
+		currentTower = towers[idx];
 		GD.Print("len towers is: ", towers.Count);
     }
 
@@ -45,6 +46,10 @@ public partial class Transpond : Node2D
 				do { idx = (int)(GD.Randi() % 7); } while (idx == ogIdx);
 				GD.Print(idx);
 				currentTower = towers[idx];
+
+				// show complete text
+				Label wintext = GetNode<Label>("WinText");
+				wintext.Visible = true;
 			}
 			else GD.Print("Nuh uh!");
 		}

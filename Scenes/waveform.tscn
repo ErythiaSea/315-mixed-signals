@@ -38,3 +38,11 @@ offset_top = 612.0
 offset_right = 561.0
 offset_bottom = 687.0
 text = "[A]/[D] - Change Amplitude     [J]/[L] - Change Wavelength     [ESC] - Close"
+
+[node name="WinText" type="Label" parent="."]
+visible = false
+offset_left = 1007.0
+offset_top = 611.0
+offset_right = 1086.0
+offset_bottom = 634.0
+text = "Complete!"

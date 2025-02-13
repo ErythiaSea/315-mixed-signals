@@ -149,6 +149,7 @@ func _process(delta):
 	
 	if isComplete == true:
 		Completed.emit()
+		$WinText.visible = true
 		
 		
 	CameraInputEvents(delta);
@@ -165,7 +166,7 @@ func _process(delta):
 
 	var canvasShape = CanvasNode.shape
 
-	if onDrawing: # and ( != get_global_mouse_position()):
+	if onDrawing && get_node("Line").get_child_count() > 0: # and ( != get_global_mouse_position()):
 		var a : Array = line.get_points();
 		if !a.is_empty():
 			if a.back() != get_local_mouse_position():
@@ -189,7 +190,7 @@ func _process(delta):
 			children.back().queue_free()
 		
 					 
-	if buttonForClassify and Input.is_action_just_pressed(buttonForClassifyUI):
+	if buttonForClassify and Input.is_action_just_pressed(buttonForClassifyUI) && !onDrawing:
 		classify()
 
 func _on_input_event(viewport, event, shape_idx):
@@ -211,13 +212,13 @@ func _on_input_event(viewport, event, shape_idx):
 func CameraInputEvents(delta):
 	
 	#Update this later to only trigger when within this minigame
-	if Input.is_action_pressed("CameraDown"):
+	if Input.is_action_pressed("down"):
 		position = Vector2(position.x,position.y - camSpeed)
-	if Input.is_action_pressed("CameraUp"):
+	if Input.is_action_pressed("up"):
 		position = Vector2(position.x,position.y + camSpeed)
-	if Input.is_action_pressed("CameraLeft"):
+	if Input.is_action_pressed("left_pivot_ccw"):
 		position = Vector2(position.x - camSpeed,position.y)
-	if Input.is_action_pressed("CameraRight"):
+	if Input.is_action_pressed("left_pivot_cw"):
 		position = Vector2(position.x + camSpeed,position.y)
 		
 	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=14 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Texture2D" uid="uid://bwiibe8j7vfgh" path="res://Sprites/room_base.png" id="1_ppr70"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/player.tscn" id="2_b0y3o"]
@@ -13,6 +13,9 @@ size = Vector2(1171, 80.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82mfh"]
 size = Vector2(1174, 49.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvqo4"]
+size = Vector2(98, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6btsi"]
 size = Vector2(1204.5, 69.5)
@@ -45,6 +48,14 @@ shape = SubResource("RectangleShape2D_g1gcl")
 [node name="CollisionShape2" type="CollisionShape2D" parent="WorldCollision"]
 position = Vector2(578, 637.813)
 shape = SubResource("RectangleShape2D_82mfh")
+
+[node name="CollisionShape3" type="CollisionShape2D" parent="WorldCollision"]
+position = Vector2(-36, 596)
+shape = SubResource("RectangleShape2D_xvqo4")
+
+[node name="CollisionShape4" type="CollisionShape2D" parent="WorldCollision"]
+position = Vector2(1203, 603)
+shape = SubResource("RectangleShape2D_xvqo4")
 
 [node name="RestrictionBox" parent="." instance=ExtResource("3_lsh4n")]
 RestrictVertical = true

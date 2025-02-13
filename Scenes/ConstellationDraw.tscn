@@ -119,7 +119,15 @@ offset_left = -556.0
 offset_top = 276.0
 offset_right = -7.0
 offset_bottom = 351.0
-text = "WASD - Move    LMB - Draw"
+text = "WASD - Move    LMB - Draw    RMB - Confirm"
+
+[node name="WinText" type="Label" parent="Gesture"]
+visible = false
+offset_left = 462.0
+offset_top = 276.0
+offset_right = 541.0
+offset_bottom = 299.0
+text = "Complete!"
 
 [connection signal="Completed" from="Gesture" to="Gesture/Camera2D/Parallax/Constellation/StarNode" method="DisplayCodeNumbers"]
 [connection signal="Completed" from="Gesture" to="Gesture/Camera2D/Parallax/Constellation/StarNode2" method="DisplayCodeNumbers"]

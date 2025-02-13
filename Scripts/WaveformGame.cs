@@ -57,6 +57,9 @@ public partial class WaveformGame : Node2D
         if (tunedSignal)
         {
             GD.Print("Task complete!");
+            // show complete text
+            Label wintext = GetNode<Label>("WinText");
+            wintext.Visible = true;
             newWavelength();
         }
         if (Mathf.Abs(playerWave.wavelength - targetWavelength) < tolerance && Mathf.Abs(playerWave.amplitude - targetAmplitude) < tolerance)
