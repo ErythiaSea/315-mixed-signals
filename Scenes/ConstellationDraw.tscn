@@ -114,11 +114,11 @@ script = ExtResource("4_ro1i3")
 radius = 0.4
 blur = 0.04
 
-[node name="Label" type="Label" parent="."]
-offset_left = 12.0
-offset_top = 612.0
-offset_right = 561.0
-offset_bottom = 687.0
+[node name="Label" type="Label" parent="Gesture"]
+offset_left = -556.0
+offset_top = 276.0
+offset_right = -7.0
+offset_bottom = 351.0
 text = "WASD - Move    LMB - Draw"
 
 [connection signal="Completed" from="Gesture" to="Gesture/Camera2D/Parallax/Constellation/StarNode" method="DisplayCodeNumbers"]
