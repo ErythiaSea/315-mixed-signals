@@ -9,7 +9,7 @@
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/Glow.gdshader" id="5_a4mc0"]
 [ext_resource type="Texture2D" uid="uid://d1vrrq6aeuaqk" path="res://Sprites/Skys&Constellations/ConstellationLayer.png" id="5_ixwch"]
 [ext_resource type="Script" path="res://Scenes/ConstellationShader.cs" id="7_pw0ss"]
-[ext_resource type="PackedScene" path="res://Scenes/StarNode.scn" id="8_qlffe"]
+[ext_resource type="PackedScene" uid="uid://dvooodkbn72vc" path="res://Scenes/StarNode.scn" id="8_qlffe"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xvvgj"]
 

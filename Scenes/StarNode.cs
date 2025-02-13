@@ -34,7 +34,12 @@ public partial class StarNode : Area2D
 		CodeNumber.Visible = false;
 		Light = GetNode<PointLight2D>("StarLight");
 		Light.Visible = false;
-		TreeRoot = GetTree().Root.GetNode("ConstellationDraw");
+
+		// erf: kyle your paths are freaking me tf out lowkey
+		// new code below assumes path here is constdraw/gesture/cam2d/parallax/constellation
+		TreeRoot = GetNode<Node>("../../../../.."); // this maybe isn't much better.
+		GD.Print(TreeRoot.Name);
+		//TreeRoot = GetTree().Root.GetNode("ConstellationDraw");
 
 		StarShape = GetNode<CollisionShape2D>("StarCollision").Shape as CircleShape2D;
 		starCollision = GetNode<CollisionShape2D>("StarCollision");

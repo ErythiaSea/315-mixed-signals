@@ -164,7 +164,7 @@ func _process(delta):
 		if Input.is_action_just_released(customButtomUI):
 			stop_drawing()
 
-
+	print(self.name)
 	var canvasShape = CanvasNode.shape
 
 	if onDrawing: # and ( != get_global_mouse_position()):

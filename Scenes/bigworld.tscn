@@ -25,6 +25,14 @@ texture = ExtResource("1_efadn")
 [node name="Player" parent="." instance=ExtResource("2_at0ci")]
 position = Vector2(57, 63)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+visible = false
+limit_left = -1200
+limit_top = -300
+limit_right = 2400
+limit_bottom = 950
+position_smoothing_speed = 300.0
+
 [node name="WorldCollision" type="StaticBody2D" parent="."]
 collision_layer = 2
 

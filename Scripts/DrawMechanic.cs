@@ -43,18 +43,28 @@ public partial class DrawMechanic : CollisionShape2D
 	public override void _Process(double delta)
 	{
 
-        if (Input.IsActionJustPressed("ToggleNotebook"))
-        {
-            GD.Print("Moving has started");
-            isToggled = !isToggled;
-            isDoneMoving = false;
-        }
+		//if (Input.IsActionJustPressed("print_intersect"))
+		//{
+		//    GD.Print("Moving has started");
+		//    isToggled = !isToggled;
+		//    isDoneMoving = false;
+		//}
 
-        if (!isDoneMoving)
-        {
-            CanvasToggle(delta);
-        }
-    }
+		//if (!isDoneMoving)
+		//{
+		//    CanvasToggle(delta);
+		//}
+
+        // closing minigame code. would like to put this on the scene root but i currently dgaf - erf
+		if (Input.IsActionJustPressed("close"))
+		{
+            Node gameRoot = GetNode<Node>("../../");
+			Player plr = gameRoot.GetNode<Player>("../Player");
+			plr.canMove = true;
+            GD.Print("we freeing");
+			gameRoot.QueueFree();
+		}
+	}
 
     //public void draw()
     //{

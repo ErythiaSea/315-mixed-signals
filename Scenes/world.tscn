@@ -1,14 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cakg0jcv5c7b2"]
+[gd_scene load_steps=11 format=3 uid="uid://cakg0jcv5c7b2"]
 
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/player.tscn" id="1_a1jtl"]
 [ext_resource type="Texture2D" uid="uid://cw021kgj5lu3l" path="res://Sprites/dummymap.png" id="1_docoe"]
 [ext_resource type="PackedScene" uid="uid://njjw6amv76bq" path="res://Scenes/restriction_box.tscn" id="3_fnmv4"]
 [ext_resource type="Script" path="res://Scripts/InteractBox.cs" id="3_stlg6"]
 [ext_resource type="PackedScene" uid="uid://kv3p5d4tp3k5" path="res://Scenes/transpond.tscn" id="4_u3sge"]
+[ext_resource type="PackedScene" uid="uid://bc8lby5o1pvpv" path="res://Scenes/ConstellationDraw.tscn" id="5_pgjbs"]
 [ext_resource type="Texture2D" uid="uid://ctrbteu0rgebm" path="res://Sprites/tree.png" id="6_vrpvb"]
+[ext_resource type="Texture2D" uid="uid://din6bfgvj8ksj" path="res://Sprites/telescope.png" id="7_ekvxx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbep2"]
-size = Vector2(126, 22)
+size = Vector2(65, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajnje"]
 size = Vector2(20, 161)
@@ -24,6 +26,7 @@ texture = ExtResource("1_docoe")
 
 [node name="Player" parent="." instance=ExtResource("1_a1jtl")]
 position = Vector2(29, 381)
+moveSpeed = 750.0
 
 [node name="WorldCollision" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -42,6 +45,16 @@ minigame = ExtResource("4_u3sge")
 position = Vector2(7, 3)
 shape = SubResource("RectangleShape2D_gbep2")
 
+[node name="TelescopeBox" type="Area2D" parent="."]
+position = Vector2(1016, 503)
+collision_layer = 4
+script = ExtResource("3_stlg6")
+minigame = ExtResource("5_pgjbs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TelescopeBox"]
+position = Vector2(-152, -422)
+shape = SubResource("RectangleShape2D_gbep2")
+
 [node name="RestrictionBox" parent="." instance=ExtResource("3_fnmv4")]
 position = Vector2(908, 98)
 RestrictHorizontal = true
@@ -54,6 +67,12 @@ shape = SubResource("RectangleShape2D_ajnje")
 position = Vector2(756, 336)
 scale = Vector2(0.151896, 0.151896)
 texture = ExtResource("6_vrpvb")
+
+[node name="Telescope" type="Sprite2D" parent="."]
+position = Vector2(873, 44)
+scale = Vector2(0.402344, 0.402344)
+texture = ExtResource("7_ekvxx")
+flip_h = true
 
 [connection signal="body_entered" from="RestrictionBox" to="RestrictionBox" method="_OnBodyEntered"]
 [connection signal="body_exited" from="RestrictionBox" to="RestrictionBox" method="_OnBodyExited"]

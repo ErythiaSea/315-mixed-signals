@@ -47,13 +47,6 @@ radius = 5.0
 collision_mask = 2
 script = ExtResource("1_xbx3u")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = -1200
-limit_top = -300
-limit_right = 2400
-limit_bottom = 950
-position_smoothing_speed = 300.0
-
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
 scale = Vector2(1.55729, 1.55729)
