@@ -149,7 +149,6 @@ func _process(delta):
 	
 	if isComplete == true:
 		Completed.emit()
-		print("Constellation completed")
 		
 		
 	CameraInputEvents(delta);
@@ -170,7 +169,7 @@ func _process(delta):
 		var a : Array = line.get_points();
 		if !a.is_empty():
 			if a.back() != get_local_mouse_position():
-				if CanvasNode.position.distance_to(get_local_mouse_position()) < canvasShape.radius:
+				if CanvasNode.position.distance_to(get_local_mouse_position()) < canvasShape.radius && !isComplete:
 				#if canvasShape.has_point(get_local_mouse_position()) && CanvasNode.isDoneMoving && CanvasNode.isToggled:
 					line.add_point(get_local_mouse_position())
 					if Outline:

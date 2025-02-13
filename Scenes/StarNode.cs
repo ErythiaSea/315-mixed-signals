@@ -16,7 +16,6 @@ using System.ComponentModel;
 public partial class StarNode : Area2D
 {
     //Objects
-    GodotObject GestureScript;
     Area2D GestureNode;
 	Node2D LineParent;
 	Node TreeRoot;
@@ -25,34 +24,31 @@ public partial class StarNode : Area2D
 	CollisionShape2D starCollision;
 	Label CodeNumber;
 
+	bool isDisplayed = false;
+
+	//Array for all lines within the constellation telescope minigame
 	Godot.Collections.Array<Node> Lines;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		//Number display and star light up node references
 		CodeNumber = GetNode<Label>("CodeNumber");
-		CodeNumber.Visible = false;
 		Light = GetNode<PointLight2D>("StarLight");
-		Light.Visible = false;
 
-		// erf: kyle your paths are freaking me tf out lowkey
-		// new code below assumes path here is constdraw/gesture/cam2d/parallax/constellation
-		TreeRoot = GetNode<Node>("../../../../.."); // this maybe isn't much better.
-		GD.Print(TreeRoot.Name);
-		//TreeRoot = GetTree().Root.GetNode("ConstellationDraw");
-
-		StarShape = GetNode<CollisionShape2D>("StarCollision").Shape as CircleShape2D;
-		starCollision = GetNode<CollisionShape2D>("StarCollision");
-
-        var Gesture = GD.Load<GDScript>("res://addons/gesture_recognizer/scripts/ControlGesture.gd");
-        GestureScript = (GodotObject)Gesture.New();
-
+		//Reference to Root node of tree and through it the gesture node
+        TreeRoot = GetTree().Root.GetChild(1);
         GestureNode = TreeRoot.FindChild("Gesture", true, false) as Area2D;
 
-		if (GestureNode == null)
-		{
-			GD.Print("Gesture null");
-		}
+        //Reference to the StarCollison and its shape for checking if lines have overlapped over its area
+        StarShape = GetNode<CollisionShape2D>("StarCollision").Shape as CircleShape2D;
+        starCollision = GetNode<CollisionShape2D>("StarCollision");
+
+        //both set to false for visibiliy, only shows when constellation done succesfully
+        CodeNumber.Visible = false;
+        Light.Visible = false;
+
+
 		//_Draw();
 	}
 
@@ -93,11 +89,6 @@ public partial class StarNode : Area2D
     //    DrawCircle(starCollision.Position,StarShape.Radius, Colors.White, true, 1.0f, true);
     //}
 
-	void Area_Entered(Node2D body)
-	{
-		GD.Print("Line2D Detected");
-	}
-
 	//Change shape to rect2 for haspoint func and use that instead, way easier, way less hassle
 	bool line_Overlapped(Line2D line)
 	{
@@ -118,7 +109,20 @@ public partial class StarNode : Area2D
 
 	void DisplayCodeNumbers()
 	{
-        GD.Print("easy");
-        CodeNumber.Visible = true;
+		if (!isDisplayed)
+		{
+            RandomNumber();
+            CodeNumber.Visible = true;
+			isDisplayed = true;
+        }
     }
+
+	void RandomNumber()
+	{
+		var rng = new RandomNumberGenerator();
+
+		int randomNum = rng.RandiRange(-4, 4);
+		CodeNumber.Text = string.Empty;
+		CodeNumber.Text = randomNum.ToString();
+	}
 }
