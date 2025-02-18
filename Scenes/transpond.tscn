@@ -143,3 +143,13 @@ offset_top = 611.0
 offset_right = 1086.0
 offset_bottom = 634.0
 text = "Complete!"
+
+[node name="leftIndicator" type="Sprite2D" parent="."]
+position = Vector2(86, 636)
+scale = Vector2(0.1875, 0.1875)
+texture = ExtResource("4_4v2ox")
+
+[node name="rightIndicator" type="Sprite2D" parent="."]
+position = Vector2(1072, 636)
+scale = Vector2(0.1875, 0.1875)
+texture = ExtResource("4_4v2ox")

@@ -31,6 +31,8 @@ public partial class WaveformGame : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+        float wlChange = 0.5f;
+        float wlMult = (playerWave.wavelength / 100.0f);
         if (Input.IsActionPressed("left_pivot_cw"))
         {
             playerWave.amplitude += 0.5f;
@@ -41,12 +43,16 @@ public partial class WaveformGame : Node2D
         }
         if (Input.IsActionPressed("right_pivot_cw"))
         {
-            playerWave.wavelength += 0.5f;
+            playerWave.wavelength += wlChange * wlMult;
+            //playerWave.frequency += wlChange;
         }
         if (Input.IsActionPressed("right_pivot_ccw"))
         {
-            playerWave.wavelength -= 0.5f;
+            playerWave.wavelength -= wlChange * wlMult;
+            //playerWave.frequency -= wlChange;
         }
+
+        if (playerWave.amplitude < 0.0f) playerWave.amplitude = 0.0f;
         if (Input.IsActionPressed("print_intersect"))
         {
             GD.Print("target w: ", targetWavelength, ", current: ", playerWave.wavelength);

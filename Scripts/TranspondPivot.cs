@@ -42,7 +42,6 @@ public partial class TranspondPivot : Node2D
 	{
 		if (Input.IsActionPressed(ccwInput) && RotationDegrees < maxRotDeg)
 		{
-			GD.Print(RotationDegrees);
 			Rotate(rotSpeed * (float)delta);
 		}
         if (Input.IsActionPressed(cwInput) && RotationDegrees > minRotDeg)

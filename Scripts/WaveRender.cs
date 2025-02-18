@@ -15,6 +15,8 @@ public partial class WaveRender : Node2D
     public float wavelength = 100.0f;
 	[Export] // Wave frequency (how fast it moves)
     public float frequency = 100.0f;
+	[Export] // If the frequency is actually the number of pixels moved by the wave per second (i.e. not relative to wavelength)
+	public bool frequencyAsSpeed = true;
 	[Export] // Number of points in array (higher = better looking wave, more expensive)
     public int numPoints = 300;
 
@@ -39,13 +41,14 @@ public partial class WaveRender : Node2D
     public override void _Draw()
     {
 		Vector2[] points = new Vector2[numPoints];
-		float dist = shapelength / numPoints;
+		float dist = shapelength / numPoints; // distance between each point on x axis
 		float t = (float)Time.GetTicksMsec()/1000.0f; 
 
         for (int i = 0; i < numPoints; i++)
 		{
-			float x = i*dist;
-			float y = Mathf.Sin((x/wavelength) + t * frequency) * amplitude;
+			float x = i*dist - (shapelength/2);
+			float freq = frequency / (frequencyAsSpeed ? wavelength : 1.0f);
+			float y = Mathf.Sin((x/wavelength) + t * freq) * amplitude;
 			y += (GD.Randf()-0.5f) * amplitude * randFactor;
 			y = Mathf.Clamp(y, -amplitude*1.5f, amplitude*1.5f);
 			points[i] = (new Vector2(x, y));
