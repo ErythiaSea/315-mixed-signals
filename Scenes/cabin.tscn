@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=10 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Texture2D" uid="uid://bwiibe8j7vfgh" path="res://Sprites/room_base.png" id="1_ppr70"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/player.tscn" id="2_b0y3o"]
 [ext_resource type="PackedScene" uid="uid://njjw6amv76bq" path="res://Scenes/restriction_box.tscn" id="3_lsh4n"]
 [ext_resource type="Script" path="res://Scripts/InteractBox.cs" id="4_r0utk"]
-[ext_resource type="PackedScene" uid="uid://kv3p5d4tp3k5" path="res://Scenes/transpond.tscn" id="5_f36pu"]
-[ext_resource type="PackedScene" uid="uid://7aoxy6ge3j3s" path="res://Scenes/waveform.tscn" id="6_tcgnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1gcl"]
 size = Vector2(1171, 80.75)
@@ -56,7 +54,6 @@ debug_color = Color(0.868377, 0.232756, 0.664164, 0.42)
 position = Vector2(519, 604)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-minigame = ExtResource("5_f36pu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FortsBox"]
 shape = SubResource("RectangleShape2D_lvk1a")
@@ -65,7 +62,6 @@ shape = SubResource("RectangleShape2D_lvk1a")
 position = Vector2(645, 603)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-minigame = ExtResource("6_tcgnf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaveformBox"]
 shape = SubResource("RectangleShape2D_cchka")

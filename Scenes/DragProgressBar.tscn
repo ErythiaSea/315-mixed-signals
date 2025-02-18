@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv381rpd6hc43"]
+
+[ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://icon.svg" id="1_x37hp"]
+[ext_resource type="Script" path="res://Scenes/DraggableRect.cs" id="2_ohsih"]
+
+[node name="DragProgressBar" type="ProgressBar"]
+offset_left = 140.0
+offset_top = 32.0
+offset_right = 405.0
+offset_bottom = 59.0
+rotation = 0.785398
+
+[node name="DragRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -5.65686
+offset_right = 128.0
+offset_bottom = 122.343
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_x37hp")
+script = ExtResource("2_ohsih")
+
+[connection signal="gui_input" from="DragRect" to="DragRect" method="MouseInput"]
+[connection signal="mouse_exited" from="DragRect" to="DragRect" method="onMouseExit"]
