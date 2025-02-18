@@ -47,11 +47,11 @@ public partial class Transpond : Node2D
 		// get distance from pivot to tower for indicators
 		Vector2 closestPointOnLine = pointOnPivot(lPivot, currentTower.Position);
 		float dist = closestPointOnLine.DistanceTo(currentTower.Position);
-		leftInterval = ((Mathf.Min(200.0f, dist)+50.0f) / 250.0f) * 0.75f;
+		leftInterval = ((Mathf.Min(200.0f, dist)+20.0f) / 220.0f) * 0.75f;
 
         closestPointOnLine = pointOnPivot(rPivot, currentTower.Position);
         dist = closestPointOnLine.DistanceTo(currentTower.Position);
-        rightInterval = ((Mathf.Min(200.0f, dist) + 50.0f) / 250.0f) * 0.75f;
+        rightInterval = ((Mathf.Min(200.0f, dist) + 20.0f) / 220.0f) * 0.75f;
 
 		// handle indicator stuff
         leftTimer += (float)delta; rightTimer += (float)delta;
@@ -80,7 +80,6 @@ public partial class Transpond : Node2D
 				Label wintext = GetNode<Label>("WinText");
 				wintext.Visible = true;
 			}
-			//else GD.Print("Nuh uh!");
 		}
 
         if (Input.IsActionJustPressed("close"))

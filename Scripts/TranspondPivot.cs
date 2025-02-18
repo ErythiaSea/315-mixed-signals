@@ -14,7 +14,10 @@ public partial class TranspondPivot : Node2D
 
 	public bool overlapsTower = false;
 
-	float rotSpeed = 0.75f; // in rad/s
+	[Export] float maxRotationSpeed = 0.75f; // in rad/s
+	[Export] float rotationAccel = 0.08f;
+	[Export] float rotationFriction = 0.16f;
+	float rotSpeed = 0.0f;
 	float maxRotDeg, minRotDeg;
 
 	// Called when the node enters the scene tree for the first time.
@@ -40,15 +43,21 @@ public partial class TranspondPivot : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionPressed(ccwInput) && RotationDegrees < maxRotDeg)
+		// Rotate pivots
+		float dir = Input.GetAxis(cwInput, ccwInput);
+		if (dir != 0)
 		{
-			Rotate(rotSpeed * (float)delta);
+			rotSpeed = Mathf.MoveToward(rotSpeed, dir * maxRotationSpeed, rotationAccel);
 		}
-        if (Input.IsActionPressed(cwInput) && RotationDegrees > minRotDeg)
-        {
-            Rotate(-rotSpeed * (float)delta);
+		else {
+            rotSpeed = Mathf.MoveToward(rotSpeed, 0, rotationFriction);
         }
+		Rotate(rotSpeed*(float)delta);
 
+		// Reset rotation speed if we hit a "wall"
+		float ogRotDeg = RotationDegrees;
+		RotationDegrees = Mathf.Clamp(RotationDegrees, minRotDeg, maxRotDeg);
+		if (RotationDegrees != ogRotDeg) rotSpeed = 0;
 
         if (area.OverlapsArea(transpond.currentTower))
 		{

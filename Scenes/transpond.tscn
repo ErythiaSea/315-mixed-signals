@@ -145,11 +145,11 @@ offset_bottom = 634.0
 text = "Complete!"
 
 [node name="leftIndicator" type="Sprite2D" parent="."]
-position = Vector2(86, 636)
-scale = Vector2(0.1875, 0.1875)
+position = Vector2(90.5, 631.5)
+scale = Vector2(0.257812, 0.257812)
 texture = ExtResource("4_4v2ox")
 
 [node name="rightIndicator" type="Sprite2D" parent="."]
-position = Vector2(1072, 636)
-scale = Vector2(0.1875, 0.1875)
+position = Vector2(1067, 631)
+scale = Vector2(0.265626, 0.265626)
 texture = ExtResource("4_4v2ox")
