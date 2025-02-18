@@ -11,6 +11,7 @@ public partial class TranspondPivot : Node2D
 	public Area2D area;
 	public Sprite2D sprite;
 	AudioStreamPlayer2D streamPlayer;
+	AudioEffectDistortion distortEffect;
 
 	public bool overlapsTower = false;
 
@@ -32,11 +33,14 @@ public partial class TranspondPivot : Node2D
 		if (isLeft) {
 			cwInput = "left_pivot_cw";
 			ccwInput = "left_pivot_ccw";
-			minRotDeg = 270; maxRotDeg = 360; 
-		} else {
+			minRotDeg = 270; maxRotDeg = 360;
+			
+
+        } else {
             cwInput = "right_pivot_cw";
             ccwInput = "right_pivot_ccw";
             minRotDeg = 180; maxRotDeg = 270;
+            distortEffect = (AudioEffectDistortion)AudioServer.GetBusEffect(2, 0);
         }
 	}
 
@@ -52,7 +56,7 @@ public partial class TranspondPivot : Node2D
 		else {
             rotSpeed = Mathf.MoveToward(rotSpeed, 0, rotationFriction);
         }
-		Rotate(rotSpeed*(float)delta);
+        Rotate(rotSpeed*(float)delta);
 
 		// Reset rotation speed if we hit a "wall"
 		float ogRotDeg = RotationDegrees;
@@ -62,13 +66,15 @@ public partial class TranspondPivot : Node2D
         if (area.OverlapsArea(transpond.currentTower))
 		{
 			//sprite.Modulate = new Color(0, 1, 0, 1);
-			streamPlayer.PitchScale = 3;
+			//streamPlayer.PitchScale = 3;
+			//distortEffect.Drive = 0;
 			overlapsTower = true;
 		}
 		else
 		{
 			sprite.Modulate = new Color(1, 0, 0, 1);
-			streamPlayer.PitchScale = 1;
+			//streamPlayer.PitchScale = 1;
+			//distortEffect.Drive = 0.67f;
 			overlapsTower = false;
 		}
 	}

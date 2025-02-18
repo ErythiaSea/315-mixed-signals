@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c4hohafhbk47x" path="res://Sprites/window_background.png" id="2_u7ivn"]
 [ext_resource type="Script" path="res://Scripts/TranspondPivot.cs" id="3_nusiy"]
 [ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://icon.svg" id="4_4v2ox"]
-[ext_resource type="AudioStream" uid="uid://cqf5n38n822qc" path="res://Audio/200.wav" id="5_skid4"]
+[ext_resource type="AudioStream" uid="uid://dpqhr3nu7u2bx" path="res://Audio/transpondtower.wav" id="7_56cvo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4gfr"]
 radius = 35.0571
@@ -85,9 +85,10 @@ script = ExtResource("3_nusiy")
 isLeft = true
 
 [node name="lineAudio" type="AudioStreamPlayer2D" parent="leftPivot"]
-stream = ExtResource("5_skid4")
+stream = ExtResource("7_56cvo")
 autoplay = true
 panning_strength = 5.0
+bus = &"TranspondTowerL"
 
 [node name="lineSprite" type="Sprite2D" parent="leftPivot"]
 position = Vector2(660, 0)
@@ -107,9 +108,10 @@ rotation = 4.71239
 script = ExtResource("3_nusiy")
 
 [node name="lineAudio" type="AudioStreamPlayer2D" parent="rightPivot"]
-stream = ExtResource("5_skid4")
+stream = ExtResource("7_56cvo")
 autoplay = true
 panning_strength = 5.0
+bus = &"TranspondTowerR"
 
 [node name="lineSprite" type="Sprite2D" parent="rightPivot"]
 position = Vector2(660, 0)

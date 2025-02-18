@@ -77,11 +77,11 @@ public partial class WaveformGame : Node2D
 
 		if (Input.IsActionJustPressed("close"))
 		{
-            close();
+            Close();
 		}
 	}
 
-    void close()
+    void Close()
     {
         Player plr = GetNode<Player>("../Player");
         plr.canMove = true;

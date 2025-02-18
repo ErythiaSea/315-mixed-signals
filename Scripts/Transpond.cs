@@ -5,15 +5,20 @@ using System.Linq;
 
 public partial class Transpond : Node2D
 {
+	// super todo: stop having a bunch of l and r vars
 	Sprite2D intersectIndicator;
 	TranspondPivot lPivot, rPivot;
 
 	Sprite2D leftIndicator, rightIndicator;
 	float leftTimer, leftInterval, rightTimer, rightInterval;
+	AudioEffectDistortion lDistort, rDistort;
 
     Godot.Collections.Array<Node> towers;
     public Node2D currentTower;
 	int idx = 0;
+
+	float winTimer = 0.0f;
+	[Export] float winLengthRequirement = 1.25f;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -23,6 +28,8 @@ public partial class Transpond : Node2D
         rightIndicator = GetNode<Sprite2D>("rightIndicator");
         lPivot = GetNode<TranspondPivot>("leftPivot");
         rPivot = GetNode<TranspondPivot>("rightPivot");
+		lDistort = (AudioEffectDistortion)AudioServer.GetBusEffect(1, 0);
+        rDistort = (AudioEffectDistortion)AudioServer.GetBusEffect(2, 0);
 
         towers = GetNode("towers").GetChildren();
         idx = (int)(GD.Randi() % 7);
@@ -46,14 +53,16 @@ public partial class Transpond : Node2D
 
 		// get distance from pivot to tower for indicators
 		Vector2 closestPointOnLine = pointOnPivot(lPivot, currentTower.Position);
-		float dist = closestPointOnLine.DistanceTo(currentTower.Position);
-		leftInterval = ((Mathf.Min(200.0f, dist)+20.0f) / 220.0f) * 0.75f;
+		float ldist = closestPointOnLine.DistanceTo(currentTower.Position);
+		lDistort.Drive = ((Mathf.Min(200.0f, ldist)) / 200.0f) * 0.75f;
+        leftInterval = ((Mathf.Min(200.0f, ldist)+20.0f) / 220.0f) * 0.75f;
 
         closestPointOnLine = pointOnPivot(rPivot, currentTower.Position);
-        dist = closestPointOnLine.DistanceTo(currentTower.Position);
-        rightInterval = ((Mathf.Min(200.0f, dist) + 20.0f) / 220.0f) * 0.75f;
+        float rdist = closestPointOnLine.DistanceTo(currentTower.Position);
+        rDistort.Drive = ((Mathf.Min(200.0f, rdist)) / 200.0f) * 0.75f;
+        rightInterval = ((Mathf.Min(200.0f, rdist) + 20.0f) / 220.0f) * 0.75f;
 
-		// handle indicator stuff
+		// handle visual indicator stuff
         leftTimer += (float)delta; rightTimer += (float)delta;
 		if (leftTimer > leftInterval) {
 			leftIndicator.Visible = !leftIndicator.Visible;
@@ -64,31 +73,28 @@ public partial class Transpond : Node2D
             rightTimer = 0.0f;
         }
 
-        if (Input.IsActionJustPressed("print_intersect"))
+		if (lPivot.overlapsTower && rPivot.overlapsTower)
 		{
-			//GD.Print("Lines intersect at coords:" + intersect);
-			GD.Print(dist);
-			if (lPivot.overlapsTower && rPivot.overlapsTower)
+			winTimer += (float)delta;
+			if (winTimer > winLengthRequirement)
 			{
-				GD.Print("Tower found!");
-				int ogIdx = idx;
-				do { idx = (int)(GD.Randi() % 7); } while (idx == ogIdx);
-				GD.Print(idx);
-				currentTower = (Node2D)towers[idx];
+				winTimer = 0.0f;
+                GD.Print("Tower found!");
+                int ogIdx = idx;
+                do { idx = (int)(GD.Randi() % 7); } while (idx == ogIdx);
+                currentTower = (Node2D)towers[idx];
 
-				// show complete text
-				Label wintext = GetNode<Label>("WinText");
-				wintext.Visible = true;
-			}
+                // show complete text
+                Label wintext = GetNode<Label>("WinText");
+                wintext.Visible = true;
+            }
 		}
+		else winTimer = 0.0f;
 
         if (Input.IsActionJustPressed("close"))
 		{
-			Player plr = GetNode<Player>("../Player");
-			plr.canMove = true;
-			QueueFree();
+			Close();
 		}
-
     }
 
 	public Vector2 CalcIntersect()
@@ -106,4 +112,11 @@ public partial class Transpond : Node2D
 
 		return pivot.Position + (dist * dir);
 	}
+
+	public void Close()
+	{
+        Player plr = GetNode<Player>("../Player");
+        plr.canMove = true;
+        QueueFree();
+    }
 }
