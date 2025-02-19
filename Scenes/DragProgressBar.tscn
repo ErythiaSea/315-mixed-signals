@@ -1,23 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv381rpd6hc43"]
+[gd_scene load_steps=7 format=3 uid="uid://cv381rpd6hc43"]
 
+[ext_resource type="Shader" path="res://Scenes/DragProgressBar.gdshader" id="1_g1uyd"]
 [ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://icon.svg" id="1_x37hp"]
+[ext_resource type="Script" path="res://Scenes/DragProgressBar.cs" id="2_a1hbh"]
 [ext_resource type="Script" path="res://Scenes/DraggableRect.cs" id="2_ohsih"]
 
-[node name="DragProgressBar" type="ProgressBar"]
-offset_left = 140.0
-offset_top = 32.0
-offset_right = 405.0
-offset_bottom = 59.0
-rotation = 0.785398
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xxfy2"]
+shader = ExtResource("1_g1uyd")
+shader_parameter/progress = null
+shader_parameter/glow_color = Vector4(1, 1, 0.5, 1)
+shader_parameter/glow_intensity = 10.0
 
-[node name="DragRect" type="TextureRect" parent="."]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tse0a"]
+shader = ExtResource("1_g1uyd")
+shader_parameter/progress = null
+shader_parameter/glow_color = Vector4(1, 1, 0.5, 1)
+shader_parameter/glow_intensity = 3.0
+
+[node name="DragProgressBarRoot" type="Control"]
+material = SubResource("ShaderMaterial_xxfy2")
+layout_mode = 3
+anchors_preset = 0
+offset_right = 251.0
+offset_bottom = 10.0
+rotation = 1.65999e-05
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+material = SubResource("ShaderMaterial_tse0a")
 layout_mode = 0
-offset_top = -5.65686
-offset_right = 128.0
-offset_bottom = 122.343
+offset_right = 297.0
+offset_bottom = 27.0
+script = ExtResource("2_a1hbh")
+
+[node name="DragRect" type="TextureRect" parent="ProgressBar"]
+layout_mode = 0
+offset_left = -5.00012
+offset_top = -6.99992
+offset_right = 123.0
+offset_bottom = 121.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_x37hp")
 script = ExtResource("2_ohsih")
-
-[connection signal="gui_input" from="DragRect" to="DragRect" method="MouseInput"]
-[connection signal="mouse_exited" from="DragRect" to="DragRect" method="onMouseExit"]
+BarDepletionRate = 12
