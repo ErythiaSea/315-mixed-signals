@@ -23,7 +23,7 @@ public partial class DraggableRect : TextureRect
 	public override void _Ready()
 	{
 		progressBar = this.GetParent<ProgressBar>();
-
+		
 		Connect("gui_input", new Callable(this, nameof(MouseInput)));
 		//Start and end of progressbar
 		StartPos = progressBar.GlobalPosition;

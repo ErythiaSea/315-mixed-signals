@@ -111,8 +111,6 @@ offset_right = 576.0
 offset_bottom = 324.0
 mouse_filter = 1
 script = ExtResource("4_ro1i3")
-radius = 0.4
-blur = 0.04
 
 [connection signal="Completed" from="Gesture" to="Gesture/Camera2D/Parallax/Constellation/StarNode" method="DisplayCodeNumbers"]
 [connection signal="Completed" from="Gesture" to="Gesture/Camera2D/Parallax/Constellation/StarNode2" method="DisplayCodeNumbers"]
