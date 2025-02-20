@@ -26,20 +26,9 @@ offset_top = 82.0
 offset_right = 141.0
 offset_bottom = 122.0
 
+[node name="DragProgressBarRoot" parent="Control" instance=ExtResource("4_u88qu")]
+rotation = 0.0
+
 [node name="DragProgressBarRoot2" parent="Control" instance=ExtResource("4_u88qu")]
-offset_left = 280.0
-offset_top = 79.0
-offset_right = 531.0
-offset_bottom = 89.0
-
-[node name="Control2" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="DragProgressBarRoot" parent="Control2" instance=ExtResource("4_u88qu")]
-offset_left = 27.0
-offset_top = 217.0
-offset_right = 278.0
-offset_bottom = 227.0
+offset_left = 285.0
+offset_right = 583.0

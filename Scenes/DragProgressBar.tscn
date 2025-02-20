@@ -17,8 +17,8 @@ shader_parameter/glow_intensity = 10.0
 material = SubResource("ShaderMaterial_xxfy2")
 layout_mode = 3
 anchors_preset = 0
-offset_right = 251.0
-offset_bottom = 10.0
+offset_right = 298.0
+offset_bottom = 27.0
 rotation = 1.65999e-05
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
