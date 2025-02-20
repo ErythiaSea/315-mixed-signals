@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using static System.Formats.Asn1.AsnWriter;
 
 public partial class Reset : Node
 {
@@ -14,8 +13,8 @@ public partial class Reset : Node
 	{
 		if (Input.IsActionJustPressed("CameraDown"))
 		{
-			PackedScene cabin = ResourceLoader.Load<PackedScene>("res://Scenes/cabin.tscn");
-            GetTree().ChangeSceneToPacked(cabin);
+			PackedScene debugroom = ResourceLoader.Load<PackedScene>("res://Scenes/debugroom.tscn");
+            GetTree().ChangeSceneToPacked(debugroom);
         }
 	}
 }
