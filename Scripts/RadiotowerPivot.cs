@@ -1,11 +1,11 @@
 using Godot;
 using System;
 
-public partial class TranspondPivot : Node2D
+public partial class RadiotowerPivot : Node2D
 {
 	[Export]
 	bool isLeft = false;
-    Transpond transpond;
+    Radiotower radiotower;
 
     StringName cwInput, ccwInput;
 	public Area2D area;
@@ -21,13 +21,15 @@ public partial class TranspondPivot : Node2D
 	float rotSpeed = 0.0f;
 	float maxRotDeg, minRotDeg;
 
+	public bool handleInputs = true;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		area = GetNode<Area2D>("lineArea");
 		sprite = GetNode<Sprite2D>("lineSprite");
 
-		transpond = GetNode<Transpond>(".."); // glue
+		radiotower = GetNode<Radiotower>(".."); // glue
 		streamPlayer = GetNode<AudioStreamPlayer2D>("lineAudio");
 
 		if (isLeft) {
@@ -47,8 +49,10 @@ public partial class TranspondPivot : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		// Rotate pivots
-		float dir = Input.GetAxis(cwInput, ccwInput);
+        if (!handleInputs) return;
+
+        // Rotate pivots
+        float dir = Input.GetAxis(cwInput, ccwInput);
 		if (dir != 0)
 		{
 			rotSpeed = Mathf.MoveToward(rotSpeed, dir * maxRotationSpeed, rotationAccel);
@@ -63,7 +67,7 @@ public partial class TranspondPivot : Node2D
 		RotationDegrees = Mathf.Clamp(RotationDegrees, minRotDeg, maxRotDeg);
 		if (RotationDegrees != ogRotDeg) rotSpeed = 0;
 
-        if (area.OverlapsArea(transpond.currentTower))
+        if (area.OverlapsArea(radiotower.currentTower))
 		{
 			//sprite.Modulate = new Color(0, 1, 0, 1);
 			//streamPlayer.PitchScale = 3;

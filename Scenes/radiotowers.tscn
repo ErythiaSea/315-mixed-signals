@@ -1,32 +1,32 @@
 [gd_scene load_steps=11 format=3 uid="uid://kv3p5d4tp3k5"]
 
-[ext_resource type="Script" path="res://Scripts/Transpond.cs" id="1_glfj0"]
-[ext_resource type="Texture2D" uid="uid://dwvosh05aqd6t" path="res://Sprites/line.png" id="2_12lal"]
-[ext_resource type="Texture2D" uid="uid://8eis7hf11585" path="res://Sprites/window_towers.png" id="2_ppfvx"]
-[ext_resource type="Texture2D" uid="uid://c4hohafhbk47x" path="res://Sprites/window_background.png" id="2_u7ivn"]
-[ext_resource type="Script" path="res://Scripts/TranspondPivot.cs" id="3_nusiy"]
-[ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://icon.svg" id="4_4v2ox"]
-[ext_resource type="AudioStream" uid="uid://dpqhr3nu7u2bx" path="res://Audio/transpondtower.wav" id="7_56cvo"]
+[ext_resource type="Script" path="res://Scripts/Radiotower.cs" id="1_qjh6q"]
+[ext_resource type="Texture2D" uid="uid://c4hohafhbk47x" path="res://Sprites/window_background.png" id="2_ifsrx"]
+[ext_resource type="Texture2D" uid="uid://8eis7hf11585" path="res://Sprites/window_towers.png" id="3_obcwr"]
+[ext_resource type="Script" path="res://Scripts/RadiotowerPivot.cs" id="4_vtlbg"]
+[ext_resource type="AudioStream" uid="uid://dpqhr3nu7u2bx" path="res://Audio/transpondtower.wav" id="5_vusvs"]
+[ext_resource type="Texture2D" uid="uid://dwvosh05aqd6t" path="res://Sprites/line.png" id="6_b2ab4"]
+[ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://icon.svg" id="7_4vx2i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4gfr"]
 radius = 44.0454
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_i4uwr"]
-b = Vector2(1319, -0.00127411)
+b = Vector2(2595, -1.0025)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ggta"]
 font_size = 32
 
 [node name="transpondRoot" type="Node2D"]
-script = ExtResource("1_glfj0")
+script = ExtResource("1_qjh6q")
 
 [node name="bg" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
-texture = ExtResource("2_u7ivn")
+texture = ExtResource("2_ifsrx")
 
 [node name="towerSprites" type="Sprite2D" parent="."]
 position = Vector2(1393, 622)
-texture = ExtResource("2_ppfvx")
+texture = ExtResource("3_obcwr")
 
 [node name="towers" type="Node2D" parent="."]
 
@@ -82,11 +82,11 @@ shape = SubResource("CircleShape2D_c4gfr")
 [node name="leftPivot" type="Node2D" parent="."]
 position = Vector2(100, 1100)
 rotation = 4.71239
-script = ExtResource("3_nusiy")
+script = ExtResource("4_vtlbg")
 isLeft = true
 
 [node name="lineAudio" type="AudioStreamPlayer2D" parent="leftPivot"]
-stream = ExtResource("7_56cvo")
+stream = ExtResource("5_vusvs")
 autoplay = true
 panning_strength = 5.0
 bus = &"TranspondTowerL"
@@ -95,7 +95,7 @@ bus = &"TranspondTowerL"
 position = Vector2(1300, 0)
 rotation = 1.5708
 scale = Vector2(4, 4)
-texture = ExtResource("2_12lal")
+texture = ExtResource("6_b2ab4")
 
 [node name="lineArea" type="Area2D" parent="leftPivot"]
 collision_mask = 2
@@ -106,10 +106,10 @@ shape = SubResource("SegmentShape2D_i4uwr")
 [node name="rightPivot" type="Node2D" parent="."]
 position = Vector2(1820, 1100)
 rotation = 4.71239
-script = ExtResource("3_nusiy")
+script = ExtResource("4_vtlbg")
 
 [node name="lineAudio" type="AudioStreamPlayer2D" parent="rightPivot"]
-stream = ExtResource("7_56cvo")
+stream = ExtResource("5_vusvs")
 autoplay = true
 panning_strength = 5.0
 bus = &"TranspondTowerR"
@@ -118,7 +118,7 @@ bus = &"TranspondTowerR"
 position = Vector2(1300, 0)
 rotation = 1.5708
 scale = Vector2(4, 4)
-texture = ExtResource("2_12lal")
+texture = ExtResource("6_b2ab4")
 
 [node name="lineArea" type="Area2D" parent="rightPivot"]
 collision_mask = 2
@@ -127,12 +127,12 @@ collision_mask = 2
 shape = SubResource("SegmentShape2D_i4uwr")
 
 [node name="intersectIndicator" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(-48.5, -48.5)
 scale = Vector2(0.242188, 0.242188)
-texture = ExtResource("4_4v2ox")
+texture = ExtResource("7_4vx2i")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = 33.0
 offset_top = 1013.0
 offset_right = 1109.0
@@ -151,9 +151,9 @@ text = "Complete!"
 [node name="leftIndicator" type="Sprite2D" parent="."]
 position = Vector2(149, 1045)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_4v2ox")
+texture = ExtResource("7_4vx2i")
 
 [node name="rightIndicator" type="Sprite2D" parent="."]
 position = Vector2(1765, 1049)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_4v2ox")
+texture = ExtResource("7_4vx2i")

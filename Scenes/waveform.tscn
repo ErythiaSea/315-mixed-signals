@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://7aoxy6ge3j3s"]
+[gd_scene load_steps=6 format=3 uid="uid://7aoxy6ge3j3s"]
 
 [ext_resource type="Script" path="res://Scripts/WaveRender.cs" id="1_2ltar"]
 [ext_resource type="Script" path="res://Scripts/WaveformGame.cs" id="1_qsht6"]
 [ext_resource type="Texture2D" uid="uid://baera0t4taf7d" path="res://Sprites/waveform_background.png" id="2_ey355"]
+[ext_resource type="Texture2D" uid="uid://t6mqbrhqqobs" path="res://Sprites/transpondmonitors_temp.png" id="4_qredm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_aytc3"]
 font_size = 32
@@ -12,27 +13,31 @@ z_index = 3
 script = ExtResource("1_qsht6")
 
 [node name="bg" type="Sprite2D" parent="."]
+visible = false
 z_index = -1
 position = Vector2(960, 540)
 texture = ExtResource("2_ey355")
 
 [node name="realwave" type="Node2D" parent="."]
-position = Vector2(960, 550)
+position = Vector2(1372, 762)
 script = ExtResource("1_2ltar")
-shapelength = 1920.0
-frequency = 6.28
+amplitude = 0.0
+shapelength = 800.0
+frequency = 20.0
 numPoints = 600
 waveColor = Color(0, 1, 0, 1)
-lineThick = 3.0
+lineThick = 4.0
 
 [node name="playerwave" type="Node2D" parent="."]
-position = Vector2(960, 550)
+position = Vector2(1372, 285)
 script = ExtResource("1_2ltar")
-shapelength = 1920.0
+amplitude = 12.5
+shapelength = 800.0
+wavelength = 25.0
 frequency = 20.0
 numPoints = 600
 waveColor = Color(0.960784, 0.239216, 1, 1)
-lineThick = 2.0
+lineThick = 4.0
 
 [node name="Label" type="Label" parent="."]
 offset_left = 20.0
@@ -49,3 +54,9 @@ offset_top = 611.0
 offset_right = 1086.0
 offset_bottom = 634.0
 text = "Complete!"
+
+[node name="Monitors" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1020, 540)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_qredm")

@@ -42,13 +42,14 @@ public partial class WaveRender : Node2D
     {
 		Vector2[] points = new Vector2[numPoints];
 		float dist = shapelength / numPoints; // distance between each point on x axis
-		float t = (float)Time.GetTicksMsec()/1000.0f; 
+		float t = (float)Time.GetTicksMsec()/1000.0f;
+		t = t + 100.0f;
 
         for (int i = 0; i < numPoints; i++)
 		{
 			float x = i*dist - (shapelength/2);
 			float freq = frequency / (frequencyAsSpeed ? wavelength : 1.0f);
-			float y = Mathf.Sin((x/wavelength) + t * freq) * amplitude;
+			float y = Mathf.Sin(((x/wavelength) * freq) + t) * amplitude;
 			y += (GD.Randf()-0.5f) * amplitude * randFactor;
 			y = Mathf.Clamp(y, -amplitude*1.5f, amplitude*1.5f);
 			points[i] = (new Vector2(x, y));

@@ -3,11 +3,11 @@ using Godot.NativeInterop;
 using System;
 using System.Linq;
 
-public partial class Transpond : Node2D
+public partial class Radiotower : Node2D
 {
 	// super todo: stop having a bunch of l and r vars
 	Sprite2D intersectIndicator;
-	TranspondPivot lPivot, rPivot;
+	RadiotowerPivot lPivot, rPivot;
 
 	Sprite2D leftIndicator, rightIndicator;
 	float leftTimer, leftInterval, rightTimer, rightInterval;
@@ -20,14 +20,16 @@ public partial class Transpond : Node2D
 	float winTimer = 0.0f;
 	[Export] float winLengthRequirement = 1.25f;
 
+	public bool gameActive = true;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
 		intersectIndicator = GetNode<Sprite2D>("intersectIndicator");
         leftIndicator = GetNode<Sprite2D>("leftIndicator");
         rightIndicator = GetNode<Sprite2D>("rightIndicator");
-        lPivot = GetNode<TranspondPivot>("leftPivot");
-        rPivot = GetNode<TranspondPivot>("rightPivot");
+        lPivot = GetNode<RadiotowerPivot>("leftPivot");
+        rPivot = GetNode<RadiotowerPivot>("rightPivot");
 		lDistort = (AudioEffectDistortion)AudioServer.GetBusEffect(1, 0);
         rDistort = (AudioEffectDistortion)AudioServer.GetBusEffect(2, 0);
 
@@ -42,6 +44,8 @@ public partial class Transpond : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (!gameActive) return;
+
 		Vector2 intersect = Vector2.Zero;
 		if (lPivot.Rotation == rPivot.Rotation) intersectIndicator.Visible = false; // lines parallel
         else
@@ -87,14 +91,24 @@ public partial class Transpond : Node2D
                 // show complete text
                 Label wintext = GetNode<Label>("WinText");
                 wintext.Visible = true;
+				
+				gameActive = false;
+				lPivot.handleInputs = false;
+				rPivot.handleInputs = false;
             }
 		}
-		else winTimer = 0.0f;
+        else winTimer = 0.0f;
 
-        if (Input.IsActionJustPressed("close"))
+        if (Input.IsActionPressed("print_intersect"))
 		{
-			Close();
+			GD.Print("ldist: ", ldist, " rdist: ", rdist);
+			GD.Print("left overlap:", lPivot.overlapsTower, " right overlap: ", rPivot.overlapsTower);
 		}
+
+		//if (Input.IsActionJustPressed("close"))
+		//{
+		//	Close();
+		//}
     }
 
 	public Vector2 CalcIntersect()
