@@ -1,38 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\",
+  "WorkspaceRootPath": "C:\\Users\\kyled\\Documents\\GitHub\\315-mech-proto\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\dragprogressbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\kyled\\documents\\github\\315-mech-proto\\scenes\\dragprogressbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\dragprogressbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\draggablerect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\kyled\\documents\\github\\315-mech-proto\\scenes\\draggablerect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\draggablerect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\starnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\starnode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scripts\\shaderscript\\textureshader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\shaderscript\\textureshader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scripts\\drawmechanic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\drawmechanic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\constellationshader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\constellationshader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scripts\\interactbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\interactbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scripts\\cameramovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\cameramovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,123 +22,36 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DragProgressBar.cs",
-              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\DragProgressBar.cs",
+              "DocumentMoniker": "C:\\Users\\kyled\\Documents\\GitHub\\315-mech-proto\\Scenes\\DragProgressBar.cs",
               "RelativeDocumentMoniker": "Scenes\\DragProgressBar.cs",
-              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\DragProgressBar.cs",
+              "ToolTip": "C:\\Users\\kyled\\Documents\\GitHub\\315-mech-proto\\Scenes\\DragProgressBar.cs",
               "RelativeToolTip": "Scenes\\DragProgressBar.cs",
-              "ViewState": "AgIAAIYAAAAAAAAAAAAwwMQAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAIYAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T10:35:31.187Z",
+              "WhenOpened": "2025-02-19T13:31:50.79Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "DraggableRect.cs",
-              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\DraggableRect.cs",
+              "DocumentMoniker": "C:\\Users\\kyled\\Documents\\GitHub\\315-mech-proto\\Scenes\\DraggableRect.cs",
               "RelativeDocumentMoniker": "Scenes\\DraggableRect.cs",
-              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\DraggableRect.cs",
+              "ToolTip": "C:\\Users\\kyled\\Documents\\GitHub\\315-mech-proto\\Scenes\\DraggableRect.cs",
               "RelativeToolTip": "Scenes\\DraggableRect.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAwwE0AAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T13:29:42.838Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "InteractBox.cs",
-              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\InteractBox.cs",
-              "RelativeDocumentMoniker": "Scripts\\InteractBox.cs",
-              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\InteractBox.cs",
-              "RelativeToolTip": "Scripts\\InteractBox.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T15:37:02.382Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CameraMovement.cs",
-              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\CameraMovement.cs",
-              "RelativeDocumentMoniker": "Scripts\\CameraMovement.cs",
-              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\CameraMovement.cs",
-              "RelativeToolTip": "Scripts\\CameraMovement.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T12:14:16.38Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ConstellationShader.cs",
-              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\ConstellationShader.cs",
-              "RelativeDocumentMoniker": "Scenes\\ConstellationShader.cs",
-              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\ConstellationShader.cs",
-              "RelativeToolTip": "Scenes\\ConstellationShader.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T12:13:42.107Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DrawMechanic.cs",
-              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\DrawMechanic.cs",
-              "RelativeDocumentMoniker": "Scripts\\DrawMechanic.cs",
-              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\DrawMechanic.cs",
-              "RelativeToolTip": "Scripts\\DrawMechanic.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T12:12:44.361Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TextureShader.cs",
-              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\ShaderScript\\TextureShader.cs",
-              "RelativeDocumentMoniker": "Scripts\\ShaderScript\\TextureShader.cs",
-              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\ShaderScript\\TextureShader.cs",
-              "RelativeToolTip": "Scripts\\ShaderScript\\TextureShader.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T12:12:39.739Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "StarNode.cs",
-              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\StarNode.cs",
-              "RelativeDocumentMoniker": "Scenes\\StarNode.cs",
-              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\StarNode.cs",
-              "RelativeToolTip": "Scenes\\StarNode.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwBUAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T10:51:42.889Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 762,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+              "WhenOpened": "2025-02-19T12:14:22.065Z"
             }
           ]
         }

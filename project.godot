@@ -23,10 +23,6 @@ CloudRecognizer="*res://addons/gesture_recognizer/scripts/CloudRecognizer.gd"
 
 project/assembly_name="315-mech-proto"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/gesture_recognizer/plugin.cfg")
-
 [input]
 
 left_pivot_cw={
