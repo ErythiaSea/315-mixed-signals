@@ -1,22 +1,48 @@
-[gd_scene load_steps=6 format=3 uid="uid://dt75x8jugtghp"]
+[gd_scene load_steps=7 format=3 uid="uid://dt75x8jugtghp"]
 
+[ext_resource type="Script" path="res://Scripts/DragParent.cs" id="1_mynxh"]
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/Glow.gdshader" id="1_n36mt"]
 [ext_resource type="Texture2D" uid="uid://d1vrrq6aeuaqk" path="res://Sprites/Skys&Constellations/ConstellationLayer.png" id="2_4cuek"]
-[ext_resource type="Script" path="res://Scenes/ConstellationShader.cs" id="3_m64ft"]
 [ext_resource type="PackedScene" uid="uid://cv381rpd6hc43" path="res://Scenes/DragProgressBar.tscn" id="4_u88qu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ad0a8"]
 shader = ExtResource("1_n36mt")
 
-[node name="CancerConstellation" type="Node2D"]
+[sub_resource type="CSharpScript" id="CSharpScript_dwm48"]
+script/source = "using Godot;
+using System;
 
-[node name="Control" type="Control" parent="."]
+public partial class ConstellationShader : Sprite2D
+{
+	ShaderMaterial Smaterial;
+	Texture RenderTexture;
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		Smaterial = this.Material as ShaderMaterial;
+		RenderTexture = ImageTexture.CreateFromImage(GetViewport().GetTexture().GetImage());
+
+        Smaterial.SetShaderParameter(\"viewportRT\", RenderTexture);
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+
+	}
+}
+"
+
+[node name="Constellation" type="Node2D"]
+
+[node name="DragParent" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_mynxh")
 
-[node name="DragProgressBarRoot" parent="Control" instance=ExtResource("4_u88qu")]
+[node name="DragProgressBarRoot" parent="DragParent" instance=ExtResource("4_u88qu")]
 layout_mode = 0
 offset_left = 402.0
 offset_top = 159.0
@@ -25,30 +51,30 @@ offset_bottom = 186.0
 rotation = 0.858851
 scale = Vector2(0.8, 0.8)
 
-[node name="DragProgressBarRoot2" parent="Control" instance=ExtResource("4_u88qu")]
+[node name="DragProgressBarRoot2" parent="DragParent" instance=ExtResource("4_u88qu")]
 layout_mode = 0
-offset_left = 714.0
-offset_top = 220.0
-offset_right = 914.0
-offset_bottom = 247.0
+offset_left = 721.0
+offset_top = 211.0
+offset_right = 921.0
+offset_bottom = 238.0
 rotation = -0.820741
 scale = Vector2(0.8, 0.8)
 
-[node name="DragProgressBarRoot3" parent="Control" instance=ExtResource("4_u88qu")]
+[node name="DragProgressBarRoot3" parent="DragParent" instance=ExtResource("4_u88qu")]
 layout_mode = 0
-offset_left = 518.0
-offset_top = 313.0
-offset_right = 522.0
-offset_bottom = 340.0
+offset_left = 531.0
+offset_top = 314.0
+offset_right = 825.0
+offset_bottom = 341.0
 rotation = -0.49156
 scale = Vector2(0.8, 0.8)
 
-[node name="DragProgressBarRoot4" parent="Control" instance=ExtResource("4_u88qu")]
+[node name="DragProgressBarRoot4" parent="DragParent" instance=ExtResource("4_u88qu")]
 layout_mode = 0
-offset_left = 541.0
-offset_top = 317.0
-offset_right = 801.0
-offset_bottom = 344.0
+offset_left = 542.0
+offset_top = 327.0
+offset_right = 802.0
+offset_bottom = 354.0
 rotation = 1.6885
 scale = Vector2(0.8, 0.8)
 
@@ -58,4 +84,10 @@ material = SubResource("ShaderMaterial_ad0a8")
 position = Vector2(509, 427)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_4cuek")
-script = ExtResource("3_m64ft")
+script = SubResource("CSharpScript_dwm48")
+
+[node name="NumberParent" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
