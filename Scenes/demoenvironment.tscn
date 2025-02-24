@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://d32llbxme7jvg"]
+
+[ext_resource type="Texture2D" uid="uid://cnuabra54v07m" path="res://Sprites/pondlevel.png" id="1_khfq5"]
+[ext_resource type="PackedScene" uid="uid://dy0uyn60pxvkm" path="res://Scenes/grav_player.tscn" id="2_c1fah"]
+[ext_resource type="PackedScene" uid="uid://rttkrffqrw1g" path="res://Scenes/stair_control.tscn" id="3_fdk2y"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hq7ll"]
+a = Vector2(-791, 224)
+b = Vector2(-677, 225)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_0g271"]
+a = Vector2(-1365, 2)
+b = Vector2(-1181, 4)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1ui0r"]
+a = Vector2(-1249, 544)
+b = Vector2(-791, 224)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_43ati"]
+a = Vector2(-1181, 4)
+b = Vector2(-791, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pm7kl"]
+
+[node name="DemoEnv" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_khfq5")
+
+[node name="LevelCollision" type="StaticBody2D" parent="."]
+
+[node name="Ground" type="CollisionPolygon2D" parent="LevelCollision"]
+build_mode = 1
+polygon = PackedVector2Array(-1357, 515, -1183, 561, -788, 565, -619, 603, -420, 689, -103, 694, 47, 634, 303, 618, 553, 634, 732, 689, 984, 689, 1179, 632, 1329, 553, 1595, 549, 1595, 796, -1354, 794)
+
+[node name="LStairLanding1" type="CollisionShape2D" parent="LevelCollision"]
+shape = SubResource("SegmentShape2D_hq7ll")
+
+[node name="LStairLanding2" type="CollisionShape2D" parent="LevelCollision"]
+shape = SubResource("SegmentShape2D_0g271")
+
+[node name="LStair1" type="CollisionShape2D" parent="LevelCollision"]
+shape = SubResource("SegmentShape2D_1ui0r")
+one_way_collision = true
+
+[node name="LStair2" type="CollisionShape2D" parent="LevelCollision"]
+shape = SubResource("SegmentShape2D_43ati")
+one_way_collision = true
+
+[node name="GravPlayer" parent="." instance=ExtResource("2_c1fah")]
+position = Vector2(-249, 615)
+
+[node name="Camera2D" type="Camera2D" parent="GravPlayer"]
+limit_left = -1920
+limit_top = -1080
+limit_right = 1920
+limit_bottom = 1080
+
+[node name="StairControl" parent="." node_paths=PackedStringArray("stairToToggle") instance=ExtResource("3_fdk2y")]
+position = Vector2(-5, 0)
+stairToToggle = NodePath("../LevelCollision/LStair2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StairControl"]
+position = Vector2(-775, 212)
+shape = SubResource("RectangleShape2D_pm7kl")
