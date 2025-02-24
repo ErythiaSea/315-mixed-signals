@@ -14,7 +14,6 @@ shader_parameter/circle_b = null
 [node name="ConstellationDraw" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 position = Vector2(576, 324)
 
 [node name="Parallax" type="Node2D" parent="Camera2D"]
@@ -40,7 +39,6 @@ texture = ExtResource("4_irqg6")
 [node name="Constellation" parent="." instance=ExtResource("3_t8fte")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_13kgm")
 offset_right = 1152.0
 offset_bottom = 648.0
