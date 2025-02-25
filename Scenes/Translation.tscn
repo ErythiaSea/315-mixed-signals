@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8njavafs6q5y"]
+
+[ext_resource type="Script" path="res://Scenes/TranslationCanvasUI.cs" id="1_6ebpw"]
+[ext_resource type="FontFile" uid="uid://m3h38nqxkg0o" path="res://Sprites/Fonts/Monotone_Celestial_V1.otf" id="2_w7m10"]
+[ext_resource type="FontFile" uid="uid://c6lkoenvhuw42" path="res://Sprites/Fonts/Monotone_SB_V1.otf" id="3_tm1gv"]
+
+[node name="Translation" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_6ebpw")
+
+[node name="TextVBox" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 744.0
+offset_top = 221.0
+offset_right = 1744.0
+offset_bottom = 871.0
+
+[node name="VBoxContainer" type="VSplitContainer" parent="CanvasLayer/TextVBox"]
+custom_minimum_size = Vector2(1000, 600)
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="MessageTextBox" type="RichTextLabel" parent="CanvasLayer/TextVBox/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_w7m10")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]Hot"
+fit_content = true
+
+[node name="AnswerBox" type="TextEdit" parent="CanvasLayer/TextVBox/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tm1gv")
+
+[node name="HintVBox" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 117.0
+offset_top = 87.0
+offset_right = 460.0
+offset_bottom = 538.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HintVBox"]
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="CelestialChar" type="RichTextLabel" parent="CanvasLayer/HintVBox/HBoxContainer"]
+custom_minimum_size = Vector2(150, 600)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_w7m10")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]
+e
+e
+e"
+
+[node name="EnglishChar" type="RichTextLabel" parent="CanvasLayer/HintVBox/HBoxContainer"]
+custom_minimum_size = Vector2(150, 600)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_tm1gv")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]
+e
+e
+e
+
+"
