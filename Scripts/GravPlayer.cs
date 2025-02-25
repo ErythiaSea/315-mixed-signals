@@ -2,7 +2,9 @@ using Godot;
 using System;
 using static Godot.TextServer;
 
-public enum MovementStates { FREE_MOVE = 1, LADDER_MOVE = 2, MOVE_LOCKED = 4 };
+// note: NONE is used for testing to see if none are set and cannot be used with bitwise ops!!
+[Flags]
+public enum MovementStates { NONE = 0, FREE_MOVE = 1, LADDER_MOVE = 2, MOVE_LOCKED = 4 };
 
 public partial class GravPlayer : CharacterBody2D
 {
@@ -15,7 +17,11 @@ public partial class GravPlayer : CharacterBody2D
 	// both be true, so when you unlock movement you return to ladder movement
 	MovementStates playerMovementState = MovementStates.FREE_MOVE;
 
-    //public Vector2 moveTo = Vector2.Zero;
+	// for moving the player in cutscenes (or centering on ladder)
+	public bool autoWalk = false; 
+	public float autoWalkDestinationX = float.MinValue;
+
+	//public Vector2 moveTo = Vector2.Zero;
 
 	AnimatedSprite2D playerSprite;
 	Sprite2D interactSprite;
@@ -51,10 +57,8 @@ public partial class GravPlayer : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
 	{
-		//if (moveTo != Vector2.Zero)
-		//{
+		if (autoWalk) { autoMovement(delta); return; }
 
-		//}
 		if (playerMovementState == MovementStates.FREE_MOVE) standardMovement(delta);
 		else if (playerMovementState == MovementStates.LADDER_MOVE) ladderMovement(delta);
 	}
@@ -118,6 +122,15 @@ public partial class GravPlayer : CharacterBody2D
 
 		//Velocity = velocity;
 		MoveAndCollide(velocity*(float)delta);
+	}
+
+	private void autoMovement(double delta)
+	{
+		// todo: eliminate redundant calculations? with a memory cost instead?
+		float dir = (Position.X - autoWalkDestinationX) < 0 ? -1 : 1;
+		Velocity = new Vector2(Speed, 0);
+		MoveAndSlide();
+		if (Mathf.Abs(Position.X - autoWalkDestinationX) < 3.0f) autoWalk = false;
 	}
 
 	public void toggleLadder()

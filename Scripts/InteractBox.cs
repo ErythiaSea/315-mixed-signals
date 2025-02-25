@@ -19,6 +19,7 @@ public partial class InteractBox : Area2D
         if (!active) return;
 
         if (ladderArea) {
+            plrRef.autoWalk = true;
             plrRef.toggleLadder();
         }
 
