@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bc8lby5o1pvpv"]
+[gd_scene load_steps=8 format=3 uid="uid://bc8lby5o1pvpv"]
 
+[ext_resource type="Script" path="res://Scripts/CameraMovement.cs" id="1_7uyas"]
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/ConstellationDraw.gdshader" id="3_djkxa"]
 [ext_resource type="PackedScene" uid="uid://dt75x8jugtghp" path="res://Scenes/CancerConstellation.tscn" id="3_t8fte"]
 [ext_resource type="Texture2D" uid="uid://3pijp23csaa8" path="res://Sprites/Skys&Constellations/SkyLayer.png" id="3_vuskw"]
@@ -13,36 +14,43 @@ shader_parameter/circle_b = null
 
 [node name="ConstellationDraw" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="eeek" type="Camera2D" parent="."]
 position = Vector2(576, 324)
+script = ExtResource("1_7uyas")
 
-[node name="Parallax" type="Node2D" parent="Camera2D"]
+[node name="Parallax" type="Node2D" parent="eeek"]
+z_index = -2
 position = Vector2(3, 0)
 scale = Vector2(0.4, 0.4)
 
-[node name="Sky" type="Parallax2D" parent="Camera2D/Parallax"]
-scroll_scale = Vector2(0.98, 0.98)
+[node name="Sky" type="Parallax2D" parent="eeek/Parallax"]
+scroll_scale = Vector2(0.58, 0.58)
 repeat_times = 4
 
-[node name="SkySprite" type="Sprite2D" parent="Camera2D/Parallax/Sky"]
+[node name="SkySprite" type="Sprite2D" parent="eeek/Parallax/Sky"]
 modulate = Color(0.721569, 0.745098, 1, 1)
 texture = ExtResource("3_vuskw")
 
-[node name="Stars" type="Parallax2D" parent="Camera2D/Parallax"]
-scroll_scale = Vector2(0.97, 0.97)
+[node name="Stars" type="Parallax2D" parent="eeek/Parallax"]
+scroll_scale = Vector2(0.57, 0.57)
 repeat_times = 4
 
-[node name="StarsSprite" type="Sprite2D" parent="Camera2D/Parallax/Stars"]
+[node name="StarsSprite" type="Sprite2D" parent="eeek/Parallax/Stars"]
 modulate = Color(0.894922, 0.894922, 0.894922, 1)
 texture = ExtResource("4_irqg6")
 
-[node name="Constellation" parent="." instance=ExtResource("3_t8fte")]
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="eeek"]
 material = SubResource("ShaderMaterial_13kgm")
-offset_right = 1152.0
-offset_bottom = 648.0
-mouse_filter = 1
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+mouse_filter = 2
 script = ExtResource("4_ro1i3")
 radius = 0.4
 blur = 0.02
+
+[node name="Constellation" parent="." instance=ExtResource("3_t8fte")]
+z_index = -1
+position = Vector2(376, -16)
+scale = Vector2(0.7, 0.7)

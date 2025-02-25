@@ -42,7 +42,9 @@ public partial class DragProgressBar : ProgressBar
 		Material = shaderMat;
 
         startPos = this.GlobalPosition;
-        endPos = startPos + new Vector2(this.Size.X * this.Scale.X,0).Rotated(this.Rotation);
+
+        Node2D dragRoot = this.GetParent().GetParent() as Node2D;
+        endPos = startPos + new Vector2(this.Size.X * (this.Scale.X * dragRoot.Scale.X),0).Rotated(this.Rotation);
 
         sceneBars = this.GetParent().GetChildren(false);
     }
@@ -50,8 +52,25 @@ public partial class DragProgressBar : ProgressBar
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+
         //mouse positions and direction updates
+        if (GetViewport().GetCamera2D() != null)
+        {
+            if (Input.IsActionJustPressed("Last_Stroke_Delete"))
+            {
+                GD.Print("CAMNAME: " + GetViewport().GetCamera2D().Name);
+            }
+        }
         mousePos = GetGlobalMousePosition();
+        {
+            if (Input.IsActionJustPressed("Last_Stroke_Delete"))
+            {
+            GD.Print("CAM OFFSET:" + GetViewport().GetCamera2D().Offset);
+            GD.Print("startpos" + this.startPos);
+            GD.Print("MP1: " + mousePos);
+            GD.Print("MP2: " + GetGlobalMousePosition());
+            }
+        }
         mouseDir = (mousePos - prevMousePos).Normalized();
 
         prevMousePos = mousePos;
@@ -80,7 +99,6 @@ public partial class DragProgressBar : ProgressBar
                 }
             }
         }
-
         //if the drag is left without it being completed it begins reseting
         if (currentBar != this && Value > 0 && !isCompleted)
         {
@@ -98,21 +116,22 @@ public partial class DragProgressBar : ProgressBar
         //mouse click to initatiate the drag
         if (@event is InputEventMouseButton mouseButton && mouseButton.Pressed)
         {
+            GD.Print("Clicked");
             //current bar is now this bar
             currentBar = this;
 
             //checks which end of the bar the mouse click is closer too to find out which direction to drag
-            if (startPos.DistanceTo(mouseButton.GlobalPosition) < endPos.DistanceTo(mouseButton.GlobalPosition))
+            if (startPos.DistanceTo(mousePos) < endPos.DistanceTo(mousePos))
             {
                 //checks if the clicks position is within the range to actually start a drag and that it isnt already dragging
-                if ((startPos.DistanceTo(mouseButton.GlobalPosition) < beginDragRange) && !hasStarted)
+                if ((startPos.DistanceTo(mousePos) < beginDragRange) && !hasStarted)
                 {
                     DragSettings(0);
                 }
             }
             else
             {
-                if ((endPos.DistanceTo(mouseButton.GlobalPosition) < beginDragRange) && !hasStarted)
+                if ((endPos.DistanceTo(mousePos) < beginDragRange) && !hasStarted)
                 {
                     DragSettings(1);
                 }

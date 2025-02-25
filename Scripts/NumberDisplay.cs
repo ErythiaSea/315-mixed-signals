@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Linq;
+using System.Reflection.Emit;
 
 public partial class NumberDisplay : Control
 {
@@ -30,7 +32,7 @@ public partial class NumberDisplay : Control
 
 		if (hasNumbers && !isDisplayed)
 		{
-			Label currentLabelIndex = SceneLabels[index] as Label;
+			Godot.Label currentLabelIndex = SceneLabels[index] as Godot.Label;
 
 			if (currentLabelIndex != null)
 			{
@@ -56,31 +58,48 @@ public partial class NumberDisplay : Control
 
 	public void DisplayNumbers()
 	{
-		Label currentLabelIndex = null;
+		Godot.Label currentLabelIndex = null;
+		Godot.Collections.Array<int> randNumArray = RandomNumbers();
+
 		for(int i = 0; i < SceneLabels.Count; i++)
 		{
-			currentLabelIndex = SceneLabels[i] as Label;
-			RandomNumber(currentLabelIndex);
-		}
+			currentLabelIndex = SceneLabels[i] as Godot.Label;
+
+            currentLabelIndex.Text = string.Empty;
+            currentLabelIndex.Text = randNumArray[i].ToString();
+        }
 
 		hasNumbers = true;
 	}
 
-	private void RandomNumber(Label label)
+	private Godot.Collections.Array<int> RandomNumbers()
 	{
-        var rng = new RandomNumberGenerator();
+		Godot.Collections.Array<int> randNumArray = new Godot.Collections.Array<int>();
+		do
+		{
+			randNumArray.Clear();
 
-        int randomNum = rng.RandiRange(randMin, randMax);
-        label.Text = string.Empty;
-        label.Text = randomNum.ToString();
+			for (int i = 0; i < SceneLabels.Count; i++)
+			{
+				var rng = new RandomNumberGenerator();
+				int randomNum = rng.RandiRange(randMin, randMax);
+
+				randNumArray.Add(randomNum);
+			}
+
+        } while (randNumArray.Sum() == 0);
+
+		GD.Print("Valid random numbers");
+		return randNumArray;
+		
     }
 
 	private void SetNumbersVisibility()
 	{
-		Label currentLabelIndex = null;
+		Godot.Label currentLabelIndex = null;
 		for(int i = 0; i < SceneLabels.Count;i++)
 		{
-			currentLabelIndex = SceneLabels[i] as Label;
+			currentLabelIndex = SceneLabels[i] as Godot.Label;
 			currentLabelIndex.Modulate = new Color(currentLabelIndex.Modulate.R, currentLabelIndex.Modulate.G, currentLabelIndex.Modulate.B, 0);
 		}
 	}

@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/Glow.gdshader" id="1_n36mt"]
 [ext_resource type="Texture2D" uid="uid://d1vrrq6aeuaqk" path="res://Sprites/Skys&Constellations/ConstellationLayer.png" id="2_4cuek"]
 [ext_resource type="PackedScene" uid="uid://cv381rpd6hc43" path="res://Scenes/DragProgressBar.tscn" id="4_u88qu"]
-[ext_resource type="Script" path="res://Scenes/NumberDisplay.cs" id="5_oh041"]
+[ext_resource type="Script" path="res://Scripts/NumberDisplay.cs" id="5_oh041"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ad0a8"]
 shader = ExtResource("1_n36mt")
