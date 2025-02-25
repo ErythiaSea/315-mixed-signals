@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+// deprecated (i hope)
 public partial class Player : CharacterBody2D
 {
 	[Export] // how much the player moves up when holding up on not-ladders
@@ -40,7 +41,7 @@ public partial class Player : CharacterBody2D
                     interactSprite.Visible = true;
                     if (Input.IsActionJustPressed("print_intersect") && canMove)
                     {
-                        interactBox.Interact(this);
+                        //interactBox.Interact(this);
                         canMove = false;
                     }
                 }

@@ -2,19 +2,24 @@ using Godot;
 using System;
 using static Godot.TextServer;
 
+public enum MovementStates { FREE_MOVE = 1, LADDER_MOVE = 2, MOVE_LOCKED = 4 };
+
 public partial class GravPlayer : CharacterBody2D
 {
+	// todo: these are godot defaults. maybe change/export these?
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 
-	// possible todo: enum with "player states" instead of millions of bools
-	// however im short-sighted and can't figure out what other states i need,
-	// which ones need to be mutually exclusive, etc. this is fine for rn :3
-	public bool onLadder = false;
+	// note: im assigning the playerMovementState to one of these states. however, you
+	// could use this as flags with bitwise ops to have, say, LADDER_MOVE and MOVE_LOCKED
+	// both be true, so when you unlock movement you return to ladder movement
+	MovementStates playerMovementState = MovementStates.FREE_MOVE;
 
-	public Vector2 moveTo = Vector2.Zero;
+    //public Vector2 moveTo = Vector2.Zero;
 
 	AnimatedSprite2D playerSprite;
+	Sprite2D interactSprite;
+	Area2D interactArea;
 
     public override void _Ready()
     {
@@ -22,19 +27,39 @@ public partial class GravPlayer : CharacterBody2D
 		FloorSnapLength = 20.0f;
 
         playerSprite = GetNode<AnimatedSprite2D>("PlayerSprite");
+		interactSprite = GetNode<Sprite2D>("InteractSprite");
+		interactArea = GetNode<Area2D>("InteractArea");
+    }
+
+    public override void _Process(double delta)
+    {
+        interactSprite.Visible = false;
+        foreach (Area2D area in interactArea.GetOverlappingAreas())
+        {
+            InteractBox interactBox = area as InteractBox;
+            if (interactBox != null && interactBox.active)
+            {
+                interactSprite.Visible = true;
+                if (Input.IsActionJustPressed("print_intersect") && playerMovementState != MovementStates.MOVE_LOCKED)
+                {
+                    interactBox.Interact(this);
+                    //playerMovementState = MovementStates.MOVE_LOCKED;
+                }
+            }
+        }
     }
 
     public override void _PhysicsProcess(double delta)
 	{
-		if (moveTo != Vector2.Zero)
-		{
+		//if (moveTo != Vector2.Zero)
+		//{
 
-		}
-		if (!onLadder) standardMovement(delta);
-		else ladderMovement(delta);
+		//}
+		if (playerMovementState == MovementStates.FREE_MOVE) standardMovement(delta);
+		else if (playerMovementState == MovementStates.LADDER_MOVE) ladderMovement(delta);
 	}
 
-	void standardMovement(double delta)
+	private void standardMovement(double delta)
 	{
 		Vector2 velocity = Velocity;
 
@@ -45,10 +70,10 @@ public partial class GravPlayer : CharacterBody2D
 		}
 
 		// Handle Jump.
-		if (Input.IsActionJustPressed("print_intersect") && IsOnFloor())
-		{
-			velocity.Y = JumpVelocity;
-		}
+		//if (Input.IsActionJustPressed("print_intersect") && IsOnFloor())
+		//{
+		//	velocity.Y = JumpVelocity;
+		//}
 
 		// Get the input direction and handle the movement/deceleration.
 		//Vector2 direction = Input.GetVector("left_pivot_cw", "left_pivot_ccw", "up", "down");
@@ -92,6 +117,29 @@ public partial class GravPlayer : CharacterBody2D
 		}
 
 		//Velocity = velocity;
-		MoveAndCollide(velocity);
+		MoveAndCollide(velocity*(float)delta);
+	}
+
+	public void toggleLadder()
+	{
+		if (playerMovementState == MovementStates.FREE_MOVE) setMovementState(MovementStates.LADDER_MOVE);
+        else if (playerMovementState == MovementStates.LADDER_MOVE) setMovementState(MovementStates.FREE_MOVE);
+    }
+
+	public void setMovementState(MovementStates state)
+	{
+        // 2 = world, 4 = ladderbox
+        if (state == MovementStates.FREE_MOVE)
+        {
+            SetCollisionMaskValue(2, true);
+            SetCollisionMaskValue(4, false);
+        }
+        if (state == MovementStates.LADDER_MOVE)
+		{
+			SetCollisionMaskValue(2, false);
+            SetCollisionMaskValue(4, true);
+        }
+		playerMovementState = state;
 	}
 }
+

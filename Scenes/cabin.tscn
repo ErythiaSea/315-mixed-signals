@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=15 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Texture2D" uid="uid://bwiibe8j7vfgh" path="res://Sprites/room_base.png" id="1_ppr70"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/player.tscn" id="2_b0y3o"]
 [ext_resource type="PackedScene" uid="uid://njjw6amv76bq" path="res://Scenes/restriction_box.tscn" id="3_lsh4n"]
 [ext_resource type="Script" path="res://Scripts/InteractBox.cs" id="4_r0utk"]
 [ext_resource type="PackedScene" uid="uid://cqy8krri14xxv" path="res://Scenes/transpondscreen.tscn" id="5_5jqjy"]
-[ext_resource type="PackedScene" uid="uid://7aoxy6ge3j3s" path="res://Scenes/waveform.tscn" id="6_tcgnf"]
 [ext_resource type="PackedScene" uid="uid://cakg0jcv5c7b2" path="res://Scenes/world.tscn" id="7_hv5iq"]
 [ext_resource type="Texture2D" uid="uid://cc066shi2gixy" path="res://Sprites/room_silohettes.png" id="8_fxgd2"]
 
@@ -84,8 +83,6 @@ shape = SubResource("RectangleShape2D_lvk1a")
 position = Vector2(645, 603)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-scene = ExtResource("6_tcgnf")
-active = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaveformBox"]
 position = Vector2(425, 409)

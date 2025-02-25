@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\2201593\\Documents\\315-mech-proto\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\scripts\\waverender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\waverender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\scripts\\transpondscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\transpondscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\scripts\\radiotower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,20 +15,20 @@
       "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\radiotowerpivot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\TranspondScreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scripts\\TranspondScreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\scripts\\waveformgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\waveformgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\scripts\\interactbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\interactbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\scripts\\waverender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\waverender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\reset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:reset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\scripts\\waveformgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\waveformgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2201593\\documents\\315-mech-proto\\scripts\\interactbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\interactbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,60 +38,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 8,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RadiotowerPivot.cs",
-              "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\RadiotowerPivot.cs",
-              "RelativeDocumentMoniker": "Scripts\\RadiotowerPivot.cs",
-              "ToolTip": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\RadiotowerPivot.cs",
-              "RelativeToolTip": "Scripts\\RadiotowerPivot.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwAcAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T12:39:40.68Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TranspondScreen.cs",
-              "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\TranspondScreen.cs",
-              "RelativeDocumentMoniker": "Scripts\\TranspondScreen.cs",
-              "ToolTip": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\TranspondScreen.cs",
-              "RelativeToolTip": "Scripts\\TranspondScreen.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T12:34:50.213Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Radiotower.cs",
-              "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\Radiotower.cs",
-              "RelativeDocumentMoniker": "Scripts\\Radiotower.cs",
-              "ToolTip": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\Radiotower.cs",
-              "RelativeToolTip": "Scripts\\Radiotower.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAowHQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T12:28:47.757Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Reset.cs",
-              "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Reset.cs",
-              "RelativeDocumentMoniker": "Reset.cs",
-              "ToolTip": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Reset.cs",
-              "RelativeToolTip": "Reset.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T11:06:10.121Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
@@ -118,20 +66,72 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RadiotowerPivot.cs",
+              "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\RadiotowerPivot.cs",
+              "RelativeDocumentMoniker": "Scripts\\RadiotowerPivot.cs",
+              "ToolTip": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\RadiotowerPivot.cs",
+              "RelativeToolTip": "Scripts\\RadiotowerPivot.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAQwBcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T12:39:40.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Radiotower.cs",
+              "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\Radiotower.cs",
+              "RelativeDocumentMoniker": "Scripts\\Radiotower.cs",
+              "ToolTip": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\Radiotower.cs",
+              "RelativeToolTip": "Scripts\\Radiotower.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAgwF0AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T12:28:47.757Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "TranspondScreen.cs",
+              "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\TranspondScreen.cs",
+              "RelativeDocumentMoniker": "Scripts\\TranspondScreen.cs",
+              "ToolTip": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\TranspondScreen.cs",
+              "RelativeToolTip": "Scripts\\TranspondScreen.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowCUAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T12:34:50.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Reset.cs",
+              "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Reset.cs",
+              "RelativeDocumentMoniker": "Reset.cs",
+              "ToolTip": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Reset.cs",
+              "RelativeToolTip": "Reset.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T11:06:10.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "WaveRender.cs",
               "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\WaveRender.cs",
               "RelativeDocumentMoniker": "Scripts\\WaveRender.cs",
               "ToolTip": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\WaveRender.cs",
               "RelativeToolTip": "Scripts\\WaveRender.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAQwCMAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAADIAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-18T12:27:29.47Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "InteractBox.cs",
               "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\InteractBox.cs",
               "RelativeDocumentMoniker": "Scripts\\InteractBox.cs",
@@ -144,13 +144,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "WaveformGame.cs",
               "DocumentMoniker": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\WaveformGame.cs",
               "RelativeDocumentMoniker": "Scripts\\WaveformGame.cs",
               "ToolTip": "C:\\Users\\2201593\\Documents\\315-mech-proto\\Scripts\\WaveformGame.cs",
               "RelativeToolTip": "Scripts\\WaveformGame.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAwwE8AAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAADsAAAAAAAAAAAAwwFIAAACJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-13T13:10:02.314Z",
               "EditorCaption": ""

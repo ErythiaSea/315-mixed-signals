@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d32llbxme7jvg"]
+[gd_scene load_steps=13 format=3 uid="uid://bfaymwah142tj"]
 
 [ext_resource type="Texture2D" uid="uid://cnuabra54v07m" path="res://Sprites/pondlevel.png" id="1_khfq5"]
-[ext_resource type="PackedScene" uid="uid://dy0uyn60pxvkm" path="res://Scenes/grav_player.tscn" id="2_c1fah"]
-[ext_resource type="PackedScene" uid="uid://rttkrffqrw1g" path="res://Scenes/stair_control.tscn" id="3_fdk2y"]
+[ext_resource type="PackedScene" uid="uid://jpm7ile71of3" path="res://Scenes/grav_player.tscn" id="2_c1fah"]
+[ext_resource type="PackedScene" path="res://Scenes/stair_control.tscn" id="3_fdk2y"]
+[ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/interact_box.tscn" id="4_hhi5s"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hq7ll"]
 a = Vector2(-791, 224)
@@ -20,7 +21,17 @@ b = Vector2(-791, 224)
 a = Vector2(-1181, 4)
 b = Vector2(-791, 224)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_uumkn"]
+a = Vector2(-439, 451)
+b = Vector2(-495, 451)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7qebe"]
+b = Vector2(74, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pm7kl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qricm"]
+radius = 40.0125
 
 [node name="DemoEnv" type="Node2D"]
 
@@ -28,6 +39,8 @@ b = Vector2(-791, 224)
 texture = ExtResource("1_khfq5")
 
 [node name="LevelCollision" type="StaticBody2D" parent="."]
+editor_description = "This is the collision for walking normally"
+collision_layer = 2
 
 [node name="Ground" type="CollisionPolygon2D" parent="LevelCollision"]
 build_mode = 1
@@ -47,8 +60,20 @@ one_way_collision = true
 shape = SubResource("SegmentShape2D_43ati")
 one_way_collision = true
 
+[node name="LadderCollision" type="StaticBody2D" parent="."]
+editor_description = "This is the collision that stops the player from moving too far up/down from ladders"
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderCollision"]
+position = Vector2(-264, 119)
+shape = SubResource("SegmentShape2D_uumkn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LadderCollision"]
+position = Vector2(-766, 133)
+shape = SubResource("SegmentShape2D_7qebe")
+
 [node name="GravPlayer" parent="." instance=ExtResource("2_c1fah")]
-position = Vector2(-249, 615)
+position = Vector2(-247, 643)
 
 [node name="Camera2D" type="Camera2D" parent="GravPlayer"]
 limit_left = -1920
@@ -57,9 +82,27 @@ limit_right = 1920
 limit_bottom = 1080
 
 [node name="StairControl" parent="." node_paths=PackedStringArray("stairToToggle") instance=ExtResource("3_fdk2y")]
-position = Vector2(-5, 0)
+position = Vector2(-783, 213)
 stairToToggle = NodePath("../LevelCollision/LStair2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StairControl"]
-position = Vector2(-775, 212)
 shape = SubResource("RectangleShape2D_pm7kl")
+
+[node name="StairControl2" parent="." node_paths=PackedStringArray("stairToToggle") instance=ExtResource("3_fdk2y")]
+position = Vector2(-1259, 536)
+stairToToggle = NodePath("../LevelCollision/LStair1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StairControl2"]
+shape = SubResource("RectangleShape2D_pm7kl")
+
+[node name="LadderInteract" parent="." instance=ExtResource("4_hhi5s")]
+position = Vector2(-733, 560)
+loadInCurrent = false
+ladderArea = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderInteract"]
+shape = SubResource("CircleShape2D_qricm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LadderInteract"]
+position = Vector2(0, -379)
+shape = SubResource("CircleShape2D_qricm")
