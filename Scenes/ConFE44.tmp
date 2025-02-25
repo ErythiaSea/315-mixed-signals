@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://bc8lby5o1pvpv"]
+
+[ext_resource type="Shader" path="res://Scripts/ShaderScript/ConstellationDraw.gdshader" id="3_djkxa"]
+[ext_resource type="Texture2D" uid="uid://3pijp23csaa8" path="res://Sprites/Skys&Constellations/SkyLayer.png" id="3_vuskw"]
+[ext_resource type="Texture2D" uid="uid://dluxx0un1srrc" path="res://Sprites/Skys&Constellations/StarsLayer.png" id="4_irqg6"]
+[ext_resource type="Script" path="res://Scripts/ShaderScript/TextureShader.cs" id="4_ro1i3"]
+[ext_resource type="Shader" path="res://Scripts/ShaderScript/Glow.gdshader" id="5_a4mc0"]
+[ext_resource type="Texture2D" uid="uid://d1vrrq6aeuaqk" path="res://Sprites/Skys&Constellations/ConstellationLayer.png" id="5_ixwch"]
+[ext_resource type="PackedScene" uid="uid://dvooodkbn72vc" path="res://Scenes/StarNode.scn" id="8_qlffe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e3ep4"]
+shader = ExtResource("5_a4mc0")
+
+[sub_resource type="CSharpScript" id="CSharpScript_dwm48"]
+script/source = "using Godot;
+using System;
+
+public partial class ConstellationShader : Sprite2D
+{
+	ShaderMaterial Smaterial;
+	Texture RenderTexture;
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		Smaterial = this.Material as ShaderMaterial;
+		RenderTexture = ImageTexture.CreateFromImage(GetViewport().GetTexture().GetImage());
+
+        Smaterial.SetShaderParameter(\"viewportRT\", RenderTexture);
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13kgm"]
+shader = ExtResource("3_djkxa")
+shader_parameter/circle_r = null
+shader_parameter/circle_b = null
+
+[node name="ConstellationDraw" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Parallax" type="Node2D" parent="Camera2D"]
+position = Vector2(3, 0)
+scale = Vector2(0.4, 0.4)
+
+[node name="Sky" type="Parallax2D" parent="Camera2D/Parallax"]
+scroll_scale = Vector2(0.98, 0.98)
+repeat_times = 4
+
+[node name="SkySprite" type="Sprite2D" parent="Camera2D/Parallax/Sky"]
+modulate = Color(0.721569, 0.745098, 1, 1)
+texture = ExtResource("3_vuskw")
+
+[node name="Stars" type="Parallax2D" parent="Camera2D/Parallax"]
+scroll_scale = Vector2(0.97, 0.97)
+repeat_times = 4
+
+[node name="StarsSprite" type="Sprite2D" parent="Camera2D/Parallax/Stars"]
+modulate = Color(0.894922, 0.894922, 0.894922, 1)
+texture = ExtResource("4_irqg6")
+
+[node name="Constellation" type="Parallax2D" parent="Camera2D/Parallax"]
+scroll_scale = Vector2(0.95, 0.95)
+scroll_offset = Vector2(-117.5, 117.5)
+
+[node name="cancer" type="Sprite2D" parent="Camera2D/Parallax/Constellation"]
+modulate = Color(0.907942, 0.907942, 0.907942, 1)
+material = SubResource("ShaderMaterial_e3ep4")
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_ixwch")
+script = SubResource("CSharpScript_dwm48")
+
+[node name="StarNode" parent="Camera2D/Parallax/Constellation" instance=ExtResource("8_qlffe")]
+position = Vector2(-182.5, -397.5)
+scale = Vector2(2.5, 2.5)
+
+[node name="StarNode2" parent="Camera2D/Parallax/Constellation" instance=ExtResource("8_qlffe")]
+position = Vector2(0, 160)
+scale = Vector2(2.5, 2.5)
+
+[node name="StarNode3" parent="Camera2D/Parallax/Constellation" instance=ExtResource("8_qlffe")]
+position = Vector2(37.5, -165)
+scale = Vector2(2.5, 2.5)
+
+[node name="StarNode4" parent="Camera2D/Parallax/Constellation" instance=ExtResource("8_qlffe")]
+position = Vector2(342.5, -332.5)
+scale = Vector2(2.5, 2.5)
+
+[node name="StarNode5" parent="Camera2D/Parallax/Constellation" instance=ExtResource("8_qlffe")]
+position = Vector2(502.5, -485)
+scale = Vector2(2.5, 2.5)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_13kgm")
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 1
+script = ExtResource("4_ro1i3")

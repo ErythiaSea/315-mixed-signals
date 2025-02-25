@@ -18,19 +18,19 @@ public partial class CameraMovement : Camera2D
 	{
         if (Input.IsActionPressed("CameraDown"))
         {
-			Position = new Vector2(Position.X, Position.Y + 10);
+			Position = new Vector2(Position.X, Position.Y + 0.3f);
         }
 		if (Input.IsActionPressed("CameraUp"))
 		{
-            Position = new Vector2(Position.X, Position.Y - 10);
+            Position = new Vector2(Position.X, Position.Y - 0.3f);
         }
         if (Input.IsActionPressed("CameraLeft"))
         {
-            Position = new Vector2(Position.X - 10, Position.Y);
+            Position = new Vector2(Position.X - 0.3f, Position.Y);
         }
         if (Input.IsActionPressed("CameraRight"))
         {
-            Position = new Vector2(Position.X + 10, Position.Y);
+            Position = new Vector2(Position.X + 0.3f, Position.Y);
         }
     }
 }
