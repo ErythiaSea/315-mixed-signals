@@ -9,8 +9,9 @@ public enum MovementStates { NONE = 0, FREE_MOVE = 1, LADDER_MOVE = 2, MOVE_LOCK
 public partial class GravPlayer : CharacterBody2D
 {
 	// todo: these are godot defaults. maybe change/export these?
-	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
+	[Export]
+	public float movementSpeed = 300.0f;
+	//public const float JumpVelocity = -400.0f;
 
 	// note: im assigning the playerMovementState to one of these states. however, you
 	// could use this as flags with bitwise ops to have, say, LADDER_MOVE and MOVE_LOCKED
@@ -31,6 +32,7 @@ public partial class GravPlayer : CharacterBody2D
     {
 		FloorConstantSpeed = true;
 		FloorSnapLength = 20.0f;
+		FloorMaxAngle = Mathf.DegToRad(60);
 
         playerSprite = GetNode<AnimatedSprite2D>("PlayerSprite");
 		interactSprite = GetNode<Sprite2D>("InteractSprite");
@@ -52,6 +54,18 @@ public partial class GravPlayer : CharacterBody2D
                     //playerMovementState = MovementStates.MOVE_LOCKED;
                 }
             }
+        }
+
+        // Animate player sprite based on the velocity of the player
+        if (Velocity.X != 0.0f)
+        {
+            playerSprite.Play();
+            playerSprite.FlipH = Velocity.X > 0;
+        }
+        else
+        {
+            playerSprite.Frame = 0;
+            playerSprite.Pause();
         }
     }
 
@@ -84,40 +98,29 @@ public partial class GravPlayer : CharacterBody2D
 		float xDirection = Input.GetAxis("left_pivot_cw", "left_pivot_ccw");
 		if (xDirection != 0)
 		{
-			velocity.X = xDirection * Speed;
+			velocity.X = xDirection * movementSpeed;
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, movementSpeed);
 		}
 
 		Velocity = velocity;
-
-		// Animate player sprite based on the velocity of the player
-		if (Velocity != Vector2.Zero)
-		{
-			playerSprite.Play();
-			if (Velocity.X != 0) playerSprite.FlipH = Velocity.X > 0;
-		}
-		else
-		{
-			playerSprite.Frame = 0;
-			playerSprite.Pause();
-		}
 		MoveAndSlide();
 	}
 
 	private void ladderMovement(double delta)
 	{
+		Velocity = Vector2.Zero;
 		Vector2 velocity = Vector2.Zero;
 		float yDirection = Input.GetAxis("up", "down");
 		if (yDirection != 0)
 		{
-			velocity.Y = yDirection * Speed;
+			velocity.Y = yDirection * movementSpeed;
 		}
 		else
 		{
-			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
+			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, movementSpeed);
 		}
 
 		//Velocity = velocity;
@@ -127,10 +130,10 @@ public partial class GravPlayer : CharacterBody2D
 	private void autoMovement(double delta)
 	{
 		// todo: eliminate redundant calculations? with a memory cost instead?
-		float dir = (Position.X - autoWalkDestinationX) < 0 ? -1 : 1;
-		Velocity = new Vector2(Speed, 0);
+		float dir = (Position.X - autoWalkDestinationX) > 0 ? -1 : 1;
+		Velocity = new Vector2(movementSpeed*dir, 0);
 		MoveAndSlide();
-		if (Mathf.Abs(Position.X - autoWalkDestinationX) < 3.0f) autoWalk = false;
+		if (Mathf.Abs(Position.X - autoWalkDestinationX) < 5.0f) autoWalk = false;
 	}
 
 	public void toggleLadder()

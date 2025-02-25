@@ -15,6 +15,10 @@ public partial class StairControl : Area2D
 	public override void _Ready()
 	{
 		player = GetNode<GravPlayer>("../GravPlayer");
+		if (player == null)
+		{
+			player = GetNode<GravPlayer>("../../GravPlayer");
+        }
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

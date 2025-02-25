@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://vvkk7lqbglny"]
+[gd_scene load_steps=16 format=3 uid="uid://vvkk7lqbglny"]
 
 [ext_resource type="Texture2D" uid="uid://bkevc4rf8wjhe" path="res://Sprites/lilypadenv_back.png" id="1_x6dd7"]
 [ext_resource type="PackedScene" uid="uid://jpm7ile71of3" path="res://Scenes/grav_player.tscn" id="2_a0sm7"]
@@ -7,21 +7,22 @@
 [ext_resource type="Texture2D" uid="uid://de45w11b26rfr" path="res://Sprites/lilypadenv_cliffgrass.png" id="3_n7la6"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/interact_box.tscn" id="4_u2itd"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_hq7ll"]
-a = Vector2(-791, 224)
-b = Vector2(-677, 225)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ssn4a"]
+a = Vector2(-191, -74)
+b = Vector2(39, 14)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_0g271"]
-a = Vector2(-1365, 2)
-b = Vector2(-1181, 4)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_guovy"]
+a = Vector2(100, -44)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_1ui0r"]
-a = Vector2(-1249, 544)
-b = Vector2(-791, 224)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qw7am"]
+a = Vector2(-28, -15)
+b = Vector2(75, 47)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_43ati"]
-a = Vector2(-1181, 4)
-b = Vector2(-791, 224)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_e5re2"]
+b = Vector2(129, -123)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7c625"]
+a = Vector2(-198, -8)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_uumkn"]
 a = Vector2(-439, 451)
@@ -66,18 +67,59 @@ position = Vector2(-42, 21)
 build_mode = 1
 polygon = PackedVector2Array(1241, 951, 1409, 925, 1655, 923, 1863, 925, 2081, 923, 2303, 915, 2561, 899, 2737, 883, 2923, 881, 3063, 887, 3141, 1075, 1241, 1155)
 
-[node name="LStairLanding1" type="CollisionShape2D" parent="LevelCollision"]
-shape = SubResource("SegmentShape2D_hq7ll")
-
-[node name="LStairLanding2" type="CollisionShape2D" parent="LevelCollision"]
-shape = SubResource("SegmentShape2D_0g271")
-
-[node name="LStair1" type="CollisionShape2D" parent="LevelCollision"]
-shape = SubResource("SegmentShape2D_1ui0r")
+[node name="CliffStair1" type="CollisionShape2D" parent="LevelCollision"]
+position = Vector2(2556, 904)
+shape = SubResource("SegmentShape2D_ssn4a")
 one_way_collision = true
 
-[node name="LStair2" type="CollisionShape2D" parent="LevelCollision"]
-shape = SubResource("SegmentShape2D_43ati")
+[node name="Cliff1" type="CollisionPolygon2D" parent="LevelCollision"]
+position = Vector2(-42, 21)
+build_mode = 1
+polygon = PackedVector2Array(2406, 808, 2332, 773, 2256, 717, 2184, 678, 2043, 613, 1999, 621, 1969, 608, 1713, 594, 1570, 598, 1535, 586, 1122, 587, 1121, 420, 1111, 421, 1111, 619, 2048, 638, 2388, 808)
+one_way_collision = true
+
+[node name="CliffStair2" type="CollisionShape2D" parent="LevelCollision"]
+position = Vector2(1658, 604)
+shape = SubResource("SegmentShape2D_guovy")
+one_way_collision = true
+
+[node name="Cliff2" type="CollisionPolygon2D" parent="LevelCollision"]
+position = Vector2(-42, 21)
+build_mode = 1
+polygon = PackedVector2Array(1799, 538, 1862, 498, 1944, 484, 1986, 453, 2046, 442, 2195, 392, 2381, 372, 2427, 350, 3017, 351, 3019, 228, 3027, 228, 3024, 365, 2431, 356, 2387, 378, 2197, 403, 1808, 537)
+one_way_collision = true
+
+[node name="CliffStair3" type="CollisionShape2D" parent="LevelCollision"]
+position = Vector2(2158, 356)
+shape = SubResource("SegmentShape2D_qw7am")
+one_way_collision = true
+
+[node name="Cliff3" type="CollisionPolygon2D" parent="LevelCollision"]
+position = Vector2(-42, 21)
+build_mode = 1
+polygon = PackedVector2Array(2169, 326, 2170, 319, 2157, 318, 2071, 315, 1832, 103, 1815, 94, 1791, 80, 1537, 86, 1468, 79, 1436, 74, 1395, 57, 1343, 69, 1287, 68, 1224, 63, 1076, 61, 1072, -31, 1062, -31, 1068, 67, 1814, 108, 2067, 321)
+one_way_collision = true
+
+[node name="CliffStair4" type="CollisionShape2D" parent="LevelCollision"]
+position = Vector2(1180, 84)
+shape = SubResource("SegmentShape2D_e5re2")
+one_way_collision = true
+
+[node name="Cliff4" type="CollisionPolygon2D" parent="LevelCollision"]
+position = Vector2(-42, 21)
+build_mode = 1
+polygon = PackedVector2Array(1350, -60, 1448, -158, 1511, -222, 1597, -276, 1695, -332, 1745, -364, 1950, -538, 2003, -569, 2040, -593, 2207, -633, 2457, -751, 2485, -760, 2574, -773, 2805, -768, 2835, -769, 2868, -769, 3018, -859, 3018, -966, 3024, -966, 3024, -762, 2571, -750, 2211, -621, 1757, -352)
+one_way_collision = true
+
+[node name="CliffStair5" type="CollisionShape2D" parent="LevelCollision"]
+position = Vector2(2923, -816)
+shape = SubResource("SegmentShape2D_7c625")
+one_way_collision = true
+
+[node name="Clifftop" type="CollisionPolygon2D" parent="LevelCollision"]
+position = Vector2(-42, 21)
+build_mode = 1
+polygon = PackedVector2Array(2767, -846, 2626, -858, 2465, -874, 2302, -895, 2139, -915, 2000, -935, 1891, -955, 1785, -975, 1664, -999, 1549, -1018, 1445, -1033, 1344, -1046, 1247, -1051, 1163, -1049, 1082, -1046, 1000, -950, 930, -883, 851, -804, 763, -743, 672, -681, 583, -638, 489, -598, 382, -562, 282, -537, 175, -522, 61, -518, -35, -525, -140, -555, -226, -593, -311, -634, -377, -672, -454, -738, -996, -738, -996, -817, -1005, -817, -1006, -704, 137, -474)
 one_way_collision = true
 
 [node name="LadderCollision" type="StaticBody2D" parent="."]
@@ -93,27 +135,52 @@ position = Vector2(-766, 133)
 shape = SubResource("SegmentShape2D_7qebe")
 
 [node name="GravPlayer" parent="." instance=ExtResource("2_a0sm7")]
-position = Vector2(-1192, 825)
+position = Vector2(1772, 814)
 scale = Vector2(2.5, 2.5)
+movementSpeed = 450.0
 
 [node name="Camera2D" type="Camera2D" parent="GravPlayer"]
+zoom = Vector2(0.66, 0.66)
 limit_left = -2974
 limit_top = -1459
 limit_right = 2974
 limit_bottom = 1459
 
-[node name="StairControl" parent="." node_paths=PackedStringArray("stairToToggle") instance=ExtResource("3_6n8s2")]
-position = Vector2(-783, 213)
-stairToToggle = NodePath("../LevelCollision/LStair2")
+[node name="StairControls" type="Node2D" parent="."]
+position = Vector2(2243, 394)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StairControl"]
+[node name="StairControl5" parent="StairControls" node_paths=PackedStringArray("stairToToggle") instance=ExtResource("3_6n8s2")]
+position = Vector2(688, -1207)
+stairToToggle = NodePath("../../LevelCollision/CliffStair5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StairControls/StairControl5"]
 shape = SubResource("RectangleShape2D_pm7kl")
 
-[node name="StairControl2" parent="." node_paths=PackedStringArray("stairToToggle") instance=ExtResource("3_6n8s2")]
-position = Vector2(-1259, 536)
-stairToToggle = NodePath("../LevelCollision/LStair1")
+[node name="StairControl4" parent="StairControls" node_paths=PackedStringArray("stairToToggle") instance=ExtResource("3_6n8s2")]
+position = Vector2(-1075, -320)
+stairToToggle = NodePath("../../LevelCollision/CliffStair4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StairControl2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StairControls/StairControl4"]
+shape = SubResource("RectangleShape2D_pm7kl")
+
+[node name="StairControl3" parent="StairControls" node_paths=PackedStringArray("stairToToggle") instance=ExtResource("3_6n8s2")]
+stairToToggle = NodePath("../../LevelCollision/CliffStair3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StairControls/StairControl3"]
+shape = SubResource("RectangleShape2D_pm7kl")
+
+[node name="StairControl2" parent="StairControls" node_paths=PackedStringArray("stairToToggle") instance=ExtResource("3_6n8s2")]
+position = Vector2(-595, 211)
+stairToToggle = NodePath("../../LevelCollision/CliffStair2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StairControls/StairControl2"]
+shape = SubResource("RectangleShape2D_pm7kl")
+
+[node name="StairControl" parent="StairControls" node_paths=PackedStringArray("stairToToggle") instance=ExtResource("3_6n8s2")]
+position = Vector2(350, 511)
+stairToToggle = NodePath("../../LevelCollision/CliffStair1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StairControls/StairControl"]
 shape = SubResource("RectangleShape2D_pm7kl")
 
 [node name="LadderInteract" parent="." instance=ExtResource("4_u2itd")]

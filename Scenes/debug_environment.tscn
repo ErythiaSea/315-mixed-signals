@@ -22,8 +22,8 @@ a = Vector2(-1181, 4)
 b = Vector2(-791, 224)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_uumkn"]
-a = Vector2(-439, 451)
-b = Vector2(-495, 451)
+a = Vector2(-441, 465)
+b = Vector2(-496, 453)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7qebe"]
 b = Vector2(74, 0)
