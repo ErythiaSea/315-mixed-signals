@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cnuabra54v07m" path="res://Sprites/pondlevel.png" id="1_khfq5"]
 [ext_resource type="PackedScene" uid="uid://jpm7ile71of3" path="res://Scenes/grav_player.tscn" id="2_c1fah"]
-[ext_resource type="PackedScene" path="res://Scenes/stair_control.tscn" id="3_fdk2y"]
+[ext_resource type="PackedScene" uid="uid://rttkrffqrw1g" path="res://Scenes/stair_control.tscn" id="3_fdk2y"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/interact_box.tscn" id="4_hhi5s"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hq7ll"]
