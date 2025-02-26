@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Reset="*res://Reset.cs"
+Reset="*res://Scripts/Reset.cs"
+Globals="*res://Scripts/Globals.cs"
 
 [debug]
 

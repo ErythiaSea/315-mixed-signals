@@ -54,23 +54,7 @@ public partial class DragProgressBar : ProgressBar
 	{
 
         //mouse positions and direction updates
-        if (GetViewport().GetCamera2D() != null)
-        {
-            if (Input.IsActionJustPressed("Last_Stroke_Delete"))
-            {
-                GD.Print("CAMNAME: " + GetViewport().GetCamera2D().Name);
-            }
-        }
         mousePos = GetGlobalMousePosition();
-        {
-            if (Input.IsActionJustPressed("Last_Stroke_Delete"))
-            {
-            GD.Print("CAM OFFSET:" + GetViewport().GetCamera2D().Offset);
-            GD.Print("startpos" + this.startPos);
-            GD.Print("MP1: " + mousePos);
-            GD.Print("MP2: " + GetGlobalMousePosition());
-            }
-        }
         mouseDir = (mousePos - prevMousePos).Normalized();
 
         prevMousePos = mousePos;
