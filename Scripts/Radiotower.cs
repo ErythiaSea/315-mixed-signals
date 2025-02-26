@@ -2,6 +2,7 @@ using Godot;
 using Godot.NativeInterop;
 using System;
 using System.Linq;
+using System.Linq.Expressions;
 
 public partial class Radiotower : Node2D
 {
@@ -130,7 +131,7 @@ public partial class Radiotower : Node2D
 	public void Close()
 	{
         Player plr = GetNode<Player>("../Player");
-        plr.canMove = true;
+		plr.setMovementState(MovementStates.FREE_MOVE);
         QueueFree();
     }
 }

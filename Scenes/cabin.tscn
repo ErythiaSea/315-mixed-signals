@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cc066shi2gixy" path="res://Sprites/room_silohettes.png" id="8_fxgd2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82mfh"]
-size = Vector2(1936, 49.625)
+size = Vector2(1936, 88.8125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvqo4"]
 size = Vector2(98, 61)
@@ -33,8 +33,9 @@ position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ppr70")
 
-[node name="GravPlayer" parent="." instance=ExtResource("2_h3n7b")]
-position = Vector2(878, 916)
+[node name="Player" parent="." instance=ExtResource("2_h3n7b")]
+position = Vector2(570, 867)
+scale = Vector2(2.5, 2.5)
 movementSpeed = 450.0
 
 [node name="WorldCollision" type="StaticBody2D" parent="."]
@@ -42,7 +43,7 @@ position = Vector2(396, 403)
 collision_layer = 2
 
 [node name="CollisionShape2" type="CollisionShape2D" parent="WorldCollision"]
-position = Vector2(571, 664)
+position = Vector2(571, 644.406)
 shape = SubResource("RectangleShape2D_82mfh")
 
 [node name="CollisionShape3" type="CollisionShape2D" parent="WorldCollision"]
@@ -54,6 +55,7 @@ position = Vector2(1561, 607)
 shape = SubResource("RectangleShape2D_xvqo4")
 
 [node name="RestrictionBox" parent="." instance=ExtResource("3_lsh4n")]
+visible = false
 RestrictVertical = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RestrictionBox"]

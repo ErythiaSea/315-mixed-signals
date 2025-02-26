@@ -22,7 +22,7 @@ public partial class RestrictionBox : Area2D
         {
             foreach (Node2D body in GetOverlappingBodies())
             {
-                Player plr = body as Player;
+				Player_OLD plr = body as Player_OLD;
                 if (plr != null)
                 {
                     GD.Print("gaming");
@@ -36,7 +36,7 @@ public partial class RestrictionBox : Area2D
 
 	void _OnBodyEntered(Node2D body)
 	{
-        Player plr = body as Player;
+		Player_OLD plr = body as Player_OLD;
         if (plr != null)
         {
             plr.restrictHorizontal = RestrictHorizontal;
@@ -46,7 +46,7 @@ public partial class RestrictionBox : Area2D
 
     void _OnBodyExited(Node2D body)
     {
-        Player plr = body as Player;
+		Player_OLD plr = body as Player_OLD;
         if (plr != null)
         {
             plr.restrictHorizontal = false;

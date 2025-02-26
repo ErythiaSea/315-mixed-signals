@@ -95,9 +95,8 @@ public partial class WaveformGame : Node2D
 
     void Close()
     {
-        Player plr = GetNode<Player>("../Player");
-        plr.canMove = true;
-        GD.Print("we freeing");
+		Player plr = GetNode<Player>("../Player");
+		plr.setMovementState(MovementStates.FREE_MOVE);
         QueueFree();
     }
 }

@@ -13,7 +13,7 @@ public partial class InteractBox : Area2D
     [Export]
     public bool ladderArea = false;
 
-    public virtual void Interact(GravPlayer plrRef)
+    public virtual void Interact(Player plrRef)
     {
         // Not interactable if inactive
         if (!active) return;

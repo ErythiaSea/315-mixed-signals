@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://vvkk7lqbglny"]
+[gd_scene load_steps=16 format=3 uid="uid://dkjjkuqsupb4f"]
 
 [ext_resource type="Texture2D" uid="uid://bkevc4rf8wjhe" path="res://Sprites/lilypadenv_back.png" id="1_x6dd7"]
 [ext_resource type="PackedScene" uid="uid://jpm7ile71of3" path="res://Scenes/grav_player.tscn" id="2_a0sm7"]
@@ -134,12 +134,12 @@ shape = SubResource("SegmentShape2D_uumkn")
 position = Vector2(-766, 133)
 shape = SubResource("SegmentShape2D_7qebe")
 
-[node name="GravPlayer" parent="." instance=ExtResource("2_a0sm7")]
-position = Vector2(1772, 814)
+[node name="Player" parent="." instance=ExtResource("2_a0sm7")]
+position = Vector2(-2860, 492)
 scale = Vector2(2.5, 2.5)
 movementSpeed = 450.0
 
-[node name="Camera2D" type="Camera2D" parent="GravPlayer"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.66, 0.66)
 limit_left = -2974
 limit_top = -1459
@@ -186,7 +186,6 @@ shape = SubResource("RectangleShape2D_pm7kl")
 [node name="LadderInteract" parent="." instance=ExtResource("4_u2itd")]
 position = Vector2(-733, 560)
 loadInCurrent = false
-ladderArea = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderInteract"]
 shape = SubResource("CircleShape2D_qricm")

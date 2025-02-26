@@ -1,16 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://uv8glpmpsx3i"]
+[gd_scene load_steps=11 format=3 uid="uid://uv8glpmpsx3i"]
 
 [ext_resource type="Texture2D" uid="uid://bbg01qevmw8wg" path="res://Sprites/debugroombg.png" id="1_po1od"]
-[ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/player.tscn" id="2_lns6c"]
-[ext_resource type="PackedScene" uid="uid://njjw6amv76bq" path="res://Scenes/restriction_box.tscn" id="3_rsunc"]
 [ext_resource type="Script" path="res://Scripts/InteractBox.cs" id="4_5ocby"]
 [ext_resource type="PackedScene" uid="uid://kv3p5d4tp3k5" path="res://Scenes/radiotowers.tscn" id="5_vjd24"]
 [ext_resource type="PackedScene" uid="uid://bc8lby5o1pvpv" path="res://Scenes/ConstellationDraw.tscn" id="6_4k6j8"]
 [ext_resource type="PackedScene" uid="uid://7aoxy6ge3j3s" path="res://Scenes/waveform.tscn" id="6_ecomk"]
 [ext_resource type="PackedScene" uid="uid://cqy8krri14xxv" path="res://Scenes/transpondscreen.tscn" id="7_1b374"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1p03p"]
-size = Vector2(1948, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lp0rf"]
 size = Vector2(241, 50)
@@ -32,17 +27,6 @@ shadow_color = Color(0, 0, 0, 0.588235)
 [node name="Map" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 texture = ExtResource("1_po1od")
-
-[node name="Player" parent="." instance=ExtResource("2_lns6c")]
-position = Vector2(926, 862)
-scale = Vector2(2, 2)
-
-[node name="RestrictionBox" parent="." instance=ExtResource("3_rsunc")]
-RestrictVertical = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RestrictionBox"]
-position = Vector2(958, 933)
-shape = SubResource("RectangleShape2D_1p03p")
 
 [node name="RadiotowerBox" type="Area2D" parent="."]
 position = Vector2(449, 935)
@@ -127,3 +111,9 @@ text = "Transpond
 (both)"
 label_settings = SubResource("LabelSettings_8pnbv")
 horizontal_alignment = 1
+
+[node name="RoomCollision" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomCollision"]
+polygon = PackedVector2Array(109, 972, 1804, 970, 1806, 510, 1818, 510, 1818, 1048, 83, 1044, 81, 370, 102, 374)

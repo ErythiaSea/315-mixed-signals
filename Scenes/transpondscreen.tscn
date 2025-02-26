@@ -44,6 +44,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_ftnw3")
 
 [node name="RightBox" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 0.870588)
 position = Vector2(1388, 548)
 scale = Vector2(-11.9225, -14.8759)
