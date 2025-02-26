@@ -51,7 +51,7 @@ public partial class Player : CharacterBody2D
                 if (Input.IsActionJustPressed("print_intersect") && playerMovementState != MovementStates.MOVE_LOCKED)
                 {
                     interactBox.Interact(this);
-					setMovementState(MovementStates.MOVE_LOCKED);
+					//setMovementState(MovementStates.MOVE_LOCKED);
                     //playerMovementState = MovementStates.MOVE_LOCKED;
                 }
             }
@@ -112,6 +112,7 @@ public partial class Player : CharacterBody2D
 
 	private void ladderMovement(double delta)
 	{
+		GD.Print("trying ladder move");
 		Velocity = Vector2.Zero;
 		Vector2 velocity = Vector2.Zero;
 		float yDirection = Input.GetAxis("up", "down");
@@ -134,7 +135,7 @@ public partial class Player : CharacterBody2D
 		float dir = (Position.X - autoWalkDestinationX) > 0 ? -1 : 1;
 		Velocity = new Vector2(movementSpeed*dir, 0);
 		MoveAndSlide();
-		if (Mathf.Abs(Position.X - autoWalkDestinationX) < 5.0f) autoWalk = false;
+		if (Mathf.Abs(Position.X - autoWalkDestinationX) < 5.0f) { GD.Print("done"); autoWalk = false; }
 	}
 
 	public void toggleLadder()

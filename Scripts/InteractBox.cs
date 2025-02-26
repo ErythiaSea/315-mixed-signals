@@ -25,6 +25,8 @@ public partial class InteractBox : Area2D
         }
 
         if (scene == null) return;
+
+        plrRef.setMovementState(MovementStates.MOVE_LOCKED);
         if (loadInCurrent)
         {
             Node2D instancedGame = (Node2D)scene.Instantiate();
