@@ -12,6 +12,8 @@ public partial class InteractBox : Area2D
     public bool active = true;
     [Export]
     public bool ladderArea = false;
+    [Export]
+    public bool disablePlayerCam = false;
 
     public virtual void Interact(Player plrRef)
     {
@@ -31,10 +33,19 @@ public partial class InteractBox : Area2D
         {
             Node2D instancedGame = (Node2D)scene.Instantiate();
             GetParent().AddChild(instancedGame);
-            instancedGame.ZIndex = 3;
+            instancedGame.ZIndex = 10;
             plrRef.setMovementState(MovementStates.MOVE_LOCKED);
+            if (disablePlayerCam)
+            {
+                Camera2D playerCam = plrRef.GetNode<Camera2D>("Camera2D");
+                if (playerCam != null)
+                {
+                    GD.Print("we disablin");
+                    playerCam.Enabled = false;
+                }
+            }
         }
-        else
+            else
         {
             GetTree().ChangeSceneToPacked(scene);
         }

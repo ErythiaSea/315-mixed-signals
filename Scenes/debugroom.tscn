@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://uv8glpmpsx3i"]
+[gd_scene load_steps=12 format=3 uid="uid://uv8glpmpsx3i"]
 
 [ext_resource type="Texture2D" uid="uid://bbg01qevmw8wg" path="res://Sprites/debugroombg.png" id="1_po1od"]
+[ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/player.tscn" id="2_6fwe3"]
 [ext_resource type="Script" path="res://Scripts/InteractBox.cs" id="4_5ocby"]
 [ext_resource type="PackedScene" uid="uid://kv3p5d4tp3k5" path="res://Scenes/radiotowers.tscn" id="5_vjd24"]
 [ext_resource type="PackedScene" uid="uid://bc8lby5o1pvpv" path="res://Scenes/ConstellationDraw.tscn" id="6_4k6j8"]
@@ -27,6 +28,9 @@ shadow_color = Color(0, 0, 0, 0.588235)
 [node name="Map" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 texture = ExtResource("1_po1od")
+
+[node name="Player" parent="." instance=ExtResource("2_6fwe3")]
+position = Vector2(604, 916)
 
 [node name="RadiotowerBox" type="Area2D" parent="."]
 position = Vector2(449, 935)

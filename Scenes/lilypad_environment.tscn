@@ -1,11 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://dkjjkuqsupb4f"]
+[gd_scene load_steps=20 format=3 uid="uid://dkjjkuqsupb4f"]
 
 [ext_resource type="Texture2D" uid="uid://bkevc4rf8wjhe" path="res://Sprites/lilypadenv_back.png" id="1_x6dd7"]
-[ext_resource type="PackedScene" uid="uid://jpm7ile71of3" path="res://Scenes/grav_player.tscn" id="2_a0sm7"]
+[ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/player.tscn" id="2_a0sm7"]
 [ext_resource type="Texture2D" uid="uid://c8t16t54ayhrs" path="res://Sprites/lilypadenv_fore.png" id="2_csear"]
+[ext_resource type="Texture2D" uid="uid://din6bfgvj8ksj" path="res://Sprites/telescope.png" id="2_tg48q"]
 [ext_resource type="PackedScene" uid="uid://rttkrffqrw1g" path="res://Scenes/stair_control.tscn" id="3_6n8s2"]
 [ext_resource type="Texture2D" uid="uid://de45w11b26rfr" path="res://Sprites/lilypadenv_cliffgrass.png" id="3_n7la6"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/interact_box.tscn" id="4_u2itd"]
+[ext_resource type="PackedScene" uid="uid://bc8lby5o1pvpv" path="res://Scenes/ConstellationDraw.tscn" id="6_pkpgb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkpum"]
+size = Vector2(150, 20)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ssn4a"]
 a = Vector2(-191, -74)
@@ -24,6 +29,9 @@ b = Vector2(129, -123)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7c625"]
 a = Vector2(-198, -8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slmed"]
+size = Vector2(20, 129)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_uumkn"]
 a = Vector2(-439, 451)
 b = Vector2(-495, 451)
@@ -41,12 +49,26 @@ radius = 40.0125
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_x6dd7")
 
+[node name="TelescopeSprite" type="Sprite2D" parent="."]
+position = Vector2(-929, -816)
+texture = ExtResource("2_tg48q")
+flip_h = true
+
 [node name="Foreground" type="Sprite2D" parent="."]
-z_index = 3
+z_index = 2
 texture = ExtResource("2_csear")
 
 [node name="CliffGrass" type="Sprite2D" parent="."]
 texture = ExtResource("3_n7la6")
+
+[node name="InteractBox" parent="." instance=ExtResource("4_u2itd")]
+position = Vector2(-916, -732)
+scene = ExtResource("6_pkpgb")
+disablePlayerCam = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox"]
+position = Vector2(-27, 0)
+shape = SubResource("RectangleShape2D_mkpum")
 
 [node name="LevelCollision" type="StaticBody2D" parent="."]
 editor_description = "This is the collision for walking normally"
@@ -122,6 +144,10 @@ build_mode = 1
 polygon = PackedVector2Array(2767, -846, 2626, -858, 2465, -874, 2302, -895, 2139, -915, 2000, -935, 1891, -955, 1785, -975, 1664, -999, 1549, -1018, 1445, -1033, 1344, -1046, 1247, -1051, 1163, -1049, 1082, -1046, 1000, -950, 930, -883, 851, -804, 763, -743, 672, -681, 583, -638, 489, -598, 382, -562, 282, -537, 175, -522, 61, -518, -35, -525, -140, -555, -226, -593, -311, -634, -377, -672, -454, -738, -996, -738, -996, -817, -1005, -817, -1006, -704, 137, -474)
 one_way_collision = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision"]
+position = Vector2(-1047, -780.5)
+shape = SubResource("RectangleShape2D_slmed")
+
 [node name="LadderCollision" type="StaticBody2D" parent="."]
 editor_description = "This is the collision that stops the player from moving too far up/down from ladders"
 collision_layer = 8
@@ -135,7 +161,7 @@ position = Vector2(-766, 133)
 shape = SubResource("SegmentShape2D_7qebe")
 
 [node name="Player" parent="." instance=ExtResource("2_a0sm7")]
-position = Vector2(-2860, 492)
+position = Vector2(-660, -886)
 scale = Vector2(2.5, 2.5)
 movementSpeed = 450.0
 

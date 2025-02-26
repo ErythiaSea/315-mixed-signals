@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/CameraMovement.cs" id="1_7uyas"]
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/ConstellationDraw.gdshader" id="3_djkxa"]
-[ext_resource type="PackedScene" uid="uid://duhq4mg4vecmm" path="res://Scenes/CancerConstellation.tscn" id="3_t8fte"]
+[ext_resource type="PackedScene" uid="uid://dt75x8jugtghp" path="res://Scenes/CancerConstellation.tscn" id="3_t8fte"]
 [ext_resource type="Texture2D" uid="uid://3pijp23csaa8" path="res://Sprites/Skys&Constellations/SkyLayer.png" id="3_vuskw"]
 [ext_resource type="Texture2D" uid="uid://dluxx0un1srrc" path="res://Sprites/Skys&Constellations/StarsLayer.png" id="4_irqg6"]
 [ext_resource type="Script" path="res://Scripts/ShaderScript/TextureShader.cs" id="4_ro1i3"]
