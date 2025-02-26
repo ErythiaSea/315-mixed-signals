@@ -15,10 +15,14 @@ public partial class WaveformGame : Node2D
 
     public bool gameActive = false;
 
+    Globals globalScript;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		playerWave = GetNode<WaveRender>("playerwave");
+        globalScript = GetTree().Root.GetChild(1) as Globals;
+        
+        playerWave = GetNode<WaveRender>("playerwave");
         realWave = GetNode<WaveRender>("realwave");
         newWavelength();
     }
@@ -77,6 +81,10 @@ public partial class WaveformGame : Node2D
             playerWave.waveColor = Colors.Green;
             gameActive = false;
 
+
+            //Update the new word for the translation mechanic
+            globalScript.wordArrayIndex++;
+    
             //newWavelength();
         }
 

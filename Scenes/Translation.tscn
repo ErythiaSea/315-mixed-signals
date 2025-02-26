@@ -1,15 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8njavafs6q5y"]
+[gd_scene load_steps=5 format=3 uid="uid://crqjaodaclceh"]
 
 [ext_resource type="Script" path="res://Scenes/TranslationCanvasUI.cs" id="1_6ebpw"]
+[ext_resource type="Script" path="res://Scenes/BorderDraw.cs" id="1_rmu12"]
 [ext_resource type="FontFile" uid="uid://m3h38nqxkg0o" path="res://Sprites/Fonts/Monotone_Celestial_V1.otf" id="2_w7m10"]
 [ext_resource type="FontFile" uid="uid://c6lkoenvhuw42" path="res://Sprites/Fonts/Monotone_SB_V1.otf" id="3_tm1gv"]
 
 [node name="Translation" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_rmu12")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("messageBox", "answerBox", "celHint", "engHint")]
 script = ExtResource("1_6ebpw")
+messageBox = NodePath("TextVBox/VBoxContainer/MessageTextBox")
+answerBox = NodePath("TextVBox/VBoxContainer/AnswerBox")
+celHint = NodePath("HintVBox/HBoxContainer/CelestialChar")
+engHint = NodePath("HintVBox/HBoxContainer/EnglishChar")
 
 [node name="TextVBox" type="VBoxContainer" parent="CanvasLayer"]
 offset_left = 744.0
@@ -26,7 +32,7 @@ theme_override_constants/separation = 150
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_w7m10")
-theme_override_font_sizes/normal_font_size = 100
+theme_override_font_sizes/normal_font_size = 150
 bbcode_enabled = true
 text = "[center]Hot"
 fit_content = true
@@ -35,6 +41,8 @@ fit_content = true
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tm1gv")
+theme_override_font_sizes/font_size = 100
+text = "awdfasdf"
 
 [node name="HintVBox" type="VBoxContainer" parent="CanvasLayer"]
 offset_left = 117.0
@@ -70,3 +78,11 @@ e
 e
 
 "
+
+[node name="CheckAnswerButton" type="Button" parent="CanvasLayer"]
+offset_left = 1691.0
+offset_top = 925.0
+offset_right = 1843.0
+offset_bottom = 1004.0
+
+[connection signal="button_down" from="CanvasLayer/CheckAnswerButton" to="CanvasLayer" method="AnswerButton"]

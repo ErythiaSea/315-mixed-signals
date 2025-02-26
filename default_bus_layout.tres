@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://bdoyf70lcpuun"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://dfrnlklxbst5a"]
 
 [sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_i0mfm"]
 resource_name = "Distortion"

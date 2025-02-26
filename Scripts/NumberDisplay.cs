@@ -23,7 +23,7 @@ public partial class NumberDisplay : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		globalScript = GetTree().Root.GetChild(0) as Globals;
+		globalScript = GetTree().Root.GetChild(1) as Globals;
 		SceneLabels = this.GetChildren(false);
 
 		SetNumbersVisibility();
