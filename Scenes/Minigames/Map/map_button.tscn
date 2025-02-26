@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dehciflno8kex"]
+
+[ext_resource type="Texture2D" uid="uid://lrgwawcbk7nh" path="res://Scenes/Minigames/Map/Sprites/Map_FossilIcon_00.png" id="1_b46k7"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Map/MapButton.cs" id="2_hsog7"]
+
+[node name="MapButton" type="TextureButton"]
+offset_right = 1162.0
+offset_bottom = 1313.0
+texture_normal = ExtResource("1_b46k7")
+script = ExtResource("2_hsog7")
+
+[connection signal="pressed" from="." to="." method="_OnPressed"]

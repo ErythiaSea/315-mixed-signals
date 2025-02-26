@@ -1,0 +1,144 @@
+[gd_scene load_steps=8 format=3 uid="uid://duhq4mg4vecmm"]
+
+[ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/DragParent.cs" id="1_mynxh"]
+[ext_resource type="Shader" path="res://Scripts/ShaderScript/Glow.gdshader" id="1_n36mt"]
+[ext_resource type="Texture2D" uid="uid://d1vrrq6aeuaqk" path="res://Scenes/Minigames/Constellation/Sprites/ConstellationLayer.png" id="2_4cuek"]
+[ext_resource type="PackedScene" uid="uid://cv381rpd6hc43" path="res://Scenes/Minigames/Constellation/DragProgressBar.tscn" id="4_u88qu"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/NumberDisplay.cs" id="5_oh041"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ad0a8"]
+shader = ExtResource("1_n36mt")
+
+[sub_resource type="CSharpScript" id="CSharpScript_dwm48"]
+script/source = "using Godot;
+using System;
+
+public partial class ConstellationShader : Sprite2D
+{
+	ShaderMaterial Smaterial;
+	Texture RenderTexture;
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		Smaterial = this.Material as ShaderMaterial;
+		RenderTexture = ImageTexture.CreateFromImage(GetViewport().GetTexture().GetImage());
+
+        Smaterial.SetShaderParameter(\"viewportRT\", RenderTexture);
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+
+	}
+}
+"
+
+[node name="Constellation" type="Node2D"]
+
+[node name="DragParent" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_mynxh")
+
+[node name="DragProgressBarRoot" parent="DragParent" instance=ExtResource("4_u88qu")]
+modulate = Color(1, 1, 1, 0.301961)
+layout_mode = 0
+offset_left = 400.0
+offset_top = 160.0
+offset_right = 660.0
+offset_bottom = 187.0
+rotation = 0.858851
+scale = Vector2(0.8, 0.8)
+
+[node name="DragProgressBarRoot2" parent="DragParent" instance=ExtResource("4_u88qu")]
+modulate = Color(1, 1, 1, 0.27451)
+layout_mode = 0
+offset_left = 719.0
+offset_top = 213.0
+offset_right = 899.0
+offset_bottom = 240.0
+rotation = -0.799136
+scale = Vector2(0.8, 0.8)
+
+[node name="DragProgressBarRoot3" parent="DragParent" instance=ExtResource("4_u88qu")]
+modulate = Color(1, 1, 1, 0.27451)
+layout_mode = 0
+offset_left = 526.0
+offset_top = 315.0
+offset_right = 806.0
+offset_bottom = 342.0
+rotation = -0.49156
+scale = Vector2(0.8, 0.8)
+
+[node name="DragProgressBarRoot4" parent="DragParent" instance=ExtResource("4_u88qu")]
+modulate = Color(1, 1, 1, 0.27451)
+layout_mode = 0
+offset_left = 542.0
+offset_top = 327.0
+offset_right = 802.0
+offset_bottom = 354.0
+rotation = 1.6885
+scale = Vector2(0.8, 0.8)
+
+[node name="cancer" type="Sprite2D" parent="."]
+modulate = Color(0.907942, 0.907942, 0.907942, 1)
+material = SubResource("ShaderMaterial_ad0a8")
+position = Vector2(509, 427)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_4cuek")
+script = SubResource("CSharpScript_dwm48")
+
+[node name="NumberParent" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_oh041")
+displaySpeed = 1.0
+
+[node name="Star1" type="Label" parent="NumberParent"]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 136.0
+offset_right = 455.0
+offset_bottom = 159.0
+text = "text"
+
+[node name="Star2" type="Label" parent="NumberParent"]
+layout_mode = 0
+offset_left = 828.0
+offset_top = 83.0
+offset_right = 868.0
+offset_bottom = 106.0
+text = "text"
+
+[node name="Star3" type="Label" parent="NumberParent"]
+layout_mode = 0
+offset_left = 723.0
+offset_top = 245.0
+offset_right = 763.0
+offset_bottom = 268.0
+text = "text
+"
+
+[node name="Star4" type="Label" parent="NumberParent"]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 274.0
+offset_right = 563.0
+offset_bottom = 297.0
+text = "text
+"
+
+[node name="Star5" type="Label" parent="NumberParent"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 486.0
+offset_right = 504.0
+offset_bottom = 509.0
+text = "text"
+
+[connection signal="ConstellationCompletion" from="DragParent" to="NumberParent" method="DisplayNumbers"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv381rpd6hc43"]
+
+[ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/DragProgressBar.cs" id="2_a1hbh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2hl0x"]
+
+[node name="ProgressBar" type="ProgressBar"]
+material = SubResource("ShaderMaterial_2hl0x")
+offset_right = 297.0
+offset_bottom = 27.0
+script = ExtResource("2_a1hbh")
+
+[connection signal="gui_input" from="." to="." method="MouseInput"]
