@@ -114,3 +114,5 @@ offset_top = 486.0
 offset_right = 504.0
 offset_bottom = 509.0
 text = "text"
+
+[connection signal="ConstellationCompletion" from="DragParent" to="NumberParent" method="DisplayNumbers"]

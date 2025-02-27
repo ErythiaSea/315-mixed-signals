@@ -56,7 +56,7 @@ public partial class TranslationCanvasUI : CanvasLayer
 		if (globalScript.wordList[globalScript.wordIndex].NocasecmpTo(answer) == 0)
 		{
 			//POLISH IDEA: fade celestial text away and fade in the new word
-
+			messageBox.AddThemeFontOverride("normal_font", englishFont);
 			messageBox.Text = ("[center] " + globalScript.wordList[globalScript.wordIndex]);
 			globalScript.completeIndex++;
             winInd.Visible = true;
