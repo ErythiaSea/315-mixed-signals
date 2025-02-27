@@ -22,7 +22,7 @@ public partial class BorderDraw : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-
+        if (Input.IsActionJustPressed("close")) { Close(); }
 	}
 
     private void GetAllChildren()
@@ -62,6 +62,16 @@ public partial class BorderDraw : Control
 
             
             DrawRect(currentContainerIndex.GetRect(), new Godot.Color(0,0,0,1), false);
+        }
+    }
+
+    void Close()
+    {
+        Player plr = GetNode<Player>("../Player");
+        if (plr != null)
+        {
+            plr.setMovementState(MovementStates.FREE_MOVE);
+            QueueFree();
         }
     }
 }

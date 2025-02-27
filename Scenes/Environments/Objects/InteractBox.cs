@@ -31,7 +31,7 @@ public partial class InteractBox : Area2D
         plrRef.setMovementState(MovementStates.MOVE_LOCKED);
         if (loadInCurrent)
         {
-            Node2D instancedGame = (Node2D)scene.Instantiate();
+            CanvasItem instancedGame = (CanvasItem)scene.Instantiate();
 
             GetParent().AddChild(instancedGame);
             instancedGame.ZIndex = 10;
@@ -46,7 +46,7 @@ public partial class InteractBox : Area2D
                 }
             }
         }
-            else
+        else
         {
             GetTree().ChangeSceneToPacked(scene);
         }
