@@ -3,40 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scripts\\numberdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\numberdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\minigames\\translation\\borderdraw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\minigames\\translation\\borderdraw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scripts\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\translationcanvasui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\translationcanvasui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scripts\\shaderscript\\textureshader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\shaderscript\\textureshader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\borderdraw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\borderdraw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scripts\\waveformgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\waveformgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\minigames\\translation\\translationcanvasui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\minigames\\translation\\translationcanvasui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scripts\\reset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\reset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scripts\\interactbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\interactbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scripts\\cameramovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\cameramovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scripts\\shaderscript\\textureshader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\shaderscript\\textureshader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,17 +30,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Reset.cs",
               "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\Reset.cs",
               "RelativeDocumentMoniker": "Scripts\\Reset.cs",
               "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\Reset.cs",
               "RelativeToolTip": "Scripts\\Reset.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-25T16:37:46.522Z",
               "IsPinned": true,
@@ -64,15 +48,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "BorderDraw.cs",
-              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\BorderDraw.cs",
-              "RelativeDocumentMoniker": "Scenes\\BorderDraw.cs",
-              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\BorderDraw.cs",
-              "RelativeToolTip": "Scenes\\BorderDraw.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAABAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\Minigames\\Translation\\BorderDraw.cs",
+              "RelativeDocumentMoniker": "Scenes\\Minigames\\Translation\\BorderDraw.cs",
+              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\Minigames\\Translation\\BorderDraw.cs",
+              "RelativeToolTip": "Scenes\\Minigames\\Translation\\BorderDraw.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwDMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T12:50:48.834Z",
+              "WhenOpened": "2025-02-27T14:08:42.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TranslationCanvasUI.cs",
+              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\Minigames\\Translation\\TranslationCanvasUI.cs",
+              "RelativeDocumentMoniker": "Scenes\\Minigames\\Translation\\TranslationCanvasUI.cs",
+              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\Minigames\\Translation\\TranslationCanvasUI.cs",
+              "RelativeToolTip": "Scenes\\Minigames\\Translation\\TranslationCanvasUI.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwCwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T14:00:30.607Z",
               "EditorCaption": ""
             },
             {
@@ -93,85 +90,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "WaveformGame.cs",
-              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\WaveformGame.cs",
-              "RelativeDocumentMoniker": "Scripts\\WaveformGame.cs",
-              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\WaveformGame.cs",
-              "RelativeToolTip": "Scripts\\WaveformGame.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAswFUAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T18:06:56.014Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TranslationCanvasUI.cs",
-              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\TranslationCanvasUI.cs",
-              "RelativeDocumentMoniker": "Scenes\\TranslationCanvasUI.cs",
-              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\TranslationCanvasUI.cs",
-              "RelativeToolTip": "Scenes\\TranslationCanvasUI.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAowEMAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T17:33:04.277Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "NumberDisplay.cs",
-              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\NumberDisplay.cs",
-              "RelativeDocumentMoniker": "Scripts\\NumberDisplay.cs",
-              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\NumberDisplay.cs",
-              "RelativeToolTip": "Scripts\\NumberDisplay.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T17:00:50.212Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Globals.cs",
               "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\Globals.cs",
               "RelativeDocumentMoniker": "Scripts\\Globals.cs",
               "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\Globals.cs",
               "RelativeToolTip": "Scripts\\Globals.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-25T16:56:41.376Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "InteractBox.cs",
-              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\InteractBox.cs",
-              "RelativeDocumentMoniker": "Scripts\\InteractBox.cs",
-              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\InteractBox.cs",
-              "RelativeToolTip": "Scripts\\InteractBox.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T15:37:02.382Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CameraMovement.cs",
-              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\CameraMovement.cs",
-              "RelativeDocumentMoniker": "Scripts\\CameraMovement.cs",
-              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\CameraMovement.cs",
-              "RelativeToolTip": "Scripts\\CameraMovement.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T12:14:16.38Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "TextureShader.cs",
               "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\ShaderScript\\TextureShader.cs",
               "RelativeDocumentMoniker": "Scripts\\ShaderScript\\TextureShader.cs",
