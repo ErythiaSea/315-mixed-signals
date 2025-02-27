@@ -1,5 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+/.vs/
 .vs/
 .vs/315-MECH-PROTO
+/.vs/315-MECH-PROTO/DesignTimeBuild/.dtbcache.v2
+/.vs/315-MECH-PROTO/v17/.suo
+/.vs/315-MECH-PROTO/v17/.futdcache.v2
+/.vs/315-MECH-PROTO/DesignTimeBuild/.dtbcache.v2
