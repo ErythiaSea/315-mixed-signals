@@ -33,10 +33,9 @@ public partial class NumberDisplay : Control
 	public override void _Process(double delta)
 	{
 
-		if (hasNumbers && !isDisplayed)
+		if (hasNumbers && !isDisplayed && index < SceneLabels.Count)
 		{
 			Godot.Label currentLabelIndex = SceneLabels[index] as Godot.Label;
-			GD.Print(currentLabelIndex == null);
 
 			if (currentLabelIndex != null)
 			{
