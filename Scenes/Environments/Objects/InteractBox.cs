@@ -6,6 +6,9 @@ public partial class InteractBox : Area2D
     [Export]
     PackedScene scene;
 
+    [Export(PropertyHint.File)]
+    public string scenePath;
+
     [Export]
     bool loadInCurrent = true;
     [Export]
@@ -26,7 +29,7 @@ public partial class InteractBox : Area2D
             plrRef.toggleLadder();
         }
 
-        if (scene == null) return;
+        if (scene == null && scenePath == null) return;
 
         plrRef.setMovementState(MovementStates.MOVE_LOCKED);
         if (loadInCurrent)
@@ -48,7 +51,14 @@ public partial class InteractBox : Area2D
         }
         else
         {
-            GetTree().ChangeSceneToPacked(scene);
+            if (scene != null)
+            {
+                GetTree().ChangeSceneToPacked(scene);
+            }
+            else
+            {
+                GetTree().ChangeSceneToFile(scenePath);
+            }
         }
     }
 }

@@ -57,7 +57,7 @@ public partial class TranspondScreen : Node2D
         {
             Close();
         }
-        if (Input.IsActionJustPressed("CameraUp"))
+        if (Input.IsActionJustPressed("arrow_up"))
         {
             waveform.gameActive = true;
             radiotowerComplete = true;

@@ -67,12 +67,21 @@ texture = ExtResource("2_csear")
 [node name="CliffGrass" type="Sprite2D" parent="."]
 texture = ExtResource("3_n7la6")
 
-[node name="InteractBox" parent="." instance=ExtResource("4_u2itd")]
+[node name="TelescopeBox" parent="." instance=ExtResource("4_u2itd")]
 position = Vector2(-916, -732)
 scene = ExtResource("6_pkpgb")
 disablePlayerCam = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TelescopeBox"]
+position = Vector2(-27, 0)
+shape = SubResource("RectangleShape2D_mkpum")
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_u2itd")]
+position = Vector2(-2878, 591)
+scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
+loadInCurrent = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
 position = Vector2(-27, 0)
 shape = SubResource("RectangleShape2D_mkpum")
 
@@ -175,7 +184,7 @@ position = Vector2(-766, 133)
 shape = SubResource("SegmentShape2D_7qebe")
 
 [node name="Player" parent="." instance=ExtResource("2_a0sm7")]
-position = Vector2(-2856, 447)
+position = Vector2(-2693, 511)
 scale = Vector2(2.5, 2.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
