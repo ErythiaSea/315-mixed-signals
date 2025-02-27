@@ -6,6 +6,7 @@ public partial class TranspondScreen : Node2D
     Radiotower radiotower;
     WaveformGame waveform;
     Sprite2D leftBox, rightBox;
+    Label radioLabel, waveLabel;
 
     bool radiotowerComplete = false; bool waveformComplete = false;
     double exitTimer = 0;
@@ -18,6 +19,8 @@ public partial class TranspondScreen : Node2D
         waveform = GetNode<WaveformGame>("waveformRoot");
         leftBox = GetNode<Sprite2D>("LeftBox");
         rightBox = GetNode<Sprite2D>("RightBox");
+        radioLabel = GetNode<Label>("ControlsRadiotower");
+        waveLabel = GetNode<Label>("ControlsWaveform");
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,6 +30,7 @@ public partial class TranspondScreen : Node2D
         {
             waveform.gameActive = true;
             radiotowerComplete = true;
+            waveLabel.Visible = true; radioLabel.Visible = false;
             fade = true;
         }
 
@@ -57,7 +61,7 @@ public partial class TranspondScreen : Node2D
         {
             Close();
         }
-        if (Input.IsActionJustPressed("CameraUp"))
+        if (Input.IsActionJustPressed("arrow_up"))
         {
             waveform.gameActive = true;
             radiotowerComplete = true;

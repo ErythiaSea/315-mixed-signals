@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc8lby5o1pvpv"]
+[gd_scene load_steps=9 format=3 uid="uid://bc8lby5o1pvpv"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/CameraMovement.cs" id="1_7uyas"]
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/ConstellationDraw.gdshader" id="3_djkxa"]
@@ -11,6 +11,9 @@
 shader = ExtResource("3_djkxa")
 shader_parameter/circle_r = null
 shader_parameter/circle_b = null
+
+[sub_resource type="LabelSettings" id="LabelSettings_03dfn"]
+font_size = 32
 
 [node name="ConstellationDraw" type="Node2D"]
 
@@ -52,6 +55,14 @@ mouse_filter = 2
 script = ExtResource("4_ro1i3")
 radius = 0.4
 blur = 0.02
+
+[node name="Label" type="Label" parent="eeek"]
+offset_left = -912.0
+offset_top = 448.0
+offset_right = 128.0
+offset_bottom = 493.0
+text = "WASD - Pan Camera    LMB (Click+Drag) - Connect Stars    ESC - Close"
+label_settings = SubResource("LabelSettings_03dfn")
 
 [node name="Constellation" parent="." instance=ExtResource("3_t8fte")]
 z_index = -1

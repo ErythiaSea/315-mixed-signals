@@ -3,6 +3,8 @@ using System;
 
 public partial class CameraMovement : Camera2D
 {
+    [Export]
+    public float cameraSpeed = 0.6f;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -25,19 +27,19 @@ public partial class CameraMovement : Camera2D
 	{
         if (Input.IsActionPressed("down"))
         {
-			Position = new Vector2(Position.X, Position.Y + 0.3f);
+			Position = new Vector2(Position.X, Position.Y + cameraSpeed);
         }
 		if (Input.IsActionPressed("up"))
 		{
-            Position = new Vector2(Position.X, Position.Y - 0.3f);
+            Position = new Vector2(Position.X, Position.Y - cameraSpeed);
         }
         if (Input.IsActionPressed("left"))
         {
-            Position = new Vector2(Position.X - 0.3f, Position.Y);
+            Position = new Vector2(Position.X - cameraSpeed, Position.Y);
         }
         if (Input.IsActionPressed("right"))
         {
-            Position = new Vector2(Position.X + 0.3f, Position.Y);
+            Position = new Vector2(Position.X + cameraSpeed, Position.Y);
         }
     }
 

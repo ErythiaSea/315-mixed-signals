@@ -18,7 +18,7 @@ public partial class Reset : Node
 		// load debug on down+up arrow
 		if (Input.IsActionJustPressed("arrow_down") && Input.IsActionPressed("arrow_up"))
 		{
-            PackedScene debugroom = ResourceLoader.Load<PackedScene>("res://Scenes/debugroom.tscn");
+            PackedScene debugroom = ResourceLoader.Load<PackedScene>("res://Scenes/Debug/debugroom.tscn");
             GetTree().ChangeSceneToPacked(debugroom);
         }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dkjjkuqsupb4f"]
+[gd_scene load_steps=23 format=3 uid="uid://dkjjkuqsupb4f"]
 
 [ext_resource type="Texture2D" uid="uid://bkevc4rf8wjhe" path="res://Scenes/Environments/LilypadPond/lilypadenv_back.png" id="1_x6dd7"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_a0sm7"]
@@ -45,6 +45,9 @@ b = Vector2(-495, 451)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7qebe"]
 b = Vector2(74, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deeq0"]
+size = Vector2(37, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pm7kl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qricm"]
@@ -67,12 +70,21 @@ texture = ExtResource("2_csear")
 [node name="CliffGrass" type="Sprite2D" parent="."]
 texture = ExtResource("3_n7la6")
 
-[node name="InteractBox" parent="." instance=ExtResource("4_u2itd")]
+[node name="TelescopeBox" parent="." instance=ExtResource("4_u2itd")]
 position = Vector2(-916, -732)
 scene = ExtResource("6_pkpgb")
 disablePlayerCam = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TelescopeBox"]
+position = Vector2(-27, 0)
+shape = SubResource("RectangleShape2D_mkpum")
+
+[node name="LevelTransition" parent="." instance=ExtResource("4_u2itd")]
+position = Vector2(-2878, 591)
+scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
+loadInCurrent = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
 position = Vector2(-27, 0)
 shape = SubResource("RectangleShape2D_mkpum")
 
@@ -175,7 +187,7 @@ position = Vector2(-766, 133)
 shape = SubResource("SegmentShape2D_7qebe")
 
 [node name="Player" parent="." instance=ExtResource("2_a0sm7")]
-position = Vector2(-2856, 447)
+position = Vector2(-2693, 511)
 scale = Vector2(2.5, 2.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -187,6 +199,14 @@ limit_bottom = 1459
 
 [node name="StairControls" type="Node2D" parent="."]
 position = Vector2(2243, 394)
+
+[node name="ShortcutControl" parent="StairControls" node_paths=PackedStringArray("stairToToggle") instance=ExtResource("3_6n8s2")]
+position = Vector2(-3283, -1121)
+stairToToggle = NodePath("../../LevelCollision/Wall1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StairControls/ShortcutControl"]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_deeq0")
 
 [node name="StairControl5" parent="StairControls" node_paths=PackedStringArray("stairToToggle") instance=ExtResource("3_6n8s2")]
 position = Vector2(688, -1207)
