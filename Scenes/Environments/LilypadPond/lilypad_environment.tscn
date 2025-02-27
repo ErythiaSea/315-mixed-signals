@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dkjjkuqsupb4f"]
+[gd_scene load_steps=22 format=3 uid="uid://dkjjkuqsupb4f"]
 
 [ext_resource type="Texture2D" uid="uid://bkevc4rf8wjhe" path="res://Scenes/Environments/LilypadPond/lilypadenv_back.png" id="1_x6dd7"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_a0sm7"]
@@ -31,6 +31,12 @@ a = Vector2(-198, -8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slmed"]
 size = Vector2(20, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssqeu"]
+size = Vector2(34, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3bhr"]
+size = Vector2(23, 203)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_uumkn"]
 a = Vector2(-439, 451)
@@ -144,9 +150,17 @@ build_mode = 1
 polygon = PackedVector2Array(2767, -846, 2626, -858, 2465, -874, 2302, -895, 2139, -915, 2000, -935, 1891, -955, 1785, -975, 1664, -999, 1549, -1018, 1445, -1033, 1344, -1046, 1247, -1051, 1163, -1049, 1082, -1046, 1000, -950, 930, -883, 851, -804, 763, -743, 672, -681, 583, -638, 489, -598, 382, -562, 282, -537, 175, -522, 61, -518, -35, -525, -140, -555, -226, -593, -311, -634, -377, -672, -454, -738, -996, -738, -996, -817, -1005, -817, -1006, -704, 137, -474)
 one_way_collision = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision"]
+[node name="Wall1" type="CollisionShape2D" parent="LevelCollision"]
 position = Vector2(-1047, -780.5)
 shape = SubResource("RectangleShape2D_slmed")
+
+[node name="Wall2" type="CollisionShape2D" parent="LevelCollision"]
+position = Vector2(2985, -891)
+shape = SubResource("RectangleShape2D_ssqeu")
+
+[node name="Wall3" type="CollisionShape2D" parent="LevelCollision"]
+position = Vector2(2976, 803)
+shape = SubResource("RectangleShape2D_a3bhr")
 
 [node name="LadderCollision" type="StaticBody2D" parent="."]
 editor_description = "This is the collision that stops the player from moving too far up/down from ladders"
@@ -161,7 +175,7 @@ position = Vector2(-766, 133)
 shape = SubResource("SegmentShape2D_7qebe")
 
 [node name="Player" parent="." instance=ExtResource("2_a0sm7")]
-position = Vector2(-660, -886)
+position = Vector2(-2856, 447)
 scale = Vector2(2.5, 2.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

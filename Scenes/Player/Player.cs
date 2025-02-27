@@ -10,7 +10,7 @@ public partial class Player : CharacterBody2D
 {
 	// todo: these are godot defaults. maybe change/export these?
 	[Export]
-	public float movementSpeed = 300.0f;
+	public float movementSpeed = 450.0f;
 	//public const float JumpVelocity = -400.0f;
 
 	// note: im assigning the playerMovementState to one of these states. however, you
@@ -100,6 +100,7 @@ public partial class Player : CharacterBody2D
 		if (xDirection != 0)
 		{
 			velocity.X = xDirection * movementSpeed;
+			if (Input.IsActionPressed("middle_mouse")) velocity.X *= 2;
 		}
 		else
 		{
@@ -151,6 +152,10 @@ public partial class Player : CharacterBody2D
         {
             SetCollisionMaskValue(2, true);
             SetCollisionMaskValue(4, false);
+
+			// enable player cam if we have one
+			Camera2D plrCam = GetNode<Camera2D>("Camera2D");
+			if (plrCam != null) { plrCam.Enabled = true; }
         }
         if (state == MovementStates.LADDER_MOVE)
 		{
