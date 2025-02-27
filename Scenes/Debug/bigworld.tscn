@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1i0ycm6mhwuh"]
+
+[ext_resource type="Texture2D" uid="uid://dtyvowjy0eiwl" path="res://Sprites/bigtestmap.png" id="1_efadn"]
+[ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/player_OLD.tscn" id="2_at0ci"]
+[ext_resource type="Script" path="res://Scripts/InteractBox.cs" id="3_jua78"]
+[ext_resource type="PackedScene" uid="uid://njjw6amv76bq" path="res://Scenes/restriction_box.tscn" id="5_w3l88"]
+[ext_resource type="Texture2D" uid="uid://ctrbteu0rgebm" path="res://Sprites/tree.png" id="6_ygacr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbep2"]
+size = Vector2(126, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajnje"]
+size = Vector2(20, 161)
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Map" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(575.25, 285)
+scale = Vector2(1.23056, 1.12037)
+texture = ExtResource("1_efadn")
+
+[node name="Player" parent="." instance=ExtResource("2_at0ci")]
+position = Vector2(57, 63)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+visible = false
+limit_left = -1200
+limit_top = -300
+limit_right = 2400
+limit_bottom = 950
+position_smoothing_speed = 300.0
+
+[node name="WorldCollision" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldCollision"]
+polygon = PackedVector2Array(-328, 189, -290, 117, -214, 94, 195, 97, 446, 48, 670, 117, 786, 200, 1112, 221, 1139, 258, 1133, 351, 1079, 459, 928, 509, 812, 509, 700, 476, 597, 373, 502, 356, 399, 373, 263, 331, 146, 336, 63, 371, -15, 403, -96, 399, -176, 383, -244, 339, -310, 280)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="WorldCollision"]
+polygon = PackedVector2Array(-359, 284, -304, 379, -163, 437, -52, 443, 35, 440, 84, 408, 192, 376, 256, 372, 323, 387, 300, 419, 251, 471, 227, 531, 210, 614, 150, 662, -5, 691, -61, 726, -97, 726, -153, 699, -267, 780, -372, 775, -431, 707, -446, 569, -483, 455, -578, 360, -423, 359)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="WorldCollision"]
+polygon = PackedVector2Array(488, 389, 576, 410, 628, 476, 776, 546, 1040, 528, 1147, 670, 1304, 793, 1414, 848, 1140, 831, 662, 843, 448, 830, 185, 698, 266, 607, 329, 457)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="WorldCollision"]
+polygon = PackedVector2Array(-1064, 277, -860, 252, -789, 282, -606, 402, -494, 582, -506, 686, -596, 777, -757, 837, -1056, 836, -852, 743, -792, 697, -788, 628, -973, 513, -1068, 372)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="WorldCollision"]
+polygon = PackedVector2Array(1172, 240, 1245, 220, 1515, 201, 1643, 161, 1718, 387, 1714, 511, 1396, 588, 1165, 584, 1097, 499, 1176, 376)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="WorldCollision"]
+polygon = PackedVector2Array(1684, 149, 1923, 82, 2146, 78, 2232, 111, 2268, 189, 2288, 364, 2297, 691, 2341, 839, 2031, 676, 1771, 506, 1751, 316)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="WorldCollision"]
+polygon = PackedVector2Array(1184, 620, 1443, 632, 1725, 549, 1785, 568, 1980, 702, 2198, 802, 2297, 865, 2022, 875, 1810, 833, 1578, 869, 1465, 860, 1437, 802, 1226, 688)
+
+[node name="FortsBox" type="Area2D" parent="."]
+position = Vector2(920, 190)
+collision_layer = 4
+script = ExtResource("3_jua78")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FortsBox"]
+position = Vector2(7, 3)
+shape = SubResource("RectangleShape2D_gbep2")
+
+[node name="RestrictionBox" parent="." instance=ExtResource("5_w3l88")]
+position = Vector2(818, -207)
+RestrictHorizontal = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RestrictionBox"]
+position = Vector2(0, 70.5)
+shape = SubResource("RectangleShape2D_ajnje")
+
+[node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(267, 370)
+scale = Vector2(0.151896, 0.151896)
+texture = ExtResource("6_ygacr")
+
+[connection signal="body_entered" from="RestrictionBox" to="RestrictionBox" method="_OnBodyEntered"]
+[connection signal="body_exited" from="RestrictionBox" to="RestrictionBox" method="_OnBodyExited"]

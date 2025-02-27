@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnj8esqdgww0"]
+
+[ext_resource type="Texture2D" uid="uid://bmij10s8rf8gm" path="res://Scenes/Environments/CabinOutdoor/base_outside.png" id="1_0a00e"]
+[ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="1_7p3ip"]
+[ext_resource type="Texture2D" uid="uid://dalo0qcvvnfsa" path="res://Scenes/Environments/CabinOutdoor/vehicle_temp.png" id="2_s8gqw"]
+[ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_elcve"]
+[ext_resource type="PackedScene" uid="uid://8utwt42ra3yd" path="res://Scenes/Minigames/Map/mapscreen.tscn" id="5_5vx5t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkcsa"]
+size = Vector2(337, 68)
+
+[node name="cabinoutdoor" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_0a00e")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(-1074, 154, -981, 156, -573, 467, 1404, 472, 1404, -187, 1421, -187, 1424, 570, -1072, 568, -1130, 570, -1136, -202, -1075, -204)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(924, 146)
+texture = ExtResource("2_s8gqw")
+
+[node name="Player" parent="." instance=ExtResource("1_7p3ip")]
+position = Vector2(-970, 29)
+scale = Vector2(2.5, 2.5)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -1404
+limit_top = -540
+limit_right = 1404
+limit_bottom = 540
+
+[node name="InteractBox" parent="." instance=ExtResource("4_elcve")]
+position = Vector2(597, 361)
+scene = ExtResource("5_5vx5t")
+disablePlayerCam = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox"]
+position = Vector2(289, 68)
+shape = SubResource("RectangleShape2D_rkcsa")

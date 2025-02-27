@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=3 uid="uid://1ims8y73xe5o"]
+
+[ext_resource type="Script" path="res://Scenes/Minigames/Translation/TranslationCanvasUI.cs" id="1_6ebpw"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Translation/BorderDraw.cs" id="1_rmu12"]
+[ext_resource type="FontFile" uid="uid://m3h38nqxkg0o" path="res://Fonts/Monotone_Celestial_V1.otf" id="2_w7m10"]
+[ext_resource type="FontFile" uid="uid://c6lkoenvhuw42" path="res://Fonts/Monotone_SB_V1.otf" id="3_tm1gv"]
+
+[node name="Translation" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rmu12")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("messageBox", "answerBox", "celHint", "engHint")]
+script = ExtResource("1_6ebpw")
+messageBox = NodePath("TextVBox/VBoxContainer/MessageTextBox")
+answerBox = NodePath("TextVBox/VBoxContainer/AnswerBox")
+celHint = NodePath("HintVBox/HBoxContainer/CelestialChar")
+engHint = NodePath("HintVBox/HBoxContainer/EnglishChar")
+
+[node name="TextVBox" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 744.0
+offset_top = 221.0
+offset_right = 1744.0
+offset_bottom = 871.0
+
+[node name="VBoxContainer" type="VSplitContainer" parent="CanvasLayer/TextVBox"]
+custom_minimum_size = Vector2(1000, 600)
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="MessageTextBox" type="RichTextLabel" parent="CanvasLayer/TextVBox/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_w7m10")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[center]Hot"
+fit_content = true
+
+[node name="AnswerBox" type="TextEdit" parent="CanvasLayer/TextVBox/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tm1gv")
+theme_override_font_sizes/font_size = 100
+text = "awdfasdf"
+
+[node name="HintVBox" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 117.0
+offset_top = 87.0
+offset_right = 460.0
+offset_bottom = 538.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HintVBox"]
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="CelestialChar" type="RichTextLabel" parent="CanvasLayer/HintVBox/HBoxContainer"]
+custom_minimum_size = Vector2(150, 600)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_w7m10")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]
+e
+e
+e"
+
+[node name="EnglishChar" type="RichTextLabel" parent="CanvasLayer/HintVBox/HBoxContainer"]
+custom_minimum_size = Vector2(150, 600)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_tm1gv")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]
+e
+e
+e
+
+"
+
+[node name="CheckAnswerButton" type="Button" parent="CanvasLayer"]
+offset_left = 1691.0
+offset_top = 925.0
+offset_right = 1843.0
+offset_bottom = 1004.0
+
+[node name="CipherDisplay" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 569.0
+offset_top = 670.0
+offset_right = 692.0
+offset_bottom = 818.0
+bbcode_enabled = true
+
+[connection signal="button_down" from="CanvasLayer/CheckAnswerButton" to="CanvasLayer" method="AnswerButton"]

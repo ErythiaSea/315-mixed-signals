@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using static Godot.HttpClient;
+using System.Reflection;
 
 public partial class Reset : Node
 {
@@ -13,10 +15,10 @@ public partial class Reset : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		// load debug on down arrow
-		if (Input.IsActionJustPressed("CameraDown"))
+		// load debug on down+up arrow
+		if (Input.IsActionJustPressed("arrow_down") && Input.IsActionPressed("arrow_up"))
 		{
-			PackedScene debugroom = ResourceLoader.Load<PackedScene>("res://Scenes/debugroom.tscn");
+            PackedScene debugroom = ResourceLoader.Load<PackedScene>("res://Scenes/debugroom.tscn");
             GetTree().ChangeSceneToPacked(debugroom);
         }
 
