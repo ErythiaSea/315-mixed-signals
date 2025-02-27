@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=14 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Texture2D" uid="uid://bwiibe8j7vfgh" path="res://Scenes/Environments/Cabin/room_base.png" id="1_ppr70"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -14,11 +14,14 @@ size = Vector2(1936, 88.8125)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvqo4"]
 size = Vector2(98, 447.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvk1a"]
-size = Vector2(190, 55)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0oee4"]
+size = Vector2(388, 37)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cchka"]
 size = Vector2(168.5, 60.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvk1a"]
+size = Vector2(291, 55)
 
 [sub_resource type="LabelSettings" id="LabelSettings_272fe"]
 font_size = 32
@@ -55,14 +58,14 @@ position = Vector2(1561, 607)
 shape = SubResource("RectangleShape2D_xvqo4")
 
 [node name="TranspondBox" type="Area2D" parent="."]
-position = Vector2(716, 1009)
+position = Vector2(851, 977)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 scene = ExtResource("5_5jqjy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
-position = Vector2(118, 2)
-shape = SubResource("RectangleShape2D_lvk1a")
+position = Vector2(127, 13.5)
+shape = SubResource("RectangleShape2D_0oee4")
 
 [node name="TranslationBox" type="Area2D" parent="."]
 position = Vector2(930, 605)
@@ -90,7 +93,7 @@ position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_fxgd2")
 
-[node name="Label" type="Label" parent="."]
+[node name="Controls" type="Label" parent="."]
 z_index = 5
 offset_left = 20.0
 offset_top = 1012.0

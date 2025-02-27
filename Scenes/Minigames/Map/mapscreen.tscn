@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://8utwt42ra3yd"]
+[gd_scene load_steps=6 format=3 uid="uid://8utwt42ra3yd"]
 
 [ext_resource type="Texture2D" uid="uid://b1nu7m4qshqm0" path="res://Scenes/Minigames/Map/Sprites/map_background.png" id="1_xt3to"]
 [ext_resource type="PackedScene" uid="uid://dehciflno8kex" path="res://Scenes/Minigames/Map/map_button.tscn" id="2_8d1fn"]
 [ext_resource type="Texture2D" uid="uid://b61u7xjxdv85f" path="res://Scenes/Minigames/Map/Sprites/Map_PondIcon_00.png" id="3_7rbmu"]
 [ext_resource type="PackedScene" uid="uid://dkjjkuqsupb4f" path="res://Scenes/Environments/LilypadPond/lilypad_environment.tscn" id="4_0s13x"]
+[ext_resource type="Texture2D" uid="uid://b3bl82ittquc7" path="res://Scenes/Minigames/Map/Sprites/Map_SaltIcon_00.png" id="5_cum4x"]
 
 [node name="mapscreen" type="Node2D"]
 z_index = 3
@@ -21,6 +22,7 @@ offset_top = -188.0
 offset_right = 466.0
 offset_bottom = 1125.0
 scale = Vector2(0.2, 0.2)
+disabled = true
 
 [node name="PondButton" parent="." instance=ExtResource("2_8d1fn")]
 offset_left = 175.0
@@ -29,4 +31,15 @@ offset_right = 1567.0
 offset_bottom = 1057.0
 scale = Vector2(0.2, 0.2)
 texture_normal = ExtResource("3_7rbmu")
+mapToLoad = ExtResource("4_0s13x")
+
+[node name="SaltButton" parent="." instance=ExtResource("2_8d1fn")]
+modulate = Color(0.23, 0.23, 0.23, 1)
+offset_left = -453.0
+offset_top = 201.0
+offset_right = 957.0
+offset_bottom = 1328.0
+scale = Vector2(0.2, 0.2)
+disabled = true
+texture_normal = ExtResource("5_cum4x")
 mapToLoad = ExtResource("4_0s13x")
