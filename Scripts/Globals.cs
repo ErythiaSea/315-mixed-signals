@@ -8,7 +8,7 @@ public partial class Globals : Node
 {
     
     public int cipherKey = 0;
-	public int completeIndex = -1;
+	public int completeIndex =-1;
 	public int wordIndex = -1;
 
 	public string[] wordList = { "Hot", "Beansman" };

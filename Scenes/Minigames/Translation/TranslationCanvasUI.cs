@@ -17,6 +17,10 @@ public partial class TranslationCanvasUI : CanvasLayer
 	RichTextLabel engHint;
 	[Export]
 	RichTextLabel cipherDisplay;
+	[Export]
+	Font englishFont;
+	[Export]
+	TextureRect winInd;
 
 	Globals globalScript;
 
@@ -28,10 +32,12 @@ public partial class TranslationCanvasUI : CanvasLayer
 	{
         globalScript = GetTree().Root.GetChild(1) as Globals;
 
+		cipherDisplay.Clear();
         messageBox.Clear();
         answerBox.Clear();
         engHint.Clear();
         celHint.Clear();
+		winInd.Visible = false;
 
 		CallDeferred(nameof(TextInitalisation));
 
@@ -45,11 +51,16 @@ public partial class TranslationCanvasUI : CanvasLayer
 
 	public void AnswerButton()
 	{
-		if(answerBox.Text == globalScript.wordList[globalScript.wordIndex])
+		string answer = answerBox.Text.StripEdges();
+	
+		if (globalScript.wordList[globalScript.wordIndex].NocasecmpTo(answer) == 0)
 		{
-			GD.Print("Winner Winner");
+			//POLISH IDEA: fade celestial text away and fade in the new word
+
+			messageBox.Text = ("[center] " + globalScript.wordList[globalScript.wordIndex]);
 			globalScript.completeIndex++;
-		}
+            winInd.Visible = true;
+        }
 		else
 		{
 			GD.Print("Doesnt feel right");
@@ -65,7 +76,6 @@ public partial class TranslationCanvasUI : CanvasLayer
 
 			HintsUpdate(cWord);
 			cipherDisplay.AppendText("[center] "+ globalScript.cipherKey.ToString());
-
         }
         else
         {

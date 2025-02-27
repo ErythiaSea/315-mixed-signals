@@ -1,22 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://1ims8y73xe5o"]
+[gd_scene load_steps=6 format=3 uid="uid://1ims8y73xe5o"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Translation/TranslationCanvasUI.cs" id="1_6ebpw"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Translation/BorderDraw.cs" id="1_rmu12"]
 [ext_resource type="FontFile" uid="uid://m3h38nqxkg0o" path="res://Fonts/Monotone_Celestial_V1.otf" id="2_w7m10"]
 [ext_resource type="FontFile" uid="uid://c6lkoenvhuw42" path="res://Fonts/Monotone_SB_V1.otf" id="3_tm1gv"]
+[ext_resource type="Texture2D" uid="uid://bxsiv7gby07ys" path="res://Scenes/Minigames/Translation/Sprites/check-mark-button_2705.webp" id="5_488n3"]
 
 [node name="Translation" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_rmu12")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("messageBox", "answerBox", "celHint", "engHint", "cipherDisplay")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("messageBox", "answerBox", "celHint", "engHint", "cipherDisplay", "winInd")]
 script = ExtResource("1_6ebpw")
 messageBox = NodePath("TextVBox/VBoxContainer/MessageTextBox")
 answerBox = NodePath("TextVBox/VBoxContainer/AnswerBox")
 celHint = NodePath("HintVBox/HBoxContainer/CelestialChar")
 engHint = NodePath("HintVBox/HBoxContainer/EnglishChar")
 cipherDisplay = NodePath("CipherDisplay")
+englishFont = ExtResource("3_tm1gv")
+winInd = NodePath("WinIndicator")
+
+[node name="TextureRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.00392157, 0.00392157, 0.00392157, 0.729412)
 
 [node name="TextVBox" type="VBoxContainer" parent="CanvasLayer"]
 offset_left = 744.0
@@ -95,5 +103,13 @@ theme_override_fonts/normal_font = ExtResource("3_tm1gv")
 theme_override_font_sizes/normal_font_size = 150
 bbcode_enabled = true
 scroll_active = false
+
+[node name="WinIndicator" type="TextureRect" parent="CanvasLayer"]
+offset_left = 73.0
+offset_top = 743.0
+offset_right = 585.0
+offset_bottom = 1255.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_488n3")
 
 [connection signal="button_down" from="CanvasLayer/CheckAnswerButton" to="CanvasLayer" method="AnswerButton"]
