@@ -39,7 +39,7 @@ public partial class Player_OLD : CharacterBody2D
                 if (interactBox != null && interactBox.active)
                 {
                     interactSprite.Visible = true;
-                    if (Input.IsActionJustPressed("print_intersect") && canMove)
+                    if (Input.IsActionJustPressed("interact") && canMove)
                     {
                         //interactBox.Interact(this);
                         canMove = false;

@@ -36,6 +36,7 @@ public partial class NumberDisplay : Control
 		if (hasNumbers && !isDisplayed)
 		{
 			Godot.Label currentLabelIndex = SceneLabels[index] as Godot.Label;
+			GD.Print(currentLabelIndex == null);
 
 			if (currentLabelIndex != null)
 			{

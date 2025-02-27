@@ -48,7 +48,7 @@ public partial class Player : CharacterBody2D
             if (interactBox != null && interactBox.active)
             {
                 interactSprite.Visible = true;
-                if (Input.IsActionJustPressed("print_intersect") && playerMovementState != MovementStates.MOVE_LOCKED)
+                if (Input.IsActionJustPressed("interact") && playerMovementState != MovementStates.MOVE_LOCKED)
                 {
                     interactBox.Interact(this);
 					//setMovementState(MovementStates.MOVE_LOCKED);
@@ -88,15 +88,15 @@ public partial class Player : CharacterBody2D
 			velocity += GetGravity() * (float)delta;
 		}
 
-		// Handle Jump.
-		//if (Input.IsActionJustPressed("print_intersect") && IsOnFloor())
-		//{
-		//	velocity.Y = JumpVelocity;
-		//}
+        // Handle Jump.
+        //if (Input.IsActionJustPressed("interact") && IsOnFloor())
+        //{
+        //	velocity.Y = JumpVelocity;
+        //}
 
-		// Get the input direction and handle the movement/deceleration.
-		//Vector2 direction = Input.GetVector("left_pivot_cw", "left_pivot_ccw", "up", "down");
-		float xDirection = Input.GetAxis("left_pivot_cw", "left_pivot_ccw");
+        // Get the input direction and handle the movement/deceleration.
+        //Vector2 direction = Input.GetVector("left_pivot_cw", "left_pivot_ccw", "up", "down");
+        float xDirection = Input.GetAxis("left_pivot_cw", "left_pivot_ccw");
 		if (xDirection != 0)
 		{
 			velocity.X = xDirection * movementSpeed;

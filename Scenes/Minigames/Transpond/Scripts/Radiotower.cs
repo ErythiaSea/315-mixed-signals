@@ -100,7 +100,7 @@ public partial class Radiotower : Node2D
 		}
         else winTimer = 0.0f;
 
-        if (Input.IsActionPressed("print_intersect"))
+        if (Input.IsActionPressed("interact"))
 		{
 			GD.Print("ldist: ", ldist, " rdist: ", rdist);
 			GD.Print("left overlap:", lPivot.overlapsTower, " right overlap: ", rPivot.overlapsTower);

@@ -16,19 +16,19 @@ public partial class CameraMovement : Camera2D
 
 	public void CameraInputEvents(double delta)
 	{
-        if (Input.IsActionPressed("CameraDown"))
+        if (Input.IsActionPressed("down"))
         {
 			Position = new Vector2(Position.X, Position.Y + 0.3f);
         }
-		if (Input.IsActionPressed("CameraUp"))
+		if (Input.IsActionPressed("up"))
 		{
             Position = new Vector2(Position.X, Position.Y - 0.3f);
         }
-        if (Input.IsActionPressed("CameraLeft"))
+        if (Input.IsActionPressed("left"))
         {
             Position = new Vector2(Position.X - 0.3f, Position.Y);
         }
-        if (Input.IsActionPressed("CameraRight"))
+        if (Input.IsActionPressed("right"))
         {
             Position = new Vector2(Position.X + 0.3f, Position.Y);
         }

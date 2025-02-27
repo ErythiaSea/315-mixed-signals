@@ -32,6 +32,7 @@ public partial class InteractBox : Area2D
         if (loadInCurrent)
         {
             Node2D instancedGame = (Node2D)scene.Instantiate();
+
             GetParent().AddChild(instancedGame);
             instancedGame.ZIndex = 10;
             plrRef.setMovementState(MovementStates.MOVE_LOCKED);

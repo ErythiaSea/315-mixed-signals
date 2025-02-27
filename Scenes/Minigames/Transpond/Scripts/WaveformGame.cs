@@ -64,7 +64,7 @@ public partial class WaveformGame : Node2D
         }
 
         if (playerWave.amplitude < 0.0f) playerWave.amplitude = 0.0f;
-        if (Input.IsActionJustPressed("print_intersect"))
+        if (Input.IsActionJustPressed("interact"))
         {
             GD.Print("target w: ", targetWavelength, ", current: ", playerWave.wavelength);
             GD.Print(Mathf.Abs(playerWave.wavelength - targetWavelength));
