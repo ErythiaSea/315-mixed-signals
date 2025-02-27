@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dkjjkuqsupb4f"]
+[gd_scene load_steps=23 format=3 uid="uid://dkjjkuqsupb4f"]
 
 [ext_resource type="Texture2D" uid="uid://bkevc4rf8wjhe" path="res://Scenes/Environments/LilypadPond/lilypadenv_back.png" id="1_x6dd7"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_a0sm7"]
@@ -44,6 +44,9 @@ b = Vector2(-495, 451)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7qebe"]
 b = Vector2(74, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deeq0"]
+size = Vector2(37, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pm7kl"]
 
@@ -196,6 +199,14 @@ limit_bottom = 1459
 
 [node name="StairControls" type="Node2D" parent="."]
 position = Vector2(2243, 394)
+
+[node name="ShortcutControl" parent="StairControls" node_paths=PackedStringArray("stairToToggle") instance=ExtResource("3_6n8s2")]
+position = Vector2(-3283, -1121)
+stairToToggle = NodePath("../../LevelCollision/Wall1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StairControls/ShortcutControl"]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_deeq0")
 
 [node name="StairControl5" parent="StairControls" node_paths=PackedStringArray("stairToToggle") instance=ExtResource("3_6n8s2")]
 position = Vector2(688, -1207)
