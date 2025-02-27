@@ -13,9 +13,9 @@ public partial class BorderDraw : Control
 		childCanvas = this.GetChild(0) as CanvasLayer;
 
         //containerNodes = childCanvas.GetChildren(true);
-        //GetAllChildren();
+        GetAllChildren(childCanvas);
         //DrawContainers();
-
+        GD.Print(containerNodes.Count);
 
 	}
 
@@ -25,33 +25,18 @@ public partial class BorderDraw : Control
 
 	}
 
-    private void GetAllChildren()
+    private void GetAllChildren(Node node)
     {
-        foreach(Node ctrl in childCanvas.GetChildren())
-        {
-            if(ctrl.GetChildCount() > 0)
+            if (node.GetChildCount() > 0)
             {
-                containerNodes.Append(ctrl);
-                foreach (Node child in ctrl.GetChildren())
-                {
-                    if(child.GetChildCount() > 0)
-                    {
-                        containerNodes.Append(child);
-                        containerNodes += child.GetChildren(false);
-                    }
-                    else
-                    {
-                        containerNodes.Append(child);
-                    }
-                }
+                containerNodes.Add(node);
+                GetAllChildren(node);
             }
             else
             {
-                containerNodes.Append(ctrl);
+                containerNodes.Add(node);
             }
-        }
-
-        GD.Print("Size: " + containerNodes.Count);
+            GD.Print("Size: " + containerNodes.Count);
     }
     private void DrawContainers()
     {

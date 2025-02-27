@@ -15,6 +15,8 @@ public partial class TranslationCanvasUI : CanvasLayer
 	RichTextLabel celHint;
 	[Export]
 	RichTextLabel engHint;
+	[Export]
+	RichTextLabel cipherDisplay;
 
 	Globals globalScript;
 
@@ -32,19 +34,21 @@ public partial class TranslationCanvasUI : CanvasLayer
         celHint.Clear();
 
 		CallDeferred(nameof(TextInitalisation));
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		GD.Print(globalScript.wordList[1]); 
+	
 	}
 
 	public void AnswerButton()
 	{
-		if(answerBox.Text == currentWord)
+		if(answerBox.Text == globalScript.wordList[globalScript.wordIndex])
 		{
 			GD.Print("Winner Winner");
+			globalScript.completeIndex++;
 		}
 		else
 		{
@@ -53,33 +57,39 @@ public partial class TranslationCanvasUI : CanvasLayer
 	}
 	private void TextInitalisation()
 	{
-        if (globalScript.wordArrayIndex != -1)
+		if (globalScript.wordIndex != -1 && globalScript.wordIndex != globalScript.completeIndex)
         {
-			GD.Print("Assigned");
-			GD.Print("word: " + globalScript.wordList[1]);
-            currentWord = globalScript.wordList[0];
-            messageBox.Text = ("[center] " + currentWord);
+			GD.Print("CIPHER");
+			string cWord = CipherWord(globalScript.wordList[globalScript.wordIndex]);
+            messageBox.Text = ("[center] " + cWord);
 
-            HintsUpdate();
+			HintsUpdate(cWord);
+
         }
         else
         {
-			GD.Print("Not assigned");
-            currentWord = "";
-            messageBox.Text = currentWord;
+			messageBox.Text = "";
         }
     }
-	private void HintsUpdate()
+	private void HintsUpdate(string word)
 	{
-		string word = currentWord.ToLower();
-
 		char[] charArray = word.ToCharArray();
-		for(int i = 0; i < charArray.Length; i++)
-		{
-			celHint.AppendText(charArray[i].ToString() + "      =");
-			celHint.Newline();
-		}
+        for(int i = 0; i < charArray.Length; i++)
+        {
+        	celHint.AppendText(charArray[i].ToString() + "      =");
+        	celHint.Newline();
 
+			engHint.AppendText(charArray[i].ToString());
+            engHint.Newline();
+        }
+    }
+    private string CipherWord(string word)
+	{
+		string cipheredWord = null;
+		string wordL = word.ToLower();
+
+		char[] charArray = wordL.ToCharArray();
+		
 		for(int i = 0; i < charArray.Length; i++)
 		{
 			int asciiValue = charArray[i];
@@ -99,9 +109,11 @@ public partial class TranslationCanvasUI : CanvasLayer
 				asciiValue += globalScript.cipherKey;
 			}
 
-            engHint.AppendText(((char)asciiValue).ToString());
-            engHint.Newline();
+			cipheredWord += (char)asciiValue;
+           
         }
+
+		return cipheredWord;
     }
 
 	

@@ -83,7 +83,7 @@ public partial class WaveformGame : Node2D
 
 
             //Update the new word for the translation mechanic
-            globalScript.wordArrayIndex++;
+            globalScript.wordIndex++;
     
             //newWavelength();
         }
