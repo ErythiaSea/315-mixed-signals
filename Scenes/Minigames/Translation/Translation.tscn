@@ -45,6 +45,7 @@ theme_override_font_sizes/normal_font_size = 150
 bbcode_enabled = true
 text = "[center]Hot"
 fit_content = true
+scroll_active = false
 
 [node name="AnswerBox" type="TextEdit" parent="CanvasLayer/TextVBox/VBoxContainer"]
 custom_minimum_size = Vector2(0, 250)
