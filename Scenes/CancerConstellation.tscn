@@ -46,9 +46,9 @@ script = ExtResource("1_mynxh")
 [node name="DragProgressBarRoot" parent="DragParent" instance=ExtResource("4_u88qu")]
 modulate = Color(1, 1, 1, 0.301961)
 layout_mode = 0
-offset_left = 400.0
+offset_left = 404.0
 offset_top = 160.0
-offset_right = 660.0
+offset_right = 664.0
 offset_bottom = 187.0
 rotation = 0.858851
 scale = Vector2(0.8, 0.8)
@@ -66,9 +66,9 @@ scale = Vector2(0.8, 0.8)
 [node name="DragProgressBarRoot3" parent="DragParent" instance=ExtResource("4_u88qu")]
 modulate = Color(1, 1, 1, 0.27451)
 layout_mode = 0
-offset_left = 526.0
+offset_left = 525.0
 offset_top = 315.0
-offset_right = 806.0
+offset_right = 805.0
 offset_bottom = 342.0
 rotation = -0.49156
 scale = Vector2(0.8, 0.8)
@@ -76,9 +76,9 @@ scale = Vector2(0.8, 0.8)
 [node name="DragProgressBarRoot4" parent="DragParent" instance=ExtResource("4_u88qu")]
 modulate = Color(1, 1, 1, 0.27451)
 layout_mode = 0
-offset_left = 542.0
+offset_left = 543.0
 offset_top = 327.0
-offset_right = 802.0
+offset_right = 803.0
 offset_bottom = 354.0
 rotation = 1.6885
 scale = Vector2(0.8, 0.8)
@@ -140,5 +140,3 @@ offset_top = 486.0
 offset_right = 504.0
 offset_bottom = 509.0
 text = "text"
-
-[connection signal="ConstellationCompletion" from="DragParent" to="NumberParent" method="DisplayNumbers"]

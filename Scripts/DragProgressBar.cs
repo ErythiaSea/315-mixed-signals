@@ -197,6 +197,7 @@ public partial class DragProgressBar : ProgressBar
         DragProgressBar targetBar = new DragProgressBar();
         DragProgressBar currentBarIndex;
         int fm = 0;
+        int targetFM = 0;
         float bestDot = 0;
 
         for (int i = 0; i < sceneBars.Count; i++)
@@ -212,11 +213,13 @@ public partial class DragProgressBar : ProgressBar
                     //gets the bar direction based on how close the start of the bar is to the side closet to this bar
                     if (currentBarIndex.startPos.DistanceTo(currentEnd) < currentBarIndex.endPos.DistanceTo(currentEnd))
                     {
+                        GD.Print("Fillmode 0");
                         barDir = (currentBarIndex.endPos - currentBarIndex.startPos);
                         fm = 0;
                     }
                     else
                     {
+                        GD.Print("Fillmode 1");
                         barDir = (currentBarIndex.startPos - currentBarIndex.endPos);
                         fm = 1;
                     }
@@ -229,13 +232,14 @@ public partial class DragProgressBar : ProgressBar
                     {
                         bestDot = dotProd;
                         targetBar = currentBarIndex;
+                        targetFM = fm;
                     }
                 }
             }
         }
 
         //update the current bar to the new bar and set it up for dragging
-        targetBar.DragSettings(fm);
+        targetBar.DragSettings(targetFM);
         currentBar = targetBar;
     }
 }
