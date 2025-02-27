@@ -10,7 +10,7 @@ public partial class Player : CharacterBody2D
 {
 	// todo: these are godot defaults. maybe change/export these?
 	[Export]
-	public float movementSpeed = 450.0f;
+	public float movementSpeed = 600.0f;
 	//public const float JumpVelocity = -400.0f;
 
 	// note: im assigning the playerMovementState to one of these states. however, you

@@ -55,15 +55,14 @@ public partial class WaveformGame : Node2D
         if (Input.IsActionPressed("right_pivot_ccw"))
         {
             playerWave.wavelength += wlChange * wlMult;
-            //playerWave.frequency += wlChange;
         }
         if (Input.IsActionPressed("right_pivot_cw"))
         {
             playerWave.wavelength -= wlChange * wlMult;
-            //playerWave.frequency -= wlChange;
         }
 
-        if (playerWave.amplitude < 0.0f) playerWave.amplitude = 0.0f;
+        playerWave.amplitude = Mathf.Clamp(playerWave.amplitude, 0.0f, 125.0f);
+        playerWave.wavelength = Mathf.Clamp(playerWave.wavelength, 5.0f, 50.0f);
         if (Input.IsActionJustPressed("interact"))
         {
             GD.Print("target w: ", targetWavelength, ", current: ", playerWave.wavelength);
