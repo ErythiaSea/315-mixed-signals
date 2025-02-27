@@ -11,7 +11,7 @@ public partial class Globals : Node
 	public int completeIndex =-1;
 	public int wordIndex = -1;
 
-	public string[] wordList = { "Hot", "Beansman" };
+	public string[] wordList = { "Hot", "Cute" };
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{

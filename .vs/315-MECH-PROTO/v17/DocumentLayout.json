@@ -11,20 +11,24 @@
       "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\minigames\\translation\\translationcanvasui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\minigames\\constellation\\scripts\\dragprogressbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\minigames\\constellation\\scripts\\dragprogressbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\minigames\\translation\\borderdraw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\minigames\\translation\\borderdraw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\minigames\\constellation\\scripts\\numberdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\minigames\\constellation\\scripts\\numberdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\minigames\\constellation\\scripts\\dragparent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\minigames\\constellation\\scripts\\dragparent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scripts\\shaderscript\\textureshader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\shaderscript\\textureshader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\minigames\\constellation\\scripts\\dragprogressbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\minigames\\constellation\\scripts\\dragprogressbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scenes\\minigames\\translation\\borderdraw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scenes\\minigames\\translation\\borderdraw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|c:\\users\\2200878\\github repos\\315-mech-proto\\scripts\\shaderscript\\textureshader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{488633B7-5745-428F-8EBB-2E95FBD8C570}|315-mech-proto.csproj|solutionrelative:scripts\\shaderscript\\textureshader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -55,28 +59,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "NumberDisplay.cs",
+              "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\Minigames\\Constellation\\Scripts\\NumberDisplay.cs",
+              "RelativeDocumentMoniker": "Scenes\\Minigames\\Constellation\\Scripts\\NumberDisplay.cs",
+              "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\Minigames\\Constellation\\Scripts\\NumberDisplay.cs",
+              "RelativeToolTip": "Scenes\\Minigames\\Constellation\\Scripts\\NumberDisplay.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T15:23:44.175Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "DragParent.cs",
               "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\Minigames\\Constellation\\Scripts\\DragParent.cs",
               "RelativeDocumentMoniker": "Scenes\\Minigames\\Constellation\\Scripts\\DragParent.cs",
               "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\Minigames\\Constellation\\Scripts\\DragParent.cs",
               "RelativeToolTip": "Scenes\\Minigames\\Constellation\\Scripts\\DragParent.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T14:45:18.484Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-27T14:45:18.484Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "DragProgressBar.cs",
               "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\Minigames\\Constellation\\Scripts\\DragProgressBar.cs",
               "RelativeDocumentMoniker": "Scenes\\Minigames\\Constellation\\Scripts\\DragProgressBar.cs",
               "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\Minigames\\Constellation\\Scripts\\DragProgressBar.cs",
               "RelativeToolTip": "Scenes\\Minigames\\Constellation\\Scripts\\DragProgressBar.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T14:45:16.167Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-27T14:45:16.167Z"
             },
             {
               "$type": "Document",
@@ -93,13 +107,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "BorderDraw.cs",
               "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\Minigames\\Translation\\BorderDraw.cs",
               "RelativeDocumentMoniker": "Scenes\\Minigames\\Translation\\BorderDraw.cs",
               "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\Minigames\\Translation\\BorderDraw.cs",
               "RelativeToolTip": "Scenes\\Minigames\\Translation\\BorderDraw.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-27T14:24:50.404Z",
               "EditorCaption": ""
@@ -112,14 +126,14 @@
               "RelativeDocumentMoniker": "Scenes\\Minigames\\Translation\\TranslationCanvasUI.cs",
               "ToolTip": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scenes\\Minigames\\Translation\\TranslationCanvasUI.cs",
               "RelativeToolTip": "Scenes\\Minigames\\Translation\\TranslationCanvasUI.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAgwDoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-27T14:24:09.548Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "TextureShader.cs",
               "DocumentMoniker": "C:\\Users\\2200878\\Github Repos\\315-mech-proto\\Scripts\\ShaderScript\\TextureShader.cs",
               "RelativeDocumentMoniker": "Scripts\\ShaderScript\\TextureShader.cs",
@@ -127,8 +141,7 @@
               "RelativeToolTip": "Scripts\\ShaderScript\\TextureShader.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T12:12:39.739Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-13T12:12:39.739Z"
             }
           ]
         },

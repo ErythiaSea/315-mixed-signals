@@ -75,7 +75,7 @@ public partial class TranslationCanvasUI : CanvasLayer
             messageBox.Text = ("[center] " + cWord);
 
 			HintsUpdate(cWord);
-			cipherDisplay.AppendText("[center] "+ globalScript.cipherKey.ToString());
+			cipherDisplay.AppendText("[center] "+ (-globalScript.cipherKey).ToString());
         }
         else
         {
