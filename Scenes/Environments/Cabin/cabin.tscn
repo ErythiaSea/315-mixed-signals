@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=15 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Texture2D" uid="uid://bwiibe8j7vfgh" path="res://Scenes/Environments/Cabin/room_base.png" id="1_ppr70"]
+[ext_resource type="Script" path="res://Scenes/Environments/Cabin/Cabin.cs" id="1_xpxd5"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
 [ext_resource type="Script" path="res://Scenes/Environments/Objects/InteractBox.cs" id="4_r0utk"]
 [ext_resource type="PackedScene" uid="uid://cqy8krri14xxv" path="res://Scenes/Minigames/Transpond/transpondscreen.tscn" id="5_5jqjy"]
@@ -27,6 +28,7 @@ size = Vector2(291, 55)
 font_size = 32
 
 [node name="Cabin" type="Node2D"]
+script = ExtResource("1_xpxd5")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -72,6 +74,7 @@ position = Vector2(930, 605)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 scene = ExtResource("5_pvf5p")
+requiredStage = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
 position = Vector2(425, 409)
@@ -83,6 +86,7 @@ collision_layer = 4
 script = ExtResource("4_r0utk")
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
+requiredStage = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
 shape = SubResource("RectangleShape2D_lvk1a")

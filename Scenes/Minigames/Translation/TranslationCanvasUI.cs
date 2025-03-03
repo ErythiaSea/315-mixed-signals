@@ -53,12 +53,13 @@ public partial class TranslationCanvasUI : CanvasLayer
 	{
 		string answer = answerBox.Text.StripEdges();
 	
-		if (globalScript.wordList[globalScript.wordIndex].NocasecmpTo(answer) == 0)
+		if (globalScript.wordList[globalScript.gameState.day].NocasecmpTo(answer) == 0)
 		{
 			//POLISH IDEA: fade celestial text away and fade in the new word
 			messageBox.AddThemeFontOverride("normal_font", englishFont);
-			messageBox.Text = ("[center] " + globalScript.wordList[globalScript.wordIndex]);
-			globalScript.completeIndex++;
+			messageBox.Text = ("[center] " + globalScript.wordList[globalScript.gameState.day]);
+			globalScript.gameState.stage = GAMESTAGE.END;
+			globalScript.isCurrentWordDone = true;
             winInd.Visible = true;
         }
 		else
@@ -68,10 +69,10 @@ public partial class TranslationCanvasUI : CanvasLayer
 	}
 	private void TextInitalisation()
 	{
-		if (globalScript.wordIndex != -1 && globalScript.wordIndex != globalScript.completeIndex)
+		if (!globalScript.isCurrentWordDone)
         {
 			GD.Print("CIPHER");
-			string cWord = CipherWord(globalScript.wordList[globalScript.wordIndex]);
+			string cWord = CipherWord(globalScript.wordList[globalScript.gameState.day]);
             messageBox.Text = ("[center] " + cWord);
 
 			HintsUpdate(cWord);

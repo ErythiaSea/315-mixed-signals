@@ -12,9 +12,13 @@ public partial class TranspondScreen : Node2D
     double exitTimer = 0;
     bool fade = false; float fadeTime = 0.0f;
 
+    Globals globalScript;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        globalScript = GetTree().Root.GetChild(1) as Globals;
+
         radiotower = GetNode<Radiotower>("radiotowerRoot");
         waveform = GetNode<WaveformGame>("waveformRoot");
         leftBox = GetNode<Sprite2D>("LeftBox");
@@ -53,6 +57,7 @@ public partial class TranspondScreen : Node2D
             exitTimer += delta;
             if (exitTimer > 1)
             {
+                globalScript.gameState.stage = GAMESTAGE.CONSTELLATION;
                 Close();
             }
         }

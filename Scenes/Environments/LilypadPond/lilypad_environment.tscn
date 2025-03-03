@@ -74,6 +74,7 @@ texture = ExtResource("3_n7la6")
 position = Vector2(-916, -732)
 scene = ExtResource("6_pkpgb")
 disablePlayerCam = true
+requiredStage = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TelescopeBox"]
 position = Vector2(-27, 0)
@@ -83,6 +84,7 @@ shape = SubResource("RectangleShape2D_mkpum")
 position = Vector2(-2878, 591)
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
+requiredStage = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
 position = Vector2(-27, 0)
@@ -245,6 +247,7 @@ shape = SubResource("RectangleShape2D_pm7kl")
 [node name="LadderInteract" parent="." instance=ExtResource("4_u2itd")]
 position = Vector2(-733, 560)
 loadInCurrent = false
+requiredStage = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderInteract"]
 shape = SubResource("CircleShape2D_qricm")

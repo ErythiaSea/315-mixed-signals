@@ -40,8 +40,10 @@ limit_bottom = 540
 
 [node name="MapBox" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(597, 361)
+monitorable = false
 scene = ExtResource("5_5vx5t")
 disablePlayerCam = true
+requiredStage = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapBox"]
 position = Vector2(289, 68)
@@ -51,6 +53,7 @@ shape = SubResource("RectangleShape2D_rkcsa")
 position = Vector2(-1192, 54)
 scenePath = "res://Scenes/Environments/Cabin/cabin.tscn"
 loadInCurrent = false
+requiredStage = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
 position = Vector2(168, 81)

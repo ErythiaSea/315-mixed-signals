@@ -80,9 +80,6 @@ public partial class WaveformGame : Node2D
             playerWave.waveColor = Colors.Green;
             gameActive = false;
 
-
-            //Update the new word for the translation mechanic
-            globalScript.wordIndex++;
     
             //newWavelength();
         }

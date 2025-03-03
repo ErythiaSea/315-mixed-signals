@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.ComponentModel.Design;
 
 public partial class InteractBox : Area2D
 {
@@ -17,11 +18,21 @@ public partial class InteractBox : Area2D
     public bool ladderArea = false;
     [Export]
     public bool disablePlayerCam = false;
+    [Export]
+    public GAMESTAGE requiredStage;
 
+    Globals globalScript;
+
+    public override void _Ready()
+    {
+        GD.Print("Ready Func");
+        globalScript = GetTree().Root.GetChild(1) as Globals;
+    }
     public virtual void Interact(Player plrRef)
     {
         // Not interactable if inactive
         if (!active) return;
+        if (!isCorrectStage()) return;
 
         if (ladderArea) {
             plrRef.autoWalk = true;
@@ -60,5 +71,14 @@ public partial class InteractBox : Area2D
                 GetTree().ChangeSceneToFile(scenePath);
             }
         }
+    }
+
+    private bool isCorrectStage()
+    {
+        if(requiredStage == GAMESTAGE.TRANSITION) return true;
+
+        if (requiredStage != globalScript.gameState.stage) return false;
+        else return true;
+        
     }
 }
