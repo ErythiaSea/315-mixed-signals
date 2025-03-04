@@ -48,7 +48,7 @@ public partial class Player : CharacterBody2D
             if (interactBox != null && interactBox.active)
             {
                 interactSprite.Visible = true;
-                if (Input.IsActionJustPressed("interact") && !isMovementLocked)
+                if (interactBox.isAutofire || (Input.IsActionJustPressed("interact") && !isMovementLocked))
                 {
                     interactBox.Interact(this);
 					//setMovementState(MovementStates.MOVE_LOCKED);

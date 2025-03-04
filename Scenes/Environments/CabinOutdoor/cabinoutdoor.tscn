@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnj8esqdgww0"]
+[gd_scene load_steps=7 format=3 uid="uid://cnj8esqdgww0"]
 
 [ext_resource type="Texture2D" uid="uid://bmij10s8rf8gm" path="res://Scenes/Environments/CabinOutdoor/base_outside.png" id="1_0a00e"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="1_7p3ip"]
 [ext_resource type="Texture2D" uid="uid://dalo0qcvvnfsa" path="res://Scenes/Environments/CabinOutdoor/vehicle_temp.png" id="2_s8gqw"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_elcve"]
-[ext_resource type="PackedScene" uid="uid://8utwt42ra3yd" path="res://Scenes/Minigames/Map/mapscreen.tscn" id="5_5vx5t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkcsa"]
 size = Vector2(337, 68)
@@ -40,7 +39,7 @@ limit_bottom = 540
 
 [node name="MapBox" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(597, 361)
-scene = ExtResource("5_5vx5t")
+scenePath = "res://Scenes/Minigames/Map/mapscreen.tscn"
 disablePlayerCam = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapBox"]

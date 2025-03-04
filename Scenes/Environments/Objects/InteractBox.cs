@@ -9,15 +9,18 @@ public partial class InteractBox : Area2D
 
     [ExportGroup("Scene Loading")]
     // the scene to load (for minigames)
-    [Export]
-    PackedScene scene;
+    //[Export]
+    //PackedScene scene;
 
     // temp for scenes that reference other scenes (usually through an object of this class)
     // to prevent circular dependencies. todo: make this suck less
     [Export(PropertyHint.File, "*.tscn")]
-    public string scenePath;
+    public string scenePath = null;
 
-    // swap to this scene or instanciate it in the current
+    // the above scenePath once loaded will be stored here
+    private PackedScene scene = null;
+
+    // swap to this scene (level transition) or instanciate it in the current
     [Export]
     bool loadInCurrent = true;
 
@@ -30,8 +33,17 @@ public partial class InteractBox : Area2D
     [ExportGroup("World")]
     // if the interact box should toggle the player's ladder state or not
     [Export]
-    public bool ladderArea = false;
+    public bool isLadderArea = false;
 
+    // if the interact box should become inactive after use
+    [Export]
+    bool isOneShot = false;
+
+    // if the interact box triggers immediately when entered
+    [Export]
+    public bool isAutofire = false;
+
+    [ExportSubgroup("Dialogue")]
     // the dialogue box to trigger
     [Export]
     Panel dialogueBox;
@@ -40,25 +52,54 @@ public partial class InteractBox : Area2D
     [Export]
     String startID;
 
+    // if the dialogue box should lock the player's movement
+    [Export]
+    bool lockPlayerMovement = false;
+
+    public override void _Ready()
+    {
+        if (scenePath != null)
+        {
+            ResourceLoader.LoadThreadedRequest(scenePath);
+        }
+    }
+
     public virtual void Interact(Player plrRef)
     {
         // Not interactable if inactive
         if (!active) return;
 
-        if (ladderArea) {
+        // Disable if oneshot
+        if (isOneShot) active = false;
+
+        // Handle player ladder stuff
+        if (isLadderArea) {
             plrRef.isAutoWalking = true;
             plrRef.autoWalkDestinationX = Position.X;
             plrRef.toggleLadder();
         }
-
+        
+        // Start dialogue box if one is linked
         if (dialogueBox != null) {
             dialogueBox.Call("start", startID);
-            plrRef.setMovementLock(true);
+            if (lockPlayerMovement) plrRef.setMovementLock(true);
             return;
         }
 
-        if (scene == null && scenePath == null) return;
+        // We can skip doing scene stuff if there isn't a scene to load
+        if (scenePath == null) return;
 
+        // This might halt the program if the scene hasn't loaded yet. We could possibly prevent
+        // this by calling this function during a scene transition (if one exists)
+        if (scene == null)
+        {
+            scene = (PackedScene)ResourceLoader.LoadThreadedGet(scenePath);
+        }
+
+        // Lock player movement (unlocking it falls on the minigame)
+        plrRef.setMovementLock(true);
+
+        // Instance the scene, adjust ZIndex so it renders on top
         if (loadInCurrent)
         {
             CanvasItem instancedGame = (CanvasItem)scene.Instantiate();
@@ -77,14 +118,7 @@ public partial class InteractBox : Area2D
         }
         else
         {
-            if (scene != null)
-            {
-                GetTree().ChangeSceneToPacked(scene);
-            }
-            else
-            {
-                GetTree().ChangeSceneToFile(scenePath);
-            }
+            GetTree().ChangeSceneToPacked(scene);
         }
     }
 }

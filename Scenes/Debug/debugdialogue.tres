@@ -16,7 +16,7 @@ nodes = {
 },
 "0_2": {
 "link": &"1_4",
-"offset": Vector2(-584.147, 304.364),
+"offset": Vector2(-580, -80),
 "start_id": "1"
 },
 "1_1": {
@@ -52,7 +52,7 @@ nodes = {
 },
 "1_3": {
 "dialogue": "wdym no",
-"offset": Vector2(120, -40),
+"offset": Vector2(140, -100),
 "options": {
 0: {
 "condition": {},
@@ -65,7 +65,7 @@ nodes = {
 },
 "1_4": {
 "dialogue": "this one has a different start id",
-"offset": Vector2(-300, 300),
+"offset": Vector2(-300, -80),
 "options": {
 0: {
 "condition": {},

@@ -1,13 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://uv8glpmpsx3i"]
+[gd_scene load_steps=17 format=3 uid="uid://uv8glpmpsx3i"]
 
 [ext_resource type="Texture2D" uid="uid://bbg01qevmw8wg" path="res://Scenes/Debug/debugroombg.png" id="1_po1od"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_6fwe3"]
 [ext_resource type="Script" path="res://Scenes/Environments/Objects/InteractBox.cs" id="4_5ocby"]
-[ext_resource type="PackedScene" uid="uid://bmbgph6qm47x0" path="res://Scenes/Environments/Cabin/cabin.tscn" id="4_33d60"]
-[ext_resource type="PackedScene" uid="uid://bc8lby5o1pvpv" path="res://Scenes/Minigames/Constellation/ConstellationDraw.tscn" id="6_4k6j8"]
-[ext_resource type="PackedScene" uid="uid://cqy8krri14xxv" path="res://Scenes/Minigames/Transpond/transpondscreen.tscn" id="7_1b374"]
-[ext_resource type="PackedScene" uid="uid://8utwt42ra3yd" path="res://Scenes/Minigames/Map/mapscreen.tscn" id="7_c22wr"]
-[ext_resource type="PackedScene" uid="uid://1ims8y73xe5o" path="res://Scenes/Minigames/Translation/Translation.tscn" id="8_3vkqy"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="9_55u1d"]
 [ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="9_myhsf"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="10_b8lvj"]
@@ -52,7 +47,7 @@ position = Vector2(604, 916)
 position = Vector2(251, 928)
 collision_layer = 4
 script = ExtResource("4_5ocby")
-scene = ExtResource("4_33d60")
+scenePath = "res://Scenes/Environments/Cabin/cabin.tscn"
 loadInCurrent = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CabinBox"]
@@ -63,7 +58,7 @@ shape = SubResource("RectangleShape2D_lp0rf")
 position = Vector2(804, 923)
 collision_layer = 4
 script = ExtResource("4_5ocby")
-scene = ExtResource("6_4k6j8")
+scenePath = "res://Scenes/Minigames/Constellation/ConstellationDraw.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConstellationBox"]
 position = Vector2(59, 4)
@@ -73,7 +68,7 @@ shape = SubResource("RectangleShape2D_7vl34")
 position = Vector2(584, 923)
 collision_layer = 4
 script = ExtResource("4_5ocby")
-scene = ExtResource("7_1b374")
+scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
 position = Vector2(20.5, 4)
@@ -83,7 +78,7 @@ shape = SubResource("RectangleShape2D_7vl34")
 position = Vector2(391, 926)
 collision_layer = 4
 script = ExtResource("4_5ocby")
-scene = ExtResource("7_c22wr")
+scenePath = "res://Scenes/Minigames/Map/mapscreen.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapBox"]
 position = Vector2(-11, 1)
@@ -93,20 +88,21 @@ shape = SubResource("RectangleShape2D_wjqh6")
 position = Vector2(1137, 926)
 collision_layer = 4
 script = ExtResource("4_5ocby")
-scene = ExtResource("8_3vkqy")
+scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslateBox"]
 position = Vector2(-11, 1)
 shape = SubResource("RectangleShape2D_wjqh6")
 
-[node name="DialogueBox" type="Area2D" parent="." node_paths=PackedStringArray("dialogueBox")]
+[node name="DialogueInteractBox" type="Area2D" parent="." node_paths=PackedStringArray("dialogueBox")]
 position = Vector2(1372, 926)
 collision_layer = 4
 script = ExtResource("4_5ocby")
+isOneShot = true
 dialogueBox = NodePath("../Control/DialogueBox")
 startID = "0"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInteractBox"]
 position = Vector2(-11, 1)
 shape = SubResource("RectangleShape2D_wjqh6")
 

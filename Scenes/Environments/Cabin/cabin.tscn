@@ -1,10 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=12 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Texture2D" uid="uid://bwiibe8j7vfgh" path="res://Scenes/Environments/Cabin/room_base.png" id="1_ppr70"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
 [ext_resource type="Script" path="res://Scenes/Environments/Objects/InteractBox.cs" id="4_r0utk"]
-[ext_resource type="PackedScene" uid="uid://cqy8krri14xxv" path="res://Scenes/Minigames/Transpond/transpondscreen.tscn" id="5_5jqjy"]
-[ext_resource type="PackedScene" uid="uid://1ims8y73xe5o" path="res://Scenes/Minigames/Translation/Translation.tscn" id="5_pvf5p"]
 [ext_resource type="Texture2D" uid="uid://bedcsxhb5bdgm" path="res://Scenes/Environments/Objects/translationpaper.png" id="7_tqin0"]
 [ext_resource type="Texture2D" uid="uid://cc066shi2gixy" path="res://Scenes/Environments/Cabin/room_silohettes.png" id="8_fxgd2"]
 
@@ -61,7 +59,7 @@ shape = SubResource("RectangleShape2D_xvqo4")
 position = Vector2(851, 977)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-scene = ExtResource("5_5jqjy")
+scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
 position = Vector2(127, 13.5)
@@ -71,7 +69,7 @@ shape = SubResource("RectangleShape2D_0oee4")
 position = Vector2(930, 605)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-scene = ExtResource("5_pvf5p")
+scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
 position = Vector2(425, 409)

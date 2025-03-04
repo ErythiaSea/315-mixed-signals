@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dkjjkuqsupb4f"]
+[gd_scene load_steps=22 format=3 uid="uid://dkjjkuqsupb4f"]
 
 [ext_resource type="Texture2D" uid="uid://bkevc4rf8wjhe" path="res://Scenes/Environments/LilypadPond/lilypadenv_back.png" id="1_x6dd7"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_a0sm7"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://rttkrffqrw1g" path="res://Scenes/Environments/Objects/stair_control.tscn" id="3_6n8s2"]
 [ext_resource type="Texture2D" uid="uid://de45w11b26rfr" path="res://Scenes/Environments/LilypadPond/lilypadenv_cliffgrass.png" id="3_n7la6"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_u2itd"]
-[ext_resource type="PackedScene" uid="uid://bc8lby5o1pvpv" path="res://Scenes/Minigames/Constellation/ConstellationDraw.tscn" id="6_pkpgb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkpum"]
 size = Vector2(150, 20)
@@ -72,7 +71,7 @@ texture = ExtResource("3_n7la6")
 
 [node name="TelescopeBox" parent="." instance=ExtResource("4_u2itd")]
 position = Vector2(-916, -732)
-scene = ExtResource("6_pkpgb")
+scenePath = "res://Scenes/Minigames/Constellation/ConstellationDraw.tscn"
 disablePlayerCam = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TelescopeBox"]
