@@ -22,6 +22,7 @@ signal variable_changed(variable_name : String, value)
 ## The [DialogueBox] may hide based on the [member hide_on_dialogue_end] property.
 signal dialogue_ended
 
+var globalScript : Globals
 
 @export_group('Data')
 ## Contains the [param DialogueData] resource created using the Dialogue Nodes editor.

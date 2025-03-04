@@ -19,11 +19,9 @@ public partial class NumberDisplay : Control
 	private bool isDisplayed = false;
 	Godot.Collections.Array<Node> SceneLabels;
 
-	Globals globalScript;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		globalScript = GetTree().Root.GetChild(1) as Globals;
 		SceneLabels = this.GetChildren(false);
 
 		SetNumbersVisibility();
@@ -94,7 +92,7 @@ public partial class NumberDisplay : Control
 		GD.Print("Valid random numbers");
 
 		//updates global variable for cipher key in translation mechanic
-		globalScript.cipherKey = randNumArray.Sum();
+		Globals.Instance.cipherKey = randNumArray.Sum();
 		return randNumArray;
 		
     }

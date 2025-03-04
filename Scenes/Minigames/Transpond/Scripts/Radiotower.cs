@@ -131,7 +131,7 @@ public partial class Radiotower : Node2D
 	public void Close()
 	{
         Player plr = GetNode<Player>("../Player");
-		plr.setMovementState(MovementStates.FREE_MOVE);
+        plr.setMovementLock(false);
         QueueFree();
     }
 }

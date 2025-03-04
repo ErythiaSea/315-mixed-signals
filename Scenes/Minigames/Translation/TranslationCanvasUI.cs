@@ -24,13 +24,12 @@ public partial class TranslationCanvasUI : CanvasLayer
 
 	Globals globalScript;
 
-
     private string currentWord;
 	Godot.Collections.Array<Node> containerNodes;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        globalScript = GetTree().Root.GetChild(1) as Globals;
+		globalScript = Globals.Instance;
 
 		cipherDisplay.Clear();
         messageBox.Clear();

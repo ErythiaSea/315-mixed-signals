@@ -4,7 +4,7 @@ using static Godot.TextServer;
 
 // note: NONE is used for testing to see if none are set and cannot be used with bitwise ops!!
 [Flags]
-public enum MovementStates { NONE = 0, FREE_MOVE = 1, LADDER_MOVE = 2, MOVE_LOCKED = 4 };
+public enum MovementStates { NONE = 0, FREE_MOVE = 1, LADDER_MOVE = 2 };
 
 public partial class Player : CharacterBody2D
 {
@@ -13,13 +13,11 @@ public partial class Player : CharacterBody2D
 	public float movementSpeed = 600.0f;
 	//public const float JumpVelocity = -400.0f;
 
-	// note: im assigning the playerMovementState to one of these states. however, you
-	// could use this as flags with bitwise ops to have, say, LADDER_MOVE and MOVE_LOCKED
-	// both be true, so when you unlock movement you return to ladder movement
 	MovementStates playerMovementState = MovementStates.FREE_MOVE;
+	bool isMovementLocked = false;
 
 	// for moving the player in cutscenes (or centering on ladder)
-	public bool autoWalk = false; 
+	public bool isAutoWalking = false; 
 	public float autoWalkDestinationX = float.MinValue;
 
 	//public Vector2 moveTo = Vector2.Zero;
@@ -37,6 +35,8 @@ public partial class Player : CharacterBody2D
         playerSprite = GetNode<AnimatedSprite2D>("PlayerSprite");
 		interactSprite = GetNode<Sprite2D>("InteractSprite");
 		interactArea = GetNode<Area2D>("InteractArea");
+
+		Globals.Instance.DialogueClosed += OnDialogueClosedEvent;
     }
 
     public override void _Process(double delta)
@@ -48,7 +48,7 @@ public partial class Player : CharacterBody2D
             if (interactBox != null && interactBox.active)
             {
                 interactSprite.Visible = true;
-                if (Input.IsActionJustPressed("interact") && playerMovementState != MovementStates.MOVE_LOCKED)
+                if (Input.IsActionJustPressed("interact") && !isMovementLocked)
                 {
                     interactBox.Interact(this);
 					//setMovementState(MovementStates.MOVE_LOCKED);
@@ -72,8 +72,9 @@ public partial class Player : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
 	{
-		if (autoWalk) { autoMovement(delta); return; }
+		if (isAutoWalking) { autoMovement(delta); return; }
 
+		if (isMovementLocked) { return; }
 		if (playerMovementState == MovementStates.FREE_MOVE) standardMovement(delta);
 		else if (playerMovementState == MovementStates.LADDER_MOVE) ladderMovement(delta);
 	}
@@ -136,7 +137,7 @@ public partial class Player : CharacterBody2D
 		float dir = (Position.X - autoWalkDestinationX) > 0 ? -1 : 1;
 		Velocity = new Vector2(movementSpeed*dir, 0);
 		MoveAndSlide();
-		if (Mathf.Abs(Position.X - autoWalkDestinationX) < 5.0f) { GD.Print("done"); autoWalk = false; }
+		if (Mathf.Abs(Position.X - autoWalkDestinationX) < 5.0f) { GD.Print("done"); isAutoWalking = false; }
 	}
 
 	public void toggleLadder()
@@ -163,6 +164,13 @@ public partial class Player : CharacterBody2D
             SetCollisionMaskValue(4, true);
         }
 		playerMovementState = state;
+	}
+
+	public void setMovementLock(bool locked) { isMovementLocked = locked; }
+
+	public void OnDialogueClosedEvent()
+	{
+		isMovementLocked = false;
 	}
 }
 

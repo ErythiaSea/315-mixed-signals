@@ -46,26 +46,25 @@ public partial class InteractBox : Area2D
         if (!active) return;
 
         if (ladderArea) {
-            plrRef.autoWalk = true;
+            plrRef.isAutoWalking = true;
             plrRef.autoWalkDestinationX = Position.X;
             plrRef.toggleLadder();
         }
 
         if (dialogueBox != null) {
             dialogueBox.Call("start", startID);
+            plrRef.setMovementLock(true);
             return;
         }
 
         if (scene == null && scenePath == null) return;
 
-        plrRef.setMovementState(MovementStates.MOVE_LOCKED);
         if (loadInCurrent)
         {
             CanvasItem instancedGame = (CanvasItem)scene.Instantiate();
 
             GetParent().AddChild(instancedGame);
             instancedGame.ZIndex = 10;
-            plrRef.setMovementState(MovementStates.MOVE_LOCKED);
             if (disablePlayerCam)
             {
                 Camera2D playerCam = plrRef.GetNode<Camera2D>("Camera2D");

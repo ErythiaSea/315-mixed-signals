@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://8utwt42ra3yd" path="res://Scenes/Minigames/Map/mapscreen.tscn" id="7_c22wr"]
 [ext_resource type="PackedScene" uid="uid://1ims8y73xe5o" path="res://Scenes/Minigames/Translation/Translation.tscn" id="8_3vkqy"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="9_55u1d"]
-[ext_resource type="Theme" uid="uid://c7sdrp3ltdq24" path="res://addons/dialogue_nodes/themes/pixelart.theme" id="9_awddj"]
+[ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="9_myhsf"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="10_b8lvj"]
 [ext_resource type="Resource" uid="uid://wn1h5b8ptlga" path="res://Scenes/Debug/debugdialogue.tres" id="11_6wf3g"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="11_to0s1"]
@@ -194,7 +194,7 @@ offset_right = 350.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("9_awddj")
+theme = ExtResource("9_myhsf")
 script = ExtResource("9_55u1d")
 data = ExtResource("11_6wf3g")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_uocva"), SubResource("RichTextEffect_lglma"), SubResource("RichTextEffect_5dhl4")])
@@ -204,3 +204,5 @@ collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomCollision"]
 polygon = PackedVector2Array(109, 972, 1804, 970, 1806, 510, 1818, 510, 1818, 1048, 83, 1044, 81, 370, 102, 374)
+
+[connection signal="dialogue_ended" from="Control/DialogueBox" to="Player" method="OnDialogueClosedEvent"]
