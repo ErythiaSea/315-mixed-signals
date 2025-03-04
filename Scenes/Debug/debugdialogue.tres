@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://wn1h5b8ptlga"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_5br0n"]
+
+[resource]
+script = ExtResource("1_5br0n")
+starts = {
+"0": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-552.463, -429.169),
+"start_id": "0"
+},
+"1_1": {
+"dialogue": "dialogue holy crap",
+"offset": Vector2(-280, -420),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "yes"
+},
+1: {
+"condition": {},
+"link": &"1_3",
+"text": "no"
+}
+},
+"size": Vector2(300, 256),
+"speaker": "erg"
+},
+"1_2": {
+"dialogue": "you get me",
+"offset": Vector2(120, -400),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "erg"
+},
+"1_3": {
+"dialogue": "wdym no",
+"offset": Vector2(120, -40),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "erg"
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = ""

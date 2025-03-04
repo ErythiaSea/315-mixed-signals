@@ -3,20 +3,42 @@ using System;
 
 public partial class InteractBox : Area2D
 {
+    // whether the interact box can be used
+    [Export]
+    public bool active = true;
+
+    [ExportGroup("Scene Loading")]
+    // the scene to load (for minigames)
     [Export]
     PackedScene scene;
 
-    [Export(PropertyHint.File)]
+    // temp for scenes that reference other scenes (usually through an object of this class)
+    // to prevent circular dependencies. todo: make this suck less
+    [Export(PropertyHint.File, "*.tscn")]
     public string scenePath;
 
+    // swap to this scene or instanciate it in the current
     [Export]
     bool loadInCurrent = true;
-    [Export]
-    public bool active = true;
-    [Export]
-    public bool ladderArea = false;
+
+    // if the interact box should disable the player camera or not (so that minigames with
+    // their own camera correctly use that camera). todo: minigames as control nodes so they
+    // automatically center on screen
     [Export]
     public bool disablePlayerCam = false;
+
+    [ExportGroup("World")]
+    // if the interact box should toggle the player's ladder state or not
+    [Export]
+    public bool ladderArea = false;
+
+    // the dialogue box to trigger
+    [Export]
+    Panel dialogueBox;
+
+    // the start id for the dialogue
+    [Export]
+    String startID;
 
     public virtual void Interact(Player plrRef)
     {
@@ -27,6 +49,11 @@ public partial class InteractBox : Area2D
             plrRef.autoWalk = true;
             plrRef.autoWalkDestinationX = Position.X;
             plrRef.toggleLadder();
+        }
+
+        if (dialogueBox != null) {
+            dialogueBox.Call("start", startID);
+            return;
         }
 
         if (scene == null && scenePath == null) return;
