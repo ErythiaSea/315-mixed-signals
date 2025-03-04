@@ -153,10 +153,6 @@ public partial class Player : CharacterBody2D
         {
             SetCollisionMaskValue(2, true);
             SetCollisionMaskValue(4, false);
-
-			// enable player cam if we have one
-			Camera2D plrCam = GetNode<Camera2D>("Camera2D");
-			if (plrCam != null) { plrCam.Enabled = true; }
         }
         if (state == MovementStates.LADDER_MOVE)
 		{
@@ -166,7 +162,16 @@ public partial class Player : CharacterBody2D
 		playerMovementState = state;
 	}
 
-	public void setMovementLock(bool locked) { isMovementLocked = locked; }
+	public void setMovementLock(bool locked) 
+	{ 
+		isMovementLocked = locked;
+		if (!locked)
+		{
+            // enable player cam if we have one
+            Camera2D plrCam = GetNode<Camera2D>("Camera2D");
+            if (plrCam != null) { plrCam.Enabled = true; }
+        }
+	}
 
 	public void OnDialogueClosedEvent()
 	{
