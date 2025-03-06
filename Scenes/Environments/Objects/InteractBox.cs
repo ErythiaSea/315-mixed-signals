@@ -21,18 +21,22 @@ public partial class InteractBox : Area2D
     [Export]
     public GAMESTAGE requiredStage;
 
+    bool isLeft;
+
     Globals globalScript;
 
     public override void _Ready()
     {
         GD.Print("Ready Func");
         globalScript = GetTree().Root.GetChild(1) as Globals;
+
+        if (requiredStage == GAMESTAGE.TRANSITION) isLeft = GetNearestEdge();
     }
     public virtual void Interact(Player plrRef)
     {
         // Not interactable if inactive
         if (!active) return;
-        if (!isCorrectStage()) return;
+        if (!IsCorrectStage()) return;
 
         if (ladderArea) {
             plrRef.autoWalk = true;
@@ -73,12 +77,24 @@ public partial class InteractBox : Area2D
         }
     }
 
-    private bool isCorrectStage()
+    private bool IsCorrectStage()
     {
         if(requiredStage == GAMESTAGE.TRANSITION) return true;
 
         if (requiredStage != globalScript.gameState.stage) return false;
         else return true;
         
+    }
+
+    private bool GetNearestEdge()
+    {
+       if(GlobalPosition.X < GetViewportRect().Size.X / 2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
