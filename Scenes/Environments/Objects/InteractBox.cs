@@ -24,6 +24,14 @@ public partial class InteractBox : Area2D
     [Export]
     bool loadInCurrent = true;
 
+    // the spawn point ID that the player will load in at (if this is a level transition)
+    // if this is < 0 the player's default scene position will be used instead
+    [Export]
+    int spawnPoint = -1;
+
+    [Export]
+    bool spawnFacingLeft = false;
+
     // if the interact box should disable the player camera or not (so that minigames with
     // their own camera correctly use that camera). todo: minigames as control nodes so they
     // automatically center on screen
@@ -58,6 +66,8 @@ public partial class InteractBox : Area2D
 
     public override void _Ready()
     {
+        // possible todo: for things that will have a transition before getting the loaded file, we can
+        // move the load request to Interact() so that other levels aren't loaded in memory the whole time
         if (scenePath != null)
         {
             ResourceLoader.LoadThreadedRequest(scenePath);
@@ -76,13 +86,13 @@ public partial class InteractBox : Area2D
         if (isLadderArea) {
             plrRef.isAutoWalking = true;
             plrRef.autoWalkDestinationX = Position.X;
-            plrRef.toggleLadder();
+            plrRef.ToggleLadder();
         }
         
         // Start dialogue box if one is linked
         if (dialogueBox != null) {
             dialogueBox.Call("start", startID);
-            if (lockPlayerMovement) plrRef.setMovementLock(true);
+            if (lockPlayerMovement) plrRef.SetMovementLock(true);
             return;
         }
 
@@ -97,7 +107,7 @@ public partial class InteractBox : Area2D
         }
 
         // Lock player movement (unlocking it falls on the minigame)
-        plrRef.setMovementLock(true);
+        plrRef.SetMovementLock(true);
 
         // Instance the scene, adjust ZIndex so it renders on top
         if (loadInCurrent)
@@ -118,6 +128,8 @@ public partial class InteractBox : Area2D
         }
         else
         {
+            Globals.Instance.currentSpawnPoint = spawnPoint;
+            Globals.Instance.spawnFacingLeft = spawnFacingLeft;
             GetTree().ChangeSceneToPacked(scene);
         }
     }

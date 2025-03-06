@@ -72,7 +72,7 @@ public partial class TranspondScreen : Node2D
     public void Close()
     {
 		Player plr = GetNode<Player>("../Player");
-        plr.setMovementLock(false);
+        plr.SetMovementLock(false);
         QueueFree();
     }
 }

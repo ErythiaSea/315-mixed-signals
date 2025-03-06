@@ -55,7 +55,7 @@ public partial class BorderDraw : Control
         Player plr = GetNode<Player>("../Player");
         if (plr != null)
         {
-            plr.setMovementLock(false);
+            plr.SetMovementLock(false);
             QueueFree();
         }
     }

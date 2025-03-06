@@ -49,7 +49,7 @@ public partial class CameraMovement : Camera2D
         Player plr = parent.GetNode<Player>("../Player");
         if (plr != null)
         {
-            plr.setMovementLock(false);
+            plr.SetMovementLock(false);
             parent.QueueFree();
         }
     }

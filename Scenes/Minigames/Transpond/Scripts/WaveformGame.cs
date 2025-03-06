@@ -99,7 +99,7 @@ public partial class WaveformGame : Node2D
     void Close()
     {
 		Player plr = GetNode<Player>("../Player");
-        plr.setMovementLock(false);
+        plr.SetMovementLock(false);
         QueueFree();
     }
 }

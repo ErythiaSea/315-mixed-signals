@@ -82,6 +82,8 @@ shape = SubResource("RectangleShape2D_mkpum")
 position = Vector2(-2878, 591)
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
+spawnPoint = 1
+spawnFacingLeft = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
 position = Vector2(-27, 0)

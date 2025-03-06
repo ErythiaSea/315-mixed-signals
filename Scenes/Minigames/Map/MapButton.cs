@@ -6,6 +6,12 @@ public partial class MapButton : TextureButton
 	[Export]
 	PackedScene mapToLoad;
 
+	[Export]
+	int spawnPoint = -1;
+
+	[Export]
+	bool spawnFacingLeft = false;
+
 	float baseY;
 
 	// Called when the node enters the scene tree for the first time.
@@ -29,6 +35,8 @@ public partial class MapButton : TextureButton
 
     public void _OnPressed()
 	{
+		Globals.Instance.spawnFacingLeft = spawnFacingLeft;
+		Globals.Instance.currentSpawnPoint = spawnPoint;
         GetTree().ChangeSceneToPacked(mapToLoad);
     }
 }

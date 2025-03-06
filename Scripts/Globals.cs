@@ -14,6 +14,9 @@ public partial class Globals : Node
 
 	public string[] wordList = { "Hot", "Cute" };
 
+	public int currentSpawnPoint = -1;
+	public bool spawnFacingLeft = false;
+
 	// im trying something here. i may move this later - eryth
 	[Signal]
 	public delegate void DialogueClosedEventHandler();

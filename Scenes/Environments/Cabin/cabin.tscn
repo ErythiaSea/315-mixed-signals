@@ -81,6 +81,7 @@ collision_layer = 4
 script = ExtResource("4_r0utk")
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
+spawnPoint = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
 shape = SubResource("RectangleShape2D_lvk1a")
@@ -99,3 +100,8 @@ offset_right = 569.0
 offset_bottom = 1087.0
 text = "WASD - Move    Space - Interact    Up+Down Arrow - Debug"
 label_settings = SubResource("LabelSettings_272fe")
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="0" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1814, 864)

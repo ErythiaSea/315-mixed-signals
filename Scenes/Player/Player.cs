@@ -37,6 +37,16 @@ public partial class Player : CharacterBody2D
 		interactArea = GetNode<Area2D>("InteractArea");
 
 		Globals.Instance.DialogueClosed += OnDialogueClosedEvent;
+
+		// spawn point stuff if one is set
+		if (Globals.Instance.currentSpawnPoint >= 0) {
+			Node2D spawnLocation = GetNode<Node2D>("../SpawnPoints/" + Globals.Instance.currentSpawnPoint);
+			Position = spawnLocation.Position;
+
+			// clear spawn point info
+            Globals.Instance.currentSpawnPoint = -1;
+        }
+        playerSprite.FlipH = !(Globals.Instance.spawnFacingLeft);
     }
 
     public override void _Process(double delta)
@@ -72,14 +82,14 @@ public partial class Player : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
 	{
-		if (isAutoWalking) { autoMovement(delta); return; }
+		if (isAutoWalking) { AutoMovement(delta); return; }
 
 		if (isMovementLocked) { return; }
-		if (playerMovementState == MovementStates.FREE_MOVE) standardMovement(delta);
-		else if (playerMovementState == MovementStates.LADDER_MOVE) ladderMovement(delta);
+		if (playerMovementState == MovementStates.FREE_MOVE) StandardMovement(delta);
+		else if (playerMovementState == MovementStates.LADDER_MOVE) LadderMovement(delta);
 	}
 
-	private void standardMovement(double delta)
+	private void StandardMovement(double delta)
 	{
 		Vector2 velocity = Velocity;
 
@@ -112,7 +122,7 @@ public partial class Player : CharacterBody2D
 		MoveAndSlide();
 	}
 
-	private void ladderMovement(double delta)
+	private void LadderMovement(double delta)
 	{
 		GD.Print("trying ladder move");
 		Velocity = Vector2.Zero;
@@ -131,7 +141,7 @@ public partial class Player : CharacterBody2D
 		MoveAndCollide(velocity*(float)delta);
 	}
 
-	private void autoMovement(double delta)
+	private void AutoMovement(double delta)
 	{
 		// todo: eliminate redundant calculations? with a memory cost instead?
 		float dir = (Position.X - autoWalkDestinationX) > 0 ? -1 : 1;
@@ -139,14 +149,13 @@ public partial class Player : CharacterBody2D
 		MoveAndSlide();
 		if (Mathf.Abs(Position.X - autoWalkDestinationX) < 5.0f) { GD.Print("done"); isAutoWalking = false; }
 	}
-
-	public void toggleLadder()
+	public void ToggleLadder()
 	{
-		if (playerMovementState == MovementStates.FREE_MOVE) setMovementState(MovementStates.LADDER_MOVE);
-        else if (playerMovementState == MovementStates.LADDER_MOVE) setMovementState(MovementStates.FREE_MOVE);
+		if (playerMovementState == MovementStates.FREE_MOVE) SetMovementState(MovementStates.LADDER_MOVE);
+        else if (playerMovementState == MovementStates.LADDER_MOVE) SetMovementState(MovementStates.FREE_MOVE);
     }
 
-	public void setMovementState(MovementStates state)
+	public void SetMovementState(MovementStates state)
 	{
         // 2 = world, 4 = ladderbox
         if (state == MovementStates.FREE_MOVE)
@@ -162,7 +171,7 @@ public partial class Player : CharacterBody2D
 		playerMovementState = state;
 	}
 
-	public void setMovementLock(bool locked) 
+	public void SetMovementLock(bool locked) 
 	{ 
 		isMovementLocked = locked;
 		if (!locked)
@@ -172,6 +181,8 @@ public partial class Player : CharacterBody2D
             if (plrCam != null) { plrCam.Enabled = true; }
         }
 	}
+
+	//public void FlipSprite()
 
 	public void OnDialogueClosedEvent()
 	{
