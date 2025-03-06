@@ -14,8 +14,7 @@ public partial class Globals : Node
 
 	public string[] wordList = { "Hot", "Cute" };
 
-	public int currentSpawnPoint = -1;
-	public bool spawnFacingLeft = false;
+	public int currentSpawnID = -1;
 
 	// im trying something here. i may move this later - eryth
 	[Signal]

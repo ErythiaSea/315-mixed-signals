@@ -24,13 +24,10 @@ public partial class InteractBox : Area2D
     [Export]
     bool loadInCurrent = true;
 
-    // the spawn point ID that the player will load in at (if this is a level transition)
+    // the zero-indexed spawn point ID that the player will load in at (if this is a level transition)
     // if this is < 0 the player's default scene position will be used instead
     [Export]
     int spawnPoint = -1;
-
-    [Export]
-    bool spawnFacingLeft = false;
 
     // if the interact box should disable the player camera or not (so that minigames with
     // their own camera correctly use that camera). todo: minigames as control nodes so they
@@ -118,18 +115,12 @@ public partial class InteractBox : Area2D
             instancedGame.ZIndex = 10;
             if (disablePlayerCam)
             {
-                Camera2D playerCam = plrRef.GetNode<Camera2D>("Camera2D");
-                if (playerCam != null)
-                {
-                    GD.Print("we disablin");
-                    playerCam.Enabled = false;
-                }
+                plrRef.SetCameraEnabled(false);
             }
         }
         else
         {
-            Globals.Instance.currentSpawnPoint = spawnPoint;
-            Globals.Instance.spawnFacingLeft = spawnFacingLeft;
+            Globals.Instance.currentSpawnID = spawnPoint;
             GetTree().ChangeSceneToPacked(scene);
         }
     }

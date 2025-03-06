@@ -50,6 +50,7 @@ public partial class CameraMovement : Camera2D
         if (plr != null)
         {
             plr.SetMovementLock(false);
+            plr.SetCameraEnabled(true);
             parent.QueueFree();
         }
     }

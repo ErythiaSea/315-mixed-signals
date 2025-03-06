@@ -30,6 +30,7 @@ offset_right = 1135.0
 offset_bottom = 392.0
 texture_normal = ExtResource("3_7rbmu")
 mapToLoad = ExtResource("4_0s13x")
+spawnPoint = 0
 
 [node name="SaltButton" parent="." instance=ExtResource("2_8d1fn")]
 offset_left = -1211.0

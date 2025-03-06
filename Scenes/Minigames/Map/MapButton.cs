@@ -10,9 +10,6 @@ public partial class MapButton : TextureButton
 	int spawnPoint = -1;
 
 	[Export]
-	bool spawnFacingLeft = false;
-
-	[Export]
 	bool enabled = true;
 
 	AnimationPlayer animPlayer;
@@ -43,8 +40,7 @@ public partial class MapButton : TextureButton
 
     public void _OnPressed()
 	{
-		Globals.Instance.spawnFacingLeft = spawnFacingLeft;
-		Globals.Instance.currentSpawnPoint = spawnPoint;
+		Globals.Instance.currentSpawnID = spawnPoint;
         GetTree().ChangeSceneToPacked(mapToLoad);
     }
 }
