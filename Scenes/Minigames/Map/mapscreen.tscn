@@ -16,12 +16,12 @@ texture = ExtResource("1_xt3to")
 [node name="Camera2D" type="Camera2D" parent="Background"]
 
 [node name="FossilButton" parent="." instance=ExtResource("2_8d1fn")]
-self_modulate = Color(0.31, 0.31, 0.31, 1)
 offset_left = -891.0
 offset_top = -358.0
 offset_right = 271.0
 offset_bottom = 955.0
 disabled = true
+enabled = false
 
 [node name="PondButton" parent="." instance=ExtResource("2_8d1fn")]
 offset_left = -257.0
@@ -32,7 +32,6 @@ texture_normal = ExtResource("3_7rbmu")
 mapToLoad = ExtResource("4_0s13x")
 
 [node name="SaltButton" parent="." instance=ExtResource("2_8d1fn")]
-modulate = Color(0.23, 0.23, 0.23, 1)
 offset_left = -1211.0
 offset_top = -695.0
 offset_right = 199.0
@@ -40,3 +39,4 @@ offset_bottom = 432.0
 disabled = true
 texture_normal = ExtResource("5_cum4x")
 mapToLoad = ExtResource("4_0s13x")
+enabled = false

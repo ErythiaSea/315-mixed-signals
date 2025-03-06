@@ -12,13 +12,24 @@ public partial class MapButton : TextureButton
 	[Export]
 	bool spawnFacingLeft = false;
 
-	float baseY;
+	[Export]
+	bool enabled = true;
+
+	AnimationPlayer animPlayer;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		PivotOffset = new Vector2(Size.X / 2, Size.Y / 2);
         Scale = new Vector2(0.2f, 0.2f);
+
+		if (mapToLoad == null) enabled = false;
+		if (!enabled)
+		{
+			animPlayer.Stop();
+			SelfModulate = new Color(0.3f,0.3f,0.3f);
+        }
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

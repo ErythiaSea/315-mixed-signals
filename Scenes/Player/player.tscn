@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bo5umns4232lg"]
+[gd_scene load_steps=13 format=3 uid="uid://bo5umns4232lg"]
 
 [ext_resource type="Texture2D" uid="uid://bjdd6v0o5jsw1" path="res://Scenes/Player/player.png" id="1_27je4"]
 [ext_resource type="Script" path="res://Scenes/Player/Player.cs" id="1_fgmdt"]
@@ -40,6 +40,43 @@ animations = [{
 radius = 22.0
 height = 86.0
 
+[sub_resource type="Animation" id="Animation_utr4x"]
+resource_name = "InteractSpriteAnim"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -75), Vector2(0, -90), Vector2(0, -75)]
+}
+
+[sub_resource type="Animation" id="Animation_xrgn0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -75)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xqrr3"]
+_data = {
+"InteractSpriteAnim": SubResource("Animation_utr4x"),
+"RESET": SubResource("Animation_xrgn0")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ls88"]
 radius = 13.0384
 
@@ -60,6 +97,12 @@ shape = SubResource("CapsuleShape2D_3r0l5")
 visible = false
 position = Vector2(0, -75)
 texture = ExtResource("2_7y7g8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_xqrr3")
+}
+autoplay = "InteractSpriteAnim"
 
 [node name="InteractArea" type="Area2D" parent="."]
 collision_mask = 4
