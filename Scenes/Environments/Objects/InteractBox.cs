@@ -27,9 +27,6 @@ public partial class InteractBox : Area2D
     [Export]
     public GAMESTAGE requiredStage;
 
-    [Export(PropertyHint.File)]
-    public string scenePath;
-
     // temp for scenes that reference other scenes (usually through an object of this class)
     // to prevent circular dependencies. todo: make this suck less
     [Export(PropertyHint.File, "*.tscn")]
@@ -79,6 +76,8 @@ public partial class InteractBox : Area2D
     [Export]
     bool lockPlayerMovement = false;
 
+    float transitionTime = 0.0f;
+    bool isTransition = false;
     public override void _Ready()
     {
         // possible todo: for things that will have a transition before getting the loaded file, we can
@@ -88,36 +87,15 @@ public partial class InteractBox : Area2D
             ResourceLoader.LoadThreadedRequest(scenePath);
         }
     }
-
-    private bool IsCorrectStage()
+    public override void _Process(double delta)
     {
-        if (requiredStage == GAMESTAGE.TRANSITION) return true;
+        //base._Process(delta);
 
-        if (requiredStage != globalScript.gameState.stage) return false;
-        else return true;
-
-    }
-
-    private void InstanceTransition()
-    {
-        switch (transitionType)
+        if (isTransition)
         {
-            case TRANSITION.RIGHT:
-
-                break;
-            case TRANSITION.LEFT:
-
-                break;
-            case TRANSITION.TOP:
-
-                break;
-            case TRANSITION.BOTTOM:
-                break;
-
-
+            runningTransition(delta);
         }
     }
-
     public virtual void Interact(Player plrRef)
     {
         // Not interactable if inactive
@@ -168,8 +146,34 @@ public partial class InteractBox : Area2D
         }
         else
         {
+            isTransition = true;
+            plrRef.EmitSignal("Transition",(int)transitionType);
+        }
+    }
+
+    private bool IsCorrectStage()
+    {
+        if (requiredStage == GAMESTAGE.TRANSITION) return true;
+
+        if (requiredStage != Globals.Instance.gameState.stage) return false;
+        else return true;
+
+    }
+
+    private void runningTransition(double delta)
+    {
+        if(transitionTime > 3.0)
+        {
+            isTransition = false;
+            transitionTime = 0;
             Globals.Instance.currentSpawnID = spawnPoint;
             GetTree().ChangeSceneToPacked(scene);
         }
+        else
+        {
+            transitionTime += (float)delta;
+        }
+       
     }
+
 }

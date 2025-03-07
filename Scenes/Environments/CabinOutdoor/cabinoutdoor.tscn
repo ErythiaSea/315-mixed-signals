@@ -95,9 +95,9 @@ scale = Vector2(2.5, 2.5)
 
 [node name="MapBox" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(597, 361)
+requiredStage = 6
 scenePath = "res://Scenes/Minigames/Map/mapscreen.tscn"
 disablePlayerCam = true
-requiredStage = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapBox"]
 position = Vector2(289, 68)
@@ -105,10 +105,11 @@ shape = SubResource("RectangleShape2D_rkcsa")
 
 [node name="LevelTransition" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(-1192, 54)
+transitionType = 1
+requiredStage = 6
 scenePath = "res://Scenes/Environments/Cabin/cabin.tscn"
 loadInCurrent = false
 spawnPoint = 0
-requiredStage = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
 position = Vector2(168, 81)

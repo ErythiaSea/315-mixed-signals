@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1plhce8fq0gn"]
+[gd_scene load_steps=8 format=3 uid="uid://24enakva48q"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Objects/WipeTransition.cs" id="1_fjvfg"]
 [ext_resource type="Shader" path="res://Scenes/Environments/Objects/WipeTransition.gdshader" id="2_wu0cg"]
@@ -151,4 +151,3 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_ot2jp")
 }
-autoplay = "WipeToLeft"
