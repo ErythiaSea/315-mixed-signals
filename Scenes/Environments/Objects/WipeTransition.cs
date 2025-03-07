@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Runtime.InteropServices;
 
-public partial class WipeTransition : CanvasLayer
+public partial class WipeTransition : Control
 {
 	ColorRect transitionRect;
 	AnimationPlayer transitionPlayer;
@@ -23,7 +23,9 @@ public partial class WipeTransition : CanvasLayer
 		Smaterial = transitionRect.Material as ShaderMaterial;
         Smaterial.SetShaderParameter("fadeWidth", fadeWith);
 
-		if (nextTransition != TRANSITION.NONE) ReverseTransition();
+        Visible = false;
+
+        if (nextTransition != TRANSITION.NONE) ReverseTransition();
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

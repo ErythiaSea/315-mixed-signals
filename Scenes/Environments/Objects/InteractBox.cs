@@ -130,11 +130,13 @@ public partial class InteractBox : Area2D
         }
 
         // Lock player movement (unlocking it falls on the minigame)
-        plrRef.SetMovementLock(true);
+       // plrRef.SetMovementLock(true);
 
         // Instance the scene, adjust ZIndex so it renders on top
         if (loadInCurrent)
         {
+            plrRef.SetMovementLock(true);
+
             CanvasItem instancedGame = (CanvasItem)scene.Instantiate();
 
             GetParent().AddChild(instancedGame);
@@ -164,6 +166,7 @@ public partial class InteractBox : Area2D
     {
         if(transitionTime > 3.0)
         {
+            GD.Print("OIasuydfha9pdSUIFHAPdsiufh");
             isTransition = false;
             transitionTime = 0;
             Globals.Instance.currentSpawnID = spawnPoint;
