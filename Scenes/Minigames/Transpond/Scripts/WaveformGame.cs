@@ -15,13 +15,9 @@ public partial class WaveformGame : Node2D
 
     public bool gameActive = false;
 
-    Globals globalScript;
-
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        globalScript = GetTree().Root.GetChild(1) as Globals;
-        
         playerWave = GetNode<WaveRender>("playerwave");
         realWave = GetNode<WaveRender>("realwave");
         newWavelength();
@@ -100,7 +96,7 @@ public partial class WaveformGame : Node2D
     void Close()
     {
 		Player plr = GetNode<Player>("../Player");
-		plr.setMovementState(MovementStates.FREE_MOVE);
+        plr.SetMovementLock(false);
         QueueFree();
     }
 }

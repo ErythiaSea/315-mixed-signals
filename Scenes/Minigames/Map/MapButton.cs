@@ -6,17 +6,28 @@ public partial class MapButton : TextureButton
 	[Export]
 	PackedScene mapToLoad;
 
-	float baseY;
+	[Export]
+	int spawnPoint = -1;
+
+	[Export]
+	bool enabled = true;
+
+	AnimationPlayer animPlayer;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		if (mapToLoad == null)
+		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		PivotOffset = new Vector2(Size.X / 2, Size.Y / 2);
+        Scale = new Vector2(0.2f, 0.2f);
+
+		if (mapToLoad == null) enabled = false;
+		if (!enabled)
 		{
-			Disabled = true;
-		}
-		baseY = Position.Y;
-	}
+			animPlayer.Stop();
+			SelfModulate = new Color(0.3f,0.3f,0.3f);
+        }
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -29,6 +40,7 @@ public partial class MapButton : TextureButton
 
     public void _OnPressed()
 	{
+		Globals.Instance.currentSpawnID = spawnPoint;
         GetTree().ChangeSceneToPacked(mapToLoad);
     }
 }

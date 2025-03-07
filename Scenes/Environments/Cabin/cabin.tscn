@@ -1,13 +1,18 @@
 [gd_scene load_steps=15 format=3 uid="uid://bmbgph6qm47x0"]
 
+[ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_hvnuo"]
 [ext_resource type="Texture2D" uid="uid://bwiibe8j7vfgh" path="res://Scenes/Environments/Cabin/room_base.png" id="1_ppr70"]
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/Cabin.cs" id="1_xpxd5"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
+[ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_vrtq2"]
 [ext_resource type="Script" path="res://Scenes/Environments/Objects/InteractBox.cs" id="4_r0utk"]
-[ext_resource type="PackedScene" uid="uid://cqy8krri14xxv" path="res://Scenes/Minigames/Transpond/transpondscreen.tscn" id="5_5jqjy"]
-[ext_resource type="PackedScene" uid="uid://1ims8y73xe5o" path="res://Scenes/Minigames/Translation/Translation.tscn" id="5_pvf5p"]
 [ext_resource type="Texture2D" uid="uid://bedcsxhb5bdgm" path="res://Scenes/Environments/Objects/translationpaper.png" id="7_tqin0"]
 [ext_resource type="Texture2D" uid="uid://cc066shi2gixy" path="res://Scenes/Environments/Cabin/room_silohettes.png" id="8_fxgd2"]
+
+[sub_resource type="Resource" id="Resource_66r8t"]
+script = ExtResource("2_vrtq2")
+spawnPosition = Vector2(1814, 886)
+faceLeft = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82mfh"]
 size = Vector2(1936, 88.8125)
@@ -28,7 +33,9 @@ size = Vector2(291, 55)
 font_size = 32
 
 [node name="Cabin" type="Node2D"]
-script = ExtResource("1_xpxd5")
+script = ExtResource("1_hvnuo")
+spawnData = Array[Object]([SubResource("Resource_66r8t")])
+cameraEnabled = false
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -63,7 +70,7 @@ shape = SubResource("RectangleShape2D_xvqo4")
 position = Vector2(851, 977)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-scene = ExtResource("5_5jqjy")
+scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
 position = Vector2(127, 13.5)
@@ -73,7 +80,7 @@ shape = SubResource("RectangleShape2D_0oee4")
 position = Vector2(930, 605)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-scene = ExtResource("5_pvf5p")
+scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
 requiredStage = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
@@ -86,7 +93,7 @@ collision_layer = 4
 script = ExtResource("4_r0utk")
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
-requiredStage = 6
+spawnPoint = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
 shape = SubResource("RectangleShape2D_lvk1a")
@@ -105,3 +112,8 @@ offset_right = 569.0
 offset_bottom = 1087.0
 text = "WASD - Move    Space - Interact    Up+Down Arrow - Debug"
 label_settings = SubResource("LabelSettings_272fe")
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="0" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1813.45, 864)

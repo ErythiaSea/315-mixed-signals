@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dhkh1m7y82yi0"]
+
+[ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="1_55ob8"]
+
+[resource]
+resource_name = "SpawnData"
+script = ExtResource("1_55ob8")

@@ -4,29 +4,25 @@ using static Godot.TextServer;
 
 // note: NONE is used for testing to see if none are set and cannot be used with bitwise ops!!
 [Flags]
-public enum MovementStates { NONE = 0, FREE_MOVE = 1, LADDER_MOVE = 2, MOVE_LOCKED = 4 };
+public enum MovementStates { NONE = 0, FREE_MOVE = 1, LADDER_MOVE = 2 };
 
 public partial class Player : CharacterBody2D
 {
-	// todo: these are godot defaults. maybe change/export these?
 	[Export]
 	public float movementSpeed = 600.0f;
-	//public const float JumpVelocity = -400.0f;
 
-	// note: im assigning the playerMovementState to one of these states. however, you
-	// could use this as flags with bitwise ops to have, say, LADDER_MOVE and MOVE_LOCKED
-	// both be true, so when you unlock movement you return to ladder movement
 	MovementStates playerMovementState = MovementStates.FREE_MOVE;
+	bool isMovementLocked = false;
 
 	// for moving the player in cutscenes (or centering on ladder)
-	public bool autoWalk = false; 
+	public bool isAutoWalking = false; 
 	public float autoWalkDestinationX = float.MinValue;
-
-	//public Vector2 moveTo = Vector2.Zero;
 
 	AnimatedSprite2D playerSprite;
 	Sprite2D interactSprite;
 	Area2D interactArea;
+	Camera2D playerCamera;
+	Level thisLevel;
 
     public override void _Ready()
     {
@@ -37,6 +33,10 @@ public partial class Player : CharacterBody2D
         playerSprite = GetNode<AnimatedSprite2D>("PlayerSprite");
 		interactSprite = GetNode<Sprite2D>("InteractSprite");
 		interactArea = GetNode<Area2D>("InteractArea");
+        playerCamera = GetNode<Camera2D>("PlayerCamera");
+		thisLevel = GetParent<Level>();
+
+        Globals.Instance.DialogueClosed += OnDialogueClosedEvent;
     }
 
     public override void _Process(double delta)
@@ -48,7 +48,7 @@ public partial class Player : CharacterBody2D
             if (interactBox != null && interactBox.active)
             {
                 interactSprite.Visible = true;
-                if (Input.IsActionJustPressed("interact") && playerMovementState != MovementStates.MOVE_LOCKED)
+                if (interactBox.isAutofire || (Input.IsActionJustPressed("interact") && !isMovementLocked))
                 {
                     interactBox.Interact(this);
 					//setMovementState(MovementStates.MOVE_LOCKED);
@@ -72,13 +72,14 @@ public partial class Player : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
 	{
-		if (autoWalk) { autoMovement(delta); return; }
+		if (isAutoWalking) { AutoMovement(delta); return; }
 
-		if (playerMovementState == MovementStates.FREE_MOVE) standardMovement(delta);
-		else if (playerMovementState == MovementStates.LADDER_MOVE) ladderMovement(delta);
+		if (isMovementLocked) { return; }
+		if (playerMovementState == MovementStates.FREE_MOVE) StandardMovement(delta);
+		else if (playerMovementState == MovementStates.LADDER_MOVE) LadderMovement(delta);
 	}
 
-	private void standardMovement(double delta)
+	private void StandardMovement(double delta)
 	{
 		Vector2 velocity = Velocity;
 
@@ -87,12 +88,6 @@ public partial class Player : CharacterBody2D
 		{
 			velocity += GetGravity() * (float)delta;
 		}
-
-        // Handle Jump.
-        //if (Input.IsActionJustPressed("interact") && IsOnFloor())
-        //{
-        //	velocity.Y = JumpVelocity;
-        //}
 
         // Get the input direction and handle the movement/deceleration.
         //Vector2 direction = Input.GetVector("left_pivot_cw", "left_pivot_ccw", "up", "down");
@@ -111,7 +106,7 @@ public partial class Player : CharacterBody2D
 		MoveAndSlide();
 	}
 
-	private void ladderMovement(double delta)
+	private void LadderMovement(double delta)
 	{
 		GD.Print("trying ladder move");
 		Velocity = Vector2.Zero;
@@ -126,36 +121,30 @@ public partial class Player : CharacterBody2D
 			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, movementSpeed);
 		}
 
-		//Velocity = velocity;
 		MoveAndCollide(velocity*(float)delta);
 	}
 
-	private void autoMovement(double delta)
+	private void AutoMovement(double delta)
 	{
 		// todo: eliminate redundant calculations? with a memory cost instead?
 		float dir = (Position.X - autoWalkDestinationX) > 0 ? -1 : 1;
 		Velocity = new Vector2(movementSpeed*dir, 0);
 		MoveAndSlide();
-		if (Mathf.Abs(Position.X - autoWalkDestinationX) < 5.0f) { GD.Print("done"); autoWalk = false; }
+		if (Mathf.Abs(Position.X - autoWalkDestinationX) < 5.0f) { GD.Print("done"); isAutoWalking = false; }
 	}
-
-	public void toggleLadder()
+	public void ToggleLadder()
 	{
-		if (playerMovementState == MovementStates.FREE_MOVE) setMovementState(MovementStates.LADDER_MOVE);
-        else if (playerMovementState == MovementStates.LADDER_MOVE) setMovementState(MovementStates.FREE_MOVE);
+		if (playerMovementState == MovementStates.FREE_MOVE) SetMovementState(MovementStates.LADDER_MOVE);
+        else if (playerMovementState == MovementStates.LADDER_MOVE) SetMovementState(MovementStates.FREE_MOVE);
     }
 
-	public void setMovementState(MovementStates state)
+	public void SetMovementState(MovementStates state)
 	{
         // 2 = world, 4 = ladderbox
         if (state == MovementStates.FREE_MOVE)
         {
             SetCollisionMaskValue(2, true);
             SetCollisionMaskValue(4, false);
-
-			// enable player cam if we have one
-			Camera2D plrCam = GetNode<Camera2D>("Camera2D");
-			if (plrCam != null) { plrCam.Enabled = true; }
         }
         if (state == MovementStates.LADDER_MOVE)
 		{
@@ -163,6 +152,48 @@ public partial class Player : CharacterBody2D
             SetCollisionMaskValue(4, true);
         }
 		playerMovementState = state;
+	}
+
+	public void SetMovementLock(bool locked) 
+	{ 
+		isMovementLocked = locked;
+		SetCameraEnabled(!locked);
+	}
+
+	public void SetSpriteFlipH(bool flipH)
+	{
+		playerSprite.FlipH = flipH;
+	}
+
+	public void SetCameraLimits(int left, int top, int right, int bottom)
+	{
+		// if all limits are the same, the camera should be disabled
+		// in theory this should never be true, level script should prevent this
+		if (left == right && left == top && left == bottom)
+		{
+			playerCamera.Enabled = false;
+			return;
+		}
+
+		playerCamera.LimitBottom = bottom;
+		playerCamera.LimitLeft = left;
+		playerCamera.LimitTop = top;
+		playerCamera.LimitRight = right;
+	}
+
+    // camera can be disabled by anyone, but requires the level to have an active camera to be enabled
+    public void SetCameraEnabled(bool enabled)
+	{
+		if (!enabled || thisLevel.getCameraEnabled())
+		{
+			playerCamera.Enabled = enabled;
+		}
+	}
+
+	public void OnDialogueClosedEvent()
+	{
+		GD.Print("event got");
+		isMovementLocked = false;
 	}
 }
 

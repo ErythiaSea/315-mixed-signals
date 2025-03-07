@@ -1,10 +1,59 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnj8esqdgww0"]
+[gd_scene load_steps=14 format=3 uid="uid://cnj8esqdgww0"]
 
 [ext_resource type="Texture2D" uid="uid://bmij10s8rf8gm" path="res://Scenes/Environments/CabinOutdoor/base_outside.png" id="1_0a00e"]
+[ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_4weox"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="1_7p3ip"]
+[ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_nmgjp"]
 [ext_resource type="Texture2D" uid="uid://dalo0qcvvnfsa" path="res://Scenes/Environments/CabinOutdoor/vehicle_temp.png" id="2_s8gqw"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_elcve"]
-[ext_resource type="PackedScene" uid="uid://8utwt42ra3yd" path="res://Scenes/Minigames/Map/mapscreen.tscn" id="5_5vx5t"]
+
+[sub_resource type="Resource" id="Resource_igbtt"]
+script = ExtResource("2_nmgjp")
+spawnPosition = Vector2(-970, 40)
+faceLeft = false
+
+[sub_resource type="Resource" id="Resource_5o2kn"]
+script = ExtResource("2_nmgjp")
+spawnPosition = Vector2(882, 303)
+faceLeft = true
+
+[sub_resource type="Animation" id="Animation_akrgh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(924, 146)]
+}
+
+[sub_resource type="Animation" id="Animation_dldwd"]
+resource_name = "VehicleIdleAnimation"
+length = 0.33
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.165, 0.33),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(924, 151), Vector2(924, 141), Vector2(924, 151)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rgno3"]
+_data = {
+"RESET": SubResource("Animation_akrgh"),
+"VehicleIdleAnimation": SubResource("Animation_dldwd")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkcsa"]
 size = Vector2(337, 68)
@@ -13,35 +62,40 @@ size = Vector2(337, 68)
 size = Vector2(82, 34)
 
 [node name="cabinoutdoor" type="Node2D"]
+script = ExtResource("1_4weox")
+spawnData = Array[Object]([SubResource("Resource_igbtt"), SubResource("Resource_5o2kn")])
+leftLimit = -1404
+topLimit = -540
+rightLimit = 1404
+bottomLimit = 540
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_0a00e")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="LevelCollision" type="StaticBody2D" parent="."]
 collision_layer = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelCollision"]
 build_mode = 1
 polygon = PackedVector2Array(-1074, 154, -981, 156, -573, 467, 1404, 472, 1404, -187, 1421, -187, 1424, 570, -1072, 568, -1130, 570, -1136, -202, -1075, -204)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="VehicleSprite" type="Sprite2D" parent="."]
 position = Vector2(924, 146)
 texture = ExtResource("2_s8gqw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VehicleSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_rgno3")
+}
+autoplay = "VehicleIdleAnimation"
 
 [node name="Player" parent="." instance=ExtResource("1_7p3ip")]
 position = Vector2(-970, 29)
 scale = Vector2(2.5, 2.5)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-limit_left = -1404
-limit_top = -540
-limit_right = 1404
-limit_bottom = 540
-
 [node name="MapBox" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(597, 361)
-monitorable = false
-scene = ExtResource("5_5vx5t")
+scenePath = "res://Scenes/Minigames/Map/mapscreen.tscn"
 disablePlayerCam = true
 requiredStage = 6
 
@@ -53,8 +107,19 @@ shape = SubResource("RectangleShape2D_rkcsa")
 position = Vector2(-1192, 54)
 scenePath = "res://Scenes/Environments/Cabin/cabin.tscn"
 loadInCurrent = false
+spawnPoint = 0
 requiredStage = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
 position = Vector2(168, 81)
 shape = SubResource("RectangleShape2D_m3gji")
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="0" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-970, 34)
+gizmo_extents = 16.9
+
+[node name="1" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(882, 303)
+gizmo_extents = 16.9

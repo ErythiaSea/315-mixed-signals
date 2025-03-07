@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.ComponentModel.Design;
 
+
 public enum TRANSITION
 {
    LEFT,
@@ -12,121 +13,163 @@ public enum TRANSITION
 }
 public partial class InteractBox : Area2D
 {
+    // whether the interact box can be used
     [Export]
-    PackedScene scene;
+    public bool active = true;
 
+    [ExportGroup("Scene Loading")]
+    // the scene to load (for minigames)
+    //[Export]
+    //PackedScene scene;
     [Export]
     public TRANSITION transitionType;
+
+    [Export]
+    public GAMESTAGE requiredStage;
 
     [Export(PropertyHint.File)]
     public string scenePath;
 
+    // temp for scenes that reference other scenes (usually through an object of this class)
+    // to prevent circular dependencies. todo: make this suck less
+    [Export(PropertyHint.File, "*.tscn")]
+    public string scenePath = null;
+
+    // the above scenePath once loaded will be stored here
+    private PackedScene scene = null;
+
+    // swap to this scene (level transition) or instanciate it in the current
     [Export]
     bool loadInCurrent = true;
+
+    // the zero-indexed spawn point ID that the player will load in at (if this is a level transition)
+    // if this is < 0 the player's default scene position will be used instead
     [Export]
-    public bool active = true;
-    [Export]
-    public bool ladderArea = false;
+    int spawnPoint = -1;
+
+    // if the interact box should disable the player camera or not (so that minigames with
+    // their own camera correctly use that camera). todo: minigames as control nodes so they
+    // automatically center on screen
     [Export]
     public bool disablePlayerCam = false;
+
+    [ExportGroup("World")]
+    // if the interact box should toggle the player's ladder state or not
     [Export]
-    public GAMESTAGE requiredStage;
+    public bool isLadderArea = false;
 
-    bool isLeft;
+    // if the interact box should become inactive after use
+    [Export]
+    bool isOneShot = false;
 
-    Globals globalScript;
+    // if the interact box triggers immediately when entered
+    [Export]
+    public bool isAutofire = false;
+
+    [ExportSubgroup("Dialogue")]
+    // the dialogue box to trigger
+    [Export]
+    Panel dialogueBox;
+
+    // the start id for the dialogue
+    [Export]
+    String startID;
+
+    // if the dialogue box should lock the player's movement
+    [Export]
+    bool lockPlayerMovement = false;
 
     public override void _Ready()
     {
-    
-        globalScript = GetTree().Root.GetChild(1) as Globals;
+        // possible todo: for things that will have a transition before getting the loaded file, we can
+        // move the load request to Interact() so that other levels aren't loaded in memory the whole time
+        if (scenePath != null)
+        {
+            ResourceLoader.LoadThreadedRequest(scenePath);
+        }
+    }
+
+    private bool IsCorrectStage()
+    {
+        if (requiredStage == GAMESTAGE.TRANSITION) return true;
+
+        if (requiredStage != globalScript.gameState.stage) return false;
+        else return true;
 
     }
+
+    private void InstanceTransition()
+    {
+        switch (transitionType)
+        {
+            case TRANSITION.RIGHT:
+
+                break;
+            case TRANSITION.LEFT:
+
+                break;
+            case TRANSITION.TOP:
+
+                break;
+            case TRANSITION.BOTTOM:
+                break;
+
+
+        }
+    }
+
     public virtual void Interact(Player plrRef)
     {
         // Not interactable if inactive
         if (!active) return;
         if (!IsCorrectStage()) return;
 
-        if (ladderArea) {
-            plrRef.autoWalk = true;
+        // Disable if oneshot
+        if (isOneShot) active = false;
+
+        // Handle player ladder stuff
+        if (isLadderArea) {
+            plrRef.isAutoWalking = true;
             plrRef.autoWalkDestinationX = Position.X;
-            plrRef.toggleLadder();
+            plrRef.ToggleLadder();
+        }
+        
+        // Start dialogue box if one is linked
+        if (dialogueBox != null) {
+            dialogueBox.Call("start", startID);
+            if (lockPlayerMovement) plrRef.SetMovementLock(true);
+            return;
         }
 
-        if (scene == null && scenePath == null) return;
+        // We can skip doing scene stuff if there isn't a scene to load
+        if (scenePath == null) return;
 
-        plrRef.setMovementState(MovementStates.MOVE_LOCKED);
+        // This might halt the program if the scene hasn't loaded yet. We could possibly prevent
+        // this by calling this function during a scene transition (if one exists)
+        if (scene == null)
+        {
+            scene = (PackedScene)ResourceLoader.LoadThreadedGet(scenePath);
+        }
+
+        // Lock player movement (unlocking it falls on the minigame)
+        plrRef.SetMovementLock(true);
+
+        // Instance the scene, adjust ZIndex so it renders on top
         if (loadInCurrent)
         {
             CanvasItem instancedGame = (CanvasItem)scene.Instantiate();
 
             GetParent().AddChild(instancedGame);
             instancedGame.ZIndex = 10;
-            plrRef.setMovementState(MovementStates.MOVE_LOCKED);
             if (disablePlayerCam)
             {
-                Camera2D playerCam = plrRef.GetNode<Camera2D>("Camera2D");
-                if (playerCam != null)
-                {
-                    GD.Print("we disablin");
-                    playerCam.Enabled = false;
-                }
+                plrRef.SetCameraEnabled(false);
             }
         }
         else
         {
-            if (scene != null)
-            {
-                GetTree().ChangeSceneToPacked(scene);
-                InstanceTransition();
-            }
-            else
-            {
-                GetTree().ChangeSceneToFile(scenePath);
-                InstanceTransition();
-            }
-        }
-    }
-
-    private bool IsCorrectStage()
-    {
-        if(requiredStage == GAMESTAGE.TRANSITION) return true;
-
-        if (requiredStage != globalScript.gameState.stage) return false;
-        else return true;
-        
-    }
-
-    private void InstanceTransition()
-    {
-            switch (transitionType)
-            {
-                case TRANSITION.RIGHT:
-                
-                    break;
-                case TRANSITION.LEFT:
-
-                    break;
-                case TRANSITION.TOP:
-
-                    break;
-                case TRANSITION.BOTTOM:
-                    break;
-
-
-            }
-    }
-    //redundant 
-    private bool GetNearestEdge()
-    {
-       if(GlobalPosition.X < GetViewportRect().Size.X / 2)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
+            Globals.Instance.currentSpawnID = spawnPoint;
+            GetTree().ChangeSceneToPacked(scene);
         }
     }
 }

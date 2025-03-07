@@ -13,7 +13,12 @@ config_version=5
 config/name="315-mech-proto"
 run/main_scene="res://Scenes/Environments/Cabin/cabin.tscn"
 config/features=PackedStringArray("4.3", "C#", "Mobile")
+boot_splash/bg_color=Color(0.15, 0.0075, 0, 1)
+boot_splash/image="res://Scenes/Loading/BloodBoxLogo_Splash.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=1750
 
 [autoload]
 
@@ -43,7 +48,7 @@ export/convert_text_resources_to_binary=false
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/dialogue_nodes/plugin.cfg")
 
 [input]
 
