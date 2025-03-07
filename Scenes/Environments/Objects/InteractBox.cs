@@ -2,10 +2,21 @@ using Godot;
 using System;
 using System.ComponentModel.Design;
 
+public enum TRANSITION
+{
+   LEFT,
+   RIGHT,
+   TOP,
+   BOTTOM,
+   NONE
+}
 public partial class InteractBox : Area2D
 {
     [Export]
     PackedScene scene;
+
+    [Export]
+    public TRANSITION transitionType;
 
     [Export(PropertyHint.File)]
     public string scenePath;
@@ -27,10 +38,9 @@ public partial class InteractBox : Area2D
 
     public override void _Ready()
     {
-        GD.Print("Ready Func");
+    
         globalScript = GetTree().Root.GetChild(1) as Globals;
 
-        if (requiredStage == GAMESTAGE.TRANSITION) isLeft = GetNearestEdge();
     }
     public virtual void Interact(Player plrRef)
     {
@@ -69,10 +79,12 @@ public partial class InteractBox : Area2D
             if (scene != null)
             {
                 GetTree().ChangeSceneToPacked(scene);
+                InstanceTransition();
             }
             else
             {
                 GetTree().ChangeSceneToFile(scenePath);
+                InstanceTransition();
             }
         }
     }
@@ -86,6 +98,26 @@ public partial class InteractBox : Area2D
         
     }
 
+    private void InstanceTransition()
+    {
+            switch (transitionType)
+            {
+                case TRANSITION.RIGHT:
+                
+                    break;
+                case TRANSITION.LEFT:
+
+                    break;
+                case TRANSITION.TOP:
+
+                    break;
+                case TRANSITION.BOTTOM:
+                    break;
+
+
+            }
+    }
+    //redundant 
     private bool GetNearestEdge()
     {
        if(GlobalPosition.X < GetViewportRect().Size.X / 2)
