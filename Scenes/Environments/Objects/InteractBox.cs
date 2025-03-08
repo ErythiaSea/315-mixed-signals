@@ -103,16 +103,17 @@ public partial class InteractBox : Area2D
             scene = (PackedScene)ResourceLoader.LoadThreadedGet(scenePath);
         }
 
-        // Lock player movement (unlocking it falls on the minigame)
-        plrRef.SetMovementLock(true);
 
         // Instance the scene, adjust ZIndex so it renders on top
         if (loadInCurrent)
         {
-            CanvasItem instancedGame = (CanvasItem)scene.Instantiate();
+			// Lock player movement (unlocking it falls on the minigame)
+			plrRef.SetMovementLock(true);
+			
+            CanvasLayer instancedGame = (CanvasLayer)scene.Instantiate();
 
             GetParent().AddChild(instancedGame);
-            instancedGame.ZIndex = 10;
+            instancedGame.Layer = 2;
             if (disablePlayerCam)
             {
                 plrRef.SetCameraEnabled(false);

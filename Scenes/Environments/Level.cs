@@ -33,6 +33,9 @@ public partial class Level : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		// don't execute this in editor
+		if (Engine.IsEditorHint()) return;
+
 		player = GetNode<Player>("Player");
 
 		int spawnID = Globals.Instance.currentSpawnID;

@@ -15,11 +15,13 @@ shader_parameter/circle_b = null
 [sub_resource type="LabelSettings" id="LabelSettings_03dfn"]
 font_size = 32
 
-[node name="ConstellationDraw" type="Node2D"]
+[node name="ConstellationDraw" type="CanvasLayer"]
+follow_viewport_enabled = true
 
 [node name="eeek" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 script = ExtResource("1_7uyas")
+cameraSpeed = 1.2
 
 [node name="Parallax" type="Node2D" parent="eeek"]
 z_index = -2
@@ -68,3 +70,9 @@ label_settings = SubResource("LabelSettings_03dfn")
 z_index = -1
 position = Vector2(376, -16)
 scale = Vector2(0.7, 0.7)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

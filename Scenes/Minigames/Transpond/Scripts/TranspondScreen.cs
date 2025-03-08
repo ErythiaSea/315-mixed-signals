@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class TranspondScreen : Node2D
+public partial class TranspondScreen : CanvasLayer  
 {
     Radiotower radiotower;
     WaveformGame waveform;

@@ -96,7 +96,6 @@ scale = Vector2(2.5, 2.5)
 [node name="MapBox" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(597, 361)
 scenePath = "res://Scenes/Minigames/Map/mapscreen.tscn"
-disablePlayerCam = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapBox"]
 position = Vector2(289, 68)

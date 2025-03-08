@@ -27,6 +27,7 @@ public partial class MapButton : TextureButton
 			animPlayer.Stop();
 			SelfModulate = new Color(0.3f,0.3f,0.3f);
         }
+		GrabFocus();
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
