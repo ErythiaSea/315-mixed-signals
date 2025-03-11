@@ -8,6 +8,10 @@ public enum MovementStates { NONE = 0, FREE_MOVE = 1, LADDER_MOVE = 2 };
 
 public partial class Player : CharacterBody2D
 {
+
+    [Signal]
+    public delegate void TransitionEventHandler(TRANSITION type);
+    
 	[Export]
 	public float movementSpeed = 600.0f;
 
@@ -35,7 +39,6 @@ public partial class Player : CharacterBody2D
 		interactArea = GetNode<Area2D>("InteractArea");
         playerCamera = GetNode<Camera2D>("PlayerCamera");
 		thisLevel = GetParent<Level>();
-
         Globals.Instance.DialogueClosed += OnDialogueClosedEvent;
     }
 

@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bo5umns4232lg"]
+[gd_scene load_steps=14 format=3 uid="uid://bo5umns4232lg"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.cs" id="1_fgmdt"]
 [ext_resource type="Texture2D" uid="uid://cakxugfax4fub" path="res://Scenes/Player/interact.png" id="2_7y7g8"]
-[ext_resource type="Texture2D" uid="uid://es5m8fptxhty" path="res://Scenes/Player/spritesheet.png" id="2_jnhts"]
+[ext_resource type="PackedScene" uid="uid://24enakva48q" path="res://Scenes/Environments/Objects/WipeTransition.tscn" id="4_nil4l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3vi5"]
 atlas = ExtResource("2_jnhts")
@@ -139,3 +139,11 @@ position = Vector2(-9, 32)
 shape = SubResource("CircleShape2D_3ls88")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
+
+[node name="WipeTransition" parent="PlayerCamera" instance=ExtResource("4_nil4l")]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
+
+[connection signal="Transition" from="." to="PlayerCamera/WipeTransition" method="PlayTransition"]

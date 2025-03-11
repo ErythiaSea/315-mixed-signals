@@ -6,11 +6,14 @@ public partial class DragParent : Control
     [Signal]
     public delegate void ConstellationCompletionEventHandler();
 
+	Globals globalScript;
 	bool isSignaled = false;
     Godot.Collections.Array<Node> sceneBars;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
+		globalScript = Globals.Instance;
+
 		sceneBars = this.GetChildren(false);
 	}
 
@@ -23,6 +26,7 @@ public partial class DragParent : Control
 			if (!isSignaled)
 			{
                 EmitSignal(SignalName.ConstellationCompletion);
+				globalScript.gameState.stage = GAMESTAGE.TRANSLATION;
 				isSignaled = true;
             }
         }

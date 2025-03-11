@@ -32,6 +32,7 @@ size = Vector2(291, 55)
 font_size = 32
 
 [node name="Cabin" type="Node2D"]
+position = Vector2(1, 0)
 script = ExtResource("1_hvnuo")
 spawnData = Array[Object]([SubResource("Resource_66r8t")])
 cameraEnabled = false
@@ -69,6 +70,7 @@ shape = SubResource("RectangleShape2D_xvqo4")
 position = Vector2(851, 977)
 collision_layer = 4
 script = ExtResource("4_r0utk")
+transitionType = 4
 scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
@@ -79,7 +81,8 @@ shape = SubResource("RectangleShape2D_0oee4")
 position = Vector2(930, 605)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
+transitionType = 4
+requiredStage = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
 position = Vector2(425, 409)
@@ -89,9 +92,9 @@ shape = SubResource("RectangleShape2D_cchka")
 position = Vector2(1837, 1014)
 collision_layer = 4
 script = ExtResource("4_r0utk")
+requiredStage = 5
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
-spawnPoint = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
 shape = SubResource("RectangleShape2D_lvk1a")

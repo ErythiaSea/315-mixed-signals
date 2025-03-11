@@ -12,25 +12,29 @@ public partial class TranspondScreen : BaseMinigame
     double exitTimer = 0;
     bool fade = false; float fadeTime = 0.0f;
 
+    Globals globalScript;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        globalScript = GetTree().Root.GetChild(1) as Globals;
+
         radiotower = GetNode<Radiotower>("radiotowerRoot");
         waveform = GetNode<WaveformGame>("waveformRoot");
         leftBox = GetNode<Sprite2D>("LeftBox");
         rightBox = GetNode<Sprite2D>("RightBox");
         radioLabel = GetNode<Label>("ControlsRadiotower");
         waveLabel = GetNode<Label>("ControlsWaveform");
+
+        CheckStage();
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
     {
-        base._Process(delta);
-        if (!radiotower.gameActive && !radiotowerComplete)
+        base.Process(delta);
+        if (globalScript.gameState.stage == GAMESTAGE.WAVEFORM)
         {
-            waveform.gameActive = true;
-            radiotowerComplete = true;
             waveLabel.Visible = true; radioLabel.Visible = false;
             fade = true;
         }
@@ -43,26 +47,33 @@ public partial class TranspondScreen : BaseMinigame
             rightBox.Modulate = new Color(Colors.Black, 0.85f - fadeTime);
         }
 
-        if (!waveform.gameActive && radiotowerComplete)
+        if (globalScript.gameState.stage > GAMESTAGE.WAVEFORM)
         {
-            waveformComplete = true;
-            waveform.gameActive = false;
+           
             GD.Print("winner!");
-        }
-        if (radiotowerComplete && waveformComplete)
-        {
-            exitTimer += delta;
-            if (exitTimer > 1)
-            {
-                Close();
-            }
+            //Have some indication of winning!
         }
 
-        if (Input.IsActionJustPressed("arrow_up"))
+
+       
+
+    private void CheckStage()
+    {
+        switch (globalScript.gameState.stage)
         {
-            waveform.gameActive = true;
-            radiotowerComplete = true;
-            radiotower.gameActive = false;
+            case GAMESTAGE.TRANSPONDING:
+                GD.Print("trans");
+                break;
+            case GAMESTAGE.WAVEFORM:
+                GD.Print("wave");
+                radiotower.CompletedPivots();
+                waveLabel.Visible = true; radioLabel.Visible = false;
+                fade = true;
+                break;
+            default:
+                GD.Print("Default");
+                radiotower.CompletedPivots();
+                break;
         }
     }
 }

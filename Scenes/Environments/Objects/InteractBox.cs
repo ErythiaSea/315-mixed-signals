@@ -1,6 +1,16 @@
 using Godot;
 using System;
+using System.ComponentModel.Design;
 
+
+public enum TRANSITION
+{
+   LEFTtoRIGHT,
+   RIGHTtoLEFT,
+   TOPtoBOTTOM,
+   BOTTOMtoTOP,
+   NONE
+}
 public partial class InteractBox : Area2D
 {
     // whether the interact box can be used
@@ -11,6 +21,14 @@ public partial class InteractBox : Area2D
     // the scene to load (for minigames)
     //[Export]
     //PackedScene scene;
+
+    //the type of transition
+    [Export]
+    public TRANSITION transitionType;
+
+    //required stage to be able to interact
+    [Export]
+    public GAMESTAGE requiredStage;
 
     // temp for scenes that reference other scenes (usually through an object of this class)
     // to prevent circular dependencies. todo: make this suck less
@@ -61,6 +79,8 @@ public partial class InteractBox : Area2D
     [Export]
     bool lockPlayerMovement = false;
 
+    float transitionTime = 0.0f;
+    bool isTransition = false;
     public override void _Ready()
     {
         // possible todo: for things that will have a transition before getting the loaded file, we can
@@ -70,11 +90,18 @@ public partial class InteractBox : Area2D
             ResourceLoader.LoadThreadedRequest(scenePath);
         }
     }
-
+    public override void _Process(double delta)
+    {
+        if (isTransition)
+        {
+            runningTransition(delta);
+        }
+    }
     public virtual void Interact(Player plrRef)
     {
         // Not interactable if inactive
         if (!active) return;
+        //if (!IsCorrectStage()) return;
 
         // Disable if oneshot
         if (isOneShot) active = false;
@@ -121,8 +148,34 @@ public partial class InteractBox : Area2D
         }
         else
         {
+            isTransition = true;
+            plrRef.EmitSignal("Transition",(int)transitionType);
+        }
+    }
+
+    private bool IsCorrectStage()
+    {
+        if (requiredStage == GAMESTAGE.TRANSITION) return true;
+
+        if (requiredStage != Globals.Instance.gameState.stage) return false;
+        else return true;
+
+    }
+
+    private void runningTransition(double delta)
+    {
+        if(transitionTime > 3.0)
+        {
+            isTransition = false;
+            transitionTime = 0;
             Globals.Instance.currentSpawnID = spawnPoint;
             GetTree().ChangeSceneToPacked(scene);
         }
+        else
+        {
+            transitionTime += (float)delta;
+        }
+       
     }
+
 }
