@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://8utwt42ra3yd"]
 
-[ext_resource type="Script" path="res://Scenes/Minigames/BaseMinigame.cs" id="1_rovbm"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Map/MapScreen.cs" id="1_2j3x4"]
 [ext_resource type="Texture2D" uid="uid://b1nu7m4qshqm0" path="res://Scenes/Minigames/Map/Sprites/map_background.png" id="1_xt3to"]
 [ext_resource type="PackedScene" uid="uid://dehciflno8kex" path="res://Scenes/Minigames/Map/map_button.tscn" id="2_8d1fn"]
 [ext_resource type="Texture2D" uid="uid://b61u7xjxdv85f" path="res://Scenes/Minigames/Map/Sprites/Map_PondIcon_00.png" id="3_7rbmu"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b3bl82ittquc7" path="res://Scenes/Minigames/Map/Sprites/Map_SaltIcon_00.png" id="5_cum4x"]
 
 [node name="mapscreen" type="CanvasLayer"]
-script = ExtResource("1_rovbm")
+script = ExtResource("1_2j3x4")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -18,7 +18,7 @@ texture = ExtResource("1_xt3to")
 [node name="Camera2D" type="Camera2D" parent="Background"]
 enabled = false
 
-[node name="Control" type="Control" parent="."]
+[node name="Buttons" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,32 +30,39 @@ offset_bottom = 539.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SaltButton" parent="Control" instance=ExtResource("2_8d1fn")]
+[node name="SaltButton" parent="Buttons" instance=ExtResource("2_8d1fn")]
 layout_mode = 0
 offset_left = -1211.0
 offset_top = -695.0
 offset_right = 199.0
 offset_bottom = 432.0
+focus_neighbor_right = NodePath("../PondButton")
+focus_neighbor_bottom = NodePath("../FossilButton")
 disabled = true
 texture_normal = ExtResource("5_cum4x")
 mapToLoad = ExtResource("4_0s13x")
 enabled = false
 
-[node name="PondButton" parent="Control" instance=ExtResource("2_8d1fn")]
+[node name="PondButton" parent="Buttons" instance=ExtResource("2_8d1fn")]
 layout_mode = 0
 offset_left = -257.0
 offset_top = -663.0
 offset_right = 1135.0
 offset_bottom = 392.0
+focus_neighbor_left = NodePath("../SaltButton")
+focus_neighbor_bottom = NodePath("../FossilButton")
 texture_normal = ExtResource("3_7rbmu")
 mapToLoad = ExtResource("4_0s13x")
 spawnPoint = 1
 
-[node name="FossilButton" parent="Control" instance=ExtResource("2_8d1fn")]
+[node name="FossilButton" parent="Buttons" instance=ExtResource("2_8d1fn")]
 layout_mode = 0
 offset_left = -891.0
 offset_top = -358.0
 offset_right = 271.0
 offset_bottom = 955.0
+focus_neighbor_left = NodePath("../SaltButton")
+focus_neighbor_top = NodePath("../SaltButton")
+focus_neighbor_right = NodePath("../PondButton")
 disabled = true
 enabled = false

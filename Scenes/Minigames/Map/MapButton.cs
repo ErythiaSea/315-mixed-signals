@@ -26,21 +26,26 @@ public partial class MapButton : TextureButton
 		{
 			animPlayer.Stop();
 			SelfModulate = new Color(0.3f,0.3f,0.3f);
+			Disabled = true;
         }
-		GrabFocus();
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (Disabled) return;
+		//if (Disabled) return;
 
+		if (HasFocus()) SelfModulate = Colors.Green;
+		else SelfModulate = Colors.White;
+
+		SelfModulate *= (enabled ? Colors.White : new Color(0.3f, 0.3f, 0.3f));
         //float t = (float)Time.GetTicksMsec() / 1000.0f;
         //Position.Y = baseY + Mathf.Sin(t) * 20.0f;
     }
 
     public void _OnPressed()
 	{
+		GD.Print(this.Name, " pressed");
 		Globals.Instance.currentSpawnID = spawnPoint;
         GetTree().ChangeSceneToPacked(mapToLoad);
     }
