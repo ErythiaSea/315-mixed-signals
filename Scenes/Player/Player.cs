@@ -63,13 +63,12 @@ public partial class Player : CharacterBody2D
         // Animate player sprite based on the velocity of the player
         if (Velocity.X != 0.0f)
         {
-            playerSprite.Play();
+            playerSprite.Play("run");
             playerSprite.FlipH = Velocity.X > 0;
         }
         else
         {
-            playerSprite.Frame = 0;
-            playerSprite.Pause();
+			playerSprite.Play("idle");
         }
     }
 
@@ -190,6 +189,11 @@ public partial class Player : CharacterBody2D
 		{
 			playerCamera.Enabled = enabled;
 		}
+	}
+
+	public void SetCameraZoom(float zoom)
+	{
+		playerCamera.Zoom = new Vector2(zoom, zoom);
 	}
 
 	public void OnDialogueClosedEvent()

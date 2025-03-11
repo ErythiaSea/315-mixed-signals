@@ -98,7 +98,6 @@ shape = SubResource("RectangleShape2D_pm7kl")
 [node name="LadderInteract" parent="." instance=ExtResource("4_hhi5s")]
 position = Vector2(-733, 560)
 loadInCurrent = false
-ladderArea = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderInteract"]
 shape = SubResource("CircleShape2D_qricm")
