@@ -6,6 +6,7 @@ public partial class WaveformGame : Node2D
 	WaveRender playerWave, realWave;
     float targetWavelength, targetAmplitude;
 
+    Globals globalScript;
     [Export]
     float ampTolerance = 2.0f;
     [Export]
@@ -18,6 +19,7 @@ public partial class WaveformGame : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        globalScript = Globals.Instance;
         playerWave = GetNode<WaveRender>("playerwave");
         realWave = GetNode<WaveRender>("realwave");
         newWavelength();
@@ -25,18 +27,29 @@ public partial class WaveformGame : Node2D
 
     void newWavelength()
     {
-        targetWavelength = (GD.Randf() * 42.5f) + 7.5f;
-        realWave.wavelength = targetWavelength;
+        if(globalScript.waveAmpRef == 0f)
+        {
+            targetWavelength = (GD.Randf() * 42.5f) + 7.5f;
+            realWave.wavelength = targetWavelength;
 
-        targetAmplitude = (GD.Randf() * 115.0f) + 10.0f;
-        realWave.amplitude = targetAmplitude;
-        tunedSignal = false; alignedTimer = 0.0f;
+            targetAmplitude = (GD.Randf() * 115.0f) + 10.0f;
+            realWave.amplitude = targetAmplitude;
+            tunedSignal = false; alignedTimer = 0.0f;
+        }
+        else
+        {
+            realWave.wavelength = globalScript.waveLenRef;
+            realWave.amplitude = globalScript.waveAmpRef;
+
+            playerWave.wavelength = globalScript.waveLenRef;
+            playerWave.amplitude = globalScript.waveAmpRef;
+        }
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (!gameActive) return;
+        if (globalScript.gameState.stage != GAMESTAGE.WAVEFORM) return;
 
         float wlChange = 0.5f;
         float wlMult = (playerWave.wavelength / 100.0f);
@@ -70,6 +83,11 @@ public partial class WaveformGame : Node2D
         if (tunedSignal)
         {
             GD.Print("Task complete!");
+
+            globalScript.waveAmpRef = realWave.amplitude;
+            globalScript.waveLenRef = realWave.wavelength;
+            //Updates the stage that the player is on
+            globalScript.gameState.stage = GAMESTAGE.CONSTELLATION;
             // show complete text
             Label wintext = GetNode<Label>("WinText");
             wintext.Visible = true;

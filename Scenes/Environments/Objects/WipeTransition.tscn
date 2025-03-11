@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://24enakva48q"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Objects/WipeTransition.cs" id="1_fjvfg"]
-[ext_resource type="Shader" path="res://Scenes/Environments/Objects/WipeTransition.gdshader" id="2_wu0cg"]
+[ext_resource type="Shader" path="res://Scripts/ShaderScript/WipeTransition.gdshader" id="2_wu0cg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b8u0j"]
 shader = ExtResource("2_wu0cg")
@@ -135,6 +135,7 @@ _data = {
 }
 
 [node name="WipeTransition" type="Control"]
+z_index = 6
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_fjvfg")
@@ -142,9 +143,10 @@ script = ExtResource("1_fjvfg")
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 4
 material = SubResource("ShaderMaterial_b8u0j")
+layout_mode = 0
 offset_left = 1920.0
 offset_top = 1080.0
-offset_right = 4220.0
+offset_right = 1920.0
 offset_bottom = 2160.0
 rotation = 3.14159
 color = Color(0, 0, 0, 1)

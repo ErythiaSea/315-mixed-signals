@@ -25,15 +25,15 @@ public partial class TranspondScreen : Node2D
         rightBox = GetNode<Sprite2D>("RightBox");
         radioLabel = GetNode<Label>("ControlsRadiotower");
         waveLabel = GetNode<Label>("ControlsWaveform");
+
+        CheckStage();
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
     {
-        if (!radiotower.gameActive && !radiotowerComplete)
+        if (globalScript.gameState.stage == GAMESTAGE.WAVEFORM)
         {
-            waveform.gameActive = true;
-            radiotowerComplete = true;
             waveLabel.Visible = true; radioLabel.Visible = false;
             fade = true;
         }
@@ -46,31 +46,16 @@ public partial class TranspondScreen : Node2D
             rightBox.Modulate = new Color(Colors.Black, 0.85f - fadeTime);
         }
 
-        if (!waveform.gameActive && radiotowerComplete)
+        if (globalScript.gameState.stage > GAMESTAGE.WAVEFORM)
         {
-            waveformComplete = true;
-            waveform.gameActive = false;
+           
             GD.Print("winner!");
-        }
-        if (radiotowerComplete && waveformComplete)
-        {
-            exitTimer += delta;
-            if (exitTimer > 1)
-            {
-                globalScript.gameState.stage = GAMESTAGE.CONSTELLATION;
-                Close();
-            }
+            //Have some indication of winning!
         }
 
         if (Input.IsActionJustPressed("close"))
         {
             Close();
-        }
-        if (Input.IsActionJustPressed("arrow_up"))
-        {
-            waveform.gameActive = true;
-            radiotowerComplete = true;
-            radiotower.gameActive = false;
         }
     }
 
@@ -79,5 +64,25 @@ public partial class TranspondScreen : Node2D
 		Player plr = GetNode<Player>("../Player");
         plr.SetMovementLock(false);
         QueueFree();
+    }
+
+    private void CheckStage()
+    {
+        switch (globalScript.gameState.stage)
+        {
+            case GAMESTAGE.TRANSPONDING:
+                GD.Print("trans");
+                break;
+            case GAMESTAGE.WAVEFORM:
+                GD.Print("wave");
+                radiotower.CompletedPivots();
+                waveLabel.Visible = true; radioLabel.Visible = false;
+                fade = true;
+                break;
+            default:
+                GD.Print("Default");
+                radiotower.CompletedPivots();
+                break;
+        }
     }
 }

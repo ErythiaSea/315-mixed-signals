@@ -5,10 +5,10 @@ using System.ComponentModel.Design;
 
 public enum TRANSITION
 {
-   LEFT,
-   RIGHT,
-   TOP,
-   BOTTOM,
+   LEFTtoRIGHT,
+   RIGHTtoLEFT,
+   TOPtoBOTTOM,
+   BOTTOMtoTOP,
    NONE
 }
 public partial class InteractBox : Area2D
@@ -21,9 +21,12 @@ public partial class InteractBox : Area2D
     // the scene to load (for minigames)
     //[Export]
     //PackedScene scene;
+
+    //the type of transition
     [Export]
     public TRANSITION transitionType;
 
+    //required stage to be able to interact
     [Export]
     public GAMESTAGE requiredStage;
 
@@ -89,8 +92,6 @@ public partial class InteractBox : Area2D
     }
     public override void _Process(double delta)
     {
-        //base._Process(delta);
-
         if (isTransition)
         {
             runningTransition(delta);
@@ -100,7 +101,7 @@ public partial class InteractBox : Area2D
     {
         // Not interactable if inactive
         if (!active) return;
-        if (!IsCorrectStage()) return;
+        //if (!IsCorrectStage()) return;
 
         // Disable if oneshot
         if (isOneShot) active = false;
@@ -166,7 +167,6 @@ public partial class InteractBox : Area2D
     {
         if(transitionTime > 3.0)
         {
-            GD.Print("OIasuydfha9pdSUIFHAPdsiufh");
             isTransition = false;
             transitionTime = 0;
             Globals.Instance.currentSpawnID = spawnPoint;

@@ -39,24 +39,23 @@ public partial class WipeTransition : Control
 
 	private void PlayTransition(TRANSITION type)
 	{
-		GD.Print("WORKED", type.ToString());
         switch (type)
         {
-            case TRANSITION.RIGHT:
+            case TRANSITION.RIGHTtoLEFT:
                 Visible = true;
                 transitionPlayer.Play("WipeToLeft");
-				nextTransition = TRANSITION.LEFT;
+				nextTransition = TRANSITION.LEFTtoRIGHT;
                 break;
-            case TRANSITION.LEFT:
+            case TRANSITION.LEFTtoRIGHT:
 				
 				Visible = true;
 				transitionPlayer.Play("WipeToRight");
-				nextTransition = TRANSITION.RIGHT;
+				nextTransition = TRANSITION.RIGHTtoLEFT;
                 break;
-            case TRANSITION.TOP:
+            case TRANSITION.TOPtoBOTTOM:
 
                 break;
-            case TRANSITION.BOTTOM:
+            case TRANSITION.BOTTOMtoTOP:
                 break;
 
 
@@ -67,19 +66,19 @@ public partial class WipeTransition : Control
 	{
         switch (nextTransition)
         {
-            case TRANSITION.RIGHT:
+            case TRANSITION.RIGHTtoLEFT:
                 Visible = true;
                 transitionPlayer.PlayBackwards("WipeToLeft");
                 break;
-            case TRANSITION.LEFT:
+            case TRANSITION.LEFTtoRIGHT:
 
                 Visible = true;
                 transitionPlayer.PlayBackwards("WipeToRight");
                 break;
-            case TRANSITION.TOP:
+            case TRANSITION.TOPtoBOTTOM:
 
                 break;
-            case TRANSITION.BOTTOM:
+            case TRANSITION.BOTTOMtoTOP:
                 break;
 
 

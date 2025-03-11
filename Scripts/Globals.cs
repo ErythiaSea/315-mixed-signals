@@ -6,7 +6,6 @@ using System.Linq;
 
 public enum GAMESTAGE
 {
-	INITAL,
 	TRANSPONDING,
 	WAVEFORM,
 	CONSTELLATION,
@@ -24,13 +23,32 @@ public partial class Globals : Node
 {
 	public static Globals Instance;
 
-    public int cipherKey = 0;
-	public bool isCurrentWordDone = false;
-	public bool hasGameStarted = false;
 
+	//Translation related Variables:
+
+	//stores the cipher
+    public int cipherKey = 0;
+	//stores if the word has been done this loop or not
+	public bool isCurrentWordDone = false;
+	//Stores a list of words to be used in the translation, increments by the day the player is on
+    public string[] wordList = { "Hot", "Cute" };
+
+
+
+    //Transponding related variables:
+
+    //Stores the last Completed pivots
+    public float LpivotRotRef = 0f;
+	public float RpivotRotRef = 0f;
+	//Stores the last Completed wave
+	public float waveAmpRef = 0f;
+	public float waveLenRef = 0f;
+	//State of the game, day and also stage the player is at
 	public GameState gameState;
 
-	public string[] wordList = { "Hot", "Cute" };
+
+
+	//Spawning related variables:
 
 	public int currentSpawnID = -1;
 
@@ -38,15 +56,37 @@ public partial class Globals : Node
 	[Signal]
 	public delegate void DialogueClosedEventHandler();
 
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
 		Instance = this;
+		InitalGameSetUp();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+
+	}
+
+	private void InitalGameSetUp()
+	{
+		gameState.day = 0;
+		gameState.stage = GAMESTAGE.TRANSPONDING;
+
+	}
+
+	public void NewDay()
+	{
+		isCurrentWordDone = false;
+		gameState.day += 1;
+		gameState.stage = GAMESTAGE.TRANSPONDING;
+
+		LpivotRotRef = 0f;
+		RpivotRotRef = 0f;
+		waveAmpRef = 0f;
+		waveLenRef = 0f;
 
 	}
 
