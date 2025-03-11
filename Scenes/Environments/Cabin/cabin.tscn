@@ -40,6 +40,8 @@ cameraEnabled = false
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ppr70")
+region_enabled = true
+region_rect = Rect2(0, 0, 3840, 2160)
 
 [node name="TranslationPaper" type="Sprite2D" parent="."]
 position = Vector2(1348, 773)
@@ -55,6 +57,7 @@ collision_layer = 2
 
 [node name="CollisionShape2" type="CollisionShape2D" parent="WorldCollision"]
 position = Vector2(571, 644.406)
+rotation = -0.000113001
 shape = SubResource("RectangleShape2D_82mfh")
 
 [node name="CollisionShape3" type="CollisionShape2D" parent="WorldCollision"]
@@ -97,6 +100,7 @@ spawnPoint = 0
 shape = SubResource("RectangleShape2D_lvk1a")
 
 [node name="Foreground" type="Sprite2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
