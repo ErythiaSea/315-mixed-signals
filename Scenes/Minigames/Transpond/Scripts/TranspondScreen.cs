@@ -29,10 +29,10 @@ public partial class TranspondScreen : BaseMinigame
         CheckStage();
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
     {
-        base.Process(delta);
+        base._Process(delta);
         if (globalScript.gameState.stage == GAMESTAGE.WAVEFORM)
         {
             waveLabel.Visible = true; radioLabel.Visible = false;
@@ -49,13 +49,11 @@ public partial class TranspondScreen : BaseMinigame
 
         if (globalScript.gameState.stage > GAMESTAGE.WAVEFORM)
         {
-           
+
             GD.Print("winner!");
             //Have some indication of winning!
         }
-
-
-       
+    }  
 
     private void CheckStage()
     {
