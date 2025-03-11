@@ -157,7 +157,6 @@ public partial class Player : CharacterBody2D
 	public void SetMovementLock(bool locked) 
 	{ 
 		isMovementLocked = locked;
-		SetCameraEnabled(!locked);
 	}
 
 	public void SetSpriteFlipH(bool flipH)

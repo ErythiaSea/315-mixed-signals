@@ -102,6 +102,7 @@ position = Vector2(1372, 926)
 collision_layer = 4
 script = ExtResource("4_5ocby")
 isOneShot = true
+isAutofire = true
 dialogueBox = NodePath("../Control/DialogueBox")
 startID = "0"
 lockPlayerMovement = true

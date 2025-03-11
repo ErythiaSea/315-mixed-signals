@@ -1,9 +1,9 @@
-using Godot;
+ using Godot;
 using System;
 using System.Drawing;
 using System.Linq;
 
-public partial class BorderDraw : Control
+public partial class BorderDraw : CanvasLayer
 {
 	// Called when the node enters the scene tree for the first time.
 	CanvasLayer childCanvas;
@@ -45,8 +45,7 @@ public partial class BorderDraw : Control
         {
             currentContainerIndex = containerNodes[i] as Control;
 
-            
-            DrawRect(currentContainerIndex.GetRect(), new Godot.Color(0,0,0,1), false);
+            currentContainerIndex.DrawRect(currentContainerIndex.GetRect(), new Godot.Color(0,0,0,1), false);
         }
     }
 

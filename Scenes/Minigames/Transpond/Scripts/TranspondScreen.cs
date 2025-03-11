@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class TranspondScreen : Node2D
+public partial class TranspondScreen : BaseMinigame  
 {
     Radiotower radiotower;
     WaveformGame waveform;
@@ -26,6 +26,7 @@ public partial class TranspondScreen : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
     {
+        base._Process(delta);
         if (!radiotower.gameActive && !radiotowerComplete)
         {
             waveform.gameActive = true;
@@ -57,22 +58,11 @@ public partial class TranspondScreen : Node2D
             }
         }
 
-        if (Input.IsActionJustPressed("close"))
-        {
-            Close();
-        }
         if (Input.IsActionJustPressed("arrow_up"))
         {
             waveform.gameActive = true;
             radiotowerComplete = true;
             radiotower.gameActive = false;
         }
-    }
-
-    public void Close()
-    {
-		Player plr = GetNode<Player>("../Player");
-        plr.SetMovementLock(false);
-        QueueFree();
     }
 }
