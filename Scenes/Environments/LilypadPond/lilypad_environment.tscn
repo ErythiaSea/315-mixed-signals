@@ -89,9 +89,9 @@ texture = ExtResource("3_n7la6")
 
 [node name="TelescopeBox" parent="." instance=ExtResource("4_u2itd")]
 position = Vector2(-916, -732)
+requiredStage = 3
 scenePath = "res://Scenes/Minigames/Constellation/ConstellationDraw.tscn"
 disablePlayerCam = true
-requiredStage = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TelescopeBox"]
 position = Vector2(-27, 0)
@@ -99,10 +99,11 @@ shape = SubResource("RectangleShape2D_mkpum")
 
 [node name="LevelTransition" parent="." instance=ExtResource("4_u2itd")]
 position = Vector2(-2878, 591)
+transitionType = 1
+requiredStage = 5
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
 spawnPoint = 1
-requiredStage = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
 position = Vector2(-27, 0)
@@ -257,8 +258,8 @@ shape = SubResource("RectangleShape2D_pm7kl")
 
 [node name="LadderInteract" parent="." instance=ExtResource("4_u2itd")]
 position = Vector2(-733, 560)
-loadInCurrent = false
 requiredStage = 6
+loadInCurrent = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderInteract"]
 shape = SubResource("CircleShape2D_qricm")

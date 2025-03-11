@@ -12,7 +12,7 @@ public partial class DragParent : Control
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
-		globalScript = GetTree().Root.GetChild(1) as Globals;
+		globalScript = Globals.Instance;
 
 		sceneBars = this.GetChildren(false);
 	}

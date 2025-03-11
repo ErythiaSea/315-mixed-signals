@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://24enakva48q"]
+[gd_scene load_steps=10 format=3 uid="uid://24enakva48q"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Objects/WipeTransition.cs" id="1_fjvfg"]
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/WipeTransition.gdshader" id="2_wu0cg"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8u0j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6esoj"]
 shader = ExtResource("2_wu0cg")
-shader_parameter/fadeWidth = 0.0
+shader_parameter/fadeWidth = null
 shader_parameter/currentSize = null
+shader_parameter/isHorizontal = null
 
 [sub_resource type="Animation" id="Animation_0d56a"]
 length = 0.001
@@ -127,11 +128,93 @@ tracks/2/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_83h0f"]
+resource_name = "WipeToTop"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1920, 1080)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1920, 0), Vector2(1920, 1403)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_f2e61"]
+resource_name = "WipeToBottom"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1920, 0), Vector2(1920, 1403)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ot2jp"]
 _data = {
 "RESET": SubResource("Animation_0d56a"),
+"WipeToBottom": SubResource("Animation_f2e61"),
 "WipeToLeft": SubResource("Animation_xcj35"),
-"WipeToRight": SubResource("Animation_wujy2")
+"WipeToRight": SubResource("Animation_wujy2"),
+"WipeToTop": SubResource("Animation_83h0f")
 }
 
 [node name="WipeTransition" type="Control"]
@@ -142,12 +225,9 @@ script = ExtResource("1_fjvfg")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 4
-material = SubResource("ShaderMaterial_b8u0j")
+material = SubResource("ShaderMaterial_6esoj")
 layout_mode = 0
-offset_left = 1920.0
-offset_top = 1080.0
 offset_right = 1920.0
-offset_bottom = 2160.0
 rotation = 3.14159
 color = Color(0, 0, 0, 1)
 

@@ -1,6 +1,7 @@
 shader_type canvas_item;
-uniform float fadeWidth : hint_range(0.0,300.0);
+uniform float fadeWidth;
 uniform float currentSize : hint_range (0.0,2300.0);
+uniform bool isHorizontal;
 void vertex() {
 	// Called for every vertex the material is visible on.
 	
@@ -8,18 +9,25 @@ void vertex() {
 
 void fragment() {
 	// Called for every pixel the material is visible on.
-	float rectUV = UV.x * 2300.0;
-
-   	float fadeStart = currentSize - fadeWidth;
-    float fade = smoothstep(currentSize, fadeStart, rectUV);
 	
+	if(isHorizontal){
+		float rectUV = UV.x * 2300.0;
+   		float fadeStart = currentSize - fadeWidth;
+    	float fade = smoothstep(currentSize, fadeStart, rectUV);
 	
-	
-	if(rectUV > fadeStart){
-		COLOR = vec4(0.0, 0.0, 0.0, fade);
+		if(rectUV > fadeStart){
+			COLOR = vec4(0.0, 0.0, 0.0, fade);
+		}
 	}
+	else{
+		float rectUV = UV.y * 1403.0;
+   		float fadeStart = currentSize - fadeWidth;
+    	float fade = smoothstep(currentSize, fadeStart, rectUV);
 	
-    // Black color with fading alpha
+		if(rectUV > fadeStart){
+			COLOR = vec4(0.0, 0.0, 0.0, fade);
+		}
+	}
 }
 
 //void light() {
