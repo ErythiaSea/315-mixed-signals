@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Text;
 
-public partial class TranslationCanvasUI : CanvasLayer
+public partial class TranslationCanvasUI : BaseMinigame
 {
 
 	//Quick Inspector Refs, CHANGE THIS AT ANOTHER TIME, probably grab them specifcally from the borderDraw process
@@ -45,8 +45,8 @@ public partial class TranslationCanvasUI : CanvasLayer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-	
-	}
+        base._Process(delta);
+    }
 
 	public void AnswerButton()
 	{

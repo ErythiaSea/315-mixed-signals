@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bc8lby5o1pvpv"]
+[gd_scene load_steps=10 format=3 uid="uid://bc8lby5o1pvpv"]
 
+[ext_resource type="Script" path="res://Scenes/Minigames/BaseMinigame.cs" id="1_4ctbx"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/CameraMovement.cs" id="1_7uyas"]
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/ConstellationDraw.gdshader" id="3_djkxa"]
 [ext_resource type="PackedScene" uid="uid://duhq4mg4vecmm" path="res://Scenes/Minigames/Constellation/Objects/CancerConstellation.tscn" id="3_t8fte"]
@@ -17,6 +18,7 @@ font_size = 32
 
 [node name="ConstellationDraw" type="CanvasLayer"]
 follow_viewport_enabled = true
+script = ExtResource("1_4ctbx")
 
 [node name="eeek" type="Camera2D" parent="."]
 position = Vector2(576, 324)
