@@ -9,7 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_igbtt"]
 script = ExtResource("2_nmgjp")
-spawnPosition = Vector2(-970, 40)
+spawnPosition = Vector2(-523, 255)
 faceLeft = false
 
 [sub_resource type="Resource" id="Resource_5o2kn"]
@@ -65,9 +65,9 @@ size = Vector2(82, 34)
 [node name="cabinoutdoor" type="Node2D"]
 script = ExtResource("1_4weox")
 spawnData = Array[Object]([SubResource("Resource_igbtt"), SubResource("Resource_5o2kn")])
-leftLimit = -1404
-topLimit = -540
-rightLimit = 1404
+leftLimit = -1924
+topLimit = -1590
+rightLimit = 5570
 bottomLimit = 540
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -81,7 +81,7 @@ collision_layer = 2
 position = Vector2(1119.2, -0.00012207)
 scale = Vector2(2.83887, 1)
 build_mode = 1
-polygon = PackedVector2Array(-1074, 313, -314.281, 317, -227.275, 467, 1404, 472, 1404, -187, 1421, -187, 1424, 570, -1072, 568, -1130, 570, -1127.99, -202, -1075, -204)
+polygon = PackedVector2Array(-1074, 313, -314.281, 317, -227.275, 467, 1567.1, 472, 1567.1, -189, 1588.59, -187, 1590.35, 570, -1072, 568, -1130, 570, -1127.99, -202, -1075, -204)
 
 [node name="VehicleSprite" type="Sprite2D" parent="."]
 position = Vector2(5015, 146)
@@ -118,7 +118,7 @@ shape = SubResource("RectangleShape2D_m3gji")
 [node name="SpawnPoints" type="Node" parent="."]
 
 [node name="0" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-439, 255)
+position = Vector2(-523, 261)
 gizmo_extents = 16.9
 
 [node name="1" type="Marker2D" parent="SpawnPoints"]
