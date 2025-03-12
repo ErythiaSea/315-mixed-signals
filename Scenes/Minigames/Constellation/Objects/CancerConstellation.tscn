@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://duhq4mg4vecmm"]
+[gd_scene load_steps=8 format=3 uid="uid://duhq4mg4vecmm"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/DragParent.cs" id="1_mynxh"]
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/Glow.gdshader" id="1_n36mt"]
 [ext_resource type="Texture2D" uid="uid://d1vrrq6aeuaqk" path="res://Scenes/Minigames/Constellation/Sprites/ConstellationLayer.png" id="2_4cuek"]
 [ext_resource type="PackedScene" uid="uid://cv381rpd6hc43" path="res://Scenes/Minigames/Constellation/DragProgressBar.tscn" id="4_u88qu"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/NumberDisplay.cs" id="5_oh041"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Objects/StarScript.cs" id="6_0je8n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ad0a8"]
 shader = ExtResource("1_n36mt")
@@ -114,5 +115,62 @@ offset_top = 486.0
 offset_right = 504.0
 offset_bottom = 509.0
 text = "text"
+
+[node name="StarParent" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Star1" type="TextureRect" parent="StarParent"]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 160.0
+offset_right = 411.0
+offset_bottom = 192.0
+focus_neighbor_left = NodePath("../Star3")
+focus_neighbor_right = NodePath("../Star5")
+focus_neighbor_bottom = NodePath("../Star2")
+focus_mode = 2
+script = ExtResource("6_0je8n")
+
+[node name="Star2" type="TextureRect" parent="StarParent"]
+offset_left = 517.0
+offset_top = 308.0
+offset_right = 548.0
+offset_bottom = 340.0
+focus_neighbor_top = NodePath("../Star1")
+focus_neighbor_right = NodePath("../../NumberParent/Star4")
+focus_neighbor_bottom = NodePath("../Star3")
+focus_mode = 2
+
+[node name="Star3" type="TextureRect" parent="StarParent"]
+offset_left = 493.0
+offset_top = 512.0
+offset_right = 524.0
+offset_bottom = 544.0
+focus_neighbor_left = NodePath("../Star1")
+focus_neighbor_top = NodePath("../Star2")
+focus_neighbor_right = NodePath("../Star5")
+focus_mode = 2
+
+[node name="Star4" type="TextureRect" parent="StarParent"]
+offset_left = 706.0
+offset_top = 207.0
+offset_right = 737.0
+offset_bottom = 239.0
+focus_neighbor_left = NodePath("../Star2")
+focus_neighbor_right = NodePath("../Star5")
+focus_neighbor_bottom = NodePath("../Star2")
+focus_mode = 2
+
+[node name="Star5" type="TextureRect" parent="StarParent"]
+offset_left = 808.0
+offset_top = 108.0
+offset_right = 839.0
+offset_bottom = 140.0
+focus_neighbor_left = NodePath("../Star1")
+focus_neighbor_bottom = NodePath("../Star4")
+focus_mode = 2
 
 [connection signal="ConstellationCompletion" from="DragParent" to="NumberParent" method="DisplayNumbers"]

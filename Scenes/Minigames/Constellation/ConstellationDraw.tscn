@@ -45,6 +45,7 @@ modulate = Color(0.894922, 0.894922, 0.894922, 1)
 texture = ExtResource("4_irqg6")
 
 [node name="ColorRect" type="ColorRect" parent="eeek"]
+visible = false
 material = SubResource("ShaderMaterial_13kgm")
 offset_left = -967.0
 offset_top = -546.0
