@@ -46,6 +46,7 @@ public partial class MapButton : TextureButton
     public void _OnPressed()
 	{
 		GD.Print(this.Name, " pressed");
+		if (Input.IsActionPressed("middle_mouse")) spawnPoint = 1;
 		Globals.Instance.currentSpawnID = spawnPoint;
         GetTree().ChangeSceneToPacked(mapToLoad);
     }

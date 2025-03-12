@@ -17,8 +17,8 @@ faceLeft = false
 
 [sub_resource type="Resource" id="Resource_agtn6"]
 script = ExtResource("2_061b7")
-spawnPosition = Vector2(-916, -732)
-faceLeft = false
+spawnPosition = Vector2(-916, -972)
+faceLeft = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkpum"]
 size = Vector2(150, 20)
@@ -91,7 +91,6 @@ texture = ExtResource("3_n7la6")
 [node name="TelescopeBox" parent="." instance=ExtResource("4_u2itd")]
 position = Vector2(-916, -732)
 scenePath = "res://Scenes/Minigames/Constellation/ConstellationDraw.tscn"
-disablePlayerCam = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TelescopeBox"]
 position = Vector2(-27, 0)

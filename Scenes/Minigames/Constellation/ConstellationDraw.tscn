@@ -17,7 +17,6 @@ shader_parameter/circle_b = null
 font_size = 32
 
 [node name="ConstellationDraw" type="CanvasLayer"]
-follow_viewport_enabled = true
 script = ExtResource("1_4ctbx")
 
 [node name="eeek" type="Camera2D" parent="."]

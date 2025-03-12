@@ -49,9 +49,10 @@ public partial class TranspondScreen : BaseMinigame
 
         if (globalScript.gameState.stage > GAMESTAGE.WAVEFORM)
         {
-
             GD.Print("winner!");
             //Have some indication of winning!
+            exitTimer += delta;
+            if (exitTimer > 2.5) Close();
         }
     }  
 

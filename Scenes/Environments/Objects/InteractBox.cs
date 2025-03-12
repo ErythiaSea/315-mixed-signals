@@ -5,11 +5,11 @@ using System.ComponentModel.Design;
 
 public enum TRANSITION
 {
-   LEFTtoRIGHT,
-   RIGHTtoLEFT,
-   TOPtoBOTTOM,
-   BOTTOMtoTOP,
-   NONE
+    NONE,
+    LEFTtoRIGHT,
+    RIGHTtoLEFT,
+    TOPtoBOTTOM,
+    BOTTOMtoTOP
 }
 public partial class InteractBox : Area2D
 {
@@ -25,6 +25,9 @@ public partial class InteractBox : Area2D
     //the type of transition
     [Export]
     public TRANSITION transitionType;
+
+    [Export]
+    public float transitionLength = 1.0f;
 
     //required stage to be able to interact
     [Export]
@@ -81,6 +84,7 @@ public partial class InteractBox : Area2D
 
     float transitionTime = 0.0f;
     bool isTransition = false;
+
     public override void _Ready()
     {
         // possible todo: for things that will have a transition before getting the loaded file, we can
@@ -97,11 +101,11 @@ public partial class InteractBox : Area2D
             runningTransition(delta);
         }
     }
+
     public virtual void Interact(Player plrRef)
     {
         // Not interactable if inactive
         if (!active) return;
-        //if (!IsCorrectStage()) return;
 
         // Disable if oneshot
         if (isOneShot) active = false;
@@ -130,27 +134,24 @@ public partial class InteractBox : Area2D
             scene = (PackedScene)ResourceLoader.LoadThreadedGet(scenePath);
         }
 
+		// Lock player movement (unlocking it falls on the minigame)
+		plrRef.SetMovementLock(true);
 
-        // Instance the scene, adjust ZIndex so it renders on top
-        if (loadInCurrent)
-        {
-			// Lock player movement (unlocking it falls on the minigame)
-			plrRef.SetMovementLock(true);
-			
-            CanvasLayer instancedGame = (CanvasLayer)scene.Instantiate();
+		// Note: we probably don't need to disable the player camera anymore (for minigames),
+        // this field can probably be removed entirely - erf
+		if (disablePlayerCam)
+		{
+			plrRef.SetCameraEnabled(false);
+		}
 
-            GetParent().AddChild(instancedGame);
-            instancedGame.Layer = 2;
-            if (disablePlayerCam)
-            {
-                plrRef.SetCameraEnabled(false);
-            }
-        }
-        else
+        // If this interact box has a transition assigned, do it
+        // Otherwise, just load the scene immediately
+		if (transitionType != TRANSITION.NONE)
         {
-            isTransition = true;
-            plrRef.EmitSignal("Transition",(int)transitionType);
-        }
+			isTransition = true;
+			plrRef.EmitSignal("Transition", (int)transitionType, transitionLength);
+		} 
+        else { loadScene(); }
     }
 
     private bool IsCorrectStage()
@@ -159,23 +160,37 @@ public partial class InteractBox : Area2D
 
         if (requiredStage != Globals.Instance.gameState.stage) return false;
         else return true;
-
     }
 
     private void runningTransition(double delta)
     {
-        if(transitionTime > 3.0)
+		transitionTime += (float)delta;
+
+		if (transitionTime > transitionLength)
         {
             isTransition = false;
             transitionTime = 0;
-            Globals.Instance.currentSpawnID = spawnPoint;
-            GetTree().ChangeSceneToPacked(scene);
+            loadScene();
         }
-        else
-        {
-            transitionTime += (float)delta;
-        }
-       
     }
 
+    // Loads the scene, either as a child of the current scene, or swapping to it
+    // based on the loadInCurrent bool
+    private void loadScene()
+    {
+		// Instance the scene, adjust ZIndex so it renders on top
+		if (loadInCurrent)
+		{
+			CanvasLayer instancedGame = (CanvasLayer)scene.Instantiate();
+
+			GetParent().AddChild(instancedGame);
+			instancedGame.Layer = 2;
+		}
+        else
+        {
+            Globals.Instance.currentSpawnID = spawnPoint;
+            GD.Print("loading new scene...");
+            GetTree().ChangeSceneToPacked(scene);
+		}
+	}
 }

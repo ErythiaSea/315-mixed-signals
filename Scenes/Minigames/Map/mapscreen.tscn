@@ -40,7 +40,6 @@ focus_neighbor_right = NodePath("../PondButton")
 focus_neighbor_bottom = NodePath("../FossilButton")
 disabled = true
 texture_normal = ExtResource("5_cum4x")
-mapToLoad = ExtResource("4_0s13x")
 enabled = false
 
 [node name="PondButton" parent="Buttons" instance=ExtResource("2_8d1fn")]
@@ -53,7 +52,7 @@ focus_neighbor_left = NodePath("../SaltButton")
 focus_neighbor_bottom = NodePath("../FossilButton")
 texture_normal = ExtResource("3_7rbmu")
 mapToLoad = ExtResource("4_0s13x")
-spawnPoint = 1
+spawnPoint = 0
 
 [node name="FossilButton" parent="Buttons" instance=ExtResource("2_8d1fn")]
 layout_mode = 0

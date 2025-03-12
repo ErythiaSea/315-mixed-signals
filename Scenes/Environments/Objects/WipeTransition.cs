@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Runtime.InteropServices;
 
-public partial class WipeTransition : Control
+public partial class WipeTransition : CanvasLayer
 {
 	ColorRect transitionRect;
 	AnimationPlayer transitionPlayer;
@@ -11,7 +11,7 @@ public partial class WipeTransition : Control
     [Export]
 
     bool isHorizontal;
-	float fadeWith = 300.0f;
+	float fadeWidth = 300.0f;
 
 	float initalTime = 0f;
 	static TRANSITION nextTransition = TRANSITION.NONE;
@@ -22,9 +22,7 @@ public partial class WipeTransition : Control
 		transitionRect = GetChild(0, false) as ColorRect;
 		transitionPlayer = GetChild(1,false) as AnimationPlayer; 
 		Smaterial = transitionRect.Material as ShaderMaterial;
-        Smaterial.SetShaderParameter("fadeWidth", fadeWith);
-
-        Visible = false;
+        Smaterial.SetShaderParameter("fadeWidth", fadeWidth);
 
         if (nextTransition != TRANSITION.NONE) ReverseTransition();
     }
@@ -41,70 +39,69 @@ public partial class WipeTransition : Control
         {
             Smaterial.SetShaderParameter("currentSize", transitionRect.Size.Y);
         }
-
-		
-		
+        if (!Visible) GD.Print("we is not visible");
 	}
 
-	private void PlayTransition(TRANSITION type)
+	private void PlayTransition(TRANSITION type, float transitionLength)
 	{
-        switch (type)
+        transitionPlayer.SpeedScale = (1.0f / transitionLength);
+		Visible = true;
+
+		switch (type)
         {
-            case TRANSITION.RIGHTtoLEFT:
-                isHorizontal = true;
-                Visible = true;
-                transitionPlayer.Play("WipeToLeft");
-				nextTransition = TRANSITION.LEFTtoRIGHT;
-                break;
-            case TRANSITION.LEFTtoRIGHT:
-                isHorizontal = true;
-				Visible = true;
-				transitionPlayer.Play("WipeToRight");
-				nextTransition = TRANSITION.RIGHTtoLEFT;
-                break;
-            case TRANSITION.TOPtoBOTTOM:
-                isHorizontal = false;
-                Visible = true;
-                transitionPlayer.Play("WipeToBottom");
-                nextTransition = TRANSITION.BOTTOMtoTOP;
-                break;
-            case TRANSITION.BOTTOMtoTOP:
-                isHorizontal = false;
-                Visible = true;
-                transitionPlayer.Play("WipeToTop");
-                nextTransition = TRANSITION.TOPtoBOTTOM;
-                break;
-
-
+        case TRANSITION.RIGHTtoLEFT:
+            isHorizontal = true;
+            transitionPlayer.Play("WipeToLeft");
+			nextTransition = TRANSITION.LEFTtoRIGHT;
+            break;
+        case TRANSITION.LEFTtoRIGHT:
+            isHorizontal = true;
+			transitionPlayer.Play("WipeToRight");
+			nextTransition = TRANSITION.RIGHTtoLEFT;
+            break;
+        case TRANSITION.TOPtoBOTTOM:
+            isHorizontal = false;
+            transitionPlayer.Play("WipeToBottom");
+            nextTransition = TRANSITION.BOTTOMtoTOP;
+            break;
+        case TRANSITION.BOTTOMtoTOP:
+            isHorizontal = false;
+            transitionPlayer.Play("WipeToTop");
+            nextTransition = TRANSITION.TOPtoBOTTOM;
+            break;
         }
-    }
+	}
 
 	private void ReverseTransition()
 	{
-        switch (nextTransition)
+		Visible = true;
+
+		switch (nextTransition)
         {
-            case TRANSITION.RIGHTtoLEFT:
-                isHorizontal = true;
-                Visible = true;
-                transitionPlayer.PlayBackwards("WipeToLeft");
-                break;
-            case TRANSITION.LEFTtoRIGHT:
-                isHorizontal = true;
-                Visible = true;
-                transitionPlayer.PlayBackwards("WipeToRight");
-                break;
-            case TRANSITION.TOPtoBOTTOM:
-                isHorizontal = false;
-                Visible = true;
-                transitionPlayer.PlayBackwards("WipeToTop");
-                break;
-            case TRANSITION.BOTTOMtoTOP:
-                isHorizontal = false;
-                Visible = true;
-                transitionPlayer.PlayBackwards("WipeToBottom");
-                break;
-
-
+        case TRANSITION.RIGHTtoLEFT:
+            isHorizontal = true;
+            transitionPlayer.PlayBackwards("WipeToLeft");
+            break;
+        case TRANSITION.LEFTtoRIGHT:
+            isHorizontal = true;
+            transitionPlayer.PlayBackwards("WipeToRight");
+            break;
+        case TRANSITION.TOPtoBOTTOM:
+            isHorizontal = false;
+            transitionPlayer.PlayBackwards("WipeToBottom");
+            break;
+        case TRANSITION.BOTTOMtoTOP:
+            isHorizontal = false;
+            transitionPlayer.PlayBackwards("WipeToTop");
+            break;
         }
+        nextTransition = TRANSITION.NONE;
+	}
+
+    private void OnAnimationEnd(StringName animName)
+    {
+        if (nextTransition == TRANSITION.NONE) return;
+        ReverseTransition();
+        //nextTransition = TRANSITION.NONE;
     }
 }

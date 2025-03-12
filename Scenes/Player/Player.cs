@@ -10,7 +10,7 @@ public partial class Player : CharacterBody2D
 {
 
     [Signal]
-    public delegate void TransitionEventHandler(TRANSITION type);
+    public delegate void TransitionEventHandler(TRANSITION type, float transitionLength);
     
 	[Export]
 	public float movementSpeed = 600.0f;

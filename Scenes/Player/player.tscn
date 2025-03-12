@@ -146,9 +146,6 @@ shape = SubResource("CircleShape2D_3ls88")
 [node name="PlayerCamera" type="Camera2D" parent="."]
 
 [node name="WipeTransition" parent="PlayerCamera" instance=ExtResource("4_iyys1")]
-offset_left = -959.0
-offset_top = -540.0
-offset_right = -959.0
-offset_bottom = -540.0
+visible = false
 
 [connection signal="Transition" from="." to="PlayerCamera/WipeTransition" method="PlayTransition"]
