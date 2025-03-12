@@ -104,17 +104,5 @@ public partial class WaveformGame : Node2D
             if (alignedTimer > 1.0f) tunedSignal = true;
         }
         else alignedTimer = 0.0f;
-
-		if (Input.IsActionJustPressed("close"))
-		{
-            Close();
-		}
 	}
-
-    void Close()
-    {
-		Player plr = GetNode<Player>("../Player");
-        plr.SetMovementLock(false);
-        QueueFree();
-    }
 }

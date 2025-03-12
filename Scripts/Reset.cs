@@ -28,6 +28,7 @@ public partial class Reset : Node
 			killtimer += delta;
 			if (killtimer > 0.5)
 			{
+				GD.Print("kill");
 				GetTree().Quit();
 			}
 		}

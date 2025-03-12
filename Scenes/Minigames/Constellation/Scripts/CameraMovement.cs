@@ -14,13 +14,6 @@ public partial class CameraMovement : Camera2D
 	public override void _Process(double delta)
 	{
         CameraInputEvents(delta);
-
-        // i feel so bad putting this in here (0 cohesion 100 coupling) but im not making a constellationroot script
-        // just to put thsi in there. todo: base minigame class? - erf
-        if (Input.IsActionJustPressed("close"))
-        {
-            Close();
-        }
     }
 
 	public void CameraInputEvents(double delta)
@@ -40,18 +33,6 @@ public partial class CameraMovement : Camera2D
         if (Input.IsActionPressed("right"))
         {
             Position = new Vector2(Position.X + cameraSpeed, Position.Y);
-        }
-    }
-
-    void Close()
-    {
-        Node parent = GetParent();
-        Player plr = parent.GetNode<Player>("../Player");
-        if (plr != null)
-        {
-            plr.SetMovementLock(false);
-            plr.SetCameraEnabled(true);
-            parent.QueueFree();
         }
     }
 }

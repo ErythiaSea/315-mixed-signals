@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class TranspondScreen : Node2D
+public partial class TranspondScreen : BaseMinigame  
 {
     Radiotower radiotower;
     WaveformGame waveform;
@@ -29,9 +29,10 @@ public partial class TranspondScreen : Node2D
         CheckStage();
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
     {
+        base._Process(delta);
         if (globalScript.gameState.stage == GAMESTAGE.WAVEFORM)
         {
             waveLabel.Visible = true; radioLabel.Visible = false;
@@ -48,23 +49,11 @@ public partial class TranspondScreen : Node2D
 
         if (globalScript.gameState.stage > GAMESTAGE.WAVEFORM)
         {
-           
+
             GD.Print("winner!");
             //Have some indication of winning!
         }
-
-        if (Input.IsActionJustPressed("close"))
-        {
-            Close();
-        }
-    }
-
-    public void Close()
-    {
-		Player plr = GetNode<Player>("../Player");
-        plr.SetMovementLock(false);
-        QueueFree();
-    }
+    }  
 
     private void CheckStage()
     {

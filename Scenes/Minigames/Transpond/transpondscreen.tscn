@@ -16,8 +16,8 @@ gradient = SubResource("Gradient_aagt1")
 [sub_resource type="LabelSettings" id="LabelSettings_wrwa1"]
 font_size = 32
 
-[node name="TranspondWhole" type="Node2D"]
-z_index = 1
+[node name="TranspondWhole" type="CanvasLayer"]
+follow_viewport_enabled = true
 script = ExtResource("1_ouvn6")
 
 [node name="radiotowerRoot" parent="." instance=ExtResource("1_okcy0")]
@@ -49,13 +49,15 @@ texture = ExtResource("6_ftnw3")
 [node name="RightBox" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.870588)
 position = Vector2(1388, 548)
-scale = Vector2(-11.9225, -14.8759)
+rotation = -3.14159
+scale = Vector2(11.9225, 14.8759)
 texture = SubResource("GradientTexture2D_cqgav")
 
 [node name="LeftBox" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0)
 position = Vector2(534, 548)
-scale = Vector2(-11.9225, -15.1159)
+rotation = -3.14159
+scale = Vector2(11.9225, 15.1159)
 texture = SubResource("GradientTexture2D_cqgav")
 
 [node name="ControlsRadiotower" type="Label" parent="."]

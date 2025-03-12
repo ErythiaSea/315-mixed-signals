@@ -32,7 +32,6 @@ size = Vector2(291, 55)
 font_size = 32
 
 [node name="Cabin" type="Node2D"]
-position = Vector2(1, 0)
 script = ExtResource("1_hvnuo")
 spawnData = Array[Object]([SubResource("Resource_66r8t")])
 cameraEnabled = false
@@ -80,7 +79,6 @@ shape = SubResource("RectangleShape2D_0oee4")
 position = Vector2(930, 605)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-requiredStage = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
 position = Vector2(425, 409)
