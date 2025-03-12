@@ -19,6 +19,7 @@ faceLeft = true
 
 [sub_resource type="Animation" id="Animation_akrgh"]
 length = 0.001
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,7 +30,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(924, 146)]
+"values": [Vector2(5015, 146)]
 }
 
 [sub_resource type="Animation" id="Animation_dldwd"]
@@ -46,7 +47,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.165, 0.33),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(924, 151), Vector2(924, 141), Vector2(924, 151)]
+"values": [Vector2(5015, 151), Vector2(5015, 141), Vector2(5015, 151)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rgno3"]
@@ -70,17 +71,20 @@ rightLimit = 1404
 bottomLimit = 540
 
 [node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1818, -508)
 texture = ExtResource("1_0a00e")
 
 [node name="LevelCollision" type="StaticBody2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelCollision"]
+position = Vector2(1119.2, -0.00012207)
+scale = Vector2(2.83887, 1)
 build_mode = 1
-polygon = PackedVector2Array(-1074, 154, -981, 156, -573, 467, 1404, 472, 1404, -187, 1421, -187, 1424, 570, -1072, 568, -1130, 570, -1136, -202, -1075, -204)
+polygon = PackedVector2Array(-1074, 313, -314.281, 317, -227.275, 467, 1404, 472, 1404, -187, 1421, -187, 1424, 570, -1072, 568, -1130, 570, -1127.99, -202, -1075, -204)
 
 [node name="VehicleSprite" type="Sprite2D" parent="."]
-position = Vector2(924, 146)
+position = Vector2(5015, 146)
 texture = ExtResource("2_s8gqw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VehicleSprite"]
@@ -90,33 +94,33 @@ libraries = {
 autoplay = "VehicleIdleAnimation"
 
 [node name="Player" parent="." instance=ExtResource("1_7p3ip")]
-position = Vector2(-970, 29)
+position = Vector2(-440, 105)
 scale = Vector2(2.5, 2.5)
 
 [node name="MapBox" parent="." instance=ExtResource("4_elcve")]
-position = Vector2(597, 361)
+position = Vector2(4994, 290)
 scenePath = "res://Scenes/Minigames/Map/mapscreen.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapBox"]
-position = Vector2(289, 68)
+position = Vector2(2, 116)
 shape = SubResource("RectangleShape2D_rkcsa")
 
 [node name="LevelTransition" parent="." instance=ExtResource("4_elcve")]
-position = Vector2(-1192, 54)
+position = Vector2(-443, 57)
 scenePath = "res://Scenes/Environments/Cabin/cabin.tscn"
 loadInCurrent = false
 spawnPoint = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
-position = Vector2(168, 81)
+position = Vector2(3, 232)
 shape = SubResource("RectangleShape2D_m3gji")
 
 [node name="SpawnPoints" type="Node" parent="."]
 
 [node name="0" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-970, 34)
+position = Vector2(-439, 255)
 gizmo_extents = 16.9
 
 [node name="1" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(882, 303)
+position = Vector2(5001.5, 303)
 gizmo_extents = 16.9
