@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=24 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_hvnuo"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_vrtq2"]
+[ext_resource type="AudioStream" uid="uid://db0ejrnpgebag" path="res://Audio/Music/Zodiac  Hiphop Instrumental by prazkhanal Id-787557.wav" id="3_1b4bc"]
 [ext_resource type="Texture2D" uid="uid://bvndiooefnwcn" path="res://Scenes/Environments/Cabin/Sprites/Sky_Render.png" id="3_bkt4p"]
 [ext_resource type="Script" path="res://Scenes/Environments/Objects/InteractBox.cs" id="4_r0utk"]
 [ext_resource type="Texture2D" uid="uid://c7n4exllur0qf" path="res://Scenes/Environments/Cabin/Sprites/Cabin_WallCutout.png" id="4_wjyar"]
@@ -102,6 +103,13 @@ texture = ExtResource("5_6d5l0")
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_fo4et")
+
+
+[node name="HubBGM" type="AudioStreamPlayer" parent="."]
+process_mode = 1
+stream = ExtResource("3_1b4bc")
+volume_db = -16.838
+autoplay = true
 
 [node name="Monitors" type="Sprite2D" parent="."]
 position = Vector2(960, 540)

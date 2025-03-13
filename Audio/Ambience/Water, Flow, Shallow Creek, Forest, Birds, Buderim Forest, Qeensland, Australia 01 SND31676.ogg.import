@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d1dsjc5b8djm1"
+path="res://.godot/imported/Water, Flow, Shallow Creek, Forest, Birds, Buderim Forest, Qeensland, Australia 01 SND31676.ogg-8f263ea0964cf5a27b249fdf0ff8580b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Ambience/Water, Flow, Shallow Creek, Forest, Birds, Buderim Forest, Qeensland, Australia 01 SND31676.ogg"
+dest_files=["res://.godot/imported/Water, Flow, Shallow Creek, Forest, Birds, Buderim Forest, Qeensland, Australia 01 SND31676.ogg-8f263ea0964cf5a27b249fdf0ff8580b.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://i7eg8vuqkc4t"
+path="res://.godot/imported/Alien Frog Bird Sound Effect by Mastersoundboy2005 Id-720579.ogg-59b629226cb500a6d9e2325c6fa1dd1c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Ambience/Alien Frog Bird Sound Effect by Mastersoundboy2005 Id-720579.ogg"
+dest_files=["res://.godot/imported/Alien Frog Bird Sound Effect by Mastersoundboy2005 Id-720579.ogg-59b629226cb500a6d9e2325c6fa1dd1c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -71,7 +71,7 @@ public partial class BaseMinigame : CanvasLayer
 		QueueFree();
 	}
 
-    protected virtual void OnTransitionFinish()
-    {
-    }
+	protected virtual void OnTransitionFinish()
+	{
+	}
 }
