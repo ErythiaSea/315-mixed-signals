@@ -95,6 +95,8 @@ scale = Vector2(2.5, 2.5)
 
 [node name="MapBox" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(597, 361)
+transitionType = 4
+transitionLength = 0.5
 requiredStage = 6
 scenePath = "res://Scenes/Minigames/Map/mapscreen.tscn"
 

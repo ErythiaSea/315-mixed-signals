@@ -39,11 +39,13 @@ public partial class Player : CharacterBody2D
 		interactArea = GetNode<Area2D>("InteractArea");
         playerCamera = GetNode<Camera2D>("PlayerCamera");
 		thisLevel = GetParent<Level>();
-        Globals.Instance.DialogueClosed += OnDialogueClosedEvent;
+        SignalBus.Instance.DialogueClosed += OnDialogueClosed;
     }
 
     public override void _Process(double delta)
     {
+		if (isMovementLocked) return;
+
         interactSprite.Visible = false;
         foreach (Area2D area in interactArea.GetOverlappingAreas())
         {
@@ -54,8 +56,6 @@ public partial class Player : CharacterBody2D
                 if (interactBox.isAutofire || (Input.IsActionJustPressed("interact") && !isMovementLocked))
                 {
                     interactBox.Interact(this);
-					//setMovementState(MovementStates.MOVE_LOCKED);
-                    //playerMovementState = MovementStates.MOVE_LOCKED;
                 }
             }
         }
@@ -76,7 +76,11 @@ public partial class Player : CharacterBody2D
 	{
 		if (isAutoWalking) { AutoMovement(delta); return; }
 
-		if (isMovementLocked) { return; }
+		if (isMovementLocked) {
+			GD.Print("hello from movement lock world");
+			playerSprite.Play("idle");
+			return;
+		}
 		if (playerMovementState == MovementStates.FREE_MOVE) StandardMovement(delta);
 		else if (playerMovementState == MovementStates.LADDER_MOVE) LadderMovement(delta);
 	}
@@ -196,10 +200,15 @@ public partial class Player : CharacterBody2D
 		playerCamera.Zoom = new Vector2(zoom, zoom);
 	}
 
-	public void OnDialogueClosedEvent()
+	void OnDialogueClosed()
 	{
-		GD.Print("event got");
+		GD.Print("dialogue");
 		isMovementLocked = false;
+	}
+
+	void OnMinigameClosed()
+	{
+
 	}
 }
 

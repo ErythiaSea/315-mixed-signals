@@ -17,6 +17,7 @@ public partial class TranspondScreen : BaseMinigame
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        base._Ready();
         globalScript = GetTree().Root.GetChild(1) as Globals;
 
         radiotower = GetNode<Radiotower>("radiotowerRoot");
@@ -49,7 +50,6 @@ public partial class TranspondScreen : BaseMinigame
 
         if (globalScript.gameState.stage > GAMESTAGE.WAVEFORM)
         {
-            GD.Print("winner!");
             //Have some indication of winning!
             exitTimer += delta;
             if (exitTimer > 2.5) Close();

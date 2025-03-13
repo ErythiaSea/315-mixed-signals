@@ -81,6 +81,7 @@ shape = SubResource("RectangleShape2D_0oee4")
 position = Vector2(930, 605)
 collision_layer = 4
 script = ExtResource("4_r0utk")
+scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
 position = Vector2(425, 409)

@@ -19,10 +19,10 @@ public struct GameState
 	public GAMESTAGE stage;
 	public int day;
 }
+
 public partial class Globals : Node
 {
 	public static Globals Instance;
-
 
 	//Translation related Variables:
 
@@ -32,7 +32,6 @@ public partial class Globals : Node
 	public bool isCurrentWordDone = false;
 	//Stores a list of words to be used in the translation, increments by the day the player is on
     public string[] wordList = { "Hot", "Cute" };
-
 
 
     //Transponding related variables:
@@ -46,15 +45,8 @@ public partial class Globals : Node
 	//State of the game, day and also stage the player is at
 	public GameState gameState;
 
-
-
 	//Spawning related variables:
-
 	public int currentSpawnID = -1;
-
-	// im trying something here. i may move this later - eryth
-	[Signal]
-	public delegate void DialogueClosedEventHandler();
 
 
     // Called when the node enters the scene tree for the first time.

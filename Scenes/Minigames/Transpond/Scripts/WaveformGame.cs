@@ -93,9 +93,6 @@ public partial class WaveformGame : Node2D
             wintext.Visible = true;
             playerWave.waveColor = Colors.Green;
             gameActive = false;
-
-    
-            //newWavelength();
         }
 
         if (Mathf.Abs(playerWave.wavelength - targetWavelength) < wlTolerance && Mathf.Abs(playerWave.amplitude - targetAmplitude) < ampTolerance)

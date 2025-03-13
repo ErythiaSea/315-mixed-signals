@@ -39,7 +39,6 @@ public partial class WipeTransition : CanvasLayer
         {
             Smaterial.SetShaderParameter("currentSize", transitionRect.Size.Y);
         }
-        if (!Visible) GD.Print("we is not visible");
 	}
 
 	private void PlayTransition(TRANSITION type, float transitionLength)

@@ -19,6 +19,8 @@ font_size = 32
 [node name="TranspondWhole" type="CanvasLayer"]
 follow_viewport_enabled = true
 script = ExtResource("1_ouvn6")
+exitTransition = 4
+transitionLength = 0.5
 
 [node name="radiotowerRoot" parent="." instance=ExtResource("1_okcy0")]
 position = Vector2(267, 187)

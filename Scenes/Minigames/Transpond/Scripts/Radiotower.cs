@@ -49,8 +49,6 @@ public partial class Radiotower : Node2D
 	public override void _Process(double delta)
 	{
 		if (globalScript.gameState.stage != GAMESTAGE.TRANSPONDING) return;
-		GD.Print(globalScript.gameState.stage.ToString());
-		GD.Print("radio tower running");
 		Vector2 intersect = Vector2.Zero;
 		if (lPivot.Rotation == rPivot.Rotation) intersectIndicator.Visible = false; // lines parallel
         else
