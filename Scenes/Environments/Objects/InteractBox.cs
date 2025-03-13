@@ -84,6 +84,7 @@ public partial class InteractBox : Area2D
 
     float transitionTime = 0.0f;
     bool isTransition = false;
+    private Player player;
 
     public override void _Ready()
     {
@@ -104,6 +105,8 @@ public partial class InteractBox : Area2D
 
     public virtual void Interact(Player plrRef)
     {
+        player = plrRef;
+
         // Not interactable if inactive
         if (!active) return;
 
@@ -136,13 +139,6 @@ public partial class InteractBox : Area2D
 
 		// Lock player movement (unlocking it falls on the minigame)
 		plrRef.SetMovementLock(true);
-
-		// Note: we probably don't need to disable the player camera anymore (for minigames),
-        // this field can probably be removed entirely - erf
-		if (disablePlayerCam)
-		{
-			plrRef.SetCameraEnabled(false);
-		}
 
         // If this interact box has a transition assigned, do it
         // Otherwise, just load the scene immediately
@@ -185,7 +181,14 @@ public partial class InteractBox : Area2D
 
 			GetParent().AddChild(instancedGame);
 			instancedGame.Layer = 2;
-		}
+
+            // Note: we probably shouldn't need to disable the player camera anymore (for minigames),
+            // this field can probably be removed entirely - erf
+            if (disablePlayerCam)
+            {
+                player.SetCameraEnabled(false);
+            }
+        }
         else
         {
             Globals.Instance.currentSpawnID = spawnPoint;

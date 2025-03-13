@@ -157,6 +157,7 @@ shape = SubResource("RectangleShape2D_hd4rx")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogueBox" type="Panel" parent="CanvasLayer"]
+visible = false
 z_index = 5
 anchors_preset = 8
 anchor_left = 0.5

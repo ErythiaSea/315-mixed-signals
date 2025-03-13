@@ -67,6 +67,7 @@ public partial class BaseMinigame : CanvasLayer
 	private void QuitMinigame()
 	{
 		player.SetMovementLock(false);
+		player.SetCameraEnabled(true);
 		QueueFree();
 	}
 

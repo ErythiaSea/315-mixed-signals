@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dluxx0un1srrc" path="res://Scenes/Minigames/Constellation/Sprites/StarsLayer.png" id="4_irqg6"]
 [ext_resource type="Script" path="res://Scripts/ShaderScript/TextureShader.cs" id="4_ro1i3"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/StarsParent.cs" id="8_pqt5s"]
-[ext_resource type="PackedScene" uid="uid://bx27m71lxn4qi" path="res://Scenes/Minigames/Constellation/Objects/StarNode.tscn" id="8_s5r6a"]
+[ext_resource type="PackedScene" path="res://Scenes/Minigames/Constellation/Objects/StarNode.tscn" id="8_s5r6a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_13kgm"]
 shader = ExtResource("3_djkxa")
@@ -19,7 +19,9 @@ shader_parameter/circle_b = null
 font_size = 32
 
 [node name="ConstellationDraw" type="CanvasLayer"]
+follow_viewport_enabled = true
 script = ExtResource("1_4ctbx")
+exitTransition = 4
 
 [node name="eeek" type="Camera2D" parent="."]
 position = Vector2(576, 324)
@@ -54,6 +56,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("4_irqg6")
 
 [node name="ColorRect" type="ColorRect" parent="eeek"]
+visible = false
 material = SubResource("ShaderMaterial_13kgm")
 offset_left = -1920.0
 offset_top = -1082.0
