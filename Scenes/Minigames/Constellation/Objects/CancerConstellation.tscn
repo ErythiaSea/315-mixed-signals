@@ -5,10 +5,95 @@
 [ext_resource type="Texture2D" uid="uid://d1vrrq6aeuaqk" path="res://Scenes/Minigames/Constellation/Sprites/ConstellationLayer.png" id="2_4cuek"]
 [ext_resource type="PackedScene" uid="uid://cv381rpd6hc43" path="res://Scenes/Minigames/Constellation/DragProgressBar.tscn" id="4_u88qu"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/NumberDisplay.cs" id="5_oh041"]
-[ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Objects/StarScript.cs" id="6_0je8n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ad0a8"]
 shader = ExtResource("1_n36mt")
+
+[sub_resource type="CSharpScript" id="CSharpScript_cx4rq"]
+script/source = "using Godot;
+using System;
+using System.Drawing;
+
+public partial class StarScript : Node2D
+{
+
+	[Export]
+	Godot.Collections.Array<Node2D> adjacentStars;
+
+	[Export]
+	float centerFocusRange = 200f;
+
+	private float timeToRegister = 2f;
+	private float timeElapsed;
+
+	public bool isFound = false;
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		timeElapsed = 0f;
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		if (Input.IsActionJustPressed(\"TEST\"))
+		{
+            GD.Print(Position.DistanceTo(GetViewport().GetCamera2D().GetScreenCenterPosition()));
+        }
+		if(!isFound)
+		{ 
+            if (GlobalPosition.DistanceTo(GetViewport().GetCamera2D().GetScreenCenterPosition()) < centerFocusRange)
+            {
+                timeElapsed += (float)delta;
+
+                if (timeElapsed > timeToRegister)
+                {
+					GD.Print(\"Star found\");
+					isFound = true;
+					StarFound();
+                }
+
+            }
+        }
+		
+	}
+
+    public void ConnectStars(Node2D star)
+    {
+		//if(targetStar != null)
+		//{
+		//          DrawLine(Position, targetStar.Position, new Godot.Color(0, 0, 0, 1));
+		//      }
+		//else
+		//{
+		//	GD.Print(\"target is null\");
+		//}
+
+		GD.Print(\"new line\");
+		Line2D connection = new Line2D();
+
+		connection.AddPoint(GlobalPosition);
+		connection.AddPoint(star.GlobalPosition);
+		connection.Width = 4;
+		connection.DefaultColor = Colors.White;
+
+		this.AddChild(connection);
+
+
+    }
+    private void StarFound()
+	{
+		foreach(StarScript star in adjacentStars)
+		{
+			if (star.isFound)
+			{
+				ConnectStars(star);
+            }
+		}
+	}
+
+}
+"
 
 [node name="Constellation" type="Node2D"]
 
@@ -122,7 +207,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Star1" type="TextureRect" parent="StarParent"]
+[node name="Star1" type="TextureRect" parent="StarParent" node_paths=PackedStringArray("adjacentStars")]
 layout_mode = 0
 offset_left = 380.0
 offset_top = 160.0
@@ -132,9 +217,12 @@ focus_neighbor_left = NodePath("../Star3")
 focus_neighbor_right = NodePath("../Star5")
 focus_neighbor_bottom = NodePath("../Star2")
 focus_mode = 2
-script = ExtResource("6_0je8n")
+script = SubResource("CSharpScript_cx4rq")
+adjacentStars = []
+centerFocusRange = null
 
 [node name="Star2" type="TextureRect" parent="StarParent"]
+layout_mode = 0
 offset_left = 517.0
 offset_top = 308.0
 offset_right = 548.0
@@ -145,6 +233,7 @@ focus_neighbor_bottom = NodePath("../Star3")
 focus_mode = 2
 
 [node name="Star3" type="TextureRect" parent="StarParent"]
+layout_mode = 0
 offset_left = 493.0
 offset_top = 512.0
 offset_right = 524.0
@@ -155,6 +244,7 @@ focus_neighbor_right = NodePath("../Star5")
 focus_mode = 2
 
 [node name="Star4" type="TextureRect" parent="StarParent"]
+layout_mode = 0
 offset_left = 706.0
 offset_top = 207.0
 offset_right = 737.0
@@ -165,6 +255,7 @@ focus_neighbor_bottom = NodePath("../Star2")
 focus_mode = 2
 
 [node name="Star5" type="TextureRect" parent="StarParent"]
+layout_mode = 0
 offset_left = 808.0
 offset_top = 108.0
 offset_right = 839.0

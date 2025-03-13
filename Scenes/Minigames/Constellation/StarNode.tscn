@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3ssemu58s7ga"]
+
+[ext_resource type="Script" path="res://Scenes/Minigames/Constellation/StarNode.cs" id="1_ahru7"]
+[ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://icon.svg" id="2_isdts"]
+
+[node name="StarNode" type="Node2D" node_paths=PackedStringArray("adjacentStars")]
+script = ExtResource("1_ahru7")
+adjacentStars = []
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_isdts")
+
+[node name="NumberDisplay" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 62.0
+offset_top = -190.0
+offset_right = 150.0
+offset_bottom = -76.0
