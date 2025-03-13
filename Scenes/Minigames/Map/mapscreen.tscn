@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://8utwt42ra3yd"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Map/Scripts/MapScreen.cs" id="1_2j3x4"]
-[ext_resource type="Texture2D" uid="uid://b1nu7m4qshqm0" path="res://Scenes/Minigames/Map/Sprites/map_background.png" id="1_xt3to"]
+[ext_resource type="Texture2D" uid="uid://b0udysporgxbf" path="res://Scenes/Minigames/Map/Sprites/Map_Background_01.png" id="2_5k782"]
 [ext_resource type="PackedScene" uid="uid://dehciflno8kex" path="res://Scenes/Minigames/Map/map_button.tscn" id="2_8d1fn"]
 [ext_resource type="Texture2D" uid="uid://b61u7xjxdv85f" path="res://Scenes/Minigames/Map/Sprites/Map_PondIcon_00.png" id="3_7rbmu"]
 [ext_resource type="PackedScene" uid="uid://dkjjkuqsupb4f" path="res://Scenes/Environments/LilypadPond/lilypad_environment.tscn" id="4_0s13x"]
@@ -15,7 +15,7 @@ transitionLength = 0.5
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_xt3to")
+texture = ExtResource("2_5k782")
 
 [node name="Camera2D" type="Camera2D" parent="Background"]
 enabled = false
@@ -34,10 +34,10 @@ grow_vertical = 2
 
 [node name="SaltButton" parent="Buttons" instance=ExtResource("2_8d1fn")]
 layout_mode = 0
-offset_left = -1211.0
-offset_top = -695.0
-offset_right = 199.0
-offset_bottom = 432.0
+offset_left = -1004.0
+offset_top = -852.0
+offset_right = 406.0
+offset_bottom = 275.0
 focus_neighbor_right = NodePath("../PondButton")
 focus_neighbor_bottom = NodePath("../FossilButton")
 disabled = true
@@ -58,10 +58,10 @@ spawnPoint = 0
 
 [node name="FossilButton" parent="Buttons" instance=ExtResource("2_8d1fn")]
 layout_mode = 0
-offset_left = -891.0
-offset_top = -358.0
-offset_right = 271.0
-offset_bottom = 955.0
+offset_left = -1097.0
+offset_top = -530.0
+offset_right = 65.0
+offset_bottom = 783.0
 focus_neighbor_left = NodePath("../SaltButton")
 focus_neighbor_top = NodePath("../SaltButton")
 focus_neighbor_right = NodePath("../PondButton")
