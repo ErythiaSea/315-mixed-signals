@@ -177,4 +177,4 @@ data = ExtResource("8_ctnhm")
 start_id = "0"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_kmmy1"), SubResource("RichTextEffect_4u6xp"), SubResource("RichTextEffect_a24d6")])
 
-[connection signal="dialogue_ended" from="CanvasLayer/DialogueBox" to="Player" method="OnDialogueClosedEvent"]
+[connection signal="dialogue_ended" from="CanvasLayer/DialogueBox" to="Player" method="OnDialogueClosed"]

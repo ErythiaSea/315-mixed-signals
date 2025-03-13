@@ -299,6 +299,7 @@ shape = SubResource("RectangleShape2D_am0pj")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogueBox" type="Panel" parent="CanvasLayer"]
+visible = false
 top_level = true
 z_index = 3
 anchors_preset = 8
@@ -317,4 +318,4 @@ script = ExtResource("10_8b38f")
 data = ExtResource("11_3uaob")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_b2dm0"), SubResource("RichTextEffect_mgviv"), SubResource("RichTextEffect_7oga7")])
 
-[connection signal="dialogue_ended" from="CanvasLayer/DialogueBox" to="Player" method="OnDialogueClosedEvent"]
+[connection signal="dialogue_ended" from="CanvasLayer/DialogueBox" to="Player" method="OnDialogueClosed"]
