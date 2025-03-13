@@ -1,0 +1,114 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dek8vr2m0s1sa"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_dbqdd"]
+
+[resource]
+script = ExtResource("1_dbqdd")
+starts = {
+"0": &"0_1",
+"1": &"0_2"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-420, -400),
+"start_id": "0"
+},
+"0_2": {
+"link": &"1_5",
+"offset": Vector2(-440, -20),
+"start_id": "1"
+},
+"1_1": {
+"dialogue": "(You hear an aetherial voice unlike anything you've ever heard before...)",
+"offset": Vector2(-180, -400),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
+},
+"1_2": {
+"dialogue": "You must... align your antennae... with the correct radio tower...
+You'll know you've found the correct one, when... the lights at the bottom flash quickly, and... the static disappears...",
+"offset": Vector2(400, -400),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "???"
+},
+"1_3": {
+"dialogue": "To do so... you must adjust the waveform shown on top, such that it aligns with the wave on the bottom...",
+"offset": Vector2(200, -20),
+"options": {
+0: {
+"condition": {},
+"link": &"1_6",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "???"
+},
+"1_4": {
+"dialogue": "(Do you want to read that again?)",
+"offset": Vector2(920, -400),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": "No"
+},
+1: {
+"condition": {},
+"link": &"1_2",
+"text": "Yes"
+}
+},
+"size": Vector2(300, 242),
+"speaker": ""
+},
+"1_5": {
+"dialogue": "Well done... You must now recieve the message transmitted to you...",
+"offset": Vector2(-200, -20),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "???"
+},
+"1_6": {
+"dialogue": "(Do you want to re-read that?)",
+"offset": Vector2(580, -20),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": "No"
+},
+1: {
+"condition": {},
+"link": &"1_3",
+"text": "Yes"
+}
+},
+"size": Vector2(300, 260),
+"speaker": ""
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = ""

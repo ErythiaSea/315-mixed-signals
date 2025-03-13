@@ -1,10 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqy8krri14xxv"]
+[gd_scene load_steps=18 format=3 uid="uid://cqy8krri14xxv"]
 
 [ext_resource type="PackedScene" uid="uid://kv3p5d4tp3k5" path="res://Scenes/Minigames/Transpond/radiotowers.tscn" id="1_okcy0"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Transpond/Scripts/TranspondScreen.cs" id="1_ouvn6"]
 [ext_resource type="Texture2D" uid="uid://t6mqbrhqqobs" path="res://Scenes/Minigames/Transpond/Sprites/transpondmonitors_temp.png" id="1_ugigk"]
 [ext_resource type="PackedScene" uid="uid://7aoxy6ge3j3s" path="res://Scenes/Minigames/Transpond/waveform.tscn" id="3_xdcbw"]
 [ext_resource type="Texture2D" uid="uid://pkfkpyetdo58" path="res://Scenes/Minigames/Transpond/Sprites/waveform_gridbg.png" id="6_ftnw3"]
+[ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="6_ip8fq"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="7_y3602"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="8_exjkm"]
+[ext_resource type="Resource" uid="uid://dek8vr2m0s1sa" path="res://Scenes/Minigames/tutorialdialogue.tres" id="8_mkirk"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="9_gtpwd"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="10_sy41u"]
 
 [sub_resource type="Gradient" id="Gradient_aagt1"]
 offsets = PackedFloat32Array(0, 0.983122, 0.995781, 1)
@@ -15,6 +21,15 @@ gradient = SubResource("Gradient_aagt1")
 
 [sub_resource type="LabelSettings" id="LabelSettings_wrwa1"]
 font_size = 32
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_qgpgv"]
+script = ExtResource("8_exjkm")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_iiq5k"]
+script = ExtResource("9_gtpwd")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_vkvdv"]
+script = ExtResource("10_sy41u")
 
 [node name="TranspondWhole" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -80,3 +95,21 @@ offset_right = 569.0
 offset_bottom = 1087.0
 text = "[A]/[D] - Adjust Amplitude   [J]/[L] - Adjust Wavelength"
 label_settings = SubResource("LabelSettings_wrwa1")
+
+[node name="DialogueBox" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -657.0
+offset_top = -448.0
+offset_right = 639.0
+offset_bottom = -175.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("6_ip8fq")
+script = ExtResource("7_y3602")
+data = ExtResource("8_mkirk")
+start_id = "0"
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_qgpgv"), SubResource("RichTextEffect_iiq5k"), SubResource("RichTextEffect_vkvdv")])

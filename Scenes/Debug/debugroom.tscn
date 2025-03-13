@@ -206,4 +206,4 @@ collision_layer = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomCollision"]
 polygon = PackedVector2Array(109, 972, 1804, 970, 1806, 510, 1818, 510, 1818, 1048, 83, 1044, 81, 370, 102, 374)
 
-[connection signal="dialogue_ended" from="Control/DialogueBox" to="Player" method="OnDialogueClosedEvent"]
+[connection signal="dialogue_ended" from="Control/DialogueBox" to="Player" method="OnDialogueClosed"]

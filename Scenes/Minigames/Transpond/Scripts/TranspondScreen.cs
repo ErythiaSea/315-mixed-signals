@@ -7,10 +7,12 @@ public partial class TranspondScreen : BaseMinigame
     WaveformGame waveform;
     Sprite2D leftBox, rightBox;
     Label radioLabel, waveLabel;
+    Panel dialogueBox;
 
     bool radiotowerComplete = false; bool waveformComplete = false;
     double exitTimer = 0;
     bool fade = false; float fadeTime = 0.0f;
+    bool dialogueCalled = false;
 
     Globals globalScript;
 
@@ -27,6 +29,9 @@ public partial class TranspondScreen : BaseMinigame
         radioLabel = GetNode<Label>("ControlsRadiotower");
         waveLabel = GetNode<Label>("ControlsWaveform");
 
+        // temp hopefully
+        dialogueBox = GetNode<Panel>("DialogueBox");
+
         CheckStage();
     }
 
@@ -38,6 +43,11 @@ public partial class TranspondScreen : BaseMinigame
         {
             waveLabel.Visible = true; radioLabel.Visible = false;
             fade = true;
+            if (!dialogueCalled)
+            {
+                dialogueBox.Call("start", "1");
+                dialogueCalled = true;
+            }
         }
 
         if (fade)
@@ -62,12 +72,14 @@ public partial class TranspondScreen : BaseMinigame
         {
             case GAMESTAGE.TRANSPONDING:
                 GD.Print("trans");
+                dialogueBox.Call("start", "0");
                 break;
             case GAMESTAGE.WAVEFORM:
                 GD.Print("wave");
                 radiotower.CompletedPivots();
                 waveLabel.Visible = true; radioLabel.Visible = false;
                 fade = true;
+                dialogueBox.Call("start", "1");
                 break;
             default:
                 GD.Print("Default");

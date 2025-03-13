@@ -77,7 +77,6 @@ public partial class Player : CharacterBody2D
 		if (isAutoWalking) { AutoMovement(delta); return; }
 
 		if (isMovementLocked) {
-			GD.Print("hello from movement lock world");
 			playerSprite.Play("idle");
 			return;
 		}
