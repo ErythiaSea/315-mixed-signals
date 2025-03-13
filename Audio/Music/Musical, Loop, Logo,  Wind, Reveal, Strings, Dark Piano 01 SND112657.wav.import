@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://tychv66noehx"
+path="res://.godot/imported/Musical, Loop, Logo,  Wind, Reveal, Strings, Dark Piano 01 SND112657.wav-64da75ac3cc23a96608f3964ded3d4df.sample"
+
+[deps]
+
+source_file="res://Audio/Music/Musical, Loop, Logo,  Wind, Reveal, Strings, Dark Piano 01 SND112657.wav"
+dest_files=["res://.godot/imported/Musical, Loop, Logo,  Wind, Reveal, Strings, Dark Piano 01 SND112657.wav-64da75ac3cc23a96608f3964ded3d4df.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

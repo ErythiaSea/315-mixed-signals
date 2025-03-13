@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=16 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_hvnuo"]
 [ext_resource type="Texture2D" uid="uid://bwiibe8j7vfgh" path="res://Scenes/Environments/Cabin/room_base.png" id="1_ppr70"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_vrtq2"]
+[ext_resource type="AudioStream" uid="uid://db0ejrnpgebag" path="res://Audio/Music/Zodiac  Hiphop Instrumental by prazkhanal Id-787557.wav" id="3_1b4bc"]
 [ext_resource type="Script" path="res://Scenes/Environments/Objects/InteractBox.cs" id="4_r0utk"]
 [ext_resource type="Texture2D" uid="uid://bedcsxhb5bdgm" path="res://Scenes/Environments/Objects/translationpaper.png" id="7_tqin0"]
 [ext_resource type="Texture2D" uid="uid://cc066shi2gixy" path="res://Scenes/Environments/Cabin/room_silohettes.png" id="8_fxgd2"]
@@ -35,6 +36,12 @@ font_size = 32
 script = ExtResource("1_hvnuo")
 spawnData = Array[Object]([SubResource("Resource_66r8t")])
 cameraEnabled = false
+
+[node name="HubBGM" type="AudioStreamPlayer" parent="."]
+process_mode = 1
+stream = ExtResource("3_1b4bc")
+volume_db = -16.838
+autoplay = true
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)

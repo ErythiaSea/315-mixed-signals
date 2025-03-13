@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://buvotqk1e00qe"
+path="res://.godot/imported/Rain, Vegetation, Light, Forest, Hit Leaves 03 SND3423.ogg-548c659bfa652ee572bb1733e54d207a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Ambience/Rain, Vegetation, Light, Forest, Hit Leaves 03 SND3423.ogg"
+dest_files=["res://.godot/imported/Rain, Vegetation, Light, Forest, Hit Leaves 03 SND3423.ogg-548c659bfa652ee572bb1733e54d207a.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

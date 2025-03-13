@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dsrcprh2oceg7"
+path="res://.godot/imported/Frog Orgy by jonsept Id-579104.ogg-ec4ad3f5cb7a014b65219c99c3dc78ef.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Ambience/Frog Orgy by jonsept Id-579104.ogg"
+dest_files=["res://.godot/imported/Frog Orgy by jonsept Id-579104.ogg-ec4ad3f5cb7a014b65219c99c3dc78ef.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

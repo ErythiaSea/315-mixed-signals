@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cnj8esqdgww0"]
+[gd_scene load_steps=15 format=3 uid="uid://cnj8esqdgww0"]
 
 [ext_resource type="Texture2D" uid="uid://bmij10s8rf8gm" path="res://Scenes/Environments/CabinOutdoor/base_outside.png" id="1_0a00e"]
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_4weox"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_nmgjp"]
 [ext_resource type="Texture2D" uid="uid://dalo0qcvvnfsa" path="res://Scenes/Environments/CabinOutdoor/vehicle_temp.png" id="2_s8gqw"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_elcve"]
+[ext_resource type="AudioStream" uid="uid://dko7fvpro21fk" path="res://Audio/Music/Kinesis Stellae   Choir by Vrymaa Id-770060.wav" id="7_hnxl8"]
 
 [sub_resource type="Resource" id="Resource_igbtt"]
 script = ExtResource("2_nmgjp")
@@ -125,3 +126,8 @@ gizmo_extents = 16.9
 [node name="1" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(882, 303)
 gizmo_extents = 16.9
+
+[node name="CelestialBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_hnxl8")
+volume_db = -38.432
+autoplay = true
