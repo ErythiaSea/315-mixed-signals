@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dehciflno8kex"]
 
 [ext_resource type="Texture2D" uid="uid://lrgwawcbk7nh" path="res://Scenes/Minigames/Map/Sprites/Map_FossilIcon_00.png" id="1_b46k7"]
-[ext_resource type="Script" path="res://Scenes/Minigames/Map/MapButton.cs" id="2_hsog7"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Map/Scripts/MapButton.cs" id="2_hsog7"]
 
 [sub_resource type="Animation" id="Animation_4fyvm"]
 resource_name = "MapButtonAnim"

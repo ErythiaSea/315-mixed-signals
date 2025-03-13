@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bc8lby5o1pvpv"]
+[gd_scene load_steps=12 format=3 uid="uid://bc8lby5o1pvpv"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/BaseMinigame.cs" id="1_4ctbx"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/CameraMovement.cs" id="1_7uyas"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://3pijp23csaa8" path="res://Scenes/Minigames/Constellation/Sprites/SkyLayer.png" id="3_vuskw"]
 [ext_resource type="Texture2D" uid="uid://dluxx0un1srrc" path="res://Scenes/Minigames/Constellation/Sprites/StarsLayer.png" id="4_irqg6"]
 [ext_resource type="Script" path="res://Scripts/ShaderScript/TextureShader.cs" id="4_ro1i3"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/StarsParent.cs" id="8_pqt5s"]
+[ext_resource type="PackedScene" uid="uid://bx27m71lxn4qi" path="res://Scenes/Minigames/Constellation/Objects/StarNode.tscn" id="8_s5r6a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_13kgm"]
 shader = ExtResource("3_djkxa")
@@ -21,8 +23,9 @@ script = ExtResource("1_4ctbx")
 
 [node name="eeek" type="Camera2D" parent="."]
 position = Vector2(576, 324)
+zoom = Vector2(0.5, 0.5)
 script = ExtResource("1_7uyas")
-cameraSpeed = 1.2
+cameraSpeed = 3.0
 
 [node name="Parallax" type="Node2D" parent="eeek"]
 z_index = -2
@@ -31,28 +34,31 @@ scale = Vector2(0.4, 0.4)
 
 [node name="Sky" type="Parallax2D" parent="eeek/Parallax"]
 scroll_scale = Vector2(0.58, 0.58)
-repeat_size = Vector2(4100, 2500)
+repeat_size = Vector2(12300, 7500)
 repeat_times = 4
 
 [node name="SkySprite" type="Sprite2D" parent="eeek/Parallax/Sky"]
 modulate = Color(0.721569, 0.745098, 1, 1)
+position = Vector2(-2.5, 0)
+scale = Vector2(3, 3)
 texture = ExtResource("3_vuskw")
 
 [node name="Stars" type="Parallax2D" parent="eeek/Parallax"]
 scroll_scale = Vector2(0.57, 0.57)
-repeat_size = Vector2(4100, 2500)
+repeat_size = Vector2(12300, 7500)
 repeat_times = 4
 
 [node name="StarsSprite" type="Sprite2D" parent="eeek/Parallax/Stars"]
 modulate = Color(0.894922, 0.894922, 0.894922, 1)
+scale = Vector2(3, 3)
 texture = ExtResource("4_irqg6")
 
 [node name="ColorRect" type="ColorRect" parent="eeek"]
 material = SubResource("ShaderMaterial_13kgm")
-offset_left = -967.0
-offset_top = -546.0
-offset_right = 185.0
-offset_bottom = 102.0
+offset_left = -1920.0
+offset_top = -1082.0
+offset_right = 366.0
+offset_bottom = 213.0
 scale = Vector2(1.68, 1.68)
 mouse_filter = 2
 script = ExtResource("4_ro1i3")
@@ -60,20 +66,36 @@ radius = 0.4
 blur = 0.02
 
 [node name="Label" type="Label" parent="eeek"]
-offset_left = -912.0
-offset_top = 448.0
-offset_right = 128.0
-offset_bottom = 493.0
-text = "WASD - Pan Camera    LMB (Click+Drag) - Connect Stars    ESC - Close"
+offset_left = -1806.0
+offset_top = 979.0
+offset_right = -766.0
+offset_bottom = 1024.0
+scale = Vector2(2, 2)
+text = "WASD - Pan Camera  ESC - Close"
 label_settings = SubResource("LabelSettings_03dfn")
 
 [node name="Constellation" parent="." instance=ExtResource("3_t8fte")]
+visible = false
 z_index = -1
 position = Vector2(376, -16)
 scale = Vector2(0.7, 0.7)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="newConstellation" type="Node2D" parent="."]
+z_index = -1
+script = ExtResource("8_pqt5s")
+
+[node name="StarNode" parent="newConstellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(12, 252)
+adjacentStars = [NodePath("../StarNode2")]
+
+[node name="StarNode2" parent="newConstellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(1048, 256)
+adjacentStars = [NodePath("../StarNode"), NodePath("../StarNode3"), NodePath("../StarNode4")]
+
+[node name="StarNode3" parent="newConstellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(1460, -292)
+adjacentStars = [NodePath("../StarNode2")]
+
+[node name="StarNode4" parent="newConstellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(1772, 500)
+adjacentStars = [NodePath("../StarNode2")]

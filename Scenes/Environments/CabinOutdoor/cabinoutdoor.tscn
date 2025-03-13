@@ -124,11 +124,9 @@ shape = SubResource("RectangleShape2D_rkcsa")
 
 [node name="LevelTransition" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(-1192, 54)
-transitionType = 1
 requiredStage = 6
 scenePath = "res://Scenes/Environments/Cabin/cabin.tscn"
 loadInCurrent = false
-spawnPoint = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
 position = Vector2(168, 81)
