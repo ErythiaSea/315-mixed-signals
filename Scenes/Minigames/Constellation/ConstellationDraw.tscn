@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://3pijp23csaa8" path="res://Scenes/Minigames/Constellation/Sprites/SkyLayer.png" id="3_vuskw"]
 [ext_resource type="Texture2D" uid="uid://dluxx0un1srrc" path="res://Scenes/Minigames/Constellation/Sprites/StarsLayer.png" id="4_irqg6"]
 [ext_resource type="Script" path="res://Scripts/ShaderScript/TextureShader.cs" id="4_ro1i3"]
-[ext_resource type="Script" path="res://Scenes/Minigames/Constellation/StarsParent.cs" id="8_pqt5s"]
-[ext_resource type="PackedScene" uid="uid://d3ssemu58s7ga" path="res://Scenes/Minigames/Constellation/StarNode.tscn" id="8_s5r6a"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/StarsParent.cs" id="8_pqt5s"]
+[ext_resource type="PackedScene" uid="uid://bx27m71lxn4qi" path="res://Scenes/Minigames/Constellation/Objects/StarNode.tscn" id="8_s5r6a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_13kgm"]
 shader = ExtResource("3_djkxa")
@@ -24,8 +24,9 @@ script = ExtResource("1_4ctbx")
 
 [node name="eeek" type="Camera2D" parent="."]
 position = Vector2(576, 324)
+zoom = Vector2(0.5, 0.5)
 script = ExtResource("1_7uyas")
-cameraSpeed = 1.2
+cameraSpeed = 3.0
 
 [node name="Parallax" type="Node2D" parent="eeek"]
 z_index = -2
@@ -34,29 +35,31 @@ scale = Vector2(0.4, 0.4)
 
 [node name="Sky" type="Parallax2D" parent="eeek/Parallax"]
 scroll_scale = Vector2(0.58, 0.58)
-repeat_size = Vector2(4100, 2500)
+repeat_size = Vector2(12300, 7500)
 repeat_times = 4
 
 [node name="SkySprite" type="Sprite2D" parent="eeek/Parallax/Sky"]
 modulate = Color(0.721569, 0.745098, 1, 1)
 position = Vector2(-2.5, 0)
+scale = Vector2(3, 3)
 texture = ExtResource("3_vuskw")
 
 [node name="Stars" type="Parallax2D" parent="eeek/Parallax"]
 scroll_scale = Vector2(0.57, 0.57)
-repeat_size = Vector2(4100, 2500)
+repeat_size = Vector2(12300, 7500)
 repeat_times = 4
 
 [node name="StarsSprite" type="Sprite2D" parent="eeek/Parallax/Stars"]
 modulate = Color(0.894922, 0.894922, 0.894922, 1)
+scale = Vector2(3, 3)
 texture = ExtResource("4_irqg6")
 
 [node name="ColorRect" type="ColorRect" parent="eeek"]
 material = SubResource("ShaderMaterial_13kgm")
-offset_left = -967.0
-offset_top = -546.0
-offset_right = 185.0
-offset_bottom = 102.0
+offset_left = -1920.0
+offset_top = -1082.0
+offset_right = 366.0
+offset_bottom = 213.0
 scale = Vector2(1.68, 1.68)
 mouse_filter = 2
 script = ExtResource("4_ro1i3")
@@ -64,11 +67,12 @@ radius = 0.4
 blur = 0.02
 
 [node name="Label" type="Label" parent="eeek"]
-offset_left = -912.0
-offset_top = 448.0
-offset_right = 128.0
-offset_bottom = 493.0
-text = "WASD - Pan Camera    LMB (Click+Drag) - Connect Stars    ESC - Close"
+offset_left = -1806.0
+offset_top = 979.0
+offset_right = -766.0
+offset_bottom = 1024.0
+scale = Vector2(2, 2)
+text = "WASD - Pan Camera  ESC - Close"
 label_settings = SubResource("LabelSettings_03dfn")
 
 [node name="Constellation" parent="." instance=ExtResource("3_t8fte")]

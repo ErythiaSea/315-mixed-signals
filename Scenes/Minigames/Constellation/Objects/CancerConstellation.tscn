@@ -207,7 +207,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Star1" type="TextureRect" parent="StarParent" node_paths=PackedStringArray("adjacentStars")]
+[node name="Star1" type="TextureRect" parent="StarParent"]
 layout_mode = 0
 offset_left = 380.0
 offset_top = 160.0
@@ -218,7 +218,6 @@ focus_neighbor_right = NodePath("../Star5")
 focus_neighbor_bottom = NodePath("../Star2")
 focus_mode = 2
 script = SubResource("CSharpScript_cx4rq")
-adjacentStars = []
 centerFocusRange = null
 
 [node name="Star2" type="TextureRect" parent="StarParent"]

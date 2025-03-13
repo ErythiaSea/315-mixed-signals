@@ -17,7 +17,7 @@ boot_splash/bg_color=Color(0.15, 0.0075, 0, 1)
 boot_splash/image="res://Scenes/Loading/BloodBoxLogo_Splash.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://icon.svg"
+config/icon="res://Sprites/icon.svg"
 boot_splash/minimum_display_time=1750
 
 [autoload]

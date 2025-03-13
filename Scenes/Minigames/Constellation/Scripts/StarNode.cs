@@ -7,7 +7,7 @@ public partial class StarNode : Node2D
     Godot.Collections.Array<StarNode> adjacentStars;
 
     [Export]
-    float centerFocusRange = 200f;
+    float centerFocusRange = 300f;
 
     [Export]
     float lineSpeed = 2.0f;
@@ -47,7 +47,6 @@ public partial class StarNode : Node2D
 
                 if (timeElapsed > timeToRegister)
                 {
-                    GD.Print("Star found");
                     isFound = true;
                     StarFound();
                 }
@@ -58,7 +57,6 @@ public partial class StarNode : Node2D
         {
             if (alphaChange <= 1)
             {
-                GD.Print("Displaying Number");
                 alphaChange += (float)delta * parent.displaySpeed;
                 numberDisplay.Modulate = new Color(numberDisplay.Modulate.R, numberDisplay.Modulate.G, numberDisplay.Modulate.B, alphaChange);
             }
@@ -67,12 +65,10 @@ public partial class StarNode : Node2D
 
         if (lineList.Count > 0)
         {
-            GD.Print("line exists");
             for(int i = 0; i < lineList.Count; i++)
             {
                 if (lineProgress[i] < 1f)
                 {
-                    GD.Print("Expanding");
                     lineProgress[i] += (float)delta * lineSpeed;
 
                     Mathf.Clamp(lineProgress[i], 0f, 1f);
@@ -95,7 +91,7 @@ public partial class StarNode : Node2D
         connection.AddPoint(GlobalPosition);
         connection.AddPoint(GlobalPosition);
  
-        connection.Width = 4;
+        connection.Width = 10;
         connection.DefaultColor = Colors.White;
         this.AddSibling(connection);
 
