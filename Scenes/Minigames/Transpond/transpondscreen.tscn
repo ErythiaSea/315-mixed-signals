@@ -52,6 +52,10 @@ position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ugigk")
 
+[node name="radiotowerRoot" parent="." instance=ExtResource("1_okcy0")]
+position = Vector2(152, 245)
+scale = Vector2(0.4, 0.4)
+
 [node name="WaveBackground" type="Sprite2D" parent="."]
 z_index = -2
 position = Vector2(1362, 285)

@@ -4,7 +4,7 @@ using System;
 public partial class WaveformGame : Node2D
 {
 	WaveRender playerWave, realWave;
-    float targetWavelength, targetAmplitude;
+	float targetWavelength, targetAmplitude;
 
     Globals globalScript;
     [Export]
@@ -14,7 +14,7 @@ public partial class WaveformGame : Node2D
     float alignedTimer = 0.0f;
     bool tunedSignal = false;
 
-    public bool gameActive = false;
+	public bool gameActive = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -51,34 +51,34 @@ public partial class WaveformGame : Node2D
 	{
         if (globalScript.gameState.stage != GAMESTAGE.WAVEFORM) return;
 
-        float wlChange = 0.5f;
-        float wlMult = (playerWave.wavelength / 100.0f);
-        if (Input.IsActionPressed("left_pivot_ccw"))
-        {
-            playerWave.amplitude += 0.5f;
-        }
-        if (Input.IsActionPressed("left_pivot_cw"))
-        {
-            playerWave.amplitude -= 0.5f;
-        }
-        if (Input.IsActionPressed("right_pivot_ccw"))
-        {
-            playerWave.wavelength += wlChange * wlMult;
-        }
-        if (Input.IsActionPressed("right_pivot_cw"))
-        {
-            playerWave.wavelength -= wlChange * wlMult;
-        }
+		float wlChange = 0.5f;
+		float wlMult = (playerWave.wavelength / 100.0f);
+		if (Input.IsActionPressed("left_pivot_ccw"))
+		{
+			playerWave.amplitude += 0.5f;
+		}
+		if (Input.IsActionPressed("left_pivot_cw"))
+		{
+			playerWave.amplitude -= 0.5f;
+		}
+		if (Input.IsActionPressed("right_pivot_ccw"))
+		{
+			playerWave.wavelength += wlChange * wlMult;
+		}
+		if (Input.IsActionPressed("right_pivot_cw"))
+		{
+			playerWave.wavelength -= wlChange * wlMult;
+		}
 
-        playerWave.amplitude = Mathf.Clamp(playerWave.amplitude, 0.0f, 125.0f);
-        playerWave.wavelength = Mathf.Clamp(playerWave.wavelength, 5.0f, 50.0f);
-        if (Input.IsActionJustPressed("interact"))
-        {
-            GD.Print("target w: ", targetWavelength, ", current: ", playerWave.wavelength);
-            GD.Print(Mathf.Abs(playerWave.wavelength - targetWavelength));
-            GD.Print("target a:", targetAmplitude, ", current: ", playerWave.amplitude);
-            GD.Print(Mathf.Abs(playerWave.wavelength - targetWavelength));
-        }
+		playerWave.amplitude = Mathf.Clamp(playerWave.amplitude, 0.0f, 125.0f);
+		playerWave.wavelength = Mathf.Clamp(playerWave.wavelength, 5.0f, 50.0f);
+		if (Input.IsActionJustPressed("interact"))
+		{
+			GD.Print("target w: ", targetWavelength, ", current: ", playerWave.wavelength);
+			GD.Print(Mathf.Abs(playerWave.wavelength - targetWavelength));
+			GD.Print("target a:", targetAmplitude, ", current: ", playerWave.amplitude);
+			GD.Print(Mathf.Abs(playerWave.wavelength - targetWavelength));
+		}
 
         if (tunedSignal)
         {

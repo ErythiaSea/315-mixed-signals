@@ -21,7 +21,7 @@ public partial class MapButton : TextureButton
 		mapScreen = GetParent().GetParent<MapScreen>();
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		PivotOffset = new Vector2(Size.X / 2, Size.Y / 2);
-        Scale = new Vector2(0.2f, 0.2f);
+		Scale = new Vector2(0.2f, 0.2f);
 
 		if (mapToLoad == null) enabled = false;
 		if (!enabled)
@@ -45,7 +45,7 @@ public partial class MapButton : TextureButton
         //Position.Y = baseY + Mathf.Sin(t) * 20.0f;
     }
 
-    public void _OnPressed()
+	public void _OnPressed()
 	{
 		GD.Print(this.Name, " pressed");
 		if (Input.IsActionPressed("middle_mouse")) spawnPoint = 1;

@@ -50,13 +50,13 @@ public partial class TranspondScreen : BaseMinigame
             }
         }
 
-        if (fade)
-        {
-            fadeTime += (float)delta;
-            if (fadeTime >= 0.85f) { fade = false; fadeTime = 0.85f; }
-            leftBox.Modulate = new Color(Colors.Black, fadeTime);
-            rightBox.Modulate = new Color(Colors.Black, 0.85f - fadeTime);
-        }
+		if (fade)
+		{
+			fadeTime += (float)delta;
+			if (fadeTime >= 0.85f) { fade = false; fadeTime = 0.85f; }
+			leftBox.Modulate = new Color(Colors.Black, fadeTime);
+			rightBox.Modulate = new Color(Colors.Black, 0.85f - fadeTime);
+		}
 
         if (globalScript.gameState.stage > GAMESTAGE.WAVEFORM)
         {
