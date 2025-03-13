@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://kv3p5d4tp3k5"]
+[gd_scene load_steps=13 format=3 uid="uid://kv3p5d4tp3k5"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Transpond/Scripts/Radiotower.cs" id="1_qjh6q"]
-[ext_resource type="Texture2D" uid="uid://c4hohafhbk47x" path="res://Scenes/Minigames/Transpond/Sprites/window_background.png" id="2_ifsrx"]
-[ext_resource type="Texture2D" uid="uid://8eis7hf11585" path="res://Scenes/Minigames/Transpond/Sprites/window_towers.png" id="3_obcwr"]
+[ext_resource type="Texture2D" uid="uid://deq16tiwdto50" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt1_Base.png" id="2_my68r"]
+[ext_resource type="Texture2D" uid="uid://bksvynf3splg2" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt1_Whole.png" id="3_tf038"]
+[ext_resource type="Texture2D" uid="uid://cn1rf3lyfvcai" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt1_Pinpoint.png" id="4_8do03"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Transpond/Scripts/RadiotowerPivot.cs" id="4_vtlbg"]
 [ext_resource type="AudioStream" uid="uid://dpqhr3nu7u2bx" path="res://Audio/transpondtower.wav" id="5_vusvs"]
 [ext_resource type="Texture2D" uid="uid://dwvosh05aqd6t" path="res://Scenes/Minigames/Transpond/Sprites/line.png" id="6_b2ab4"]
 [ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://icon.svg" id="7_4vx2i"]
+[ext_resource type="Texture2D" uid="uid://cnau6vaf4smmw" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt1_Satellite.png" id="7_e7dg6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4gfr"]
 radius = 44.0454
@@ -22,65 +24,97 @@ script = ExtResource("1_qjh6q")
 
 [node name="bg" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
-texture = ExtResource("2_ifsrx")
+texture = ExtResource("2_my68r")
 
-[node name="towerSprites" type="Sprite2D" parent="."]
-position = Vector2(1393, 622)
-texture = ExtResource("3_obcwr")
+[node name="Reference(DeleteWhenOrganised)" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 0.576471, 0.215686)
+texture = ExtResource("3_tf038")
+offset = Vector2(960, 540)
 
 [node name="towers" type="Node2D" parent="."]
 
 [node name="tower1" type="Area2D" parent="towers"]
-position = Vector2(1201, 197)
+position = Vector2(599, -5)
 collision_layer = 2
 
 [node name="towerCollisionShape" type="CollisionShape2D" parent="towers/tower1"]
 shape = SubResource("CircleShape2D_c4gfr")
 
+[node name="Pinpoint" type="Sprite2D" parent="towers/tower1"]
+texture = ExtResource("4_8do03")
+
 [node name="tower2" type="Area2D" parent="towers"]
-position = Vector2(577, 280)
+position = Vector2(781, 269)
 collision_layer = 2
 
 [node name="towerCollisionShape" type="CollisionShape2D" parent="towers/tower2"]
 shape = SubResource("CircleShape2D_c4gfr")
 
+[node name="Pinpoint" type="Sprite2D" parent="towers/tower2"]
+texture = ExtResource("4_8do03")
+
 [node name="tower3" type="Area2D" parent="towers"]
-position = Vector2(778, 525)
+position = Vector2(601, 634)
 collision_layer = 2
 
 [node name="towerCollisionShape" type="CollisionShape2D" parent="towers/tower3"]
 shape = SubResource("CircleShape2D_c4gfr")
 
+[node name="Pinpoint" type="Sprite2D" parent="towers/tower3"]
+texture = ExtResource("4_8do03")
+
 [node name="tower4" type="Area2D" parent="towers"]
-position = Vector2(522, 708)
+position = Vector2(783, 899)
 collision_layer = 2
 
 [node name="towerCollisionShape" type="CollisionShape2D" parent="towers/tower4"]
 shape = SubResource("CircleShape2D_c4gfr")
 
+[node name="Pinpoint" type="Sprite2D" parent="towers/tower4"]
+texture = ExtResource("4_8do03")
+
 [node name="tower5" type="Area2D" parent="towers"]
-position = Vector2(1043, 449)
+position = Vector2(1186, -89)
 collision_layer = 2
 
 [node name="towerCollisionShape" type="CollisionShape2D" parent="towers/tower5"]
 shape = SubResource("CircleShape2D_c4gfr")
 
+[node name="Pinpoint" type="Sprite2D" parent="towers/tower5"]
+texture = ExtResource("4_8do03")
+
 [node name="tower6" type="Area2D" parent="towers"]
-position = Vector2(933, 856)
+position = Vector2(1412, 267)
 collision_layer = 2
 
 [node name="towerCollisionShape" type="CollisionShape2D" parent="towers/tower6"]
 shape = SubResource("CircleShape2D_c4gfr")
 
+[node name="Pinpoint" type="Sprite2D" parent="towers/tower6"]
+texture = ExtResource("4_8do03")
+
 [node name="tower7" type="Area2D" parent="towers"]
-position = Vector2(1342, 625)
+position = Vector2(1051, 536)
 collision_layer = 2
 
 [node name="towerCollisionShape" type="CollisionShape2D" parent="towers/tower7"]
 shape = SubResource("CircleShape2D_c4gfr")
 
+[node name="Pinpoint" type="Sprite2D" parent="towers/tower7"]
+texture = ExtResource("4_8do03")
+
+[node name="tower8" type="Area2D" parent="towers"]
+position = Vector2(1413, 789)
+collision_layer = 2
+
+[node name="towerCollisionShape" type="CollisionShape2D" parent="towers/tower8"]
+shape = SubResource("CircleShape2D_c4gfr")
+
+[node name="Pinpoint" type="Sprite2D" parent="towers/tower8"]
+texture = ExtResource("4_8do03")
+
 [node name="leftPivot" type="Node2D" parent="."]
-position = Vector2(100, 1100)
+position = Vector2(332, 1252)
 rotation = 4.71239
 script = ExtResource("4_vtlbg")
 isLeft = true
@@ -97,6 +131,11 @@ rotation = 1.5708
 scale = Vector2(4, 4)
 texture = ExtResource("6_b2ab4")
 
+[node name="Satellite" type="Sprite2D" parent="leftPivot"]
+position = Vector2(48, 0)
+rotation = 1.5708
+texture = ExtResource("7_e7dg6")
+
 [node name="lineArea" type="Area2D" parent="leftPivot"]
 collision_mask = 2
 
@@ -104,7 +143,7 @@ collision_mask = 2
 shape = SubResource("SegmentShape2D_i4uwr")
 
 [node name="rightPivot" type="Node2D" parent="."]
-position = Vector2(1820, 1100)
+position = Vector2(1588, 1249)
 rotation = 4.71239
 script = ExtResource("4_vtlbg")
 
@@ -119,6 +158,11 @@ position = Vector2(1300, 0)
 rotation = 1.5708
 scale = Vector2(4, 4)
 texture = ExtResource("6_b2ab4")
+
+[node name="Satellite" type="Sprite2D" parent="rightPivot"]
+position = Vector2(48, -0.00012207)
+rotation = 1.5708
+texture = ExtResource("7_e7dg6")
 
 [node name="lineArea" type="Area2D" parent="rightPivot"]
 collision_mask = 2

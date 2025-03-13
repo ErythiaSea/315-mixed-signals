@@ -16,17 +16,17 @@ public partial class Level : Node2D
 	[Export]
 	bool cameraEnabled = true;
 
-    // The region the camera can move around in.
-    // If this is left untouched the camera is disabled
-    [ExportGroup("Camera Limits")]
+	// The region the camera can move around in.
+	// If this is left untouched the camera is disabled
+	[ExportGroup("Camera Limits")]
 	[Export]
 	int leftLimit = 0;
-    [Export]
-    int topLimit = 0;
-    [Export]
-    int rightLimit = 0;
-    [Export]
-    int bottomLimit = 0;
+	[Export]
+	int topLimit = 0;
+	[Export]
+	int rightLimit = 0;
+	[Export]
+	int bottomLimit = 0;
 	
 	Player player;
 
@@ -36,7 +36,7 @@ public partial class Level : Node2D
 		player = GetNode<Player>("Player");
 
 		int spawnID = Globals.Instance.currentSpawnID;
-        if (spawnID >= 0 && spawnData.Count > 0)
+		if (spawnID >= 0 && spawnData.Count > 0)
 		{
 			player.Position = spawnData[spawnID].spawnPosition;
 			player.SetSpriteFlipH(!spawnData[spawnID].faceLeft);
@@ -66,8 +66,8 @@ public partial class Level : Node2D
 
 	// Creates an editor warning if no Player child is found, or more than one exists
 	// This technically doesn't check if the node is actually of type Player, but that's an engine limitation
-    public override string[] _GetConfigurationWarnings()
-    {
+	public override string[] _GetConfigurationWarnings()
+	{
 		List<String> warnings = new List<String>();
 
 		Array<Node> playerChildren = FindChildren("Player", "CharacterBody2D");
@@ -76,7 +76,7 @@ public partial class Level : Node2D
 
 		string[] warnArray = warnings.ToArray();
 		return warnArray;
-    }
+	}
 
 	public bool getCameraEnabled() { return cameraEnabled; }
 }

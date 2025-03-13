@@ -20,10 +20,6 @@ font_size = 32
 z_index = 1
 script = ExtResource("1_ouvn6")
 
-[node name="radiotowerRoot" parent="." instance=ExtResource("1_okcy0")]
-position = Vector2(267, 187)
-scale = Vector2(0.283099, 0.445636)
-
 [node name="waveformRoot" parent="." instance=ExtResource("3_xdcbw")]
 z_index = -1
 ampTolerance = 3.0
@@ -33,6 +29,10 @@ wlTolerance = 3.5
 position = Vector2(1020, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ugigk")
+
+[node name="radiotowerRoot" parent="." instance=ExtResource("1_okcy0")]
+position = Vector2(152, 245)
+scale = Vector2(0.4, 0.4)
 
 [node name="WaveBackground" type="Sprite2D" parent="."]
 z_index = -2

@@ -1,10 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=22 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_hvnuo"]
-[ext_resource type="Texture2D" uid="uid://bwiibe8j7vfgh" path="res://Scenes/Environments/Cabin/room_base.png" id="1_ppr70"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_vrtq2"]
+[ext_resource type="Texture2D" uid="uid://bvndiooefnwcn" path="res://Scenes/Environments/Cabin/Sprites/Sky_Render.png" id="3_bkt4p"]
 [ext_resource type="Script" path="res://Scenes/Environments/Objects/InteractBox.cs" id="4_r0utk"]
+[ext_resource type="Texture2D" uid="uid://c7n4exllur0qf" path="res://Scenes/Environments/Cabin/Sprites/Cabin_WallCutout.png" id="4_wjyar"]
+[ext_resource type="Texture2D" uid="uid://bn181y2cglkh8" path="res://Scenes/Environments/Cabin/Sprites/Cabin_WallMounts.png" id="5_6d5l0"]
+[ext_resource type="Texture2D" uid="uid://bqyty78nhq7we" path="res://Scenes/Environments/Cabin/Sprites/Cabin_Standings.png" id="6_fo4et"]
+[ext_resource type="Texture2D" uid="uid://cewwdj8kb867f" path="res://Scenes/Environments/Cabin/Sprites/Cabin_Monitors.png" id="7_bteuo"]
 [ext_resource type="Texture2D" uid="uid://bedcsxhb5bdgm" path="res://Scenes/Environments/Objects/translationpaper.png" id="7_tqin0"]
 [ext_resource type="Texture2D" uid="uid://cc066shi2gixy" path="res://Scenes/Environments/Cabin/room_silohettes.png" id="8_fxgd2"]
 
@@ -12,6 +16,37 @@
 script = ExtResource("2_vrtq2")
 spawnPosition = Vector2(1814, 886)
 faceLeft = true
+
+[sub_resource type="Environment" id="Environment_8vdl8"]
+background_mode = 3
+glow_enabled = true
+glow_levels/4 = 2.0
+glow_levels/5 = 4.0
+glow_levels/6 = 8.0
+glow_levels/7 = 16.0
+glow_normalized = true
+glow_intensity = 0.7
+glow_bloom = 0.3
+glow_blend_mode = 0
+fog_mode = 1
+fog_light_color = Color(0.872069, 0.00094317, 0.923236, 1)
+fog_density = 1.0
+fog_depth_curve = 2.82843
+adjustment_enabled = true
+adjustment_brightness = 0.8
+adjustment_saturation = 1.1
+
+[sub_resource type="Gradient" id="Gradient_xf4qe"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p5t1g"]
+gradient = SubResource("Gradient_xf4qe")
+width = 1920
+height = 1080
+fill = 1
+fill_from = Vector2(0.504587, 0.799185)
+fill_to = Vector2(0.5, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82mfh"]
 size = Vector2(1936, 88.8125)
@@ -36,17 +71,50 @@ script = ExtResource("1_hvnuo")
 spawnData = Array[Object]([SubResource("Resource_66r8t")])
 cameraEnabled = false
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8vdl8")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.160404, 0.0175456, 0.232451, 1)
+blend_mode = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(966, 523)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="Sky" type="Sprite2D" parent="."]
+position = Vector2(960, 613)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_bkt4p")
+
+[node name="Wall" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_ppr70")
+texture = ExtResource("4_wjyar")
+
+[node name="WallMounts" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_6d5l0")
+
+[node name="Standings" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_fo4et")
+
+[node name="Monitors" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_bteuo")
 
 [node name="TranslationPaper" type="Sprite2D" parent="."]
-position = Vector2(1348, 773)
+position = Vector2(600, 758)
+scale = Vector2(-1, 1)
 texture = ExtResource("7_tqin0")
 
 [node name="Player" parent="." instance=ExtResource("2_h3n7b")]
-position = Vector2(570, 867)
+position = Vector2(315, 858)
 scale = Vector2(2.5, 2.5)
 
 [node name="WorldCollision" type="StaticBody2D" parent="."]
@@ -82,7 +150,7 @@ script = ExtResource("4_r0utk")
 scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
-position = Vector2(425, 409)
+position = Vector2(-330, 373)
 shape = SubResource("RectangleShape2D_cchka")
 
 [node name="LevelChange" type="Area2D" parent="."]
@@ -96,7 +164,7 @@ spawnPoint = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
 shape = SubResource("RectangleShape2D_lvk1a")
 
-[node name="Foreground" type="Sprite2D" parent="."]
+[node name="Silouhette" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
