@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=23 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_hvnuo"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -103,7 +103,6 @@ texture = ExtResource("5_6d5l0")
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_fo4et")
-
 
 [node name="HubBGM" type="AudioStreamPlayer" parent="."]
 process_mode = 1
