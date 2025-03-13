@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dkjjkuqsupb4f"]
+[gd_scene load_steps=36 format=3 uid="uid://dkjjkuqsupb4f"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_tgjlw"]
 [ext_resource type="Texture2D" uid="uid://bkevc4rf8wjhe" path="res://Scenes/Environments/LilypadPond/lilypadenv_back.png" id="1_x6dd7"]
@@ -9,6 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://rttkrffqrw1g" path="res://Scenes/Environments/Objects/stair_control.tscn" id="3_6n8s2"]
 [ext_resource type="Texture2D" uid="uid://de45w11b26rfr" path="res://Scenes/Environments/LilypadPond/lilypadenv_cliffgrass.png" id="3_n7la6"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_u2itd"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="10_8b38f"]
+[ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="10_whwaa"]
+[ext_resource type="Resource" uid="uid://ciinae4snmogy" path="res://Scenes/Environments/LilypadPond/Dialogue/misc dial 1.tres" id="11_3uaob"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="12_f3lj2"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="13_wcr1k"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="14_xkiew"]
 
 [sub_resource type="Resource" id="Resource_xpr3o"]
 script = ExtResource("2_061b7")
@@ -63,6 +69,18 @@ size = Vector2(37, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qricm"]
 radius = 40.0125
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_am0pj"]
+size = Vector2(49, 123)
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_b2dm0"]
+script = ExtResource("12_f3lj2")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_mgviv"]
+script = ExtResource("13_wcr1k")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_7oga7"]
+script = ExtResource("14_xkiew")
 
 [node name="DemoEnv" type="Node2D"]
 script = ExtResource("1_tgjlw")
@@ -208,6 +226,7 @@ shape = SubResource("SegmentShape2D_7qebe")
 [node name="Player" parent="." instance=ExtResource("2_a0sm7")]
 position = Vector2(-2749, 554)
 scale = Vector2(2.5, 2.5)
+movementSpeed = 700.0
 
 [node name="StairControls" type="Node2D" parent="."]
 position = Vector2(2243, 394)
@@ -264,3 +283,38 @@ shape = SubResource("CircleShape2D_qricm")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="LadderInteract"]
 position = Vector2(0, -379)
 shape = SubResource("CircleShape2D_qricm")
+
+[node name="InteractBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("4_u2itd")]
+position = Vector2(-1115, 794)
+isOneShot = true
+isAutofire = true
+dialogueBox = NodePath("../CanvasLayer/DialogueBox")
+startID = "0"
+lockPlayerMovement = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox"]
+position = Vector2(31, 111)
+shape = SubResource("RectangleShape2D_am0pj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" type="Panel" parent="CanvasLayer"]
+top_level = true
+z_index = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -100.0
+offset_right = 300.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_whwaa")
+script = ExtResource("10_8b38f")
+data = ExtResource("11_3uaob")
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_b2dm0"), SubResource("RichTextEffect_mgviv"), SubResource("RichTextEffect_7oga7")])
+
+[connection signal="dialogue_ended" from="CanvasLayer/DialogueBox" to="Player" method="OnDialogueClosedEvent"]

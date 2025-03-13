@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://tvyth3g2fn8"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_kcmq3"]
+
+[resource]
+script = ExtResource("1_kcmq3")
+starts = {
+"0": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-360, -80),
+"start_id": "0"
+},
+"1_1": {
+"dialogue": "Corp said they were sending me a new work car… If they give me a Wesla, I swear…",
+"offset": Vector2(-40, -80),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = ""

@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bbg01qevmw8wg" path="res://Scenes/Debug/debugroombg.png" id="1_po1od"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_6fwe3"]
 [ext_resource type="Script" path="res://Scenes/Environments/Objects/InteractBox.cs" id="4_5ocby"]
+[ext_resource type="Resource" uid="uid://hopbrw1uiih8" path="res://Scenes/Debug/pyxisDialogue.tres" id="7_golrq"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="9_55u1d"]
 [ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="9_myhsf"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="10_b8lvj"]
-[ext_resource type="Resource" uid="uid://wn1h5b8ptlga" path="res://Scenes/Debug/debugdialogue.tres" id="11_6wf3g"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="11_to0s1"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="12_dbeao"]
 
@@ -101,8 +101,6 @@ shape = SubResource("RectangleShape2D_wjqh6")
 position = Vector2(1372, 926)
 collision_layer = 4
 script = ExtResource("4_5ocby")
-isOneShot = true
-isAutofire = true
 dialogueBox = NodePath("../Control/DialogueBox")
 startID = "0"
 lockPlayerMovement = true
@@ -197,7 +195,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_myhsf")
 script = ExtResource("9_55u1d")
-data = ExtResource("11_6wf3g")
+data = ExtResource("7_golrq")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_uocva"), SubResource("RichTextEffect_lglma"), SubResource("RichTextEffect_5dhl4")])
 
 [node name="RoomCollision" type="StaticBody2D" parent="."]
