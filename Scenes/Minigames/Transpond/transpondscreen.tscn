@@ -38,43 +38,44 @@ exitTransition = 4
 transitionLength = 0.5
 
 [node name="radiotowerRoot" parent="." instance=ExtResource("1_okcy0")]
-position = Vector2(267, 187)
+position = Vector2(258, 192)
 scale = Vector2(0.283099, 0.445636)
 
 [node name="waveformRoot" parent="." instance=ExtResource("3_xdcbw")]
 z_index = -1
+position = Vector2(-10, 0)
 ampTolerance = 3.0
 wlTolerance = 3.5
 
 [node name="Monitors" type="Sprite2D" parent="."]
-position = Vector2(1020, 540)
+position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ugigk")
 
 [node name="WaveBackground" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(1372, 285)
+position = Vector2(1362, 285)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_ftnw3")
 
 [node name="WaveBackground2" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(1372, 762)
+position = Vector2(1362, 762)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_ftnw3")
 
 [node name="RightBox" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.870588)
-position = Vector2(1388, 548)
+position = Vector2(1381.95, 545.982)
 rotation = -3.14159
-scale = Vector2(11.9225, 14.8759)
+scale = Vector2(12.1117, 15.0231)
 texture = SubResource("GradientTexture2D_cqgav")
 
 [node name="LeftBox" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0)
-position = Vector2(534, 548)
+position = Vector2(519.385, 546.488)
 rotation = -3.14159
-scale = Vector2(11.9225, 15.1159)
+scale = Vector2(12.0327, 15.1631)
 texture = SubResource("GradientTexture2D_cqgav")
 
 [node name="ControlsRadiotower" type="Label" parent="."]

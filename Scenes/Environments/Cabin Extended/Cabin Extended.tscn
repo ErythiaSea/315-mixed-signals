@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://6oqxs3mhkt1m"]
+
+[ext_resource type="Texture2D" uid="uid://bwiibe8j7vfgh" path="res://Scenes/Environments/Cabin/room_base.png" id="1_ygm4e"]
+[ext_resource type="Texture2D" uid="uid://dlxcbppbeywmh" path="res://Scenes/Environments/Cabin Extended/base_pipes.png" id="2_43ur8"]
+[ext_resource type="Texture2D" uid="uid://btc2kj0eyq8s4" path="res://Scenes/Environments/Cabin Extended/base_bedroom.png" id="3_3o31c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1nys"]
+size = Vector2(1955, 107.813)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flave"]
+size = Vector2(98, 447.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmr0k"]
+size = Vector2(95, 2537.5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ygm4e")
+region_enabled = true
+region_rect = Rect2(0, 0, 3840, 2160)
+
+[node name="Background_Pipes" type="Sprite2D" parent="."]
+position = Vector2(962.625, 2373.03)
+scale = Vector2(0.392148, 0.392148)
+texture = ExtResource("2_43ur8")
+
+[node name="Background_Bedroom" type="Sprite2D" parent="."]
+position = Vector2(962.115, 4061.25)
+scale = Vector2(0.383467, 0.383467)
+texture = ExtResource("3_3o31c")
+
+[node name="WorldCollision" type="StaticBody2D" parent="."]
+position = Vector2(396, 403)
+collision_layer = 2
+
+[node name="CollisionShape2" type="CollisionShape2D" parent="WorldCollision"]
+position = Vector2(571, 630)
+rotation = -0.000113001
+shape = SubResource("RectangleShape2D_u1nys")
+
+[node name="CollisionShape3" type="CollisionShape2D" parent="WorldCollision"]
+position = Vector2(-434, 408.75)
+shape = SubResource("RectangleShape2D_flave")
+
+[node name="CollisionShape4" type="CollisionShape2D" parent="WorldCollision"]
+position = Vector2(1561, 607)
+shape = SubResource("RectangleShape2D_flave")
+
+[node name="CollisionShape5" type="CollisionShape2D" parent="WorldCollision"]
+position = Vector2(354.5, 1953.75)
+shape = SubResource("RectangleShape2D_kmr0k")
+
+[node name="CollisionShape6" type="CollisionShape2D" parent="WorldCollision"]
+position = Vector2(835, 1948)
+shape = SubResource("RectangleShape2D_kmr0k")
+
+[node name="CollisionShape7" type="CollisionShape2D" parent="WorldCollision"]
+position = Vector2(-442, 3820)
+shape = SubResource("RectangleShape2D_flave")
+
+[node name="CollisionShape8" type="CollisionShape2D" parent="WorldCollision"]
+position = Vector2(1553, 3828)
+shape = SubResource("RectangleShape2D_flave")
+
+[node name="CollisionShape9" type="CollisionShape2D" parent="WorldCollision"]
+position = Vector2(577.5, 4109)
+rotation = -0.000226002
+shape = SubResource("RectangleShape2D_u1nys")

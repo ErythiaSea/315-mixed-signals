@@ -97,7 +97,6 @@ texture = ExtResource("1_x6dd7")
 [node name="TelescopeSprite" type="Sprite2D" parent="."]
 position = Vector2(-929, -816)
 texture = ExtResource("2_tg48q")
-flip_h = true
 
 [node name="Foreground" type="Sprite2D" parent="."]
 z_index = 2
