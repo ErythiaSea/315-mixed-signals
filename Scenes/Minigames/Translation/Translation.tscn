@@ -138,3 +138,4 @@ custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_xst7l"), Sub
 options_vertical = true
 
 [connection signal="button_down" from="CheckAnswerButton" to="." method="AnswerButton"]
+[connection signal="dialogue_ended" from="DialogueBox" to="." method="OnDialogueEnd"]

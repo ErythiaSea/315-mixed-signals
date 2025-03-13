@@ -66,11 +66,14 @@ public partial class TranslationCanvasUI : BaseMinigame
             //winInd.Visible = true;
 			GetNode<VBoxContainer>("TextVBox").Visible = false;
             GetNode<VBoxContainer>("HintVBox").Visible = false;
+			GetNode<Button>("CheckAnswerButton").Visible = false;
 			cipherDisplay.Visible = false;
+			canClose = false;
 			dialogueBox.Call("start", "0");
         }
 		else
 		{
+			dialogueBox.Call("start", "err");
 			GD.Print("Doesnt feel right");
 		}
 	}
@@ -135,5 +138,12 @@ public partial class TranslationCanvasUI : BaseMinigame
 		return cipheredWord;
     }
 
-	
+	private void OnDialogueEnd()
+	{
+		if (globalScript.isCurrentWordDone)
+		{
+			canClose = true;
+			Close();
+		}
+	}
 }

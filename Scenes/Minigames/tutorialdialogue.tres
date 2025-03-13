@@ -6,7 +6,8 @@
 script = ExtResource("1_dbqdd")
 starts = {
 "0": &"0_1",
-"1": &"0_2"
+"1": &"0_2",
+"err": &"0_3"
 }
 nodes = {
 "0_1": {
@@ -18,6 +19,11 @@ nodes = {
 "link": &"1_5",
 "offset": Vector2(-440, -20),
 "start_id": "1"
+},
+"0_3": {
+"link": &"1_7",
+"offset": Vector2(-440, 400),
+"start_id": "err"
 },
 "1_1": {
 "dialogue": "(You hear an aetherial voice unlike anything you've ever heard before...)",
@@ -74,7 +80,7 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 "text": "Yes"
 }
 },
-"size": Vector2(300, 242),
+"size": Vector2(300, 273),
 "speaker": ""
 },
 "1_5": {
@@ -105,7 +111,20 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 "text": "Yes"
 }
 },
-"size": Vector2(300, 260),
+"size": Vector2(300, 273),
+"speaker": ""
+},
+"1_7": {
+"dialogue": "(Somehow, this seems wrong...)",
+"offset": Vector2(-220, 400),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
 "speaker": ""
 }
 }
