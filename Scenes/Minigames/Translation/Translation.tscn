@@ -7,43 +7,39 @@
 [ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="5_38cia"]
 [ext_resource type="Texture2D" uid="uid://bxsiv7gby07ys" path="res://Scenes/Minigames/Translation/Sprites/check-mark-button_2705.webp" id="5_488n3"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="6_egdpe"]
-[ext_resource type="Resource" uid="uid://dek8vr2m0s1sa" path="res://Scenes/Minigames/tutorialdialogue.tres" id="7_obhx4"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="8_8ugwo"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="9_3oy06"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="10_6a3us"]
+[ext_resource type="Resource" path="res://Scenes/Debug/pyxisDialogue.tres" id="8_ey0sh"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="9_8jnxf"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="10_k8rjn"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="11_vjohv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2m5s8"]
 texture = ExtResource("4_stibd")
 
-[node name="Translation" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_rmu12")
-[sub_resource type="RichTextEffect" id="RichTextEffect_xst7l"]
-script = ExtResource("8_8ugwo")
+[sub_resource type="RichTextEffect" id="RichTextEffect_k5p1y"]
+script = ExtResource("9_8jnxf")
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_dt436"]
-script = ExtResource("9_3oy06")
+[sub_resource type="RichTextEffect" id="RichTextEffect_macbo"]
+script = ExtResource("10_k8rjn")
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_vbud4"]
-script = ExtResource("10_6a3us")
+[sub_resource type="RichTextEffect" id="RichTextEffect_xkoe7"]
+script = ExtResource("11_vjohv")
 
 [node name="Translation" type="CanvasLayer" node_paths=PackedStringArray("messageBox", "answerBox", "celHint", "engHint", "cipherDisplay", "winInd")]
 script = ExtResource("1_6ebpw")
-englishFont = ExtResource("3_tm1gv")
 messageBox = NodePath("TextVBox/VBoxContainer/MessageTextBox")
 answerBox = NodePath("TextVBox/VBoxContainer/AnswerBox")
 celHint = NodePath("HintVBox/HBoxContainer/CelestialChar")
 engHint = NodePath("HintVBox/HBoxContainer/EnglishChar")
 cipherDisplay = NodePath("CipherDisplay")
+englishFont = ExtResource("3_tm1gv")
 winInd = NodePath("WinIndicator")
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2m5s8")
 
-[node name="TextureRect" type="ColorRect" parent="CanvasLayer"]
+[node name="TextureRect" type="ColorRect" parent="."]
 visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -60,7 +56,7 @@ custom_minimum_size = Vector2(1000, 600)
 layout_mode = 2
 theme_override_constants/separation = 150
 
-[node name="MessageTextBox" type="RichTextLabel" parent="CanvasLayer/TextVBox/VBoxContainer"]
+[node name="MessageTextBox" type="RichTextLabel" parent="TextVBox/VBoxContainer"]
 self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
@@ -141,15 +137,14 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_488n3")
 
 [node name="DialogueBox" type="Panel" parent="."]
-visible = false
-offset_left = 752.0
-offset_top = 257.0
-offset_right = 1735.0
-offset_bottom = 550.0
+offset_left = 750.0
+offset_top = 192.0
+offset_right = 1740.0
+offset_bottom = 648.0
 theme = ExtResource("5_38cia")
 script = ExtResource("6_egdpe")
-data = ExtResource("7_obhx4")
-custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_xst7l"), SubResource("RichTextEffect_dt436"), SubResource("RichTextEffect_vbud4")])
+data = ExtResource("8_ey0sh")
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_k5p1y"), SubResource("RichTextEffect_macbo"), SubResource("RichTextEffect_xkoe7")])
 options_vertical = true
 
 [connection signal="button_down" from="CheckAnswerButton" to="." method="AnswerButton"]

@@ -107,12 +107,6 @@ texture = ExtResource("6_fo4et")
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_bteuo")
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(960, 545)
-scale = Vector2(0.5, 0.50463)
-texture = ExtResource("1_ppr70")
-region_enabled = true
-region_rect = Rect2(0, 0, 3840, 2160)
 
 [node name="TranslationPaper" type="Sprite2D" parent="."]
 position = Vector2(1357, 775)
@@ -159,7 +153,7 @@ script = ExtResource("4_r0utk")
 scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
-position = Vector2(-330, 373)
+position = Vector2(412, 381)
 shape = SubResource("RectangleShape2D_cchka")
 
 [node name="LevelChange" type="Area2D" parent="."]
@@ -175,7 +169,6 @@ loadInCurrent = false
 shape = SubResource("RectangleShape2D_lvk1a")
 
 [node name="Foreground" type="Sprite2D" parent="."]
-visible = false
 z_index = 1
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
