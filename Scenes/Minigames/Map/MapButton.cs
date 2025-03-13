@@ -13,10 +13,12 @@ public partial class MapButton : TextureButton
 	bool enabled = true;
 
 	AnimationPlayer animPlayer;
+	MapScreen mapScreen;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		mapScreen = GetParent().GetParent<MapScreen>();
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		PivotOffset = new Vector2(Size.X / 2, Size.Y / 2);
         Scale = new Vector2(0.2f, 0.2f);
@@ -47,7 +49,8 @@ public partial class MapButton : TextureButton
 	{
 		GD.Print(this.Name, " pressed");
 		if (Input.IsActionPressed("middle_mouse")) spawnPoint = 1;
-		Globals.Instance.currentSpawnID = spawnPoint;
-        GetTree().ChangeSceneToPacked(mapToLoad);
+        Globals.Instance.nextMap = mapToLoad; // pleeeeeeease don't pass by value!
+        Globals.Instance.currentSpawnID = spawnPoint;
+        //GetTree().ChangeSceneToPacked(mapToLoad);
     }
 }

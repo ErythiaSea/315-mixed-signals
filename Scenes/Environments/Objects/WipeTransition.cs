@@ -41,7 +41,7 @@ public partial class WipeTransition : CanvasLayer
         }
 	}
 
-	private void PlayTransition(TRANSITION type, float transitionLength)
+	public void PlayTransition(TRANSITION type, float transitionLength)
 	{
         transitionPlayer.SpeedScale = (1.0f / transitionLength);
 		Visible = true;

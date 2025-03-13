@@ -16,13 +16,12 @@ public partial class BaseMinigame : CanvasLayer
 	protected bool inTransition = false;
 	protected float transitionTimer = 0.0f;
 
-	Player player;
+	protected Player player;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		player = GetNode<Player>("../Player");
-		GD.Print(player.Name, ", look i did it");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,7 +30,10 @@ public partial class BaseMinigame : CanvasLayer
 		if (inTransition)
 		{
 			transitionTimer += (float)delta;
-			if (transitionTimer > transitionLength) { QuitMinigame(); }
+			if (transitionTimer > transitionLength) {
+				OnTransitionFinish();
+				QuitMinigame();
+			}
 			return;
 		}
 
@@ -41,21 +43,25 @@ public partial class BaseMinigame : CanvasLayer
 		}
 	}
 
-    protected void Close()
-    {
+	protected void Close()
+	{
 		if (!canClose)
 		{
 			GD.Print("tried to close, but failed");
 			return;
 		}
 
-		if (exitTransition != TRANSITION.NONE) 
-		{ 
+		if (exitTransition != TRANSITION.NONE)
+		{
 			inTransition = true;
 			player.EmitSignal("Transition", (int)exitTransition, transitionLength);
 		}
-		else QuitMinigame();
-    }
+		else
+		{
+			OnTransitionFinish();
+			QuitMinigame();
+		}
+	}
 
 	// still doing this a crappy way for now but i'd like to do signal bus later
 	private void QuitMinigame()
@@ -63,4 +69,8 @@ public partial class BaseMinigame : CanvasLayer
 		player.SetMovementLock(false);
 		QueueFree();
 	}
+
+    protected virtual void OnTransitionFinish()
+    {
+    }
 }

@@ -47,6 +47,7 @@ public partial class Globals : Node
 
 	//Spawning related variables:
 	public int currentSpawnID = -1;
+	public PackedScene nextMap;
 
 
     // Called when the node enters the scene tree for the first time.
