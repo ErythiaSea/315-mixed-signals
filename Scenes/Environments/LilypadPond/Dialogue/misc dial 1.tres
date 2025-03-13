@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://ciinae4snmogy"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_wslkv"]
+
+[resource]
+script = ExtResource("1_wslkv")
+starts = {
+"0": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-540, -260),
+"start_id": "0"
+},
+"1_1": {
+"dialogue": "The sounds of the forest echo within the canopy…",
+"offset": Vector2(-260, -260),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = ""

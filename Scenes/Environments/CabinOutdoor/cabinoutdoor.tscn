@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cnj8esqdgww0"]
+[gd_scene load_steps=24 format=3 uid="uid://cnj8esqdgww0"]
 
 [ext_resource type="Texture2D" uid="uid://bmij10s8rf8gm" path="res://Scenes/Environments/CabinOutdoor/base_outside.png" id="1_0a00e"]
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_4weox"]
@@ -6,6 +6,12 @@
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_nmgjp"]
 [ext_resource type="Texture2D" uid="uid://dalo0qcvvnfsa" path="res://Scenes/Environments/CabinOutdoor/vehicle_temp.png" id="2_s8gqw"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_elcve"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="7_ra4mx"]
+[ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="7_u12k5"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="8_cjgfj"]
+[ext_resource type="Resource" uid="uid://tvyth3g2fn8" path="res://Scenes/Environments/CabinOutdoor/Dialogue/misc dial 1 - outside.tres" id="8_ctnhm"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="9_7xrxq"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="10_vfhkp"]
 
 [sub_resource type="Resource" id="Resource_igbtt"]
 script = ExtResource("2_nmgjp")
@@ -60,6 +66,18 @@ size = Vector2(337, 68)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3gji"]
 size = Vector2(82, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hd4rx"]
+size = Vector2(64, 310)
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_kmmy1"]
+script = ExtResource("8_cjgfj")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_4u6xp"]
+script = ExtResource("9_7xrxq")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_a24d6"]
+script = ExtResource("10_vfhkp")
 
 [node name="cabinoutdoor" type="Node2D"]
 script = ExtResource("1_4weox")
@@ -123,3 +141,38 @@ gizmo_extents = 16.9
 [node name="1" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(882, 303)
 gizmo_extents = 16.9
+
+[node name="MiscDial Box" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("4_elcve")]
+position = Vector2(-276, 408)
+isOneShot = true
+isAutofire = true
+dialogueBox = NodePath("../CanvasLayer/DialogueBox")
+startID = "0"
+lockPlayerMovement = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MiscDial Box"]
+position = Vector2(35, -93)
+shape = SubResource("RectangleShape2D_hd4rx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" type="Panel" parent="CanvasLayer"]
+z_index = 5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -100.0
+offset_right = 250.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_u12k5")
+script = ExtResource("7_ra4mx")
+data = ExtResource("8_ctnhm")
+start_id = "0"
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_kmmy1"), SubResource("RichTextEffect_4u6xp"), SubResource("RichTextEffect_a24d6")])
+
+[connection signal="dialogue_ended" from="CanvasLayer/DialogueBox" to="Player" method="OnDialogueClosedEvent"]
