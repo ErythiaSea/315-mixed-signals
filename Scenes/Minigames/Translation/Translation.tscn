@@ -1,9 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://1ims8y73xe5o"]
+[gd_scene load_steps=14 format=3 uid="uid://1ims8y73xe5o"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Translation/TranslationCanvasUI.cs" id="1_6ebpw"]
 [ext_resource type="FontFile" uid="uid://m3h38nqxkg0o" path="res://Fonts/Monotone_Celestial_V1.otf" id="2_w7m10"]
 [ext_resource type="FontFile" uid="uid://c6lkoenvhuw42" path="res://Fonts/Monotone_SB_V1.otf" id="3_tm1gv"]
+[ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="5_38cia"]
 [ext_resource type="Texture2D" uid="uid://bxsiv7gby07ys" path="res://Scenes/Minigames/Translation/Sprites/check-mark-button_2705.webp" id="5_488n3"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="6_egdpe"]
+[ext_resource type="Resource" uid="uid://dek8vr2m0s1sa" path="res://Scenes/Minigames/tutorialdialogue.tres" id="7_obhx4"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="8_8ugwo"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="9_3oy06"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="10_6a3us"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_xst7l"]
+script = ExtResource("8_8ugwo")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_dt436"]
+script = ExtResource("9_3oy06")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_vbud4"]
+script = ExtResource("10_6a3us")
 
 [node name="Translation" type="CanvasLayer" node_paths=PackedStringArray("messageBox", "answerBox", "celHint", "engHint", "cipherDisplay", "winInd")]
 script = ExtResource("1_6ebpw")
@@ -88,6 +103,9 @@ offset_left = 1691.0
 offset_top = 925.0
 offset_right = 1843.0
 offset_bottom = 1004.0
+theme = ExtResource("5_38cia")
+theme_override_font_sizes/font_size = 75
+text = "Confirm"
 
 [node name="CipherDisplay" type="RichTextLabel" parent="."]
 offset_left = 569.0
@@ -106,5 +124,17 @@ offset_right = 585.0
 offset_bottom = 1255.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_488n3")
+
+[node name="DialogueBox" type="Panel" parent="."]
+visible = false
+offset_left = 752.0
+offset_top = 257.0
+offset_right = 1735.0
+offset_bottom = 550.0
+theme = ExtResource("5_38cia")
+script = ExtResource("6_egdpe")
+data = ExtResource("7_obhx4")
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_xst7l"), SubResource("RichTextEffect_dt436"), SubResource("RichTextEffect_vbud4")])
+options_vertical = true
 
 [connection signal="button_down" from="CheckAnswerButton" to="." method="AnswerButton"]

@@ -97,6 +97,7 @@ text = "[A]/[D] - Adjust Amplitude   [J]/[L] - Adjust Wavelength"
 label_settings = SubResource("LabelSettings_wrwa1")
 
 [node name="DialogueBox" type="Panel" parent="."]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

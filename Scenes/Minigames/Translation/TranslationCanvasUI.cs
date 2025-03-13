@@ -21,8 +21,9 @@ public partial class TranslationCanvasUI : BaseMinigame
 	Font englishFont;
 	[Export]
 	TextureRect winInd;
+    Panel dialogueBox;
 
-	Globals globalScript;
+    Globals globalScript;
 
     private string currentWord;
 	Godot.Collections.Array<Node> containerNodes;
@@ -40,7 +41,7 @@ public partial class TranslationCanvasUI : BaseMinigame
 		winInd.Visible = false;
 
 		CallDeferred(nameof(TextInitalisation));
-
+		dialogueBox = GetNode<Panel>("DialogueBox");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,14 +54,20 @@ public partial class TranslationCanvasUI : BaseMinigame
 	{
 		string answer = answerBox.Text.StripEdges();
 	
-		if (globalScript.wordList[globalScript.gameState.day].NocasecmpTo(answer) == 0)
+		if (globalScript.wordList[globalScript.gameState.day].NocasecmpTo(answer) == 0 || Input.IsActionPressed("middle_mouse"))
 		{
 			//POLISH IDEA: fade celestial text away and fade in the new word
+			// you're telling me the poles came up with this idea? - erf
 			messageBox.AddThemeFontOverride("normal_font", englishFont);
 			messageBox.Text = ("[center] " + globalScript.wordList[globalScript.gameState.day]);
 			globalScript.gameState.stage = GAMESTAGE.END;
 			globalScript.isCurrentWordDone = true;
-            winInd.Visible = true;
+
+            //winInd.Visible = true;
+			GetNode<VBoxContainer>("TextVBox").Visible = false;
+            GetNode<VBoxContainer>("HintVBox").Visible = false;
+			cipherDisplay.Visible = false;
+			dialogueBox.Call("start", "0");
         }
 		else
 		{
