@@ -23,7 +23,7 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_fbydg")
 
 [node name="realwave" type="Node2D" parent="."]
-position = Vector2(1372, 762)
+position = Vector2(1370, 770)
 script = ExtResource("1_2ltar")
 amplitude = 0.0
 shapelength = 800.0
@@ -32,8 +32,18 @@ numPoints = 600
 waveColor = Color(0, 1, 0, 1)
 lineThick = 4.0
 
+[node name="ghostwave" type="Node2D" parent="."]
+position = Vector2(1370, 285)
+script = ExtResource("1_2ltar")
+amplitude = 0.0
+shapelength = 800.0
+frequency = 20.0
+numPoints = 600
+waveColor = Color(0.686275, 0.686275, 0.686275, 0.376471)
+lineThick = 3.0
+
 [node name="playerwave" type="Node2D" parent="."]
-position = Vector2(1372, 285)
+position = Vector2(1370, 285)
 script = ExtResource("1_2ltar")
 amplitude = 12.5
 shapelength = 800.0

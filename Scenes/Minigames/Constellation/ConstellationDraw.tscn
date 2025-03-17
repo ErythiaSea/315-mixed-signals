@@ -87,18 +87,14 @@ scale = Vector2(0.7, 0.7)
 z_index = -1
 script = ExtResource("8_pqt5s")
 
-[node name="StarNode" parent="newConstellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+[node name="StarNode" parent="newConstellation" instance=ExtResource("8_s5r6a")]
 position = Vector2(12, 252)
-adjacentStars = [NodePath("../StarNode2")]
 
-[node name="StarNode2" parent="newConstellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+[node name="StarNode2" parent="newConstellation" instance=ExtResource("8_s5r6a")]
 position = Vector2(1048, 256)
-adjacentStars = [NodePath("../StarNode"), NodePath("../StarNode3"), NodePath("../StarNode4")]
 
-[node name="StarNode3" parent="newConstellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+[node name="StarNode3" parent="newConstellation" instance=ExtResource("8_s5r6a")]
 position = Vector2(1460, -292)
-adjacentStars = [NodePath("../StarNode2")]
 
-[node name="StarNode4" parent="newConstellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+[node name="StarNode4" parent="newConstellation" instance=ExtResource("8_s5r6a")]
 position = Vector2(1772, 500)
-adjacentStars = [NodePath("../StarNode2")]

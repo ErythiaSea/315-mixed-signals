@@ -8,7 +8,7 @@
 [ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="6_ip8fq"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="7_y3602"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="8_exjkm"]
-[ext_resource type="Resource" uid="uid://dek8vr2m0s1sa" path="res://Scenes/Minigames/tutorialdialogue.tres" id="8_mkirk"]
+[ext_resource type="Resource" path="res://Scenes/Minigames/tutorialdialogue.tres" id="8_mkirk"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="9_gtpwd"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="10_sy41u"]
 
@@ -37,18 +37,13 @@ script = ExtResource("1_ouvn6")
 exitTransition = 4
 transitionLength = 0.5
 
-[node name="radiotowerRoot" parent="." instance=ExtResource("1_okcy0")]
-visible = false
-position = Vector2(258, 192)
-scale = Vector2(0.283099, 0.445636)
-
 [node name="waveformRoot" parent="." instance=ExtResource("3_xdcbw")]
 z_index = -1
 position = Vector2(-10, 0)
 ampTolerance = 3.0
 wlTolerance = 3.5
 
-[node name="radiotowerRoot2" parent="." instance=ExtResource("1_okcy0")]
+[node name="radiotowerRoot" parent="." instance=ExtResource("1_okcy0")]
 position = Vector2(225, 278)
 scale = Vector2(0.32, 0.32)
 
@@ -118,5 +113,5 @@ grow_vertical = 0
 theme = ExtResource("6_ip8fq")
 script = ExtResource("7_y3602")
 data = ExtResource("8_mkirk")
-start_id = "0"
+start_id = "-1"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_qgpgv"), SubResource("RichTextEffect_iiq5k"), SubResource("RichTextEffect_vkvdv")])

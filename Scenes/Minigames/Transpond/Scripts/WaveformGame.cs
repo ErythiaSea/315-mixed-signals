@@ -3,7 +3,7 @@ using System;
 
 public partial class WaveformGame : Node2D
 {
-	WaveRender playerWave, realWave;
+	WaveRender playerWave, realWave, ghostWave;
 	float targetWavelength, targetAmplitude;
 
     Globals globalScript;
@@ -22,6 +22,7 @@ public partial class WaveformGame : Node2D
         globalScript = Globals.Instance;
         playerWave = GetNode<WaveRender>("playerwave");
         realWave = GetNode<WaveRender>("realwave");
+        ghostWave = GetNode<WaveRender>("ghostwave");
         newWavelength();
     }
 
@@ -31,9 +32,11 @@ public partial class WaveformGame : Node2D
         {
             targetWavelength = (GD.Randf() * 42.5f) + 7.5f;
             realWave.wavelength = targetWavelength;
+            ghostWave.wavelength = targetWavelength;
 
             targetAmplitude = (GD.Randf() * 115.0f) + 10.0f;
             realWave.amplitude = targetAmplitude;
+            ghostWave.amplitude = targetAmplitude;
             tunedSignal = false; alignedTimer = 0.0f;
         }
         else
@@ -43,6 +46,7 @@ public partial class WaveformGame : Node2D
 
             playerWave.wavelength = globalScript.waveLenRef;
             playerWave.amplitude = globalScript.waveAmpRef;
+            ghostWave.Visible = false;
         }
     }
 
@@ -86,6 +90,7 @@ public partial class WaveformGame : Node2D
 
             globalScript.waveAmpRef = realWave.amplitude;
             globalScript.waveLenRef = realWave.wavelength;
+            ghostWave.Visible = false;
             //Updates the stage that the player is on
             globalScript.gameState.stage = GAMESTAGE.CONSTELLATION;
             // show complete text

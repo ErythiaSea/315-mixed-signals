@@ -171,6 +171,7 @@ transitionType = 1
 requiredStage = 5
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
+spawnPoint = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
 shape = SubResource("RectangleShape2D_lvk1a")

@@ -21,7 +21,7 @@ faceLeft = false
 
 [sub_resource type="Resource" id="Resource_5o2kn"]
 script = ExtResource("2_nmgjp")
-spawnPosition = Vector2(882, 303)
+spawnPosition = Vector2(5005, 303)
 faceLeft = true
 
 [sub_resource type="Animation" id="Animation_akrgh"]

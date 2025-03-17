@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scenes/Minigames/Transpond/Scripts/RadiotowerPivot.cs" id="4_vtlbg"]
 [ext_resource type="AudioStream" uid="uid://dpqhr3nu7u2bx" path="res://Audio/transpondtower.wav" id="5_vusvs"]
 [ext_resource type="Texture2D" uid="uid://dwvosh05aqd6t" path="res://Scenes/Minigames/Transpond/Sprites/line.png" id="6_b2ab4"]
-[ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://icon.svg" id="7_4vx2i"]
+[ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://Sprites/icon.svg" id="7_4vx2i"]
 [ext_resource type="Texture2D" uid="uid://cnau6vaf4smmw" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt1_Satellite.png" id="7_e7dg6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4gfr"]

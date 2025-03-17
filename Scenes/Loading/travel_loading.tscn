@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cykruaim4isa1" path="res://Scenes/Loading/Travel_Grass.png" id="3_o7pip"]
 [ext_resource type="Texture2D" uid="uid://41e5peeq62qu" path="res://Scenes/Loading/Travel_Shadow.png" id="4_di8oy"]
 [ext_resource type="Texture2D" uid="uid://d4gj1njhuy7o7" path="res://Scenes/Loading/Travel_Vehicle.png" id="5_4tk4s"]
-[ext_resource type="PackedScene" uid="uid://24enakva48q" path="res://Scenes/Environments/Objects/WipeTransition.tscn" id="6_p8bhe"]
+[ext_resource type="PackedScene" uid="uid://ohsgb57kk60i" path="res://Scenes/Environments/Objects/WipeTransition.tscn" id="6_p8bhe"]
 
 [sub_resource type="Animation" id="Animation_6maht"]
 length = 0.001
