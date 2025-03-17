@@ -146,7 +146,6 @@ position = Vector2(851, 977)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 transitionType = 3
-transitionLength = 0.5
 scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
