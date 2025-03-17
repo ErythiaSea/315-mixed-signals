@@ -59,7 +59,7 @@ public partial class StarsParent : Node2D
                 randNumArray.Add(randomNum);
             }
 
-        } while (randNumArray.Sum() == 0);
+        } while (randNumArray.Sum() == 0 && randNumArray.Sum() < -4 && randNumArray.Sum() > 4);
 
         GD.Print("Valid random numbers");
 

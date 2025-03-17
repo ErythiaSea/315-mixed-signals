@@ -1,8 +1,12 @@
 using Godot;
 using System;
+using System.Globalization;
 
 public partial class StarNode : Node2D
 {
+    [Export]
+    Gradient indicatorGradient;
+
     [Export]
     Godot.Collections.Array<StarNode> adjacentStars;
 
@@ -16,6 +20,7 @@ public partial class StarNode : Node2D
     private float timeElapsed = 0f;
     private float alphaChange = 0f;
 
+    private Godot.Collections.Array<Line2D> indicatorList;
 
     private Godot.Collections.Array<Line2D> lineList;
     private Godot.Collections.Array<Vector2> lineTargets;
@@ -33,6 +38,8 @@ public partial class StarNode : Node2D
         lineList = new Godot.Collections.Array<Line2D>();
         lineTargets = new Godot.Collections.Array<Vector2>();
         lineProgress = new Godot.Collections.Array<float>();
+
+        indicatorList = new Godot.Collections.Array<Line2D>();
         timeElapsed = 0f;
     }
 
@@ -80,6 +87,18 @@ public partial class StarNode : Node2D
             }
         }
 
+        if(indicatorList.Count > 0)
+        {
+            for(int i = 0; i < indicatorList.Count; i++)
+            {
+                if (indicatorList[i].Modulate.A < 1f)
+                {
+                    float newAlpha = indicatorList[i].Modulate.A + (float)delta * parent.displaySpeed;
+
+                    indicatorList[i].Modulate = new Color(indicatorList[i].Modulate.R, indicatorList[i].Modulate.G, indicatorList[i].Modulate.B, newAlpha);
+                }
+            }
+        }
 
     }
 
@@ -107,6 +126,45 @@ public partial class StarNode : Node2D
             if (star.isFound)
             {
                 ConnectStars(star);
+                FreeIndicator(star);
+            }
+            else
+            {
+                StarIndicators(star);
+            }
+        }
+    }
+
+    private void StarIndicators(Node2D star)
+    {
+        GD.Print("DRAWing");
+        Line2D indicator = new Line2D();
+        Vector2 starDir = GlobalPosition.DirectionTo(star.GlobalPosition);
+
+        indicator.AddPoint(GlobalPosition + (starDir * 50f));
+        indicator.AddPoint(GlobalPosition + (starDir * 100f));
+
+        indicator.Modulate = new Color(indicator.Modulate.R, indicator.Modulate.G, indicator.Modulate.B, 0);
+
+        indicator.Gradient = indicatorGradient;
+
+        this.AddSibling(indicator);
+
+        indicatorList.Add(indicator);
+    }
+
+    private void FreeIndicator(Node2D star)
+    {
+        ///CHECK IF SAME DIRECTION THEN MODULATE A UNTIL GONE THEN QUEUE FREE
+        for(int i = 0; i < indicatorList.Count; i++)
+        {
+            if (indicatorList[i].GlobalPosition.DirectionTo(star.GlobalPosition) == star.GlobalPosition)
+            {
+                GD.Print("dELETE ME");
+            }
+            else
+            {
+                GD.Print("Dont Delete mE");
             }
         }
     }
