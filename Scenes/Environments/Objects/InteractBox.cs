@@ -17,6 +17,19 @@ public partial class InteractBox : Area2D
     [Export]
     public bool active = true;
 
+    // the item that will be highlighted in the overworld when the player is in this interact box
+    [Export]
+    public CanvasItem objectSprite;
+    ShaderMaterial sMaterial;
+
+    // if the item should use a custom outline color
+    [Export]
+    bool useCustomOutlineColor = false;
+
+    // the custom outline color to be used
+    [Export]
+    public Color customOutlineColor;
+
     [ExportGroup("Scene Loading")]
     // the scene to load (for minigames)
     //[Export]
@@ -90,6 +103,10 @@ public partial class InteractBox : Area2D
     bool isTransition = false;
     private Player player;
 
+    private Tween tween;
+    public bool isPlayerInArea = false;
+    float outlineAlpha = 0.0f;
+
     public override void _Ready()
     {
         // possible todo: for things that will have a transition before getting the loaded file, we can
@@ -98,12 +115,39 @@ public partial class InteractBox : Area2D
         {
             ResourceLoader.LoadThreadedRequest(scenePath);
         }
+
+        if (objectSprite != null)
+        {
+            sMaterial = objectSprite.Material as ShaderMaterial;
+        }
+        if (sMaterial != null) 
+        { 
+            if (useCustomOutlineColor)
+            {
+                sMaterial.SetShaderParameter("line_color", new Vector3(customOutlineColor.R, customOutlineColor.G, customOutlineColor.B));
+            }
+            else
+            {
+                Vector3 col = Globals.STANDARD_OUTLINE_COLOR;
+                sMaterial.SetShaderParameter("line_color", new Vector3(col.X, col.Y, col.Z));
+            }
+        }
+
+        // connect events to functions
+        AreaEntered += areaEntered;
+        AreaExited += areaExited;
+
     }
     public override void _Process(double delta)
     {
         if (isTransition)
         {
             runningTransition(delta);
+        }
+
+        if (sMaterial != null)
+        {
+            sMaterial.SetShaderParameter("line_alpha", outlineAlpha);
         }
     }
 
@@ -205,4 +249,33 @@ public partial class InteractBox : Area2D
             GetTree().ChangeSceneToPacked(scene);
 		}
 	}
+
+    private void areaEntered(Area2D area)
+    {
+        // if it's the player's area
+        if (area.GetParent<Player>() != null)
+        {
+            GD.Print("player entered area!");
+            isPlayerInArea = true;
+            if (sMaterial != null)
+            {
+                GD.Print("go");
+                tween = CreateTween().SetLoops();
+                outlineAlpha = 0.3f;
+                tween.TweenProperty(this, "outlineAlpha", 1.0f, 0.75);
+                tween.TweenProperty(this, "outlineAlpha", 0.3f, 0.75);
+            }
+        }
+    }
+
+    private void areaExited(Area2D area)
+    {
+        // if it's the player's area
+        if (area.GetParent<Player>() != null)
+        {
+            isPlayerInArea = false;
+            tween.Kill();
+            outlineAlpha = 0;
+        }
+    }
 }

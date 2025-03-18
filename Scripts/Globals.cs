@@ -49,6 +49,8 @@ public partial class Globals : Node
 	public int currentSpawnID = -1;
 	public PackedScene nextMap;
 
+	// the opps dont want me declaring a vec3 as const...
+	public static /*const*/ Vector3 STANDARD_OUTLINE_COLOR = new Vector3(1.0f, 0.95f, 0.45f);
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()

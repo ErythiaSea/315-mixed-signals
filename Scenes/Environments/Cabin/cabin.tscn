@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=35 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_hvnuo"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cewwdj8kb867f" path="res://Scenes/Environments/Cabin/Sprites/Cabin_Monitors.png" id="7_bteuo"]
 [ext_resource type="Texture2D" uid="uid://bedcsxhb5bdgm" path="res://Scenes/Environments/Objects/translationpaper.png" id="7_tqin0"]
 [ext_resource type="Texture2D" uid="uid://cc066shi2gixy" path="res://Scenes/Environments/Cabin/room_silohettes.png" id="8_fxgd2"]
+[ext_resource type="Shader" path="res://Scripts/ShaderScript/Outline.gdshader" id="9_05epa"]
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="13_haw55"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="14_tiwmt"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="15_1s26x"]
@@ -54,6 +55,18 @@ height = 1080
 fill = 1
 fill_from = Vector2(0.504587, 0.799185)
 fill_to = Vector2(0.5, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5g03c"]
+shader = ExtResource("9_05epa")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_alpha = 1.0
+shader_parameter/line_thickness = 4.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0jryd"]
+shader = ExtResource("9_05epa")
+shader_parameter/line_color = Color(1, 0.699379, 0.374812, 1)
+shader_parameter/line_alpha = 1.0
+shader_parameter/line_thickness = 2.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82mfh"]
 size = Vector2(1936, 88.8125)
@@ -126,11 +139,13 @@ volume_db = -16.838
 autoplay = true
 
 [node name="Monitors" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5g03c")
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_bteuo")
 
 [node name="TranslationPaper" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0jryd")
 position = Vector2(1357, 775)
 scale = Vector2(0.597107, 0.597107)
 texture = ExtResource("7_tqin0")
@@ -159,10 +174,11 @@ shape = SubResource("RectangleShape2D_xvqo4")
 position = Vector2(1561, 607)
 shape = SubResource("RectangleShape2D_xvqo4")
 
-[node name="TranspondBox" type="Area2D" parent="."]
+[node name="TranspondBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite")]
 position = Vector2(851, 977)
 collision_layer = 4
 script = ExtResource("4_r0utk")
+objectSprite = NodePath("../Monitors")
 transitionType = 3
 transitionLength = 0.5
 scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
@@ -171,10 +187,11 @@ scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 position = Vector2(127, 13.5)
 shape = SubResource("RectangleShape2D_0oee4")
 
-[node name="TranslationBox" type="Area2D" parent="."]
+[node name="TranslationBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite")]
 position = Vector2(930, 605)
 collision_layer = 4
 script = ExtResource("4_r0utk")
+objectSprite = NodePath("../TranslationPaper")
 scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
@@ -240,7 +257,6 @@ autowrap_mode = 0
 custom_effects = [SubResource("RichTextEffect_0u6wi"), SubResource("RichTextEffect_yh6wg"), SubResource("RichTextEffect_eewup")]
 script = ExtResource("17_h87pq")
 data = ExtResource("18_oqaxf")
-time_limit = null
 follow_node = NodePath("../Player/PlayerHead")
 show_speaker_name = false
 dialogue_custom_effects = [SubResource("RichTextEffect_0u6wi"), SubResource("RichTextEffect_yh6wg"), SubResource("RichTextEffect_eewup")]
