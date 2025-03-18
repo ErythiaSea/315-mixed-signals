@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cnj8esqdgww0"]
+[gd_scene load_steps=30 format=3 uid="uid://cnj8esqdgww0"]
 
 [ext_resource type="Texture2D" uid="uid://bmij10s8rf8gm" path="res://Scenes/Environments/CabinOutdoor/base_outside.png" id="1_0a00e"]
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_4weox"]
@@ -13,6 +13,8 @@
 [ext_resource type="Resource" uid="uid://tvyth3g2fn8" path="res://Scenes/Environments/CabinOutdoor/Dialogue/misc dial 1 - outside.tres" id="8_ctnhm"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="9_7xrxq"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="10_vfhkp"]
+[ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="14_mtltj"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="15_5kghu"]
 
 [sub_resource type="Resource" id="Resource_igbtt"]
 script = ExtResource("2_nmgjp")
@@ -81,6 +83,15 @@ script = ExtResource("9_7xrxq")
 [sub_resource type="RichTextEffect" id="RichTextEffect_a24d6"]
 script = ExtResource("10_vfhkp")
 
+[sub_resource type="RichTextEffect" id="RichTextEffect_5mvr3"]
+script = ExtResource("8_cjgfj")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ri5gq"]
+script = ExtResource("9_7xrxq")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_scjtb"]
+script = ExtResource("10_vfhkp")
+
 [node name="cabinoutdoor" type="Node2D"]
 script = ExtResource("1_4weox")
 spawnData = Array[Object]([SubResource("Resource_igbtt"), SubResource("Resource_5o2kn")])
@@ -115,6 +126,9 @@ autoplay = "VehicleIdleAnimation"
 [node name="Player" parent="." instance=ExtResource("1_7p3ip")]
 position = Vector2(-440, 105)
 scale = Vector2(2.5, 2.5)
+
+[node name="PlayerHead" type="Marker2D" parent="Player"]
+position = Vector2(0, -41.2)
 
 [node name="MapBox" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(4994, 290)
@@ -158,15 +172,15 @@ autoplay = true
 position = Vector2(1690, 440)
 isOneShot = true
 isAutofire = true
-dialogueBox = NodePath("../CanvasLayer/DialogueBox")
+dialogueBox = NodePath("../DialogueBubble")
 startID = "0"
-lockPlayerMovement = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MiscDial Box"]
 position = Vector2(35, -93)
 shape = SubResource("RectangleShape2D_hd4rx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="DialogueBox" type="Panel" parent="CanvasLayer"]
 visible = false
@@ -187,5 +201,23 @@ script = ExtResource("7_ra4mx")
 data = ExtResource("8_ctnhm")
 start_id = "0"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_kmmy1"), SubResource("RichTextEffect_4u6xp"), SubResource("RichTextEffect_a24d6")])
+
+[node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]
+clip_contents = false
+offset_top = -208.0
+offset_right = 116.0
+offset_bottom = -172.0
+theme = ExtResource("14_mtltj")
+bbcode_enabled = true
+text = "Sample dialogue."
+fit_content = true
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_5mvr3"), SubResource("RichTextEffect_ri5gq"), SubResource("RichTextEffect_scjtb")]
+script = ExtResource("15_5kghu")
+data = ExtResource("8_ctnhm")
+follow_node = NodePath("../Player/PlayerHead")
+bubble_offset = 120
+show_speaker_name = false
+dialogue_custom_effects = [SubResource("RichTextEffect_5mvr3"), SubResource("RichTextEffect_ri5gq"), SubResource("RichTextEffect_scjtb")]
 
 [connection signal="dialogue_ended" from="CanvasLayer/DialogueBox" to="Player" method="OnDialogueClosed"]

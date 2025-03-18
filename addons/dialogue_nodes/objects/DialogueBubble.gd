@@ -67,6 +67,8 @@ signal dialogue_ended
 	set(value):
 		default_speaker_color = value
 		if speaker_label: speaker_label.modulate = default_speaker_color
+@export var show_speaker_name := true
+
 @export_group('Dialogue')
 ## Input action used to skip dialogue animation
 @export var skip_input_action := 'ui_cancel'
@@ -210,7 +212,8 @@ func _process(delta):
 	
 	if follow_node is Node2D:
 		camera = get_viewport().get_camera_2d()
-		screen_center = camera.global_position if camera else get_viewport_rect().size * 0.5
+		screen_center = camera.get_screen_center_position() if camera else get_viewport_rect().size * 0.5
+		print("screen center is... ", screen_center)
 		follow_pos = follow_node.global_position
 	elif follow_node is Node3D:
 		camera = get_viewport().get_camera_3d()
@@ -241,6 +244,7 @@ func _process(delta):
 	tail.polygon[1] = size * 0.5 + perp * (size.y * 0.4 + tail_base)
 	tail.polygon[2] = size * 0.5 - perp * (size.y * 0.4 + tail_base)
 
+	speaker_label.visible = show_speaker_name
 
 func _input(_event):
 	if is_running() and Input.is_action_just_pressed(skip_input_action):

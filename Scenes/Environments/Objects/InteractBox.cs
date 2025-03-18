@@ -72,7 +72,7 @@ public partial class InteractBox : Area2D
     [ExportSubgroup("Dialogue")]
     // the dialogue box to trigger
     [Export]
-    Panel dialogueBox;
+    Control dialogueBox;
 
     // the start id for the dialogue
     [Export]

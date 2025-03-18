@@ -7,7 +7,7 @@
 [ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="5_38cia"]
 [ext_resource type="Texture2D" uid="uid://bxsiv7gby07ys" path="res://Scenes/Minigames/Translation/Sprites/check-mark-button_2705.webp" id="5_488n3"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="6_egdpe"]
-[ext_resource type="Resource" path="res://Scenes/Debug/pyxisDialogue.tres" id="8_ey0sh"]
+[ext_resource type="Resource" uid="uid://hopbrw1uiih8" path="res://Scenes/Debug/pyxisDialogue.tres" id="8_ey0sh"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="9_8jnxf"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="10_k8rjn"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="11_vjohv"]

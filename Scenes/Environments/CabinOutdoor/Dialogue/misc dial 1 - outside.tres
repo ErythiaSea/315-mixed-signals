@@ -14,7 +14,8 @@ nodes = {
 "start_id": "0"
 },
 "1_1": {
-"dialogue": "Corp said they were sending me a new work car… If they give me a Wesla, I swear…",
+"dialogue": "Corp said they were sending me a new work car…[br]
+If they give me a Wesla, I swear…",
 "offset": Vector2(-40, -80),
 "options": {
 0: {

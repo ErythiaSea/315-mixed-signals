@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dluxx0un1srrc" path="res://Scenes/Minigames/Constellation/Sprites/StarsLayer.png" id="4_irqg6"]
 [ext_resource type="Script" path="res://Scripts/ShaderScript/TextureShader.cs" id="4_ro1i3"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/StarsParent.cs" id="8_pqt5s"]
-[ext_resource type="PackedScene" path="res://Scenes/Minigames/Constellation/Objects/StarNode.tscn" id="8_s5r6a"]
+[ext_resource type="PackedScene" uid="uid://bx27m71lxn4qi" path="res://Scenes/Minigames/Constellation/Objects/StarNode.tscn" id="8_s5r6a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_13kgm"]
 shader = ExtResource("3_djkxa")
