@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bx27m71lxn4qi"]
+[gd_scene load_steps=6 format=3 uid="uid://bx27m71lxn4qi"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/StarNode.cs" id="1_ahru7"]
 [ext_resource type="Gradient" uid="uid://cjuqrw5hfyw60" path="res://Scenes/Minigames/Constellation/Resources/LineGradient.tres" id="2_ghj48"]
+[ext_resource type="Material" uid="uid://2qlsut57x481" path="res://Scenes/Minigames/Constellation/Resources/ParticleResource.tres" id="2_hkydq"]
 [ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://Sprites/icon.svg" id="2_isdts"]
 [ext_resource type="FontFile" uid="uid://c6lkoenvhuw42" path="res://Fonts/Monotone_SB_V1.otf" id="3_4ygf3"]
 
 [node name="StarNode" type="Node2D" node_paths=PackedStringArray("adjacentStars")]
 script = ExtResource("1_ahru7")
+particleAffect = ExtResource("2_hkydq")
 indicatorGradient = ExtResource("2_ghj48")
 adjacentStars = []
 

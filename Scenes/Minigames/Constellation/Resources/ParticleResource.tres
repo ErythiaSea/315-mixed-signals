@@ -1,0 +1,7 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://2qlsut57x481"]
+
+[resource]
+particle_flag_disable_z = true
+spread = 163.625
+initial_velocity_max = 28.0
+gravity = Vector3(0, 70, 0)
