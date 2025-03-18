@@ -36,6 +36,8 @@ signal dialogue_ended
 			characters = _dialogue_parser.characters
 ## The default start ID to begin dialogue from. This is the value you set in the Dialogue Nodes editor.
 @export var start_id : String
+## How long this dialogue bubble will exist before it is automatically closed.
+@export var time_limit : float
 
 @export_group('Bubble')
 ## The node the dialogue bubble would follow. Only accepts [Node2D], [Node3D] or their derivitives.
@@ -116,6 +118,8 @@ var tail : Polygon2D
 var speaker_label : Label
 ## Contains all the option buttons. The currently displayed options are visible while the rest are hidden. This value is automatically set while running a dialogue tree.
 var options_container : BoxContainer
+## The timer for the dialogue bubble. Begins counting down on [code]start()[/code]. Will call [code]close()[/code] on timeout.
+var timer : Timer
 
 # [param DialogueParser] used for parsing the dialogue [member data].[br]
 # NOTE: Using [param DialogueParser] as a child instead of extending from it, because [DialogueBox] needs to extend from Panel.
@@ -168,6 +172,10 @@ func _enter_tree():
 	options_container.set_offsets_preset(Control.PRESET_CENTER_BOTTOM)
 	options_container.position.y = 32
 	
+	timer = Timer.new()
+	add_child(timer)
+	timer.timeout.connect(stop)
+	
 	_visible_on_screen_notifier = VisibleOnScreenNotifier3D.new()
 	add_child(_visible_on_screen_notifier)
 	_visible_on_screen_notifier.screen_entered.connect(_on_screen_entered)
@@ -213,7 +221,6 @@ func _process(delta):
 	if follow_node is Node2D:
 		camera = get_viewport().get_camera_2d()
 		screen_center = camera.get_screen_center_position() if camera else get_viewport_rect().size * 0.5
-		print("screen center is... ", screen_center)
 		follow_pos = follow_node.global_position
 	elif follow_node is Node3D:
 		camera = get_viewport().get_camera_3d()
@@ -258,7 +265,9 @@ func _input(_event):
 func start(id := start_id):
 	if not _dialogue_parser: return
 	_dialogue_parser.start(id)
-
+	print(time_limit)
+	if (time_limit > 0):
+		timer.start(time_limit)
 
 ## Stops processing the dialogue tree.
 func stop():

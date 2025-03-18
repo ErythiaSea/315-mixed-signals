@@ -78,6 +78,10 @@ public partial class InteractBox : Area2D
     [Export]
     String startID;
 
+    // how long the dialogue bubble should exist for
+    [Export]
+    float timeLimit = 0;
+
     // if the dialogue box should lock the player's movement
     [Export]
     bool lockPlayerMovement = false;
@@ -122,6 +126,10 @@ public partial class InteractBox : Area2D
         
         // Start dialogue box if one is linked
         if (dialogueBox != null) {
+            if (timeLimit > 0 && (dialogueBox as RichTextLabel) != null)
+            {
+                dialogueBox.Set("time_limit", timeLimit);
+            }
             dialogueBox.Call("start", startID);
             if (lockPlayerMovement) plrRef.SetMovementLock(true);
             return;
