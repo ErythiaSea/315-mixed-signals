@@ -119,6 +119,35 @@ public partial class StarNode : Node2D
         lineProgress.Add(0f);
         lineTargets.Add(star.GlobalPosition);
     }
+
+    public void FreeIndicator(Node2D star)
+    {
+        float bestProd = 0;
+        int index = 0;
+
+
+        Vector2 starDir = GlobalPosition - star.GlobalPosition;
+     
+
+        GD.Print(indicatorList.Count);
+        for (int i = 0; i < indicatorList.Count; i++)
+        {
+            Vector2 indDir = indicatorList[i].GetPointPosition(0) - indicatorList[i].GetPointPosition(1);
+            float dotProd = indDir.Dot(starDir);
+
+            if (dotProd > bestProd)
+            {
+                index = i;
+                bestProd = dotProd;
+            }
+        }
+
+        if (indicatorList[index] != null)
+        {
+            indicatorList[index].Free();
+        }
+    }
+
     private void StarFound()
     {
         foreach (StarNode star in adjacentStars)
@@ -126,7 +155,7 @@ public partial class StarNode : Node2D
             if (star.isFound)
             {
                 ConnectStars(star);
-                FreeIndicator(star);
+                //star.FreeIndicator(this);
             }
             else
             {
@@ -153,19 +182,5 @@ public partial class StarNode : Node2D
         indicatorList.Add(indicator);
     }
 
-    private void FreeIndicator(Node2D star)
-    {
-        ///CHECK IF SAME DIRECTION THEN MODULATE A UNTIL GONE THEN QUEUE FREE
-        for(int i = 0; i < indicatorList.Count; i++)
-        {
-            if (indicatorList[i].GlobalPosition.DirectionTo(star.GlobalPosition) == star.GlobalPosition)
-            {
-                GD.Print("dELETE ME");
-            }
-            else
-            {
-                GD.Print("Dont Delete mE");
-            }
-        }
-    }
+   
 }
