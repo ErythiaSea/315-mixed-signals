@@ -45,7 +45,7 @@ public partial class TranspondScreen : BaseMinigame
             fade = true;
             if (!dialogueCalled)
             {
-                dialogueBox.Call("start", "1");
+                //dialogueBox.Call("start", "1");
                 dialogueCalled = true;
             }
         }
@@ -63,7 +63,12 @@ public partial class TranspondScreen : BaseMinigame
             //Have some indication of winning!
             exitTimer += delta;
             if (exitTimer > 2.5) Close();
+            return;
         }
+
+        GD.Print("box vis:", dialogueBox.Visible);
+        radiotower.gameActive = !dialogueBox.Visible;
+        waveform.gameActive = !dialogueBox.Visible;
     }  
 
     private void CheckStage()
@@ -72,14 +77,14 @@ public partial class TranspondScreen : BaseMinigame
         {
             case GAMESTAGE.TRANSPONDING:
                 GD.Print("trans");
-                dialogueBox.Call("start", "0");
+                //dialogueBox.Call("start", "0");
                 break;
             case GAMESTAGE.WAVEFORM:
                 GD.Print("wave");
                 radiotower.CompletedPivots();
                 waveLabel.Visible = true; radioLabel.Visible = false;
                 fade = true;
-                dialogueBox.Call("start", "1");
+                //dialogueBox.Call("start", "1");
                 break;
             default:
                 GD.Print("Default");

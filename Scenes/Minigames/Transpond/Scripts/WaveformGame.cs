@@ -53,7 +53,8 @@ public partial class WaveformGame : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (globalScript.gameState.stage != GAMESTAGE.WAVEFORM) return;
+        GD.Print("waveform active:", gameActive);
+        if (globalScript.gameState.stage != GAMESTAGE.WAVEFORM || !gameActive) return;
 
 		float wlChange = 0.5f;
 		float wlMult = (playerWave.wavelength / 100.0f);

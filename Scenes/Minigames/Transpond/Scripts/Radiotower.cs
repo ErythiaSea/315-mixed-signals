@@ -48,7 +48,15 @@ public partial class Radiotower : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (globalScript.gameState.stage != GAMESTAGE.TRANSPONDING) return;
+		if (globalScript.gameState.stage != GAMESTAGE.TRANSPONDING || !gameActive)
+		{
+			lPivot.handleInputs = false;
+			rPivot.handleInputs = false;
+			return;
+		}
+		lPivot.handleInputs = true;
+		rPivot.handleInputs = true;
+
 		Vector2 intersect = Vector2.Zero;
 		if (lPivot.Rotation == rPivot.Rotation) intersectIndicator.Visible = false; // lines parallel
 		else
