@@ -126,6 +126,7 @@ public partial class InteractBox : Area2D
         
         // Start dialogue box if one is linked
         if (dialogueBox != null) {
+            // set a time limit if this is a dialogue bubble
             if (timeLimit > 0 && (dialogueBox as RichTextLabel) != null)
             {
                 dialogueBox.Set("time_limit", timeLimit);

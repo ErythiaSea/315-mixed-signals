@@ -23,7 +23,7 @@ faceLeft = false
 
 [sub_resource type="Resource" id="Resource_5o2kn"]
 script = ExtResource("2_nmgjp")
-spawnPosition = Vector2(5005, 303)
+spawnPosition = Vector2(652, 303)
 faceLeft = true
 
 [sub_resource type="Animation" id="Animation_akrgh"]
@@ -160,7 +160,7 @@ position = Vector2(-523, 261)
 gizmo_extents = 16.9
 
 [node name="1" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(5001.5, 303)
+position = Vector2(652, 347)
 gizmo_extents = 16.9
 
 [node name="CelestialBGM" type="AudioStreamPlayer" parent="."]
