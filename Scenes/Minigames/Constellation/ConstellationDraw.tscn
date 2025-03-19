@@ -54,43 +54,46 @@ modulate = Color(0.894922, 0.894922, 0.894922, 1)
 scale = Vector2(3, 3)
 texture = ExtResource("4_irqg6")
 
-[node name="ColorRect" type="ColorRect" parent="eeek"]
+[node name="Telescope" type="ColorRect" parent="eeek"]
 material = SubResource("ShaderMaterial_13kgm")
-offset_left = -1920.0
-offset_top = -1082.0
-offset_right = 366.0
-offset_bottom = 213.0
+offset_left = -1151.0
+offset_top = -652.0
+offset_right = 1135.0
+offset_bottom = 643.0
 scale = Vector2(1.68, 1.68)
+pivot_offset = Vector2(1143, 647)
 mouse_filter = 2
 script = ExtResource("4_ro1i3")
 radius = 0.4
 blur = 0.02
 
-[node name="Label" type="Label" parent="eeek"]
-offset_left = -1806.0
-offset_top = 979.0
-offset_right = -766.0
-offset_bottom = 1024.0
-scale = Vector2(2, 2)
+[node name="ControlsLabel" type="Label" parent="eeek/Telescope"]
+offset_left = 35.8573
+offset_top = 1222.6
+offset_right = 545.857
+offset_bottom = 1277.6
+theme_override_font_sizes/font_size = 0
 text = "WASD - Pan Camera  ESC - Close"
 label_settings = SubResource("LabelSettings_03dfn")
 
-[node name="newConstellation" type="Node2D" parent="."]
+[node name="Constellation" type="Node2D" parent="."]
 z_index = -1
 script = ExtResource("8_pqt5s")
 
-[node name="StarNode" parent="newConstellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+[node name="StarNode" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(12, 252)
 adjacentStars = [NodePath("../StarNode2")]
 
-[node name="StarNode2" parent="newConstellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+[node name="StarNode2" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(1048, 256)
 adjacentStars = [NodePath("../StarNode"), NodePath("../StarNode3"), NodePath("../StarNode4")]
 
-[node name="StarNode3" parent="newConstellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+[node name="StarNode3" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(1460, -292)
 adjacentStars = [NodePath("../StarNode2")]
 
-[node name="StarNode4" parent="newConstellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+[node name="StarNode4" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(1772, 500)
 adjacentStars = [NodePath("../StarNode2")]
+
+[connection signal="ConstellationCompletion" from="Constellation" to="eeek" method="DisplayConstellation"]

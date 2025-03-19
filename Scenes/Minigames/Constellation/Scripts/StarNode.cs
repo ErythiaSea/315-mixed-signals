@@ -13,7 +13,7 @@ public partial class StarNode : Node2D
     Gradient indicatorGradient;
 
     [Export]
-    Godot.Collections.Array<StarNode> adjacentStars;
+   public Godot.Collections.Array<StarNode> adjacentStars;
 
     [Export]
     float centerFocusRange = 300f;
