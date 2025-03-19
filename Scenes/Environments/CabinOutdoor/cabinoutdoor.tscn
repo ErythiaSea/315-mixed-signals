@@ -95,6 +95,7 @@ script = ExtResource("10_vfhkp")
 [node name="cabinoutdoor" type="Node2D"]
 script = ExtResource("1_4weox")
 spawnData = Array[Object]([SubResource("Resource_igbtt"), SubResource("Resource_5o2kn")])
+cameraZoom = 0.5
 leftLimit = -1924
 topLimit = -1590
 rightLimit = 5570
@@ -124,8 +125,9 @@ libraries = {
 autoplay = "VehicleIdleAnimation"
 
 [node name="Player" parent="." instance=ExtResource("1_7p3ip")]
-position = Vector2(-440, 105)
-scale = Vector2(2.5, 2.5)
+position = Vector2(-435, 69)
+scale = Vector2(3.86, 3.86)
+movementSpeed = 900.0
 
 [node name="PlayerHead" type="Marker2D" parent="Player"]
 position = Vector2(0, -41.2)
@@ -174,7 +176,6 @@ isOneShot = true
 isAutofire = true
 dialogueBox = NodePath("../DialogueBubble")
 startID = "0"
-timeLimit = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MiscDial Box"]
 position = Vector2(35, -93)

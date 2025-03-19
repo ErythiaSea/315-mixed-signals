@@ -151,14 +151,14 @@ scale = Vector2(0.597107, 0.597107)
 texture = ExtResource("7_tqin0")
 
 [node name="Player" parent="." instance=ExtResource("2_h3n7b")]
-position = Vector2(315, 858)
-scale = Vector2(2.5, 2.5)
+position = Vector2(315, 763)
+scale = Vector2(3.28705, 3.28705)
 
 [node name="PlayerHead" type="Marker2D" parent="Player"]
 position = Vector2(-0.8, -43.2)
 
 [node name="WorldCollision" type="StaticBody2D" parent="."]
-position = Vector2(396, 403)
+position = Vector2(396, 358)
 collision_layer = 2
 
 [node name="CollisionShape2" type="CollisionShape2D" parent="WorldCollision"]
@@ -174,11 +174,10 @@ shape = SubResource("RectangleShape2D_xvqo4")
 position = Vector2(1561, 607)
 shape = SubResource("RectangleShape2D_xvqo4")
 
-[node name="TranspondBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite")]
-position = Vector2(851, 977)
+[node name="TranspondBox" type="Area2D" parent="."]
+position = Vector2(851, 932)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-objectSprite = NodePath("../Monitors")
 transitionType = 3
 transitionLength = 0.5
 scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
@@ -187,11 +186,10 @@ scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 position = Vector2(127, 13.5)
 shape = SubResource("RectangleShape2D_0oee4")
 
-[node name="TranslationBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite")]
-position = Vector2(930, 605)
+[node name="TranslationBox" type="Area2D" parent="."]
+position = Vector2(930, 560)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-objectSprite = NodePath("../TranslationPaper")
 scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
@@ -199,7 +197,7 @@ position = Vector2(412, 381)
 shape = SubResource("RectangleShape2D_cchka")
 
 [node name="DialogueBox" type="Area2D" parent="." node_paths=PackedStringArray("dialogueBox")]
-position = Vector2(-303, 600)
+position = Vector2(-303, 555)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 isAutofire = true
@@ -211,7 +209,7 @@ position = Vector2(412, 381)
 shape = SubResource("RectangleShape2D_cchka")
 
 [node name="LevelChange" type="Area2D" parent="."]
-position = Vector2(1837, 1014)
+position = Vector2(1837, 969)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 transitionType = 1
@@ -224,6 +222,7 @@ spawnPoint = 0
 shape = SubResource("RectangleShape2D_lvk1a")
 
 [node name="Foreground" type="Sprite2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
