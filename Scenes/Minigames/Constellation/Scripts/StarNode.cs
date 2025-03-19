@@ -1,11 +1,14 @@
 using Godot;
 using System;
 using System.Globalization;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 
 public partial class StarNode : Node2D
 {
     [Export]
     ParticleProcessMaterial particleAffect;
+  
     [Export]
     Gradient indicatorGradient;
 
@@ -16,11 +19,11 @@ public partial class StarNode : Node2D
     float centerFocusRange = 300f;
 
     [Export]
-    float lineSpeed = 1.0f;
+    float lineSpeed = 0.5f;
 
+    private Sprite2D foundSprite;
     private float timeToRegister = 2f;
     private float timeElapsed = 0f;
-    private float alphaChange = 0f;
 
     private int indicatorCompleteCount = 0;
 
@@ -35,11 +38,13 @@ public partial class StarNode : Node2D
     private StarsParent parent;
     private Label numberDisplay;
 
+    private bool hasDisplayed = false;
     public bool isFound = false;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        numberDisplay = GetChild(1) as Label;
+        foundSprite = GetNode("FoundSprite") as Sprite2D;
+        numberDisplay = GetChild(2) as Label;
         parent = GetParent() as StarsParent;
         lineList = new Godot.Collections.Array<Line2D>();
         lineTargets = new Godot.Collections.Array<Vector2>();
@@ -48,11 +53,13 @@ public partial class StarNode : Node2D
 
         indicatorList = new Godot.Collections.Array<Line2D>();
         timeElapsed = 0f;
+
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
+        //once in correct view then creates indicators or makes connections
         if (!isFound)
         {
             if (GlobalPosition.DistanceTo(GetViewport().GetCamera2D().GetScreenCenterPosition()) < centerFocusRange)
@@ -68,18 +75,22 @@ public partial class StarNode : Node2D
             }
         }
         else
-        {
-            if (alphaChange <= 1)
+        {     //shows the number for the star
+            if (!hasDisplayed)
             {
-                alphaChange += (float)delta * parent.displaySpeed;
-                numberDisplay.Modulate = new Color(numberDisplay.Modulate.R, numberDisplay.Modulate.G, numberDisplay.Modulate.B, alphaChange);
+                Tween transition = GetTree().CreateTween();
+                transition.Parallel().TweenProperty(GetNode("Sprite"), "modulate", Colors.Transparent, 1f);
+                transition.Parallel().TweenProperty(foundSprite, "modulate", new Color(foundSprite.Modulate.R, foundSprite.Modulate.G, foundSprite.Modulate.B, 1f), 1f);
+                transition.Parallel().TweenProperty(numberDisplay, "modulate", new Color(numberDisplay.Modulate.R, numberDisplay.Modulate.G, numberDisplay.Modulate.B, 1f), 1f);
+                hasDisplayed = true;
             }
         }
 
 
+        //Interp the connected lines 
         if (lineList.Count > 0)
         {
-            for(int i = 0; i < lineList.Count; i++)
+            for (int i = 0; i < lineList.Count; i++)
             {
                 if (lineProgress[i] < 1f)
                 {
@@ -99,25 +110,6 @@ public partial class StarNode : Node2D
                 }
             }
         }
-
-        if(indicatorList.Count > 0 && indicatorCompleteCount < indicatorList.Count)
-        {
-            GD.Print("FADING");
-            for(int i = 0; i < indicatorList.Count; i++)
-            {
-                if (indicatorList[i].Modulate.A < 1f)
-                {
-                    float newAlpha = indicatorList[i].Modulate.A + (float)delta * parent.displaySpeed;
-
-                    indicatorList[i].Modulate = new Color(indicatorList[i].Modulate.R, indicatorList[i].Modulate.G, indicatorList[i].Modulate.B, newAlpha);
-                }
-                else
-                {
-                    indicatorCompleteCount++;
-                }
-            }
-        }
-
     }
 
     public void ConnectStars(Node2D star)
@@ -129,18 +121,12 @@ public partial class StarNode : Node2D
         connection.AddPoint(GlobalPosition);
  
         connection.Width = 10;
-        connection.DefaultColor = Colors.White;
-
-        GpuParticles2D trail = new GpuParticles2D();
-
-        trail.GlobalPosition = connection.GetPointPosition(1);
-        trail.ProcessMaterial = particleAffect;
-        trail.Emitting = true;
+        connection.DefaultColor = new Color(1, 1, 1, 0.2f);
 
         this.AddSibling(connection);
-        this.AddSibling(trail);
 
-        particleList.Add(trail);
+        particleList.Add(SetUpParticles(star,connection));
+
         lineList.Add(connection);
         lineProgress.Add(0f);
         lineTargets.Add(star.GlobalPosition);
@@ -148,30 +134,30 @@ public partial class StarNode : Node2D
 
     public void FreeIndicator(Node2D star)
     {
+        GD.Print("passed:indicator");
         float bestProd = 0;
         int index = 0;
 
 
-        Vector2 starDir = GlobalPosition - star.GlobalPosition;
+        Vector2 starDir = (GlobalPosition - star.GlobalPosition).Normalized();
      
-
-        GD.Print(indicatorList.Count);
         for (int i = 0; i < indicatorList.Count; i++)
         {
-            Vector2 indDir = indicatorList[i].GetPointPosition(0) - indicatorList[i].GetPointPosition(1);
+            Vector2 indDir = (indicatorList[i].GetPointPosition(0) - indicatorList[i].GetPointPosition(1)).Normalized();
             float dotProd = indDir.Dot(starDir);
-
+            GD.Print("Dot:" + dotProd);
             if (dotProd > bestProd)
             {
                 index = i;
                 bestProd = dotProd;
             }
         }
-
+        GD.Print("Index:" + index);
         if (indicatorList[index] != null)
         {
             //Add a fade out here instead of just deleting 
-            indicatorList[index].Free();
+            fadeInOrOut(indicatorList[index], false, true);
+            indicatorList.RemoveAt(index);
         }
     }
 
@@ -181,6 +167,7 @@ public partial class StarNode : Node2D
         {
             if (star.isFound)
             {
+                GD.Print("passed:found");
                 ConnectStars(star);
                 star.FreeIndicator(this);
             }
@@ -193,21 +180,51 @@ public partial class StarNode : Node2D
 
     private void StarIndicators(Node2D star)
     {
-        GD.Print("DRAWing");
         Line2D indicator = new Line2D();
         Vector2 starDir = GlobalPosition.DirectionTo(star.GlobalPosition);
 
-        indicator.AddPoint(GlobalPosition + (starDir * 50f));
-        indicator.AddPoint(GlobalPosition + (starDir * 100f));
+        indicator.AddPoint(GlobalPosition + (starDir * 150f));
+        indicator.AddPoint(GlobalPosition + (starDir * 190f));
 
         indicator.Modulate = new Color(indicator.Modulate.R, indicator.Modulate.G, indicator.Modulate.B, 0);
-
         indicator.Gradient = indicatorGradient;
 
+
         this.AddSibling(indicator);
+
+        fadeInOrOut(indicator,true);
 
         indicatorList.Add(indicator);
     }
 
-   
+   private GpuParticles2D SetUpParticles(Node2D target,Line2D connection)
+    {
+        GpuParticles2D trail = new GpuParticles2D();
+        particleAffect.Direction = new Vector3(GlobalPosition.DirectionTo(target.GlobalPosition).X, GlobalPosition.DirectionTo(target.GlobalPosition).Y, 0);
+        trail.GlobalPosition = connection.GetPointPosition(1);
+        trail.ProcessMaterial = particleAffect;
+        trail.Emitting = true;
+
+
+        particleList.Add(trail);
+
+
+        return trail;
+    }
+
+    private void fadeInOrOut(Node2D node,bool isfadeIn, bool isFreed = false)
+    {
+        Tween fade = GetTree().CreateTween();
+
+        if (isfadeIn)
+        {
+            fade.TweenProperty(node, "modulate", new Color(node.Modulate.R,node.Modulate.G,node.Modulate.B,1f), 1f);
+        }
+        else
+        {
+            fade.TweenProperty(node, "modulate", Colors.Transparent, 1f);
+            if (isFreed) fade.TweenCallback(Callable.From(node.QueueFree));
+        }
+
+    }
 }

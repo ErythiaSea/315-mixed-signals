@@ -90,7 +90,6 @@ script = ExtResource("14_xkiew")
 [node name="DemoEnv" type="Node2D"]
 script = ExtResource("1_tgjlw")
 spawnData = Array[Object]([SubResource("Resource_xpr3o"), SubResource("Resource_agtn6")])
-cameraZoom = 0.75
 leftLimit = -2974
 topLimit = -1459
 rightLimit = 2974

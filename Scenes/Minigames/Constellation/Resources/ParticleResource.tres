@@ -2,6 +2,12 @@
 
 [resource]
 particle_flag_disable_z = true
-spread = 163.625
-initial_velocity_max = 28.0
-gravity = Vector3(0, 70, 0)
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(-1, 0, 0)
+spread = 41.689
+initial_velocity_min = 116.06
+initial_velocity_max = 308.3
+gravity = Vector3(0, 120, 0)
+scale_min = 4.0
+scale_max = 4.0

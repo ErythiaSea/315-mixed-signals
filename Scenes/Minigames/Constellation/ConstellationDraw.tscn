@@ -28,6 +28,7 @@ script = ExtResource("1_7uyas")
 cameraSpeed = 3.0
 
 [node name="Parallax" type="Node2D" parent="eeek"]
+modulate = Color(0.564962, 0.564962, 0.564962, 1)
 z_index = -2
 position = Vector2(3, 0)
 scale = Vector2(0.4, 0.4)
