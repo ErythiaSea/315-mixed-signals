@@ -27,7 +27,7 @@ script = ExtResource("11_vjohv")
 [node name="Translation" type="CanvasLayer" node_paths=PackedStringArray("messageBox", "answerBox", "celHint", "engHint", "cipherDisplay", "winInd")]
 script = ExtResource("1_6ebpw")
 messageBox = NodePath("TextVBox/VBoxContainer/MessageTextBox")
-answerBox = NodePath("TextVBox/VBoxContainer/AnswerBox")
+answerBox = NodePath("")
 celHint = NodePath("HintVBox/HBoxContainer/CelestialChar")
 engHint = NodePath("HintVBox/HBoxContainer/EnglishChar")
 cipherDisplay = NodePath("CipherDisplay")
@@ -67,7 +67,7 @@ text = "[center]Hot"
 fit_content = true
 scroll_active = false
 
-[node name="AnswerBox" type="TextEdit" parent="TextVBox/VBoxContainer"]
+[node name="AnswerBox" type="LineEdit" parent="TextVBox/VBoxContainer"]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tm1gv")

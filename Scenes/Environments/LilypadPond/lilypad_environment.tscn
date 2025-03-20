@@ -90,7 +90,6 @@ script = ExtResource("14_xkiew")
 [node name="DemoEnv" type="Node2D"]
 script = ExtResource("1_tgjlw")
 spawnData = Array[Object]([SubResource("Resource_xpr3o"), SubResource("Resource_agtn6")])
-cameraZoom = 0.75
 leftLimit = -2974
 topLimit = -1459
 rightLimit = 2974
@@ -112,7 +111,8 @@ texture = ExtResource("3_n7la6")
 
 [node name="TelescopeBox" parent="." instance=ExtResource("4_u2itd")]
 position = Vector2(-916, -732)
-transitionType = 3
+transitionType = 4
+requiredStage = 1
 scenePath = "res://Scenes/Minigames/Constellation/ConstellationDraw.tscn"
 disablePlayerCam = true
 

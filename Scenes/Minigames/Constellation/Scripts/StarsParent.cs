@@ -6,6 +6,8 @@ using System.Reflection;
 
 public partial class StarsParent : Node2D
 {
+    [Signal]
+    public delegate void ConstellationCompletionEventHandler(Vector2 centerStar);
 
     [Export]
     int randMin = -4;
@@ -16,13 +18,19 @@ public partial class StarsParent : Node2D
     [Export]
     public float displaySpeed = 0.4f;
 
+
+    public bool hasSignalled = false;
     // Called when the node enters the scene tree for the first time.
 
     private Godot.Collections.Array<Label> starLabels;
+
+    private Godot.Collections.Array<StarNode> stars;
+
 	public override void _Ready()
 	{
+        stars = GetStars();
         starLabels = GetLabels();
-        GD.Print(starLabels.Count);
+        GD.Print(stars.Count);
         DisplayNumbers();
 	}
 
@@ -30,6 +38,11 @@ public partial class StarsParent : Node2D
 	public override void _Process(double delta)
 	{
 
+        if (IsConstellationComplete() && !hasSignalled)
+        {
+            EmitSignal(SignalName.ConstellationCompletion, GetCenterStar());
+            hasSignalled = true;
+        }
               
     }
     public void DisplayNumbers()
@@ -59,7 +72,7 @@ public partial class StarsParent : Node2D
                 randNumArray.Add(randomNum);
             }
 
-        } while (randNumArray.Sum() == 0);
+        } while (randNumArray.Sum() == 0 && randNumArray.Sum() < -4 && randNumArray.Sum() > 4);
 
         GD.Print("Valid random numbers");
 
@@ -67,6 +80,23 @@ public partial class StarsParent : Node2D
         Globals.Instance.cipherKey = randNumArray.Sum();
         return randNumArray;
 
+    }
+    
+    private bool IsConstellationComplete()
+    {
+        int starsCompleted = 0;
+
+        for(int i = 0; i < stars.Count; i++)
+        {
+            if (stars[i].isFound)
+            {
+                starsCompleted++;
+            }
+        }
+
+        if (starsCompleted == stars.Count) return true;
+
+        return false;
     }
     private Godot.Collections.Array<Label> GetLabels()
     {
@@ -79,5 +109,31 @@ public partial class StarsParent : Node2D
         }
 
         return lbls;
+    }
+
+    private Godot.Collections.Array<StarNode> GetStars()
+    {
+        Godot.Collections.Array<StarNode> strs = new Godot.Collections.Array<StarNode>();
+        foreach (Node2D child in GetChildren())
+        {
+            strs.Add(child as StarNode);
+        }
+
+        return strs;
+    }
+    private Vector2 GetCenterStar()
+    {
+        int bestCount = 0;
+        StarNode bestStar = null;
+        for (int i = 0; i < stars.Count; i++)
+        {
+            if (stars[i].adjacentStars.Count > bestCount)
+            {
+                bestCount = stars[i].adjacentStars.Count;
+                bestStar = stars[i];
+            }
+        }
+
+        return bestStar.GlobalPosition;
     }
 }
