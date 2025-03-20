@@ -9,9 +9,12 @@ public partial class CameraMovement : Camera2D
     private bool canMoveCam = true;
     private ColorRect telescope;
     private Vector2 center;
+
+    Globals globalScript;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        globalScript = Globals.Instance;
         telescope = GetNode("Telescope") as ColorRect;
 	}
 
@@ -51,5 +54,11 @@ public partial class CameraMovement : Camera2D
         completetion.Parallel().TweenProperty(this, "zoom", new Vector2(0.4f, 0.4f), 2f);
         completetion.Parallel().TweenProperty(this, "position", centerStar, 1f);
         completetion.Parallel().TweenProperty(telescope, "scale", new Vector2(2.5f,2.5f), 2f);
+        completetion.TweenCallback(Callable.From(this.UpdateGlobals));
+    }
+
+    private void UpdateGlobals()
+    {
+        globalScript.gameState.stage = GAMESTAGE.END;
     }
 }

@@ -111,7 +111,8 @@ texture = ExtResource("3_n7la6")
 
 [node name="TelescopeBox" parent="." instance=ExtResource("4_u2itd")]
 position = Vector2(-916, -732)
-transitionType = 3
+transitionType = 4
+requiredStage = 1
 scenePath = "res://Scenes/Minigames/Constellation/ConstellationDraw.tscn"
 disablePlayerCam = true
 

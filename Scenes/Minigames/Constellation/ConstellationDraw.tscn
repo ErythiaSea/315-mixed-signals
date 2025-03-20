@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bc8lby5o1pvpv"]
 
-[ext_resource type="Script" path="res://Scenes/Minigames/BaseMinigame.cs" id="1_4ctbx"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/CameraMovement.cs" id="1_7uyas"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/ConstellationMinigame.cs" id="1_sd3pu"]
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/ConstellationDraw.gdshader" id="3_djkxa"]
 [ext_resource type="Texture2D" uid="uid://3pijp23csaa8" path="res://Scenes/Minigames/Constellation/Sprites/SkyLayer.png" id="3_vuskw"]
 [ext_resource type="Texture2D" uid="uid://dluxx0un1srrc" path="res://Scenes/Minigames/Constellation/Sprites/StarsLayer.png" id="4_irqg6"]
@@ -19,7 +19,7 @@ font_size = 32
 
 [node name="ConstellationDraw" type="CanvasLayer"]
 follow_viewport_enabled = true
-script = ExtResource("1_4ctbx")
+script = ExtResource("1_sd3pu")
 
 [node name="eeek" type="Camera2D" parent="."]
 position = Vector2(576, 324)
@@ -68,6 +68,7 @@ radius = 0.4
 blur = 0.02
 
 [node name="ControlsLabel" type="Label" parent="eeek/Telescope"]
+layout_mode = 0
 offset_left = 35.8573
 offset_top = 1222.6
 offset_right = 545.857
