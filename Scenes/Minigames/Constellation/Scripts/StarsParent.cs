@@ -103,7 +103,7 @@ public partial class StarsParent : Node2D
         Godot.Collections.Array<Label> lbls = new Godot.Collections.Array<Label>();
         foreach (Node2D child in GetChildren())
         {
-            Label current = child.GetChild(1) as Label;
+            Label current = child.GetChild(2) as Label;
             current.Modulate = new Color(current.Modulate.R, current.Modulate.G, current.Modulate.B, 0);
             lbls.Add(current);
         }

@@ -173,7 +173,6 @@ isOneShot = true
 isAutofire = true
 dialogueBox = NodePath("../DialogueBubble")
 startID = "0"
-timeLimit = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MiscDial Box"]
 position = Vector2(35, -93)

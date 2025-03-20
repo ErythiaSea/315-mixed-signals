@@ -24,10 +24,9 @@ script = ExtResource("10_k8rjn")
 [sub_resource type="RichTextEffect" id="RichTextEffect_xkoe7"]
 script = ExtResource("11_vjohv")
 
-[node name="Translation" type="CanvasLayer" node_paths=PackedStringArray("messageBox", "answerBox", "celHint", "engHint", "cipherDisplay", "winInd")]
+[node name="Translation" type="CanvasLayer" node_paths=PackedStringArray("messageBox", "celHint", "engHint", "cipherDisplay", "winInd")]
 script = ExtResource("1_6ebpw")
 messageBox = NodePath("TextVBox/VBoxContainer/MessageTextBox")
-answerBox = NodePath("")
 celHint = NodePath("HintVBox/HBoxContainer/CelestialChar")
 engHint = NodePath("HintVBox/HBoxContainer/EnglishChar")
 cipherDisplay = NodePath("CipherDisplay")
@@ -72,7 +71,6 @@ custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tm1gv")
 theme_override_font_sizes/font_size = 100
-text = "awdfasdf"
 
 [node name="HintVBox" type="VBoxContainer" parent="."]
 offset_left = 117.0
@@ -92,9 +90,7 @@ theme_override_fonts/normal_font = ExtResource("2_w7m10")
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "[center]
-e
-e
-e"
+wd"
 
 [node name="EnglishChar" type="RichTextLabel" parent="HintVBox/HBoxContainer"]
 custom_minimum_size = Vector2(150, 600)
@@ -103,9 +99,7 @@ theme_override_fonts/normal_font = ExtResource("3_tm1gv")
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "[center]
-e
-e
-e
+
 
 "
 

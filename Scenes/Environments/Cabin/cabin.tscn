@@ -174,11 +174,10 @@ shape = SubResource("RectangleShape2D_xvqo4")
 position = Vector2(1561, 607)
 shape = SubResource("RectangleShape2D_xvqo4")
 
-[node name="TranspondBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite")]
+[node name="TranspondBox" type="Area2D" parent="."]
 position = Vector2(851, 977)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-objectSprite = NodePath("../Monitors")
 transitionType = 3
 scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 
@@ -186,11 +185,10 @@ scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 position = Vector2(127, 13.5)
 shape = SubResource("RectangleShape2D_0oee4")
 
-[node name="TranslationBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite")]
+[node name="TranslationBox" type="Area2D" parent="."]
 position = Vector2(930, 605)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-objectSprite = NodePath("../TranslationPaper")
 scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
