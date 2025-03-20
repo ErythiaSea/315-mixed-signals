@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://din6bfgvj8ksj"
-path="res://.godot/imported/telescope.png-77f6cf702bffd801bf05413c414e48d5.ctex"
+path="res://.godot/imported/telescope.png-d23a51d686c757f7299acbe3d47f29b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Environments/Objects/telescope.png"
-dest_files=["res://.godot/imported/telescope.png-77f6cf702bffd801bf05413c414e48d5.ctex"]
+source_file="res://Scenes/Environments/Objects/sprites/telescope.png"
+dest_files=["res://.godot/imported/telescope.png-d23a51d686c757f7299acbe3d47f29b4.ctex"]
 
 [params]
 

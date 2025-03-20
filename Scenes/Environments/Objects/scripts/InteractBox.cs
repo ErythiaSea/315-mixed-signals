@@ -13,6 +13,8 @@ public enum TRANSITION
 }
 public partial class InteractBox : Area2D
 {
+    [Export]
+    PackedScene endDayTransition;
     // whether the interact box can be used
     [Export]
     public bool active = true;
@@ -34,7 +36,7 @@ public partial class InteractBox : Area2D
     // the scene to load (for minigames)
     //[Export]
     //PackedScene scene;
-
+   
     //the type of transition
     [Export]
     public TRANSITION transitionType;
@@ -107,6 +109,8 @@ public partial class InteractBox : Area2D
     public bool isPlayerInArea = false;
     float outlineAlpha = 0.0f;
 
+    private float radius = 2f;
+
     public override void _Ready()
     {
         // possible todo: for things that will have a transition before getting the loaded file, we can
@@ -161,6 +165,8 @@ public partial class InteractBox : Area2D
         // Disable if oneshot
         if (isOneShot) active = false;
 
+       // if (requiredStage == GAMESTAGE.TRANSPONDING) EndDay();
+
         // Handle player ladder stuff
         if (isLadderArea) {
             plrRef.isAutoWalking = true;
@@ -199,7 +205,7 @@ public partial class InteractBox : Area2D
         {
 			isTransition = true;
 			plrRef.EmitSignal("Transition", (int)transitionType, transitionLength);
-		} 
+		}
         else { loadScene(); }
     }
 
@@ -277,5 +283,15 @@ public partial class InteractBox : Area2D
             tween.Kill();
             outlineAlpha = 0;
         }
+    }
+
+    private void EndDay()
+    {
+        GD.Print("end day");
+
+        player.SetMovementLock(true);
+
+        ColorRect scn = (ColorRect)endDayTransition.Instantiate();
+        player.AddChild(scn);
     }
 }

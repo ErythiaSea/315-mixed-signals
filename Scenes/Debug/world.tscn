@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="1_a1jtl"]
 [ext_resource type="Texture2D" uid="uid://cw021kgj5lu3l" path="res://Scenes/Debug/dummymap.png" id="1_docoe"]
 [ext_resource type="PackedScene" uid="uid://njjw6amv76bq" path="res://Scenes/Debug/restriction_box.tscn" id="3_fnmv4"]
-[ext_resource type="Script" path="res://Scenes/Environments/Objects/InteractBox.cs" id="3_stlg6"]
+[ext_resource type="Script" path="res://Scenes/Environments/Objects/scripts/InteractBox.cs" id="3_stlg6"]
 [ext_resource type="Texture2D" path="res://Sprites/tree.png" id="6_vrpvb"]
-[ext_resource type="Texture2D" uid="uid://din6bfgvj8ksj" path="res://Scenes/Environments/Objects/telescope.png" id="7_ekvxx"]
+[ext_resource type="Texture2D" uid="uid://din6bfgvj8ksj" path="res://Scenes/Environments/Objects/sprites/telescope.png" id="7_ekvxx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbep2"]
 size = Vector2(65, 17)

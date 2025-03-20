@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_3nkps"]
 [ext_resource type="Texture2D" uid="uid://bbg01qevmw8wg" path="res://Scenes/Debug/debugroombg.png" id="1_po1od"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_6fwe3"]
-[ext_resource type="Script" path="res://Scenes/Environments/Objects/InteractBox.cs" id="4_5ocby"]
+[ext_resource type="Script" path="res://Scenes/Environments/Objects/scripts/InteractBox.cs" id="4_5ocby"]
 [ext_resource type="Resource" uid="uid://hopbrw1uiih8" path="res://Scenes/Debug/pyxisDialogue.tres" id="7_golrq"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="9_55u1d"]
 [ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="9_myhsf"]
