@@ -35,6 +35,7 @@ theme_override_constants/separation = 40
 [node name="StartButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../QuitButton")
 theme_override_font_sizes/font_size = 80
 text = "Start"
 
@@ -42,17 +43,13 @@ text = "Start"
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "Start"
+text = "Options"
 
 [node name="QuitButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_bottom = NodePath("../StartButton")
 theme_override_font_sizes/font_size = 80
-text = "Start"
+text = "Quit (hold)"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_left = 581.0
-offset_top = 476.0
-offset_right = 1357.0
-offset_bottom = 1018.0
+[connection signal="pressed" from="ButtonContainer/StartButton" to="." method="_On_StartButton_Pressed"]
