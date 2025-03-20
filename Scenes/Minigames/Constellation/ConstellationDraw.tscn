@@ -83,18 +83,24 @@ script = ExtResource("8_pqt5s")
 
 [node name="StarNode" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(12, 252)
+particleAffect = null
+indicatorGradient = null
 adjacentStars = [NodePath("../StarNode2")]
 
 [node name="StarNode2" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(1048, 256)
+particleAffect = null
+indicatorGradient = null
 adjacentStars = [NodePath("../StarNode"), NodePath("../StarNode3"), NodePath("../StarNode4")]
 
 [node name="StarNode3" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(1460, -292)
+particleAffect = null
+indicatorGradient = null
 adjacentStars = [NodePath("../StarNode2")]
 
 [node name="StarNode4" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(1772, 500)
+particleAffect = null
+indicatorGradient = null
 adjacentStars = [NodePath("../StarNode2")]
-
-[connection signal="ConstellationCompletion" from="Constellation" to="eeek" method="DisplayConstellation"]

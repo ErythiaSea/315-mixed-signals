@@ -99,6 +99,9 @@ public partial class InteractBox : Area2D
     [Export]
     bool lockPlayerMovement = false;
 
+    [Signal]
+    public delegate void InteractedEventHandler();
+
     float transitionTime = 0.0f;
     bool isTransition = false;
     private Player player;
