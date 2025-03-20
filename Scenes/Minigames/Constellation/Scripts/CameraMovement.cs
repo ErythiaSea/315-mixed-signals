@@ -5,15 +5,25 @@ public partial class CameraMovement : Camera2D
 {
     [Export]
     public float cameraSpeed = 0.6f;
+
+    private bool canMoveCam = true;
+    private ColorRect telescope;
+    private Vector2 center;
+
+    Globals globalScript;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        globalScript = Globals.Instance;
+        telescope = GetNode("Telescope") as ColorRect;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        CameraInputEvents(delta);
+        if(canMoveCam)CameraInputEvents(delta);
+
+        center = GetScreenCenterPosition();
     }
 
 	public void CameraInputEvents(double delta)
@@ -34,5 +44,21 @@ public partial class CameraMovement : Camera2D
         {
             Position = new Vector2(Position.X + cameraSpeed, Position.Y);
         }
+    }
+
+    private void DisplayConstellation(Vector2 centerStar)
+    {
+        canMoveCam = false;
+        Tween completetion = GetTree().CreateTween();
+       
+        completetion.Parallel().TweenProperty(this, "zoom", new Vector2(0.4f, 0.4f), 2f);
+        completetion.Parallel().TweenProperty(this, "position", centerStar, 1f);
+        completetion.Parallel().TweenProperty(telescope, "scale", new Vector2(2.5f,2.5f), 2f);
+        completetion.TweenCallback(Callable.From(this.UpdateGlobals));
+    }
+
+    private void UpdateGlobals()
+    {
+        globalScript.gameState.stage = GAMESTAGE.END;
     }
 }
