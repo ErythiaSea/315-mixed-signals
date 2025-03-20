@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://blaixght86xlx"]
+
+[ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="1_vi1bc"]
+[ext_resource type="Script" path="res://Scenes/Menu/MainMenu/MainMenu.cs" id="2_2deir"]
+[ext_resource type="Texture2D" uid="uid://dqtmjby87s052" path="res://Scenes/Loading/BloodBoxLogo_Splash.png" id="2_4re32"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vi1bc")
+script = ExtResource("2_2deir")
+
+[node name="GameLogo" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 650.0
+offset_top = -83.0
+offset_right = 1262.0
+offset_bottom = 529.0
+texture = ExtResource("2_4re32")
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 581.0
+offset_top = 476.0
+offset_right = 1357.0
+offset_bottom = 1018.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="StartButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "Start"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 581.0
+offset_top = 476.0
+offset_right = 1357.0
+offset_bottom = 1018.0

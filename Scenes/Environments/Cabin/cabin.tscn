@@ -174,11 +174,10 @@ shape = SubResource("RectangleShape2D_xvqo4")
 position = Vector2(1561, 607)
 shape = SubResource("RectangleShape2D_xvqo4")
 
-[node name="TranspondBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite")]
+[node name="TranspondBox" type="Area2D" parent="."]
 position = Vector2(851, 977)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-objectSprite = NodePath("../Monitors")
 transitionType = 3
 transitionLength = 0.5
 scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
@@ -187,11 +186,10 @@ scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 position = Vector2(127, 13.5)
 shape = SubResource("RectangleShape2D_0oee4")
 
-[node name="TranslationBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite")]
+[node name="TranslationBox" type="Area2D" parent="."]
 position = Vector2(930, 605)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-objectSprite = NodePath("../TranslationPaper")
 scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
@@ -244,6 +242,7 @@ label_settings = SubResource("LabelSettings_272fe")
 position = Vector2(1813.45, 864)
 
 [node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]
+visible = false
 clip_contents = false
 offset_left = 389.0
 offset_top = 718.0
