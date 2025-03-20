@@ -1,35 +1,161 @@
-[gd_scene format=3 uid="uid://qw43er1nfudg"]
+[gd_scene load_steps=3 format=3 uid="uid://qw43er1nfudg"]
 
-[node name="Options" type="Panel"]
+[ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="1_g0e0g"]
+[ext_resource type="Script" path="res://Scenes/Menu/Options/Options.cs" id="2_ffohl"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("masterVolumeSlider")]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_g0e0g")
+script = ExtResource("2_ffohl")
+masterVolumeSlider = NodePath("Options/TabContainer/Audio/AudioSetting/Master/VolumeSlider")
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="Options" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = 44.0
+offset_right = -158.0
+offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme = ExtResource("1_g0e0g")
+
+[node name="TabContainer" type="TabContainer" parent="Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.7
+focus_mode = 2
 current_tab = 0
 
-[node name="Controls" type="Label" parent="TabContainer"]
+[node name="Audio" type="MarginContainer" parent="Options/TabContainer"]
 layout_mode = 2
-text = "options :3
-imagine there are buttons and sliders and allat here wooooo - eryth"
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 10
 metadata/_tab_index = 0
 
-[node name="Audio" type="Label" parent="TabContainer"]
+[node name="AudioSetting" type="VBoxContainer" parent="Options/TabContainer/Audio"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Master" type="HBoxContainer" parent="Options/TabContainer/Audio/AudioSetting"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VolumeLabel" type="Label" parent="Options/TabContainer/Audio/AudioSetting/Master"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Master Volume
+"
+
+[node name="VolumeSlider" type="HSlider" parent="Options/TabContainer/Audio/AudioSetting/Master"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Music" type="HBoxContainer" parent="Options/TabContainer/Audio/AudioSetting"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VolumeLabel" type="Label" parent="Options/TabContainer/Audio/AudioSetting/Music"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Music Volume
+"
+
+[node name="VolumeSlider" type="HSlider" parent="Options/TabContainer/Audio/AudioSetting/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="SFX" type="HBoxContainer" parent="Options/TabContainer/Audio/AudioSetting"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VolumeLabel" type="Label" parent="Options/TabContainer/Audio/AudioSetting/SFX"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Sound Effect Volume
+"
+
+[node name="VolumeSlider" type="HSlider" parent="Options/TabContainer/Audio/AudioSetting/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Ambient" type="HBoxContainer" parent="Options/TabContainer/Audio/AudioSetting"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VolumeLabel" type="Label" parent="Options/TabContainer/Audio/AudioSetting/Ambient"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Ambient Volume
+"
+
+[node name="VolumeSlider" type="HSlider" parent="Options/TabContainer/Audio/AudioSetting/Ambient"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Controls" type="MarginContainer" parent="Options/TabContainer"]
 visible = false
 layout_mode = 2
-text = "label 2 i want to see how this works"
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 10
 metadata/_tab_index = 1
+
+[node name="ControlSetting" type="VBoxContainer" parent="Options/TabContainer/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ControllerLayout" type="HBoxContainer" parent="Options/TabContainer/Controls/ControlSetting"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="A_BLabel" type="Label" parent="Options/TabContainer/Controls/ControlSetting/ControllerLayout"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Swap A/B Buttons
+"
+
+[node name="A_BButton" type="CheckButton" parent="Options/TabContainer/Controls/ControlSetting/ControllerLayout"]
+layout_mode = 2
+size_flags_horizontal = 2
+flat = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Some option description will go here! But everything comes in time...
+
+The only option that works currently is the master volume slider (I think, I haven't actually tested it with headphones but it SHOULD work!!)
+
+This is VERY VERY VERY placeholdery UI, hope someone can figure out how to design and implement good UI because it is [b]absolutely[/b] not me!! - Eryth"
+
+[node name="Close" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1179.0
+offset_top = 46.0
+offset_right = 1282.0
+offset_bottom = 90.0
+text = "Close"
