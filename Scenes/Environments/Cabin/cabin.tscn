@@ -241,6 +241,7 @@ label_settings = SubResource("LabelSettings_272fe")
 position = Vector2(1813.45, 864)
 
 [node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]
+visible = false
 clip_contents = false
 offset_left = 389.0
 offset_top = 718.0
