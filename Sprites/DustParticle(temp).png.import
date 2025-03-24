@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bedcsxhb5bdgm"
-path="res://.godot/imported/translationpaper.png-d1992102a43318852d1a08bab23d6f04.ctex"
+uid="uid://b54fndlcxy1vw"
+path="res://.godot/imported/DustParticle(temp).png-7be05d3528d342e060e6c28a253fa574.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Environments/Objects/translationpaper.png"
-dest_files=["res://.godot/imported/translationpaper.png-d1992102a43318852d1a08bab23d6f04.ctex"]
+source_file="res://Sprites/DustParticle(temp).png"
+dest_files=["res://.godot/imported/DustParticle(temp).png-7be05d3528d342e060e6c28a253fa574.ctex"]
 
 [params]
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://bo5umns4232lg"]
+[gd_scene load_steps=19 format=3 uid="uid://bo5umns4232lg"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.cs" id="1_fgmdt"]
+[ext_resource type="PackedScene" uid="uid://beow36ap7nwct" path="res://Scenes/Player/WalkingParticles.tscn" id="2_1wlmo"]
 [ext_resource type="Texture2D" uid="uid://cakxugfax4fub" path="res://Scenes/Player/interact.png" id="2_7y7g8"]
 [ext_resource type="Texture2D" uid="uid://es5m8fptxhty" path="res://Scenes/Player/spritesheet.png" id="2_jnhts"]
 [ext_resource type="PackedScene" uid="uid://24enakva48q" path="res://Scenes/Environments/Objects/WipeTransition.tscn" id="4_iyys1"]
@@ -115,12 +116,13 @@ radius = 13.0384
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_fgmdt")
+walkingParticles = ExtResource("2_1wlmo")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 3)
 scale = Vector2(-0.181616, 0.181616)
 sprite_frames = SubResource("SpriteFrames_kxusu")
-animation = &"idle"
+animation = &"run"
 
 [node name="PlayerShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)

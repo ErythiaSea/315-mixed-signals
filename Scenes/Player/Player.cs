@@ -15,6 +15,9 @@ public partial class Player : CharacterBody2D
 	[Export]
 	public float movementSpeed = 600.0f;
 
+	[Export]
+	PackedScene walkingParticles;
+
 	MovementStates playerMovementState = MovementStates.FREE_MOVE;
 	bool isMovementLocked = false;
 
@@ -22,6 +25,7 @@ public partial class Player : CharacterBody2D
 	public bool isAutoWalking = false; 
 	public float autoWalkDestinationX = float.MinValue;
 
+	private int lastStep = 0;
 	AnimatedSprite2D playerSprite;
 	Sprite2D interactSprite;
 	Area2D interactArea;
@@ -66,6 +70,29 @@ public partial class Player : CharacterBody2D
         {
             playerSprite.Play("run");
             playerSprite.FlipH = Velocity.X > 0;
+
+			if(playerSprite.Animation == "run")
+			{
+				if (playerSprite.Frame == 1 ||  playerSprite.Frame == 4)
+				{
+                    if (lastStep != playerSprite.Frame)
+                    {
+						lastStep = playerSprite.Frame;
+                        GD.Print("EMITTING PARTICLES");
+                        GpuParticles2D particles = walkingParticles.Instantiate() as GpuParticles2D;
+                        particles.Emitting = true;
+                        particles.GlobalPosition = new Vector2(GlobalPosition.X + (Mathf.Clamp(Velocity.X,-10,10)), GlobalPosition.Y + 140);
+
+						ParticleProcessMaterial mat = particles.ProcessMaterial as ParticleProcessMaterial;
+						mat.Direction = new Vector3(-Mathf.Clamp(Velocity.X,-1,1) , mat.Direction.Y,0);
+                        GetParent().AddChild(particles);
+                    }
+				}
+			}
+			else
+			{
+				lastStep = -1;
+			}
         }
         else
         {
@@ -206,6 +233,13 @@ public partial class Player : CharacterBody2D
 		isMovementLocked = false;
 	}
 
+	public void EndDayTransition()
+	{
+	    EndTransitionScript transition = playerCamera.GetChild(1) as EndTransitionScript;
+
+		transition.isEnding = true;
+
+	}
 	void OnMinigameClosed()
 	{
 

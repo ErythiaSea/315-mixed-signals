@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://rttkrffqrw1g"]
 
-[ext_resource type="Script" path="res://Scenes/Environments/Objects/StairControl.cs" id="1_g3ibv"]
+[ext_resource type="Script" path="res://Scenes/Environments/Objects/scripts/StairControl.cs" id="1_g3ibv"]
 
 [node name="StairControl" type="Area2D"]
 script = ExtResource("1_g3ibv")
