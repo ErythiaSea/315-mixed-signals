@@ -9,9 +9,9 @@ public enum MovementStates { NONE = 0, FREE_MOVE = 1, LADDER_MOVE = 2 };
 public partial class Player : CharacterBody2D
 {
 
-    [Signal]
-    public delegate void TransitionEventHandler(TRANSITION type, float transitionLength);
-    
+	[Signal]
+	public delegate void TransitionEventHandler(TRANSITION type, float transitionLength);
+	
 	[Export]
 	public float movementSpeed = 600.0f;
 
@@ -28,52 +28,52 @@ public partial class Player : CharacterBody2D
 	Camera2D playerCamera;
 	Level thisLevel;
 
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
 		FloorConstantSpeed = true;
 		FloorSnapLength = 20.0f;
 		FloorMaxAngle = Mathf.DegToRad(60);
 
-        playerSprite = GetNode<AnimatedSprite2D>("PlayerSprite");
+		playerSprite = GetNode<AnimatedSprite2D>("PlayerSprite");
 		interactSprite = GetNode<Sprite2D>("InteractSprite");
 		interactArea = GetNode<Area2D>("InteractArea");
-        playerCamera = GetNode<Camera2D>("PlayerCamera");
+		playerCamera = GetNode<Camera2D>("PlayerCamera");
 		thisLevel = GetParent<Level>();
-        SignalBus.Instance.DialogueClosed += OnDialogueClosed;
-    }
+		SignalBus.Instance.DialogueClosed += OnDialogueClosed;
+	}
 
-    public override void _Process(double delta)
-    {
+	public override void _Process(double delta)
+	{
 		if (isMovementLocked) return;
 
-        interactSprite.Visible = false;
-        foreach (Area2D area in interactArea.GetOverlappingAreas())
-        {
-            InteractBox interactBox = area as InteractBox;
-            if (interactBox != null && interactBox.active)
-            {
-                interactSprite.Visible = true;
+		interactSprite.Visible = false;
+		foreach (Area2D area in interactArea.GetOverlappingAreas())
+		{
+			InteractBox interactBox = area as InteractBox;
+			if (interactBox != null && interactBox.active)
+			{
+				interactSprite.Visible = true;
 				interactBox.isPlayerInArea = true;
-                if ((interactBox.isAutofire || (Input.IsActionJustPressed("interact")) && !isMovementLocked))
-                {
-                    interactBox.Interact(this);
-                }
-            }
-        }
+				if ((interactBox.isAutofire || (Input.IsActionJustPressed("interact")) && !isMovementLocked))
+				{
+					interactBox.Interact(this);
+				}
+			}
+		}
 
-        // Animate player sprite based on the velocity of the player
-        if (Velocity.X != 0.0f)
-        {
-            playerSprite.Play("run");
-            playerSprite.FlipH = Velocity.X > 0;
-        }
-        else
-        {
+		// Animate player sprite based on the velocity of the player
+		if (Velocity.X != 0.0f)
+		{
+			playerSprite.Play("run");
+			playerSprite.FlipH = Velocity.X > 0;
+		}
+		else
+		{
 			playerSprite.Play("idle");
-        }
-    }
+		}
+	}
 
-    public override void _PhysicsProcess(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		if (isAutoWalking) { AutoMovement(delta); return; }
 
@@ -95,9 +95,9 @@ public partial class Player : CharacterBody2D
 			velocity += GetGravity() * (float)delta;
 		}
 
-        // Get the input direction and handle the movement/deceleration.
-        //Vector2 direction = Input.GetVector("left_pivot_cw", "left_pivot_ccw", "up", "down");
-        float xDirection = Input.GetAxis("left_pivot_cw", "left_pivot_ccw");
+		// Get the input direction and handle the movement/deceleration.
+		//Vector2 direction = Input.GetVector("left_pivot_cw", "left_pivot_ccw", "up", "down");
+		float xDirection = Input.GetAxis("left_pivot_cw", "left_pivot_ccw");
 		if (xDirection != 0)
 		{
 			velocity.X = xDirection * movementSpeed;
@@ -141,22 +141,22 @@ public partial class Player : CharacterBody2D
 	public void ToggleLadder()
 	{
 		if (playerMovementState == MovementStates.FREE_MOVE) SetMovementState(MovementStates.LADDER_MOVE);
-        else if (playerMovementState == MovementStates.LADDER_MOVE) SetMovementState(MovementStates.FREE_MOVE);
-    }
+		else if (playerMovementState == MovementStates.LADDER_MOVE) SetMovementState(MovementStates.FREE_MOVE);
+	}
 
 	public void SetMovementState(MovementStates state)
 	{
-        // 2 = world, 4 = ladderbox
-        if (state == MovementStates.FREE_MOVE)
-        {
-            SetCollisionMaskValue(2, true);
-            SetCollisionMaskValue(4, false);
-        }
-        if (state == MovementStates.LADDER_MOVE)
+		// 2 = world, 4 = ladderbox
+		if (state == MovementStates.FREE_MOVE)
+		{
+			SetCollisionMaskValue(2, true);
+			SetCollisionMaskValue(4, false);
+		}
+		if (state == MovementStates.LADDER_MOVE)
 		{
 			SetCollisionMaskValue(2, false);
-            SetCollisionMaskValue(4, true);
-        }
+			SetCollisionMaskValue(4, true);
+		}
 		playerMovementState = state;
 	}
 
@@ -186,8 +186,8 @@ public partial class Player : CharacterBody2D
 		playerCamera.LimitRight = right;
 	}
 
-    // camera can be disabled by anyone, but requires the level to have an active camera to be enabled
-    public void SetCameraEnabled(bool enabled)
+	// camera can be disabled by anyone, but requires the level to have an active camera to be enabled
+	public void SetCameraEnabled(bool enabled)
 	{
 		if (!enabled || thisLevel.getCameraEnabled())
 		{
@@ -211,4 +211,3 @@ public partial class Player : CharacterBody2D
 
 	}
 }
-

@@ -178,7 +178,6 @@ shape = SubResource("RectangleShape2D_xvqo4")
 position = Vector2(851, 977)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-transitionType = 3
 scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
@@ -211,8 +210,6 @@ shape = SubResource("RectangleShape2D_cchka")
 position = Vector2(1837, 1014)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-transitionType = 1
-requiredStage = 5
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
 spawnPoint = 0
