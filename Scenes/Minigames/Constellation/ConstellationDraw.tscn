@@ -77,6 +77,8 @@ theme_override_font_sizes/font_size = 0
 text = "WASD - Pan Camera  ESC - Close"
 label_settings = SubResource("LabelSettings_03dfn")
 
+[node name="Crosshair" type="Sprite2D" parent="eeek"]
+
 [node name="Constellation" type="Node2D" parent="."]
 z_index = -1
 script = ExtResource("8_pqt5s")
