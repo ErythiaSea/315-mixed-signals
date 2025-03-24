@@ -112,7 +112,7 @@ position = Vector2(966, 523)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_p5t1g")
 
-[node name="Sprites" type="Node" parent="."]
+[node name="Sprites" type="Node2D" parent="."]
 
 [node name="Sky" type="Sprite2D" parent="Sprites"]
 position = Vector2(960, 613)
@@ -158,13 +158,6 @@ stream = ExtResource("3_1b4bc")
 volume_db = -16.838
 autoplay = true
 
-[node name="Player" parent="." instance=ExtResource("2_h3n7b")]
-position = Vector2(315, 858)
-scale = Vector2(2.5, 2.5)
-
-[node name="PlayerHead" type="Marker2D" parent="Player"]
-position = Vector2(-0.8, -43.2)
-
 [node name="WorldCollision" type="StaticBody2D" parent="."]
 position = Vector2(396, 403)
 collision_layer = 2
@@ -181,6 +174,13 @@ shape = SubResource("RectangleShape2D_xvqo4")
 [node name="CollisionShape4" type="CollisionShape2D" parent="WorldCollision"]
 position = Vector2(1561, 607)
 shape = SubResource("RectangleShape2D_xvqo4")
+
+[node name="Player" parent="." instance=ExtResource("2_h3n7b")]
+position = Vector2(315, 858)
+scale = Vector2(2.5, 2.5)
+
+[node name="PlayerHead" type="Marker2D" parent="Player"]
+position = Vector2(-0.8, -43.2)
 
 [node name="Controls" type="Label" parent="."]
 z_index = 5
@@ -210,30 +210,30 @@ follow_node = NodePath("../Player/PlayerHead")
 show_speaker_name = false
 dialogue_custom_effects = [SubResource("RichTextEffect_0u6wi"), SubResource("RichTextEffect_yh6wg"), SubResource("RichTextEffect_eewup")]
 
-[node name="InteractBoxes" type="Node" parent="."]
-
-[node name="TranspondBox" type="Area2D" parent="InteractBoxes"]
+[node name="TranspondBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite")]
 position = Vector2(851, 977)
 collision_layer = 4
 script = ExtResource("4_r0utk")
+objectSprite = NodePath("../Sprites/Monitors")
 transitionType = 3
 scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBoxes/TranspondBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
 position = Vector2(127, 13.5)
 shape = SubResource("RectangleShape2D_0oee4")
 
-[node name="TranslationBox" type="Area2D" parent="InteractBoxes"]
+[node name="TranslationBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite")]
 position = Vector2(930, 605)
 collision_layer = 4
 script = ExtResource("4_r0utk")
+objectSprite = NodePath("../Sprites/TranslationPaper")
 scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBoxes/TranslationBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
 position = Vector2(412, 381)
 shape = SubResource("RectangleShape2D_cchka")
 
-[node name="LevelChange" type="Area2D" parent="InteractBoxes"]
+[node name="LevelChange" type="Area2D" parent="."]
 position = Vector2(1837, 1014)
 collision_layer = 4
 script = ExtResource("4_r0utk")
@@ -243,5 +243,5 @@ scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
 spawnPoint = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBoxes/LevelChange"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
 shape = SubResource("RectangleShape2D_lvk1a")
