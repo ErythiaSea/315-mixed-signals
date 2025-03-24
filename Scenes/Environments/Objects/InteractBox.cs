@@ -160,6 +160,7 @@ public partial class InteractBox : Area2D
 
         // Not interactable if inactive
         if (!active) return;
+        EmitSignal("Interacted");
 
         // Disable if oneshot
         if (isOneShot) active = false;
@@ -277,8 +278,11 @@ public partial class InteractBox : Area2D
         if (area.GetParent<Player>() != null)
         {
             isPlayerInArea = false;
-            tween.Kill();
-            outlineAlpha = 0;
+            if (tween != null)
+            {
+                tween.Kill();
+                outlineAlpha = 0;
+            }
         }
     }
 }
