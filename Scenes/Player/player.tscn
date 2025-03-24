@@ -151,5 +151,3 @@ shape = SubResource("CircleShape2D_3ls88")
 
 [node name="WipeTransition" parent="PlayerCamera" instance=ExtResource("4_iyys1")]
 visible = false
-
-[connection signal="Transition" from="." to="PlayerCamera/WipeTransition" method="PlayTransition"]
