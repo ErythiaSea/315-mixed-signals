@@ -1,24 +1,33 @@
-[gd_scene load_steps=35 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=57 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_hvnuo"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_vrtq2"]
 [ext_resource type="AudioStream" uid="uid://db0ejrnpgebag" path="res://Audio/Music/Zodiac  Hiphop Instrumental by prazkhanal Id-787557.wav" id="3_1b4bc"]
 [ext_resource type="Texture2D" uid="uid://bvndiooefnwcn" path="res://Scenes/Environments/Cabin/Sprites/Sky_Render.png" id="3_bkt4p"]
-[ext_resource type="Script" path="res://Scenes/Environments/Objects/InteractBox.cs" id="4_r0utk"]
+[ext_resource type="Script" path="res://Scenes/Environments/Objects/scripts/InteractBox.cs" id="4_r0utk"]
 [ext_resource type="Texture2D" uid="uid://c7n4exllur0qf" path="res://Scenes/Environments/Cabin/Sprites/Cabin_WallCutout.png" id="4_wjyar"]
 [ext_resource type="Texture2D" uid="uid://bn181y2cglkh8" path="res://Scenes/Environments/Cabin/Sprites/Cabin_WallMounts.png" id="5_6d5l0"]
 [ext_resource type="Texture2D" uid="uid://bqyty78nhq7we" path="res://Scenes/Environments/Cabin/Sprites/Cabin_Standings.png" id="6_fo4et"]
 [ext_resource type="Texture2D" uid="uid://cewwdj8kb867f" path="res://Scenes/Environments/Cabin/Sprites/Cabin_Monitors.png" id="7_bteuo"]
-[ext_resource type="Texture2D" uid="uid://bedcsxhb5bdgm" path="res://Scenes/Environments/Objects/translationpaper.png" id="7_tqin0"]
 [ext_resource type="Texture2D" uid="uid://cc066shi2gixy" path="res://Scenes/Environments/Cabin/room_silohettes.png" id="8_fxgd2"]
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/Outline.gdshader" id="9_05epa"]
+[ext_resource type="Texture2D" uid="uid://dlxcbppbeywmh" path="res://Scenes/Environments/Cabin Extended/base_pipes.png" id="11_o0hdm"]
+[ext_resource type="Texture2D" uid="uid://dgxa5oe3n02es" path="res://Scenes/Environments/Cabin/Sprites/bedroom_background.png" id="11_vj0vr"]
+[ext_resource type="Texture2D" uid="uid://2crwnjdli60a" path="res://Sprites/elevatorbuton_temp.png" id="13_bairj"]
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="13_haw55"]
+[ext_resource type="Texture2D" uid="uid://d1en116yf2tih" path="res://Scenes/Environments/Cabin/Sprites/bedroom_desk.png" id="14_88y3f"]
+[ext_resource type="PackedScene" uid="uid://1iqwcokmbvwv" path="res://Scenes/Environments/Objects/elevator.tscn" id="14_e5y7b"]
+[ext_resource type="Texture2D" uid="uid://bhieqrwdoj31n" path="res://Scenes/Environments/Cabin/Sprites/bedroom_bed.png" id="14_gtqtg"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="14_tiwmt"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="15_1s26x"]
+[ext_resource type="Texture2D" uid="uid://dm0lfd4qddhlh" path="res://Scenes/Environments/Cabin/Sprites/bedroom_book.png" id="15_gbafl"]
+[ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="15_lw781"]
+[ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://Sprites/icon.svg" id="16_7v6od"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="16_oxyx2"]
+[ext_resource type="Texture2D" uid="uid://dljep1sop1gkj" path="res://Scenes/Environments/Cabin/Sprites/bedroom_photoboard.png" id="16_stl3d"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="17_h87pq"]
-[ext_resource type="Resource" uid="uid://tvyth3g2fn8" path="res://Scenes/Environments/CabinOutdoor/Dialogue/misc dial 1 - outside.tres" id="18_oqaxf"]
+[ext_resource type="Resource" uid="uid://wn1h5b8ptlga" path="res://Scenes/Debug/debugdialogue.tres" id="24_33tro"]
 
 [sub_resource type="Resource" id="Resource_66r8t"]
 script = ExtResource("2_vrtq2")
@@ -48,13 +57,29 @@ adjustment_saturation = 1.1
 interpolation_mode = 2
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jojyq"]
+gradient = SubResource("Gradient_xf4qe")
+width = 1920
+height = 1080
+fill = 1
+fill_from = Vector2(0.52968, 0.633181)
+fill_to = Vector2(0.493151, 0.0405885)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q2l72"]
+gradient = SubResource("Gradient_xf4qe")
+width = 1920
+height = 2600
+fill = 1
+fill_from = Vector2(0.503472, 0.568376)
+fill_to = Vector2(0.434028, 0)
+
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_p5t1g"]
 gradient = SubResource("Gradient_xf4qe")
 width = 1920
 height = 1080
 fill = 1
-fill_from = Vector2(0.504587, 0.799185)
-fill_to = Vector2(0.5, 0)
+fill_from = Vector2(0.488584, 0.519533)
+fill_to = Vector2(0.616438, 0.381532)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5g03c"]
 shader = ExtResource("9_05epa")
@@ -62,26 +87,56 @@ shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_alpha = 1.0
 shader_parameter/line_thickness = 4.5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ng72"]
+shader = ExtResource("9_05epa")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_alpha = 1.0
+shader_parameter/line_thickness = 2.062
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_62c65"]
+shader = ExtResource("9_05epa")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_alpha = 1.0
+shader_parameter/line_thickness = 2.858
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4dv0e"]
+shader = ExtResource("9_05epa")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_alpha = 1.0
+shader_parameter/line_thickness = 3.035
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0jryd"]
 shader = ExtResource("9_05epa")
 shader_parameter/line_color = Color(1, 0.699379, 0.374812, 1)
 shader_parameter/line_alpha = 1.0
 shader_parameter/line_thickness = 2.5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogn68"]
+shader = ExtResource("9_05epa")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_alpha = 1.0
+shader_parameter/line_thickness = 2.77
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rsbk3"]
+size = Vector2(403, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3sbqo"]
+size = Vector2(6, 134.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8yak"]
+size = Vector2(8, 137.25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b7gpl"]
+radius = 16.1245
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82mfh"]
 size = Vector2(1936, 88.8125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvqo4"]
-size = Vector2(98, 447.5)
+size = Vector2(115, 3790.75)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0oee4"]
-size = Vector2(388, 37)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cchka"]
-size = Vector2(168.5, 60.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvk1a"]
-size = Vector2(291, 55)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qv87"]
+size = Vector2(1964, 41)
 
 [sub_resource type="LabelSettings" id="LabelSettings_272fe"]
 font_size = 32
@@ -95,42 +150,190 @@ script = ExtResource("15_1s26x")
 [sub_resource type="RichTextEffect" id="RichTextEffect_eewup"]
 script = ExtResource("16_oxyx2")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0oee4"]
+size = Vector2(301, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cchka"]
+size = Vector2(168.5, 60.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avn75"]
+size = Vector2(242, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvk1a"]
+size = Vector2(291, 55)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_txxlk"]
+radius = 32.249
+
 [node name="Cabin" type="Node2D"]
 script = ExtResource("1_hvnuo")
 spawnData = Array[Object]([SubResource("Resource_66r8t")])
-cameraEnabled = false
+rightLimit = 1920
+bottomLimit = 4573
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8vdl8")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(24, 0)
 color = Color(0.160404, 0.0175456, 0.232451, 1)
 blend_mode = 2
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(966, 523)
+[node name="MainLight" type="PointLight2D" parent="."]
+position = Vector2(979, 451)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_jojyq")
+
+[node name="ElevatorLights" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="ElevatorLights"]
+position = Vector2(966, 2341)
+texture = SubResource("GradientTexture2D_q2l72")
+
+[node name="BedRoomLights" type="Node2D" parent="."]
+
+[node name="PointLight2D2" type="PointLight2D" parent="BedRoomLights"]
+visible = false
+position = Vector2(542, 3956)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_p5t1g")
 
-[node name="Sky" type="Sprite2D" parent="."]
+[node name="PointLight2D3" type="PointLight2D" parent="BedRoomLights"]
+visible = false
+position = Vector2(1376, 3911)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D4" type="PointLight2D" parent="BedRoomLights"]
+visible = false
+position = Vector2(242, 3926)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D5" type="PointLight2D" parent="BedRoomLights"]
+visible = false
+position = Vector2(708, 4251)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D6" type="PointLight2D" parent="BedRoomLights"]
+visible = false
+position = Vector2(270, 4213)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D7" type="PointLight2D" parent="BedRoomLights"]
+visible = false
+position = Vector2(1638, 3890)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D8" type="PointLight2D" parent="BedRoomLights"]
+visible = false
+position = Vector2(1641, 4107)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D9" type="PointLight2D" parent="BedRoomLights"]
+visible = false
+position = Vector2(977, 3746)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D10" type="PointLight2D" parent="BedRoomLights"]
+visible = false
+position = Vector2(601, 3782)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D11" type="PointLight2D" parent="BedRoomLights"]
+visible = false
+position = Vector2(1333, 3812)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="bigtemppointlight" type="PointLight2D" parent="BedRoomLights"]
+position = Vector2(981, 3972)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+texture_scale = 3.96
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sky" type="Sprite2D" parent="Sprites"]
 position = Vector2(960, 613)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_bkt4p")
 
-[node name="Wall" type="Sprite2D" parent="."]
+[node name="Wall" type="Sprite2D" parent="Sprites"]
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_wjyar")
 
-[node name="WallMounts" type="Sprite2D" parent="."]
+[node name="WallMounts" type="Sprite2D" parent="Sprites"]
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_6d5l0")
 
-[node name="Standings" type="Sprite2D" parent="."]
+[node name="Standings" type="Sprite2D" parent="Sprites"]
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_fo4et")
+
+[node name="Monitors" type="Sprite2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_5g03c")
+position = Vector2(1024, 540)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_bteuo")
+
+[node name="Foreground" type="Sprite2D" parent="Sprites"]
+z_index = 1
+position = Vector2(960, 540)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_fxgd2")
+
+[node name="Pipes" type="Sprite2D" parent="Sprites"]
+position = Vector2(962, 2378)
+scale = Vector2(0.393, 0.393)
+texture = ExtResource("11_o0hdm")
+
+[node name="BedRoom" type="Sprite2D" parent="Sprites"]
+position = Vector2(963, 4127)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_vj0vr")
+
+[node name="BottomCallButton" type="Sprite2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_7ng72")
+position = Vector2(722, 4462)
+texture = ExtResource("13_bairj")
+
+[node name="TopCallButton" type="Sprite2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_62c65")
+position = Vector2(477, 904)
+texture = ExtResource("13_bairj")
+
+[node name="Bed" type="Sprite2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_4dv0e")
+position = Vector2(232, 4313)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_gtqtg")
+
+[node name="Desk" type="Sprite2D" parent="Sprites"]
+position = Vector2(1398, 4462)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_88y3f")
+
+[node name="TranslationPaper" type="Sprite2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_0jryd")
+position = Vector2(1388, 4372)
+scale = Vector2(0.597107, 0.597107)
+texture = ExtResource("15_gbafl")
+
+[node name="Photoboard" type="Sprite2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_ogn68")
+position = Vector2(1662, 4175)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_stl3d")
 
 [node name="HubBGM" type="AudioStreamPlayer" parent="."]
 process_mode = 1
@@ -138,28 +341,42 @@ stream = ExtResource("3_1b4bc")
 volume_db = -16.838
 autoplay = true
 
-[node name="Monitors" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_5g03c")
-position = Vector2(960, 540)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_bteuo")
+[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "wallCollision", "topFloorCollision") instance=ExtResource("14_e5y7b")]
+position = Vector2(952, 4552)
+topCallButton = NodePath("../ElevatorTopCall")
+bottomCallButton = NodePath("../ElevatorBottomCall")
+elevatorButton = NodePath("ElevatorButton")
+wallCollision = [NodePath("ElevatorWallL"), NodePath("ElevatorWallR")]
+topFloorCollision = NodePath("../WorldCollision/CollisionShape2")
+topY = 995.0
+bottomY = 4552.0
+travelTime = 5.0
 
-[node name="TranslationPaper" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_0jryd")
-position = Vector2(1357, 775)
-scale = Vector2(0.597107, 0.597107)
-texture = ExtResource("7_tqin0")
+[node name="ElevatorFloor" type="CollisionShape2D" parent="Elevator"]
+position = Vector2(47.5, 4.5)
+shape = SubResource("RectangleShape2D_rsbk3")
 
-[node name="Player" parent="." instance=ExtResource("2_h3n7b")]
-position = Vector2(315, 763)
-scale = Vector2(3.28705, 3.28705)
-movementSpeed = 500.0
+[node name="ElevatorWallL" type="CollisionShape2D" parent="Elevator"]
+position = Vector2(-155, -68)
+shape = SubResource("RectangleShape2D_3sbqo")
 
-[node name="PlayerHead" type="Marker2D" parent="Player"]
-position = Vector2(-0.8, -43.2)
+[node name="ElevatorWallR" type="CollisionShape2D" parent="Elevator"]
+position = Vector2(251, -70)
+shape = SubResource("RectangleShape2D_f8yak")
+
+[node name="ElevatorButton" parent="Elevator" instance=ExtResource("15_lw781")]
+position = Vector2(-136, -11)
+
+[node name="ButtonShape" type="CollisionShape2D" parent="Elevator/ElevatorButton"]
+shape = SubResource("CircleShape2D_b7gpl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Elevator"]
+position = Vector2(34, 4)
+scale = Vector2(2.0824, 0.0799988)
+texture = ExtResource("16_7v6od")
 
 [node name="WorldCollision" type="StaticBody2D" parent="."]
-position = Vector2(396, 358)
+position = Vector2(396, 403)
 collision_layer = 2
 
 [node name="CollisionShape2" type="CollisionShape2D" parent="WorldCollision"]
@@ -168,68 +385,26 @@ rotation = -0.000113001
 shape = SubResource("RectangleShape2D_82mfh")
 
 [node name="CollisionShape3" type="CollisionShape2D" parent="WorldCollision"]
-position = Vector2(-434, 408.75)
+position = Vector2(-434, 2276)
 shape = SubResource("RectangleShape2D_xvqo4")
 
 [node name="CollisionShape4" type="CollisionShape2D" parent="WorldCollision"]
-position = Vector2(1561, 607)
+position = Vector2(1569.5, 2278.63)
 shape = SubResource("RectangleShape2D_xvqo4")
 
-[node name="TranspondBox" type="Area2D" parent="."]
-position = Vector2(851, 932)
-collision_layer = 4
-script = ExtResource("4_r0utk")
-transitionType = 3
-transitionLength = 0.5
-scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
+[node name="CollisionShape5" type="CollisionShape2D" parent="WorldCollision"]
+position = Vector2(585, 4167.5)
+shape = SubResource("RectangleShape2D_8qv87")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
-position = Vector2(127, 13.5)
-shape = SubResource("RectangleShape2D_0oee4")
+[node name="Player" parent="." instance=ExtResource("2_h3n7b")]
+position = Vector2(490, 4396)
+scale = Vector2(2.5, 2.5)
 
-[node name="TranslationBox" type="Area2D" parent="."]
-position = Vector2(930, 560)
-collision_layer = 4
-script = ExtResource("4_r0utk")
-scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
-position = Vector2(412, 381)
-shape = SubResource("RectangleShape2D_cchka")
-
-[node name="DialogueBox" type="Area2D" parent="." node_paths=PackedStringArray("dialogueBox")]
-position = Vector2(-303, 555)
-collision_layer = 4
-script = ExtResource("4_r0utk")
-isAutofire = true
-dialogueBox = NodePath("../DialogueBubble")
-startID = "0"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox"]
-position = Vector2(412, 381)
-shape = SubResource("RectangleShape2D_cchka")
-
-[node name="LevelChange" type="Area2D" parent="."]
-position = Vector2(1837, 969)
-collision_layer = 4
-script = ExtResource("4_r0utk")
-transitionType = 1
-requiredStage = 5
-scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
-loadInCurrent = false
-spawnPoint = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
-shape = SubResource("RectangleShape2D_lvk1a")
-
-[node name="Foreground" type="Sprite2D" parent="."]
-visible = false
-z_index = 1
-position = Vector2(960, 540)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_fxgd2")
+[node name="PlayerHead" type="Marker2D" parent="Player"]
+position = Vector2(-0.8, -43.2)
 
 [node name="Controls" type="Label" parent="."]
+visible = false
 z_index = 5
 offset_left = 20.0
 offset_top = 1012.0
@@ -238,12 +413,8 @@ offset_bottom = 1087.0
 text = "WASD - Move    Space - Interact    Up+Down Arrow - Debug"
 label_settings = SubResource("LabelSettings_272fe")
 
-[node name="SpawnPoints" type="Node" parent="."]
-
-[node name="0" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(1813.45, 864)
-
 [node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]
+visible = false
 clip_contents = false
 offset_left = 389.0
 offset_top = 718.0
@@ -256,7 +427,80 @@ fit_content = true
 autowrap_mode = 0
 custom_effects = [SubResource("RichTextEffect_0u6wi"), SubResource("RichTextEffect_yh6wg"), SubResource("RichTextEffect_eewup")]
 script = ExtResource("17_h87pq")
-data = ExtResource("18_oqaxf")
+data = ExtResource("24_33tro")
 follow_node = NodePath("../Player/PlayerHead")
 show_speaker_name = false
 dialogue_custom_effects = [SubResource("RichTextEffect_0u6wi"), SubResource("RichTextEffect_yh6wg"), SubResource("RichTextEffect_eewup")]
+
+[node name="TranspondBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite")]
+position = Vector2(851, 977)
+collision_layer = 4
+script = ExtResource("4_r0utk")
+objectSprite = NodePath("../Sprites/Monitors")
+transitionType = 3
+scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
+position = Vector2(183, 11)
+shape = SubResource("RectangleShape2D_0oee4")
+
+[node name="TranslationBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite")]
+position = Vector2(1400, 4548)
+collision_layer = 4
+script = ExtResource("4_r0utk")
+objectSprite = NodePath("../Sprites/TranslationPaper")
+scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
+shape = SubResource("RectangleShape2D_cchka")
+
+[node name="BedBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite", "dialogueBox")]
+position = Vector2(238, 4549)
+collision_layer = 4
+script = ExtResource("4_r0utk")
+objectSprite = NodePath("../Sprites/Bed")
+dialogueBox = NodePath("../DialogueBubble")
+startID = "nme"
+timeLimit = 2.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BedBox"]
+shape = SubResource("RectangleShape2D_avn75")
+
+[node name="PhotoBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite", "dialogueBox")]
+position = Vector2(1645, 4545)
+collision_layer = 4
+script = ExtResource("4_r0utk")
+objectSprite = NodePath("../Sprites/Photoboard")
+dialogueBox = NodePath("../DialogueBubble")
+startID = "nme"
+timeLimit = 2.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoBox"]
+shape = SubResource("RectangleShape2D_avn75")
+
+[node name="LevelChange" type="Area2D" parent="."]
+position = Vector2(1964, 4550)
+collision_layer = 4
+script = ExtResource("4_r0utk")
+transitionType = 1
+requiredStage = 5
+scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
+loadInCurrent = false
+spawnPoint = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
+shape = SubResource("RectangleShape2D_lvk1a")
+
+[node name="ElevatorBottomCall" parent="." node_paths=PackedStringArray("objectSprite") instance=ExtResource("15_lw781")]
+position = Vector2(724, 4538)
+objectSprite = NodePath("../Sprites/BottomCallButton")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorBottomCall"]
+shape = SubResource("CircleShape2D_txxlk")
+
+[node name="ElevatorTopCall" parent="." node_paths=PackedStringArray("objectSprite") instance=ExtResource("15_lw781")]
+position = Vector2(478, 984)
+objectSprite = NodePath("../Sprites/TopCallButton")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorTopCall"]
+shape = SubResource("CircleShape2D_txxlk")

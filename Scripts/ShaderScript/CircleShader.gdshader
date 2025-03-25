@@ -8,7 +8,7 @@ float circle(vec2 uv,float radius,float blur){
 	float d = length(uv);
 	float c = 0.0;
 
-	//if(d < r) c = 1.0f;
+	
 	c = smoothstep(radius,radius - blur,d);
 
 	return c;

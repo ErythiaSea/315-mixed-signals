@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://din6bfgvj8ksj"
-path="res://.godot/imported/telescope.png-77f6cf702bffd801bf05413c414e48d5.ctex"
+uid="uid://bhieqrwdoj31n"
+path="res://.godot/imported/bedroom_bed.png-1dba07633a298754bcaa62f5f3b37126.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Environments/Objects/telescope.png"
-dest_files=["res://.godot/imported/telescope.png-77f6cf702bffd801bf05413c414e48d5.ctex"]
+source_file="res://Scenes/Environments/Cabin/Sprites/bedroom_bed.png"
+dest_files=["res://.godot/imported/bedroom_bed.png-1dba07633a298754bcaa62f5f3b37126.ctex"]
 
 [params]
 

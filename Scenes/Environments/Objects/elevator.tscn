@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://1iqwcokmbvwv"]
+
+[ext_resource type="Script" path="res://Scenes/Environments/Objects/Elevator.cs" id="1_whbi1"]
+
+[node name="Elevator" type="AnimatableBody2D" node_paths=PackedStringArray("wallCollision")]
+collision_layer = 2
+script = ExtResource("1_whbi1")
+wallCollision = []

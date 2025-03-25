@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccoch44m85xuv"]
+
+[ext_resource type="Shader" path="res://Scripts/ShaderScript/CircleShader.gdshader" id="1_pitbk"]
+[ext_resource type="Script" path="res://Scenes/Environments/Objects/EndTransitionScript.cs" id="2_ds16g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c7ga7"]
+shader = ExtResource("1_pitbk")
+shader_parameter/circle_r = null
+shader_parameter/circle_b = null
+
+[node name="CircleShrink" type="ColorRect"]
+z_index = 5
+material = SubResource("ShaderMaterial_c7ga7")
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(960, 540)
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_ds16g")

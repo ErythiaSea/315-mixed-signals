@@ -182,7 +182,6 @@ position = Vector2(35, -93)
 shape = SubResource("RectangleShape2D_hd4rx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="DialogueBox" type="Panel" parent="CanvasLayer"]
 visible = false
