@@ -153,6 +153,7 @@ texture = ExtResource("7_tqin0")
 [node name="Player" parent="." instance=ExtResource("2_h3n7b")]
 position = Vector2(315, 763)
 scale = Vector2(3.28705, 3.28705)
+movementSpeed = 500.0
 
 [node name="PlayerHead" type="Marker2D" parent="Player"]
 position = Vector2(-0.8, -43.2)

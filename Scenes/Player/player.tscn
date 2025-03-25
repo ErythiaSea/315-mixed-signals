@@ -1,43 +1,48 @@
-[gd_scene load_steps=18 format=3 uid="uid://bo5umns4232lg"]
+[gd_scene load_steps=20 format=3 uid="uid://bo5umns4232lg"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.cs" id="1_fgmdt"]
 [ext_resource type="Texture2D" uid="uid://cakxugfax4fub" path="res://Scenes/Player/interact.png" id="2_7y7g8"]
-[ext_resource type="Texture2D" uid="uid://es5m8fptxhty" path="res://Scenes/Player/spritesheet.png" id="2_jnhts"]
+[ext_resource type="Texture2D" uid="uid://c7fdbvocpggwg" path="res://Scenes/Player/Character_Idle2.png" id="2_qjqje"]
+[ext_resource type="Texture2D" uid="uid://cej3x51oxl1h4" path="res://Scenes/Player/Spritesheet2.png" id="3_d2tta"]
 [ext_resource type="PackedScene" uid="uid://ohsgb57kk60i" path="res://Scenes/Environments/Objects/WipeTransition.tscn" id="4_iyys1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a3vi5"]
-atlas = ExtResource("2_jnhts")
-region = Rect2(0, 0, 540, 640)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwlxv"]
+atlas = ExtResource("3_d2tta")
+region = Rect2(0, 0, 2000, 2000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1nd2l"]
-atlas = ExtResource("2_jnhts")
-region = Rect2(540, 0, 540, 640)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs1r8"]
+atlas = ExtResource("3_d2tta")
+region = Rect2(2000, 0, 2000, 2000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b45r2"]
-atlas = ExtResource("2_jnhts")
-region = Rect2(1080, 0, 540, 640)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxgc4"]
+atlas = ExtResource("3_d2tta")
+region = Rect2(4000, 0, 2000, 2000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ed1ma"]
-atlas = ExtResource("2_jnhts")
-region = Rect2(1620, 0, 540, 640)
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6d7h"]
+atlas = ExtResource("3_d2tta")
+region = Rect2(0, 2000, 2000, 2000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j0pr4"]
-atlas = ExtResource("2_jnhts")
-region = Rect2(2160, 0, 540, 640)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpx35"]
+atlas = ExtResource("3_d2tta")
+region = Rect2(2000, 2000, 2000, 2000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a4mq8"]
-atlas = ExtResource("2_jnhts")
-region = Rect2(2700, 0, 540, 640)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj62c"]
+atlas = ExtResource("3_d2tta")
+region = Rect2(4000, 2000, 2000, 2000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sxgfi"]
-atlas = ExtResource("2_jnhts")
-region = Rect2(3240, 0, 540, 640)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndqbn"]
+atlas = ExtResource("3_d2tta")
+region = Rect2(0, 4000, 2000, 2000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bktqa"]
+atlas = ExtResource("3_d2tta")
+region = Rect2(2000, 4000, 2000, 2000)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kxusu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a3vi5")
+"texture": ExtResource("2_qjqje")
 }],
 "loop": true,
 "name": &"idle",
@@ -45,22 +50,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1nd2l")
+"texture": SubResource("AtlasTexture_jwlxv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b45r2")
+"texture": SubResource("AtlasTexture_qs1r8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ed1ma")
+"texture": SubResource("AtlasTexture_vxgc4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j0pr4")
+"texture": SubResource("AtlasTexture_y6d7h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a4mq8")
+"texture": SubResource("AtlasTexture_cpx35")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sxgfi")
+"texture": SubResource("AtlasTexture_mj62c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndqbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bktqa")
 }],
 "loop": true,
 "name": &"run",
@@ -117,8 +128,8 @@ collision_mask = 2
 script = ExtResource("1_fgmdt")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 3)
-scale = Vector2(-0.181616, 0.181616)
+position = Vector2(0, 8)
+scale = Vector2(0.075, 0.075)
 sprite_frames = SubResource("SpriteFrames_kxusu")
 animation = &"idle"
 
