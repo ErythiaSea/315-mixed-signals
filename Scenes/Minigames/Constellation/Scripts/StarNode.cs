@@ -96,16 +96,16 @@ public partial class StarNode : Node2D
                 {
                     lineProgress[i] += (float)delta * lineSpeed;
 
-                    Mathf.Clamp(lineProgress[i], 0f, 1f);
+                    lineProgress[i] = Mathf.Clamp(lineProgress[i], 0f, 1f);
 
                     Vector2 linePos = lineList[i].Points[0].Lerp(lineTargets[i], lineProgress[i]);
 
                     lineList[i].SetPointPosition(1, linePos);
                     particleList[i].GlobalPosition = linePos;
+                    GD.Print("Particles emitting from line ", i);
                 }
                 else
                 {
-                    GD.Print("Stop emitting");
                     particleList[i].Emitting = false;
                 }
             }

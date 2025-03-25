@@ -9,6 +9,7 @@ starts = {
 "1": &"0_2",
 "2": &"0_5",
 "3": &"0_4",
+"4": &"0_6",
 "err": &"0_3"
 }
 nodes = {
@@ -36,6 +37,11 @@ nodes = {
 "link": &"1_11",
 "offset": Vector2(-460, 100),
 "start_id": "2"
+},
+"0_6": {
+"link": &"1_12",
+"offset": Vector2(-460, 700),
+"start_id": "4"
 },
 "1_1": {
 "dialogue": "(You hear an aetherial voice unlike anything you've ever heard before...)",
@@ -66,6 +72,19 @@ nodes = {
 "1_11": {
 "dialogue": "tutorialdialogue.tres with id 1 - end of waveform dialogue here!",
 "offset": Vector2(-180, 100),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "erf"
+},
+"1_12": {
+"dialogue": "tutorialdialogue.tres with id 4 - constellation end dialogue here!",
+"offset": Vector2(-200, 700),
 "options": {
 0: {
 "condition": {},

@@ -13,6 +13,7 @@ public partial class ConstellationMinigame : BaseMinigame
     Panel dialogueBox;
     TutorialButton tutorialButton;
     CameraMovement camera;
+    StarsParent starsParent;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -26,6 +27,10 @@ public partial class ConstellationMinigame : BaseMinigame
 
         // please rename this at some point
         camera = GetNode<CameraMovement>("eeek");
+
+        starsParent = GetNode<StarsParent>("Constellation");
+        starsParent.ConstellationCompletion += camera.DisplayConstellation;
+
         dialogueBox = GetNode<Panel>("UICanvas/DialogueBox");
         if (Globals.Instance.tutorialProgress <= GAMESTAGE.CONSTELLATION)
         {
@@ -41,15 +46,17 @@ public partial class ConstellationMinigame : BaseMinigame
 	{
         base._Process(delta);
 
-        if (globalScript.gameState.stage > GAMESTAGE.CONSTELLATION)
-        {
-            //Have some indication of winning!
-            exitTimer += delta;
-            if (exitTimer > 2.5) Close();
-        }
         if (dialogueBox.Visible) {
             camera.canMoveCam = false;
         }
+    }
+
+    // remove circular relationship between cam and parent and we can maybe axe this - eryth
+    public void ShowFinalBox()
+    {
+        globalScript.gameState.stage = GAMESTAGE.TRANSLATION;
+        dialogueBox.Call("start", constellationEndStartID);
+        dialogueBox.Connect("dialogue_ended", Callable.From(Close));
     }
 
     void RegainCameraControl()

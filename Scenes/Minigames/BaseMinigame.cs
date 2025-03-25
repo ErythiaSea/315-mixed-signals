@@ -37,7 +37,6 @@ public partial class BaseMinigame : CanvasLayer
 		{
 			transitionTimer += (float)delta;
 			if (transitionTimer > transitionLength) {
-				OnTransitionFinish();
 				QuitMinigame();
 			}
 			return;
@@ -64,7 +63,6 @@ public partial class BaseMinigame : CanvasLayer
 		}
 		else
 		{
-			OnTransitionFinish();
 			QuitMinigame();
 		}
 	}
@@ -75,9 +73,5 @@ public partial class BaseMinigame : CanvasLayer
 		player.SetMovementLock(false);
 		player.SetCameraEnabled(true);
 		QueueFree();
-	}
-
-	protected virtual void OnTransitionFinish()
-	{
 	}
 }

@@ -11,11 +11,16 @@ public partial class CameraMovement : Camera2D
     private Vector2 center;
 
     Globals globalScript;
+    
+    // This is the easy way out but this really needs a whole redesign - Eryth
+    ConstellationMinigame minigame;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
         globalScript = Globals.Instance;
-        telescope = GetNode("Telescope") as ColorRect;
+        telescope = GetNode("Telescope") as ColorRect; //GetNode<ColorRect>("Telescope") ???
+        minigame = GetParent<ConstellationMinigame>();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,7 +52,7 @@ public partial class CameraMovement : Camera2D
         }
     }
 
-    private void DisplayConstellation(Vector2 centerStar)
+    public void DisplayConstellation(Vector2 centerStar)
     {
         canMoveCam = false;
         Tween completion = GetTree().CreateTween();
@@ -55,11 +60,7 @@ public partial class CameraMovement : Camera2D
         completion.Parallel().TweenProperty(this, "zoom", new Vector2(0.4f, 0.4f), 2f);
         completion.Parallel().TweenProperty(this, "position", centerStar, 1f);
         completion.Parallel().TweenProperty(telescope, "scale", new Vector2(2.5f,2.5f), 2f);
-        completion.TweenCallback(Callable.From(this.UpdateGlobals));
-    }
-
-    private void UpdateGlobals()
-    {
-        globalScript.gameState.stage = GAMESTAGE.END;
+        completion.TweenInterval(1.5);
+        completion.TweenCallback(Callable.From(minigame.ShowFinalBox));
     }
 }
