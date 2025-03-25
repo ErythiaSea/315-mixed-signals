@@ -20,6 +20,11 @@ public partial class Elevator : AnimatableBody2D
 	[Export]
 	CollisionShape2D[] wallCollision;
 
+	// The collision shape that makes up the top floor of the building. Will be disabled when the elevator is toggled
+	// with the elevatorButton (but NOT the call buttons!)
+	[Export]
+	CollisionShape2D topFloorCollision;
+
 	// The Y values of the top and bottom floors.
 	[Export]
 	float topY;
@@ -58,6 +63,7 @@ public partial class Elevator : AnimatableBody2D
 
 	private void ToggleElevator()
 	{
+		topFloorCollision.Disabled = true;
 		if (goingUp) { TravelToBottom(); }
 		else { TravelToTop(); }
 	}
@@ -101,6 +107,7 @@ public partial class Elevator : AnimatableBody2D
 	{
 		inMotion = false;
 		elevatorButton.active = true;
+		topFloorCollision.Disabled = false;
 		SetWallsDisabled(true);
 	}
 

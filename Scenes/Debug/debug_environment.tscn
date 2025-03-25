@@ -132,6 +132,7 @@ texture = ExtResource("3_iqk5a")
 
 [node name="Player" parent="." instance=ExtResource("2_c1fah")]
 position = Vector2(950, 39)
+walkingParticles = null
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = -1920

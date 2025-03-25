@@ -78,6 +78,12 @@ public partial class Player : CharacterBody2D
                     if (lastStep != playerSprite.Frame)
                     {
 						lastStep = playerSprite.Frame;
+
+						// skip trying to emit particles if there are none assigned
+						if (walkingParticles == null)
+						{
+							return;
+						}
                         GD.Print("EMITTING PARTICLES");
                         GpuParticles2D particles = walkingParticles.Instantiate() as GpuParticles2D;
                         particles.Emitting = true;

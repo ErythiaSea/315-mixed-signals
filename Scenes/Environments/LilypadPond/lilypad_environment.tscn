@@ -232,6 +232,7 @@ shape = SubResource("SegmentShape2D_7qebe")
 position = Vector2(-2749, 554)
 scale = Vector2(2.5, 2.5)
 movementSpeed = 700.0
+walkingParticles = null
 
 [node name="StairControls" type="Node2D" parent="."]
 position = Vector2(2243, 394)
