@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=58 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_hvnuo"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="16_oxyx2"]
 [ext_resource type="Texture2D" uid="uid://dljep1sop1gkj" path="res://Scenes/Environments/Cabin/Sprites/bedroom_photoboard.png" id="16_stl3d"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="17_h87pq"]
+[ext_resource type="Texture2D" uid="uid://dxh7t7hay26m4" path="res://Scenes/Environments/Cabin/Sprites/bedroom_silohette.png" id="17_l3xrp"]
 [ext_resource type="Resource" uid="uid://wn1h5b8ptlga" path="res://Scenes/Debug/debugdialogue.tres" id="24_33tro"]
 
 [sub_resource type="Resource" id="Resource_66r8t"]
@@ -274,6 +275,7 @@ texture = ExtResource("4_wjyar")
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_6d5l0")
+region_enabled = true
 
 [node name="Standings" type="Sprite2D" parent="Sprites"]
 position = Vector2(960, 540)
@@ -298,7 +300,7 @@ scale = Vector2(0.393, 0.393)
 texture = ExtResource("11_o0hdm")
 
 [node name="BedRoom" type="Sprite2D" parent="Sprites"]
-position = Vector2(963, 4127)
+position = Vector2(959, 4127)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("11_vj0vr")
 
@@ -314,26 +316,31 @@ texture = ExtResource("13_bairj")
 
 [node name="Bed" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_4dv0e")
-position = Vector2(232, 4313)
+position = Vector2(214, 4313)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_gtqtg")
 
 [node name="Desk" type="Sprite2D" parent="Sprites"]
-position = Vector2(1398, 4462)
+position = Vector2(1348, 4436.75)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_88y3f")
 
 [node name="TranslationPaper" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_0jryd")
-position = Vector2(1388, 4372)
-scale = Vector2(0.597107, 0.597107)
+position = Vector2(1327, 4351.5)
+scale = Vector2(0.524998, 0.524998)
 texture = ExtResource("15_gbafl")
 
 [node name="Photoboard" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_ogn68")
-position = Vector2(1662, 4175)
-scale = Vector2(0.5, 0.5)
+position = Vector2(1641, 4124)
+scale = Vector2(0.439479, 0.552707)
 texture = ExtResource("16_stl3d")
+
+[node name="Bedroom Foreground" type="Sprite2D" parent="Sprites"]
+position = Vector2(961.889, 4126.5)
+scale = Vector2(0.501389, 0.501389)
+texture = ExtResource("17_l3xrp")
 
 [node name="HubBGM" type="AudioStreamPlayer" parent="."]
 process_mode = 1
@@ -397,8 +404,8 @@ position = Vector2(585, 4167.5)
 shape = SubResource("RectangleShape2D_8qv87")
 
 [node name="Player" parent="." instance=ExtResource("2_h3n7b")]
-position = Vector2(490, 4396)
-scale = Vector2(2.5, 2.5)
+position = Vector2(490, 4327)
+scale = Vector2(3.5, 3.5)
 
 [node name="PlayerHead" type="Marker2D" parent="Player"]
 position = Vector2(-0.8, -43.2)
@@ -452,6 +459,7 @@ objectSprite = NodePath("../Sprites/TranslationPaper")
 scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
+position = Vector2(-50, -25.25)
 shape = SubResource("RectangleShape2D_cchka")
 
 [node name="BedBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite", "dialogueBox")]
@@ -476,6 +484,7 @@ startID = "nme"
 timeLimit = 2.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoBox"]
+position = Vector2(-4.75, 0)
 shape = SubResource("RectangleShape2D_avn75")
 
 [node name="LevelChange" type="Area2D" parent="."]
