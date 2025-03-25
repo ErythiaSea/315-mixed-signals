@@ -34,7 +34,6 @@ script = ExtResource("9_gtpwd")
 script = ExtResource("10_sy41u")
 
 [node name="TranspondWhole" type="CanvasLayer"]
-follow_viewport_enabled = true
 script = ExtResource("1_ouvn6")
 exitTransition = 4
 transitionLength = 0.5
