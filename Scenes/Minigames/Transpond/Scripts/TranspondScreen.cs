@@ -1,13 +1,19 @@
 using Godot;
 using System;
 
-public partial class TranspondScreen : BaseMinigame  
+public partial class TranspondScreen : BaseMinigame
 {
+    // The strings used for starting the dialogue for tutorials for each minigame.
+    [Export] String transpondTutorialStartID = "0";
+    [Export] String waveformTutorialStartID = "1";
+    [Export] String finalTutorialStartID = "2";
+
     Radiotower radiotower;
     WaveformGame waveform;
     Sprite2D leftBox, rightBox;
     Label radioLabel, waveLabel;
     Panel dialogueBox;
+    TutorialButton tutorialButton;
 
     bool radiotowerComplete = false; bool waveformComplete = false;
     double exitTimer = 0;
@@ -28,6 +34,7 @@ public partial class TranspondScreen : BaseMinigame
         rightBox = GetNode<Sprite2D>("RightBox");
         radioLabel = GetNode<Label>("ControlsRadiotower");
         waveLabel = GetNode<Label>("ControlsWaveform");
+        tutorialButton = GetNode<TutorialButton>("TutorialButton");
 
         // temp hopefully
         dialogueBox = GetNode<Panel>("DialogueBox");
@@ -43,10 +50,11 @@ public partial class TranspondScreen : BaseMinigame
         {
             waveLabel.Visible = true; radioLabel.Visible = false;
             fade = true;
-            if (!dialogueCalled)
+            if (Globals.Instance.tutorialProgress <= GAMESTAGE.WAVEFORM)
             {
-                //dialogueBox.Call("start", "1");
-                dialogueCalled = true;
+                dialogueBox.Call("start", waveformTutorialStartID);
+                Globals.Instance.tutorialProgress = GAMESTAGE.CONSTELLATION;
+                tutorialButton.startID = waveformTutorialStartID;
             }
         }
 
@@ -66,7 +74,6 @@ public partial class TranspondScreen : BaseMinigame
             return;
         }
 
-        GD.Print("box vis:", dialogueBox.Visible);
         radiotower.gameActive = !dialogueBox.Visible;
         waveform.gameActive = !dialogueBox.Visible;
     }  
@@ -77,14 +84,19 @@ public partial class TranspondScreen : BaseMinigame
         {
             case GAMESTAGE.TRANSPONDING:
                 GD.Print("trans");
-                //dialogueBox.Call("start", "0");
+                if (Globals.Instance.tutorialProgress <= GAMESTAGE.TRANSPONDING)
+                {
+                    dialogueBox.Call("start", transpondTutorialStartID);
+                    Globals.Instance.tutorialProgress = GAMESTAGE.WAVEFORM;
+                    tutorialButton.startID = transpondTutorialStartID;
+                }
                 break;
             case GAMESTAGE.WAVEFORM:
                 GD.Print("wave");
                 radiotower.CompletedPivots();
                 waveLabel.Visible = true; radioLabel.Visible = false;
                 fade = true;
-                //dialogueBox.Call("start", "1");
+                tutorialButton.startID = waveformTutorialStartID;
                 break;
             default:
                 GD.Print("Default");

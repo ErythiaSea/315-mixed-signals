@@ -4,7 +4,7 @@ using System;
 public partial class TutorialButton : TextureButton
 {
 	[Export]
-	String startID = "0";
+	public String startID = "0";
 	[Export]
 	Panel dialogueBox;
 

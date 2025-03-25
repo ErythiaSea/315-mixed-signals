@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bc8lby5o1pvpv"]
+[gd_scene load_steps=23 format=3 uid="uid://bc8lby5o1pvpv"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/CameraMovement.cs" id="1_7uyas"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/ConstellationMinigame.cs" id="1_sd3pu"]
@@ -6,8 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://3pijp23csaa8" path="res://Scenes/Minigames/Constellation/Sprites/SkyLayer.png" id="3_vuskw"]
 [ext_resource type="Texture2D" uid="uid://dluxx0un1srrc" path="res://Scenes/Minigames/Constellation/Sprites/StarsLayer.png" id="4_irqg6"]
 [ext_resource type="Script" path="res://Scripts/ShaderScript/TextureShader.cs" id="4_ro1i3"]
+[ext_resource type="Texture2D" uid="uid://bjxmc62rj2pnx" path="res://Sprites/crosshair_temp.png" id="7_0ijxk"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/StarsParent.cs" id="8_pqt5s"]
 [ext_resource type="PackedScene" uid="uid://bx27m71lxn4qi" path="res://Scenes/Minigames/Constellation/Objects/StarNode.tscn" id="8_s5r6a"]
+[ext_resource type="Texture2D" uid="uid://cad0l75yjf3a4" path="res://Sprites/tutorialbutton_temp.png" id="10_6il21"]
+[ext_resource type="Script" path="res://Scenes/Minigames/TutorialButton.cs" id="10_ikdok"]
+[ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="11_gm0gd"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="11_nevyl"]
+[ext_resource type="Resource" uid="uid://dek8vr2m0s1sa" path="res://Scenes/Minigames/tutorialdialogue.tres" id="12_2mmrr"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="13_pj04m"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="14_k7onu"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="15_bf7ia"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_13kgm"]
 shader = ExtResource("3_djkxa")
@@ -16,6 +25,15 @@ shader_parameter/circle_b = null
 
 [sub_resource type="LabelSettings" id="LabelSettings_03dfn"]
 font_size = 32
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_o4ycm"]
+script = ExtResource("13_pj04m")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_m1n3u"]
+script = ExtResource("14_k7onu")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_s3dl4"]
+script = ExtResource("15_bf7ia")
 
 [node name="ConstellationDraw" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -78,6 +96,8 @@ text = "WASD - Pan Camera  ESC - Close"
 label_settings = SubResource("LabelSettings_03dfn")
 
 [node name="Crosshair" type="Sprite2D" parent="eeek"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_0ijxk")
 
 [node name="Constellation" type="Node2D" parent="."]
 z_index = -1
@@ -85,24 +105,51 @@ script = ExtResource("8_pqt5s")
 
 [node name="StarNode" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(12, 252)
-particleAffect = null
-indicatorGradient = null
 adjacentStars = [NodePath("../StarNode2")]
 
 [node name="StarNode2" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(1048, 256)
-particleAffect = null
-indicatorGradient = null
 adjacentStars = [NodePath("../StarNode"), NodePath("../StarNode3"), NodePath("../StarNode4")]
 
 [node name="StarNode3" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(1460, -292)
-particleAffect = null
-indicatorGradient = null
 adjacentStars = [NodePath("../StarNode2")]
 
 [node name="StarNode4" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(1772, 500)
-particleAffect = null
-indicatorGradient = null
 adjacentStars = [NodePath("../StarNode2")]
+
+[node name="UICanvas" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="TutorialButton" type="TextureButton" parent="UICanvas" node_paths=PackedStringArray("dialogueBox")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1769.0
+offset_top = 23.0
+offset_right = -23.0
+offset_bottom = -929.0
+texture_normal = ExtResource("10_6il21")
+stretch_mode = 5
+script = ExtResource("10_ikdok")
+startID = "3"
+dialogueBox = NodePath("../DialogueBox")
+
+[node name="DialogueBox" type="Panel" parent="UICanvas"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -585.0
+offset_top = -313.0
+offset_right = 596.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("11_gm0gd")
+script = ExtResource("11_nevyl")
+data = ExtResource("12_2mmrr")
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_o4ycm"), SubResource("RichTextEffect_m1n3u"), SubResource("RichTextEffect_s3dl4")])

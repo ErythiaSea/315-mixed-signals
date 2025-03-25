@@ -6,7 +6,7 @@ public partial class CameraMovement : Camera2D
     [Export]
     public float cameraSpeed = 0.6f;
 
-    private bool canMoveCam = true;
+    public bool canMoveCam = true;
     private ColorRect telescope;
     private Vector2 center;
 
@@ -25,7 +25,8 @@ public partial class CameraMovement : Camera2D
 
         center = GetScreenCenterPosition();
     }
-
+    
+    // todo: make relative to deltatime
 	public void CameraInputEvents(double delta)
 	{
         if (Input.IsActionPressed("down"))
@@ -49,12 +50,12 @@ public partial class CameraMovement : Camera2D
     private void DisplayConstellation(Vector2 centerStar)
     {
         canMoveCam = false;
-        Tween completetion = GetTree().CreateTween();
+        Tween completion = GetTree().CreateTween();
        
-        completetion.Parallel().TweenProperty(this, "zoom", new Vector2(0.4f, 0.4f), 2f);
-        completetion.Parallel().TweenProperty(this, "position", centerStar, 1f);
-        completetion.Parallel().TweenProperty(telescope, "scale", new Vector2(2.5f,2.5f), 2f);
-        completetion.TweenCallback(Callable.From(this.UpdateGlobals));
+        completion.Parallel().TweenProperty(this, "zoom", new Vector2(0.4f, 0.4f), 2f);
+        completion.Parallel().TweenProperty(this, "position", centerStar, 1f);
+        completion.Parallel().TweenProperty(telescope, "scale", new Vector2(2.5f,2.5f), 2f);
+        completion.TweenCallback(Callable.From(this.UpdateGlobals));
     }
 
     private void UpdateGlobals()

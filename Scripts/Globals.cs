@@ -49,7 +49,10 @@ public partial class Globals : Node
 	public int currentSpawnID = -1;
 	public PackedScene nextMap;
 
-	// the opps dont want me declaring a vec3 as const...
+	// To track which tutorials have automatically been displayed to the player
+	public GAMESTAGE tutorialProgress = GAMESTAGE.TRANSPONDING;
+
+	// The colour used for the outline of interactable objects when a custom one is not set
 	public static Vector3 STANDARD_OUTLINE_COLOR { get; } = new Vector3(1.0f, 0.95f, 0.45f);
 
 	public WipeTransition globalTransition;
