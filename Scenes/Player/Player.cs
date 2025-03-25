@@ -36,7 +36,7 @@ public partial class Player : CharacterBody2D
     {
 		FloorConstantSpeed = true;
 		FloorSnapLength = 20.0f;
-		FloorMaxAngle = Mathf.DegToRad(60);
+		FloorMaxAngle = Mathf.DegToRad(66);
 
         playerSprite = GetNode<AnimatedSprite2D>("PlayerSprite");
 		interactSprite = GetNode<Sprite2D>("InteractSprite");

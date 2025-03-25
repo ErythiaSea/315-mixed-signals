@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Scenes/Minigames/Map/Scripts/MapScreen.cs" id="1_2j3x4"]
 [ext_resource type="Texture2D" uid="uid://b0udysporgxbf" path="res://Scenes/Minigames/Map/Sprites/Map_Background_01.png" id="2_5k782"]
 [ext_resource type="PackedScene" uid="uid://dehciflno8kex" path="res://Scenes/Minigames/Map/map_button.tscn" id="2_8d1fn"]
+[ext_resource type="Texture2D" uid="uid://b61u7xjxdv85f" path="res://Scenes/Minigames/Map/Sprites/Map_PondIcon_00.png" id="3_7rbmu"]
 [ext_resource type="PackedScene" uid="uid://dkjjkuqsupb4f" path="res://Scenes/Environments/LilypadPond/lilypad_environment.tscn" id="4_0s13x"]
-[ext_resource type="Texture2D" uid="uid://b175s83xdgmio" path="res://Scenes/Minigames/Map/Sprites/Map_SaltIcon_00V2.png" id="4_q61i6"]
-[ext_resource type="Texture2D" uid="uid://m6rq2g3garrg" path="res://Scenes/Minigames/Map/Sprites/Map_PondIcon_00V2.png" id="5_yhx6e"]
-[ext_resource type="Texture2D" uid="uid://1k0poxeqyjfq" path="res://Scenes/Minigames/Map/Sprites/Map_FossilIcon_00V2.png" id="7_qdqx2"]
+[ext_resource type="Texture2D" uid="uid://b3bl82ittquc7" path="res://Scenes/Minigames/Map/Sprites/Map_SaltIcon_00.png" id="5_cum4x"]
+[ext_resource type="PackedScene" uid="uid://cefs7sceaq1yy" path="res://Scenes/Environments/SaltPillar/salt_environment.tscn" id="5_fwcyt"]
 
 [node name="mapscreen" type="CanvasLayer"]
 script = ExtResource("1_2j3x4")
@@ -39,9 +39,9 @@ offset_right = 406.0
 offset_bottom = 275.0
 focus_neighbor_right = NodePath("../PondButton")
 focus_neighbor_bottom = NodePath("../FossilButton")
-disabled = true
-texture_normal = ExtResource("4_q61i6")
-enabled = false
+texture_normal = ExtResource("5_cum4x")
+mapToLoad = ExtResource("5_fwcyt")
+spawnPoint = 0
 
 [node name="PondButton" parent="Buttons" instance=ExtResource("2_8d1fn")]
 layout_mode = 0
@@ -51,7 +51,7 @@ offset_right = 1135.0
 offset_bottom = 392.0
 focus_neighbor_left = NodePath("../SaltButton")
 focus_neighbor_bottom = NodePath("../FossilButton")
-texture_normal = ExtResource("5_yhx6e")
+texture_normal = ExtResource("3_7rbmu")
 mapToLoad = ExtResource("4_0s13x")
 spawnPoint = 0
 
@@ -65,5 +65,3 @@ focus_neighbor_left = NodePath("../SaltButton")
 focus_neighbor_top = NodePath("../SaltButton")
 focus_neighbor_right = NodePath("../PondButton")
 disabled = true
-texture_normal = ExtResource("7_qdqx2")
-enabled = false

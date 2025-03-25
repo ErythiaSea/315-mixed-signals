@@ -98,12 +98,11 @@ shape = SubResource("SegmentShape2D_uumkn")
 position = Vector2(-766, 133)
 shape = SubResource("SegmentShape2D_7qebe")
 
-[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "wallCollision") instance=ExtResource("2_7dhej")]
+[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton") instance=ExtResource("2_7dhej")]
 position = Vector2(1431, 554)
 topCallButton = NodePath("../ElevatorTopCall")
 bottomCallButton = NodePath("../ElevatorBottomCall")
 elevatorButton = NodePath("ElevatorButton")
-wallCollision = [NodePath("ElevatorWallL"), NodePath("ElevatorWallR")]
 topY = 110.0
 bottomY = 554.0
 
@@ -132,7 +131,6 @@ texture = ExtResource("3_iqk5a")
 
 [node name="Player" parent="." instance=ExtResource("2_c1fah")]
 position = Vector2(950, 39)
-walkingParticles = null
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = -1920
