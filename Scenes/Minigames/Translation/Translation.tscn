@@ -71,11 +71,12 @@ text = "[center]Hot"
 fit_content = true
 scroll_active = false
 
-[node name="AnswerBox" type="LineEdit" parent="TextVBox/VBoxContainer"]
+[node name="AnswerBox" type="TextEdit" parent="TextVBox/VBoxContainer"]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tm1gv")
 theme_override_font_sizes/font_size = 100
+text = "awdfasdf"
 
 [node name="HintVBox" type="VBoxContainer" parent="."]
 offset_left = 117.0
@@ -95,7 +96,9 @@ theme_override_fonts/normal_font = ExtResource("2_w7m10")
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "[center]
-wd"
+e
+e
+e"
 
 [node name="EnglishChar" type="RichTextLabel" parent="HintVBox/HBoxContainer"]
 custom_minimum_size = Vector2(150, 600)
@@ -104,7 +107,9 @@ theme_override_fonts/normal_font = ExtResource("3_tm1gv")
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "[center]
-
+e
+e
+e
 
 "
 

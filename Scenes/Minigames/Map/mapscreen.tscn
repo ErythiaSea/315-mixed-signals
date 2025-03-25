@@ -10,6 +10,8 @@
 
 [node name="mapscreen" type="CanvasLayer"]
 script = ExtResource("1_2j3x4")
+exitTransition = 3
+transitionLength = 0.5
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)

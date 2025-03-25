@@ -11,7 +11,7 @@ public partial class TranslationCanvasUI : BaseMinigame
 	[Export]
 	RichTextLabel messageBox;
 	[Export]
-	LineEdit answerBox;
+	TextEdit answerBox;
 	[Export]
 	RichTextLabel celHint;
 	[Export]

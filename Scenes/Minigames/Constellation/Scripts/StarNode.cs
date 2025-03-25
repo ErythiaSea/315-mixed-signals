@@ -59,7 +59,6 @@ public partial class StarNode : Node2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        //once in correct view then creates indicators or makes connections
         if (!isFound)
         {
             if (GlobalPosition.DistanceTo(GetViewport().GetCamera2D().GetScreenCenterPosition()) < centerFocusRange)
