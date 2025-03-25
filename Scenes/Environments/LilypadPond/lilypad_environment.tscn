@@ -87,7 +87,7 @@ script = ExtResource("13_wcr1k")
 [sub_resource type="RichTextEffect" id="RichTextEffect_7oga7"]
 script = ExtResource("14_xkiew")
 
-[node name="DemoEnv" type="Node2D"]
+[node name="LilyEnv" type="Node2D"]
 script = ExtResource("1_tgjlw")
 spawnData = Array[Object]([SubResource("Resource_xpr3o"), SubResource("Resource_agtn6")])
 leftLimit = -2974
@@ -232,7 +232,6 @@ shape = SubResource("SegmentShape2D_7qebe")
 position = Vector2(-2749, 554)
 scale = Vector2(2.5, 2.5)
 movementSpeed = 700.0
-walkingParticles = null
 
 [node name="StairControls" type="Node2D" parent="."]
 position = Vector2(2243, 394)

@@ -9,9 +9,6 @@ public partial class MapButton : TextureButton
 	[Export]
 	int spawnPoint = -1;
 
-	[Export]
-	bool enabled = true;
-
 	AnimationPlayer animPlayer;
 	MapScreen mapScreen;
 
@@ -23,8 +20,8 @@ public partial class MapButton : TextureButton
 		PivotOffset = new Vector2(Size.X / 2, Size.Y / 2);
 		Scale = new Vector2(0.2f, 0.2f);
 
-		if (mapToLoad == null) enabled = false;
-		if (!enabled)
+		if (mapToLoad == null) Disabled = true;
+		if (Disabled)
 		{
 			animPlayer.Stop();
 			SelfModulate = new Color(0.3f,0.3f,0.3f);
@@ -40,7 +37,7 @@ public partial class MapButton : TextureButton
 		if (HasFocus()) SelfModulate = Colors.Green;
 		else SelfModulate = Colors.White;
 
-		SelfModulate *= (enabled ? Colors.White : new Color(0.3f, 0.3f, 0.3f));
+		SelfModulate *= (!Disabled ? Colors.White : new Color(0.3f, 0.3f, 0.3f));
         //float t = (float)Time.GetTicksMsec() / 1000.0f;
         //Position.Y = baseY + Mathf.Sin(t) * 20.0f;
     }
