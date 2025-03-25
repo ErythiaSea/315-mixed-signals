@@ -16,8 +16,15 @@ public partial class Level : Node2D
 	[Export]
 	bool cameraEnabled = true;
 
+    [Export]
+    float cameraZoom = 1.0f;
+
+    [ExportGroup("Camera Offsets")]
 	[Export]
-	float cameraZoom = 1.0f;
+	float OffsetX = 0f;
+	[Export] 
+	float OffsetY = 0f;
+
 
     // The region the camera can move around in.
     // If this is left untouched the camera is disabled
@@ -58,6 +65,7 @@ public partial class Level : Node2D
 		if (cameraEnabled)
 		{
 			player.SetCameraLimits(leftLimit, topLimit, rightLimit, bottomLimit);
+			player.setCameraOffsets(OffsetX, OffsetY);
 			player.SetCameraZoom(cameraZoom);
 		}
 		else

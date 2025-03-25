@@ -13,8 +13,6 @@ public enum TRANSITION
 }
 public partial class InteractBox : Area2D
 {
-    [Export]
-    PackedScene endDayTransition;
     // whether the interact box can be used
     [Export]
     public bool active = true;
@@ -166,6 +164,14 @@ public partial class InteractBox : Area2D
         if (!active) return;
         EmitSignal("Interacted");
 
+        if (!IsCorrectStage())
+        {
+
+            int index = ((int)Globals.Instance.gameState.stage + 2);
+            //run dialogue for telling the player what they need to do based on: Globals.Instance.gameState.stage\
+            dialogueBox.Call("start", index.ToString());
+            return;
+        }
         // Disable if oneshot
         if (isOneShot) active = false;
 
@@ -215,9 +221,9 @@ public partial class InteractBox : Area2D
 
     private bool IsCorrectStage()
     {
-        if (requiredStage == GAMESTAGE.TRANSITION) return true;
+        //if (requiredStage == GAMESTAGE.TRANSITION) return true;
 
-        if (requiredStage != Globals.Instance.gameState.stage) return false;
+        if (requiredStage > Globals.Instance.gameState.stage) return false;
         else return true;
     }
 
@@ -290,15 +296,5 @@ public partial class InteractBox : Area2D
                 outlineAlpha = 0;
             }
         }
-    }
-
-    private void EndDay()
-    {
-        GD.Print("end day");
-
-        player.SetMovementLock(true);
-
-        ColorRect scn = (ColorRect)endDayTransition.Instantiate();
-        player.AddChild(scn);
     }
 }
