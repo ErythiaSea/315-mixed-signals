@@ -1,0 +1,274 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://caffdf3vtuatl"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_mheay"]
+
+[resource]
+script = ExtResource("1_mheay")
+starts = {
+"0": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"4_6",
+"offset": Vector2(-780, -280),
+"start_id": "0"
+},
+"1_1": {
+"dialogue": "Hoh! Are you the fresh breeze that has blown onto my shores, or perhaps just another gale? Allow me to properly greet myself, I am Pyxis The Compass. ",
+"offset": Vector2(-260, -280),
+"options": {
+0: {
+"condition": {},
+"link": &"4_1",
+"text": "Hello, Pyxis!"
+},
+1: {
+"condition": {},
+"link": &"4_2",
+"text": "You're weird..."
+}
+},
+"size": Vector2(340, 320),
+"speaker": "Pyxis"
+},
+"1_10": {
+"dialogue": "My cousins Puppis and Vela have been trying to explore their poetic side. They were supposedly inspired by that wretched hurricane Cassiopeia… How despicable. Her poetry is nothing more but vulgar spewings of jumbled words. And the nerve to tell me that as the number one poet in the celestial realm! Regardless if it’s self proclaimed or not… Lord compass, help our youth!
+",
+"offset": Vector2(3480, -280),
+"options": {
+0: {
+"condition": {},
+"link": &"5_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_11": {
+"dialogue": "Oh! Seems like there is a cosmic disturbance affecting our connection. I will have to leave you here, my little breeze. 
+Hallelujah!",
+"offset": Vector2(4200, -40),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_12": {
+"dialogue": "You know... I have had a great time conversing with such a lovely summer breeze as yourself. Please seek me out again. Unfortunately, there is a cosmic storm causing disruptions in our communication device. I will have to leave you for now, my little cloud.",
+"offset": Vector2(4200, -380),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": "Good bye Pyxis"
+}
+},
+"size": Vector2(300, 256),
+"speaker": "Pyxis"
+},
+"1_13": {
+"dialogue": " I have more! “A compass in therapy discovered its true magnetic personality.” That was not funny either…. This conversation is really taking a turn for the north…",
+"offset": Vector2(1260, -120),
+"options": {
+0: {
+"condition": {},
+"link": &"4_3",
+"text": "That was funny!"
+},
+1: {
+"condition": {},
+"link": &"4_4",
+"text": "Might need to work on your jokes..."
+}
+},
+"size": Vector2(300, 289),
+"speaker": "Pyxis"
+},
+"1_2": {
+"dialogue": "May the northern wind bless you with fortune and grace and let the south wind take you to your desired shore. You may be a gale but your winds smell of orchids, hallelujah!",
+"offset": Vector2(500, -280),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": ""
+}
+},
+"size": Vector2(300, 257),
+"speaker": "Pyxis"
+},
+"1_3": {
+"dialogue": "=How dare you speak to me, Pyxis that way. May the northen storms blow away your hopes and dreams.",
+"offset": Vector2(500, 40),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_4": {
+"dialogue": "Allow me to present to you a so-called “joke”. Ehm… “I'm always drawn to the North, guess I have a magnetic personality!” Ahahah! Hallelujah! Oh- That was not amusing?",
+"offset": Vector2(920, -100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_13",
+"text": ""
+}
+},
+"size": Vector2(300, 256),
+"speaker": "Pyxis"
+},
+"1_5": {
+"dialogue": "Hey! Not okay! Do not treat a deity of my calibre with such disrespect. The ships at sea do not guide themselves, you know!",
+"offset": Vector2(2040, 60),
+"options": {
+0: {
+"condition": {},
+"link": &"1_6",
+"text": "I apologise!"
+},
+1: {
+"condition": {
+"operator": 5,
+"value1": "{{LOVE}}",
+"value2": "-2"
+},
+"link": "END",
+"text": "I think I need to go..."
+}
+},
+"size": Vector2(300, 290),
+"speaker": "Pyxis"
+},
+"1_6": {
+"dialogue": "I suppose I accept your apology, this time. Please, let us be friendly with each other. I do not wish to hurt your feeling so please do not hurt mine, little breeze.",
+"offset": Vector2(2400, 40),
+"options": {
+0: {
+"condition": {},
+"link": &"1_8",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_7": {
+"dialogue": "Hoh hah! I am glad you are appreciative of my little jokes. We work well together. We might need to hit the big sea for an adventure some day.",
+"offset": Vector2(2200, -280),
+"options": {
+0: {
+"condition": {},
+"link": &"1_8",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_8": {
+"dialogue": "Do you allow me to express my current grievances with you?",
+"offset": Vector2(2780, -100),
+"options": {
+0: {
+"condition": {},
+"link": &"4_5",
+"text": "Go ahead."
+},
+1: {
+"condition": {},
+"link": &"1_9",
+"text": "Not interested"
+}
+},
+"size": Vector2(300, 289),
+"speaker": "Pyxis"
+},
+"1_9": {
+"dialogue": "Then leave and take your hurricane energy elsewhere!",
+"offset": Vector2(3140, 100),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"2_1": {
+"comment": "",
+"offset": Vector2(-540, 80),
+"size": Vector2(200, 100)
+},
+"4_1": {
+"link": &"1_2",
+"offset": Vector2(140, -160),
+"type": 1,
+"value": "1",
+"variable": "LOVE"
+},
+"4_2": {
+"link": &"1_3",
+"offset": Vector2(120, 40),
+"type": 2,
+"value": "1",
+"variable": "LOVE"
+},
+"4_3": {
+"link": &"1_7",
+"offset": Vector2(1680, -80),
+"type": 1,
+"value": "1",
+"variable": "LOVE"
+},
+"4_4": {
+"link": &"1_5",
+"offset": Vector2(1680, 60),
+"type": 2,
+"value": "1",
+"variable": "LOVE"
+},
+"4_5": {
+"link": &"1_10",
+"offset": Vector2(3100, -60),
+"type": 1,
+"value": "1",
+"variable": "LOVE"
+},
+"4_6": {
+"link": &"1_1",
+"offset": Vector2(-580, -280),
+"type": 0,
+"value": "0",
+"variable": "LOVE"
+},
+"5_1": {
+"false": &"1_11",
+"offset": Vector2(3820, -220),
+"operator": 2,
+"true": &"1_12",
+"value1": "{{LOVE}}",
+"value2": "2"
+}
+}
+variables = {
+"LOVE": {
+"type": 2,
+"value": 0
+}
+}
+strays = Array[String](["2_1"])
+characters = ""

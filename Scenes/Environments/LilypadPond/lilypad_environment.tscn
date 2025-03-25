@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dkjjkuqsupb4f"]
+[gd_scene load_steps=42 format=3 uid="uid://dkjjkuqsupb4f"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_tgjlw"]
 [ext_resource type="Texture2D" uid="uid://bkevc4rf8wjhe" path="res://Scenes/Environments/LilypadPond/lilypadenv_back.png" id="1_x6dd7"]
@@ -9,10 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://rttkrffqrw1g" path="res://Scenes/Environments/Objects/stair_control.tscn" id="3_6n8s2"]
 [ext_resource type="Texture2D" uid="uid://de45w11b26rfr" path="res://Scenes/Environments/LilypadPond/lilypadenv_cliffgrass.png" id="3_n7la6"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_u2itd"]
-[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="10_8b38f"]
 [ext_resource type="AudioStream" uid="uid://dko7fvpro21fk" path="res://Audio/Music/Kinesis Stellae   Choir by Vrymaa Id-770060.wav" id="10_cyaek"]
-[ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="10_whwaa"]
-[ext_resource type="Resource" uid="uid://ciinae4snmogy" path="res://Scenes/Environments/LilypadPond/Dialogue/misc dial 1.tres" id="11_3uaob"]
+[ext_resource type="Resource" uid="uid://ciinae4snmogy" path="res://Scenes/Environments/LilypadPond/Dialogue/lilypad dialogue.tres" id="11_3uaob"]
 [ext_resource type="AudioStream" uid="uid://c8eusy0cr4kfc" path="res://Audio/Ambience/Water, Waterfall, Waterfall, The Trolls Road, River, 10m, Loop 02 SND73480.ogg" id="11_70pbf"]
 [ext_resource type="AudioStream" uid="uid://d1dsjc5b8djm1" path="res://Audio/Ambience/Water, Flow, Shallow Creek, Forest, Birds, Buderim Forest, Qeensland, Australia 01 SND31676.ogg" id="12_dyj3n"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="12_f3lj2"]
@@ -20,6 +18,8 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="13_wcr1k"]
 [ext_resource type="AudioStream" uid="uid://buvotqk1e00qe" path="res://Audio/Ambience/Rain, Vegetation, Light, Forest, Hit Leaves 03 SND3423.ogg" id="14_w6odn"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="14_xkiew"]
+[ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="15_b38h2"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="19_3q7ub"]
 
 [sub_resource type="Resource" id="Resource_xpr3o"]
 script = ExtResource("2_061b7")
@@ -78,16 +78,19 @@ radius = 40.0125
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_am0pj"]
 size = Vector2(49, 123)
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_b2dm0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ioy7"]
+size = Vector2(86.5, 392)
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_6t8hi"]
 script = ExtResource("12_f3lj2")
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_mgviv"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_y7owd"]
 script = ExtResource("13_wcr1k")
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_7oga7"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_pi1js"]
 script = ExtResource("14_xkiew")
 
-[node name="DemoEnv" type="Node2D"]
+[node name="LilyEnv" type="Node2D"]
 script = ExtResource("1_tgjlw")
 spawnData = Array[Object]([SubResource("Resource_xpr3o"), SubResource("Resource_agtn6")])
 leftLimit = -2974
@@ -232,7 +235,9 @@ shape = SubResource("SegmentShape2D_7qebe")
 position = Vector2(-2749, 554)
 scale = Vector2(2.5, 2.5)
 movementSpeed = 700.0
-walkingParticles = null
+
+[node name="Head" type="Marker2D" parent="Player"]
+position = Vector2(-2.8, -44.4)
 
 [node name="StairControls" type="Node2D" parent="."]
 position = Vector2(2243, 394)
@@ -322,34 +327,40 @@ autoplay = true
 position = Vector2(-1115, 794)
 isOneShot = true
 isAutofire = true
-dialogueBox = NodePath("../CanvasLayer/DialogueBox")
+dialogueBox = NodePath("../DialogueBubble")
 startID = "0"
-lockPlayerMovement = true
+timeLimit = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox"]
 position = Vector2(31, 111)
 shape = SubResource("RectangleShape2D_am0pj")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="InteractBox2" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("4_u2itd")]
+position = Vector2(1145, -1161)
+isOneShot = true
+isAutofire = true
+dialogueBox = NodePath("../DialogueBubble")
+startID = "1"
+timeLimit = 5.0
 
-[node name="DialogueBox" type="Panel" parent="CanvasLayer"]
-visible = false
-top_level = true
-z_index = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -100.0
-offset_right = 300.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("10_whwaa")
-script = ExtResource("10_8b38f")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox2"]
+position = Vector2(9.25, -63)
+shape = SubResource("RectangleShape2D_3ioy7")
+
+[node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]
+clip_contents = false
+offset_left = 650.0
+offset_top = 296.0
+offset_right = 766.0
+offset_bottom = 332.0
+theme = ExtResource("15_b38h2")
+bbcode_enabled = true
+text = "Sample dialogue."
+fit_content = true
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_6t8hi"), SubResource("RichTextEffect_y7owd"), SubResource("RichTextEffect_pi1js")]
+script = ExtResource("19_3q7ub")
 data = ExtResource("11_3uaob")
-custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_b2dm0"), SubResource("RichTextEffect_mgviv"), SubResource("RichTextEffect_7oga7")])
-
-[connection signal="dialogue_ended" from="CanvasLayer/DialogueBox" to="Player" method="OnDialogueClosed"]
+follow_node = NodePath("../Player/Head")
+show_speaker_name = false
+dialogue_custom_effects = [SubResource("RichTextEffect_6t8hi"), SubResource("RichTextEffect_y7owd"), SubResource("RichTextEffect_pi1js")]

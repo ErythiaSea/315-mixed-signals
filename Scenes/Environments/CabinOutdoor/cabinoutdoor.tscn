@@ -93,6 +93,7 @@ script = ExtResource("9_7xrxq")
 script = ExtResource("10_vfhkp")
 
 [node name="cabinoutdoor" type="Node2D"]
+position = Vector2(-2, 0)
 script = ExtResource("1_4weox")
 spawnData = Array[Object]([SubResource("Resource_igbtt"), SubResource("Resource_5o2kn")])
 cameraZoom = 0.5

@@ -14,7 +14,7 @@ nodes = {
 "start_id": "0"
 },
 "1_1": {
-"dialogue": "{{LOVE}} Hoh! Are you the fresh breeze that has blown onto my shores, or perhaps just another gale? Allow me to properly greet myself, I am Pyxis The Compass. ",
+"dialogue": "Hoh! Are you the fresh breeze that has blown onto my shores, or perhaps just another gale? Allow me to properly greet myself, I am Pyxis The Compass. ",
 "offset": Vector2(-260, -280),
 "options": {
 0: {
@@ -91,7 +91,7 @@ Hallelujah!",
 "speaker": "Pyxis"
 },
 "1_2": {
-"dialogue": "{{LOVE}} May the northern wind bless you with fortune and grace and let the south wind take you to your desired shore. You may be a gale but your winds smell of orchids, hallelujah!",
+"dialogue": "May the northern wind bless you with fortune and grace and let the south wind take you to your desired shore. You may be a gale but your winds smell of orchids, hallelujah!",
 "offset": Vector2(500, -280),
 "options": {
 0: {
@@ -104,7 +104,7 @@ Hallelujah!",
 "speaker": "Pyxis"
 },
 "1_3": {
-"dialogue": "{{LOVE}} How dare you speak to me, Pyxis that way. May the northen storms blow away your hopes and dreams.",
+"dialogue": "How dare you speak to me, Pyxis that way. May the northen storms blow away your hopes and dreams.",
 "offset": Vector2(500, 40),
 "options": {
 0: {
@@ -130,7 +130,7 @@ Hallelujah!",
 "speaker": "Pyxis"
 },
 "1_5": {
-"dialogue": "{{LOVE}} Hey! Not okay! Do not treat a deity of my calibre with such disrespect. The ships at sea do not guide themselves, you know!",
+"dialogue": "Hey! Not okay! Do not treat a deity of my calibre with such disrespect. The ships at sea do not guide themselves, you know!",
 "offset": Vector2(2040, 60),
 "options": {
 0: {
@@ -165,7 +165,7 @@ Hallelujah!",
 "speaker": "Pyxis"
 },
 "1_7": {
-"dialogue": "{{LOVE}} Hoh hah! I am glad you are appreciative of my little jokes. We work well together. We might need to hit the big sea for an adventure some day.",
+"dialogue": "Hoh hah! I am glad you are appreciative of my little jokes. We work well together. We might need to hit the big sea for an adventure some day.",
 "offset": Vector2(2200, -280),
 "options": {
 0: {
@@ -209,9 +209,11 @@ Hallelujah!",
 "speaker": "Pyxis"
 },
 "2_1": {
-"comment": "",
-"offset": Vector2(-540, 80),
-"size": Vector2(200, 100)
+"comment": "The dialogue tree for Pyxis
+Utilises LOVE as a variable
+to decide affection.",
+"offset": Vector2(-620, -140),
+"size": Vector2(260, 140)
 },
 "4_1": {
 "link": &"1_2",
