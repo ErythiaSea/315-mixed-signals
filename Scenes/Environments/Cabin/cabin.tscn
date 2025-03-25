@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=59 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_hvnuo"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -28,6 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://dljep1sop1gkj" path="res://Scenes/Environments/Cabin/Sprites/bedroom_photoboard.png" id="16_stl3d"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="17_h87pq"]
 [ext_resource type="Resource" uid="uid://wn1h5b8ptlga" path="res://Scenes/Debug/debugdialogue.tres" id="24_33tro"]
+[ext_resource type="Script" path="res://Scenes/Environments/Cabin/EndDay.cs" id="29_wyus1"]
+[ext_resource type="PackedScene" uid="uid://ccoch44m85xuv" path="res://Scenes/Environments/Objects/EndDayTransition.tscn" id="30_stghc"]
 
 [sub_resource type="Resource" id="Resource_66r8t"]
 script = ExtResource("2_vrtq2")
@@ -168,8 +170,9 @@ radius = 32.249
 [node name="Cabin" type="Node2D"]
 script = ExtResource("1_hvnuo")
 spawnData = Array[Object]([SubResource("Resource_66r8t")])
+OffsetY = -200.0
 rightLimit = 1920
-bottomLimit = 4573
+bottomLimit = 4773
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8vdl8")
@@ -341,13 +344,12 @@ stream = ExtResource("3_1b4bc")
 volume_db = -16.838
 autoplay = true
 
-[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "wallCollision", "topFloorCollision") instance=ExtResource("14_e5y7b")]
+[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "wallCollision") instance=ExtResource("14_e5y7b")]
 position = Vector2(952, 4552)
 topCallButton = NodePath("../ElevatorTopCall")
 bottomCallButton = NodePath("../ElevatorBottomCall")
 elevatorButton = NodePath("ElevatorButton")
 wallCollision = [NodePath("ElevatorWallL"), NodePath("ElevatorWallR")]
-topFloorCollision = NodePath("../WorldCollision/CollisionShape2")
 topY = 995.0
 bottomY = 4552.0
 travelTime = 5.0
@@ -397,7 +399,7 @@ position = Vector2(585, 4167.5)
 shape = SubResource("RectangleShape2D_8qv87")
 
 [node name="Player" parent="." instance=ExtResource("2_h3n7b")]
-position = Vector2(490, 4396)
+position = Vector2(505, 4384)
 scale = Vector2(2.5, 2.5)
 
 [node name="PlayerHead" type="Marker2D" parent="Player"]
@@ -478,15 +480,16 @@ timeLimit = 2.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoBox"]
 shape = SubResource("RectangleShape2D_avn75")
 
-[node name="LevelChange" type="Area2D" parent="."]
+[node name="LevelChange" type="Area2D" parent="." node_paths=PackedStringArray("dialogueBox")]
 position = Vector2(1964, 4550)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 transitionType = 1
-requiredStage = 5
+requiredStage = 2
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
 spawnPoint = 0
+dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
 shape = SubResource("RectangleShape2D_lvk1a")
@@ -504,3 +507,11 @@ objectSprite = NodePath("../Sprites/TopCallButton")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorTopCall"]
 shape = SubResource("CircleShape2D_txxlk")
+
+[node name="EndDay" type="Node2D" parent="."]
+script = ExtResource("29_wyus1")
+endTransition = ExtResource("30_stghc")
+
+[connection signal="Interacted" from="Elevator/ElevatorButton" to="Elevator" method="ToggleElevator"]
+[connection signal="Interacted" from="BedBox" to="EndDay" method="EndTheDay"]
+[connection signal="Interacted" from="ElevatorBottomCall" to="Elevator" method="TravelToTop"]

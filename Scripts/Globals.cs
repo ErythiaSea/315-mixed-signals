@@ -31,6 +31,7 @@ public partial class Globals : Node
 	//stores if the word has been done this loop or not
 	public bool isCurrentWordDone = false;
 	//Stores a list of words to be used in the translation, increments by the day the player is on
+	[Export]
 	public string[] wordList = { "Hot", "Cute" };
 
 
@@ -82,6 +83,7 @@ public partial class Globals : Node
 		isCurrentWordDone = false;
 		gameState.day += 1;
 		gameState.stage = GAMESTAGE.TRANSPONDING;
+		cipherKey = 0;
 
 		LpivotRotRef = 0f;
 		RpivotRotRef = 0f;

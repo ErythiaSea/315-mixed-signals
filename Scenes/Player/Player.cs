@@ -232,7 +232,10 @@ public partial class Player : CharacterBody2D
 	{
 		playerCamera.Zoom = new Vector2(zoom, zoom);
 	}
-
+	public void setCameraOffsets(float x,float y)
+	{
+		playerCamera.Offset = new Vector2(x, y);
+	}
 	void OnDialogueClosed()
 	{
 		GD.Print("dialogue");

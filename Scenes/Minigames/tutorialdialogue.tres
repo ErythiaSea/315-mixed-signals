@@ -137,7 +137,7 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 "text": "Yes"
 }
 },
-"size": Vector2(300, 273),
+"size": Vector2(300, 289),
 "speaker": ""
 },
 "1_5": {
@@ -168,7 +168,7 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 "text": "Yes"
 }
 },
-"size": Vector2(300, 273),
+"size": Vector2(300, 289),
 "speaker": ""
 },
 "1_7": {

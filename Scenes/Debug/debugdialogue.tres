@@ -7,6 +7,10 @@ script = ExtResource("1_5br0n")
 starts = {
 "0": &"0_1",
 "1": &"0_2",
+"2": &"0_4",
+"3": &"0_5",
+"4": &"0_6",
+"5": &"0_7",
 "nme": &"0_3"
 }
 nodes = {
@@ -24,6 +28,26 @@ nodes = {
 "link": &"1_5",
 "offset": Vector2(-600, 300),
 "start_id": "nme"
+},
+"0_4": {
+"link": &"1_6",
+"offset": Vector2(-580, 680),
+"start_id": "2"
+},
+"0_5": {
+"link": &"1_7",
+"offset": Vector2(80, 680),
+"start_id": "3"
+},
+"0_6": {
+"link": &"1_8",
+"offset": Vector2(-580, 1020),
+"start_id": "4"
+},
+"0_7": {
+"link": &"1_9",
+"offset": Vector2(80, 1020),
+"start_id": "5"
 },
 "1_1": {
 "dialogue": "dialogue holy crap",
@@ -94,6 +118,60 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": "!DEBUG!"
+},
+"1_6": {
+"dialogue": "I should probably check out these new signals I'm getting[br]
+strange...",
+"offset": Vector2(-240, 680),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_7": {
+"dialogue": "I need to tune the signal waves to know where I'm headed first[br]
+*Sigh*",
+"offset": Vector2(420, 680),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_8": {
+"dialogue": "These stars won't fine themseleves, where is my telescope?",
+"offset": Vector2(-240, 1020),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_9": {
+"dialogue": "I wonder what these messages mean? Lets get Translating!",
+"offset": Vector2(420, 1020),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
 }
 }
 variables = {}
