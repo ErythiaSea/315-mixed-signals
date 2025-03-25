@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=60 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_hvnuo"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -34,7 +34,7 @@
 
 [sub_resource type="Resource" id="Resource_66r8t"]
 script = ExtResource("2_vrtq2")
-spawnPosition = Vector2(1814, 886)
+spawnPosition = Vector2(1814, 4384)
 faceLeft = true
 
 [sub_resource type="Environment" id="Environment_8vdl8"]
@@ -171,7 +171,6 @@ radius = 32.249
 [node name="Cabin" type="Node2D"]
 script = ExtResource("1_hvnuo")
 spawnData = Array[Object]([SubResource("Resource_66r8t")])
-OffsetY = -200.0
 rightLimit = 1920
 bottomLimit = 4773
 
@@ -351,12 +350,13 @@ stream = ExtResource("3_1b4bc")
 volume_db = -16.838
 autoplay = true
 
-[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "wallCollision") instance=ExtResource("14_e5y7b")]
+[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "wallCollision", "topFloorCollision") instance=ExtResource("14_e5y7b")]
 position = Vector2(952, 4552)
 topCallButton = NodePath("../ElevatorTopCall")
 bottomCallButton = NodePath("../ElevatorBottomCall")
 elevatorButton = NodePath("ElevatorButton")
 wallCollision = [NodePath("ElevatorWallL"), NodePath("ElevatorWallR")]
+topFloorCollision = NodePath("../WorldCollision/CollisionShape2")
 topY = 995.0
 bottomY = 4552.0
 travelTime = 5.0
@@ -458,6 +458,7 @@ position = Vector2(1400, 4548)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/TranslationPaper")
+requiredStage = 3
 scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
@@ -469,6 +470,7 @@ position = Vector2(238, 4549)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/Bed")
+requiredStage = 4
 dialogueBox = NodePath("../DialogueBubble")
 startID = "nme"
 timeLimit = 2.5
@@ -499,6 +501,7 @@ scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
 spawnPoint = 0
 dialogueBox = NodePath("../DialogueBubble")
+errorStartID = "nme"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
 shape = SubResource("RectangleShape2D_lvk1a")
@@ -521,6 +524,4 @@ shape = SubResource("CircleShape2D_txxlk")
 script = ExtResource("29_wyus1")
 endTransition = ExtResource("30_stghc")
 
-[connection signal="Interacted" from="Elevator/ElevatorButton" to="Elevator" method="ToggleElevator"]
 [connection signal="Interacted" from="BedBox" to="EndDay" method="EndTheDay"]
-[connection signal="Interacted" from="ElevatorBottomCall" to="Elevator" method="TravelToTop"]

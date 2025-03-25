@@ -91,6 +91,10 @@ public partial class InteractBox : Area2D
     [Export]
     String startID;
 
+    // the start id for "errors" (incorrect stage, etc)
+    [Export]
+    String errorStartID;
+
     // how long the dialogue bubble should exist for
     [Export]
     float timeLimit = 0;
@@ -162,7 +166,6 @@ public partial class InteractBox : Area2D
 
         // Not interactable if inactive
         if (!active) return;
-        EmitSignal("Interacted");
 
         if (!IsCorrectStage())
         {
@@ -172,6 +175,8 @@ public partial class InteractBox : Area2D
             dialogueBox.Call("start", index.ToString());
             return;
         }
+        EmitSignal("Interacted");
+
         // Disable if oneshot
         if (isOneShot) active = false;
 
@@ -185,7 +190,7 @@ public partial class InteractBox : Area2D
         }
         
         // Start dialogue box if one is linked
-        if (dialogueBox != null) {
+        if (dialogueBox != null && startID != null) {
             // set a time limit if this is a dialogue bubble
             if (timeLimit > 0 && (dialogueBox as RichTextLabel) != null)
             {
@@ -214,14 +219,14 @@ public partial class InteractBox : Area2D
 		if (transitionType != TRANSITION.NONE)
         {
 			isTransition = true;
-			plrRef.EmitSignal("Transition", (int)transitionType, transitionLength);
+			plrRef.EmitSignal(Player.SignalName.Transition, (int)transitionType, transitionLength);
 		}
         else { loadScene(); }
     }
 
     private bool IsCorrectStage()
     {
-        //if (requiredStage == GAMESTAGE.TRANSITION) return true;
+        if (requiredStage == GAMESTAGE.TRANSITION) return true;
 
         if (requiredStage > Globals.Instance.gameState.stage) return false;
         else return true;

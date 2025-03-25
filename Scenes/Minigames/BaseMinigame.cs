@@ -70,8 +70,13 @@ public partial class BaseMinigame : CanvasLayer
 	// still doing this a crappy way for now but i'd like to do signal bus later
 	private void QuitMinigame()
 	{
+		OnTransitionFinish();
 		player.SetMovementLock(false);
 		player.SetCameraEnabled(true);
 		QueueFree();
+	}
+
+	protected virtual void OnTransitionFinish()
+	{
 	}
 }

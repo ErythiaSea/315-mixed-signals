@@ -115,7 +115,7 @@ position = Vector2(1772, 500)
 adjacentStars = [NodePath("../StarNode2")]
 
 [node name="UICanvas" type="CanvasLayer" parent="."]
-layer = 2
+layer = 3
 
 [node name="ControlsLabel" type="Label" parent="UICanvas"]
 offset_left = 41.0

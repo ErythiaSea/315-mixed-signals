@@ -22,6 +22,12 @@ public partial class Reset : Node
             GetTree().ChangeSceneToPacked(debugroom);
         }
 
+		if (Input.IsActionJustPressed("TEST"))
+		{
+			Globals.Instance.gameState.stage++;
+			GD.Print("stage increased to ", Globals.Instance.gameState.stage);
+		}
+
 		// close when holding esc
 		if (Input.IsActionPressed("close"))
 		{

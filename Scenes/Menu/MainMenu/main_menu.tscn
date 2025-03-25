@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://blaixght86xlx"]
+[gd_scene load_steps=6 format=3 uid="uid://blaixght86xlx"]
 
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="1_vi1bc"]
 [ext_resource type="Script" path="res://Scenes/Menu/MainMenu/MainMenu.cs" id="2_2deir"]
 [ext_resource type="Texture2D" uid="uid://dqtmjby87s052" path="res://Scenes/Loading/BloodBoxLogo_Splash.png" id="2_4re32"]
 [ext_resource type="Texture2D" uid="uid://dk22piqob5pwn" path="res://Scenes/Menu/MainMenu/TitleScreen_Background_01.png" id="3_4yxvj"]
+[ext_resource type="PackedScene" uid="uid://qw43er1nfudg" path="res://Scenes/Menu/Options/Options.tscn" id="3_w5urq"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,6 +15,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_vi1bc")
 script = ExtResource("2_2deir")
+startScene = "res://Scenes/Environments/Cabin/cabin.tscn"
+optionsScene = ExtResource("3_w5urq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(960, 541)

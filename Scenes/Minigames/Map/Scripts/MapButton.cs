@@ -27,6 +27,7 @@ public partial class MapButton : TextureButton
 			SelfModulate = new Color(0.3f,0.3f,0.3f);
 			Disabled = true;
         }
+		Pressed += _OnPressed;
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

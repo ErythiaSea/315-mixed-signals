@@ -138,7 +138,7 @@ position = Vector2(0, -41.2)
 position = Vector2(4994, 290)
 transitionType = 4
 transitionLength = 0.5
-requiredStage = 6
+requiredStage = 2
 scenePath = "res://Scenes/Minigames/Map/mapscreen.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapBox"]
