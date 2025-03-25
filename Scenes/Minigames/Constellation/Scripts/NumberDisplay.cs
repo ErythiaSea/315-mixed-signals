@@ -37,17 +37,17 @@ public partial class NumberDisplay : Control
 
 			if (currentLabelIndex != null)
 			{
-                if (alphaChange <= 1)
-                {
-                    alphaChange += (float)delta * displaySpeed;
-                    currentLabelIndex.Modulate = new Color(currentLabelIndex.Modulate.R, currentLabelIndex.Modulate.G, currentLabelIndex.Modulate.B, alphaChange);
-                }
-                else
-                {
-                    alphaChange = 0f;
-                    index++;
-                }
-            }
+				if (alphaChange <= 1)
+				{
+					alphaChange += (float)delta * displaySpeed;
+					currentLabelIndex.Modulate = new Color(currentLabelIndex.Modulate.R, currentLabelIndex.Modulate.G, currentLabelIndex.Modulate.B, alphaChange);
+				}
+				else
+				{
+					alphaChange = 0f;
+					index++;
+				}
+			}
 			else
 			{
 				alphaChange = 0f;
@@ -66,9 +66,9 @@ public partial class NumberDisplay : Control
 		{
 			currentLabelIndex = SceneLabels[i] as Godot.Label;
 
-            currentLabelIndex.Text = string.Empty;
-            currentLabelIndex.Text = randNumArray[i].ToString();
-        }
+			currentLabelIndex.Text = string.Empty;
+			currentLabelIndex.Text = randNumArray[i].ToString();
+		}
 		hasNumbers = true;
 	}
 
@@ -87,7 +87,7 @@ public partial class NumberDisplay : Control
 				randNumArray.Add(randomNum);
 			}
 
-        } while (randNumArray.Sum() == 0);
+		} while (randNumArray.Sum() == 0);
 
 		GD.Print("Valid random numbers");
 
@@ -95,7 +95,7 @@ public partial class NumberDisplay : Control
 		Globals.Instance.cipherKey = randNumArray.Sum();
 		return randNumArray;
 		
-    }
+	}
 
 	private void SetNumbersVisibility()
 	{

@@ -3,14 +3,14 @@ using System;
 
 public partial class DragParent : Control
 {
-    [Signal]
-    public delegate void ConstellationCompletionEventHandler();
+	[Signal]
+	public delegate void ConstellationCompletionEventHandler();
 
 	Globals globalScript;
 	bool isSignaled = false;
-    Godot.Collections.Array<Node> sceneBars;
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+	Godot.Collections.Array<Node> sceneBars;
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
 	{
 		globalScript = Globals.Instance;
 
@@ -22,14 +22,14 @@ public partial class DragParent : Control
 	{
 		if (IsConstellationDrawn())
 		{
-            GD.Print("Constellation drawn");
+			GD.Print("Constellation drawn");
 			if (!isSignaled)
 			{
-                EmitSignal(SignalName.ConstellationCompletion);
+				EmitSignal(SignalName.ConstellationCompletion);
 				globalScript.gameState.stage = GAMESTAGE.TRANSLATION;
 				isSignaled = true;
-            }
-        }
+			}
+		}
 	}
 
 	private bool IsConstellationDrawn()
