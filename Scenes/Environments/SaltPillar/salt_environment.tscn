@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cefs7sceaq1yy"]
+[gd_scene load_steps=24 format=3 uid="uid://cefs7sceaq1yy"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_2e86h"]
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_ettdq"]
@@ -8,6 +8,12 @@
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/Outline.gdshader" id="6_jjc5l"]
 [ext_resource type="Texture2D" uid="uid://din6bfgvj8ksj" path="res://Scenes/Environments/Objects/sprites/telescope.png" id="6_pidip"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="7_yro1e"]
+[ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="9_6maqy"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="10_u36yt"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="11_o4f13"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="12_oaf7q"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="13_kkcnm"]
+[ext_resource type="Resource" uid="uid://ccv0ncottq4w" path="res://Scenes/Environments/SaltPillar/Dialogue/saltpillarDialogue.tres" id="14_kvt6g"]
 
 [sub_resource type="Resource" id="Resource_ci2ls"]
 script = ExtResource("2_ettdq")
@@ -26,6 +32,21 @@ size = Vector2(126, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1j6n"]
 size = Vector2(79, 20)
 
+[sub_resource type="RichTextEffect" id="RichTextEffect_kp4e8"]
+script = ExtResource("10_u36yt")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_3cart"]
+script = ExtResource("11_o4f13")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_d6pji"]
+script = ExtResource("12_oaf7q")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lsjs"]
+size = Vector2(83, 181)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrknp"]
+size = Vector2(49, 186)
+
 [node name="SaltEnv" type="Node2D"]
 script = ExtResource("1_2e86h")
 spawnData = Array[Object]([SubResource("Resource_ci2ls")])
@@ -41,6 +62,9 @@ texture = ExtResource("3_y8bnk")
 [node name="Player" parent="." instance=ExtResource("2_nx23b")]
 position = Vector2(2794, 833)
 scale = Vector2(1.2, 1.2)
+
+[node name="head" type="Marker2D" parent="Player"]
+position = Vector2(0, -45.8333)
 
 [node name="rails" type="Sprite2D" parent="."]
 texture = ExtResource("4_era6n")
@@ -79,3 +103,43 @@ spawnPoint = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
 position = Vector2(29.5, 0)
 shape = SubResource("RectangleShape2D_a1j6n")
+
+[node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]
+clip_contents = false
+offset_right = 116.0
+offset_bottom = 36.0
+theme = ExtResource("9_6maqy")
+bbcode_enabled = true
+text = "Sample dialogue."
+fit_content = true
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_kp4e8"), SubResource("RichTextEffect_3cart"), SubResource("RichTextEffect_d6pji")]
+script = ExtResource("13_kkcnm")
+data = ExtResource("14_kvt6g")
+follow_node = NodePath("../Player/head")
+show_speaker_name = false
+dialogue_custom_effects = [SubResource("RichTextEffect_kp4e8"), SubResource("RichTextEffect_3cart"), SubResource("RichTextEffect_d6pji")]
+
+[node name="DialogueBox1" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("7_yro1e")]
+position = Vector2(1828, 536)
+isOneShot = true
+isAutofire = true
+dialogueBox = NodePath("../DialogueBubble")
+startID = "0"
+timeLimit = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox1"]
+position = Vector2(30.5, -28.5)
+shape = SubResource("RectangleShape2D_2lsjs")
+
+[node name="DialogueBox2" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("7_yro1e")]
+position = Vector2(121, 82)
+isOneShot = true
+isAutofire = true
+dialogueBox = NodePath("../DialogueBubble")
+startID = "1"
+timeLimit = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox2"]
+position = Vector2(7.5, -14)
+shape = SubResource("RectangleShape2D_qrknp")

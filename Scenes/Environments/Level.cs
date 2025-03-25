@@ -19,9 +19,9 @@ public partial class Level : Node2D
 	[Export]
 	float cameraZoom = 1.0f;
 
-    // The region the camera can move around in.
-    // If this is left untouched the camera is disabled
-    [ExportGroup("Camera Limits")]
+	// The region the camera can move around in.
+	// If this is left untouched the camera is disabled
+	[ExportGroup("Camera Limits")]
 	[Export]
 	int leftLimit = 0;
 	[Export]
