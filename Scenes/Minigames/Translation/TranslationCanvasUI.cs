@@ -7,6 +7,7 @@ public partial class TranslationCanvasUI : BaseMinigame
 {
 
 	//Quick Inspector Refs, CHANGE THIS AT ANOTHER TIME, probably grab them specifcally from the borderDraw process
+	[ExportGroup("Node References")]
 	[Export]
 	RichTextLabel messageBox;
 	[Export]
@@ -21,8 +22,14 @@ public partial class TranslationCanvasUI : BaseMinigame
 	Font englishFont;
 	[Export]
 	TextureRect winInd;
-    Panel dialogueBox;
 
+	[ExportGroup("Dialogue Paths")]
+	[Export(PropertyHint.ResourceType, "DialogueData")]
+	Resource Day1Dialogue;
+    [Export(PropertyHint.ResourceType, "DialogueData")]
+	Resource Day2Dialogue;
+
+    Panel dialogueBox;
     Globals globalScript;
 
     private string currentWord;
@@ -34,14 +41,22 @@ public partial class TranslationCanvasUI : BaseMinigame
 		globalScript = Globals.Instance;
 
 		cipherDisplay.Clear();
-        messageBox.Clear();
-        answerBox.Clear();
-        engHint.Clear();
-        celHint.Clear();
+		messageBox.Clear();
+		answerBox.Clear();
+		engHint.Clear();
+		celHint.Clear();
 		winInd.Visible = false;
 
 		CallDeferred(nameof(TextInitalisation));
+
+		// load dialogue data based on day
 		dialogueBox = GetNode<Panel>("DialogueBox");
+		LoadDialogue();
+		if (globalScript.tutorialProgress <= GAMESTAGE.TRANSLATION)
+		{
+			globalScript.tutorialProgress = GAMESTAGE.END;
+			dialogueBox.Call("start", "tut");
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -146,4 +161,17 @@ public partial class TranslationCanvasUI : BaseMinigame
 			Close();
 		}
 	}
+
+	private void LoadDialogue()
+	{
+        switch (globalScript.gameState.day)
+        {
+            case 0:
+                dialogueBox.Set("data", Day1Dialogue);
+                break;
+            case 1:
+                dialogueBox.Set("data", Day2Dialogue);
+                break;
+        }
+    }
 }

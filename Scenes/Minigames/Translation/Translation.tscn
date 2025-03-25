@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://1ims8y73xe5o"]
+[gd_scene load_steps=18 format=3 uid="uid://1ims8y73xe5o"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Translation/TranslationCanvasUI.cs" id="1_6ebpw"]
 [ext_resource type="FontFile" uid="uid://m3h38nqxkg0o" path="res://Fonts/Monotone_Celestial_V1.otf" id="2_w7m10"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="9_8jnxf"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="10_k8rjn"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="11_vjohv"]
+[ext_resource type="Texture2D" uid="uid://cad0l75yjf3a4" path="res://Sprites/tutorialbutton_temp.png" id="12_1gr56"]
+[ext_resource type="Script" path="res://Scenes/Minigames/TutorialButton.cs" id="13_xnkum"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2m5s8"]
 texture = ExtResource("4_stibd")
@@ -24,14 +26,17 @@ script = ExtResource("10_k8rjn")
 [sub_resource type="RichTextEffect" id="RichTextEffect_xkoe7"]
 script = ExtResource("11_vjohv")
 
-[node name="Translation" type="CanvasLayer" node_paths=PackedStringArray("messageBox", "celHint", "engHint", "cipherDisplay", "winInd")]
+[node name="Translation" type="CanvasLayer" node_paths=PackedStringArray("messageBox", "answerBox", "celHint", "engHint", "cipherDisplay", "winInd")]
 script = ExtResource("1_6ebpw")
 messageBox = NodePath("TextVBox/VBoxContainer/MessageTextBox")
+answerBox = NodePath("TextVBox/VBoxContainer/AnswerBox")
 celHint = NodePath("HintVBox/HBoxContainer/CelestialChar")
 engHint = NodePath("HintVBox/HBoxContainer/EnglishChar")
 cipherDisplay = NodePath("CipherDisplay")
 englishFont = ExtResource("3_tm1gv")
 winInd = NodePath("WinIndicator")
+Day1Dialogue = ExtResource("8_ey0sh")
+Day2Dialogue = ExtResource("8_ey0sh")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_right = 1920.0
@@ -141,6 +146,20 @@ script = ExtResource("6_egdpe")
 data = ExtResource("8_ey0sh")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_k5p1y"), SubResource("RichTextEffect_macbo"), SubResource("RichTextEffect_xkoe7")])
 options_vertical = true
+
+[node name="TutorialButton" type="TextureButton" parent="." node_paths=PackedStringArray("dialogueBox")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1769.0
+offset_top = 23.0
+offset_right = -23.0
+offset_bottom = -929.0
+texture_normal = ExtResource("12_1gr56")
+stretch_mode = 5
+script = ExtResource("13_xnkum")
+startID = "tut"
+dialogueBox = NodePath("../DialogueBox")
 
 [connection signal="button_down" from="CheckAnswerButton" to="." method="AnswerButton"]
 [connection signal="dialogue_ended" from="DialogueBox" to="." method="OnDialogueEnd"]

@@ -5,13 +5,25 @@
 [resource]
 script = ExtResource("1_mheay")
 starts = {
-"0": &"0_1"
+"0": &"0_1",
+"err": &"0_2",
+"tut": &"0_3"
 }
 nodes = {
 "0_1": {
 "link": &"4_6",
 "offset": Vector2(-780, -280),
 "start_id": "0"
+},
+"0_2": {
+"link": &"1_14",
+"offset": Vector2(-820, -800),
+"start_id": "err"
+},
+"0_3": {
+"link": &"1_15",
+"offset": Vector2(-132.511, -809.341),
+"start_id": "tut"
 },
 "1_1": {
 "dialogue": "Hoh! Are you the fresh breeze that has blown onto my shores, or perhaps just another gale? Allow me to properly greet myself, I am Pyxis The Compass. ",
@@ -89,6 +101,32 @@ Hallelujah!",
 },
 "size": Vector2(300, 289),
 "speaker": "Pyxis"
+},
+"1_14": {
+"dialogue": "(I don't think I'm translating this properly...)",
+"offset": Vector2(-620, -820),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
+},
+"1_15": {
+"dialogue": "startid tut - tutorial dialogue for translation goes here!",
+"offset": Vector2(80, -820),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "erf"
 },
 "1_2": {
 "dialogue": "May the northern wind bless you with fortune and grace and let the south wind take you to your desired shore. You may be a gale but your winds smell of orchids, hallelujah!",
@@ -215,6 +253,13 @@ to decide affection.",
 "offset": Vector2(-620, -140),
 "size": Vector2(260, 140)
 },
+"2_2": {
+"comment": "The dialogue for when
+you get the translate wrong.
+Please leave startid = err",
+"offset": Vector2(-880, -680),
+"size": Vector2(240, 120)
+},
 "4_1": {
 "link": &"1_2",
 "offset": Vector2(140, -160),
@@ -272,5 +317,5 @@ variables = {
 "value": 0
 }
 }
-strays = Array[String](["2_1"])
+strays = Array[String](["2_1", "2_2"])
 characters = ""

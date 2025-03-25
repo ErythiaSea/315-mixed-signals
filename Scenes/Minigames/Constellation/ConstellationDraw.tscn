@@ -85,16 +85,6 @@ script = ExtResource("4_ro1i3")
 radius = 2.0
 blur = 0.02
 
-[node name="ControlsLabel" type="Label" parent="eeek/Telescope"]
-layout_mode = 0
-offset_left = 35.8573
-offset_top = 1222.6
-offset_right = 545.857
-offset_bottom = 1277.6
-theme_override_font_sizes/font_size = 0
-text = "WASD - Pan Camera  ESC - Close"
-label_settings = SubResource("LabelSettings_03dfn")
-
 [node name="Crosshair" type="Sprite2D" parent="eeek"]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_0ijxk")
@@ -121,6 +111,15 @@ adjacentStars = [NodePath("../StarNode2")]
 
 [node name="UICanvas" type="CanvasLayer" parent="."]
 layer = 2
+
+[node name="ControlsLabel" type="Label" parent="UICanvas"]
+offset_left = 41.0
+offset_top = 992.0
+offset_right = 551.0
+offset_bottom = 1047.0
+theme_override_font_sizes/font_size = 0
+text = "WASD - Pan Camera  ESC - Close"
+label_settings = SubResource("LabelSettings_03dfn")
 
 [node name="TutorialButton" type="TextureButton" parent="UICanvas" node_paths=PackedStringArray("dialogueBox")]
 anchors_preset = 15
