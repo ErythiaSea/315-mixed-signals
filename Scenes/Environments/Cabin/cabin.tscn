@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=39 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_hvnuo"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bedcsxhb5bdgm" path="res://Scenes/Environments/Objects/sprites/translationpaper.png" id="7_tqin0"]
 [ext_resource type="Texture2D" uid="uid://cc066shi2gixy" path="res://Scenes/Environments/Cabin/room_silohettes.png" id="8_fxgd2"]
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/Outline.gdshader" id="9_05epa"]
+[ext_resource type="Texture2D" uid="uid://dlxcbppbeywmh" path="res://Scenes/Environments/Cabin Extended/base_pipes.png" id="11_o0hdm"]
+[ext_resource type="Texture2D" uid="uid://btc2kj0eyq8s4" path="res://Scenes/Environments/Cabin Extended/base_bedroom.png" id="12_jaq5n"]
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="13_haw55"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="14_tiwmt"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="15_1s26x"]
@@ -48,13 +50,29 @@ adjustment_saturation = 1.1
 interpolation_mode = 2
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jojyq"]
+gradient = SubResource("Gradient_xf4qe")
+width = 1920
+height = 1080
+fill = 1
+fill_from = Vector2(0.52968, 0.633181)
+fill_to = Vector2(0.493151, 0.0405885)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q2l72"]
+gradient = SubResource("Gradient_xf4qe")
+width = 1920
+height = 2600
+fill = 1
+fill_from = Vector2(0.503472, 0.568376)
+fill_to = Vector2(0.434028, 0)
+
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_p5t1g"]
 gradient = SubResource("Gradient_xf4qe")
 width = 1920
 height = 1080
 fill = 1
-fill_from = Vector2(0.504587, 0.799185)
-fill_to = Vector2(0.5, 0)
+fill_from = Vector2(0.488584, 0.519533)
+fill_to = Vector2(0.616438, 0.381532)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5g03c"]
 shader = ExtResource("9_05epa")
@@ -98,17 +116,77 @@ size = Vector2(291, 55)
 [node name="Cabin" type="Node2D"]
 script = ExtResource("1_hvnuo")
 spawnData = Array[Object]([SubResource("Resource_66r8t")])
-cameraEnabled = false
+rightLimit = 1920
+bottomLimit = 4573
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8vdl8")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(24, 0)
 color = Color(0.160404, 0.0175456, 0.232451, 1)
 blend_mode = 2
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(966, 523)
+[node name="MainLight" type="PointLight2D" parent="."]
+position = Vector2(979, 451)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_jojyq")
+
+[node name="ElevatorLights" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="ElevatorLights"]
+position = Vector2(966, 2341)
+texture = SubResource("GradientTexture2D_q2l72")
+
+[node name="BedRoomLights" type="Node2D" parent="."]
+
+[node name="PointLight2D2" type="PointLight2D" parent="BedRoomLights"]
+position = Vector2(542, 3956)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D3" type="PointLight2D" parent="BedRoomLights"]
+position = Vector2(1376, 3911)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D4" type="PointLight2D" parent="BedRoomLights"]
+position = Vector2(242, 3926)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D5" type="PointLight2D" parent="BedRoomLights"]
+position = Vector2(708, 4251)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D6" type="PointLight2D" parent="BedRoomLights"]
+position = Vector2(270, 4213)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D7" type="PointLight2D" parent="BedRoomLights"]
+position = Vector2(1638, 3890)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D8" type="PointLight2D" parent="BedRoomLights"]
+position = Vector2(1641, 4107)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D9" type="PointLight2D" parent="BedRoomLights"]
+position = Vector2(977, 3746)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D10" type="PointLight2D" parent="BedRoomLights"]
+position = Vector2(601, 3782)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p5t1g")
+
+[node name="PointLight2D11" type="PointLight2D" parent="BedRoomLights"]
+position = Vector2(1333, 3812)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_p5t1g")
 
@@ -151,6 +229,16 @@ z_index = 1
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_fxgd2")
+
+[node name="Pipes" type="Sprite2D" parent="Sprites"]
+position = Vector2(962, 2378)
+scale = Vector2(0.393, 0.393)
+texture = ExtResource("11_o0hdm")
+
+[node name="BedRoom" type="Sprite2D" parent="Sprites"]
+position = Vector2(961, 4125)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("12_jaq5n")
 
 [node name="HubBGM" type="AudioStreamPlayer" parent="."]
 process_mode = 1

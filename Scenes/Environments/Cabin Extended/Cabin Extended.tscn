@@ -23,7 +23,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 3840, 2160)
 
 [node name="Background_Pipes" type="Sprite2D" parent="."]
-position = Vector2(962.625, 2373.03)
+position = Vector2(963, 2373)
 scale = Vector2(0.392148, 0.392148)
 texture = ExtResource("2_43ur8")
 
