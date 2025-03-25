@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://ccv0ncottq4w"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_oekjk"]
+
+[resource]
+script = ExtResource("1_oekjk")
+starts = {
+"0": &"0_1",
+"1": &"0_2"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-823.79, -205.174),
+"start_id": "0"
+},
+"0_2": {
+"link": &"1_2",
+"offset": Vector2(-820, -540),
+"start_id": "1"
+},
+"1_1": {
+"dialogue": "The temptation to get sodium poisoning again is overwhelming right now…",
+"offset": Vector2(-500, -200),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_2": {
+"dialogue": "Why… (huff) is the… telescope (huff) so far…",
+"offset": Vector2(-500, -540),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = ""
