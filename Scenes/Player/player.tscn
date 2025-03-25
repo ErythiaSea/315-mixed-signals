@@ -120,7 +120,7 @@ script = ExtResource("1_fgmdt")
 position = Vector2(0, 3)
 scale = Vector2(-0.181616, 0.181616)
 sprite_frames = SubResource("SpriteFrames_kxusu")
-animation = &"idle"
+animation = &"run"
 
 [node name="PlayerShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)

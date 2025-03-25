@@ -19,10 +19,10 @@ void fragment() {
 	closestCirclePoint = uv;
 	closestCirclePoint.x = clamp(uv.x, -circle_r, circle_r);
 	closestCirclePoint.y = clamp(uv.y, -circle_r, circle_r);
-	
+
 	vec2 cuv = uv - closestCirclePoint;
 	float d2c = length(cuv);
-	
+
 	COLOR.a = -log(d2c*fall_off_scale + b_offset) * brightness;
 }
 

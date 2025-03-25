@@ -27,17 +27,17 @@ public partial class Globals : Node
 	//Translation related Variables:
 
 	//stores the cipher
-    public int cipherKey = 0;
+	public int cipherKey = 0;
 	//stores if the word has been done this loop or not
 	public bool isCurrentWordDone = false;
 	//Stores a list of words to be used in the translation, increments by the day the player is on
-    public string[] wordList = { "Hot", "Cute" };
+	public string[] wordList = { "Hot", "Cute" };
 
 
-    //Transponding related variables:
+	//Transponding related variables:
 
-    //Stores the last Completed pivots
-    public float LpivotRotRef = 0f;
+	//Stores the last Completed pivots
+	public float LpivotRotRef = 0f;
 	public float RpivotRotRef = 0f;
 	//Stores the last Completed wave
 	public float waveAmpRef = 0f;
@@ -50,7 +50,9 @@ public partial class Globals : Node
 	public PackedScene nextMap;
 
 	// the opps dont want me declaring a vec3 as const...
-	public static /*const*/ Vector3 STANDARD_OUTLINE_COLOR = new Vector3(1.0f, 0.95f, 0.45f);
+	public static Vector3 STANDARD_OUTLINE_COLOR { get; } = new Vector3(1.0f, 0.95f, 0.45f);
+
+	public WipeTransition globalTransition;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -85,4 +87,12 @@ public partial class Globals : Node
 
 	}
 
+	public void StartTransition(TRANSITION transitionType, float transitionLength)
+	{
+		if (globalTransition == null)
+		{
+			globalTransition = new WipeTransition();
+			AddChild(globalTransition);
+		}
+	}
 }

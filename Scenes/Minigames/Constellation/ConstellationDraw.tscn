@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/CameraMovement.cs" id="1_7uyas"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/ConstellationMinigame.cs" id="1_sd3pu"]
-[ext_resource type="Shader" path="res://Scripts/ShaderScript/ConstellationDraw.gdshader" id="3_djkxa"]
+[ext_resource type="Shader" path="res://Scripts/ShaderScript/CircleShader.gdshader" id="3_djkxa"]
 [ext_resource type="Texture2D" uid="uid://3pijp23csaa8" path="res://Scenes/Minigames/Constellation/Sprites/SkyLayer.png" id="3_vuskw"]
 [ext_resource type="Texture2D" uid="uid://dluxx0un1srrc" path="res://Scenes/Minigames/Constellation/Sprites/StarsLayer.png" id="4_irqg6"]
 [ext_resource type="Script" path="res://Scripts/ShaderScript/TextureShader.cs" id="4_ro1i3"]
@@ -64,7 +64,7 @@ scale = Vector2(1.68, 1.68)
 pivot_offset = Vector2(1143, 647)
 mouse_filter = 2
 script = ExtResource("4_ro1i3")
-radius = 0.4
+radius = 2.0
 blur = 0.02
 
 [node name="ControlsLabel" type="Label" parent="eeek/Telescope"]
@@ -77,24 +77,32 @@ theme_override_font_sizes/font_size = 0
 text = "WASD - Pan Camera  ESC - Close"
 label_settings = SubResource("LabelSettings_03dfn")
 
+[node name="Crosshair" type="Sprite2D" parent="eeek"]
+
 [node name="Constellation" type="Node2D" parent="."]
 z_index = -1
 script = ExtResource("8_pqt5s")
 
 [node name="StarNode" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(12, 252)
+particleAffect = null
+indicatorGradient = null
 adjacentStars = [NodePath("../StarNode2")]
 
 [node name="StarNode2" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(1048, 256)
+particleAffect = null
+indicatorGradient = null
 adjacentStars = [NodePath("../StarNode"), NodePath("../StarNode3"), NodePath("../StarNode4")]
 
 [node name="StarNode3" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(1460, -292)
+particleAffect = null
+indicatorGradient = null
 adjacentStars = [NodePath("../StarNode2")]
 
 [node name="StarNode4" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(1772, 500)
+particleAffect = null
+indicatorGradient = null
 adjacentStars = [NodePath("../StarNode2")]
-
-[connection signal="ConstellationCompletion" from="Constellation" to="eeek" method="DisplayConstellation"]

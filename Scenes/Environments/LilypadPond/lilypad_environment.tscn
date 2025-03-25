@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_061b7"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_a0sm7"]
 [ext_resource type="Texture2D" uid="uid://c8t16t54ayhrs" path="res://Scenes/Environments/LilypadPond/lilypadenv_fore.png" id="2_csear"]
-[ext_resource type="Texture2D" uid="uid://din6bfgvj8ksj" path="res://Scenes/Environments/Objects/telescope.png" id="2_tg48q"]
+[ext_resource type="Texture2D" uid="uid://din6bfgvj8ksj" path="res://Scenes/Environments/Objects/sprites/telescope.png" id="2_tg48q"]
 [ext_resource type="PackedScene" uid="uid://rttkrffqrw1g" path="res://Scenes/Environments/Objects/stair_control.tscn" id="3_6n8s2"]
 [ext_resource type="Texture2D" uid="uid://de45w11b26rfr" path="res://Scenes/Environments/LilypadPond/lilypadenv_cliffgrass.png" id="3_n7la6"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_u2itd"]
@@ -232,6 +232,7 @@ shape = SubResource("SegmentShape2D_7qebe")
 position = Vector2(-2749, 554)
 scale = Vector2(2.5, 2.5)
 movementSpeed = 700.0
+walkingParticles = null
 
 [node name="StairControls" type="Node2D" parent="."]
 position = Vector2(2243, 394)

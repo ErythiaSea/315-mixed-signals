@@ -13,6 +13,8 @@ public enum TRANSITION
 }
 public partial class InteractBox : Area2D
 {
+    [Export]
+    PackedScene endDayTransition;
     // whether the interact box can be used
     [Export]
     public bool active = true;
@@ -34,7 +36,7 @@ public partial class InteractBox : Area2D
     // the scene to load (for minigames)
     //[Export]
     //PackedScene scene;
-
+   
     //the type of transition
     [Export]
     public TRANSITION transitionType;
@@ -99,6 +101,9 @@ public partial class InteractBox : Area2D
     [Export]
     bool lockPlayerMovement = false;
 
+    [Signal]
+    public delegate void InteractedEventHandler();
+
     float transitionTime = 0.0f;
     bool isTransition = false;
     private Player player;
@@ -106,6 +111,8 @@ public partial class InteractBox : Area2D
     private Tween tween;
     public bool isPlayerInArea = false;
     float outlineAlpha = 0.0f;
+
+    private float radius = 2f;
 
     public override void _Ready()
     {
@@ -157,9 +164,12 @@ public partial class InteractBox : Area2D
 
         // Not interactable if inactive
         if (!active) return;
+        EmitSignal("Interacted");
 
         // Disable if oneshot
         if (isOneShot) active = false;
+
+       // if (requiredStage == GAMESTAGE.TRANSPONDING) EndDay();
 
         // Handle player ladder stuff
         if (isLadderArea) {
@@ -199,7 +209,7 @@ public partial class InteractBox : Area2D
         {
 			isTransition = true;
 			plrRef.EmitSignal("Transition", (int)transitionType, transitionLength);
-		} 
+		}
         else { loadScene(); }
     }
 
@@ -274,8 +284,21 @@ public partial class InteractBox : Area2D
         if (area.GetParent<Player>() != null)
         {
             isPlayerInArea = false;
-            tween.Kill();
-            outlineAlpha = 0;
+            if (tween != null)
+            {
+                tween.Kill();
+                outlineAlpha = 0;
+            }
         }
+    }
+
+    private void EndDay()
+    {
+        GD.Print("end day");
+
+        player.SetMovementLock(true);
+
+        ColorRect scn = (ColorRect)endDayTransition.Instantiate();
+        player.AddChild(scn);
     }
 }

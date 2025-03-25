@@ -6,7 +6,8 @@
 script = ExtResource("1_5br0n")
 starts = {
 "0": &"0_1",
-"1": &"0_2"
+"1": &"0_2",
+"nme": &"0_3"
 }
 nodes = {
 "0_1": {
@@ -18,6 +19,11 @@ nodes = {
 "link": &"1_4",
 "offset": Vector2(-580, -80),
 "start_id": "1"
+},
+"0_3": {
+"link": &"1_5",
+"offset": Vector2(-600, 300),
+"start_id": "nme"
 },
 "1_1": {
 "dialogue": "dialogue holy crap",
@@ -75,6 +81,19 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": "erg"
+},
+"1_5": {
+"dialogue": "No messages.[English]",
+"offset": Vector2(-320, 300),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "!DEBUG!"
 }
 }
 variables = {}

@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7esa3so80uk"]
+[gd_scene load_steps=21 format=3 uid="uid://c7esa3so80uk"]
 
 [ext_resource type="Texture2D" uid="uid://cnuabra54v07m" path="res://Scenes/Debug/pondlevel.png" id="1_khfq5"]
+[ext_resource type="PackedScene" uid="uid://1iqwcokmbvwv" path="res://Scenes/Environments/Objects/elevator.tscn" id="2_7dhej"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_c1fah"]
 [ext_resource type="PackedScene" uid="uid://rttkrffqrw1g" path="res://Scenes/Environments/Objects/stair_control.tscn" id="3_fdk2y"]
+[ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://Sprites/icon.svg" id="3_iqk5a"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_hhi5s"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hq7ll"]
@@ -21,6 +23,10 @@ b = Vector2(-791, 224)
 a = Vector2(-1181, 4)
 b = Vector2(-791, 224)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_nbl8e"]
+a = Vector2(1319, 124)
+b = Vector2(710, 125)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_uumkn"]
 a = Vector2(-441, 465)
 b = Vector2(-496, 453)
@@ -28,14 +34,30 @@ b = Vector2(-496, 453)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7qebe"]
 b = Vector2(74, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu8ry"]
+size = Vector2(264, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4mxw"]
+size = Vector2(6, 134.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udmvb"]
+size = Vector2(8, 137.25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t2dgr"]
+radius = 16.1245
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pm7kl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qricm"]
 radius = 40.0125
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ec0mi"]
+radius = 27.0
+
 [node name="DemoEnv" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
+position = Vector2(231, -12)
 texture = ExtResource("1_khfq5")
 
 [node name="LevelCollision" type="StaticBody2D" parent="."]
@@ -60,6 +82,10 @@ one_way_collision = true
 shape = SubResource("SegmentShape2D_43ati")
 one_way_collision = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision"]
+position = Vector2(3, -17)
+shape = SubResource("SegmentShape2D_nbl8e")
+
 [node name="LadderCollision" type="StaticBody2D" parent="."]
 editor_description = "This is the collision that stops the player from moving too far up/down from ladders"
 collision_layer = 8
@@ -72,8 +98,41 @@ shape = SubResource("SegmentShape2D_uumkn")
 position = Vector2(-766, 133)
 shape = SubResource("SegmentShape2D_7qebe")
 
+[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "wallCollision") instance=ExtResource("2_7dhej")]
+position = Vector2(1431, 554)
+topCallButton = NodePath("../ElevatorTopCall")
+bottomCallButton = NodePath("../ElevatorBottomCall")
+elevatorButton = NodePath("ElevatorButton")
+wallCollision = [NodePath("ElevatorWallL"), NodePath("ElevatorWallR")]
+topY = 110.0
+bottomY = 554.0
+
+[node name="ElevatorFloor" type="CollisionShape2D" parent="Elevator"]
+position = Vector2(34, 4.5)
+shape = SubResource("RectangleShape2D_iu8ry")
+
+[node name="ElevatorWallL" type="CollisionShape2D" parent="Elevator"]
+position = Vector2(-101, -68.625)
+shape = SubResource("RectangleShape2D_m4mxw")
+
+[node name="ElevatorWallR" type="CollisionShape2D" parent="Elevator"]
+position = Vector2(169, -69.375)
+shape = SubResource("RectangleShape2D_udmvb")
+
+[node name="ElevatorButton" parent="Elevator" instance=ExtResource("4_hhi5s")]
+position = Vector2(34, -11)
+
+[node name="ButtonShape" type="CollisionShape2D" parent="Elevator/ElevatorButton"]
+shape = SubResource("CircleShape2D_t2dgr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Elevator"]
+position = Vector2(34, 4)
+scale = Vector2(2.0824, 0.0799988)
+texture = ExtResource("3_iqk5a")
+
 [node name="Player" parent="." instance=ExtResource("2_c1fah")]
-position = Vector2(-247, 643)
+position = Vector2(950, 39)
+walkingParticles = null
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = -1920
@@ -105,3 +164,15 @@ shape = SubResource("CircleShape2D_qricm")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="LadderInteract"]
 position = Vector2(0, -379)
 shape = SubResource("CircleShape2D_qricm")
+
+[node name="ElevatorBottomCall" parent="." instance=ExtResource("4_hhi5s")]
+position = Vector2(1231, 582)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorBottomCall"]
+shape = SubResource("CircleShape2D_ec0mi")
+
+[node name="ElevatorTopCall" parent="." instance=ExtResource("4_hhi5s")]
+position = Vector2(1120, 67)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorTopCall"]
+shape = SubResource("CircleShape2D_ec0mi")
