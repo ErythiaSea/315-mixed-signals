@@ -43,6 +43,7 @@ public partial class EndDay : Node2D
 
 	public void EndTheDay()
 	{
+		GD.Print("called");
 		globalScript.NewDay();
 		player.SetMovementLock(true);
 

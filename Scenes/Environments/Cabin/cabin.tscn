@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=64 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_hvnuo"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -491,7 +491,6 @@ position = Vector2(238, 4549)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/Bed")
-requiredStage = 4
 dialogueBox = NodePath("../DialogueBubble")
 startID = "nme"
 timeLimit = 2.5
@@ -522,7 +521,6 @@ scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
 spawnPoint = 0
 dialogueBox = NodePath("../DialogueBubble")
-errorStartID = "nme"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
 shape = SubResource("RectangleShape2D_lvk1a")
