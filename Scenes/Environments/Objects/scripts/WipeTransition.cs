@@ -24,10 +24,7 @@ public partial class WipeTransition : CanvasLayer
 		Smaterial = transitionRect.Material as ShaderMaterial;
         Smaterial.SetShaderParameter("fadeWidth", fadeWidth);
 
-        GD.Print("hello from wipetransition::ready! next trans is: ", nextTransition);
         if (nextTransition != TRANSITION.NONE) ReverseTransition();
-
-        transitionPlayer.AnimationFinished += OnAnimationEnd;
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -72,12 +69,10 @@ public partial class WipeTransition : CanvasLayer
             nextTransition = TRANSITION.TOPtoBOTTOM;
             break;
         }
-        GD.Print("hello from wipetransition::playtransition! next transition is: ", nextTransition);
 	}
 
 	private void ReverseTransition()
 	{
-        GD.Print("Hello from WipeTransition::ReverseTransition!");
 		Visible = true;
 
 		switch (nextTransition)
@@ -104,7 +99,6 @@ public partial class WipeTransition : CanvasLayer
 
     private void OnAnimationEnd(StringName animName)
     {
-        GD.Print("hello from WipeTransition::OnAnimationEnd!");
         if (nextTransition == TRANSITION.NONE) return;
         ReverseTransition();
         //nextTransition = TRANSITION.NONE;
