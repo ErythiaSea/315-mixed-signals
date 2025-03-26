@@ -184,7 +184,7 @@ dialogueBox = NodePath("DialogueBubble")
 spawnData = [SubResource("Resource_7pcct")]
 OffsetY = -300.0
 rightLimit = 1920
-bottomLimit = 4592
+bottomLimit = 4952
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8vdl8")
@@ -387,6 +387,7 @@ shape = SubResource("RectangleShape2D_f8yak")
 
 [node name="ElevatorButton" parent="Elevator" instance=ExtResource("15_lw781")]
 position = Vector2(-136, -11)
+requiredStage = 1
 
 [node name="ButtonShape" type="CollisionShape2D" parent="Elevator/ElevatorButton"]
 shape = SubResource("CircleShape2D_b7gpl")
@@ -471,6 +472,7 @@ collision_layer = 4
 script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/Monitors")
 transitionType = 3
+requiredStage = 1
 scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
@@ -482,7 +484,7 @@ position = Vector2(1400, 4548)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/TranslationPaper")
-requiredStage = 3
+requiredStage = 4
 scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
 dialogueBox = NodePath("../DialogueBubble")
 
@@ -508,8 +510,9 @@ position = Vector2(1645, 4545)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/Photoboard")
+transitionType = 3
+scenePath = "res://Scenes/Minigames/Photoboard/photoboard.tscn"
 dialogueBox = NodePath("../DialogueBubble")
-startID = "nme"
 timeLimit = 2.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoBox"]

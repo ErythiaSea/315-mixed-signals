@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 
 public partial class EndDay : Node2D
 {
+	// emitted in startTheDay() so that dialogue/cutscenes can be played on day start
+	[Signal]
+	public delegate void DayStartEventHandler();
+
     [Export]
     PackedScene endTransition;
 	[Export]
@@ -62,6 +66,7 @@ public partial class EndDay : Node2D
 		currentTrans.OpenCircle(0f, 1f, transitionTime);
 		player.SetMovementLock(false);
 		isClosed = false;
+		EmitSignal(SignalName.DayStart);
 	}
 
 	private void CreateTransition()

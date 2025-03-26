@@ -6,6 +6,7 @@ using System.Linq;
 
 public enum GAMESTAGE
 {
+	BEGIN,
 	TRANSPONDING,
 	WAVEFORM,
 	CONSTELLATION,
@@ -74,8 +75,7 @@ public partial class Globals : Node
 	private void InitalGameSetUp()
 	{
 		gameState.day = 0;
-		gameState.stage = GAMESTAGE.TRANSPONDING;
-
+		gameState.stage = GAMESTAGE.BEGIN;
 	}
 
 	public void NewDay()
