@@ -477,13 +477,14 @@ scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 position = Vector2(183, 11)
 shape = SubResource("RectangleShape2D_0oee4")
 
-[node name="TranslationBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite")]
+[node name="TranslationBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite", "dialogueBox")]
 position = Vector2(1400, 4548)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/TranslationPaper")
 requiredStage = 3
 scenePath = "res://Scenes/Minigames/Translation/Translation.tscn"
+dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
 position = Vector2(-50, -25.25)
