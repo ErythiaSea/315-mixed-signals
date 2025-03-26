@@ -25,7 +25,9 @@ public partial class EndDay : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		player = GetTree().Root.GetChild(3).GetNode("Player") as Player;
+		isDisplayed = false;
+        dialogueBox.Connect("dialogue_ended", Callable.From(startTheDay));
+        player = GetTree().Root.GetChild(3).GetNode("Player") as Player;
 		globalScript = Globals.Instance;
 	}
 
@@ -35,9 +37,10 @@ public partial class EndDay : Node2D
 		if (currentTrans != null) isClosed = currentTrans.isClosed;
 		else return;
 
-		if (currentTrans.isDone)
+		if (currentTrans.isDone && !isDisplayed)
 		{
-           // dialogueBox.Call("start", "Sleep");
+           dialogueBox.Call("start", "Sleep");
+			isDisplayed = true;
         }
 	}
 
@@ -56,6 +59,9 @@ public partial class EndDay : Node2D
 	public void startTheDay()
 	{
 		//open the circle back up
+		currentTrans.OpenCircle(0f, 1f, transitionTime);
+		player.SetMovementLock(false);
+		isClosed = false;
 	}
 
 	private void CreateTransition()

@@ -14,14 +14,17 @@ public partial class ConstellationMinigame : BaseMinigame
     TutorialButton tutorialButton;
     CameraMovement camera;
     StarsParent starsParent;
-
+    Godot.Collections.Array<Node2D> constellations;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
 		base._Ready();
 
+        constellations = GetConstellations();
         globalScript = Globals.Instance;
 
+        SetupConstellation();
+        
         tutorialButton = GetNode<TutorialButton>("UICanvas/TutorialButton");
         tutorialButton.startID = constellationTutorialStartID;
 
@@ -62,5 +65,26 @@ public partial class ConstellationMinigame : BaseMinigame
     void RegainCameraControl()
     {
         camera.canMoveCam = true;
+    }
+
+    private Godot.Collections.Array<Node2D> GetConstellations()
+    {
+        Godot.Collections.Array<Node2D> consts = new Godot.Collections.Array<Node2D>();
+        foreach(Node child in GetChildren())
+        {
+            if(child.Name == "Corvus" || child.Name == "Pyxis")
+            {
+                consts.Add(child as Node2D);
+            }
+        }
+
+        return consts;
+    }
+
+    private void SetupConstellation()
+    {
+        constellations[globalScript.gameState.day].Visible = true;
+        StarsParent prt = constellations[globalScript.gameState.day] as StarsParent;
+        prt.GenerateNumbers();
     }
 }

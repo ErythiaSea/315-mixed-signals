@@ -35,6 +35,8 @@ engHint = NodePath("HintVBox/HBoxContainer/EnglishChar")
 cipherDisplay = NodePath("CipherDisplay")
 englishFont = ExtResource("3_tm1gv")
 winInd = NodePath("WinIndicator")
+Day1Dialogue = ExtResource("8_ey0sh")
+Day2Dialogue = ExtResource("8_ey0sh")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_right = 1920.0

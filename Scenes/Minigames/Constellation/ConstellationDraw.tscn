@@ -94,24 +94,42 @@ blur = 0.02
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_0ijxk")
 
-[node name="Constellation" type="Node2D" parent="."]
+[node name="Pyxis" type="Node2D" parent="."]
+visible = false
 z_index = -1
 script = ExtResource("8_pqt5s")
 
-[node name="StarNode" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(12, 252)
+[node name="StarNode" parent="Pyxis" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(198, 928)
 adjacentStars = [NodePath("../StarNode2")]
 
-[node name="StarNode2" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(1048, 256)
+[node name="StarNode2" parent="Pyxis" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(617, 68)
+adjacentStars = [NodePath("../StarNode"), NodePath("../StarNode3")]
+
+[node name="StarNode3" parent="Pyxis" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(1652, -255)
+adjacentStars = [NodePath("../StarNode2")]
+
+[node name="Corvus" type="Node2D" parent="."]
+visible = false
+z_index = -1
+script = ExtResource("8_pqt5s")
+
+[node name="StarNode" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(-344, 230)
+adjacentStars = [NodePath("../StarNode2")]
+
+[node name="StarNode2" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(806, 222)
 adjacentStars = [NodePath("../StarNode"), NodePath("../StarNode3"), NodePath("../StarNode4")]
 
-[node name="StarNode3" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(1460, -292)
+[node name="StarNode3" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(1635, -496)
 adjacentStars = [NodePath("../StarNode2")]
 
-[node name="StarNode4" parent="Constellation" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(1772, 500)
+[node name="StarNode4" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(1715, 772)
 adjacentStars = [NodePath("../StarNode2")]
 
 [node name="UICanvas" type="CanvasLayer" parent="."]
@@ -157,3 +175,6 @@ theme = ExtResource("11_gm0gd")
 script = ExtResource("11_nevyl")
 data = ExtResource("12_2mmrr")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_o4ycm"), SubResource("RichTextEffect_m1n3u"), SubResource("RichTextEffect_s3dl4")])
+
+[connection signal="ConstellationCompletion" from="Pyxis" to="eeek" method="DisplayConstellation"]
+[connection signal="ConstellationCompletion" from="Corvus" to="eeek" method="DisplayConstellation"]

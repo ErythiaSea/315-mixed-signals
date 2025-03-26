@@ -87,7 +87,7 @@ public partial class Player : CharacterBody2D
                         GD.Print("EMITTING PARTICLES");
                         GpuParticles2D particles = walkingParticles.Instantiate() as GpuParticles2D;
                         particles.Emitting = true;
-                        particles.GlobalPosition = new Vector2(GlobalPosition.X + (Mathf.Clamp(Velocity.X,-10,10)), GlobalPosition.Y + 140);
+                        particles.GlobalPosition = new Vector2(GlobalPosition.X + (Mathf.Clamp(Velocity.X,-10,10)), GlobalPosition.Y + 200);
 
 						ParticleProcessMaterial mat = particles.ProcessMaterial as ParticleProcessMaterial;
 						mat.Direction = new Vector3(-Mathf.Clamp(Velocity.X,-1,1) , mat.Direction.Y,0);
