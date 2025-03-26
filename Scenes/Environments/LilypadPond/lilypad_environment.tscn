@@ -350,6 +350,7 @@ position = Vector2(9.25, -63)
 shape = SubResource("RectangleShape2D_3ioy7")
 
 [node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]
+z_index = 2
 clip_contents = false
 offset_left = 650.0
 offset_top = 296.0
