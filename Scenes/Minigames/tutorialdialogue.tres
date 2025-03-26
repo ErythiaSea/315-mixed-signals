@@ -49,7 +49,7 @@ nodes = {
 "options": {
 0: {
 "condition": {},
-"link": &"1_2",
+"link": "END",
 "text": ""
 }
 },
@@ -102,7 +102,7 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 "options": {
 0: {
 "condition": {},
-"link": &"1_4",
+"link": "END",
 "text": ""
 }
 },
@@ -115,7 +115,7 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 "options": {
 0: {
 "condition": {},
-"link": &"1_6",
+"link": "END",
 "text": ""
 }
 },
@@ -133,7 +133,7 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 },
 1: {
 "condition": {},
-"link": &"1_2",
+"link": "END",
 "text": "Yes"
 }
 },
@@ -146,7 +146,7 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 "options": {
 0: {
 "condition": {},
-"link": &"1_3",
+"link": "END",
 "text": ""
 }
 },
@@ -164,7 +164,7 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 },
 1: {
 "condition": {},
-"link": &"1_3",
+"link": "END",
 "text": "Yes"
 }
 },

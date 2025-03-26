@@ -31,6 +31,7 @@ public partial class TranslationCanvasUI : BaseMinigame
 
     Panel dialogueBox;
     Globals globalScript;
+	CabinLevel cabin;
 
     private string currentWord;
 	Godot.Collections.Array<Node> containerNodes;
@@ -39,6 +40,8 @@ public partial class TranslationCanvasUI : BaseMinigame
 	{
 		base._Ready();
 		globalScript = Globals.Instance;
+		cabin = GetParent<CabinLevel>();
+		MinigameClosed += cabin.TranslationComplete;
 
 		cipherDisplay.Clear();
 		messageBox.Clear();
@@ -49,8 +52,17 @@ public partial class TranslationCanvasUI : BaseMinigame
 
 		CallDeferred(nameof(TextInitalisation));
 
-		// load dialogue data based on day
-		dialogueBox = GetNode<Panel>("DialogueBox");
+		if (Day1Dialogue == null) {
+			GD.PrintErr("day 1 dialogue not assigned, please assign in inspector!");
+		}
+        if (Day2Dialogue == null)
+        {
+            GD.PrintErr("day 2 dialogue not assigned, please assign in inspector!");
+        }
+
+        // load dialogue data based on day
+        dialogueBox = GetNode<Panel>("DialogueBox");
+		dialogueBox.Connect("dialogue_ended", Callable.From(OnDialogueEnd));
 		LoadDialogue();
 		if (globalScript.tutorialProgress <= GAMESTAGE.TRANSLATION)
 		{

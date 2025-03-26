@@ -50,8 +50,7 @@ size = Vector2(49, 186)
 [node name="SaltEnv" type="Node2D"]
 script = ExtResource("1_2e86h")
 spawnData = Array[Object]([SubResource("Resource_ci2ls")])
-cameraZoom = 0.6
-OffsetY = -150.0
+cameraZoom = 0.8
 leftLimit = -2974
 topLimit = -1459
 rightLimit = 2974
@@ -61,9 +60,9 @@ bottomLimit = 1459
 texture = ExtResource("3_y8bnk")
 
 [node name="Player" parent="." instance=ExtResource("2_nx23b")]
-position = Vector2(2794, 736)
-scale = Vector2(2, 2)
-movementSpeed = 550.0
+position = Vector2(2794, 833)
+scale = Vector2(1.2, 1.2)
+walkingParticles = null
 
 [node name="head" type="Marker2D" parent="Player"]
 position = Vector2(0, -45.8333)
