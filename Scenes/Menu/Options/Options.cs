@@ -20,28 +20,28 @@ public partial class Options : Control
 		}
 		else
 		{
-            masterVolumeSlider.ValueChanged += UpdateVolume;
+			masterVolumeSlider.ValueChanged += UpdateVolume;
 		}
 
 		masterBusIdx = AudioServer.GetBusIndex(masterBusName);
 
 		closeButton = GetNode<Button>("Close");
-        closeButton.Pressed += CloseOptions;
-    }
+		closeButton.Pressed += CloseOptions;
+	}
 
-    private void CloseOptions()
-    {
+	private void CloseOptions()
+	{
 		QueueFree();
-    }
+	}
 
-    private void UpdateVolume(double value)
-    {
+	private void UpdateVolume(double value)
+	{
 		AudioServer.SetBusVolumeDb(masterBusIdx, (float)Mathf.LinearToDb(value));
 		GD.Print("new volume is: ", AudioServer.GetBusVolumeDb(masterBusIdx));
-    }
+	}
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
 	{
 	}
 }

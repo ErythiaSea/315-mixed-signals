@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dkjjkuqsupb4f"]
+[gd_scene load_steps=45 format=3 uid="uid://dkjjkuqsupb4f"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_tgjlw"]
 [ext_resource type="Texture2D" uid="uid://bkevc4rf8wjhe" path="res://Scenes/Environments/LilypadPond/lilypadenv_back.png" id="1_x6dd7"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://de45w11b26rfr" path="res://Scenes/Environments/LilypadPond/lilypadenv_cliffgrass.png" id="3_n7la6"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_u2itd"]
 [ext_resource type="AudioStream" uid="uid://dko7fvpro21fk" path="res://Audio/Music/Kinesis Stellae   Choir by Vrymaa Id-770060.wav" id="10_cyaek"]
-[ext_resource type="Resource" uid="uid://ciinae4snmogy" path="res://Scenes/Environments/LilypadPond/Dialogue/misc dial 1.tres" id="11_3uaob"]
+[ext_resource type="Resource" uid="uid://ciinae4snmogy" path="res://Scenes/Environments/LilypadPond/Dialogue/lilypad dialogue.tres" id="11_3uaob"]
 [ext_resource type="AudioStream" uid="uid://c8eusy0cr4kfc" path="res://Audio/Ambience/Water, Waterfall, Waterfall, The Trolls Road, River, 10m, Loop 02 SND73480.ogg" id="11_70pbf"]
 [ext_resource type="AudioStream" uid="uid://d1dsjc5b8djm1" path="res://Audio/Ambience/Water, Flow, Shallow Creek, Forest, Birds, Buderim Forest, Qeensland, Australia 01 SND31676.ogg" id="12_dyj3n"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="12_f3lj2"]
@@ -30,6 +30,34 @@ faceLeft = false
 script = ExtResource("2_061b7")
 spawnPosition = Vector2(-916, -972)
 faceLeft = true
+
+[sub_resource type="Environment" id="Environment_hsgfa"]
+background_mode = 3
+glow_enabled = true
+glow_levels/4 = 2.0
+glow_levels/5 = 4.0
+glow_levels/6 = 8.0
+glow_levels/7 = 16.0
+glow_normalized = true
+glow_intensity = 0.4
+glow_bloom = 0.3
+glow_blend_mode = 0
+fog_mode = 1
+fog_light_color = Color(0.872069, 0.00094317, 0.923236, 1)
+fog_density = 1.0
+fog_depth_curve = 2.82843
+adjustment_enabled = true
+adjustment_brightness = 0.8
+adjustment_saturation = 1.1
+
+[sub_resource type="Gradient" id="Gradient_tartr"]
+offsets = PackedFloat32Array(0, 0.662338)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3mkuh"]
+gradient = SubResource("Gradient_tartr")
+fill = 1
+fill_from = Vector2(0.509174, 0.518349)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkpum"]
 size = Vector2(150, 20)
@@ -99,18 +127,39 @@ topLimit = -1459
 rightLimit = 2974
 bottomLimit = 1459
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hsgfa")
+
+[node name="Lighting" type="Node2D" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting"]
+color = Color(0.635314, 0.656971, 0.595154, 1)
+energy = 0.5
+
+[node name="PointLight2D" type="PointLight2D" parent="Lighting"]
+position = Vector2(343, -1446)
+scale = Vector2(30.4, 30.4)
+texture = SubResource("GradientTexture2D_3mkuh")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Lighting"]
+position = Vector2(3160, -362)
+scale = Vector2(30.4, 30.4)
+texture = SubResource("GradientTexture2D_3mkuh")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("1_x6dd7")
 
-[node name="TelescopeSprite" type="Sprite2D" parent="."]
-position = Vector2(-929, -816)
-texture = ExtResource("2_tg48q")
-
-[node name="Foreground" type="Sprite2D" parent="."]
+[node name="Foreground" type="Sprite2D" parent="Sprites"]
 z_index = 2
 texture = ExtResource("2_csear")
 
-[node name="CliffGrass" type="Sprite2D" parent="."]
+[node name="TelescopeSprite" type="Sprite2D" parent="Sprites"]
+position = Vector2(-929, -816)
+texture = ExtResource("2_tg48q")
+
+[node name="CliffGrass" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("3_n7la6")
 
 [node name="TelescopeBox" parent="." instance=ExtResource("4_u2itd")]
@@ -329,9 +378,9 @@ autoplay = true
 position = Vector2(-1115, 794)
 isOneShot = true
 isAutofire = true
-dialogueBox = NodePath("../DialogueBubble")
 startID = "0"
 timeLimit = 5.0
+dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox"]
 position = Vector2(31, 111)
@@ -341,9 +390,9 @@ shape = SubResource("RectangleShape2D_am0pj")
 position = Vector2(1145, -1161)
 isOneShot = true
 isAutofire = true
-dialogueBox = NodePath("../DialogueBubble")
 startID = "1"
 timeLimit = 5.0
+dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox2"]
 position = Vector2(9.25, -63)

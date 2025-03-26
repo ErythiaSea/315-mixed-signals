@@ -126,9 +126,9 @@ panning_strength = 5.0
 bus = &"TranspondTowerL"
 
 [node name="lineSprite" type="Sprite2D" parent="leftPivot"]
-position = Vector2(1300, 0)
+position = Vector2(1075, 0)
 rotation = 1.5708
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 texture = ExtResource("6_b2ab4")
 
 [node name="Satellite" type="Sprite2D" parent="leftPivot"]
@@ -154,9 +154,9 @@ panning_strength = 5.0
 bus = &"TranspondTowerR"
 
 [node name="lineSprite" type="Sprite2D" parent="rightPivot"]
-position = Vector2(1300, 0)
+position = Vector2(1075, 0)
 rotation = 1.5708
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 texture = ExtResource("6_b2ab4")
 
 [node name="Satellite" type="Sprite2D" parent="rightPivot"]
