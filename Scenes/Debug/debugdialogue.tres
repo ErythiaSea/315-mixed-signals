@@ -12,15 +12,20 @@ starts = {
 "TRANSLATION": &"0_7",
 "TRANSPONDING": &"0_4",
 "WAVEFORM": &"0_5",
+"WrongDay": &"0_10",
 "nme": &"0_3",
 "translationend": &"0_9"
-"WrongDay": &"0_10",
 }
 nodes = {
 "0_1": {
 "link": &"1_1",
 "offset": Vector2(-552.463, -429.169),
 "start_id": "0"
+},
+"0_10": {
+"link": &"1_13",
+"offset": Vector2(-381, 1756.86),
+"start_id": "WrongDay"
 },
 "0_2": {
 "link": &"1_4",
@@ -61,11 +66,6 @@ nodes = {
 "link": &"1_12",
 "offset": Vector2(600, 1360),
 "start_id": "translationend"
-},
-"0_10": {
-"link": &"1_13",
-"offset": Vector2(-381, 1756.86),
-"start_id": "WrongDay"
 },
 "1_1": {
 "dialogue": "dialogue holy crap",
