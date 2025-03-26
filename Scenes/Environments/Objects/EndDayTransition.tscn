@@ -9,25 +9,11 @@ shader_parameter/circle_r = null
 shader_parameter/circle_b = null
 
 [node name="CircleShrink" type="ColorRect"]
-z_index = 8
+z_index = 5
 material = SubResource("ShaderMaterial_c7ga7")
-offset_left = -959.0
-offset_top = -540.0
-offset_right = 961.0
-offset_bottom = 540.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 scale = Vector2(2, 2)
 pivot_offset = Vector2(960, 540)
 color = Color(0, 0, 0, 1)
 script = ExtResource("2_ds16g")
-
-[node name="SleepText" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 811.5
-offset_top = 454.0
-offset_right = 1411.5
-offset_bottom = 754.0
-theme_override_colors/default_color = Color(0.882353, 0.882353, 0.882353, 0.654902)
-theme_override_font_sizes/bold_italics_font_size = 3
-theme_override_font_sizes/normal_font_size = 50
-bbcode_enabled = true
-text = "[center]"

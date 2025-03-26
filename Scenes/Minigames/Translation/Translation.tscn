@@ -167,3 +167,4 @@ startID = "tut"
 dialogueBox = NodePath("../DialogueBox")
 
 [connection signal="button_down" from="CheckAnswerButton" to="." method="AnswerButton"]
+[connection signal="dialogue_ended" from="DialogueBox" to="." method="OnDialogueEnd"]

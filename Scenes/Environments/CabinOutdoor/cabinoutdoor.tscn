@@ -96,7 +96,7 @@ script = ExtResource("10_vfhkp")
 position = Vector2(-2, 0)
 script = ExtResource("1_4weox")
 spawnData = Array[Object]([SubResource("Resource_igbtt"), SubResource("Resource_5o2kn")])
-cameraZoom = 0.6
+cameraZoom = 0.5
 leftLimit = -1924
 topLimit = -1590
 rightLimit = 5570
@@ -202,7 +202,7 @@ grow_vertical = 2
 theme = ExtResource("7_u12k5")
 script = ExtResource("7_ra4mx")
 data = ExtResource("8_ctnhm")
-start_id = "Sleep"
+start_id = "0"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_kmmy1"), SubResource("RichTextEffect_4u6xp"), SubResource("RichTextEffect_a24d6")])
 
 [node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]

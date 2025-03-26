@@ -4,10 +4,6 @@ using static Godot.Tween;
 
 public partial class BaseMinigame : CanvasLayer
 {
-	// emitted when the minigame is closed
-	[Signal]
-	public delegate void MinigameClosedEventHandler();
-
 	// type of transition this minigame uses on exit
 	[Export]
 	public TRANSITION exitTransition = TRANSITION.NONE;
@@ -71,13 +67,12 @@ public partial class BaseMinigame : CanvasLayer
 		}
 	}
 
-	// todo: still doing this a crappy way for now but i'd like to do signal bus later
+	// still doing this a crappy way for now but i'd like to do signal bus later
 	private void QuitMinigame()
 	{
 		OnTransitionFinish();
 		player.SetMovementLock(false);
 		player.SetCameraEnabled(true);
-		EmitSignal(SignalName.MinigameClosed);
 		QueueFree();
 	}
 

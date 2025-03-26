@@ -1,7 +1,5 @@
 using Godot;
 using System;
-using System.ComponentModel.Design;
-using System.Threading.Tasks;
 
 public partial class EndDay : Node2D
 {
@@ -10,43 +8,36 @@ public partial class EndDay : Node2D
 	[Export]
 	float transitionTime = 3f;
 
-    [ExportSubgroup("Dialogue")]
-    // the dialogue box to trigger
-    [Export]
-    Control dialogueBox;
-
     private EndTransitionScript currentTrans;
     Player player;
 	Globals globalScript;
 	bool isClosed = false;
-
-	private bool isDisplayed = false;
+	
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		isDisplayed = false;
-        dialogueBox.Connect("dialogue_ended", Callable.From(startTheDay));
-        player = GetTree().Root.GetChild(3).GetNode("Player") as Player;
+		player = GetTree().Root.GetChild(3).GetNode("Player") as Player;
 		globalScript = Globals.Instance;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (currentTrans != null) isClosed = currentTrans.isClosed;
-		else return;
-
-		if (currentTrans.isDone && !isDisplayed)
+		if(currentTrans != null)
 		{
-           dialogueBox.Call("start", "Sleep");
-			isDisplayed = true;
-        }
+			GD.Print("UPDATING");
+			currentTrans.GlobalPosition = player.GlobalPosition;
+		}
+
+		if (isClosed)
+		{
+			//run whatever we need here
+		}
 	}
 
 	public void EndTheDay()
 	{
-		GD.Print("called");
 		globalScript.NewDay();
 		player.SetMovementLock(true);
 
@@ -54,22 +45,20 @@ public partial class EndDay : Node2D
 		{
             CreateTransition();
         }
+        GetTree().CreateTimer(transitionTime);
+		isClosed = true;
 	}
 
 	public void startTheDay()
 	{
 		//open the circle back up
-		currentTrans.OpenCircle(0f, 1f, transitionTime);
-		player.SetMovementLock(false);
-		isClosed = false;
 	}
 
 	private void CreateTransition()
 	{
 		EndTransitionScript transition = endTransition.Instantiate() as EndTransitionScript;
-		//transition.PivotOffset = new Vector2(transition.Size.X / 2,transition.Size.Y / 2);
-		player.AddChild(transition);
+		GetParent().AddChild(transition);
 		currentTrans = transition;
-		transition.CloseCircle(1f, 0f, transitionTime);
+		transition.CloseCircle(2f, 0f, transitionTime);
     }
 }

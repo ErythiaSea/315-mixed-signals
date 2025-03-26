@@ -7,25 +7,17 @@ script = ExtResource("1_5br0n")
 starts = {
 "0": &"0_1",
 "1": &"0_2",
-"CONSTELLATION": &"0_6",
-"Sleep": &"0_8",
-"TRANSLATION": &"0_7",
-"TRANSPONDING": &"0_4",
-"WAVEFORM": &"0_5",
-"WrongDay": &"0_10",
-"nme": &"0_3",
-"translationend": &"0_9"
+"2": &"0_4",
+"3": &"0_5",
+"4": &"0_6",
+"5": &"0_7",
+"nme": &"0_3"
 }
 nodes = {
 "0_1": {
 "link": &"1_1",
 "offset": Vector2(-552.463, -429.169),
 "start_id": "0"
-},
-"0_10": {
-"link": &"1_13",
-"offset": Vector2(-381, 1756.86),
-"start_id": "WrongDay"
 },
 "0_2": {
 "link": &"1_4",
@@ -40,32 +32,22 @@ nodes = {
 "0_4": {
 "link": &"1_6",
 "offset": Vector2(-580, 680),
-"start_id": "TRANSPONDING"
+"start_id": "2"
 },
 "0_5": {
 "link": &"1_7",
 "offset": Vector2(80, 680),
-"start_id": "WAVEFORM"
+"start_id": "3"
 },
 "0_6": {
 "link": &"1_8",
 "offset": Vector2(-580, 1020),
-"start_id": "CONSTELLATION"
+"start_id": "4"
 },
 "0_7": {
 "link": &"1_9",
 "offset": Vector2(80, 1020),
-"start_id": "TRANSLATION"
-},
-"0_8": {
-"link": &"1_10",
-"offset": Vector2(-520, 1360),
-"start_id": "Sleep"
-},
-"0_9": {
-"link": &"1_12",
-"offset": Vector2(600, 1360),
-"start_id": "translationend"
+"start_id": "5"
 },
 "1_1": {
 "dialogue": "dialogue holy crap",
@@ -84,58 +66,6 @@ nodes = {
 },
 "size": Vector2(300, 289),
 "speaker": "erg"
-},
-"1_10": {
-"dialogue": "Hey im Sleepin here!",
-"offset": Vector2(-220, 1360),
-"options": {
-0: {
-"condition": {},
-"link": &"1_11",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "..."
-},
-"1_11": {
-"dialogue": "Hey im Dreaming here!",
-"offset": Vector2(140, 1360),
-"options": {
-0: {
-"condition": {},
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "..."
-},
-"1_12": {
-"dialogue": "debugdialogue.tres with startid \"translationend\" - end of translation dialogue here!!",
-"offset": Vector2(820, 1360),
-"options": {
-0: {
-"condition": {},
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "eryth"
-},
-"1_13": {
-"dialogue": "I don't need to go here right now, I should explore somewhere else.",
-"offset": Vector2(-40, 1760),
-"options": {
-0: {
-"condition": {},
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "..."
 },
 "1_2": {
 "dialogue": "you get me",
@@ -218,7 +148,7 @@ strange...",
 "speaker": "..."
 },
 "1_8": {
-"dialogue": "These stars won't find themseleves, where is my telescope?",
+"dialogue": "These stars won't fine themseleves, where is my telescope?",
 "offset": Vector2(-240, 1020),
 "options": {
 0: {
