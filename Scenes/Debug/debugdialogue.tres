@@ -36,7 +36,7 @@ nodes = {
 },
 "0_5": {
 "link": &"1_7",
-"offset": Vector2(80, 680),
+"offset": Vector2(160, 680),
 "start_id": "3"
 },
 "0_6": {
@@ -46,7 +46,7 @@ nodes = {
 },
 "0_7": {
 "link": &"1_9",
-"offset": Vector2(80, 1020),
+"offset": Vector2(160, 1020),
 "start_id": "5"
 },
 "1_1": {
@@ -120,8 +120,7 @@ nodes = {
 "speaker": "!DEBUG!"
 },
 "1_6": {
-"dialogue": "I should probably check out these new signals I'm getting[br]
-strange...",
+"dialogue": "No time for a nap. I need to get to work with the new signals upstairs.",
 "offset": Vector2(-240, 680),
 "options": {
 0: {
@@ -134,9 +133,8 @@ strange...",
 "speaker": "..."
 },
 "1_7": {
-"dialogue": "I need to tune the signal waves to know where I'm headed first[br]
-*Sigh*",
-"offset": Vector2(420, 680),
+"dialogue": "I still need to go upstairs and deal with those signals. My boss would kill me if I leave early.",
+"offset": Vector2(500, 680),
 "options": {
 0: {
 "condition": {},
@@ -172,8 +170,21 @@ strange...",
 },
 "size": Vector2(300, 240),
 "speaker": "..."
+},
+"2_1": {
+"comment": "Make this the dialogue
+for trying to leave early.",
+"offset": Vector2(160, 800),
+"size": Vector2(200, 100)
+},
+"2_2": {
+"comment": "This dialogue plays 
+when going for a nap
+too early",
+"offset": Vector2(-580, 800),
+"size": Vector2(200, 120)
 }
 }
 variables = {}
-strays = Array[String]([])
+strays = Array[String](["2_2", "2_1"])
 characters = ""
