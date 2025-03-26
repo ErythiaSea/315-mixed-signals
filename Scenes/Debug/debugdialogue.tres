@@ -12,6 +12,7 @@ starts = {
 "TRANSLATION": &"0_7",
 "TRANSPONDING": &"0_4",
 "WAVEFORM": &"0_5",
+"WrongDay": &"0_9",
 "nme": &"0_3"
 }
 nodes = {
@@ -55,6 +56,11 @@ nodes = {
 "offset": Vector2(-520, 1360),
 "start_id": "Sleep"
 },
+"0_9": {
+"link": &"1_12",
+"offset": Vector2(-381, 1756.86),
+"start_id": "WrongDay"
+},
 "1_1": {
 "dialogue": "dialogue holy crap",
 "offset": Vector2(-280, -420),
@@ -89,6 +95,19 @@ nodes = {
 "1_11": {
 "dialogue": "Hey im Dreaming here!",
 "offset": Vector2(140, 1360),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_12": {
+"dialogue": "I don't need to go here right now, I should explore somewhere else.",
+"offset": Vector2(-40, 1760),
 "options": {
 0: {
 "condition": {},
