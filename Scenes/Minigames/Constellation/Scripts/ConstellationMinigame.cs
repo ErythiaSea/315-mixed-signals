@@ -3,45 +3,49 @@ using System;
 
 public partial class ConstellationMinigame : BaseMinigame
 {
-    // The start ID used for the tutorial dialogue
-    [Export] String constellationTutorialStartID = "3";
-    [Export] String constellationEndStartID = "4";
+	// The start ID used for the tutorial dialogue
+	[Export] String constellationTutorialStartID = "3";
+	[Export] String constellationEndStartID = "4";
 
-    double exitTimer = 0;
-    Globals globalScript;
+	double exitTimer = 0;
+	Globals globalScript;
 
-    Panel dialogueBox;
-    TutorialButton tutorialButton;
-    CameraMovement camera;
-    StarsParent starsParent;
-    Godot.Collections.Array<Node2D> constellations;
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+	Panel dialogueBox;
+	TutorialButton tutorialButton;
+	CameraMovement camera;
+	StarsParent starsParent;
+	Godot.Collections.Array<Node2D> constellations;
+
+	// mmmmmm hardcode path :vmunch:
+	private const string outdoorCabinPath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn";
+
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
 	{
 		base._Ready();
 
-        constellations = GetConstellations();
-        globalScript = Globals.Instance;
+		constellations = GetConstellations();
+		globalScript = Globals.Instance;
 
-        SetupConstellation();
-        
-        tutorialButton = GetNode<TutorialButton>("UICanvas/TutorialButton");
-        tutorialButton.startID = constellationTutorialStartID;
+		SetupConstellation();
 
-        // please rename this at some point
-        camera = GetNode<CameraMovement>("eeek");
+		tutorialButton = GetNode<TutorialButton>("UICanvas/TutorialButton");
+		tutorialButton.startID = constellationTutorialStartID;
 
-        starsParent = GetNode<StarsParent>("Constellation");
-        starsParent.ConstellationCompletion += camera.DisplayConstellation;
+		// please rename this at some point
+		camera = GetNode<CameraMovement>("eeek");
 
-        dialogueBox = GetNode<Panel>("UICanvas/DialogueBox");
-        if (Globals.Instance.tutorialProgress <= GAMESTAGE.CONSTELLATION)
-        {
-            dialogueBox.Call("start", constellationTutorialStartID);
-            Globals.Instance.tutorialProgress = GAMESTAGE.TRANSLATION;
-        }
+		starsParent = GetNode<StarsParent>("Constellation");
+		starsParent.ConstellationCompletion += camera.DisplayConstellation;
 
-        dialogueBox.Connect("dialogue_ended", Callable.From(RegainCameraControl));
+		dialogueBox = GetNode<Panel>("UICanvas/DialogueBox");
+		if (Globals.Instance.tutorialProgress <= GAMESTAGE.CONSTELLATION)
+		{
+			dialogueBox.Call("start", constellationTutorialStartID);
+			Globals.Instance.tutorialProgress = GAMESTAGE.TRANSLATION;
+		}
+
+		dialogueBox.Connect("dialogue_ended", Callable.From(RegainCameraControl));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,42 +53,59 @@ public partial class ConstellationMinigame : BaseMinigame
 	{
 		base._Process(delta);
 
-        if (dialogueBox.Visible) {
-            camera.canMoveCam = false;
-        }
-    }
+		if (dialogueBox.Visible)
+		{
+			camera.canMoveCam = false;
+		}
+	}
 
-    // remove circular relationship between cam and parent and we can maybe axe this - eryth
-    public void ShowFinalBox()
-    {
-        globalScript.gameState.stage = GAMESTAGE.TRANSLATION;
-        dialogueBox.Call("start", constellationEndStartID);
-        dialogueBox.Connect("dialogue_ended", Callable.From(Close));
-    }
+	// todo: remove circular relationship between cam and parent and we can maybe axe this - eryth
+	public void ShowFinalBox()
+	{
+		globalScript.gameState.stage = GAMESTAGE.TRANSLATION;
 
-    void RegainCameraControl()
-    {
-        camera.canMoveCam = true;
-    }
+		ResourceLoader.LoadThreadedRequest(outdoorCabinPath);
+		Globals.Instance.currentSpawnID = 1;
+		GD.Print("loading cabin outdoor...");
 
-    private Godot.Collections.Array<Node2D> GetConstellations()
+		dialogueBox.Call("start", constellationEndStartID);
+		dialogueBox.Connect("dialogue_ended", Callable.From(Close));
+	}
+
+	void RegainCameraControl()
+	{
+		camera.canMoveCam = true;
+	}
+
+	private Godot.Collections.Array<Node2D> GetConstellations()
+	{
+		Godot.Collections.Array<Node2D> consts = new Godot.Collections.Array<Node2D>();
+		foreach (Node child in GetChildren())
+		{
+			if (child.Name == "Corvus" || child.Name == "Pyxis")
+			{
+				consts.Add(child as Node2D);
+			}
+		}
+
+		return consts;
+	}
+
+	private void SetupConstellation()
+	{
+		constellations[globalScript.gameState.day].Visible = true;
+		StarsParent prt = constellations[globalScript.gameState.day] as StarsParent;
+		prt.GenerateNumbers();
+	}
+
+    protected override void OnTransitionFinish()
     {
-        Godot.Collections.Array<Node2D> consts = new Godot.Collections.Array<Node2D>();
-        foreach(Node child in GetChildren())
+        PackedScene cabin = (PackedScene)ResourceLoader.LoadThreadedGet(outdoorCabinPath);
+        if (cabin != null)
         {
-            if(child.Name == "Corvus" || child.Name == "Pyxis")
-            {
-                consts.Add(child as Node2D);
-            }
+            // i should be shot
+            player.EmitSignal(Player.SignalName.Transition, (int)TRANSITION.TOPtoBOTTOM, 1.0f);
+            GetTree().ChangeSceneToPacked(cabin);
         }
-
-        return consts;
-    }
-
-    private void SetupConstellation()
-    {
-        constellations[globalScript.gameState.day].Visible = true;
-        StarsParent prt = constellations[globalScript.gameState.day] as StarsParent;
-        prt.GenerateNumbers();
     }
 }

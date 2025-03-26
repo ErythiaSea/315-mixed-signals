@@ -1,6 +1,6 @@
 [gd_scene load_steps=64 format=3 uid="uid://bmbgph6qm47x0"]
 
-[ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_hvnuo"]
+[ext_resource type="Script" path="res://Scenes/Environments/Cabin/CabinLevel.cs" id="1_2hyee"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_vrtq2"]
 [ext_resource type="AudioStream" uid="uid://db0ejrnpgebag" path="res://Audio/Music/Zodiac  Hiphop Instrumental by prazkhanal Id-787557.wav" id="3_1b4bc"]
@@ -33,9 +33,9 @@
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/EndDay.cs" id="29_wyus1"]
 [ext_resource type="PackedScene" uid="uid://ccoch44m85xuv" path="res://Scenes/Environments/Objects/EndDayTransition.tscn" id="30_stghc"]
 
-[sub_resource type="Resource" id="Resource_66r8t"]
+[sub_resource type="Resource" id="Resource_7pcct"]
 script = ExtResource("2_vrtq2")
-spawnPosition = Vector2(1814, 4384)
+spawnPosition = Vector2(1804, 4404)
 faceLeft = true
 
 [sub_resource type="Environment" id="Environment_8vdl8"]
@@ -178,13 +178,12 @@ size = Vector2(291, 55)
 [sub_resource type="CircleShape2D" id="CircleShape2D_txxlk"]
 radius = 32.249
 
-[node name="Cabin" type="Node2D"]
-script = ExtResource("1_hvnuo")
-spawnData = Array[Object]([SubResource("Resource_66r8t")])
-OffsetX = 3.0
-OffsetY = -300.0
+[node name="Cabin" type="Node2D" node_paths=PackedStringArray("dialogueBox")]
+script = ExtResource("1_2hyee")
+dialogueBox = NodePath("DialogueBubble")
+spawnData = [SubResource("Resource_7pcct")]
 rightLimit = 1920
-bottomLimit = 4950
+bottomLimit = 4592
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8vdl8")
@@ -418,7 +417,7 @@ position = Vector2(585, 4167.5)
 shape = SubResource("RectangleShape2D_8qv87")
 
 [node name="Player" parent="." instance=ExtResource("2_h3n7b")]
-position = Vector2(555, 4333)
+position = Vector2(555, 4390)
 scale = Vector2(2.5, 2.5)
 walkingParticles = null
 
