@@ -26,19 +26,22 @@ public partial class TranslationCanvasUI : BaseMinigame
 	[ExportGroup("Dialogue Paths")]
 	[Export(PropertyHint.ResourceType, "DialogueData")]
 	Resource Day1Dialogue;
-	[Export(PropertyHint.ResourceType, "DialogueData")]
+    [Export(PropertyHint.ResourceType, "DialogueData")]
 	Resource Day2Dialogue;
 
-	Panel dialogueBox;
-	Globals globalScript;
+    Panel dialogueBox;
+    Globals globalScript;
+	CabinLevel cabin;
 
-	private string currentWord;
+    private string currentWord;
 	Godot.Collections.Array<Node> containerNodes;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		base._Ready();
 		globalScript = Globals.Instance;
+		cabin = GetParent<CabinLevel>();
+		MinigameClosed += cabin.TranslationComplete;
 
 		cipherDisplay.Clear();
 		messageBox.Clear();
@@ -49,8 +52,17 @@ public partial class TranslationCanvasUI : BaseMinigame
 
 		CallDeferred(nameof(TextInitalisation));
 
-		// load dialogue data based on day
-		dialogueBox = GetNode<Panel>("DialogueBox");
+		if (Day1Dialogue == null) {
+			GD.PrintErr("day 1 dialogue not assigned, please assign in inspector!");
+		}
+        if (Day2Dialogue == null)
+        {
+            GD.PrintErr("day 2 dialogue not assigned, please assign in inspector!");
+        }
+
+        // load dialogue data based on day
+        dialogueBox = GetNode<Panel>("DialogueBox");
+		dialogueBox.Connect("dialogue_ended", Callable.From(OnDialogueEnd));
 		LoadDialogue();
 		if (globalScript.tutorialProgress <= GAMESTAGE.TRANSLATION)
 		{
@@ -62,8 +74,8 @@ public partial class TranslationCanvasUI : BaseMinigame
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		base._Process(delta);
-	}
+        base._Process(delta);
+    }
 
 	public void AnswerButton()
 	{
@@ -78,14 +90,14 @@ public partial class TranslationCanvasUI : BaseMinigame
 			globalScript.gameState.stage = GAMESTAGE.END;
 			globalScript.isCurrentWordDone = true;
 
-			//winInd.Visible = true;
+            //winInd.Visible = true;
 			GetNode<VBoxContainer>("TextVBox").Visible = false;
-			GetNode<VBoxContainer>("HintVBox").Visible = false;
+            GetNode<VBoxContainer>("HintVBox").Visible = false;
 			GetNode<Button>("CheckAnswerButton").Visible = false;
 			cipherDisplay.Visible = false;
 			canClose = false;
 			dialogueBox.Call("start", "0");
-		}
+        }
 		else
 		{
 			dialogueBox.Call("start", "err");
@@ -95,32 +107,32 @@ public partial class TranslationCanvasUI : BaseMinigame
 	private void TextInitalisation()
 	{
 		if (!globalScript.isCurrentWordDone)
-		{
+        {
 			GD.Print("CIPHER");
 			string cWord = CipherWord(globalScript.wordList[globalScript.gameState.day]);
-			messageBox.Text = ("[center] " + cWord);
+            messageBox.Text = ("[center] " + cWord);
 
 			HintsUpdate(cWord);
 			cipherDisplay.AppendText("[center] "+ (-globalScript.cipherKey).ToString());
-		}
-		else
-		{
+        }
+        else
+        {
 			messageBox.Text = "";
-		}
-	}
+        }
+    }
 	private void HintsUpdate(string word)
 	{
 		char[] charArray = word.ToCharArray();
-		for(int i = 0; i < charArray.Length; i++)
-		{
-			celHint.AppendText(charArray[i].ToString() + "      =");
-			celHint.Newline();
+        for(int i = 0; i < charArray.Length; i++)
+        {
+        	celHint.AppendText(charArray[i].ToString() + "      =");
+        	celHint.Newline();
 
 			engHint.AppendText(charArray[i].ToString());
-			engHint.Newline();
-		}
-	}
-	private string CipherWord(string word)
+            engHint.Newline();
+        }
+    }
+    private string CipherWord(string word)
 	{
 		string cipheredWord = null;
 		string wordL = word.ToLower();
@@ -132,26 +144,26 @@ public partial class TranslationCanvasUI : BaseMinigame
 			int asciiValue = charArray[i];
 
 			if ((asciiValue + globalScript.cipherKey) > 122)
-			{
+            {
 				int wrap = asciiValue - (asciiValue + globalScript.cipherKey);
-				asciiValue = 97 - wrap;
-			}
-			else if ((asciiValue + globalScript.cipherKey) < 97)
-			{
-				int wrap = asciiValue - (asciiValue + globalScript.cipherKey);
-				asciiValue = 122 - wrap;
-			}
+                asciiValue = 97 - wrap;
+            }
+            else if ((asciiValue + globalScript.cipherKey) < 97)
+            {
+                int wrap = asciiValue - (asciiValue + globalScript.cipherKey);
+                asciiValue = 122 - wrap;
+            }
 			else
 			{
 				asciiValue += globalScript.cipherKey;
 			}
 
 			cipheredWord += (char)asciiValue;
-		   
-		}
+           
+        }
 
 		return cipheredWord;
-	}
+    }
 
 	private void OnDialogueEnd()
 	{
@@ -164,14 +176,14 @@ public partial class TranslationCanvasUI : BaseMinigame
 
 	private void LoadDialogue()
 	{
-		switch (globalScript.gameState.day)
-		{
-			case 0:
-				dialogueBox.Set("data", Day1Dialogue);
-				break;
-			case 1:
-				dialogueBox.Set("data", Day2Dialogue);
-				break;
-		}
-	}
+        switch (globalScript.gameState.day)
+        {
+            case 0:
+                dialogueBox.Set("data", Day1Dialogue);
+                break;
+            case 1:
+                dialogueBox.Set("data", Day2Dialogue);
+                break;
+        }
+    }
 }

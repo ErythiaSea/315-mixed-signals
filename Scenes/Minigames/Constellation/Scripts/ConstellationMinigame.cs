@@ -14,13 +14,20 @@ public partial class ConstellationMinigame : BaseMinigame
 	TutorialButton tutorialButton;
 	CameraMovement camera;
 	StarsParent starsParent;
+	Godot.Collections.Array<Node2D> constellations;
+
+	// mmmmmm hardcode path :vmunch:
+	private const string outdoorCabinPath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn";
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		base._Ready();
 
+		constellations = GetConstellations();
 		globalScript = Globals.Instance;
+
+		SetupConstellation();
 
 		tutorialButton = GetNode<TutorialButton>("UICanvas/TutorialButton");
 		tutorialButton.startID = constellationTutorialStartID;
@@ -46,15 +53,21 @@ public partial class ConstellationMinigame : BaseMinigame
 	{
 		base._Process(delta);
 
-		if (dialogueBox.Visible) {
+		if (dialogueBox.Visible)
+		{
 			camera.canMoveCam = false;
 		}
 	}
 
-	// remove circular relationship between cam and parent and we can maybe axe this - eryth
+	// todo: remove circular relationship between cam and parent and we can maybe axe this - eryth
 	public void ShowFinalBox()
 	{
 		globalScript.gameState.stage = GAMESTAGE.TRANSLATION;
+
+		ResourceLoader.LoadThreadedRequest(outdoorCabinPath);
+		Globals.Instance.currentSpawnID = 1;
+		GD.Print("loading cabin outdoor...");
+
 		dialogueBox.Call("start", constellationEndStartID);
 		dialogueBox.Connect("dialogue_ended", Callable.From(Close));
 	}
@@ -63,4 +76,36 @@ public partial class ConstellationMinigame : BaseMinigame
 	{
 		camera.canMoveCam = true;
 	}
+
+	private Godot.Collections.Array<Node2D> GetConstellations()
+	{
+		Godot.Collections.Array<Node2D> consts = new Godot.Collections.Array<Node2D>();
+		foreach (Node child in GetChildren())
+		{
+			if (child.Name == "Corvus" || child.Name == "Pyxis")
+			{
+				consts.Add(child as Node2D);
+			}
+		}
+
+		return consts;
+	}
+
+	private void SetupConstellation()
+	{
+		constellations[globalScript.gameState.day].Visible = true;
+		StarsParent prt = constellations[globalScript.gameState.day] as StarsParent;
+		prt.GenerateNumbers();
+	}
+
+    protected override void OnTransitionFinish()
+    {
+        PackedScene cabin = (PackedScene)ResourceLoader.LoadThreadedGet(outdoorCabinPath);
+        if (cabin != null)
+        {
+            // i should be shot
+            player.EmitSignal(Player.SignalName.Transition, (int)TRANSITION.TOPtoBOTTOM, 1.0f);
+            GetTree().ChangeSceneToPacked(cabin);
+        }
+    }
 }

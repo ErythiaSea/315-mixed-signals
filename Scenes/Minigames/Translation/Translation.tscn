@@ -35,6 +35,8 @@ engHint = NodePath("HintVBox/HBoxContainer/EnglishChar")
 cipherDisplay = NodePath("CipherDisplay")
 englishFont = ExtResource("3_tm1gv")
 winInd = NodePath("WinIndicator")
+Day1Dialogue = ExtResource("8_ey0sh")
+Day2Dialogue = ExtResource("8_ey0sh")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_right = 1920.0
@@ -165,4 +167,3 @@ startID = "tut"
 dialogueBox = NodePath("../DialogueBox")
 
 [connection signal="button_down" from="CheckAnswerButton" to="." method="AnswerButton"]
-[connection signal="dialogue_ended" from="DialogueBox" to="." method="OnDialogueEnd"]

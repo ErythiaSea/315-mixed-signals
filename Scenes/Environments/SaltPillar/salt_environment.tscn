@@ -151,6 +151,7 @@ texture = ExtResource("4_era6n")
 [node name="Player" parent="." instance=ExtResource("2_nx23b")]
 position = Vector2(2794, 833)
 scale = Vector2(1.2, 1.2)
+walkingParticles = null
 
 [node name="head" type="Marker2D" parent="Player"]
 position = Vector2(0, -45.8333)

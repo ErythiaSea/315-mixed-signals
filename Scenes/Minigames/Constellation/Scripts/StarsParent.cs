@@ -31,7 +31,6 @@ public partial class StarsParent : Node2D
 		stars = GetStars();
 		starLabels = GetLabels();
 		GD.Print(stars.Count);
-		DisplayNumbers();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,7 +44,7 @@ public partial class StarsParent : Node2D
 		}
 			  
 	}
-	public void DisplayNumbers()
+	public void GenerateNumbers()
 	{
 		Godot.Collections.Array<int> randNumArray = RandomNumbers();
 

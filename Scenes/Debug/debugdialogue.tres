@@ -12,13 +12,20 @@ starts = {
 "TRANSLATION": &"0_7",
 "TRANSPONDING": &"0_4",
 "WAVEFORM": &"0_5",
-"nme": &"0_3"
+"WrongDay": &"0_10",
+"nme": &"0_3",
+"translationend": &"0_9"
 }
 nodes = {
 "0_1": {
 "link": &"1_1",
 "offset": Vector2(-552.463, -429.169),
 "start_id": "0"
+},
+"0_10": {
+"link": &"1_13",
+"offset": Vector2(-381, 1756.86),
+"start_id": "WrongDay"
 },
 "0_2": {
 "link": &"1_4",
@@ -55,6 +62,11 @@ nodes = {
 "offset": Vector2(-520, 1360),
 "start_id": "Sleep"
 },
+"0_9": {
+"link": &"1_12",
+"offset": Vector2(600, 1360),
+"start_id": "translationend"
+},
 "1_1": {
 "dialogue": "dialogue holy crap",
 "offset": Vector2(-280, -420),
@@ -89,6 +101,32 @@ nodes = {
 "1_11": {
 "dialogue": "Hey im Dreaming here!",
 "offset": Vector2(140, 1360),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_12": {
+"dialogue": "debugdialogue.tres with startid \"translationend\" - end of translation dialogue here!!",
+"offset": Vector2(820, 1360),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "eryth"
+},
+"1_13": {
+"dialogue": "I don't need to go here right now, I should explore somewhere else.",
+"offset": Vector2(-40, 1760),
 "options": {
 0: {
 "condition": {},
@@ -180,7 +218,7 @@ strange...",
 "speaker": "..."
 },
 "1_8": {
-"dialogue": "These stars won't fine themseleves, where is my telescope?",
+"dialogue": "These stars won't find themseleves, where is my telescope?",
 "offset": Vector2(-240, 1020),
 "options": {
 0: {
