@@ -212,61 +212,51 @@ texture = SubResource("GradientTexture2D_q2l72")
 [node name="BedRoomLights" type="Node2D" parent="."]
 
 [node name="PointLight2D2" type="PointLight2D" parent="BedRoomLights"]
-visible = false
 position = Vector2(542, 3956)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_p5t1g")
 
 [node name="PointLight2D3" type="PointLight2D" parent="BedRoomLights"]
-visible = false
 position = Vector2(1376, 3911)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_p5t1g")
 
 [node name="PointLight2D4" type="PointLight2D" parent="BedRoomLights"]
-visible = false
 position = Vector2(242, 3926)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_p5t1g")
 
 [node name="PointLight2D5" type="PointLight2D" parent="BedRoomLights"]
-visible = false
 position = Vector2(708, 4251)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_p5t1g")
 
 [node name="PointLight2D6" type="PointLight2D" parent="BedRoomLights"]
-visible = false
 position = Vector2(270, 4213)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_p5t1g")
 
 [node name="PointLight2D7" type="PointLight2D" parent="BedRoomLights"]
-visible = false
 position = Vector2(1638, 3890)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_p5t1g")
 
 [node name="PointLight2D8" type="PointLight2D" parent="BedRoomLights"]
-visible = false
 position = Vector2(1641, 4107)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_p5t1g")
 
 [node name="PointLight2D9" type="PointLight2D" parent="BedRoomLights"]
-visible = false
 position = Vector2(977, 3746)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_p5t1g")
 
 [node name="PointLight2D10" type="PointLight2D" parent="BedRoomLights"]
-visible = false
 position = Vector2(601, 3782)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_p5t1g")
 
 [node name="PointLight2D11" type="PointLight2D" parent="BedRoomLights"]
-visible = false
 position = Vector2(1333, 3812)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_p5t1g")
@@ -303,7 +293,7 @@ region_rect = Rect2(0, 0, 3840, 2160)
 
 [node name="Monitors" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_5g03c")
-position = Vector2(1024, 540)
+position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_bteuo")
 
@@ -363,16 +353,15 @@ stream = ExtResource("18_tgdje")
 volume_db = -23.0
 autoplay = true
 
-[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "wallCollision", "topFloorCollision") instance=ExtResource("14_e5y7b")]
+[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "topFloorCollision") instance=ExtResource("14_e5y7b")]
 position = Vector2(952, 4552)
-topCallButton = NodePath("../ElevatorTopCall")
-bottomCallButton = NodePath("../ElevatorBottomCall")
-elevatorButton = NodePath("ElevatorButton")
-wallCollision = [NodePath("ElevatorWallL"), NodePath("ElevatorWallR")]
-topFloorCollision = NodePath("../WorldCollision/CollisionShape2")
 topY = 995.0
 bottomY = 4552.0
 travelTime = 5.0
+topCallButton = NodePath("../ElevatorTopCall")
+bottomCallButton = NodePath("../ElevatorBottomCall")
+elevatorButton = NodePath("ElevatorButton")
+topFloorCollision = NodePath("../WorldCollision/CollisionShape2")
 
 [node name="ElevatorFloor" type="CollisionShape2D" parent="Elevator"]
 position = Vector2(47.5, 4.5)
@@ -422,7 +411,6 @@ shape = SubResource("RectangleShape2D_8qv87")
 [node name="Player" parent="." instance=ExtResource("2_h3n7b")]
 position = Vector2(543, 4394)
 scale = Vector2(2.5, 2.5)
-walkingParticles = null
 
 [node name="PlayerHead" type="Marker2D" parent="Player"]
 position = Vector2(-0.8, -43.2)
@@ -471,10 +459,10 @@ custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_t7wmq"), Sub
 position = Vector2(851, 977)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-objectSprite = NodePath("../Sprites/Monitors")
 transitionType = 3
 requiredStage = 1
 scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
+objectSprite = NodePath("../Sprites/Monitors")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
 position = Vector2(183, 11)
@@ -500,11 +488,11 @@ stream = ExtResource("31_3gkvo")
 position = Vector2(238, 4549)
 collision_layer = 4
 script = ExtResource("4_r0utk")
+startID = "nme"
+timeLimit = 2.5
 objectSprite = NodePath("../Sprites/Bed")
 requiredStage = 4
 dialogueBox = NodePath("../DialogueBubble")
-startID = "nme"
-timeLimit = 2.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BedBox"]
 shape = SubResource("RectangleShape2D_avn75")
@@ -513,6 +501,8 @@ shape = SubResource("RectangleShape2D_avn75")
 position = Vector2(1645, 4545)
 collision_layer = 4
 script = ExtResource("4_r0utk")
+startID = "nme"
+timeLimit = 2.5
 objectSprite = NodePath("../Sprites/Photoboard")
 transitionType = 3
 scenePath = "res://Scenes/Minigames/Photoboard/photoboard.tscn"
@@ -567,5 +557,3 @@ volume_db = -10.0
 script = ExtResource("29_wyus1")
 endTransition = ExtResource("30_stghc")
 dialogueBox = NodePath("../SleepDialogueBox")
-
-[connection signal="Interacted" from="BedBox" to="EndDay" method="EndTheDay"]
