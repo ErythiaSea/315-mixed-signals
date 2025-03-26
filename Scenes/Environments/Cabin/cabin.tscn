@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=59 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_hvnuo"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -268,8 +268,8 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_bkt4p")
 
 [node name="Wall" type="Sprite2D" parent="Sprites"]
-position = Vector2(960, 540)
-scale = Vector2(0.5, 0.5)
+position = Vector2(960, 541.5)
+scale = Vector2(0.5, 0.501389)
 texture = ExtResource("4_wjyar")
 
 [node name="WallMounts" type="Sprite2D" parent="Sprites"]
@@ -400,8 +400,8 @@ position = Vector2(585, 4167.5)
 shape = SubResource("RectangleShape2D_8qv87")
 
 [node name="Player" parent="." instance=ExtResource("2_h3n7b")]
-position = Vector2(505, 4384)
-scale = Vector2(2.5, 2.5)
+position = Vector2(510, 4311)
+scale = Vector2(3.5, 3.5)
 
 [node name="PlayerHead" type="Marker2D" parent="Player"]
 position = Vector2(-0.8, -43.2)

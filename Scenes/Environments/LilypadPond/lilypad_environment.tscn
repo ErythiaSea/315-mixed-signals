@@ -76,7 +76,7 @@ size = Vector2(37, 20)
 radius = 40.0125
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_am0pj"]
-size = Vector2(49, 123)
+size = Vector2(106.5, 339.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ioy7"]
 size = Vector2(86.5, 392)
@@ -94,16 +94,19 @@ script = ExtResource("14_xkiew")
 script = ExtResource("1_tgjlw")
 spawnData = Array[Object]([SubResource("Resource_xpr3o"), SubResource("Resource_agtn6")])
 cameraZoom = 0.67
+OffsetY = -100.0
 leftLimit = -2974
 topLimit = -1459
 rightLimit = 2974
 bottomLimit = 1459
 
 [node name="Background" type="Sprite2D" parent="."]
+position = Vector2(0, -118)
 texture = ExtResource("1_x6dd7")
 
 [node name="TelescopeSprite" type="Sprite2D" parent="."]
-position = Vector2(-929, -816)
+position = Vector2(-929, -832)
+scale = Vector2(1.10816, 1.06587)
 texture = ExtResource("2_tg48q")
 
 [node name="Foreground" type="Sprite2D" parent="."]
@@ -235,8 +238,8 @@ shape = SubResource("SegmentShape2D_7qebe")
 
 [node name="Player" parent="." instance=ExtResource("2_a0sm7")]
 position = Vector2(-2749, 554)
-scale = Vector2(2.5, 2.5)
-movementSpeed = 700.0
+scale = Vector2(3, 3)
+movementSpeed = 550.0
 
 [node name="Head" type="Marker2D" parent="Player"]
 position = Vector2(-2.8, -44.4)
@@ -334,7 +337,7 @@ startID = "0"
 timeLimit = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox"]
-position = Vector2(31, 111)
+position = Vector2(1346, -305)
 shape = SubResource("RectangleShape2D_am0pj")
 
 [node name="InteractBox2" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("4_u2itd")]

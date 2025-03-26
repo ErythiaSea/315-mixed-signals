@@ -127,9 +127,9 @@ libraries = {
 autoplay = "VehicleIdleAnimation"
 
 [node name="Player" parent="." instance=ExtResource("1_7p3ip")]
-position = Vector2(-435, 69)
-scale = Vector2(3.86, 3.86)
-movementSpeed = 700.0
+position = Vector2(-435, 6)
+scale = Vector2(4.5, 4.5)
+movementSpeed = 900.0
 
 [node name="PlayerHead" type="Marker2D" parent="Player"]
 position = Vector2(0, -41.2)
