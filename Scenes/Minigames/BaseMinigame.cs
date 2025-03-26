@@ -4,6 +4,10 @@ using static Godot.Tween;
 
 public partial class BaseMinigame : CanvasLayer
 {
+	// emitted when the minigame is closed
+	[Signal]
+	public delegate void MinigameClosedEventHandler();
+
 	// type of transition this minigame uses on exit
 	[Export]
 	public TRANSITION exitTransition = TRANSITION.NONE;
@@ -73,6 +77,7 @@ public partial class BaseMinigame : CanvasLayer
 		OnTransitionFinish();
 		player.SetMovementLock(false);
 		player.SetCameraEnabled(true);
+		EmitSignal(SignalName.MinigameClosed);
 		QueueFree();
 	}
 

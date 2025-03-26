@@ -12,7 +12,8 @@ starts = {
 "TRANSLATION": &"0_7",
 "TRANSPONDING": &"0_4",
 "WAVEFORM": &"0_5",
-"nme": &"0_3"
+"nme": &"0_3",
+"translationend": &"0_9"
 }
 nodes = {
 "0_1": {
@@ -54,6 +55,11 @@ nodes = {
 "link": &"1_10",
 "offset": Vector2(-520, 1360),
 "start_id": "Sleep"
+},
+"0_9": {
+"link": &"1_12",
+"offset": Vector2(600, 1360),
+"start_id": "translationend"
 },
 "1_1": {
 "dialogue": "dialogue holy crap",
@@ -98,6 +104,19 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": "..."
+},
+"1_12": {
+"dialogue": "debugdialogue.tres with startid \"translationend\" - end of translation dialogue here!!",
+"offset": Vector2(820, 1360),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "eryth"
 },
 "1_2": {
 "dialogue": "you get me",
@@ -180,7 +199,7 @@ strange...",
 "speaker": "..."
 },
 "1_8": {
-"dialogue": "These stars won't fine themseleves, where is my telescope?",
+"dialogue": "These stars won't find themseleves, where is my telescope?",
 "offset": Vector2(-240, 1020),
 "options": {
 0: {
