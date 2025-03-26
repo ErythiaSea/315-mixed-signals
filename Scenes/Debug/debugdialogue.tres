@@ -7,10 +7,11 @@ script = ExtResource("1_5br0n")
 starts = {
 "0": &"0_1",
 "1": &"0_2",
-"2": &"0_4",
-"3": &"0_5",
-"4": &"0_6",
-"5": &"0_7",
+"CONSTELLATION": &"0_6",
+"Sleep": &"0_8",
+"TRANSLATION": &"0_7",
+"TRANSPONDING": &"0_4",
+"WAVEFORM": &"0_5",
 "nme": &"0_3"
 }
 nodes = {
@@ -32,22 +33,27 @@ nodes = {
 "0_4": {
 "link": &"1_6",
 "offset": Vector2(-580, 680),
-"start_id": "2"
+"start_id": "TRANSPONDING"
 },
 "0_5": {
 "link": &"1_7",
 "offset": Vector2(80, 680),
-"start_id": "3"
+"start_id": "WAVEFORM"
 },
 "0_6": {
 "link": &"1_8",
 "offset": Vector2(-580, 1020),
-"start_id": "4"
+"start_id": "CONSTELLATION"
 },
 "0_7": {
 "link": &"1_9",
 "offset": Vector2(80, 1020),
-"start_id": "5"
+"start_id": "TRANSLATION"
+},
+"0_8": {
+"link": &"1_10",
+"offset": Vector2(-520, 1360),
+"start_id": "Sleep"
 },
 "1_1": {
 "dialogue": "dialogue holy crap",
@@ -66,6 +72,32 @@ nodes = {
 },
 "size": Vector2(300, 289),
 "speaker": "erg"
+},
+"1_10": {
+"dialogue": "Hey im Sleepin here!",
+"offset": Vector2(-220, 1360),
+"options": {
+0: {
+"condition": {},
+"link": &"1_11",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_11": {
+"dialogue": "Hey im Dreaming here!",
+"offset": Vector2(140, 1360),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
 },
 "1_2": {
 "dialogue": "you get me",
