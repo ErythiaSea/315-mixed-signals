@@ -362,12 +362,11 @@ stream = ExtResource("3_1b4bc")
 volume_db = -16.838
 autoplay = true
 
-[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "wallCollision", "topFloorCollision") instance=ExtResource("14_e5y7b")]
+[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "topFloorCollision") instance=ExtResource("14_e5y7b")]
 position = Vector2(952, 4552)
 topCallButton = NodePath("../ElevatorTopCall")
 bottomCallButton = NodePath("../ElevatorBottomCall")
 elevatorButton = NodePath("ElevatorButton")
-wallCollision = [NodePath("ElevatorWallL"), NodePath("ElevatorWallR")]
 topFloorCollision = NodePath("../WorldCollision/CollisionShape2")
 topY = 995.0
 bottomY = 4552.0

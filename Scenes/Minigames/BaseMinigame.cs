@@ -67,7 +67,7 @@ public partial class BaseMinigame : CanvasLayer
 		}
 	}
 
-	// still doing this a crappy way for now but i'd like to do signal bus later
+	// todo: still doing this a crappy way for now but i'd like to do signal bus later
 	private void QuitMinigame()
 	{
 		OnTransitionFinish();
