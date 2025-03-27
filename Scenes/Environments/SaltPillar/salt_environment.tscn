@@ -50,7 +50,8 @@ size = Vector2(49, 186)
 [node name="SaltEnv" type="Node2D"]
 script = ExtResource("1_2e86h")
 spawnData = Array[Object]([SubResource("Resource_ci2ls")])
-cameraZoom = 0.8
+cameraZoom = 0.6
+OffsetY = -150.0
 leftLimit = -2974
 topLimit = -1459
 rightLimit = 2974
