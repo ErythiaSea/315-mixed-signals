@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://1ims8y73xe5o"]
+[gd_scene load_steps=19 format=3 uid="uid://1ims8y73xe5o"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Translation/TranslationCanvasUI.cs" id="1_6ebpw"]
 [ext_resource type="FontFile" uid="uid://m3h38nqxkg0o" path="res://Fonts/Monotone_Celestial_V1.otf" id="2_w7m10"]
+[ext_resource type="Resource" uid="uid://cwyp32gw5vyln" path="res://Dialogue/CorvusDialogue.tres" id="3_me5v8"]
 [ext_resource type="FontFile" uid="uid://c6lkoenvhuw42" path="res://Fonts/Monotone_SB_V1.otf" id="3_tm1gv"]
 [ext_resource type="Texture2D" uid="uid://duka3m53mxwoc" path="res://Scenes/Minigames/Translation/Sprites/TranslationScreen_Whole.png" id="4_stibd"]
 [ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="5_38cia"]
@@ -35,7 +36,7 @@ engHint = NodePath("HintVBox/HBoxContainer/EnglishChar")
 cipherDisplay = NodePath("CipherDisplay")
 englishFont = ExtResource("3_tm1gv")
 winInd = NodePath("WinIndicator")
-Day1Dialogue = ExtResource("8_ey0sh")
+Day1Dialogue = ExtResource("3_me5v8")
 Day2Dialogue = ExtResource("8_ey0sh")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

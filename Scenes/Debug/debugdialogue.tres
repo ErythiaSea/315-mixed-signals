@@ -18,11 +18,10 @@ starts = {
 "TRANSLATION_START": &"0_7",
 "TRANSLATION_TUT": &"0_16",
 "TRANSPONDING": &"0_4",
-"WrongDay": &"0_19",
-"translationend": &"0_18",
 "WAKEUP": &"0_13",
 "WAVEFORM_END": &"0_9",
 "WAVEFORM_START": &"0_5",
+"WrongDay": &"0_19",
 "nme": &"0_3"
 }
 nodes = {
@@ -43,7 +42,7 @@ nodes = {
 },
 "0_12": {
 "link": &"1_20",
-"offset": Vector2(540, 1440),
+"offset": Vector2(980, 1460),
 "start_id": "TRANSLATION_END"
 },
 "0_13": {
@@ -73,7 +72,7 @@ nodes = {
 },
 "0_19": {
 "link": &"1_13",
-"offset": Vector2(-381, 1756.86),
+"offset": Vector2(-960, 1560),
 "start_id": "WrongDay"
 },
 "0_2": {
@@ -112,14 +111,9 @@ nodes = {
 "start_id": "SLEEP"
 },
 "0_9": {
-"link": &"1_13",
+"link": &"1_6",
 "offset": Vector2(1320, 680),
 "start_id": "WAVEFORM_END"
-},
-"0_18": {
-"link": &"1_12",
-"offset": Vector2(600, 1360),
-"start_id": "translationend"
 },
 "1_1": {
 "dialogue": "dialogue holy crap",
@@ -167,24 +161,24 @@ nodes = {
 },
 "1_12": {
 "dialogue": "Finally, some work to do. Why are they coming in so early?",
-"offset": Vector2(-180, 680),
+"offset": Vector2(-140, 680),
 "options": {
 0: {
 "condition": {},
-"link": &"1_6",
+"link": &"1_33",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": "..."
+"speaker": ""
 },
 "1_13": {
-"dialogue": "What...",
-"offset": Vector2(1620, 680),
+"dialogue": "I don't need to go here right now, I should explore somewhere else.",
+"offset": Vector2(-620, 1560),
 "options": {
 0: {
 "condition": {},
-"link": &"1_14",
+"link": "END",
 "text": ""
 }
 },
@@ -193,7 +187,7 @@ nodes = {
 },
 "1_14": {
 "dialogue": "Is this...",
-"offset": Vector2(1980, 680),
+"offset": Vector2(1940, 680),
 "options": {
 0: {
 "condition": {},
@@ -269,32 +263,6 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": "..."
 },
-"1_12": {
-"dialogue": "debugdialogue.tres with startid \"translationend\" - end of translation dialogue here!!",
-"offset": Vector2(820, 1360),
-"options": {
-0: {
-"condition": {},
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "eryth"
-},
-"1_13": {
-"dialogue": "I don't need to go here right now, I should explore somewhere else.",
-"offset": Vector2(-40, 1760),
-"options": {
-0: {
-"condition": {},
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "..."
-},
 "1_2": {
 "dialogue": "you get me",
 "offset": Vector2(120, -400),
@@ -310,7 +278,7 @@ nodes = {
 },
 "1_20": {
 "dialogue": "...",
-"offset": Vector2(820, 1440),
+"offset": Vector2(1200, 1420),
 "options": {
 0: {
 "condition": {},
@@ -323,7 +291,7 @@ nodes = {
 },
 "1_21": {
 "dialogue": "What the...",
-"offset": Vector2(1160, 1440),
+"offset": Vector2(1540, 1420),
 "options": {
 0: {
 "condition": {},
@@ -490,6 +458,19 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": "Tutorial"
 },
+"1_33": {
+"dialogue": "Now, which sector are you coming from...?",
+"offset": Vector2(200, 680),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
+},
 "1_4": {
 "dialogue": "this one has a different start id",
 "offset": Vector2(-320, -80),
@@ -517,17 +498,17 @@ nodes = {
 "speaker": "!DEBUG!"
 },
 "1_6": {
-"dialogue": "Now, which sector are you coming from?",
-"offset": Vector2(300, 680),
+"dialogue": "What...",
+"offset": Vector2(1560, 680),
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"1_14",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": "..."
+"speaker": ""
 },
 "1_7": {
 "dialogue": "Okay, what do you have to say for yourself?",
@@ -571,7 +552,7 @@ nodes = {
 "2_1": {
 "comment": "Make this the dialogue
 for trying to leave early.",
-"offset": Vector2(160, 800),
+"offset": Vector2(360, 420),
 "size": Vector2(200, 100)
 },
 "2_2": {
