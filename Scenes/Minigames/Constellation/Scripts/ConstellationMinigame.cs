@@ -35,8 +35,8 @@ public partial class ConstellationMinigame : BaseMinigame
 		// please rename this at some point
 		camera = GetNode<CameraMovement>("eeek");
 
-		starsParent = GetNode<StarsParent>("Constellation");
-		starsParent.ConstellationCompletion += camera.DisplayConstellation;
+		starsParent = constellations[Globals.Instance.gameState.day] as StarsParent;
+        starsParent.ConstellationCompletion += camera.DisplayConstellation;
 
 		dialogueBox = GetNode<Panel>("UICanvas/DialogueBox");
 		if (Globals.Instance.tutorialProgress <= GAMESTAGE.CONSTELLATION)

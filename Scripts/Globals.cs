@@ -82,7 +82,7 @@ public partial class Globals : Node
 	{
 		isCurrentWordDone = false;
 		gameState.day += 1;
-		gameState.stage = GAMESTAGE.TRANSPONDING;
+		gameState.stage = (gameState.day == 2 ? GAMESTAGE.END : GAMESTAGE.TRANSPONDING);
 		cipherKey = 0;
 
 		LpivotRotRef = 0f;
