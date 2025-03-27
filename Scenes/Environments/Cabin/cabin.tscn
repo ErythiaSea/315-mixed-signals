@@ -355,13 +355,13 @@ autoplay = true
 
 [node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "topFloorCollision") instance=ExtResource("14_e5y7b")]
 position = Vector2(952, 4552)
-topY = 995.0
-bottomY = 4552.0
-travelTime = 5.0
 topCallButton = NodePath("../ElevatorTopCall")
 bottomCallButton = NodePath("../ElevatorBottomCall")
 elevatorButton = NodePath("ElevatorButton")
 topFloorCollision = NodePath("../WorldCollision/CollisionShape2")
+topY = 995.0
+bottomY = 4552.0
+travelTime = 5.0
 
 [node name="ElevatorFloor" type="CollisionShape2D" parent="Elevator"]
 position = Vector2(47.5, 4.5)
@@ -411,6 +411,7 @@ shape = SubResource("RectangleShape2D_8qv87")
 [node name="Player" parent="." instance=ExtResource("2_h3n7b")]
 position = Vector2(543, 4394)
 scale = Vector2(2.5, 2.5)
+walkingParticles = null
 
 [node name="PlayerHead" type="Marker2D" parent="Player"]
 position = Vector2(-0.8, -43.2)
@@ -459,10 +460,10 @@ custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_t7wmq"), Sub
 position = Vector2(851, 977)
 collision_layer = 4
 script = ExtResource("4_r0utk")
+objectSprite = NodePath("../Sprites/Monitors")
 transitionType = 3
 requiredStage = 1
 scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
-objectSprite = NodePath("../Sprites/Monitors")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
 position = Vector2(183, 11)
@@ -488,11 +489,11 @@ stream = ExtResource("31_3gkvo")
 position = Vector2(238, 4549)
 collision_layer = 4
 script = ExtResource("4_r0utk")
+objectSprite = NodePath("../Sprites/Bed")
+dialogueBox = NodePath("../DialogueBubble")
 startID = "nme"
 timeLimit = 2.5
-objectSprite = NodePath("../Sprites/Bed")
 requiredStage = 4
-dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BedBox"]
 shape = SubResource("RectangleShape2D_avn75")
