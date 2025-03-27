@@ -6,7 +6,7 @@ public partial class MapButton : TextureButton
 	[Export]
 	PackedScene mapToLoad;
 	[Export]
-	int requiredDay;
+	public int requiredDay;
 	[Export]
 	Control dialogueBox;
 	[Export]
@@ -48,18 +48,18 @@ public partial class MapButton : TextureButton
 
 	public void _OnPressed()
 	{
-		//if (requiredDay == Globals.Instance.gameState.day)
-		//{
+		if (requiredDay == Globals.Instance.gameState.day)
+		{
 			GD.Print("day = " + Globals.Instance.gameState.day);
             GD.Print(this.Name, " pressed");
             if (Input.IsActionPressed("middle_mouse")) spawnPoint = 1;
             Globals.Instance.nextMap = mapToLoad; // pleeeeeeease don't pass by value!
             Globals.Instance.currentSpawnID = spawnPoint;
             //GetTree().ChangeSceneToPacked(mapToLoad);
-  //      }
-		//else
-		//{
-		//	dialogueBox.Call("start", "WrongDay");
-		//}
+        }
+		else
+		{
+			dialogueBox.Call("start", "WrongDay");
+		}
     }
 }
