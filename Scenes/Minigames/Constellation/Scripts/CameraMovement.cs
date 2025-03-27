@@ -6,23 +6,23 @@ public partial class CameraMovement : Camera2D
 	[Export]
 	public float cameraSpeed = 0.6f;
 
-    public bool canMoveCam = true;
-    private ColorRect telescope;
-    private Vector2 center;
+	public bool canMoveCam = true;
+	private ColorRect telescope;
+	private Vector2 center;
 
-    Globals globalScript;
-    AudioStreamPlayer audioStreamPlayer;
-    
-    // This is the easy way out but this really needs a whole redesign - Eryth
-    ConstellationMinigame minigame;
+	Globals globalScript;
+	AudioStreamPlayer audioStreamPlayer;
+	
+	// This is the easy way out but this really needs a whole redesign - Eryth
+	ConstellationMinigame minigame;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        globalScript = Globals.Instance;
-        telescope = GetNode("Telescope") as ColorRect; //GetNode<ColorRect>("Telescope") ???
-        minigame = GetParent<ConstellationMinigame>();
-        audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+		globalScript = Globals.Instance;
+		telescope = GetNode("Telescope") as ColorRect; //GetNode<ColorRect>("Telescope") ???
+		minigame = GetParent<ConstellationMinigame>();
+		audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,10 +30,10 @@ public partial class CameraMovement : Camera2D
 	{
 		if(canMoveCam)CameraInputEvents(delta);
 
-        center = GetScreenCenterPosition();
-    }
-    
-    // todo: make relative to deltatime
+		center = GetScreenCenterPosition();
+	}
+	
+	// todo: make relative to deltatime
 	public void CameraInputEvents(double delta)
 	{
 		if (Input.IsActionPressed("down"))
@@ -42,29 +42,29 @@ public partial class CameraMovement : Camera2D
 		}
 		if (Input.IsActionPressed("up"))
 		{
-            Position = new Vector2(Position.X, Position.Y - cameraSpeed);
-        }
-        if (Input.IsActionPressed("left"))
-        {
-            Position = new Vector2(Position.X - cameraSpeed, Position.Y);
-        }
-        if (Input.IsActionPressed("right"))
-        {
-            Position = new Vector2(Position.X + cameraSpeed, Position.Y);
-        }
-    }
+			Position = new Vector2(Position.X, Position.Y - cameraSpeed);
+		}
+		if (Input.IsActionPressed("left"))
+		{
+			Position = new Vector2(Position.X - cameraSpeed, Position.Y);
+		}
+		if (Input.IsActionPressed("right"))
+		{
+			Position = new Vector2(Position.X + cameraSpeed, Position.Y);
+		}
+	}
 
-    public void DisplayConstellation(Vector2 centerStar)
-    {
-        canMoveCam = false;
-        Tween completion = GetTree().CreateTween();
+	public void DisplayConstellation(Vector2 centerStar)
+	{
+		canMoveCam = false;
+		Tween completion = GetTree().CreateTween();
 
-        completion.Parallel().TweenProperty(this, "zoom", new Vector2(0.35f, 0.35f), 2f);
-        completion.Parallel().TweenProperty(this, "position", centerStar, 1f);
-        completion.Parallel().TweenProperty(telescope, "scale", new Vector2(2.5f, 2.5f), 2f);
-        completion.TweenInterval(1.5);
-        completion.TweenCallback(Callable.From(minigame.ShowFinalBox));
+		completion.Parallel().TweenProperty(this, "zoom", new Vector2(0.35f, 0.35f), 2f);
+		completion.Parallel().TweenProperty(this, "position", centerStar, 1f);
+		completion.Parallel().TweenProperty(telescope, "scale", new Vector2(2.5f, 2.5f), 2f);
+		completion.TweenInterval(1.5);
+		completion.TweenCallback(Callable.From(minigame.ShowFinalBox));
 
-        audioStreamPlayer.Play();
-    }
+		audioStreamPlayer.Play();
+	}
 }
