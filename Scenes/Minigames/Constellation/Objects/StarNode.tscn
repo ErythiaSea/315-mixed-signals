@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bx27m71lxn4qi"]
+[gd_scene load_steps=11 format=3 uid="uid://bx27m71lxn4qi"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/StarNode.cs" id="1_ahru7"]
 [ext_resource type="Gradient" uid="uid://cjuqrw5hfyw60" path="res://Scenes/Minigames/Constellation/Resources/LineGradient.tres" id="2_ghj48"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://c6lkoenvhuw42" path="res://Fonts/Monotone_SB_V1.otf" id="3_4ygf3"]
 [ext_resource type="Texture2D" uid="uid://bgkmfsvie440c" path="res://Scenes/Minigames/Constellation/Sprites/Constellation_Star_Glowing_01.png" id="3_kwun2"]
 [ext_resource type="Texture2D" uid="uid://bvb6eje6cjxp4" path="res://Scenes/Minigames/Constellation/Sprites/Constellation_Star_Unlit_01.png" id="4_y33vx"]
+[ext_resource type="AudioStream" uid="uid://clknyafcieujt" path="res://Scenes/Minigames/Constellation/Scripts/StarIdentify.wav" id="7_1b3oq"]
 
 [sub_resource type="Shader" id="Shader_fgilc"]
 code = "shader_type canvas_item;
@@ -69,3 +70,7 @@ text = "
 
 "
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_1b3oq")
+volume_db = -20.613

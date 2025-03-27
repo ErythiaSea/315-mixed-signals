@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://crm66861lu4iw"
+path="res://.godot/imported/389618__stubb__rock-tumble-2.ogg-2c22c7ec75cced452b5bf0731a7a7744.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Ambience/Salt Pillar/389618__stubb__rock-tumble-2.ogg"
+dest_files=["res://.godot/imported/389618__stubb__rock-tumble-2.ogg-2c22c7ec75cced452b5bf0731a7a7744.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

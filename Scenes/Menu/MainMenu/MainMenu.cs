@@ -13,9 +13,9 @@ public partial class MainMenu : Control
 	[Export(PropertyHint.File, "*.tscn")]
 	PackedScene optionsScene;
 
-    Button startButton, optionsButton, quitButton;
+	Button startButton, optionsButton, quitButton;
 	List<Button> buttons = new List<Button>{};
-    double quitTimer = 0;
+	double quitTimer = 0;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -23,20 +23,20 @@ public partial class MainMenu : Control
 		startButton = GetNode<Button>("ButtonContainer/StartButton");
 		startButton.GrabFocus();
 
-        optionsButton = GetNode<Button>("ButtonContainer/OptionsButton");
+		optionsButton = GetNode<Button>("ButtonContainer/OptionsButton");
 		optionsButton.Pressed += _On_OptionsButton_Pressed;
 
-        quitButton = GetNode<Button>("ButtonContainer/QuitButton");
+		quitButton = GetNode<Button>("ButtonContainer/QuitButton");
 
 		buttons.Add(startButton);
 		buttons.Add(quitButton);
 		buttons.Add(optionsButton);
 
-        if (optionsScene == null)
-        {
-            optionsScene = (PackedScene)ResourceLoader.Load("res://Scenes/Menu/Options/Options.tscn");
-        }
-    }
+		if (optionsScene == null)
+		{
+			optionsScene = (PackedScene)ResourceLoader.Load("res://Scenes/Menu/Options/Options.tscn");
+		}
+	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -68,7 +68,7 @@ public partial class MainMenu : Control
 		if (startScene == null)
 		{
 			startScene = "res://Scenes/Environments/Cabin/cabin.tscn";
-        }
+		}
 
 		GetTree().ChangeSceneToFile(startScene);
 	}

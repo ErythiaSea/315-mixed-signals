@@ -20,8 +20,8 @@ public partial class TextureShader : ColorRect
 	{
 		//sets the shader variables for telescope lens creation
 		Smaterial = this.Material as ShaderMaterial;
-        Smaterial.SetShaderParameter("circle_r", radius);
-        Smaterial.SetShaderParameter("circle_b", blur);
+		Smaterial.SetShaderParameter("circle_r", radius);
+		Smaterial.SetShaderParameter("circle_b", blur);
 			
 	}
 }

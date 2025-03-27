@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c8eusy0cr4kfc"
+path="res://.godot/imported/Water, Waterfall, Waterfall, The Trolls Road, River, 10m, Loop 02 SND73480.ogg-01ea015394a90d9f5500fe5b19264263.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Ambience/Lilypad/Water, Waterfall, Waterfall, The Trolls Road, River, 10m, Loop 02 SND73480.ogg"
+dest_files=["res://.godot/imported/Water, Waterfall, Waterfall, The Trolls Road, River, 10m, Loop 02 SND73480.ogg-01ea015394a90d9f5500fe5b19264263.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

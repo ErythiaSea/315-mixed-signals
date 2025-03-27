@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dd6vkaf4mxsnu"
+path="res://.godot/imported/Kinesis Stellae Choir by Vrymaa Id-770060.ogg-b5b0b01499e4d12a4d860614e60dc713.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/Kinesis Stellae Choir by Vrymaa Id-770060.ogg"
+dest_files=["res://.godot/imported/Kinesis Stellae Choir by Vrymaa Id-770060.ogg-b5b0b01499e4d12a4d860614e60dc713.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

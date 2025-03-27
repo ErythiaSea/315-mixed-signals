@@ -1,10 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://cefs7sceaq1yy"]
+[gd_scene load_steps=30 format=3 uid="uid://cefs7sceaq1yy"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_2e86h"]
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_ettdq"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_nx23b"]
-[ext_resource type="Texture2D" uid="uid://ka121kgp0utg" path="res://Scenes/Environments/SaltPillar/salt_background.png" id="3_y8bnk"]
-[ext_resource type="Texture2D" uid="uid://dcwps237ql8wa" path="res://Scenes/Environments/SaltPillar/salt_rails.png" id="4_era6n"]
+[ext_resource type="Texture2D" uid="uid://cw7e832xsjhiq" path="res://Scenes/Environments/SaltPillar/Sprites/SaltPillar_Background.png" id="3_d4sue"]
+[ext_resource type="Texture2D" uid="uid://dcwps237ql8wa" path="res://Scenes/Environments/SaltPillar/SaltPillar_Rails.png" id="4_era6n"]
+[ext_resource type="Texture2D" uid="uid://dse3q1tylua04" path="res://Scenes/Environments/SaltPillar/Sprites/SaltPillar_BackRocks.png" id="4_gigtv"]
+[ext_resource type="Texture2D" uid="uid://dtwron5jgwwek" path="res://Scenes/Environments/SaltPillar/Sprites/SaltPillar_FrontRocks.png" id="5_kf6ej"]
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/Outline.gdshader" id="6_jjc5l"]
 [ext_resource type="Texture2D" uid="uid://din6bfgvj8ksj" path="res://Scenes/Environments/Objects/sprites/telescope.png" id="6_pidip"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="7_yro1e"]
@@ -14,11 +16,45 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="12_oaf7q"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="13_kkcnm"]
 [ext_resource type="Resource" uid="uid://ccv0ncottq4w" path="res://Scenes/Environments/SaltPillar/Dialogue/saltpillarDialogue.tres" id="14_kvt6g"]
+[ext_resource type="AudioStream" uid="uid://d813esisgsmb" path="res://Audio/Ambience/Salt Pillar/785208__nicola_ariutti__parque_cucao_pacific_ocean_pt1-zoom168.ogg" id="15_epl3m"]
+[ext_resource type="AudioStream" uid="uid://crm66861lu4iw" path="res://Audio/Ambience/Salt Pillar/389618__stubb__rock-tumble-2.ogg" id="15_y3wnx"]
+[ext_resource type="AudioStream" uid="uid://chcmnpuctd3my" path="res://Audio/Ambience/Salt Pillar/58416__darren1979__oceanwaves.ogg" id="16_utne0"]
+[ext_resource type="AudioStream" uid="uid://dd6vkaf4mxsnu" path="res://Audio/Music/Kinesis Stellae Choir by Vrymaa Id-770060.ogg" id="17_owmvf"]
+[ext_resource type="AudioStream" uid="uid://b2c5i1hm6jwee" path="res://Audio/Ambience/Salt Pillar/AMBSea-LR_Spain-Seagulls, Cawing, Harbor, Malaga, Evening, Zoom F6, _FTUS_AIOL_192k32b.ogg" id="18_qewgt"]
+[ext_resource type="AudioStream" uid="uid://clgsx1jqgm366" path="res://Audio/Ambience/Salt Pillar/Birds, Sea, Seagulls Marine SND116107.ogg" id="19_cl7gx"]
 
 [sub_resource type="Resource" id="Resource_ci2ls"]
 script = ExtResource("2_ettdq")
 spawnPosition = Vector2(2794, 833)
 faceLeft = true
+
+[sub_resource type="Environment" id="Environment_dp1er"]
+background_mode = 3
+glow_enabled = true
+glow_levels/4 = 2.0
+glow_levels/5 = 4.0
+glow_levels/6 = 8.0
+glow_levels/7 = 16.0
+glow_normalized = true
+glow_intensity = 0.4
+glow_bloom = 0.3
+glow_blend_mode = 0
+fog_mode = 1
+fog_light_color = Color(0.872069, 0.00094317, 0.923236, 1)
+fog_density = 1.0
+fog_depth_curve = 2.82843
+adjustment_enabled = true
+adjustment_brightness = 0.8
+adjustment_saturation = 1.1
+
+[sub_resource type="Gradient" id="Gradient_msba7"]
+offsets = PackedFloat32Array(0, 0.532468)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_84fos"]
+gradient = SubResource("Gradient_msba7")
+fill = 1
+fill_from = Vector2(0.522936, 0.477064)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4ogv"]
 shader = ExtResource("6_jjc5l")
@@ -50,14 +86,74 @@ size = Vector2(49, 186)
 [node name="SaltEnv" type="Node2D"]
 script = ExtResource("1_2e86h")
 spawnData = Array[Object]([SubResource("Resource_ci2ls")])
-cameraZoom = 0.8
+cameraZoom = 0.6
+OffsetY = -150.0
 leftLimit = -2974
 topLimit = -1459
 rightLimit = 2974
 bottomLimit = 1459
 
-[node name="bg" type="Sprite2D" parent="."]
-texture = ExtResource("3_y8bnk")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dp1er")
+
+[node name="Lighting" type="Node2D" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting"]
+color = Color(0.643137, 0.305882, 0.501961, 1)
+energy = 0.2
+blend_mode = 1
+
+[node name="FrontPillar1" type="PointLight2D" parent="Lighting"]
+show_behind_parent = true
+position = Vector2(-1744, -80.0001)
+scale = Vector2(24.2056, -43.5187)
+texture = SubResource("GradientTexture2D_84fos")
+
+[node name="FrontPillar2" type="PointLight2D" parent="Lighting"]
+show_behind_parent = true
+position = Vector2(100, 408)
+scale = Vector2(10.0056, -43.5187)
+texture = SubResource("GradientTexture2D_84fos")
+
+[node name="FrontPillar3" type="PointLight2D" parent="Lighting"]
+show_behind_parent = true
+position = Vector2(476, 108)
+scale = Vector2(10.0056, -43.5187)
+texture = SubResource("GradientTexture2D_84fos")
+
+[node name="FrontPillar4" type="PointLight2D" parent="Lighting"]
+show_behind_parent = true
+position = Vector2(1452, 296)
+scale = Vector2(10.5656, -43.5187)
+texture = SubResource("GradientTexture2D_84fos")
+
+[node name="BackPillar1" type="PointLight2D" parent="Lighting"]
+show_behind_parent = true
+position = Vector2(-744, 92)
+scale = Vector2(8.32558, -17.4387)
+energy = 0.5
+texture = SubResource("GradientTexture2D_84fos")
+
+[node name="BackPillar2" type="PointLight2D" parent="Lighting"]
+show_behind_parent = true
+position = Vector2(-160, 188)
+scale = Vector2(8.32558, -17.4387)
+energy = 0.5
+texture = SubResource("GradientTexture2D_84fos")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="backGround" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("3_d4sue")
+
+[node name="BackPillars" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("4_gigtv")
+
+[node name="Front Pillars" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("5_kf6ej")
+
+[node name="Rails" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("4_era6n")
 
 [node name="Player" parent="." instance=ExtResource("2_nx23b")]
 position = Vector2(2794, 833)
@@ -66,9 +162,6 @@ walkingParticles = null
 
 [node name="head" type="Marker2D" parent="Player"]
 position = Vector2(0, -45.8333)
-
-[node name="rails" type="Sprite2D" parent="."]
-texture = ExtResource("4_era6n")
 
 [node name="TelescopeSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_h4ogv")
@@ -85,11 +178,11 @@ polygon = PackedVector2Array(2972, 902, 2578, 901, 2488, 897, 2389, 880, 2300, 8
 
 [node name="TelescopeBox" parent="." node_paths=PackedStringArray("objectSprite") instance=ExtResource("7_yro1e")]
 position = Vector2(-2069, -269)
-objectSprite = NodePath("../TelescopeSprite")
 transitionType = 4
 requiredStage = 3
 scenePath = "res://Scenes/Minigames/Constellation/ConstellationDraw.tscn"
 disablePlayerCam = true
+objectSprite = NodePath("../TelescopeSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TelescopeBox"]
 position = Vector2(-13, 18)
@@ -107,6 +200,7 @@ position = Vector2(29.5, 0)
 shape = SubResource("RectangleShape2D_a1j6n")
 
 [node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]
+z_index = 2
 clip_contents = false
 offset_right = 116.0
 offset_bottom = 36.0
@@ -126,9 +220,9 @@ dialogue_custom_effects = [SubResource("RichTextEffect_kp4e8"), SubResource("Ric
 position = Vector2(1828, 536)
 isOneShot = true
 isAutofire = true
-dialogueBox = NodePath("../DialogueBubble")
 startID = "0"
 timeLimit = 5.0
+dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox1"]
 position = Vector2(30.5, -28.5)
@@ -138,10 +232,74 @@ shape = SubResource("RectangleShape2D_2lsjs")
 position = Vector2(121, 82)
 isOneShot = true
 isAutofire = true
-dialogueBox = NodePath("../DialogueBubble")
 startID = "1"
 timeLimit = 5.0
+dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox2"]
 position = Vector2(7.5, -14)
 shape = SubResource("RectangleShape2D_qrknp")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DialogueBox2"]
+position = Vector2(2, -92)
+stream = ExtResource("15_y3wnx")
+volume_db = 7.924
+
+[node name="WavesCrashing" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(296, 1070)
+stream = ExtResource("15_epl3m")
+volume_db = -20.0
+autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WavesCrashing"]
+position = Vector2(-2002, -17)
+stream = ExtResource("15_epl3m")
+volume_db = -20.0
+autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WavesCrashing/AudioStreamPlayer2D"]
+position = Vector2(3265, -2)
+stream = ExtResource("15_epl3m")
+volume_db = -20.0
+autoplay = true
+
+[node name="MoreWavesCrashing" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(314, 1069)
+stream = ExtResource("16_utne0")
+volume_db = -30.0
+autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MoreWavesCrashing"]
+position = Vector2(1290, -16)
+stream = ExtResource("16_utne0")
+volume_db = -30.0
+autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MoreWavesCrashing/AudioStreamPlayer2D"]
+position = Vector2(-3247, 18)
+stream = ExtResource("16_utne0")
+volume_db = -30.0
+autoplay = true
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_owmvf")
+volume_db = -38.0
+autoplay = true
+
+[node name="Seagulls" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(464, -761)
+stream = ExtResource("18_qewgt")
+volume_db = 11.885
+autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Seagulls"]
+position = Vector2(1201, 197)
+stream = ExtResource("18_qewgt")
+volume_db = 11.885
+autoplay = true
+
+[node name="MoreSeagulls" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1855, -761)
+stream = ExtResource("19_cl7gx")
+volume_db = -15.0
+autoplay = true

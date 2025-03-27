@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://kv3p5d4tp3k5" path="res://Scenes/Minigames/Transpond/radiotowers.tscn" id="1_okcy0"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Transpond/Scripts/TranspondScreen.cs" id="1_ouvn6"]
-[ext_resource type="Texture2D" uid="uid://t6mqbrhqqobs" path="res://Scenes/Minigames/Transpond/Sprites/transpondmonitors_temp.png" id="1_ugigk"]
 [ext_resource type="PackedScene" uid="uid://7aoxy6ge3j3s" path="res://Scenes/Minigames/Transpond/waveform.tscn" id="3_xdcbw"]
+[ext_resource type="Texture2D" uid="uid://bpb5024lyyhod" path="res://Scenes/Minigames/Transpond/Sprites/Transponding _Frames.png" id="4_46uc7"]
 [ext_resource type="Texture2D" uid="uid://pkfkpyetdo58" path="res://Scenes/Minigames/Transpond/Sprites/waveform_gridbg.png" id="6_ftnw3"]
 [ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="6_ip8fq"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="7_y3602"]
@@ -45,21 +45,23 @@ ampTolerance = 3.0
 wlTolerance = 3.5
 
 [node name="radiotowerRoot" parent="." instance=ExtResource("1_okcy0")]
-position = Vector2(225, 278)
-scale = Vector2(0.32, 0.32)
+position = Vector2(87, 267)
+scale = Vector2(0.4, 0.4)
 
 [node name="Monitors" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_ugigk")
+texture = ExtResource("4_46uc7")
 
 [node name="WaveBackground" type="Sprite2D" parent="."]
+visible = false
 z_index = -2
 position = Vector2(1362, 285)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_ftnw3")
 
 [node name="WaveBackground2" type="Sprite2D" parent="."]
+visible = false
 z_index = -2
 position = Vector2(1362, 762)
 scale = Vector2(0.5, 0.5)
@@ -67,16 +69,16 @@ texture = ExtResource("6_ftnw3")
 
 [node name="RightBox" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.870588)
-position = Vector2(1381.95, 545.982)
+position = Vector2(1411, 546)
 rotation = -3.14159
-scale = Vector2(12.1117, 15.0231)
+scale = Vector2(14.0317, 15.6231)
 texture = SubResource("GradientTexture2D_cqgav")
 
 [node name="LeftBox" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0)
-position = Vector2(519.385, 546.488)
+position = Vector2(471, 536)
 rotation = -3.14159
-scale = Vector2(12.0327, 15.1631)
+scale = Vector2(13.6727, 15.5631)
 texture = SubResource("GradientTexture2D_cqgav")
 
 [node name="ControlsRadiotower" type="Label" parent="."]

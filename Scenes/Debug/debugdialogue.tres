@@ -7,69 +7,123 @@ script = ExtResource("1_5br0n")
 starts = {
 "0": &"0_1",
 "1": &"0_2",
-"CONSTELLATION": &"0_6",
-"Sleep": &"0_8",
-"TRANSLATION": &"0_7",
+"CONSTELLATION_END": &"0_11",
+"CONSTELLATION_START": &"0_6",
+"ENV_START": &"0_10",
+"RADIO_TUT": &"0_17",
+"SLEEP": &"0_8",
+"TRANS1_TUT": &"0_14",
+"TRANS2_TUT": &"0_15",
+"TRANSLATION_END": &"0_12",
+"TRANSLATION_START": &"0_7",
+"TRANSLATION_TUT": &"0_16",
 "TRANSPONDING": &"0_4",
-"WAVEFORM": &"0_5",
-"WrongDay": &"0_10",
-"nme": &"0_3",
-"translationend": &"0_9"
+"WrongDay": &"0_19",
+"translationend": &"0_18",
+"WAKEUP": &"0_13",
+"WAVEFORM_END": &"0_9",
+"WAVEFORM_START": &"0_5",
+"nme": &"0_3"
 }
 nodes = {
 "0_1": {
 "link": &"1_1",
-"offset": Vector2(-552.463, -429.169),
+"offset": Vector2(-600, -420),
 "start_id": "0"
 },
 "0_10": {
+"link": &"1_16",
+"offset": Vector2(-580, 1040),
+"start_id": "ENV_START"
+},
+"0_11": {
+"link": &"1_17",
+"offset": Vector2(940, 1040),
+"start_id": "CONSTELLATION_END"
+},
+"0_12": {
+"link": &"1_20",
+"offset": Vector2(540, 1440),
+"start_id": "TRANSLATION_END"
+},
+"0_13": {
+"link": &"1_11",
+"offset": Vector2(120, 1860),
+"start_id": "WAKEUP"
+},
+"0_14": {
+"link": &"1_22",
+"offset": Vector2(2640, 660),
+"start_id": "TRANS1_TUT"
+},
+"0_15": {
+"link": &"1_24",
+"offset": Vector2(2640, 980),
+"start_id": "TRANS2_TUT"
+},
+"0_16": {
+"link": &"1_25",
+"offset": Vector2(2640, 1620),
+"start_id": "TRANSLATION_TUT"
+},
+"0_17": {
+"link": &"1_29",
+"offset": Vector2(2640, 1300),
+"start_id": "RADIO_TUT"
+},
+"0_19": {
 "link": &"1_13",
 "offset": Vector2(-381, 1756.86),
 "start_id": "WrongDay"
 },
 "0_2": {
 "link": &"1_4",
-"offset": Vector2(-580, -80),
+"offset": Vector2(-600, -80),
 "start_id": "1"
 },
 "0_3": {
 "link": &"1_5",
-"offset": Vector2(-600, 300),
+"offset": Vector2(-600, 240),
 "start_id": "nme"
 },
 "0_4": {
-"link": &"1_6",
+"link": &"1_12",
 "offset": Vector2(-580, 680),
 "start_id": "TRANSPONDING"
 },
 "0_5": {
 "link": &"1_7",
-"offset": Vector2(80, 680),
-"start_id": "WAVEFORM"
+"offset": Vector2(660, 680),
+"start_id": "WAVEFORM_START"
 },
 "0_6": {
 "link": &"1_8",
-"offset": Vector2(-580, 1020),
-"start_id": "CONSTELLATION"
+"offset": Vector2(200, 1040),
+"start_id": "CONSTELLATION_START"
 },
 "0_7": {
 "link": &"1_9",
-"offset": Vector2(80, 1020),
-"start_id": "TRANSLATION"
+"offset": Vector2(-580, 1440),
+"start_id": "TRANSLATION_START"
 },
 "0_8": {
 "link": &"1_10",
-"offset": Vector2(-520, 1360),
-"start_id": "Sleep"
+"offset": Vector2(-580, 1860),
+"start_id": "SLEEP"
 },
 "0_9": {
+"link": &"1_13",
+"offset": Vector2(1320, 680),
+"start_id": "WAVEFORM_END"
+},
+"0_18": {
 "link": &"1_12",
 "offset": Vector2(600, 1360),
 "start_id": "translationend"
 },
 "1_1": {
 "dialogue": "dialogue holy crap",
-"offset": Vector2(-280, -420),
+"offset": Vector2(-320, -420),
 "options": {
 0: {
 "condition": {},
@@ -86,12 +140,12 @@ nodes = {
 "speaker": "erg"
 },
 "1_10": {
-"dialogue": "Hey im Sleepin here!",
-"offset": Vector2(-220, 1360),
+"dialogue": "This is way above my pay grade...",
+"offset": Vector2(-280, 1860),
 "options": {
 0: {
 "condition": {},
-"link": &"1_11",
+"link": "END",
 "text": ""
 }
 },
@@ -99,8 +153,112 @@ nodes = {
 "speaker": "..."
 },
 "1_11": {
-"dialogue": "Hey im Dreaming here!",
-"offset": Vector2(140, 1360),
+"dialogue": "Time to clock back in to my normal, normal job...",
+"offset": Vector2(340, 1860),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_12": {
+"dialogue": "Finally, some work to do. Why are they coming in so early?",
+"offset": Vector2(-180, 680),
+"options": {
+0: {
+"condition": {},
+"link": &"1_6",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_13": {
+"dialogue": "What...",
+"offset": Vector2(1620, 680),
+"options": {
+0: {
+"condition": {},
+"link": &"1_14",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_14": {
+"dialogue": "Is this...",
+"offset": Vector2(1980, 680),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
+},
+"1_15": {
+"dialogue": "Alright then, let's put you to good use...",
+"offset": Vector2(140, 1440),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_16": {
+"dialogue": "I should be able to see that ship from the telescope. Just need to trek there...",
+"offset": Vector2(-180, 1040),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_17": {
+"dialogue": "Got all of them - Let's get all these coordinates down...",
+"offset": Vector2(1280, 1040),
+"options": {
+0: {
+"condition": {},
+"link": &"1_18",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_18": {
+"dialogue": "They didn't supply the cipher in the message... Hold on what if I do this...",
+"offset": Vector2(1760, 1040),
+"options": {
+0: {
+"condition": {},
+"link": &"1_19",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_19": {
+"dialogue": "These coordinates add up to the cipher? That's ingenious.",
+"offset": Vector2(2160, 1040),
 "options": {
 0: {
 "condition": {},
@@ -150,6 +308,136 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": "erg"
 },
+"1_20": {
+"dialogue": "...",
+"offset": Vector2(820, 1440),
+"options": {
+0: {
+"condition": {},
+"link": &"1_21",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_21": {
+"dialogue": "What the...",
+"offset": Vector2(1160, 1440),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_22": {
+"dialogue": "To find the relative sector, both of the lines attached to either radio tower must overlap on top of the correlating red box.",
+"offset": Vector2(2980, 660),
+"options": {
+0: {
+"condition": {},
+"link": &"1_23",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Tutorial"
+},
+"1_23": {
+"dialogue": "There will be sound and visuals that will alter the closest you get to the sector.",
+"offset": Vector2(3340, 660),
+"options": {
+0: {
+"condition": {},
+"link": &"1_30",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Tutorial"
+},
+"1_24": {
+"dialogue": "To receive the message, the radiowave in the upper monitor must match that of the lower monitor.",
+"offset": Vector2(2980, 980),
+"options": {
+0: {
+"condition": {},
+"link": &"1_31",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Tutorial"
+},
+"1_25": {
+"dialogue": "To translate the message, all possible letters must first be converted from their language.",
+"offset": Vector2(2980, 1620),
+"options": {
+0: {
+"condition": {},
+"link": &"1_26",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Tutorial"
+},
+"1_26": {
+"dialogue": "Those letters must then have the cipher reapplied to them. For example a +2 cipher on 'T' would be a 'V', and a -2 cipher would be an 'R'.",
+"offset": Vector2(3360, 1620),
+"options": {
+0: {
+"condition": {},
+"link": &"1_27",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Tutorial"
+},
+"1_27": {
+"dialogue": "Missing letters, if there are any, can be deducted.",
+"offset": Vector2(3740, 1620),
+"options": {
+0: {
+"condition": {},
+"link": &"1_28",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Tutorial"
+},
+"1_28": {
+"dialogue": "The final translation can be submitted in the box below the original message.",
+"offset": Vector2(4080, 1620),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Tutorial"
+},
+"1_29": {
+"dialogue": "To connect all of the stars. they must",
+"offset": Vector2(2980, 1300),
+"options": {
+0: {
+"condition": {},
+"link": &"1_32",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Tutorial"
+},
 "1_3": {
 "dialogue": "wdym no",
 "offset": Vector2(140, -100),
@@ -163,9 +451,48 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": "erg"
 },
+"1_30": {
+"dialogue": "'A' and 'D' can be used to control the left dial. 'LeftMB' and 'RightMB' can be used to control the right dial.",
+"offset": Vector2(3700, 660),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Tutorial"
+},
+"1_31": {
+"dialogue": "'A' and 'D' can be used to control the width of the wave. 'W' and 'S' can be used to control the height of the wave.",
+"offset": Vector2(3340, 980),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Tutorial"
+},
+"1_32": {
+"dialogue": "Use 'W', 'A', 'S', and 'D' to move the telescope.",
+"offset": Vector2(3340, 1300),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Tutorial"
+},
 "1_4": {
 "dialogue": "this one has a different start id",
-"offset": Vector2(-300, -80),
+"offset": Vector2(-320, -80),
 "options": {
 0: {
 "condition": {},
@@ -178,7 +505,7 @@ nodes = {
 },
 "1_5": {
 "dialogue": "No messages.[English]",
-"offset": Vector2(-320, 300),
+"offset": Vector2(-320, 240),
 "options": {
 0: {
 "condition": {},
@@ -190,9 +517,8 @@ nodes = {
 "speaker": "!DEBUG!"
 },
 "1_6": {
-"dialogue": "I should probably check out these new signals I'm getting[br]
-strange...",
-"offset": Vector2(-240, 680),
+"dialogue": "Now, which sector are you coming from?",
+"offset": Vector2(300, 680),
 "options": {
 0: {
 "condition": {},
@@ -204,9 +530,8 @@ strange...",
 "speaker": "..."
 },
 "1_7": {
-"dialogue": "I need to tune the signal waves to know where I'm headed first[br]
-*Sigh*",
-"offset": Vector2(420, 680),
+"dialogue": "Okay, what do you have to say for yourself?",
+"offset": Vector2(1000, 680),
 "options": {
 0: {
 "condition": {},
@@ -218,8 +543,8 @@ strange...",
 "speaker": "..."
 },
 "1_8": {
-"dialogue": "These stars won't find themseleves, where is my telescope?",
-"offset": Vector2(-240, 1020),
+"dialogue": "Where is this damn airshi- Why do the stars look like that...",
+"offset": Vector2(540, 1040),
 "options": {
 0: {
 "condition": {},
@@ -231,19 +556,32 @@ strange...",
 "speaker": "..."
 },
 "1_9": {
-"dialogue": "I wonder what these messages mean? Lets get Translating!",
-"offset": Vector2(420, 1020),
+"dialogue": "The rune... It has the same letters etched onto it. ",
+"offset": Vector2(-240, 1440),
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"1_15",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
 "speaker": "..."
+},
+"2_1": {
+"comment": "Make this the dialogue
+for trying to leave early.",
+"offset": Vector2(160, 800),
+"size": Vector2(200, 100)
+},
+"2_2": {
+"comment": "This dialogue plays 
+when going for a nap
+too early",
+"offset": Vector2(-580, 800),
+"size": Vector2(200, 120)
 }
 }
 variables = {}
-strays = Array[String]([])
+strays = Array[String](["2_2", "2_1"])
 characters = ""

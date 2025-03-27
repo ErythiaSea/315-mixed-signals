@@ -57,7 +57,7 @@ offset_bottom = 539.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SaltButton" parent="Buttons" instance=ExtResource("2_8d1fn")]
+[node name="SaltButton" parent="Buttons" node_paths=PackedStringArray("dialogueBox") instance=ExtResource("2_8d1fn")]
 layout_mode = 0
 offset_left = -1004.0
 offset_top = -852.0
@@ -67,8 +67,10 @@ focus_neighbor_right = NodePath("../PondButton")
 focus_neighbor_bottom = NodePath("../FossilButton")
 texture_normal = ExtResource("5_cum4x")
 mapToLoad = ExtResource("5_fwcyt")
+requiredDay = 1
+dialogueBox = NodePath("../../DialogueBox")
 
-[node name="PondButton" parent="Buttons" instance=ExtResource("2_8d1fn")]
+[node name="PondButton" parent="Buttons" node_paths=PackedStringArray("dialogueBox") instance=ExtResource("2_8d1fn")]
 layout_mode = 0
 offset_left = -257.0
 offset_top = -663.0
@@ -78,8 +80,9 @@ focus_neighbor_left = NodePath("../SaltButton")
 focus_neighbor_bottom = NodePath("../FossilButton")
 texture_normal = ExtResource("3_7rbmu")
 mapToLoad = ExtResource("4_0s13x")
+dialogueBox = NodePath("../../DialogueBox")
 
-[node name="FossilButton" parent="Buttons" instance=ExtResource("2_8d1fn")]
+[node name="FossilButton" parent="Buttons" node_paths=PackedStringArray("dialogueBox") instance=ExtResource("2_8d1fn")]
 layout_mode = 0
 offset_left = -1097.0
 offset_top = -530.0
@@ -89,3 +92,5 @@ focus_neighbor_left = NodePath("../SaltButton")
 focus_neighbor_top = NodePath("../SaltButton")
 focus_neighbor_right = NodePath("../PondButton")
 disabled = true
+requiredDay = 2
+dialogueBox = NodePath("../../DialogueBox")
