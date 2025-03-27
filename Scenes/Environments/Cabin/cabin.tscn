@@ -180,13 +180,13 @@ radius = 32.249
 
 [node name="Cabin" type="Node2D" node_paths=PackedStringArray("dialogueBox", "exitInteractBox", "elevatorButtonBox")]
 script = ExtResource("1_2hyee")
-dialogueBox = NodePath("SleepDialogueBox")
-exitInteractBox = NodePath("LevelChange")
-elevatorButtonBox = NodePath("Elevator/ElevatorButton")
 spawnData = Array[Object]([SubResource("Resource_82qql")])
 OffsetY = -300.0
 rightLimit = 1920
 bottomLimit = 4954
+dialogueBox = NodePath("SleepDialogueBox")
+exitInteractBox = NodePath("LevelChange")
+elevatorButtonBox = NodePath("Elevator/ElevatorButton")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8vdl8")
