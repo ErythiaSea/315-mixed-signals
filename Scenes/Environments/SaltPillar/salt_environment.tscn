@@ -62,6 +62,7 @@ texture = ExtResource("3_y8bnk")
 [node name="Player" parent="." instance=ExtResource("2_nx23b")]
 position = Vector2(2794, 833)
 scale = Vector2(1.2, 1.2)
+walkingParticles = null
 
 [node name="head" type="Marker2D" parent="Player"]
 position = Vector2(0, -45.8333)
@@ -86,7 +87,7 @@ polygon = PackedVector2Array(2972, 902, 2578, 901, 2488, 897, 2389, 880, 2300, 8
 position = Vector2(-2069, -269)
 objectSprite = NodePath("../TelescopeSprite")
 transitionType = 4
-requiredStage = 1
+requiredStage = 3
 scenePath = "res://Scenes/Minigames/Constellation/ConstellationDraw.tscn"
 disablePlayerCam = true
 
@@ -96,6 +97,7 @@ shape = SubResource("RectangleShape2D_0u2pg")
 
 [node name="LevelChange" parent="." instance=ExtResource("7_yro1e")]
 position = Vector2(2907, 898)
+requiredStage = 4
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
 spawnPoint = 1

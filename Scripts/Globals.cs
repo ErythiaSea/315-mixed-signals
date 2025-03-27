@@ -6,6 +6,7 @@ using System.Linq;
 
 public enum GAMESTAGE
 {
+	BEGIN,
 	TRANSPONDING,
 	WAVEFORM,
 	CONSTELLATION,
@@ -74,22 +75,21 @@ public partial class Globals : Node
 	private void InitalGameSetUp()
 	{
 		gameState.day = 0;
-		gameState.stage = GAMESTAGE.TRANSPONDING;
-
+		gameState.stage = GAMESTAGE.BEGIN;
 	}
 
 	public void NewDay()
 	{
 		isCurrentWordDone = false;
 		gameState.day += 1;
-		gameState.stage = GAMESTAGE.TRANSPONDING;
+		gameState.stage = (gameState.day == 2 ? GAMESTAGE.END : GAMESTAGE.TRANSPONDING);
 		cipherKey = 0;
 
 		LpivotRotRef = 0f;
 		RpivotRotRef = 0f;
 		waveAmpRef = 0f;
 		waveLenRef = 0f;
-
+		GD.Print("Globals::NewDay complete");
 	}
 
 	public void StartTransition(TRANSITION transitionType, float transitionLength)

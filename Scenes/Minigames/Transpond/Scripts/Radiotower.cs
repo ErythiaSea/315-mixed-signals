@@ -113,6 +113,8 @@ public partial class Radiotower : Node2D
 				gameActive = false;
 				lPivot.handleInputs = false;
 				rPivot.handleInputs = false;
+				lPivot.streamPlayer.Stop();
+				rPivot.streamPlayer.Stop();
 			}
 		}
 		else winTimer = 0.0f;

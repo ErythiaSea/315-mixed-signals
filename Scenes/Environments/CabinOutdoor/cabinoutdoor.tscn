@@ -96,7 +96,7 @@ script = ExtResource("10_vfhkp")
 position = Vector2(-2, 0)
 script = ExtResource("1_4weox")
 spawnData = Array[Object]([SubResource("Resource_igbtt"), SubResource("Resource_5o2kn")])
-cameraZoom = 0.5
+cameraZoom = 0.6
 leftLimit = -1924
 topLimit = -1590
 rightLimit = 5570
@@ -139,7 +139,7 @@ position = Vector2(4795, 279)
 scale = Vector2(1.535, 0.98)
 transitionType = 4
 transitionLength = 0.5
-requiredStage = 2
+requiredStage = 3
 scenePath = "res://Scenes/Minigames/Map/mapscreen.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapBox"]
@@ -149,7 +149,7 @@ shape = SubResource("RectangleShape2D_rkcsa")
 [node name="LevelTransition" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(-443, 57)
 transitionType = 2
-requiredStage = 5
+requiredStage = 4
 scenePath = "res://Scenes/Environments/Cabin/cabin.tscn"
 loadInCurrent = false
 spawnPoint = 0
@@ -203,7 +203,7 @@ grow_vertical = 2
 theme = ExtResource("7_u12k5")
 script = ExtResource("7_ra4mx")
 data = ExtResource("8_ctnhm")
-start_id = "0"
+start_id = "Sleep"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_kmmy1"), SubResource("RichTextEffect_4u6xp"), SubResource("RichTextEffect_a24d6")])
 
 [node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]

@@ -116,7 +116,7 @@ texture = ExtResource("3_n7la6")
 [node name="TelescopeBox" parent="." instance=ExtResource("4_u2itd")]
 position = Vector2(-916, -732)
 transitionType = 4
-requiredStage = 1
+requiredStage = 3
 scenePath = "res://Scenes/Minigames/Constellation/ConstellationDraw.tscn"
 disablePlayerCam = true
 
@@ -127,6 +127,7 @@ shape = SubResource("RectangleShape2D_mkpum")
 [node name="LevelTransition" parent="." instance=ExtResource("4_u2itd")]
 position = Vector2(-2878, 591)
 transitionType = 1
+requiredStage = 4
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
 spawnPoint = 1
