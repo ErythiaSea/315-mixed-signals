@@ -41,12 +41,12 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 360),
 "speaker": "Corvus"
 },
 "1_11": {
 "dialogue": "Ah, the air is beginning to turn cold, and it’s time for my daily afternoon flight. Thus, I must take my leave. You know, your pessimism and self-deprecation are things you should take into consideration when talking to someone for the first time. I hope by the next time we meet, you’ve bettered your confidence and made progress with your peace.",
-"offset": Vector2(4340, 2040),
+"offset": Vector2(4340, 2100),
 "options": {
 0: {
 "condition": {},
@@ -54,7 +54,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(320, 400),
 "speaker": "Corvus"
 },
 "1_2": {
@@ -124,7 +124,7 @@ nodes = {
 "text": ""
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 280),
 "speaker": "Corvus"
 },
 "1_7": {
