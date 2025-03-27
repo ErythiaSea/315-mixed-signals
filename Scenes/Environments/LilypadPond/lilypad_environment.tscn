@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://de45w11b26rfr" path="res://Scenes/Environments/LilypadPond/lilypadenv_cliffgrass.png" id="3_n7la6"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_u2itd"]
 [ext_resource type="AudioStream" uid="uid://dko7fvpro21fk" path="res://Audio/Music/Kinesis Stellae   Choir by Vrymaa Id-770060.wav" id="10_cyaek"]
-[ext_resource type="Resource" uid="uid://ciinae4snmogy" path="res://Scenes/Environments/LilypadPond/Dialogue/misc dial 1.tres" id="11_3uaob"]
+[ext_resource type="Resource" uid="uid://ciinae4snmogy" path="res://Scenes/Environments/LilypadPond/Dialogue/lilypad dialogue.tres" id="11_3uaob"]
 [ext_resource type="AudioStream" uid="uid://c8eusy0cr4kfc" path="res://Audio/Ambience/Water, Waterfall, Waterfall, The Trolls Road, River, 10m, Loop 02 SND73480.ogg" id="11_70pbf"]
 [ext_resource type="AudioStream" uid="uid://d1dsjc5b8djm1" path="res://Audio/Ambience/Water, Flow, Shallow Creek, Forest, Birds, Buderim Forest, Qeensland, Australia 01 SND31676.ogg" id="12_dyj3n"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="12_f3lj2"]
@@ -116,7 +116,7 @@ texture = ExtResource("3_n7la6")
 [node name="TelescopeBox" parent="." instance=ExtResource("4_u2itd")]
 position = Vector2(-916, -732)
 transitionType = 4
-requiredStage = 1
+requiredStage = 3
 scenePath = "res://Scenes/Minigames/Constellation/ConstellationDraw.tscn"
 disablePlayerCam = true
 
@@ -127,6 +127,7 @@ shape = SubResource("RectangleShape2D_mkpum")
 [node name="LevelTransition" parent="." instance=ExtResource("4_u2itd")]
 position = Vector2(-2878, 591)
 transitionType = 1
+requiredStage = 4
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
 spawnPoint = 1

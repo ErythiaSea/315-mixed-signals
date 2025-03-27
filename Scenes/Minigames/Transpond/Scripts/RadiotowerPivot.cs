@@ -10,7 +10,7 @@ public partial class RadiotowerPivot : Node2D
     StringName cwInput, ccwInput;
 	public Area2D area;
 	public Sprite2D sprite;
-	AudioStreamPlayer2D streamPlayer;
+	public AudioStreamPlayer2D streamPlayer;
 	AudioEffectDistortion distortEffect;
 
 	public bool overlapsTower = false;

@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://80lxrx40n1qm"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_se3ui"]
+
+[resource]
+script = ExtResource("1_se3ui")
+starts = {
+"0": &"0_1",
+"1": &"0_2",
+"2": &"0_3"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-414, -302),
+"start_id": "0"
+},
+"0_2": {
+"link": &"1_2",
+"offset": Vector2(-420, 20),
+"start_id": "1"
+},
+"0_3": {
+"link": &"1_3",
+"offset": Vector2(-420, 340),
+"start_id": "2"
+},
+"1_1": {
+"dialogue": "I'm flattered you chose me! Glad you've got a good head on your shoulders.",
+"offset": Vector2(-180, -300),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Corvus"
+},
+"1_2": {
+"dialogue": "Hohoho! Too right, lad! We'll go far together, no doubt!",
+"offset": Vector2(-180, 20),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_3": {
+"dialogue": "I should hope you would choose me over those other two! You can appreciate beauty where it shines brightest, that much is clear.",
+"offset": Vector2(-180, 340),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Cassiopeia"
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = ""

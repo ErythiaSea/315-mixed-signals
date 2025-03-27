@@ -138,7 +138,7 @@ position = Vector2(0, -41.2)
 position = Vector2(4994, 290)
 transitionType = 4
 transitionLength = 0.5
-requiredStage = 2
+requiredStage = 3
 scenePath = "res://Scenes/Minigames/Map/mapscreen.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapBox"]
@@ -148,7 +148,7 @@ shape = SubResource("RectangleShape2D_rkcsa")
 [node name="LevelTransition" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(-443, 57)
 transitionType = 2
-requiredStage = 5
+requiredStage = 4
 scenePath = "res://Scenes/Environments/Cabin/cabin.tscn"
 loadInCurrent = false
 spawnPoint = 0

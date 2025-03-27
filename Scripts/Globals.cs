@@ -89,7 +89,7 @@ public partial class Globals : Node
 		RpivotRotRef = 0f;
 		waveAmpRef = 0f;
 		waveLenRef = 0f;
-
+		GD.Print("Globals::NewDay complete");
 	}
 
 	public void StartTransition(TRANSITION transitionType, float transitionLength)

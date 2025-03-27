@@ -300,4 +300,11 @@ public partial class InteractBox : Area2D
             }
         }
     }
+
+    public void ChangeLoadedScene(string newScenePath)
+    {
+        scenePath = newScenePath;
+        ResourceLoader.LoadThreadedRequest(scenePath);
+        scene = null;
+    }
 }
