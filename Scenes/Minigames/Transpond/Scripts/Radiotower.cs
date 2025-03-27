@@ -24,11 +24,11 @@ public partial class Radiotower : Node2D
 	public bool gameActive = false;
 
 	Globals globalScript;
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
 	{
-       globalScript = Globals.Instance;
-        
+	   globalScript = Globals.Instance;
+		
 		intersectIndicator = GetNode<Sprite2D>("intersectIndicator");
 		leftIndicator = GetNode<Sprite2D>("leftIndicator");
 		rightIndicator = GetNode<Sprite2D>("rightIndicator");
@@ -104,11 +104,11 @@ public partial class Radiotower : Node2D
 				globalScript.LpivotRotRef = lPivot.Rotation;
 
 				//Updates the stage of the game the player is at
-                globalScript.gameState.stage = GAMESTAGE.WAVEFORM;
+				globalScript.gameState.stage = GAMESTAGE.WAVEFORM;
 
-                // show complete text
-                Label wintext = GetNode<Label>("WinText");
-                wintext.Visible = true;
+				// show complete text
+				Label wintext = GetNode<Label>("WinText");
+				wintext.Visible = true;
 				
 				gameActive = false;
 				lPivot.handleInputs = false;
@@ -147,16 +147,16 @@ public partial class Radiotower : Node2D
 
 	public void Close()
 	{
-        Player plr = GetNode<Player>("../Player");
-        plr.SetMovementLock(false);
-        QueueFree();
-    }
+		Player plr = GetNode<Player>("../Player");
+		plr.SetMovementLock(false);
+		QueueFree();
+	}
 
 	public void CompletedPivots()
 	{
 		rPivot.Rotation = globalScript.RpivotRotRef;
 		lPivot.Rotation = globalScript.LpivotRotRef;
-        lPivot.handleInputs = false;
-        rPivot.handleInputs = false;
-    }
+		lPivot.handleInputs = false;
+		rPivot.handleInputs = false;
+	}
 }

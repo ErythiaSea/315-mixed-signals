@@ -182,7 +182,6 @@ radius = 32.249
 script = ExtResource("1_2hyee")
 dialogueBox = NodePath("DialogueBubble")
 spawnData = [SubResource("Resource_7pcct")]
-OffsetY = -300.0
 rightLimit = 1920
 bottomLimit = 4592
 

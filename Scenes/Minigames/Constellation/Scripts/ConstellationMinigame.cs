@@ -98,14 +98,14 @@ public partial class ConstellationMinigame : BaseMinigame
 		prt.GenerateNumbers();
 	}
 
-    protected override void OnTransitionFinish()
-    {
-        PackedScene cabin = (PackedScene)ResourceLoader.LoadThreadedGet(outdoorCabinPath);
-        if (cabin != null)
-        {
-            // i should be shot
-            player.EmitSignal(Player.SignalName.Transition, (int)TRANSITION.TOPtoBOTTOM, 1.0f);
-            GetTree().ChangeSceneToPacked(cabin);
-        }
-    }
+	protected override void OnTransitionFinish()
+	{
+		PackedScene cabin = (PackedScene)ResourceLoader.LoadThreadedGet(outdoorCabinPath);
+		if (cabin != null)
+		{
+			// i should be shot
+			player.EmitSignal(Player.SignalName.Transition, (int)TRANSITION.TOPtoBOTTOM, 1.0f);
+			GetTree().ChangeSceneToPacked(cabin);
+		}
+	}
 }
