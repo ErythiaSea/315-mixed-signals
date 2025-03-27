@@ -69,14 +69,14 @@ public partial class RadiotowerPivot : Node2D
 
 		if (area.OverlapsArea(radiotower.currentTower))
 		{
-			//sprite.Modulate = new Color(0, 1, 0, 1);
+			sprite.Modulate = new Color(1, 0, 0, 1);
 			//streamPlayer.PitchScale = 3;
 			//distortEffect.Drive = 0;
 			overlapsTower = true;
 		}
 		else
 		{
-			sprite.Modulate = new Color(1, 0, 0, 1);
+			sprite.Modulate = new Color(1, 1, 0, 1);
 			//streamPlayer.PitchScale = 1;
 			//distortEffect.Drive = 0.67f;
 			overlapsTower = false;

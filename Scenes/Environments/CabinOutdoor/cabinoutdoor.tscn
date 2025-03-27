@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cnj8esqdgww0"]
+[gd_scene load_steps=33 format=3 uid="uid://cnj8esqdgww0"]
 
 [ext_resource type="Texture2D" uid="uid://bmij10s8rf8gm" path="res://Scenes/Environments/CabinOutdoor/base_outside.png" id="1_0a00e"]
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_4weox"]
@@ -27,6 +27,35 @@ faceLeft = false
 script = ExtResource("2_nmgjp")
 spawnPosition = Vector2(652, 303)
 faceLeft = true
+
+[sub_resource type="Environment" id="Environment_aycsk"]
+background_mode = 3
+glow_enabled = true
+glow_levels/4 = 2.0
+glow_levels/5 = 4.0
+glow_levels/6 = 8.0
+glow_levels/7 = 16.0
+glow_normalized = true
+glow_intensity = 0.4
+glow_strength = 0.3
+glow_bloom = 0.3
+glow_blend_mode = 0
+fog_mode = 1
+fog_light_color = Color(0.872069, 0.00094317, 0.923236, 1)
+fog_density = 1.0
+fog_depth_curve = 2.82843
+adjustment_enabled = true
+adjustment_brightness = 0.8
+adjustment_saturation = 1.1
+
+[sub_resource type="Gradient" id="Gradient_0eqsd"]
+offsets = PackedFloat32Array(0, 0.564935, 0.818182)
+colors = PackedColorArray(1, 1, 1, 1, 0.0454546, 0.0454546, 0.0454546, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_38v6r"]
+gradient = SubResource("Gradient_0eqsd")
+fill = 1
+fill_from = Vector2(0.527523, 0.495413)
 
 [sub_resource type="Animation" id="Animation_akrgh"]
 length = 0.001
@@ -103,6 +132,30 @@ leftLimit = -1924
 topLimit = -1590
 rightLimit = 5570
 bottomLimit = 540
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aycsk")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(2, 0)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Node2D"]
+color = Color(0.153378, 0.356783, 0.310417, 1)
+blend_mode = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="Node2D"]
+position = Vector2(3159, -9.00022)
+rotation = 0.991007
+scale = Vector2(15.8825, 6.76929)
+energy = 0.3
+texture = SubResource("GradientTexture2D_38v6r")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Node2D"]
+position = Vector2(1380, 281)
+rotation = 0.991007
+scale = Vector2(13.3318, 14.5776)
+energy = 0.4
+texture = SubResource("GradientTexture2D_38v6r")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(1818, -508)
@@ -187,8 +240,8 @@ autoplay = true
 position = Vector2(1690, 440)
 isOneShot = true
 isAutofire = true
-dialogueBox = NodePath("../DialogueBubble")
 startID = "0"
+dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MiscDial Box"]
 position = Vector2(35, -93)

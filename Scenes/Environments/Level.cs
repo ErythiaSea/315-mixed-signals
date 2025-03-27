@@ -16,10 +16,10 @@ public partial class Level : Node2D
 	[Export]
 	bool cameraEnabled = true;
 
-    [Export]
-    float cameraZoom = 1.0f;
+	[Export]
+	float cameraZoom = 1.0f;
 
-    [ExportGroup("Camera Offsets")]
+	[ExportGroup("Camera Offsets")]
 	[Export]
 	float OffsetX = 0f;
 	[Export] 
