@@ -64,7 +64,7 @@ nodes = {
 "speaker": "Corvus"
 },
 "1_12": {
-"dialogue": "",
+"dialogue": "(translation tutorial dialogue would be here.)",
 "offset": Vector2(1240, -60),
 "options": {
 0: {

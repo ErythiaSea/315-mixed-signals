@@ -150,6 +150,7 @@ texture = SubResource("GradientTexture2D_3mkuh")
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Background" type="Sprite2D" parent="Sprites"]
+position = Vector2(0, -124)
 texture = ExtResource("1_x6dd7")
 
 [node name="Foreground" type="Sprite2D" parent="Sprites"]
@@ -380,9 +381,9 @@ autoplay = true
 position = Vector2(-1115, 794)
 isOneShot = true
 isAutofire = true
+dialogueBox = NodePath("../DialogueBubble")
 startID = "0"
 timeLimit = 5.0
-dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox"]
 position = Vector2(1346, -305)
@@ -392,9 +393,9 @@ shape = SubResource("RectangleShape2D_am0pj")
 position = Vector2(1145, -1161)
 isOneShot = true
 isAutofire = true
+dialogueBox = NodePath("../DialogueBubble")
 startID = "1"
 timeLimit = 5.0
-dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox2"]
 position = Vector2(9.25, -63)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cnj8esqdgww0"]
+[gd_scene load_steps=35 format=3 uid="uid://cnj8esqdgww0"]
 
 [ext_resource type="Texture2D" uid="uid://bmij10s8rf8gm" path="res://Scenes/Environments/CabinOutdoor/base_outside.png" id="1_0a00e"]
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_4weox"]
@@ -240,8 +240,8 @@ autoplay = true
 position = Vector2(1690, 440)
 isOneShot = true
 isAutofire = true
-startID = "0"
 dialogueBox = NodePath("../DialogueBubble")
+startID = "0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MiscDial Box"]
 position = Vector2(35, -93)

@@ -43,7 +43,7 @@ public partial class EndDay : Node2D
 
 		if (currentTrans.isDone && !isDisplayed)
 		{
-           dialogueBox.Call("start", "Sleep");
+           dialogueBox.Call("start", "SLEEP");
 			isDisplayed = true;
         }
 	}

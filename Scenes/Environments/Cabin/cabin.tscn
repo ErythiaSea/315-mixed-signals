@@ -183,6 +183,7 @@ radius = 32.249
 [node name="Cabin" type="Node2D" node_paths=PackedStringArray("dialogueBox", "exitInteractBox", "elevatorButtonBox")]
 script = ExtResource("1_2hyee")
 dialogueBox = NodePath("SleepDialogueBox")
+translationEndStartID = "TRANSLATION_END"
 exitInteractBox = NodePath("LevelChange")
 elevatorButtonBox = NodePath("Elevator/ElevatorButton")
 spawnData = Array[Object]([SubResource("Resource_82qql")])
@@ -353,11 +354,12 @@ stream = ExtResource("18_tgdje")
 volume_db = -23.0
 autoplay = true
 
-[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "topFloorCollision") instance=ExtResource("14_e5y7b")]
+[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "wallCollision", "topFloorCollision") instance=ExtResource("14_e5y7b")]
 position = Vector2(952, 4552)
 topCallButton = NodePath("../ElevatorTopCall")
 bottomCallButton = NodePath("../ElevatorBottomCall")
 elevatorButton = NodePath("ElevatorButton")
+wallCollision = [NodePath("ElevatorWallL"), NodePath("ElevatorWallR")]
 topFloorCollision = NodePath("../WorldCollision/CollisionShape2")
 topY = 995.0
 bottomY = 4552.0
@@ -383,8 +385,8 @@ requiredStage = 1
 shape = SubResource("CircleShape2D_b7gpl")
 
 [node name="Sprite2D" type="Sprite2D" parent="Elevator"]
-position = Vector2(34, 4)
-scale = Vector2(2.0824, 0.0799988)
+position = Vector2(47, 4)
+scale = Vector2(3.15625, 0.0799988)
 texture = ExtResource("16_7v6od")
 
 [node name="WorldCollision" type="StaticBody2D" parent="."]
@@ -456,7 +458,7 @@ script = ExtResource("28_fg0wr")
 data = ExtResource("24_33tro")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_t7wmq"), SubResource("RichTextEffect_bvuge"), SubResource("RichTextEffect_f7su0")])
 
-[node name="TranspondBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite")]
+[node name="TranspondBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite", "dialogueBox")]
 position = Vector2(851, 977)
 collision_layer = 4
 script = ExtResource("4_r0utk")
@@ -464,6 +466,7 @@ objectSprite = NodePath("../Sprites/Monitors")
 transitionType = 3
 requiredStage = 1
 scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
+dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
 position = Vector2(183, 11)
@@ -492,7 +495,6 @@ script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/Bed")
 requiredStage = 4
 dialogueBox = NodePath("../DialogueBubble")
-startID = "nme"
 timeLimit = 2.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BedBox"]
@@ -506,7 +508,6 @@ objectSprite = NodePath("../Sprites/Photoboard")
 transitionType = 3
 scenePath = "res://Scenes/Minigames/Photoboard/photoboard.tscn"
 dialogueBox = NodePath("../DialogueBubble")
-startID = "nme"
 timeLimit = 2.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoBox"]
@@ -557,3 +558,5 @@ volume_db = -10.0
 script = ExtResource("29_wyus1")
 endTransition = ExtResource("30_stghc")
 dialogueBox = NodePath("../SleepDialogueBox")
+
+[connection signal="Interacted" from="BedBox" to="EndDay" method="EndTheDay"]

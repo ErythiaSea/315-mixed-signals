@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cefs7sceaq1yy"]
+[gd_scene load_steps=35 format=3 uid="uid://cefs7sceaq1yy"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_2e86h"]
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_ettdq"]
@@ -178,11 +178,11 @@ polygon = PackedVector2Array(2972, 902, 2578, 901, 2488, 897, 2389, 880, 2300, 8
 
 [node name="TelescopeBox" parent="." node_paths=PackedStringArray("objectSprite") instance=ExtResource("7_yro1e")]
 position = Vector2(-2069, -269)
+objectSprite = NodePath("../TelescopeSprite")
 transitionType = 4
 requiredStage = 3
 scenePath = "res://Scenes/Minigames/Constellation/ConstellationDraw.tscn"
 disablePlayerCam = true
-objectSprite = NodePath("../TelescopeSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TelescopeBox"]
 position = Vector2(-13, 18)
@@ -220,9 +220,9 @@ dialogue_custom_effects = [SubResource("RichTextEffect_kp4e8"), SubResource("Ric
 position = Vector2(1828, 536)
 isOneShot = true
 isAutofire = true
+dialogueBox = NodePath("../DialogueBubble")
 startID = "0"
 timeLimit = 5.0
-dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox1"]
 position = Vector2(30.5, -28.5)
@@ -232,9 +232,9 @@ shape = SubResource("RectangleShape2D_2lsjs")
 position = Vector2(121, 82)
 isOneShot = true
 isAutofire = true
+dialogueBox = NodePath("../DialogueBubble")
 startID = "1"
 timeLimit = 5.0
-dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox2"]
 position = Vector2(7.5, -14)
