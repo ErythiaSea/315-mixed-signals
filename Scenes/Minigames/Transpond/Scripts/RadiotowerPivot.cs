@@ -76,7 +76,7 @@ public partial class RadiotowerPivot : Node2D
 		}
 		else
 		{
-			sprite.Modulate = new Color(.9, .9, 0, 1);
+			sprite.Modulate = new Color(1, 1, 0, 1);
 			//streamPlayer.PitchScale = 1;
 			//distortEffect.Drive = 0.67f;
 			overlapsTower = false;
