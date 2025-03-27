@@ -1,0 +1,244 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://cwyp32gw5vyln"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_mme5x"]
+
+[resource]
+script = ExtResource("1_mme5x")
+starts = {
+"0": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"4_1",
+"offset": Vector2(-480, -60),
+"start_id": "0"
+},
+"1_1": {
+"dialogue": "Well, pluck my feathers, marinate me, and roast me on a grill, you are a pulchritudinous specimen, aren’t you? [br]And someone with such arresting features has equally… arresting objects in their possession. [br]Oh, forgive my immodesty, I am Corvus of the Southern Skies, beloved crow and appreciator of all beautiful things - including you. [br]Just this one time, I’ll give the Intergalactic Fright Control Department their coins, for they have brought me to you.",
+"offset": Vector2(220, -60),
+"options": {
+0: {
+"condition": {},
+"link": &"4_3",
+"text": "Well, I appreciate the overly kind words"
+},
+1: {
+"condition": {},
+"link": &"4_2",
+"text": "I'm so lost right now..."
+}
+},
+"size": Vector2(360, 500),
+"speaker": "Corvus"
+},
+"1_10": {
+"dialogue": "Ah, the air is beginning to turn cold, and it’s time for my daily afternoon flight. Thus, I must take my leave. Admittedly, I have enjoyed our short chat; I look forward to learning more about you. And I do hope that sentiment is reciprocated. Until next time…",
+"offset": Vector2(4340, 1700),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 360),
+"speaker": "Corvus"
+},
+"1_11": {
+"dialogue": "Ah, the air is beginning to turn cold, and it’s time for my daily afternoon flight. Thus, I must take my leave. You know, your pessimism and self-deprecation are things you should take into consideration when talking to someone for the first time. I hope by the next time we meet, you’ve bettered your confidence and made progress with your peace.",
+"offset": Vector2(4340, 2100),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(320, 400),
+"speaker": "Corvus"
+},
+"1_2": {
+"dialogue": "The pleasure is all mine...",
+"offset": Vector2(1080, 720),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Corvus"
+},
+"1_3": {
+"dialogue": "Might I say, I’m an awfully massive fan of this… dimorphism you’ve got going on here. I’m quite a fan myself. I’m not a bird of paradise, nor am I a… well-endowed spoonbill, but your form is fascinating to me. ",
+"offset": Vector2(1480, 580),
+"options": {
+0: {
+"condition": {},
+"link": &"4_4",
+"text": "Flatterer - some people don’t get it like you do…"
+},
+1: {
+"condition": {},
+"link": &"4_5",
+"text": "If only I was biofluorescent…"
+}
+},
+"size": Vector2(300, 380),
+"speaker": "Corvus"
+},
+"1_4": {
+"dialogue": "I acknowledge this might be a big change, talking to new individuals and all, as your portion of the galaxy is rather quaint. However, if I could insist, I would rather prefer this communication to become a regular occurrence. [br]You're a rather intruiging being - I want to uncover more about you...",
+"offset": Vector2(1080, 380),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Corvus"
+},
+"1_5": {
+"dialogue": "Imbeciles… Ah. don’t worry, there will always be room in my nest for you. How you’ll get here is a different question…",
+"offset": Vector2(2280, 1240),
+"options": {
+0: {
+"condition": {},
+"link": &"1_7",
+"text": ""
+}
+},
+"size": Vector2(320, 260),
+"speaker": "Corvus"
+},
+"1_6": {
+"dialogue": "I cannot share my experience as I am not that kind of bird. But as a corvid, I am rather proud of my iridescent plumage - I put in considerable effort to preen often. If it’s worth anything, I found you regardless of your featherless disposition.",
+"offset": Vector2(2280, 900),
+"options": {
+0: {
+"condition": {},
+"link": &"1_7",
+"text": ""
+}
+},
+"size": Vector2(300, 280),
+"speaker": "Corvus"
+},
+"1_7": {
+"dialogue": "What a marvellous galactic cycle to roost, don’t you think? I find the air traffic recently feels wonderful flowing through my feathers. I commend you for your excellent work - truly, air traffic controllers are a crucial part of our galactic society. I couldn’t imagine anyone ever taking it for granted.",
+"offset": Vector2(2700, 1100),
+"options": {
+0: {
+"condition": {},
+"link": &"4_6",
+"text": "Thank you, it’s not an easy job…"
+},
+1: {
+"condition": {},
+"link": &"4_7",
+"text": "THe IFCD isn't all that great..."
+}
+},
+"size": Vector2(340, 420),
+"speaker": "Corvus"
+},
+"1_8": {
+"dialogue": "Just financial blackmail? Never heard of companies doing that before. Usually, they assassinate you and frame it as a suicide. And then they financially blackmail your remaining family.",
+"offset": Vector2(3540, 1760),
+"options": {
+0: {
+"condition": {},
+"link": &"5_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Corvus"
+},
+"1_9": {
+"dialogue": "Precisely! Some people lack the same drive that you have, and that makes you more careful and more efficient at work, helping so many individuals. You’re doing a good job.",
+"offset": Vector2(3540, 1420),
+"options": {
+0: {
+"condition": {},
+"link": &"5_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Corvus"
+},
+"2_1": {
+"comment": "",
+"offset": Vector2(-480, 120),
+"size": Vector2(200, 100)
+},
+"4_1": {
+"link": &"1_1",
+"offset": Vector2(-180, -60),
+"type": 0,
+"value": "0",
+"variable": "LOVE"
+},
+"4_2": {
+"link": &"1_4",
+"offset": Vector2(680, 380),
+"type": 2,
+"value": "1",
+"variable": "LOVE"
+},
+"4_3": {
+"link": &"1_2",
+"offset": Vector2(680, 720),
+"type": 1,
+"value": "1",
+"variable": "LOVE"
+},
+"4_4": {
+"link": &"1_5",
+"offset": Vector2(1880, 1240),
+"type": 1,
+"value": "1",
+"variable": "LOVE"
+},
+"4_5": {
+"link": &"1_6",
+"offset": Vector2(1880, 900),
+"type": 2,
+"value": "1",
+"variable": "LOVE"
+},
+"4_6": {
+"link": &"1_9",
+"offset": Vector2(3140, 1420),
+"type": 1,
+"value": "1",
+"variable": "LOVE"
+},
+"4_7": {
+"link": &"1_8",
+"offset": Vector2(3140, 1760),
+"type": 2,
+"value": "1",
+"variable": "LOVE"
+},
+"5_1": {
+"false": &"1_11",
+"offset": Vector2(3940, 1600),
+"operator": 2,
+"true": &"1_10",
+"value1": "LOVE",
+"value2": "0"
+}
+}
+variables = {
+"LOVE": {
+"type": 2,
+"value": 0
+}
+}
+strays = Array[String](["2_1"])
+characters = ""
