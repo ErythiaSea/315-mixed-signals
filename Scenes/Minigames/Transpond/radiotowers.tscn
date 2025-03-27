@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bksvynf3splg2" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt1_Whole.png" id="3_tf038"]
 [ext_resource type="Texture2D" uid="uid://cn1rf3lyfvcai" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt1_Pinpoint.png" id="4_8do03"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Transpond/Scripts/RadiotowerPivot.cs" id="4_vtlbg"]
-[ext_resource type="AudioStream" uid="uid://dpqhr3nu7u2bx" path="res://Audio/transpondtower.wav" id="5_vusvs"]
+[ext_resource type="AudioStream" uid="uid://dpqhr3nu7u2bx" path="res://Audio/Mechanics/transpondtower.wav" id="5_vusvs"]
 [ext_resource type="Texture2D" uid="uid://dwvosh05aqd6t" path="res://Scenes/Minigames/Transpond/Sprites/line.png" id="6_b2ab4"]
 [ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://Sprites/icon.svg" id="7_4vx2i"]
 [ext_resource type="Texture2D" uid="uid://cnau6vaf4smmw" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt1_Satellite.png" id="7_e7dg6"]
@@ -150,7 +150,7 @@ script = ExtResource("4_vtlbg")
 
 [node name="lineAudio" type="AudioStreamPlayer2D" parent="rightPivot"]
 stream = ExtResource("5_vusvs")
-volume_db = -12.0
+volume_db = -6.0
 autoplay = true
 panning_strength = 5.0
 bus = &"TranspondTowerR"

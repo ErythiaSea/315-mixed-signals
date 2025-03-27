@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_nmgjp"]
 [ext_resource type="Texture2D" uid="uid://bqehodhbmv06i" path="res://Scenes/Environments/CabinOutdoor/Home_VehicleSprite_00.png" id="4_dfl0f"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_elcve"]
-[ext_resource type="AudioStream" uid="uid://dko7fvpro21fk" path="res://Audio/Music/Kinesis Stellae   Choir by Vrymaa Id-770060.wav" id="7_hnxl8"]
+[ext_resource type="AudioStream" uid="uid://dd6vkaf4mxsnu" path="res://Audio/Music/Kinesis Stellae Choir by Vrymaa Id-770060.ogg" id="7_888ia"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="7_ra4mx"]
 [ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="7_u12k5"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="8_cjgfj"]
@@ -168,7 +168,7 @@ position = Vector2(652, 347)
 gizmo_extents = 16.9
 
 [node name="CelestialBGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_hnxl8")
+stream = ExtResource("7_888ia")
 volume_db = -38.432
 autoplay = true
 

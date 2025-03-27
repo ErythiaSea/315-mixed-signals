@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b2c5i1hm6jwee"
+path="res://.godot/imported/AMBSea-LR_Spain-Seagulls, Cawing, Harbor, Malaga, Evening, Zoom F6, _FTUS_AIOL_192k32b.ogg-6dbf136b77226c239641b8bb3f8493b9.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Ambience/Salt Pillar/AMBSea-LR_Spain-Seagulls, Cawing, Harbor, Malaga, Evening, Zoom F6, _FTUS_AIOL_192k32b.ogg"
+dest_files=["res://.godot/imported/AMBSea-LR_Spain-Seagulls, Cawing, Harbor, Malaga, Evening, Zoom F6, _FTUS_AIOL_192k32b.ogg-6dbf136b77226c239641b8bb3f8493b9.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://clgsx1jqgm366"
+path="res://.godot/imported/Birds, Sea, Seagulls Marine SND116107.ogg-f179c60a58f8fbac4e0f0af0546c2067.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Ambience/Salt Pillar/Birds, Sea, Seagulls Marine SND116107.ogg"
+dest_files=["res://.godot/imported/Birds, Sea, Seagulls Marine SND116107.ogg-f179c60a58f8fbac4e0f0af0546c2067.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cefs7sceaq1yy"]
+[gd_scene load_steps=30 format=3 uid="uid://cefs7sceaq1yy"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_2e86h"]
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_ettdq"]
@@ -14,6 +14,12 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="12_oaf7q"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="13_kkcnm"]
 [ext_resource type="Resource" uid="uid://ccv0ncottq4w" path="res://Scenes/Environments/SaltPillar/Dialogue/saltpillarDialogue.tres" id="14_kvt6g"]
+[ext_resource type="AudioStream" uid="uid://d813esisgsmb" path="res://Audio/Ambience/Salt Pillar/785208__nicola_ariutti__parque_cucao_pacific_ocean_pt1-zoom168.ogg" id="15_epl3m"]
+[ext_resource type="AudioStream" uid="uid://crm66861lu4iw" path="res://Audio/Ambience/Salt Pillar/389618__stubb__rock-tumble-2.ogg" id="15_y3wnx"]
+[ext_resource type="AudioStream" uid="uid://chcmnpuctd3my" path="res://Audio/Ambience/Salt Pillar/58416__darren1979__oceanwaves.ogg" id="16_utne0"]
+[ext_resource type="AudioStream" uid="uid://dd6vkaf4mxsnu" path="res://Audio/Music/Kinesis Stellae Choir by Vrymaa Id-770060.ogg" id="17_owmvf"]
+[ext_resource type="AudioStream" uid="uid://b2c5i1hm6jwee" path="res://Audio/Ambience/Salt Pillar/AMBSea-LR_Spain-Seagulls, Cawing, Harbor, Malaga, Evening, Zoom F6, _FTUS_AIOL_192k32b.ogg" id="18_qewgt"]
+[ext_resource type="AudioStream" uid="uid://clgsx1jqgm366" path="res://Audio/Ambience/Salt Pillar/Birds, Sea, Seagulls Marine SND116107.ogg" id="19_cl7gx"]
 
 [sub_resource type="Resource" id="Resource_ci2ls"]
 script = ExtResource("2_ettdq")
@@ -144,3 +150,67 @@ timeLimit = 5.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueBox2"]
 position = Vector2(7.5, -14)
 shape = SubResource("RectangleShape2D_qrknp")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DialogueBox2"]
+position = Vector2(2, -92)
+stream = ExtResource("15_y3wnx")
+volume_db = 7.924
+
+[node name="WavesCrashing" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(296, 1070)
+stream = ExtResource("15_epl3m")
+volume_db = -20.0
+autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WavesCrashing"]
+position = Vector2(-2002, -17)
+stream = ExtResource("15_epl3m")
+volume_db = -20.0
+autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WavesCrashing/AudioStreamPlayer2D"]
+position = Vector2(3265, -2)
+stream = ExtResource("15_epl3m")
+volume_db = -20.0
+autoplay = true
+
+[node name="MoreWavesCrashing" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(314, 1069)
+stream = ExtResource("16_utne0")
+volume_db = -30.0
+autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MoreWavesCrashing"]
+position = Vector2(1290, -16)
+stream = ExtResource("16_utne0")
+volume_db = -30.0
+autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MoreWavesCrashing/AudioStreamPlayer2D"]
+position = Vector2(-3247, 18)
+stream = ExtResource("16_utne0")
+volume_db = -30.0
+autoplay = true
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_owmvf")
+volume_db = -38.0
+autoplay = true
+
+[node name="Seagulls" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(464, -761)
+stream = ExtResource("18_qewgt")
+volume_db = 11.885
+autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Seagulls"]
+position = Vector2(1201, 197)
+stream = ExtResource("18_qewgt")
+volume_db = 11.885
+autoplay = true
+
+[node name="MoreSeagulls" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1855, -761)
+stream = ExtResource("19_cl7gx")
+volume_db = -15.0
+autoplay = true

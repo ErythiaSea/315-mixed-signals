@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/CabinLevel.cs" id="1_2hyee"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_vrtq2"]
-[ext_resource type="AudioStream" uid="uid://db0ejrnpgebag" path="res://Audio/Music/Zodiac  Hiphop Instrumental by prazkhanal Id-787557.wav" id="3_1b4bc"]
 [ext_resource type="Texture2D" uid="uid://bvndiooefnwcn" path="res://Scenes/Environments/Cabin/Sprites/Sky_Render.png" id="3_bkt4p"]
 [ext_resource type="Script" path="res://Scenes/Environments/Objects/scripts/InteractBox.cs" id="4_r0utk"]
 [ext_resource type="Texture2D" uid="uid://c7n4exllur0qf" path="res://Scenes/Environments/Cabin/Sprites/Cabin_WallCutout.png" id="4_wjyar"]
@@ -28,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dljep1sop1gkj" path="res://Scenes/Environments/Cabin/Sprites/bedroom_photoboard.png" id="16_stl3d"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="17_h87pq"]
 [ext_resource type="Texture2D" uid="uid://dxh7t7hay26m4" path="res://Scenes/Environments/Cabin/Sprites/bedroom_silohette.png" id="17_l3xrp"]
+[ext_resource type="AudioStream" uid="uid://dmna7wapuwmut" path="res://Audio/Music/Zodiac Hiphop Instrumental by prazkhanal Id-787557.ogg" id="18_tgdje"]
 [ext_resource type="Resource" uid="uid://wn1h5b8ptlga" path="res://Scenes/Debug/debugdialogue.tres" id="24_33tro"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="28_fg0wr"]
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/EndDay.cs" id="29_wyus1"]
@@ -357,7 +357,7 @@ texture = ExtResource("17_l3xrp")
 
 [node name="HubBGM" type="AudioStreamPlayer" parent="."]
 process_mode = 1
-stream = ExtResource("3_1b4bc")
+stream = ExtResource("18_tgdje")
 volume_db = -16.838
 autoplay = true
 
