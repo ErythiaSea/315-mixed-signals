@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=66 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/CabinLevel.cs" id="1_2hyee"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -25,7 +25,7 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="16_oxyx2"]
 [ext_resource type="Texture2D" uid="uid://dljep1sop1gkj" path="res://Scenes/Environments/Cabin/Sprites/bedroom_photoboard.png" id="16_stl3d"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="17_h87pq"]
-[ext_resource type="Texture2D" uid="uid://dxh7t7hay26m4" path="res://Scenes/Environments/Cabin/Sprites/bedroom_silohette.png" id="17_l3xrp"]
+[ext_resource type="Texture2D" uid="uid://bo65tm1j2ywal" path="res://Scenes/Environments/Cabin/Sprites/bedroom_silohette.png" id="17_l3xrp"]
 [ext_resource type="AudioStream" uid="uid://dmna7wapuwmut" path="res://Audio/Music/Zodiac Hiphop Instrumental by prazkhanal Id-787557.ogg" id="18_tgdje"]
 [ext_resource type="Resource" uid="uid://wn1h5b8ptlga" path="res://Scenes/Debug/debugdialogue.tres" id="24_33tro"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="28_fg0wr"]
@@ -182,13 +182,13 @@ radius = 32.249
 
 [node name="Cabin" type="Node2D" node_paths=PackedStringArray("dialogueBox", "exitInteractBox", "elevatorButtonBox")]
 script = ExtResource("1_2hyee")
+dialogueBox = NodePath("SleepDialogueBox")
+exitInteractBox = NodePath("LevelChange")
+elevatorButtonBox = NodePath("Elevator/ElevatorButton")
 spawnData = Array[Object]([SubResource("Resource_82qql")])
 OffsetY = -300.0
 rightLimit = 1920
 bottomLimit = 4954
-dialogueBox = NodePath("SleepDialogueBox")
-exitInteractBox = NodePath("LevelChange")
-elevatorButtonBox = NodePath("Elevator/ElevatorButton")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8vdl8")
@@ -490,10 +490,10 @@ position = Vector2(238, 4549)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/Bed")
+requiredStage = 4
 dialogueBox = NodePath("../DialogueBubble")
 startID = "nme"
 timeLimit = 2.5
-requiredStage = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BedBox"]
 shape = SubResource("RectangleShape2D_avn75")
@@ -502,12 +502,11 @@ shape = SubResource("RectangleShape2D_avn75")
 position = Vector2(1645, 4545)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-startID = "nme"
-timeLimit = 2.5
 objectSprite = NodePath("../Sprites/Photoboard")
 transitionType = 3
 scenePath = "res://Scenes/Minigames/Photoboard/photoboard.tscn"
 dialogueBox = NodePath("../DialogueBubble")
+startID = "nme"
 timeLimit = 2.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoBox"]
