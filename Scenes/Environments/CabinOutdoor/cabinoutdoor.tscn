@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cnj8esqdgww0"]
+[gd_scene load_steps=32 format=3 uid="uid://cnj8esqdgww0"]
 
 [ext_resource type="Texture2D" uid="uid://bmij10s8rf8gm" path="res://Scenes/Environments/CabinOutdoor/base_outside.png" id="1_0a00e"]
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_4weox"]
@@ -6,11 +6,13 @@
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_nmgjp"]
 [ext_resource type="Texture2D" uid="uid://bqehodhbmv06i" path="res://Scenes/Environments/CabinOutdoor/Home_VehicleSprite_00.png" id="4_dfl0f"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_elcve"]
+[ext_resource type="AudioStream" uid="uid://gcr3f5mp0sre" path="res://Audio/Ambience/Cabin/32316__oniwe__carenginestartstop.wav" id="7_3c7j6"]
 [ext_resource type="AudioStream" uid="uid://dd6vkaf4mxsnu" path="res://Audio/Music/Kinesis Stellae Choir by Vrymaa Id-770060.ogg" id="7_888ia"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="7_ra4mx"]
 [ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="7_u12k5"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="8_cjgfj"]
 [ext_resource type="Resource" uid="uid://tvyth3g2fn8" path="res://Scenes/Environments/CabinOutdoor/Dialogue/misc dial 1 - outside.tres" id="8_ctnhm"]
+[ext_resource type="AudioStream" uid="uid://ofggrfo8xfan" path="res://Audio/Ambience/Cabin/398750__anthousai__door-open-01.wav" id="8_gk6jg"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="9_7xrxq"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="10_vfhkp"]
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="14_mtltj"]
@@ -145,6 +147,10 @@ scenePath = "res://Scenes/Minigames/Map/mapscreen.tscn"
 position = Vector2(2, 116)
 shape = SubResource("RectangleShape2D_rkcsa")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MapBox"]
+stream = ExtResource("7_3c7j6")
+volume_db = -10.0
+
 [node name="LevelTransition" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(-443, 57)
 transitionType = 2
@@ -156,6 +162,10 @@ spawnPoint = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
 position = Vector2(6.5, 234)
 shape = SubResource("RectangleShape2D_m3gji")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LevelTransition"]
+stream = ExtResource("8_gk6jg")
+volume_db = -5.0
 
 [node name="SpawnPoints" type="Node" parent="."]
 

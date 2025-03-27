@@ -174,7 +174,13 @@ public partial class InteractBox : Area2D
 			return;
 		}
 		EmitSignal("Interacted");
-
+		
+		AudioStreamPlayer stream = GetNodeOrNull<AudioStreamPlayer>("AudioStreamPlayer");
+		if (stream != null)
+		{
+			stream.Play();
+		}
+		
 		// Disable if oneshot
 		if (isOneShot) active = false;
 

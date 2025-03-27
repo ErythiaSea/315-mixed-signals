@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=67 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/CabinLevel.cs" id="1_2hyee"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -32,6 +32,9 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="28_fg0wr"]
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/EndDay.cs" id="29_wyus1"]
 [ext_resource type="PackedScene" uid="uid://ccoch44m85xuv" path="res://Scenes/Environments/Objects/EndDayTransition.tscn" id="30_stghc"]
+[ext_resource type="AudioStream" uid="uid://bqlgr3jk0g4ix" path="res://Audio/Mechanics/Translation/638380__yossirafa100__soft-cover-book-open-3.wav" id="31_3gkvo"]
+[ext_resource type="AudioStream" uid="uid://cm1g34cblsmf5" path="res://Audio/Ambience/Cabin/188388__wubitog__mid-high-tone-button-click.wav" id="32_gh5bl"]
+[ext_resource type="AudioStream" uid="uid://ofggrfo8xfan" path="res://Audio/Ambience/Cabin/398750__anthousai__door-open-01.wav" id="32_rlb8a"]
 
 [sub_resource type="Resource" id="Resource_7pcct"]
 script = ExtResource("2_vrtq2")
@@ -358,7 +361,7 @@ texture = ExtResource("17_l3xrp")
 [node name="HubBGM" type="AudioStreamPlayer" parent="."]
 process_mode = 1
 stream = ExtResource("18_tgdje")
-volume_db = -16.838
+volume_db = -23.0
 autoplay = true
 
 [node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "wallCollision", "topFloorCollision") instance=ExtResource("14_e5y7b")]
@@ -489,6 +492,9 @@ dialogueBox = NodePath("../DialogueBubble")
 position = Vector2(-50, -25.25)
 shape = SubResource("RectangleShape2D_cchka")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TranslationBox"]
+stream = ExtResource("31_3gkvo")
+
 [node name="BedBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite", "dialogueBox")]
 position = Vector2(238, 4549)
 collision_layer = 4
@@ -529,6 +535,10 @@ dialogueBox = NodePath("../DialogueBubble")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
 shape = SubResource("RectangleShape2D_lvk1a")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LevelChange"]
+stream = ExtResource("32_rlb8a")
+volume_db = -5.0
+
 [node name="ElevatorBottomCall" parent="." node_paths=PackedStringArray("objectSprite") instance=ExtResource("15_lw781")]
 position = Vector2(724, 4538)
 objectSprite = NodePath("../Sprites/BottomCallButton")
@@ -536,12 +546,20 @@ objectSprite = NodePath("../Sprites/BottomCallButton")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorBottomCall"]
 shape = SubResource("CircleShape2D_txxlk")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ElevatorBottomCall"]
+stream = ExtResource("32_gh5bl")
+volume_db = -10.0
+
 [node name="ElevatorTopCall" parent="." node_paths=PackedStringArray("objectSprite") instance=ExtResource("15_lw781")]
 position = Vector2(478, 984)
 objectSprite = NodePath("../Sprites/TopCallButton")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorTopCall"]
 shape = SubResource("CircleShape2D_txxlk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ElevatorTopCall"]
+stream = ExtResource("32_gh5bl")
+volume_db = -10.0
 
 [node name="EndDay" type="Node2D" parent="." node_paths=PackedStringArray("dialogueBox")]
 script = ExtResource("29_wyus1")
