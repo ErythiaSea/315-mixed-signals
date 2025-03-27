@@ -26,6 +26,11 @@ public partial class Reset : Node
 		{
 			Globals.Instance.gameState.stage++;
 			GD.Print("stage increased to ", Globals.Instance.gameState.stage);
+
+			if(Globals.Instance.gameState.stage == GAMESTAGE.TRANSLATION)
+			{
+				Globals.Instance.cipherKey = 6;
+			}
 		}
 
 		// close when holding esc

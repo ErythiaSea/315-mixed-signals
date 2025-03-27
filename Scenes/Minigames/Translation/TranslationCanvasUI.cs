@@ -142,24 +142,29 @@ public partial class TranslationCanvasUI : BaseMinigame
 		for(int i = 0; i < charArray.Length; i++)
 		{
 			int asciiValue = charArray[i];
+			GD.Print("Ascii value: " + asciiValue + " char: " + charArray[i].ToString());
+			asciiValue -= 97;
+			asciiValue = (asciiValue + globalScript.cipherKey) % 26;
+			asciiValue += 97;
 
-			if ((asciiValue + globalScript.cipherKey) > 122)
-            {
-				int wrap = asciiValue - (asciiValue + globalScript.cipherKey);
-                asciiValue = 97 - wrap;
-            }
-            else if ((asciiValue + globalScript.cipherKey) < 97)
-            {
-                int wrap = asciiValue - (asciiValue + globalScript.cipherKey);
-                asciiValue = 122 - wrap;
-            }
-			else
-			{
-				asciiValue += globalScript.cipherKey;
-			}
+			//if ((asciiValue + globalScript.cipherKey) > 122)
+   //         {
+			//	int wrap = asciiValue - (asciiValue + globalScript.cipherKey);
+   //             asciiValue = 97 - wrap;
+			//	GD.Print("wrap case 1 hit, wrap:", wrap, ", asciival now: ", asciiValue);
+   //         }
+   //         else if ((asciiValue + globalScript.cipherKey) < 97)
+   //         {
+   //             int wrap = asciiValue - (asciiValue + globalScript.cipherKey);
+   //             asciiValue = 122 - wrap;
+   //             GD.Print("wrap case 1 hit, wrap:", wrap, ", asciival now: ", asciiValue);
+   //         }
+			//else
+			//{
+			//	asciiValue += globalScript.cipherKey;
+			//}
 
 			cipheredWord += (char)asciiValue;
-           
         }
 
 		return cipheredWord;
