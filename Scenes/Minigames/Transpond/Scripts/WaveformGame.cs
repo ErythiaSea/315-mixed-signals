@@ -3,10 +3,13 @@ using System;
 
 public partial class WaveformGame : Node2D
 {
+	// Stores the wave amplitude and wavelength when waveform minigame is complete
+	public static float LastAmplitude { get; set; } = 0f;
+	public static float LastWavelength { get; set; } = 0f;
+
 	WaveRender playerWave, realWave, ghostWave;
 	float targetWavelength, targetAmplitude;
 
-	Globals globalScript;
 	[Export]
 	float ampTolerance = 2.0f;
 	[Export]
@@ -19,7 +22,6 @@ public partial class WaveformGame : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		globalScript = Globals.Instance;
 		playerWave = GetNode<WaveRender>("playerwave");
 		realWave = GetNode<WaveRender>("realwave");
 		ghostWave = GetNode<WaveRender>("ghostwave");
@@ -28,7 +30,7 @@ public partial class WaveformGame : Node2D
 
 	void newWavelength()
 	{
-		if(globalScript.waveAmpRef == 0f)
+		if(LastAmplitude == 0f)
 		{
 			targetWavelength = (GD.Randf() * 42.5f) + 7.5f;
 			realWave.wavelength = targetWavelength;
@@ -41,11 +43,11 @@ public partial class WaveformGame : Node2D
 		}
 		else
 		{
-			realWave.wavelength = globalScript.waveLenRef;
-			realWave.amplitude = globalScript.waveAmpRef;
+			realWave.wavelength = LastWavelength;
+			realWave.amplitude = LastAmplitude;
 
-			playerWave.wavelength = globalScript.waveLenRef;
-			playerWave.amplitude = globalScript.waveAmpRef;
+			playerWave.wavelength = LastWavelength;
+			playerWave.amplitude = LastAmplitude;
 			ghostWave.Visible = false;
 		}
 	}
@@ -54,7 +56,7 @@ public partial class WaveformGame : Node2D
 	public override void _Process(double delta)
 	{
 		GD.Print("waveform active:", gameActive);
-		if (globalScript.gameState.stage != GAMESTAGE.WAVEFORM || !gameActive) return;
+		if (Globals.ProgressionStage != GAMESTAGE.WAVEFORM || !gameActive) return;
 
 		float wlChange = 0.5f;
 		float wlMult = (playerWave.wavelength / 100.0f);
@@ -89,11 +91,11 @@ public partial class WaveformGame : Node2D
 		{
 			GD.Print("Task complete!");
 
-			globalScript.waveAmpRef = realWave.amplitude;
-			globalScript.waveLenRef = realWave.wavelength;
+			LastAmplitude = realWave.amplitude;
+			LastWavelength = realWave.wavelength;
 			ghostWave.Visible = false;
 			//Updates the stage that the player is on
-			globalScript.gameState.stage = GAMESTAGE.CONSTELLATION;
+			Globals.ProgressionStage = GAMESTAGE.CONSTELLATION;
 			// show complete text
 			Label wintext = GetNode<Label>("WinText");
 			wintext.Visible = true;

@@ -28,20 +28,17 @@ public partial class CabinLevel : Level
 	{
 		base._Ready();
 		endDay = GetNode<EndDay>("EndDay");
-        endDay.DayStart += OnNewDay;
+        Globals.Instance.DayChanged += OnNewDay;
 	}
 
     private void OnNewDay()
     {
-        if (Globals.Instance.gameState.day == 2)
+        if (Globals.Day == 2)
 		{
 			GD.Print("Final day, so swapping the level change scene and disabling elevator...");
 			exitInteractBox.ChangeLoadedScene(endScreenPath);
 			elevatorButtonBox.QueueFree(); // nuclear approach is, sometimes, the best
 			elevatorButtonBox = null;
-
-			//elevatorButtonBox.requiredStage = GAMESTAGE.END;
-			//elevatorButtonBox.active = false;
 		}
     }
 
@@ -54,7 +51,7 @@ public partial class CabinLevel : Level
 	public void TranslationComplete()
 	{
 		GD.Print("translation complete");
-		if (Globals.Instance.gameState.stage == GAMESTAGE.END)
+		if (Globals.ProgressionStage == GAMESTAGE.END)
 		{
 			dialogueBox.Call("start", translationEndStartID);
 		}

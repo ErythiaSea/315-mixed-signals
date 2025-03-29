@@ -169,8 +169,8 @@ public partial class InteractBox : Area2D
 
 		if (!IsCorrectStage())
 		{
-			//run dialogue for telling the player what they need to do based on: Globals.Instance.gameState.stage\
-			dialogueBox.Call("start", Globals.Instance.gameState.stage.ToString());
+			//run dialogue for telling the player what they need to do based on: Globals.ProgressionStage\
+			dialogueBox.Call("start", Globals.ProgressionStage.ToString());
 			return;
 		}
 		EmitSignal("Interacted");
@@ -232,7 +232,7 @@ public partial class InteractBox : Area2D
 	{
 		if (requiredStage == GAMESTAGE.TRANSITION) return true;
 
-		if (requiredStage > Globals.Instance.gameState.stage) return false;
+		if (requiredStage > Globals.ProgressionStage) return false;
 		else return true;
 	}
 
@@ -269,7 +269,7 @@ public partial class InteractBox : Area2D
 		}
 		else
 		{
-			Globals.Instance.currentSpawnID = spawnPoint;
+			Globals.CurrentSpawnID = spawnPoint;
 			GD.Print("loading new scene...");
 			GetTree().ChangeSceneToPacked(scene);
 		}

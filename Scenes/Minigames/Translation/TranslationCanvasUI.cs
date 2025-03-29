@@ -5,6 +5,9 @@ using System.Text;
 
 public partial class TranslationCanvasUI : BaseMinigame
 {
+	// The words that can appear in translation
+	[Export]
+	private string[] wordList = { "Hot", "Cute" };
 
 	//Quick Inspector Refs, CHANGE THIS AT ANOTHER TIME, probably grab them specifcally from the borderDraw process
 	[ExportGroup("Node References")]
@@ -30,8 +33,9 @@ public partial class TranslationCanvasUI : BaseMinigame
 	Resource Day2Dialogue;
 
     Panel dialogueBox;
-    Globals globalScript;
 	CabinLevel cabin;
+
+	public static int CipherKey { get; set; }
 
 	private string currentWord;
 	Godot.Collections.Array<Node> containerNodes;
@@ -39,7 +43,6 @@ public partial class TranslationCanvasUI : BaseMinigame
 	public override void _Ready()
 	{
 		base._Ready();
-		globalScript = Globals.Instance;
 		cabin = GetParent<CabinLevel>();
 		MinigameClosed += cabin.TranslationComplete;
 
@@ -64,9 +67,9 @@ public partial class TranslationCanvasUI : BaseMinigame
         dialogueBox = GetNode<Panel>("DialogueBox");
 		dialogueBox.Connect("dialogue_ended", Callable.From(OnDialogueEnd));
 		LoadDialogue();
-		if (globalScript.tutorialProgress <= GAMESTAGE.TRANSLATION)
+		if (Globals.TutorialProgress <= GAMESTAGE.TRANSLATION)
 		{
-			globalScript.tutorialProgress = GAMESTAGE.END;
+			Globals.TutorialProgress = GAMESTAGE.END;
 			dialogueBox.Call("start", "tut");
 		}
 	}
@@ -81,14 +84,13 @@ public partial class TranslationCanvasUI : BaseMinigame
 	{
 		string answer = answerBox.Text.StripEdges();
 	
-		if (globalScript.wordList[globalScript.gameState.day].NocasecmpTo(answer) == 0 || Input.IsActionPressed("middle_mouse"))
+		if (wordList[Globals.Day].NocasecmpTo(answer) == 0 || Input.IsActionPressed("middle_mouse"))
 		{
 			//POLISH IDEA: fade celestial text away and fade in the new word
 			// you're telling me the poles came up with this idea? - erf
 			messageBox.AddThemeFontOverride("normal_font", englishFont);
-			messageBox.Text = ("[center] " + globalScript.wordList[globalScript.gameState.day]);
-			globalScript.gameState.stage = GAMESTAGE.END;
-			globalScript.isCurrentWordDone = true;
+			messageBox.Text = ("[center] " + wordList[Globals.Day]);
+			Globals.ProgressionStage = GAMESTAGE.END;
 
 			//winInd.Visible = true;
 			GetNode<VBoxContainer>("TextVBox").Visible = false;
@@ -106,19 +108,17 @@ public partial class TranslationCanvasUI : BaseMinigame
 	}
 	private void TextInitalisation()
 	{
-		if (!globalScript.isCurrentWordDone)
-		{
-			GD.Print("CIPHER");
-			string cWord = CipherWord(globalScript.wordList[globalScript.gameState.day]);
-			messageBox.Text = ("[center] " + cWord);
-
-			HintsUpdate(cWord);
-			cipherDisplay.AppendText("[center] "+ (-globalScript.cipherKey).ToString());
-		}
-		else
-		{
+		if (Globals.ProgressionStage > GAMESTAGE.TRANSLATION) {
 			messageBox.Text = "";
+			return;
 		}
+
+		GD.Print("CIPHER");
+		string cWord = CipherWord(wordList[Globals.Day]);
+		messageBox.Text = ("[center] " + cWord);
+
+		HintsUpdate(cWord);
+		cipherDisplay.AppendText("[center] "+ (-CipherKey).ToString());
 	}
 	private void HintsUpdate(string word)
 	{
@@ -143,11 +143,8 @@ public partial class TranslationCanvasUI : BaseMinigame
 		{
 			int asciiValue = charArray[i];
 			GD.Print("Ascii value: " + asciiValue + " char: " + charArray[i].ToString());
-			asciiValue -= 97;
-			asciiValue = (asciiValue + globalScript.cipherKey) % 26;
-			asciiValue += 97;
 
-			
+			asciiValue = ((asciiValue - 97 + CipherKey) % 26) + 97;
 
 			cipheredWord += (char)asciiValue;
         }
@@ -157,7 +154,7 @@ public partial class TranslationCanvasUI : BaseMinigame
 
 	private void OnDialogueEnd()
 	{
-		if (globalScript.isCurrentWordDone)
+		if (Globals.ProgressionStage > GAMESTAGE.TRANSLATION)
 		{
 			canClose = true;
 			Close();
@@ -166,7 +163,7 @@ public partial class TranslationCanvasUI : BaseMinigame
 
 	private void LoadDialogue()
 	{
-		switch (globalScript.gameState.day)
+		switch (Globals.Day)
 		{
 			case 0:
 				dialogueBox.Set("data", Day1Dialogue);

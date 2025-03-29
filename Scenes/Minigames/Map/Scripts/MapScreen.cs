@@ -42,7 +42,7 @@ public partial class MapScreen : BaseMinigame
 
 	void OnButtonPress(MapButton Cbutton)
 	{
-		if(Cbutton.requiredDay == Globals.Instance.gameState.day)
+		if (Cbutton.requiredDay == Globals.Day)
 		{
             foreach (MapButton button in buttonNodes)
             {

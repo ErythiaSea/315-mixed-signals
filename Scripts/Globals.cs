@@ -3,6 +3,7 @@ using Godot.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 public enum GAMESTAGE
 {
@@ -15,89 +16,102 @@ public enum GAMESTAGE
 	TRANSITION
 }
 
-public struct GameState
+public enum GAMESTATE
 {
-	public GAMESTAGE stage;
-	public int day;
+	MENU,
+	CUTSCENE,
+	OVERWORLD,
+	TRANSPOND,
+	WAVEFORM,
+	CONSTELLATION,
+	TRANSLATION
 }
 
 public partial class Globals : Node
 {
+	// The instance of the Globals node that does GodotObject things a static
+	// class otherwise cannot do (emit signals primarily)
 	public static Globals Instance;
 
-	//Translation related Variables:
+	// Progression stage property, backing field and update event
+	[Signal]
+	public delegate void ProgressionChangeEventHandler();
+	private static GAMESTAGE _progressionStage;
+	public static GAMESTAGE ProgressionStage
+	{
+		get
+		{
+			return _progressionStage;
+		}
+		set
+		{
+			_progressionStage = value;
+			Instance.EmitSignal(SignalName.ProgressionChange);
+		}
+	}
 
-	//stores the cipher
-	public int cipherKey = 0;
-	//stores if the word has been done this loop or not
-	public bool isCurrentWordDone = false;
-	//Stores a list of words to be used in the translation, increments by the day the player is on
-	[Export]
-	public string[] wordList = { "Hot", "Cute" };
+	// Gamestate property, backing field and update event
+	[Signal]
+	public delegate void GamestateChangeEventHandler();
+	private static GAMESTATE _gamestate;
+	public static GAMESTATE Gamestate
+	{
+		get
+		{
+			return _gamestate;
+		}
+		set
+		{	
+			_gamestate = value;
+			Instance.EmitSignal(SignalName.GamestateChange);
+		}
+	}
 
+	// Day property, backing field and update signal
+	[Signal]
+	public delegate void DayChangedEventHandler();
+	public static int Day { get; set; }
 
-	//Transponding related variables:
+	// Tutorial progress property to track which tutorial should next be shown to the player
+	public static GAMESTAGE TutorialProgress { get; set; } = GAMESTAGE.TRANSPONDING;
 
-	//Stores the last Completed pivots
-	public float LpivotRotRef = 0f;
-	public float RpivotRotRef = 0f;
-	//Stores the last Completed wave
-	public float waveAmpRef = 0f;
-	public float waveLenRef = 0f;
-	//State of the game, day and also stage the player is at
-	public GameState gameState;
-
-	//Spawning related variables:
-	public int currentSpawnID = -1;
-	public PackedScene nextMap;
-
-	// To track which tutorials have automatically been displayed to the player
-	public GAMESTAGE tutorialProgress = GAMESTAGE.TRANSPONDING;
+	// The spawn point you will appear at on level load
+	public static int CurrentSpawnID { get; set; } = -1;
 
 	// The colour used for the outline of interactable objects when a custom one is not set
-	public static Vector3 STANDARD_OUTLINE_COLOR { get; } = new Vector3(1.0f, 0.95f, 0.45f);
-
-	public WipeTransition globalTransition;
+	public static readonly Vector3 STANDARD_OUTLINE_COLOR = new (1.0f, 0.95f, 0.45f);
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Instance = this;
-		InitalGameSetUp();
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-
-	}
-
-	private void InitalGameSetUp()
-	{
-		gameState.day = 0;
-		gameState.stage = GAMESTAGE.BEGIN;
-	}
-
-	public void NewDay()
-	{
-		isCurrentWordDone = false;
-		gameState.day += 1;
-		gameState.stage = (gameState.day == 2 ? GAMESTAGE.END : GAMESTAGE.TRANSPONDING);
-		cipherKey = 0;
-
-		LpivotRotRef = 0f;
-		RpivotRotRef = 0f;
-		waveAmpRef = 0f;
-		waveLenRef = 0f;
-		GD.Print("Globals::NewDay complete");
-	}
-
-	public void StartTransition(TRANSITION transitionType, float transitionLength)
-	{
-		if (globalTransition == null)
+		// enforce singleton, only one should exist at a time
+		if (Instance != null)
 		{
-			globalTransition = new WipeTransition();
-			AddChild(globalTransition);
+			QueueFree();
 		}
+
+		Instance = this;
+		InitialGameSetUp();
+	}
+
+	public static void InitialGameSetUp()
+	{
+		Day = 0;
+		ProgressionStage = GAMESTAGE.BEGIN;
+	}
+
+	public static void NewDay()
+	{
+		Day += 1;
+		ProgressionStage = (Day == 2 ? GAMESTAGE.END : GAMESTAGE.TRANSPONDING);
+		TranslationCanvasUI.CipherKey = 0;
+
+		Radiotower.PivotRotationL = 0f;
+		Radiotower.PivotRotationR = 0f;
+		WaveformGame.LastAmplitude = 0f;
+		WaveformGame.LastWavelength = 0f;
+
+		Instance.EmitSignal(SignalName.DayChanged);
+		GD.Print("Globals::NewDay complete");
 	}
 }

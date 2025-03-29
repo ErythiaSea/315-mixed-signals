@@ -92,7 +92,7 @@ public partial class NumberDisplay : Control
 		GD.Print("Valid random numbers");
 
 		//updates global variable for cipher key in translation mechanic
-		Globals.Instance.cipherKey = randNumArray.Sum();
+		TranslationCanvasUI.CipherKey = randNumArray.Sum();
 		return randNumArray;
 		
 	}

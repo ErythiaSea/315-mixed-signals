@@ -5,10 +5,6 @@ using System.Threading.Tasks;
 
 public partial class EndDay : Node2D
 {
-	// emitted in startTheDay() so that dialogue/cutscenes can be played on day start
-	[Signal]
-	public delegate void DayStartEventHandler();
-
     [Export]
     PackedScene endTransition;
 	[Export]
@@ -21,7 +17,6 @@ public partial class EndDay : Node2D
 
     private EndTransitionScript currentTrans;
     Player player;
-	Globals globalScript;
 	bool isClosed = false;
 
 	private bool isDisplayed = false;
@@ -32,7 +27,6 @@ public partial class EndDay : Node2D
 		isDisplayed = false;
         dialogueBox.Connect("dialogue_ended", Callable.From(startTheDay));
         player = GetTree().Root.GetChild(3).GetNode("Player") as Player;
-		globalScript = Globals.Instance;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,7 +45,6 @@ public partial class EndDay : Node2D
 	public void EndTheDay()
 	{
 		GD.Print("called");
-		globalScript.NewDay();
 		player.SetMovementLock(true);
 
 		if (!isClosed)
@@ -62,11 +55,10 @@ public partial class EndDay : Node2D
 
 	public void startTheDay()
 	{
-		//open the circle back up
+		Globals.NewDay();
 		currentTrans.OpenCircle(0f, 1f, transitionTime);
 		player.SetMovementLock(false);
 		isClosed = false;
-		EmitSignal(SignalName.DayStart);
 	}
 
 	private void CreateTransition()

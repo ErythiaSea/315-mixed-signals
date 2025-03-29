@@ -20,13 +20,11 @@ public partial class TranspondScreen : BaseMinigame
 	bool fade = false; float fadeTime = 0.0f;
 	bool dialogueCalled = false;
 
-	Globals globalScript;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		base._Ready();
-		globalScript = GetTree().Root.GetChild(1) as Globals;
 
 		radiotower = GetNode<Radiotower>("radiotowerRoot");
 		waveform = GetNode<WaveformGame>("waveformRoot");
@@ -46,14 +44,14 @@ public partial class TranspondScreen : BaseMinigame
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
-		if (globalScript.gameState.stage == GAMESTAGE.WAVEFORM)
+		if (Globals.ProgressionStage == GAMESTAGE.WAVEFORM)
 		{
 			waveLabel.Visible = true; radioLabel.Visible = false;
 			fade = true;
-			if (Globals.Instance.tutorialProgress <= GAMESTAGE.WAVEFORM)
+			if (Globals.TutorialProgress <= GAMESTAGE.WAVEFORM)
 			{
 				dialogueBox.Call("start", waveformTutorialStartID);
-				Globals.Instance.tutorialProgress = GAMESTAGE.CONSTELLATION;
+				Globals.TutorialProgress = GAMESTAGE.CONSTELLATION;
 				tutorialButton.startID = waveformTutorialStartID;
 			}
 		}
@@ -66,7 +64,7 @@ public partial class TranspondScreen : BaseMinigame
 			rightBox.Modulate = new Color(Colors.Black, 0.85f - fadeTime);
 		}
 
-		if (globalScript.gameState.stage > GAMESTAGE.WAVEFORM)
+		if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
 		{
 			//Have some indication of winning!
 			exitTimer += delta;
@@ -80,14 +78,14 @@ public partial class TranspondScreen : BaseMinigame
 
 	private void CheckStage()
 	{
-		switch (globalScript.gameState.stage)
+		switch (Globals.ProgressionStage)
 		{
 			case GAMESTAGE.TRANSPONDING:
 				GD.Print("trans");
-				if (Globals.Instance.tutorialProgress <= GAMESTAGE.TRANSPONDING)
+				if (Globals.TutorialProgress <= GAMESTAGE.TRANSPONDING)
 				{
 					dialogueBox.Call("start", transpondTutorialStartID);
-					Globals.Instance.tutorialProgress = GAMESTAGE.WAVEFORM;
+					Globals.TutorialProgress = GAMESTAGE.WAVEFORM;
 					tutorialButton.startID = transpondTutorialStartID;
 				}
 				break;

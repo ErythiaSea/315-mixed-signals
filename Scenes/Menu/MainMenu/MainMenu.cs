@@ -65,6 +65,7 @@ public partial class MainMenu : Control
 	private void _On_StartButton_Pressed()
 	{
 		// grab the cabin scene as fallback
+		Globals.InitialGameSetUp();
 		if (startScene == null)
 		{
 			startScene = "res://Scenes/Environments/Cabin/cabin.tscn";

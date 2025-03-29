@@ -8,7 +8,6 @@ public partial class ConstellationMinigame : BaseMinigame
 	[Export] String constellationEndStartID = "4";
 
 	double exitTimer = 0;
-	Globals globalScript;
 
 	Panel dialogueBox;
 	TutorialButton tutorialButton;
@@ -25,7 +24,6 @@ public partial class ConstellationMinigame : BaseMinigame
 		base._Ready();
 
 		constellations = GetConstellations();
-		globalScript = Globals.Instance;
 
 		SetupConstellation();
 
@@ -35,14 +33,14 @@ public partial class ConstellationMinigame : BaseMinigame
 		// please rename this at some point
 		camera = GetNode<CameraMovement>("eeek");
 
-		starsParent = constellations[Globals.Instance.gameState.day] as StarsParent;
+		starsParent = constellations[Globals.Day] as StarsParent;
         starsParent.ConstellationCompletion += camera.DisplayConstellation;
 
 		dialogueBox = GetNode<Panel>("UICanvas/DialogueBox");
-		if (Globals.Instance.tutorialProgress <= GAMESTAGE.CONSTELLATION)
+		if (Globals.TutorialProgress <= GAMESTAGE.CONSTELLATION)
 		{
 			dialogueBox.Call("start", constellationTutorialStartID);
-			Globals.Instance.tutorialProgress = GAMESTAGE.TRANSLATION;
+			Globals.TutorialProgress = GAMESTAGE.TRANSLATION;
 		}
 
 		dialogueBox.Connect("dialogue_ended", Callable.From(RegainCameraControl));
@@ -62,10 +60,10 @@ public partial class ConstellationMinigame : BaseMinigame
 	// todo: remove circular relationship between cam and parent and we can maybe axe this - eryth
 	public void ShowFinalBox()
 	{
-		globalScript.gameState.stage = GAMESTAGE.TRANSLATION;
+		Globals.ProgressionStage = GAMESTAGE.TRANSLATION;
 
 		ResourceLoader.LoadThreadedRequest(outdoorCabinPath);
-		Globals.Instance.currentSpawnID = 1;
+		Globals.CurrentSpawnID = 1;
 		GD.Print("loading cabin outdoor...");
 
 		dialogueBox.Call("start", constellationEndStartID);
@@ -93,8 +91,8 @@ public partial class ConstellationMinigame : BaseMinigame
 
 	private void SetupConstellation()
 	{
-		constellations[globalScript.gameState.day].Visible = true;
-		StarsParent prt = constellations[globalScript.gameState.day] as StarsParent;
+		constellations[Globals.Day].Visible = true;
+		StarsParent prt = constellations[Globals.Day] as StarsParent;
 		prt.GenerateNumbers();
 	}
 

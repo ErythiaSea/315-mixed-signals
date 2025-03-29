@@ -24,12 +24,12 @@ public partial class Reset : Node
 
 		if (Input.IsActionJustPressed("TEST"))
 		{
-			Globals.Instance.gameState.stage++;
-			GD.Print("stage increased to ", Globals.Instance.gameState.stage);
+			Globals.ProgressionStage++;
+			GD.Print("stage increased to ", Globals.ProgressionStage);
 
-			if(Globals.Instance.gameState.stage == GAMESTAGE.TRANSLATION)
+			if (Globals.ProgressionStage == GAMESTAGE.TRANSLATION)
 			{
-				Globals.Instance.cipherKey = 6;
+				TranslationCanvasUI.CipherKey = 6;
 			}
 		}
 

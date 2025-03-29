@@ -9,9 +9,9 @@ public partial class Photoboard : BaseMinigame
 		base._Ready();
 
 		// set stage to transponding from begin
-		if (Globals.Instance.gameState.stage == GAMESTAGE.BEGIN)
+		if (Globals.ProgressionStage == GAMESTAGE.BEGIN)
 		{
-			Globals.Instance.gameState.stage = GAMESTAGE.TRANSPONDING;
+			Globals.ProgressionStage = GAMESTAGE.TRANSPONDING;
 		}
 	}
 

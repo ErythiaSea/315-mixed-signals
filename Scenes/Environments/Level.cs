@@ -48,14 +48,14 @@ public partial class Level : Node2D
 
 		player = GetNode<Player>("Player");
 
-		int spawnID = Globals.Instance.currentSpawnID;
+		int spawnID = Globals.CurrentSpawnID;
 		if (spawnID >= 0 && spawnData.Count > 0)
 		{
 			player.Position = spawnData[spawnID].spawnPosition;
 			player.SetSpriteFlipH(!spawnData[spawnID].faceLeft);
 			GD.Print("we spawn");
 		}
-		Globals.Instance.currentSpawnID = -1;
+		Globals.CurrentSpawnID = -1;
 
 		// force the camera to be disabled if limits are untouched (to mitigate user error)
 		if (leftLimit == rightLimit && leftLimit == topLimit && leftLimit == bottomLimit) {

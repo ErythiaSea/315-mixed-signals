@@ -10,7 +10,6 @@ public partial class CameraMovement : Camera2D
 	private ColorRect telescope;
 	private Vector2 center;
 
-	Globals globalScript;
 	AudioStreamPlayer audioStreamPlayer;
 	
 	// This is the easy way out but this really needs a whole redesign - Eryth
@@ -19,7 +18,6 @@ public partial class CameraMovement : Camera2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		globalScript = Globals.Instance;
 		telescope = GetNode("Telescope") as ColorRect; //GetNode<ColorRect>("Telescope") ???
 		minigame = GetParent<ConstellationMinigame>();
 		audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
