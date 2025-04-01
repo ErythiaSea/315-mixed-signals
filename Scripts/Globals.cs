@@ -4,29 +4,32 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using static Godot.WebSocketPeer;
 
 public enum GAMESTAGE
 {
-	BEGIN,
-	TRANSPONDING,
-	WAVEFORM,
-	CONSTELLATION,
-	TRANSLATION,
-	END,
-	TRANSITION
+	BEGIN = 0,
+	TRANSPONDING = 1,
+	WAVEFORM = 2,
+	CONSTELLATION = 3,
+	TRANSLATION = 4,
+	END = 5,
+	TRANSITION = 6
 }
 
 public enum GAMESTATE
 {
-	MENU,
-	CUTSCENE,
-	OVERWORLD,
-	TRANSPOND,
-	WAVEFORM,
-	CONSTELLATION,
-	TRANSLATION
+	MENU = 0,
+	CUTSCENE = 1,
+	OVERWORLD = 2,
+	TRANSPOND = 3,
+	WAVEFORM = 4,
+	CONSTELLATION = 5,
+	TRANSLATION = 6,
+	DIALOGUE = 7
 }
 
+[Tool]
 public partial class Globals : Node
 {
 	// The instance of the Globals node that does GodotObject things a static
@@ -50,21 +53,50 @@ public partial class Globals : Node
 		}
 	}
 
-	// Gamestate property, backing field and update event
+	// Gamestate property, backing field, update event 
 	[Signal]
 	public delegate void GamestateChangeEventHandler();
-	private static GAMESTATE _gamestate;
+	private static Stack<GAMESTATE> _gamestate = new();
 	public static GAMESTATE Gamestate
 	{
 		get
 		{
-			return _gamestate;
+			return _gamestate.Peek();
 		}
-		set
-		{	
-			_gamestate = value;
+		private set
+		{
+			_gamestate.Clear();
+			_gamestate.Push(value);
+			Instance.EmitSignal(SignalName.GamestateChange);
+			Instance.UpdateControlsText();
+		}
+	}
+
+	public static void PushGamestate(GAMESTATE state)
+	{
+		_gamestate.Push(state);
+		GD.Print(state, " was pushed onto the gamestate stack. Stack is now: ", _gamestate);
+		Instance.EmitSignal(SignalName.GamestateChange);
+	}
+
+	public static void PopGamestate(GAMESTATE state)
+	{
+		if (_gamestate.Peek() == state)
+		{
+			GD.Print(_gamestate.Pop(), " was popped from the gamestate stack. Stack is now: ", _gamestate);
+			if (_gamestate.Count == 0) { GD.PushError("Gamestate stack was cleared! This should never happen."); }
 			Instance.EmitSignal(SignalName.GamestateChange);
 		}
+		else
+		{
+			GD.PushWarning("Tried to remove ", state, " from the top of the stack, but it wasn't there. No change was made, stack is still: ", _gamestate);
+		}
+	}
+
+	public static void SetGamestate(GAMESTATE state)
+	{
+		Gamestate = state;
+		GD.Print(state, " is now the only gamestate.");
 	}
 
 	// Day property, backing field and update signal
@@ -81,16 +113,31 @@ public partial class Globals : Node
 	// The colour used for the outline of interactable objects when a custom one is not set
 	public static readonly Vector3 STANDARD_OUTLINE_COLOR = new (1.0f, 0.95f, 0.45f);
 
+	[Export]
+	private Godot.Collections.Array<string> stateControlText = new();
+	private RichTextLabel controlsText;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		if (Engine.IsEditorHint())
+		{
+			GetNode<CanvasLayer>("GlobalsCanvasLayer").Visible = false;
+			return;
+		}
+
 		// enforce singleton, only one should exist at a time
 		if (Instance != null)
 		{
 			QueueFree();
 		}
-
 		Instance = this;
+
+		controlsText = GetNode<RichTextLabel>("GlobalCanvasLayer/GlobalControl/ControlsText");
+		Instance.GamestateChange += UpdateControlsText;
+
+		SignalBus.Instance.DialogueStarted += () => PushGamestate(GAMESTATE.DIALOGUE);
+		SignalBus.Instance.DialogueEnded += () => PopGamestate(GAMESTATE.DIALOGUE);
 		InitialGameSetUp();
 	}
 
@@ -113,5 +160,10 @@ public partial class Globals : Node
 
 		Instance.EmitSignal(SignalName.DayChanged);
 		GD.Print("Globals::NewDay complete");
+	}
+
+	private void UpdateControlsText()
+	{
+		controlsText.Text = stateControlText[(int)Gamestate];
 	}
 }

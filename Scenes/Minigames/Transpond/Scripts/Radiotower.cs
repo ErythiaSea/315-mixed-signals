@@ -124,11 +124,6 @@ public partial class Radiotower : Node2D
 			GD.Print("ldist: ", ldist, " rdist: ", rdist);
 			GD.Print("left overlap:", lPivot.overlapsTower, " right overlap: ", rPivot.overlapsTower);
 		}
-
-		//if (Input.IsActionJustPressed("close"))
-		//{
-		//	Close();
-		//}
 	}
 
 	public Vector2 CalcIntersect()

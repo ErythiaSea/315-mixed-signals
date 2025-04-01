@@ -23,7 +23,7 @@ boot_splash/minimum_display_time=1750
 [autoload]
 
 Reset="*res://Scripts/Reset.cs"
-Globals="*res://Scenes/globals.tscn"
+Globals="res://Scenes/globals.tscn"
 SignalBus="*res://Scripts/SignalBus.cs"
 
 [debug]

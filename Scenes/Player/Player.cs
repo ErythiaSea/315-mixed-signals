@@ -43,12 +43,15 @@ public partial class Player : CharacterBody2D
 		interactArea = GetNode<Area2D>("InteractArea");
         playerCamera = GetNode<Camera2D>("PlayerCamera");
 		thisLevel = GetParent<Level>();
-        SignalBus.Instance.DialogueClosed += OnDialogueClosed;
+        SignalBus.Instance.DialogueEnded += OnDialogueEnded;
+
+		// in any scene that contains the player, overworld should be the base gamestate
+		Globals.SetGamestate(GAMESTATE.OVERWORLD);
     }
 
     public override void _Process(double delta)
     {
-		if (isMovementLocked) return;
+		if (Globals.Gamestate != GAMESTATE.OVERWORLD || isMovementLocked) return;
 
         interactSprite.Visible = false;
         foreach (Area2D area in interactArea.GetOverlappingAreas())
@@ -171,6 +174,7 @@ public partial class Player : CharacterBody2D
 		MoveAndSlide();
 		if (Mathf.Abs(Position.X - autoWalkDestinationX) < 5.0f) { GD.Print("done"); isAutoWalking = false; }
 	}
+
 	public void ToggleLadder()
 	{
 		if (playerMovementState == MovementStates.FREE_MOVE) SetMovementState(MovementStates.LADDER_MOVE);
@@ -236,7 +240,7 @@ public partial class Player : CharacterBody2D
 	{
 		playerCamera.Offset = new Vector2(x, y);
 	}
-	void OnDialogueClosed()
+	void OnDialogueEnded()
 	{
 		GD.Print("dialogue");
 		isMovementLocked = false;

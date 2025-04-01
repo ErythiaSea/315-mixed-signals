@@ -88,6 +88,7 @@ public partial class TranspondScreen : BaseMinigame
 					Globals.TutorialProgress = GAMESTAGE.WAVEFORM;
 					tutorialButton.startID = transpondTutorialStartID;
 				}
+				Globals.PushGamestate(GAMESTATE.TRANSPOND);
 				break;
 			case GAMESTAGE.WAVEFORM:
 				GD.Print("wave");
@@ -95,6 +96,7 @@ public partial class TranspondScreen : BaseMinigame
 				waveLabel.Visible = true; radioLabel.Visible = false;
 				fade = true;
 				tutorialButton.startID = waveformTutorialStartID;
+				Globals.PushGamestate(GAMESTATE.WAVEFORM);
 				break;
 			default:
 				GD.Print("Default");
