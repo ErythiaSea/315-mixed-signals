@@ -49,8 +49,8 @@ public partial class TranslationCanvasUI : BaseMinigame
 		cipherDisplay.Clear();
 		messageBox.Clear();
 		answerBox.Clear();
-		engHint.Clear();
-		celHint.Clear();
+		//engHint.Clear();
+		//celHint.Clear();
 		winInd.Visible = false;
 
 		CallDeferred(nameof(TextInitalisation));
@@ -117,21 +117,21 @@ public partial class TranslationCanvasUI : BaseMinigame
 		string cWord = CipherWord(wordList[Globals.Day]);
 		messageBox.Text = ("[center] " + cWord);
 
-		HintsUpdate(cWord);
+		//HintsUpdate(cWord);
 		cipherDisplay.AppendText("[center] "+ (-CipherKey).ToString());
 	}
-	private void HintsUpdate(string word)
-	{
-		char[] charArray = word.ToCharArray();
-		for(int i = 0; i < charArray.Length; i++)
-		{
-			celHint.AppendText(charArray[i].ToString() + "      =");
-			celHint.Newline();
+	//private void HintsUpdate(string word)
+	//{
+	//	char[] charArray = word.ToCharArray();
+	//	for(int i = 0; i < charArray.Length; i++)
+	//	{
+	//		celHint.AppendText(charArray[i].ToString() + "      =");
+	//		celHint.Newline();
 
-			engHint.AppendText(charArray[i].ToString());
-			engHint.Newline();
-		}
-	}
+	//		engHint.AppendText(charArray[i].ToString());
+	//		engHint.Newline();
+	//	}
+	//}
 	private string CipherWord(string word)
 	{
 		string cipheredWord = null;
