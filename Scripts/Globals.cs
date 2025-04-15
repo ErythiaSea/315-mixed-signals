@@ -117,6 +117,8 @@ public partial class Globals : Node
 	private Godot.Collections.Array<string> stateControlText = new();
 	private RichTextLabel controlsText;
 
+	private PauseMenu pauseMenu;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -133,15 +135,25 @@ public partial class Globals : Node
 		}
 		Instance = this;
 
-		controlsText = GetNode<RichTextLabel>("GlobalCanvasLayer/GlobalControl/ControlsText");
+		controlsText = GetNode<RichTextLabel>("GlobalsCanvasLayer/GlobalControl/ControlsText");
 		Instance.GamestateChange += UpdateControlsText;
 
 		SignalBus.Instance.DialogueStarted += () => PushGamestate(GAMESTATE.DIALOGUE);
 		SignalBus.Instance.DialogueEnded += () => PopGamestate(GAMESTATE.DIALOGUE);
 		InitialGameSetUp();
-	}
 
-	public static void InitialGameSetUp()
+		pauseMenu = ResourceLoader.Load<PackedScene>("res://Scenes/Menu/Pause/pause_menu.tscn").Instantiate<PauseMenu>();
+        pauseMenu.Hide();
+        GetNode<Control>("GlobalsCanvasLayer/GlobalControl").AddChild(pauseMenu);
+    }
+
+    public static void PauseGame()
+    {
+		Instance.pauseMenu.Show();
+		Instance.GetTree().Paused = true;
+    }
+
+    public static void InitialGameSetUp()
 	{
 		Day = 0;
 		ProgressionStage = GAMESTAGE.BEGIN;

@@ -39,14 +39,15 @@ public partial class Level : Node2D
 	int bottomLimit = 0;
 	
 	Player player;
+    PackedScene pauseScene;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
 		// don't execute this in editor
 		if (Engine.IsEditorHint()) return;
 
-		player = GetNode<Player>("Player");
+        player = GetNode<Player>("Player");
 
 		int spawnID = Globals.CurrentSpawnID;
 		if (spawnID >= 0 && spawnData.Count > 0)
@@ -94,4 +95,14 @@ public partial class Level : Node2D
 	}
 
 	public bool getCameraEnabled() { return cameraEnabled; }
+
+	public override void _UnhandledInput(InputEvent input)
+	{
+		if (input.IsActionPressed("pause") && !GetTree().Paused)
+		{
+			GD.Print("pausing game...");
+			Globals.PauseGame();
+            GetViewport().SetInputAsHandled();
+        }
+	}
 }
