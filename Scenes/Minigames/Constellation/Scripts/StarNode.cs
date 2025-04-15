@@ -66,6 +66,8 @@ public partial class StarNode : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		//If the star hasnt been found then check if the player has got the center of the camera
+		//over the star then find it
 		if (!isFound)
 		{
 			if (GlobalPosition.DistanceTo(GetViewport().GetCamera2D().GetScreenCenterPosition()) < centerFocusRange)
@@ -81,7 +83,8 @@ public partial class StarNode : Node2D
 			}
 		}
 		else
-		{     //shows the number for the star
+		{     //shows the number for the star 
+			  //and displays the new texture for finding it
 			if (!hasDisplayed)
 			{
 				Tween transition = GetTree().CreateTween();
@@ -95,7 +98,8 @@ public partial class StarNode : Node2D
 		}
 
 
-		//Interp the connected lines 
+		//Interp the connected lines and have particles playing
+		//TODO: particles dont display
 		if (lineList.Count > 0)
 		{
 			for (int i = 0; i < lineList.Count; i++)
@@ -110,7 +114,6 @@ public partial class StarNode : Node2D
 
 					lineList[i].SetPointPosition(1, linePos);
 					particleList[i].GlobalPosition = linePos;
-					GD.Print("Particles emitting from line ", i);
 				}
 				else
 				{
@@ -120,6 +123,8 @@ public partial class StarNode : Node2D
 		}
 	}
 
+	//Creates the lines between found stars and 
+	//allows them to interp to the adjacent star
 	public void ConnectStars(Node2D star)
 	{
    
@@ -134,41 +139,49 @@ public partial class StarNode : Node2D
 		this.AddSibling(connection);
 
 		particleList.Add(SetUpParticles(star,connection));
-
+		
+		//Updates arrays for lines and theyre progress in the lerps
 		lineList.Add(connection);
 		lineProgress.Add(0f);
 		lineTargets.Add(star.GlobalPosition);
 	}
 
+
+	//Deletes indicators to stars that are getting
+	// a connecton/line between
 	public void FreeIndicator(Node2D star)
 	{
-		GD.Print("passed:indicator");
 		float bestProd = 0;
 		int index = 0;
 
 
 		Vector2 starDir = (GlobalPosition - star.GlobalPosition).Normalized();
 	 
+		//Checks all indicators connected to this star
+		//and finds the closest dir to the direction of the new line
+		//then deletes it
 		for (int i = 0; i < indicatorList.Count; i++)
 		{
 			Vector2 indDir = (indicatorList[i].GetPointPosition(0) - indicatorList[i].GetPointPosition(1)).Normalized();
 			float dotProd = indDir.Dot(starDir);
-			GD.Print("Dot:" + dotProd);
+		
 			if (dotProd > bestProd)
 			{
 				index = i;
 				bestProd = dotProd;
 			}
 		}
-		GD.Print("Index:" + index);
+	
 		if (indicatorList[index] != null)
 		{
-			//Add a fade out here instead of just deleting 
 			fadeInOrOut(indicatorList[index], false, true);
 			indicatorList.RemoveAt(index);
 		}
 	}
 
+	//checks all adjacent stars to this star
+	//if they are found then connect them, as this
+	//only runs when this star is found
 	private void StarFound()
 	{
 		foreach (StarNode star in adjacentStars)
@@ -185,7 +198,9 @@ public partial class StarNode : Node2D
 			}
 		}
 	}
-
+	
+	//Creates the indicators with the direction towards 
+	//this stars adjacent stars
 	private void StarIndicators(Node2D star)
 	{
 		Line2D indicator = new Line2D();
@@ -197,14 +212,13 @@ public partial class StarNode : Node2D
 		indicator.Modulate = new Color(indicator.Modulate.R, indicator.Modulate.G, indicator.Modulate.B, 0);
 		indicator.Gradient = indicatorGradient;
 
-
 		this.AddSibling(indicator);
-
 		fadeInOrOut(indicator,true);
 
 		indicatorList.Add(indicator);
 	}
 
+	//returns the trail particles all set up correctly
    private GpuParticles2D SetUpParticles(Node2D target,Line2D connection)
 	{
 		GpuParticles2D trail = new GpuParticles2D();
@@ -213,13 +227,12 @@ public partial class StarNode : Node2D
 		trail.ProcessMaterial = particleAffect;
 		trail.Emitting = true;
 
-
 		particleList.Add(trail);
-
 
 		return trail;
 	}
 
+	//used for fading in objects and when fading out objects they get deleted if chosen
 	private void fadeInOrOut(Node2D node,bool isfadeIn, bool isFreed = false)
 	{
 		Tween fade = GetTree().CreateTween();
@@ -233,6 +246,5 @@ public partial class StarNode : Node2D
 			fade.TweenProperty(node, "modulate", Colors.Transparent, 1f);
 			if (isFreed) fade.TweenCallback(Callable.From(node.QueueFree));
 		}
-
 	}
 }
