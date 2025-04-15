@@ -25,6 +25,8 @@ public partial class TranslationCanvasUI : BaseMinigame
 	Font englishFont;
 	[Export]
 	TextureRect winInd;
+	[Export]
+	BaseButton answer;
 
 	[ExportGroup("Dialogue Paths")]
 	[Export(PropertyHint.ResourceType, "DialogueData")]
@@ -43,6 +45,8 @@ public partial class TranslationCanvasUI : BaseMinigame
 	public override void _Ready()
 	{
 		base._Ready();
+
+		answerBox.GrabFocus();
 		cabin = GetParent<CabinLevel>();
 		MinigameClosed += cabin.TranslationComplete;
 
@@ -78,6 +82,12 @@ public partial class TranslationCanvasUI : BaseMinigame
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
+
+		if (answerBox.HasFocus() && Input.IsActionJustPressed("right"))
+		{
+			GD.Print("SHIFTING");
+			answer.GrabFocus();
+		}
 	}
 
 	public void AnswerButton()

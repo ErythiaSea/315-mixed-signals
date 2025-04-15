@@ -69,7 +69,6 @@ texture_normal = ExtResource("5_cum4x")
 mapToLoad = ExtResource("5_fwcyt")
 requiredDay = 1
 dialogueBox = NodePath("../../DialogueBox")
-spawnPoint = 0
 
 [node name="PondButton" parent="Buttons" node_paths=PackedStringArray("dialogueBox") instance=ExtResource("2_8d1fn")]
 layout_mode = 0
@@ -82,7 +81,6 @@ focus_neighbor_bottom = NodePath("../FossilButton")
 texture_normal = ExtResource("3_7rbmu")
 mapToLoad = ExtResource("4_0s13x")
 dialogueBox = NodePath("../../DialogueBox")
-spawnPoint = 0
 
 [node name="FossilButton" parent="Buttons" node_paths=PackedStringArray("dialogueBox") instance=ExtResource("2_8d1fn")]
 layout_mode = 0

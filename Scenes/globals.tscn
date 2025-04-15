@@ -5,7 +5,6 @@
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_cnrc1")
-stateControlText = ["Menu control text", "Cutscene control text", "Overworld", "Transpond ", "Waveform", "Constellation", "Translation"]
 
 [node name="GlobalsCanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
