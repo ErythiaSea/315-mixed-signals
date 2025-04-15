@@ -72,7 +72,7 @@ public partial class BaseMinigame : CanvasLayer
 	}
 
 	// todo: still doing this a crappy way for now but i'd like to do signal bus later
-	private void QuitMinigame()
+	protected virtual void QuitMinigame()
 	{
 		OnTransitionFinish();
 		player.SetMovementLock(false);

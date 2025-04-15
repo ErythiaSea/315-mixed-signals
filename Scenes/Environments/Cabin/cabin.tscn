@@ -361,7 +361,7 @@ bottomCallButton = NodePath("../ElevatorBottomCall")
 elevatorButton = NodePath("ElevatorButton")
 wallCollision = [NodePath("ElevatorWallL"), NodePath("ElevatorWallR")]
 topFloorCollision = NodePath("../WorldCollision/CollisionShape2")
-topY = 995.0
+topY = 1004.0
 bottomY = 4552.0
 travelTime = 5.0
 
@@ -378,7 +378,7 @@ position = Vector2(251, -70)
 shape = SubResource("RectangleShape2D_f8yak")
 
 [node name="ElevatorButton" parent="Elevator" instance=ExtResource("15_lw781")]
-position = Vector2(-136, -11)
+position = Vector2(-125, -11)
 requiredStage = 1
 
 [node name="ButtonShape" type="CollisionShape2D" parent="Elevator/ElevatorButton"]

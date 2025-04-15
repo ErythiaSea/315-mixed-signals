@@ -29,6 +29,14 @@ public partial class CabinLevel : Level
 		base._Ready();
 		endDay = GetNode<EndDay>("EndDay");
         Globals.Instance.DayChanged += OnNewDay;
+
+		Globals.Instance.ProgressionChange += () =>
+		{
+			if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
+			{
+				GetNode<InteractBox>("TranspondBox").active = false;
+			}
+		};
 	}
 
     private void OnNewDay()

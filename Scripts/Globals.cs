@@ -26,7 +26,8 @@ public enum GAMESTATE
 	WAVEFORM = 4,
 	CONSTELLATION = 5,
 	TRANSLATION = 6,
-	DIALOGUE = 7
+	DIALOGUE = 7,
+	NONE = 8
 }
 
 [Tool]
@@ -75,28 +76,34 @@ public partial class Globals : Node
 	public static void PushGamestate(GAMESTATE state)
 	{
 		_gamestate.Push(state);
-		GD.Print(state, " was pushed onto the gamestate stack. Stack is now: ", _gamestate);
+		GD.Print(state, " was pushed onto the gamestate stack. Stack is now: ", _gamestate.ToString());
 		Instance.EmitSignal(SignalName.GamestateChange);
 	}
 
-	public static void PopGamestate(GAMESTATE state)
+	public static void PopGamestate(GAMESTATE state = GAMESTATE.NONE)
 	{
+		if (state == GAMESTATE.NONE)
+		{
+			GD.Print(_gamestate.Pop(), " was popped from the stack.");
+			return;
+		}
+
 		if (_gamestate.Peek() == state)
 		{
-			GD.Print(_gamestate.Pop(), " was popped from the gamestate stack. Stack is now: ", _gamestate);
+			GD.Print(_gamestate.Pop(), " was popped from the gamestate stack. Stack is now: ", _gamestate.ToString());
 			if (_gamestate.Count == 0) { GD.PushError("Gamestate stack was cleared! This should never happen."); }
 			Instance.EmitSignal(SignalName.GamestateChange);
 		}
 		else
 		{
-			GD.PushWarning("Tried to remove ", state, " from the top of the stack, but it wasn't there. No change was made, stack is still: ", _gamestate);
+			GD.PushWarning("Tried to remove ", state, " from the top of the stack, but it wasn't there. No change was made, stack is still: ", _gamestate.ToString());
 		}
 	}
 
 	public static void SetGamestate(GAMESTATE state)
 	{
 		Gamestate = state;
-		GD.Print(state, " is now the only gamestate.");
+		GD.Print("Gamestate was set; ", state, " is now the only gamestate.");
 	}
 
 	// Day property, backing field and update signal
@@ -151,6 +158,7 @@ public partial class Globals : Node
     {
 		Instance.pauseMenu.Show();
 		Instance.GetTree().Paused = true;
+		GD.Print("Game paused, current gamestate: ", Gamestate);
     }
 
     public static void InitialGameSetUp()

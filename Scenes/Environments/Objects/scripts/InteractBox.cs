@@ -277,8 +277,10 @@ public partial class InteractBox : Area2D
 
 	private void areaEntered(Area2D area)
 	{
-		// if it's the player's area
-		if (area.GetParent<Player>() != null)
+        if (!active) return;
+        // if it's the player's area
+
+        if (area.GetParent<Player>() != null)
 		{
 			AudioStreamPlayer2D stream = GetNodeOrNull<AudioStreamPlayer2D>("AudioStreamPlayer2D");
 			if (stream != null)
@@ -300,6 +302,8 @@ public partial class InteractBox : Area2D
 
     private void areaExited(Area2D area)
     {
+        if (!active) return;
+
         // if it's the player's area
         if (area.GetParent<Player>() != null)
         {
