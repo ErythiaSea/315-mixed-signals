@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://87qscn3sol8a"
-path="res://.godot/imported/Reveal.wav-ce7396a5e5115276059f3479a251d221.sample"
+path="res://.godot/imported/Reveal.wav-0c5839572ead842fdfe999bea7cb4fa1.sample"
 
 [deps]
 
-source_file="res://Scenes/Minigames/Constellation/Scripts/Reveal.wav"
-dest_files=["res://.godot/imported/Reveal.wav-ce7396a5e5115276059f3479a251d221.sample"]
+source_file="res://Scenes/Minigames/Constellation/Resources/Reveal.wav"
+dest_files=["res://.godot/imported/Reveal.wav-0c5839572ead842fdfe999bea7cb4fa1.sample"]
 
 [params]
 

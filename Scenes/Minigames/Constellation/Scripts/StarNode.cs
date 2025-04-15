@@ -7,26 +7,27 @@ using System.Runtime.CompilerServices;
 public partial class StarNode : Node2D
 {
 	[Export]
-	ParticleProcessMaterial particleAffect;
+	public ParticleProcessMaterial particleAffect;
   
 	[Export]
-	Gradient indicatorGradient;
+	public Gradient indicatorGradient;
 
 	[Export]
    public Godot.Collections.Array<StarNode> adjacentStars;
 
 	[Export]
-	float centerFocusRange = 300f;
+	public float centerFocusRange = 300f;
 
 	[Export]
-	float lineSpeed = 0.5f;
+	public float lineSpeed = 0.5f;
 
+    public bool isFound = false;
+    
 	private Sprite2D foundSprite;
 	private float timeToRegister = 2f;
 	private float timeElapsed = 0f;
 
 	private int indicatorCompleteCount = 0;
-
 
 	private Godot.Collections.Array<Line2D> indicatorList;
 
@@ -35,20 +36,21 @@ public partial class StarNode : Node2D
 	private Godot.Collections.Array<float> lineProgress;
 	private Godot.Collections.Array<GpuParticles2D> particleList;
 
-	private StarsParent parent;
+	private StarsParent constellation;
 	private Label numberDisplay;
 
 	private bool hasDisplayed = false;
-	public bool isFound = false;
 	
-	AudioStreamPlayer audioStreamPlayer;
+	private AudioStreamPlayer audioStreamPlayer;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		foundSprite = GetNode("FoundSprite") as Sprite2D;
-		numberDisplay = GetChild(2) as Label;
-		parent = GetParent() as StarsParent;
+		numberDisplay = GetNode("NumberDisplay") as Label;
+
+		constellation = GetParent() as StarsParent;
+
 		lineList = new Godot.Collections.Array<Line2D>();
 		lineTargets = new Godot.Collections.Array<Vector2>();
 		lineProgress = new Godot.Collections.Array<float>();

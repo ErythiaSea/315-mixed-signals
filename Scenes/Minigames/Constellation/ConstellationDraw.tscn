@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bjxmc62rj2pnx" path="res://Sprites/crosshair_temp.png" id="7_0ijxk"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/StarsParent.cs" id="8_pqt5s"]
 [ext_resource type="PackedScene" uid="uid://bx27m71lxn4qi" path="res://Scenes/Minigames/Constellation/Objects/StarNode.tscn" id="8_s5r6a"]
-[ext_resource type="AudioStream" uid="uid://87qscn3sol8a" path="res://Scenes/Minigames/Constellation/Scripts/Reveal.wav" id="9_ynrg5"]
+[ext_resource type="AudioStream" uid="uid://87qscn3sol8a" path="res://Scenes/Minigames/Constellation/Resources/Reveal.wav" id="9_ynrg5"]
 [ext_resource type="Texture2D" uid="uid://cad0l75yjf3a4" path="res://Sprites/tutorialbutton_temp.png" id="10_6il21"]
 [ext_resource type="Script" path="res://Scenes/Minigames/TutorialButton.cs" id="10_ikdok"]
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="11_gm0gd"]
@@ -41,44 +41,44 @@ follow_viewport_enabled = true
 script = ExtResource("1_sd3pu")
 exitTransition = 4
 
-[node name="eeek" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("1_7uyas")
 cameraSpeed = 15.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="eeek"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera"]
 stream = ExtResource("9_ynrg5")
 volume_db = -13.84
 
-[node name="Parallax" type="Node2D" parent="eeek"]
+[node name="Parallax" type="Node2D" parent="Camera"]
 modulate = Color(0.564962, 0.564962, 0.564962, 1)
 z_index = -2
 position = Vector2(3, 0)
 scale = Vector2(0.4, 0.4)
 
-[node name="Sky" type="Parallax2D" parent="eeek/Parallax"]
+[node name="Sky" type="Parallax2D" parent="Camera/Parallax"]
 scroll_scale = Vector2(0.58, 0.58)
 repeat_size = Vector2(12300, 7500)
 repeat_times = 4
 
-[node name="SkySprite" type="Sprite2D" parent="eeek/Parallax/Sky"]
+[node name="SkySprite" type="Sprite2D" parent="Camera/Parallax/Sky"]
 modulate = Color(0.721569, 0.745098, 1, 1)
 position = Vector2(-2.5, 0)
 scale = Vector2(3, 3)
 texture = ExtResource("3_vuskw")
 
-[node name="Stars" type="Parallax2D" parent="eeek/Parallax"]
+[node name="Stars" type="Parallax2D" parent="Camera/Parallax"]
 scroll_scale = Vector2(0.57, 0.57)
 repeat_size = Vector2(12300, 7500)
 repeat_times = 4
 
-[node name="StarsSprite" type="Sprite2D" parent="eeek/Parallax/Stars"]
+[node name="StarsSprite" type="Sprite2D" parent="Camera/Parallax/Stars"]
 modulate = Color(0.894922, 0.894922, 0.894922, 1)
 scale = Vector2(3, 3)
 texture = ExtResource("4_irqg6")
 
-[node name="Telescope" type="ColorRect" parent="eeek"]
+[node name="Telescope" type="ColorRect" parent="Camera"]
 material = SubResource("ShaderMaterial_13kgm")
 offset_left = -1151.0
 offset_top = -652.0
@@ -91,7 +91,7 @@ script = ExtResource("4_ro1i3")
 radius = 0.4
 blur = 0.02
 
-[node name="Crosshair" type="Sprite2D" parent="eeek"]
+[node name="Crosshair" type="Sprite2D" parent="Camera"]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_0ijxk")
 
@@ -177,5 +177,5 @@ script = ExtResource("11_nevyl")
 data = ExtResource("12_2mmrr")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_o4ycm"), SubResource("RichTextEffect_m1n3u"), SubResource("RichTextEffect_s3dl4")])
 
-[connection signal="ConstellationCompletion" from="Pyxis" to="eeek" method="DisplayConstellation"]
-[connection signal="ConstellationCompletion" from="Corvus" to="eeek" method="DisplayConstellation"]
+[connection signal="ConstellationCompletion" from="Pyxis" to="Camera" method="DisplayConstellation"]
+[connection signal="ConstellationCompletion" from="Corvus" to="Camera" method="DisplayConstellation"]

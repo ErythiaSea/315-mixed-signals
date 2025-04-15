@@ -7,6 +7,7 @@ public partial class CameraMovement : Camera2D
 	public float cameraSpeed = 0.6f;
 
 	public bool canMoveCam = true;
+
 	private ColorRect telescope;
 	private Vector2 center;
 
@@ -34,6 +35,8 @@ public partial class CameraMovement : Camera2D
 	// todo: make relative to deltatime
 	public void CameraInputEvents(double delta)
 	{
+
+		//Moves camera based on input keys mapped in project settings
 		if (Input.IsActionPressed("down"))
 		{
 			Position = new Vector2(Position.X, Position.Y + cameraSpeed);
@@ -52,6 +55,7 @@ public partial class CameraMovement : Camera2D
 		}
 	}
 
+	//Zooms out and shows the completed constellation, centered on the star with the most connections
 	public void DisplayConstellation(Vector2 centerStar)
 	{
 		canMoveCam = false;
