@@ -134,7 +134,7 @@ position = Vector2(0, 8)
 scale = Vector2(0.075, 0.075)
 sprite_frames = SubResource("SpriteFrames_kxusu")
 animation = &"run"
-frame_progress = 0.439144
+frame_progress = 0.538912
 
 [node name="PlayerShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)

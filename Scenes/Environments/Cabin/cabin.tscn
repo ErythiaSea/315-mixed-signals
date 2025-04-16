@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bqyty78nhq7we" path="res://Scenes/Environments/Cabin/Sprites/Cabin_Standings.png" id="6_fo4et"]
 [ext_resource type="Texture2D" uid="uid://cewwdj8kb867f" path="res://Scenes/Environments/Cabin/Sprites/Cabin_Monitors.png" id="7_bteuo"]
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/Outline.gdshader" id="9_05epa"]
-[ext_resource type="Texture2D" uid="uid://rhc8uopts4la" path="res://Scenes/Environments/Cabin/bedroom_background.png" id="10_7n4i8"]
+[ext_resource type="Texture2D" uid="uid://b2iqso0y0uawv" path="res://Scenes/Environments/Cabin/Sprites/bedroom_background22.png" id="10_lqlne"]
 [ext_resource type="Texture2D" uid="uid://dlxcbppbeywmh" path="res://Scenes/Environments/Cabin Extended/base_pipes.png" id="11_o0hdm"]
 [ext_resource type="Texture2D" uid="uid://2crwnjdli60a" path="res://Sprites/elevatorbuton_temp.png" id="13_bairj"]
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="13_haw55"]
@@ -187,7 +187,7 @@ translationEndStartID = "TRANSLATION_END"
 exitInteractBox = NodePath("LevelChange")
 elevatorButtonBox = NodePath("Elevator/ElevatorButton")
 spawnData = Array[Object]([SubResource("Resource_82qql")])
-OffsetY = -300.0
+OffsetY = -240.0
 rightLimit = 1920
 bottomLimit = 4954
 
@@ -306,7 +306,7 @@ texture = ExtResource("11_o0hdm")
 [node name="BedRoom" type="Sprite2D" parent="Sprites"]
 position = Vector2(959, 4127)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_7n4i8")
+texture = ExtResource("10_lqlne")
 
 [node name="BottomCallButton" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_7ng72")
@@ -411,8 +411,9 @@ position = Vector2(585, 4167.5)
 shape = SubResource("RectangleShape2D_8qv87")
 
 [node name="Player" parent="." instance=ExtResource("2_h3n7b")]
-position = Vector2(543, 4394)
-scale = Vector2(2.5, 2.5)
+position = Vector2(543, 4331)
+scale = Vector2(3.5, 3.5)
+movementSpeed = 500.0
 walkingParticles = null
 
 [node name="PlayerHead" type="Marker2D" parent="Player"]
