@@ -48,8 +48,8 @@ glow_levels/5 = 4.0
 glow_levels/6 = 8.0
 glow_levels/7 = 16.0
 glow_normalized = true
-glow_intensity = 0.7
-glow_bloom = 0.3
+glow_intensity = 0.6
+glow_bloom = 0.2
 glow_blend_mode = 0
 fog_mode = 1
 fog_light_color = Color(0.872069, 0.00094317, 0.923236, 1)
@@ -196,7 +196,7 @@ environment = SubResource("Environment_8vdl8")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(24, 0)
-color = Color(0.160404, 0.0175456, 0.232451, 1)
+color = Color(0.34952, 0.2091, 0.51, 1)
 blend_mode = 2
 
 [node name="MainLight" type="PointLight2D" parent="."]

@@ -75,7 +75,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_dldwd"]
 resource_name = "VehicleIdleAnimation"
-length = 0.33
+length = 0.7
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -84,10 +84,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.3),
+"times": PackedFloat32Array(0, 0.35, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(5018, 237), Vector2(5018, 227), Vector2(5018, 237)]
+"values": [Vector2(5018, 190), Vector2(5018, 180), Vector2(5018, 190)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rgno3"]
@@ -127,7 +127,7 @@ script = ExtResource("10_vfhkp")
 position = Vector2(-2, 0)
 script = ExtResource("1_4weox")
 spawnData = Array[Object]([SubResource("Resource_igbtt"), SubResource("Resource_5o2kn")])
-cameraZoom = 0.6
+cameraZoom = 0.5
 leftLimit = -1924
 topLimit = -1590
 rightLimit = 5570
@@ -140,13 +140,14 @@ environment = SubResource("Environment_aycsk")
 position = Vector2(2, 0)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Node2D"]
-color = Color(0.153378, 0.356783, 0.310417, 1)
+color = Color(0.153, 0.357, 0.31, 1)
 blend_mode = 1
 
 [node name="PointLight2D" type="PointLight2D" parent="Node2D"]
 position = Vector2(3159, -9.00022)
 rotation = 0.991007
 scale = Vector2(15.8825, 6.76929)
+color = Color(0.47, 0.1128, 0.154473, 1)
 energy = 0.3
 texture = SubResource("GradientTexture2D_38v6r")
 
@@ -154,6 +155,8 @@ texture = SubResource("GradientTexture2D_38v6r")
 position = Vector2(1380, 281)
 rotation = 0.991007
 scale = Vector2(13.3318, 14.5776)
+enabled = false
+color = Color(0, 0.423, 0.47, 1)
 energy = 0.4
 texture = SubResource("GradientTexture2D_38v6r")
 
@@ -165,14 +168,14 @@ texture = ExtResource("1_0a00e")
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelCollision"]
-position = Vector2(1119.2, -0.00012207)
+position = Vector2(1119.2, 14.9999)
 scale = Vector2(2.83887, 1)
 build_mode = 1
 polygon = PackedVector2Array(-1074, 313, -314.281, 317, -227.275, 467, 1567.1, 472, 1567.1, -189, 1588.59, -187, 1590.35, 570, -1072, 568, -1130, 570, -1127.99, -202, -1075, -204)
 
 [node name="VehicleSprite" type="Sprite2D" parent="."]
 position = Vector2(5015, 146)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.45, 0.45)
 texture = ExtResource("4_dfl0f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VehicleSprite"]
@@ -183,8 +186,8 @@ autoplay = "VehicleIdleAnimation"
 
 [node name="Player" parent="." instance=ExtResource("1_7p3ip")]
 position = Vector2(-435, 6)
-scale = Vector2(4.5, 4.5)
-movementSpeed = 900.0
+scale = Vector2(5, 5)
+movementSpeed = 950.0
 
 [node name="PlayerHead" type="Marker2D" parent="Player"]
 position = Vector2(0, -41.2)
@@ -207,7 +210,7 @@ volume_db = -10.0
 
 [node name="LevelTransition" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(-443, 57)
-transitionType = 2
+transitionType = 1
 requiredStage = 4
 scenePath = "res://Scenes/Environments/Cabin/cabin.tscn"
 loadInCurrent = false
