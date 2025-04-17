@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=67 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/CabinLevel.cs" id="1_2hyee"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -134,6 +134,12 @@ size = Vector2(8, 137.25)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b7gpl"]
 radius = 16.1245
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qpiuy"]
+shader = ExtResource("9_05epa")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_alpha = 1.0
+shader_parameter/line_thickness = 10.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82mfh"]
 size = Vector2(1936, 88.8125)
@@ -378,14 +384,16 @@ shape = SubResource("RectangleShape2D_3sbqo")
 position = Vector2(251, -70)
 shape = SubResource("RectangleShape2D_f8yak")
 
-[node name="ElevatorButton" parent="Elevator" instance=ExtResource("15_lw781")]
+[node name="ElevatorButton" parent="Elevator" node_paths=PackedStringArray("objectSprite") instance=ExtResource("15_lw781")]
 position = Vector2(-125, -11)
+objectSprite = NodePath("../Sprite2D")
 requiredStage = 1
 
 [node name="ButtonShape" type="CollisionShape2D" parent="Elevator/ElevatorButton"]
 shape = SubResource("CircleShape2D_b7gpl")
 
 [node name="Sprite2D" type="Sprite2D" parent="Elevator"]
+material = SubResource("ShaderMaterial_qpiuy")
 position = Vector2(47, 4)
 scale = Vector2(3.15625, 0.0799988)
 texture = ExtResource("16_7v6od")

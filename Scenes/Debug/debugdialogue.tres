@@ -7,6 +7,7 @@ script = ExtResource("1_5br0n")
 starts = {
 "0": &"0_1",
 "1": &"0_2",
+"BEGIN": &"0_20",
 "CONSTELLATION_END": &"0_11",
 "CONSTELLATION_START": &"0_6",
 "ENV_START": &"0_10",
@@ -85,6 +86,11 @@ nodes = {
 "link": &"1_4",
 "offset": Vector2(-600, -80),
 "start_id": "1"
+},
+"0_20": {
+"link": &"1_35",
+"offset": Vector2(1700, 1880),
+"start_id": "BEGIN"
 },
 "0_3": {
 "link": &"1_5",
@@ -489,6 +495,19 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": "eryth"
+},
+"1_35": {
+"dialogue": "Damn, I love looking at my photoboard on days like these! (PLEASE CHANGE THIS TEXT)",
+"offset": Vector2(1940, 1880),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
 },
 "1_4": {
 "dialogue": "this one has a different start id",
