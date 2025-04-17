@@ -23,8 +23,9 @@ public partial class ConstellationMinigame : BaseMinigame
 	{
 		base._Ready();
 
-		constellations = GetConstellations();
+		Globals.PushGamestate(GAMESTATE.CONSTELLATION);
 
+		constellations = GetConstellations();
 		SetupConstellation();
 
 		tutorialButton = GetNode<TutorialButton>("UICanvas/TutorialButton");
@@ -98,6 +99,7 @@ public partial class ConstellationMinigame : BaseMinigame
 
 	protected override void OnTransitionFinish()
 	{
+		Globals.PopGamestate(GAMESTATE.CONSTELLATION);
 		PackedScene cabin = (PackedScene)ResourceLoader.LoadThreadedGet(outdoorCabinPath);
 		if (cabin != null)
 		{

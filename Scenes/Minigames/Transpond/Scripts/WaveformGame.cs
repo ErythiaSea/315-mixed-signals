@@ -55,30 +55,37 @@ public partial class WaveformGame : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		GD.Print("waveform active:", gameActive);
 		if (Globals.ProgressionStage != GAMESTAGE.WAVEFORM || !gameActive) return;
 
 		float wlChange = 0.5f;
 		float wlMult = (playerWave.wavelength / 100.0f);
+
+		bool inputThisFrame = false;
 		if (Input.IsActionPressed("left_pivot_ccw"))
 		{
 			playerWave.amplitude += 0.5f;
+			inputThisFrame = true;
 		}
 		if (Input.IsActionPressed("left_pivot_cw"))
 		{
 			playerWave.amplitude -= 0.5f;
+			inputThisFrame = true;
 		}
 		if (Input.IsActionPressed("right_pivot_ccw"))
 		{
 			playerWave.wavelength += wlChange * wlMult;
+			inputThisFrame = true;
 		}
 		if (Input.IsActionPressed("right_pivot_cw"))
 		{
 			playerWave.wavelength -= wlChange * wlMult;
+			inputThisFrame = true;
 		}
 
 		playerWave.amplitude = Mathf.Clamp(playerWave.amplitude, 0.0f, 125.0f);
 		playerWave.wavelength = Mathf.Clamp(playerWave.wavelength, 5.0f, 50.0f);
+		
+		// debug
 		if (Input.IsActionJustPressed("interact"))
 		{
 			GD.Print("target w: ", targetWavelength, ", current: ", playerWave.wavelength);
@@ -94,16 +101,19 @@ public partial class WaveformGame : Node2D
 			LastAmplitude = realWave.amplitude;
 			LastWavelength = realWave.wavelength;
 			ghostWave.Visible = false;
+
 			//Updates the stage that the player is on
 			Globals.ProgressionStage = GAMESTAGE.CONSTELLATION;
-			// show complete text
-			Label wintext = GetNode<Label>("WinText");
-			wintext.Visible = true;
+
+			// show completion
 			playerWave.waveColor = Colors.Green;
 			gameActive = false;
 		}
 
-		if (Mathf.Abs(playerWave.wavelength - targetWavelength) < wlTolerance && Mathf.Abs(playerWave.amplitude - targetAmplitude) < ampTolerance)
+		// wavelength and amplitude are within range, no input this frame
+		if (Mathf.Abs(playerWave.wavelength - targetWavelength) < wlTolerance
+			&& Mathf.Abs(playerWave.amplitude - targetAmplitude) < ampTolerance
+			&& inputThisFrame == false)
 		{
 			alignedTimer += (float)delta;
 			if (alignedTimer > 1.0f) tunedSignal = true;

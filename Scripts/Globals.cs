@@ -54,11 +54,12 @@ public partial class Globals : Node
 		}
 	}
 
-	// Gamestate property, backing field, update event 
+	// Gamestate property, backing field, update event and print method
 	[Signal]
 	public delegate void GamestateChangeEventHandler();
 	private static Stack<GAMESTATE> _gamestate = new();
-	public static GAMESTATE Gamestate
+
+    public static GAMESTATE Gamestate
 	{
 		get
 		{
@@ -73,10 +74,21 @@ public partial class Globals : Node
 		}
 	}
 
+	public static string GamestateString()
+	{
+		string gamestateString = "";
+		foreach (var state in _gamestate)
+		{
+			gamestateString += state.ToString();
+			gamestateString += ", ";
+		}
+		return gamestateString;
+	}
+
 	public static void PushGamestate(GAMESTATE state)
 	{
 		_gamestate.Push(state);
-		GD.Print(state, " was pushed onto the gamestate stack. Stack is now: ", _gamestate.ToString());
+		GD.Print(state, " was pushed onto the gamestate stack. Stack is now: ", GamestateString());
 		Instance.EmitSignal(SignalName.GamestateChange);
 	}
 
@@ -90,13 +102,13 @@ public partial class Globals : Node
 
 		if (_gamestate.Peek() == state)
 		{
-			GD.Print(_gamestate.Pop(), " was popped from the gamestate stack. Stack is now: ", _gamestate.ToString());
+			GD.Print(_gamestate.Pop(), " was popped from the gamestate stack. Stack is now: ", GamestateString());
 			if (_gamestate.Count == 0) { GD.PushError("Gamestate stack was cleared! This should never happen."); }
 			Instance.EmitSignal(SignalName.GamestateChange);
 		}
 		else
 		{
-			GD.PushWarning("Tried to remove ", state, " from the top of the stack, but it wasn't there. No change was made, stack is still: ", _gamestate.ToString());
+			GD.PushWarning("Tried to remove ", state, " from the top of the stack, but it wasn't there. No change was made, stack is still: ", GamestateString());
 		}
 	}
 
@@ -184,6 +196,6 @@ public partial class Globals : Node
 
 	private void UpdateControlsText()
 	{
-		controlsText.Text = stateControlText[(int)Gamestate];
+		//controlsText.Text = stateControlText[(int)Gamestate];
 	}
 }

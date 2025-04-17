@@ -49,7 +49,7 @@ public partial class RadiotowerPivot : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (!handleInputs) return;
+		if (Globals.Gamestate != GAMESTATE.TRANSPOND || !handleInputs) return;
 
 		// Rotate pivots
 		float dir = Input.GetAxis(cwInput, ccwInput);

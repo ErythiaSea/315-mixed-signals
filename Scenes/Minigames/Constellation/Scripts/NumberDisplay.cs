@@ -62,11 +62,9 @@ public partial class NumberDisplay : Control
 		Godot.Label currentLabelIndex = null;
 		Godot.Collections.Array<int> randNumArray = RandomNumbers();
 
-		for(int i = 0; i < SceneLabels.Count; i++)
+		for (int i = 0; i < SceneLabels.Count; i++)
 		{
 			currentLabelIndex = SceneLabels[i] as Godot.Label;
-
-			currentLabelIndex.Text = string.Empty;
 			currentLabelIndex.Text = randNumArray[i].ToString();
 		}
 		hasNumbers = true;
@@ -75,26 +73,25 @@ public partial class NumberDisplay : Control
 	private Godot.Collections.Array<int> RandomNumbers()
 	{
 		Godot.Collections.Array<int> randNumArray = new Godot.Collections.Array<int>();
-		do
+		int sum;
+        var rng = new RandomNumberGenerator();
+
+        do
 		{
 			randNumArray.Clear();
-
 			for (int i = 0; i < SceneLabels.Count; i++)
 			{
-				var rng = new RandomNumberGenerator();
-				int randomNum = rng.RandiRange(randMin, randMax);
-
-				randNumArray.Add(randomNum);
+				randNumArray.Add(rng.RandiRange(randMin, randMax));
 			}
+			sum = randNumArray.Sum();
 
-		} while (randNumArray.Sum() == 0);
+		} while (sum > -4 && sum < 4 && sum == 0);
 
 		GD.Print("Valid random numbers");
 
 		//updates global variable for cipher key in translation mechanic
 		TranslationCanvasUI.CipherKey = randNumArray.Sum();
 		return randNumArray;
-		
 	}
 
 	private void SetNumbersVisibility()

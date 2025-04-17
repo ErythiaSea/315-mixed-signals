@@ -8,9 +8,13 @@ public partial class CabinLevel : Level
 	// the dialogue box where post-translation text shows up
 	[Export]
 	Control dialogueBox;
+
 	// the start id for post-translation dialogue
 	[Export]
 	String translationEndStartID = "translationend";
+	// the start id for post-photoboard dialogue on day 1
+	[Export]
+	String photoboardCloseStartID = "photoboardclose";
 
 	// the interact box that will summon the game end screen on day 3
 	[Export]
@@ -62,6 +66,16 @@ public partial class CabinLevel : Level
 		if (Globals.ProgressionStage == GAMESTAGE.END)
 		{
 			dialogueBox.Call("start", translationEndStartID);
+		}
+	}
+
+	public void PhotoboardClosed()
+	{
+		GD.Print("photoboard closed");
+		if (Globals.ProgressionStage == GAMESTAGE.BEGIN)
+		{
+			Globals.ProgressionStage = GAMESTAGE.TRANSPONDING;
+			dialogueBox.Call("start", photoboardCloseStartID);
 		}
 	}
 }

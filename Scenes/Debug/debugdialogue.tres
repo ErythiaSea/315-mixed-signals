@@ -10,6 +10,7 @@ starts = {
 "CONSTELLATION_END": &"0_11",
 "CONSTELLATION_START": &"0_6",
 "ENV_START": &"0_10",
+"PHOTO_CLOSE": &"0_18",
 "RADIO_TUT": &"0_17",
 "SLEEP": &"0_8",
 "TRANS1_TUT": &"0_14",
@@ -69,6 +70,11 @@ nodes = {
 "link": &"1_29",
 "offset": Vector2(2640, 1300),
 "start_id": "RADIO_TUT"
+},
+"0_18": {
+"link": &"1_34",
+"offset": Vector2(942.259, 1884.71),
+"start_id": "PHOTO_CLOSE"
 },
 "0_19": {
 "link": &"1_13",
@@ -470,6 +476,19 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": ""
+},
+"1_34": {
+"dialogue": "photoboard close dialogue here with start id PHOTO_CLOSE",
+"offset": Vector2(1180, 1880),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "eryth"
 },
 "1_4": {
 "dialogue": "this one has a different start id",

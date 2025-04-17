@@ -20,8 +20,12 @@ public partial class MainMenu : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		// main menu should never be on top of something so we're safe to set the gamestate
+		Globals.SetGamestate(GAMESTATE.MENU);
+
 		startButton = GetNode<Button>("ButtonContainer/StartButton");
 		startButton.GrabFocus();
+		startButton.Pressed += _On_StartButton_Pressed;
 
 		optionsButton = GetNode<Button>("ButtonContainer/OptionsButton");
 		optionsButton.Pressed += _On_OptionsButton_Pressed;

@@ -36,14 +36,14 @@ public partial class StarsParent : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-
 		if (IsConstellationComplete() && !hasSignalled)
 		{
+			GD.Print("Emitting signal...");
 			EmitSignal(SignalName.ConstellationCompletion, GetCenterStar());
 			hasSignalled = true;
-		}
-			  
+		}			  
 	}
+
 	public void GenerateNumbers()
 	{
 		Godot.Collections.Array<int> randNumArray = RandomNumbers();

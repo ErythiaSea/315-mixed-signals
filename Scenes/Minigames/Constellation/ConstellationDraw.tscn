@@ -176,6 +176,3 @@ theme = ExtResource("11_gm0gd")
 script = ExtResource("11_nevyl")
 data = ExtResource("12_2mmrr")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_o4ycm"), SubResource("RichTextEffect_m1n3u"), SubResource("RichTextEffect_s3dl4")])
-
-[connection signal="ConstellationCompletion" from="Pyxis" to="eeek" method="DisplayConstellation"]
-[connection signal="ConstellationCompletion" from="Corvus" to="eeek" method="DisplayConstellation"]

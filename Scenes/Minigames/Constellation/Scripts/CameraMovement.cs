@@ -26,7 +26,10 @@ public partial class CameraMovement : Camera2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(canMoveCam)CameraInputEvents(delta);
+		if (canMoveCam && Globals.Gamestate == GAMESTATE.CONSTELLATION)
+		{
+			CameraInputEvents(delta);
+		}
 
 		center = GetScreenCenterPosition();
 	}
@@ -54,6 +57,7 @@ public partial class CameraMovement : Camera2D
 
 	public void DisplayConstellation(Vector2 centerStar)
 	{
+		GD.Print("displaying constellation...");
 		canMoveCam = false;
 		Tween completion = GetTree().CreateTween();
 
