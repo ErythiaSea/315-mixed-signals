@@ -10,11 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://bqyty78nhq7we" path="res://Scenes/Environments/Cabin/Sprites/Cabin_Standings.png" id="6_fo4et"]
 [ext_resource type="Texture2D" uid="uid://cewwdj8kb867f" path="res://Scenes/Environments/Cabin/Sprites/Cabin_Monitors.png" id="7_bteuo"]
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/Outline.gdshader" id="9_05epa"]
-[ext_resource type="Texture2D" uid="uid://b2iqso0y0uawv" path="res://Scenes/Environments/Cabin/Sprites/bedroom_background22.png" id="10_lqlne"]
+[ext_resource type="Texture2D" uid="uid://dgxa5oe3n02es" path="res://Scenes/Environments/Cabin/Sprites/bedroom_background.png" id="10_wte04"]
+[ext_resource type="Texture2D" uid="uid://ca3at5rrn0nfn" path="res://Scenes/Environments/Cabin/Sprites/bedroom_elevatorbutton.png" id="11_fnn4b"]
 [ext_resource type="Texture2D" uid="uid://dlxcbppbeywmh" path="res://Scenes/Environments/Cabin Extended/base_pipes.png" id="11_o0hdm"]
 [ext_resource type="Texture2D" uid="uid://2crwnjdli60a" path="res://Sprites/elevatorbuton_temp.png" id="13_bairj"]
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="13_haw55"]
-[ext_resource type="Texture2D" uid="uid://d1en116yf2tih" path="res://Scenes/Environments/Cabin/Sprites/bedroom_desk.png" id="14_88y3f"]
 [ext_resource type="PackedScene" uid="uid://1iqwcokmbvwv" path="res://Scenes/Environments/Objects/elevator.tscn" id="14_e5y7b"]
 [ext_resource type="Texture2D" uid="uid://bhieqrwdoj31n" path="res://Scenes/Environments/Cabin/Sprites/bedroom_bed.png" id="14_gtqtg"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="14_tiwmt"]
@@ -201,6 +201,7 @@ blend_mode = 2
 
 [node name="MainLight" type="PointLight2D" parent="."]
 position = Vector2(979, 451)
+color = Color(0.82, 0.75235, 0.369, 1)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_jojyq")
 
@@ -304,14 +305,15 @@ scale = Vector2(0.501563, 0.394366)
 texture = ExtResource("11_o0hdm")
 
 [node name="BedRoom" type="Sprite2D" parent="Sprites"]
-position = Vector2(959, 4127)
+position = Vector2(959, 4128)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_lqlne")
+texture = ExtResource("10_wte04")
 
 [node name="BottomCallButton" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_7ng72")
-position = Vector2(722, 4462)
-texture = ExtResource("13_bairj")
+position = Vector2(667.75, 4277.74)
+scale = Vector2(0.492805, 0.492805)
+texture = ExtResource("11_fnn4b")
 
 [node name="TopCallButton" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_62c65")
@@ -320,14 +322,9 @@ texture = ExtResource("13_bairj")
 
 [node name="Bed" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_4dv0e")
-position = Vector2(214, 4313)
+position = Vector2(228, 4311)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_gtqtg")
-
-[node name="Desk" type="Sprite2D" parent="Sprites"]
-position = Vector2(1348, 4436.75)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("14_88y3f")
 
 [node name="TranslationPaper" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_0jryd")
@@ -337,8 +334,8 @@ texture = ExtResource("15_gbafl")
 
 [node name="Photoboard" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_ogn68")
-position = Vector2(1641, 4124)
-scale = Vector2(0.439479, 0.552707)
+position = Vector2(1634, 4125)
+scale = Vector2(0.558659, 0.558405)
 texture = ExtResource("16_stl3d")
 
 [node name="Bedroom Foreground" type="Sprite2D" parent="Sprites"]
@@ -519,7 +516,7 @@ shape = SubResource("RectangleShape2D_avn75")
 position = Vector2(1964, 4550)
 collision_layer = 4
 script = ExtResource("4_r0utk")
-transitionType = 1
+transitionType = 2
 requiredStage = 2
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
