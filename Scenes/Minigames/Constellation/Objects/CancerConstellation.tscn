@@ -113,8 +113,6 @@ offset_right = 664.0
 offset_bottom = 187.0
 rotation = 0.858851
 scale = Vector2(0.8, 0.8)
-beginDragRange = null
-barDepletionRate = null
 
 [node name="DragProgressBarRoot2" parent="DragParent" instance=ExtResource("4_u88qu")]
 modulate = Color(1, 1, 1, 0.27451)
@@ -125,8 +123,6 @@ offset_right = 899.0
 offset_bottom = 240.0
 rotation = -0.799136
 scale = Vector2(0.8, 0.8)
-beginDragRange = null
-barDepletionRate = null
 
 [node name="DragProgressBarRoot3" parent="DragParent" instance=ExtResource("4_u88qu")]
 modulate = Color(1, 1, 1, 0.27451)
@@ -137,8 +133,6 @@ offset_right = 805.0
 offset_bottom = 342.0
 rotation = -0.49156
 scale = Vector2(0.8, 0.8)
-beginDragRange = null
-barDepletionRate = null
 
 [node name="DragProgressBarRoot4" parent="DragParent" instance=ExtResource("4_u88qu")]
 modulate = Color(1, 1, 1, 0.27451)
@@ -149,8 +143,6 @@ offset_right = 803.0
 offset_bottom = 354.0
 rotation = 1.6885
 scale = Vector2(0.8, 0.8)
-beginDragRange = null
-barDepletionRate = null
 
 [node name="cancer" type="Sprite2D" parent="."]
 modulate = Color(0.907942, 0.907942, 0.907942, 1)

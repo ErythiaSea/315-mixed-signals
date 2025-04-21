@@ -8,6 +8,7 @@ script = ExtResource("1_cnrc1")
 
 [node name="GlobalsCanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
+visible = false
 
 [node name="GlobalControl" type="Control" parent="GlobalsCanvasLayer"]
 layout_mode = 3
