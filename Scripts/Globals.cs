@@ -3,101 +3,199 @@ using Godot.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using static Godot.WebSocketPeer;
 
 public enum GAMESTAGE
 {
-	TRANSPONDING,
-	WAVEFORM,
-	CONSTELLATION,
-	TRANSLATION,
-	END,
-	TRANSITION
+	BEGIN = 0,
+	TRANSPONDING = 1,
+	WAVEFORM = 2,
+	CONSTELLATION = 3,
+	TRANSLATION = 4,
+	END = 5,
+	TRANSITION = 6
 }
 
-public struct GameState
+public enum GAMESTATE
 {
-	public GAMESTAGE stage;
-	public int day;
+	MENU = 0,
+	CUTSCENE = 1,
+	OVERWORLD = 2,
+	TRANSPOND = 3,
+	WAVEFORM = 4,
+	CONSTELLATION = 5,
+	TRANSLATION = 6,
+	DIALOGUE = 7,
+	NONE = 8
 }
 
+[Tool]
 public partial class Globals : Node
 {
+	// The instance of the Globals node that does GodotObject things a static
+	// class otherwise cannot do (emit signals primarily)
 	public static Globals Instance;
 
-	//Translation related Variables:
+	// Progression stage property, backing field and update event
+	[Signal]
+	public delegate void ProgressionChangeEventHandler();
+	private static GAMESTAGE _progressionStage;
+	public static GAMESTAGE ProgressionStage
+	{
+		get
+		{
+			return _progressionStage;
+		}
+		set
+		{
+			_progressionStage = value;
+			Instance.EmitSignal(SignalName.ProgressionChange);
+		}
+	}
 
-	//stores the cipher
-	public int cipherKey = 0;
-	//stores if the word has been done this loop or not
-	public bool isCurrentWordDone = false;
-	//Stores a list of words to be used in the translation, increments by the day the player is on
-	[Export]
-	public string[] wordList = { "Hot", "Cute" };
+	// Gamestate property, backing field, update event and print method
+	[Signal]
+	public delegate void GamestateChangeEventHandler();
+	private static Stack<GAMESTATE> _gamestate = new();
 
+    public static GAMESTATE Gamestate
+	{
+		get
+		{
+			return _gamestate.Peek();
+		}
+		private set
+		{
+			_gamestate.Clear();
+			_gamestate.Push(value);
+			Instance.EmitSignal(SignalName.GamestateChange);
+			Instance.UpdateControlsText();
+		}
+	}
 
-	//Transponding related variables:
+	public static string GamestateString()
+	{
+		string gamestateString = "";
+		foreach (var state in _gamestate)
+		{
+			gamestateString += state.ToString();
+			gamestateString += ", ";
+		}
+		return gamestateString;
+	}
 
-	//Stores the last Completed pivots
-	public float LpivotRotRef = 0f;
-	public float RpivotRotRef = 0f;
-	//Stores the last Completed wave
-	public float waveAmpRef = 0f;
-	public float waveLenRef = 0f;
-	//State of the game, day and also stage the player is at
-	public GameState gameState;
+	public static void PushGamestate(GAMESTATE state)
+	{
+		_gamestate.Push(state);
+		GD.Print(state, " was pushed onto the gamestate stack. Stack is now: ", GamestateString());
+		Instance.EmitSignal(SignalName.GamestateChange);
+	}
 
-	//Spawning related variables:
-	public int currentSpawnID = -1;
-	public PackedScene nextMap;
+	public static void PopGamestate(GAMESTATE state = GAMESTATE.NONE)
+	{
+		if (state == GAMESTATE.NONE)
+		{
+			GD.Print(_gamestate.Pop(), " was popped from the stack.");
+			return;
+		}
 
-	// To track which tutorials have automatically been displayed to the player
-	public GAMESTAGE tutorialProgress = GAMESTAGE.TRANSPONDING;
+		if (_gamestate.Peek() == state)
+		{
+			GD.Print(_gamestate.Pop(), " was popped from the gamestate stack. Stack is now: ", GamestateString());
+			if (_gamestate.Count == 0) { GD.PushError("Gamestate stack was cleared! This should never happen."); }
+			Instance.EmitSignal(SignalName.GamestateChange);
+		}
+		else
+		{
+			GD.PushWarning("Tried to remove ", state, " from the top of the stack, but it wasn't there. No change was made, stack is still: ", GamestateString());
+		}
+	}
+
+	public static void SetGamestate(GAMESTATE state)
+	{
+		Gamestate = state;
+		GD.Print("Gamestate was set; ", state, " is now the only gamestate.");
+	}
+
+	// Day property, backing field and update signal
+	[Signal]
+	public delegate void DayChangedEventHandler();
+	public static int Day { get; set; }
+
+	// Tutorial progress property to track which tutorial should next be shown to the player
+	public static GAMESTAGE TutorialProgress { get; set; } = GAMESTAGE.TRANSPONDING;
+
+	// The spawn point you will appear at on level load
+	public static int CurrentSpawnID { get; set; } = -1;
 
 	// The colour used for the outline of interactable objects when a custom one is not set
-	public static Vector3 STANDARD_OUTLINE_COLOR { get; } = new Vector3(1.0f, 0.95f, 0.45f);
+	public static readonly Vector3 STANDARD_OUTLINE_COLOR = new (1.0f, 0.95f, 0.45f);
 
-	public WipeTransition globalTransition;
+	[Export]
+	private Godot.Collections.Array<string> stateControlText = new();
+	private RichTextLabel controlsText;
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+	private PauseMenu pauseMenu;
+
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
 	{
-		Instance = this;
-		InitalGameSetUp();
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-
-	}
-
-	private void InitalGameSetUp()
-	{
-		gameState.day = 0;
-		gameState.stage = GAMESTAGE.TRANSPONDING;
-
-	}
-
-	public void NewDay()
-	{
-		isCurrentWordDone = false;
-		gameState.day += 1;
-		gameState.stage = GAMESTAGE.TRANSPONDING;
-		cipherKey = 0;
-
-		LpivotRotRef = 0f;
-		RpivotRotRef = 0f;
-		waveAmpRef = 0f;
-		waveLenRef = 0f;
-
-	}
-
-	public void StartTransition(TRANSITION transitionType, float transitionLength)
-	{
-		if (globalTransition == null)
+		if (Engine.IsEditorHint())
 		{
-			globalTransition = new WipeTransition();
-			AddChild(globalTransition);
+			GetNode<CanvasLayer>("GlobalsCanvasLayer").Visible = false;
+			return;
 		}
+
+		// enforce singleton, only one should exist at a time
+		if (Instance != null)
+		{
+			QueueFree();
+		}
+		Instance = this;
+
+		controlsText = GetNode<RichTextLabel>("GlobalsCanvasLayer/GlobalControl/ControlsText");
+		Instance.GamestateChange += UpdateControlsText;
+
+		SignalBus.Instance.DialogueStarted += () => PushGamestate(GAMESTATE.DIALOGUE);
+		SignalBus.Instance.DialogueEnded += () => PopGamestate(GAMESTATE.DIALOGUE);
+		InitialGameSetUp();
+
+		pauseMenu = ResourceLoader.Load<PackedScene>("res://Scenes/Menu/Pause/pause_menu.tscn").Instantiate<PauseMenu>();
+        pauseMenu.Hide();
+        GetNode<Control>("GlobalsCanvasLayer/GlobalControl").AddChild(pauseMenu);
+    }
+
+    public static void PauseGame()
+    {
+		Instance.pauseMenu.Show();
+		Instance.GetTree().Paused = true;
+		GD.Print("Game paused, current gamestate: ", Gamestate);
+    }
+
+    public static void InitialGameSetUp()
+	{
+		Day = 0;
+		ProgressionStage = GAMESTAGE.BEGIN;
+	}
+
+	public static void NewDay()
+	{
+		Day += 1;
+		ProgressionStage = (Day == 2 ? GAMESTAGE.END : GAMESTAGE.TRANSPONDING);
+		TranslationCanvasUI.CipherKey = 0;
+
+		Radiotower.PivotRotationL = 0f;
+		Radiotower.PivotRotationR = 0f;
+		WaveformGame.LastAmplitude = 0f;
+		WaveformGame.LastWavelength = 0f;
+
+		Instance.EmitSignal(SignalName.DayChanged);
+		GD.Print("Globals::NewDay complete");
+	}
+
+	private void UpdateControlsText()
+	{
+		//controlsText.Text = stateControlText[(int)Gamestate];
 	}
 }

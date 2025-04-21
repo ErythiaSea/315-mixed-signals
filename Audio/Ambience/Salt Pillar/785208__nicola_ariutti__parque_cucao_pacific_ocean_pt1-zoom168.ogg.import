@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d813esisgsmb"
+path="res://.godot/imported/785208__nicola_ariutti__parque_cucao_pacific_ocean_pt1-zoom168.ogg-6d84e62e7bfd88750a059a6f509468bc.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Ambience/Salt Pillar/785208__nicola_ariutti__parque_cucao_pacific_ocean_pt1-zoom168.ogg"
+dest_files=["res://.godot/imported/785208__nicola_ariutti__parque_cucao_pacific_ocean_pt1-zoom168.ogg-6d84e62e7bfd88750a059a6f509468bc.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

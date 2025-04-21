@@ -1,0 +1,625 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://bsh8hh8w8fw2m"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_0agsd"]
+
+[resource]
+script = ExtResource("1_0agsd")
+starts = {
+"0": &"0_1",
+"err": &"0_2",
+"tut": &"0_3"
+}
+nodes = {
+"0_1": {
+"link": &"4_6",
+"offset": Vector2(-780, -280),
+"start_id": "0"
+},
+"0_2": {
+"link": &"1_14",
+"offset": Vector2(-820, -800),
+"start_id": "err"
+},
+"0_3": {
+"link": &"1_15",
+"offset": Vector2(-132.511, -809.341),
+"start_id": "tut"
+},
+"1_1": {
+"dialogue": "12345 Hoh! Are you the fresh breeze that has blown onto my shores, or perhaps just another gale? Allow me to properly greet myself, I am Pyxis The Compass. ",
+"offset": Vector2(-260, -280),
+"options": {
+0: {
+"condition": {},
+"link": &"4_1",
+"text": "Hello, Pyxis!"
+},
+1: {
+"condition": {},
+"link": &"4_2",
+"text": "You're weird..."
+}
+},
+"size": Vector2(340, 320),
+"speaker": "Pyxis"
+},
+"1_10": {
+"dialogue": "My cousins Puppis and Vela have been trying to explore their poetic side. They were supposedly inspired by that wretched hurricane Cassiopeia… How despicable. Her poetry is nothing more but vulgar spewings of jumbled words. And the nerve to tell me that as the number one poet in the celestial realm! Regardless if it’s self proclaimed or not… Lord compass, help our youth!
+",
+"offset": Vector2(3480, -280),
+"options": {
+0: {
+"condition": {},
+"link": &"1_16",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_11": {
+"dialogue": "I'm glad you agree. I'm so terribly sorry my poor little subject but I must leave you, something urgent has caught my attention.",
+"offset": Vector2(7147, 525.762),
+"options": {
+0: {
+"condition": {},
+"link": &"1_12",
+"text": "Will I ever see you again my Queen?"
+},
+1: {
+"condition": {},
+"link": &"1_29",
+"text": "Ok"
+}
+},
+"size": Vector2(300, 273),
+"speaker": "Cassiopeia"
+},
+"1_12": {
+"dialogue": "*Chuckles* Of course you will my dear, I'll make a little play thing out of you yet.",
+"offset": Vector2(7520, 460),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Cassiopeia"
+},
+"1_13": {
+"dialogue": " I have more! “A compass in therapy discovered its true magnetic personality.” That was not funny either…. This conversation is really taking a turn for the north…",
+"offset": Vector2(1260, -120),
+"options": {
+0: {
+"condition": {},
+"link": &"4_3",
+"text": "That was funny!"
+},
+1: {
+"condition": {},
+"link": &"4_4",
+"text": "Might need to work on your jokes..."
+}
+},
+"size": Vector2(300, 289),
+"speaker": "Pyxis"
+},
+"1_14": {
+"dialogue": "(I don't think I'm translating this properly...)",
+"offset": Vector2(-620, -820),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
+},
+"1_15": {
+"dialogue": "startid tut - tutorial dialogue for translation goes here!",
+"offset": Vector2(80, -820),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "erf"
+},
+"1_16": {
+"dialogue": "Ahem, am I interrupting something, I could have sworn I heard my name?",
+"offset": Vector2(3820, -280),
+"options": {
+0: {
+"condition": {},
+"link": &"1_18",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Cassiopeia"
+},
+"1_17": {
+"dialogue": "Pixie didn't your mother tell you not to talk badly about woman?",
+"offset": Vector2(5600, 220),
+"options": {
+0: {
+"condition": {},
+"link": &"1_25",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Cassiopeia"
+},
+"1_18": {
+"dialogue": "Whoa-oh, *ahem* Cassiopeia It's so delightfully exquisite to see you! We were just talking about the weather.  ",
+"offset": Vector2(4160, -280),
+"options": {
+0: {
+"condition": {},
+"link": &"1_19",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_19": {
+"dialogue": "We? Who is we?
+Oh what do we have here?
+Well aren't you a cutie?
+Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns over the night sky. My beauty is the very thing that lights up the darkness.
+",
+"offset": Vector2(4500, -280),
+"options": {
+0: {
+"condition": {},
+"link": &"1_20",
+"text": "Don't Bow"
+},
+1: {
+"condition": {},
+"link": &"1_21",
+"text": "Bow"
+}
+},
+"size": Vector2(300, 273),
+"speaker": "Cassiopeia"
+},
+"1_2": {
+"dialogue": "May the northern wind bless you with fortune and grace and let the south wind take you to your desired shore. You may be a gale but your winds smell of orchids, hallelujah!",
+"offset": Vector2(500, -280),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": ""
+}
+},
+"size": Vector2(300, 257),
+"speaker": "Pyxis"
+},
+"1_20": {
+"dialogue": "Oh, what an insubordinate little creature you are!",
+"offset": Vector2(4900, -460),
+"options": {
+0: {
+"condition": {},
+"link": &"1_30",
+"text": "Who invited you, we are having a conversation here."
+}
+},
+"size": Vector2(300, 242),
+"speaker": "Cassiopeia"
+},
+"1_21": {
+"dialogue": "Very Good, you know your place. You are just a mere mortal, nothing more than a speck in the vastness of the universe. But tonight? Tonight, I’ll let you bask in my glow.",
+"offset": Vector2(4900, -80),
+"options": {
+0: {
+"condition": {},
+"link": &"1_24",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Cassiopeia"
+},
+"1_22": {
+"dialogue": "Oh what do we have here?
+Well aren't you a cutie?
+Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns over the night sky. My beauty is the very thing that lights up the darkness.",
+"offset": Vector2(3840, 300),
+"options": {
+0: {
+"condition": {},
+"link": &"1_23",
+"text": "Bow"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Don't Bow"
+}
+},
+"size": Vector2(300, 273),
+"speaker": "Cassiopeia"
+},
+"1_23": {
+"dialogue": "Very Good, you know your place. You are just a mere mortal, nothing more than a speck in the vastness of the universe. But tonight? Tonight, I’ll let you bask in my glow.
+",
+"offset": Vector2(4340, 300),
+"options": {
+0: {
+"condition": {},
+"link": &"1_28",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Cassiopeia"
+},
+"1_24": {
+"dialogue": "Now tell me mortal, answer me honestly and I will show you a night in heaven.
+Was Pyxis talking ill of me behind my back?",
+"offset": Vector2(5240, -80),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": "No, just simply talking about the weather"
+},
+1: {
+"condition": {},
+"link": &"1_17",
+"text": "Yes, we was talking smack about your poetry"
+}
+},
+"size": Vector2(300, 273),
+"speaker": "Cassiopeia"
+},
+"1_25": {
+"dialogue": "Oh no I feel a strong breeze sweeping me away, I will catch you later!",
+"offset": Vector2(5940, 220),
+"options": {
+0: {
+"condition": {},
+"link": &"1_26",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_26": {
+"dialogue": "Aaaah! He got away before I could show him my wrath.
+Ahem, no worries I will be sure to punish him later.",
+"offset": Vector2(6280, 220),
+"options": {
+0: {
+"condition": {},
+"link": &"1_27",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Cassiopeia"
+},
+"1_27": {
+"dialogue": "That old fool Pyxis, always spouting nonsense under the guise of “poetry” can anything truly be called poetry unless it mentions me?. Who even needs a compass? Only the lost and desperate cling to them. Even bound to the sky, I reign supreme, every sailor who charts his course is guided by my beauty. If you ask me Pyxis is a waste of space amongst the cosmos. Don't you agree",
+"offset": Vector2(6700, 500),
+"options": {
+0: {
+"condition": {},
+"link": &"1_11",
+"text": "Yes"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "No"
+}
+},
+"size": Vector2(300, 273),
+"speaker": "Cassiopeia"
+},
+"1_28": {
+"dialogue": "Now where did you just come from",
+"offset": Vector2(5120, 640),
+"options": {
+0: {
+"condition": {},
+"link": &"1_27",
+"text": "I was talking with a weird kooky old man"
+}
+},
+"size": Vector2(300, 242),
+"speaker": "Cassiopeia"
+},
+"1_29": {
+"dialogue": "I will call again and when I do, you better answer.",
+"offset": Vector2(7520, 800),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Cassiopeia"
+},
+"1_3": {
+"dialogue": "How dare you speak to me, Pyxis that way. May the northen storms blow away your hopes and dreams.",
+"offset": Vector2(500, 40),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_30": {
+"dialogue": "My dear, it looks like a hurricane snatched your wig. You better go catch it",
+"offset": Vector2(5260, -460),
+"options": {
+0: {
+"condition": {},
+"link": &"1_31",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_31": {
+"dialogue": "*Ahh!* How dare you insult me you wrinkly old compass!",
+"offset": Vector2(5620, -460),
+"options": {
+0: {
+"condition": {},
+"link": &"1_35",
+"text": "Both of you calm down!"
+},
+1: {
+"condition": {},
+"link": &"1_32",
+"text": "You should get lost, Cassiopeia!"
+}
+},
+"size": Vector2(300, 273),
+"speaker": "Cassiopeia"
+},
+"1_32": {
+"dialogue": "You insufferable little brat!
+I will call upon the power of a million stars and obliterate your pathetic planet! *Cassiopeia leaves*",
+"offset": Vector2(6020, -180),
+"options": {
+0: {
+"condition": {},
+"link": &"1_33",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Cassiopeia"
+},
+"1_33": {
+"dialogue": "Don't worry my little breeze, she does not have that kind of power. Her only power is being as deluded as a gale thinking itself a typhoon.",
+"offset": Vector2(6360, -180),
+"options": {
+0: {
+"condition": {},
+"link": &"1_34",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_34": {
+"dialogue": "Thank you for sticking up for me my little breeze. I must go and attend to my godly duties compasses do not move themselves.",
+"offset": Vector2(6700, -180),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_35": {
+"dialogue": "You're right my little breeze, I will take this conflict away from you to keep you out of harms way.",
+"offset": Vector2(6020, -480),
+"options": {
+0: {
+"condition": {},
+"link": &"1_36",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_36": {
+"dialogue": "You want to spare this mortals life? Hmph very well then. Lets take this fight elsewhere - not that it will be much of fight.",
+"offset": Vector2(6380, -480),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Cassiopeia"
+},
+"1_4": {
+"dialogue": "Allow me to present to you a so-called “joke”. Ehm… “I'm always drawn to the North, guess I have a magnetic personality!” Ahahah! Hallelujah! Oh- That was not amusing?",
+"offset": Vector2(920, -100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_13",
+"text": ""
+}
+},
+"size": Vector2(300, 256),
+"speaker": "Pyxis"
+},
+"1_5": {
+"dialogue": "Hey! Not okay! Do not treat a deity of my calibre with such disrespect. The ships at sea do not guide themselves, you know!",
+"offset": Vector2(2040, 60),
+"options": {
+0: {
+"condition": {},
+"link": &"1_6",
+"text": "I apologise!"
+},
+1: {
+"condition": {
+"operator": 5,
+"value1": "{{LOVE}}",
+"value2": "-2"
+},
+"link": "END",
+"text": "I think I need to go..."
+}
+},
+"size": Vector2(300, 290),
+"speaker": "Pyxis"
+},
+"1_6": {
+"dialogue": "I suppose I accept your apology, this time. Please, let us be friendly with each other. I do not wish to hurt your feeling so please do not hurt mine, little breeze.",
+"offset": Vector2(2400, 40),
+"options": {
+0: {
+"condition": {},
+"link": &"1_8",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_7": {
+"dialogue": "Hoh hah! I am glad you are appreciative of my little jokes. We work well together. We might need to hit the big sea for an adventure some day.",
+"offset": Vector2(2200, -280),
+"options": {
+0: {
+"condition": {},
+"link": &"1_8",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_8": {
+"dialogue": "Do you allow me to express my current grievances with you?",
+"offset": Vector2(2780, -100),
+"options": {
+0: {
+"condition": {},
+"link": &"4_5",
+"text": "Go ahead."
+},
+1: {
+"condition": {},
+"link": &"1_9",
+"text": "Not interested"
+}
+},
+"size": Vector2(300, 289),
+"speaker": "Pyxis"
+},
+"1_9": {
+"dialogue": "Then leave and take your hurricane energy elsewhere!",
+"offset": Vector2(3320, 300),
+"options": {
+0: {
+"condition": {},
+"link": &"1_22",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"2_1": {
+"comment": "The dialogue tree for Pyxis
+Utilises LOVE as a variable
+to decide affection.",
+"offset": Vector2(-620, -140),
+"size": Vector2(260, 140)
+},
+"2_2": {
+"comment": "The dialogue for when
+you get the translate wrong.
+Please leave startid = err",
+"offset": Vector2(-880, -680),
+"size": Vector2(240, 120)
+},
+"4_1": {
+"link": &"1_2",
+"offset": Vector2(140, -160),
+"type": 1,
+"value": "1",
+"variable": "LOVE"
+},
+"4_2": {
+"link": &"1_3",
+"offset": Vector2(120, 40),
+"type": 2,
+"value": "1",
+"variable": "LOVE"
+},
+"4_3": {
+"link": &"1_7",
+"offset": Vector2(1680, -80),
+"type": 1,
+"value": "1",
+"variable": "LOVE"
+},
+"4_4": {
+"link": &"1_5",
+"offset": Vector2(1680, 60),
+"type": 2,
+"value": "1",
+"variable": "LOVE"
+},
+"4_5": {
+"link": &"1_10",
+"offset": Vector2(3100, -60),
+"type": 1,
+"value": "1",
+"variable": "LOVE"
+},
+"4_6": {
+"link": &"1_1",
+"offset": Vector2(-580, -280),
+"type": 0,
+"value": "0",
+"variable": "LOVE"
+}
+}
+variables = {
+"LOVE": {
+"type": 2,
+"value": 0
+}
+}
+strays = Array[String](["2_1", "2_2"])
+characters = ""

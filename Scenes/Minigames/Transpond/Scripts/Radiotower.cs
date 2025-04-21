@@ -23,12 +23,12 @@ public partial class Radiotower : Node2D
 
 	public bool gameActive = false;
 
-	Globals globalScript;
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+	// Stores the pivot rotation value when transpond minigame is complete
+	public static float PivotRotationL { get; set; } = 0f;
+	public static float PivotRotationR { get; set; } = 0f;
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
 	{
-       globalScript = Globals.Instance;
-        
 		intersectIndicator = GetNode<Sprite2D>("intersectIndicator");
 		leftIndicator = GetNode<Sprite2D>("leftIndicator");
 		rightIndicator = GetNode<Sprite2D>("rightIndicator");
@@ -48,7 +48,7 @@ public partial class Radiotower : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (globalScript.gameState.stage != GAMESTAGE.TRANSPONDING || !gameActive)
+		if (Globals.ProgressionStage != GAMESTAGE.TRANSPONDING || !gameActive)
 		{
 			lPivot.handleInputs = false;
 			rPivot.handleInputs = false;
@@ -100,19 +100,21 @@ public partial class Radiotower : Node2D
 				currentTower = (Node2D)towers[idx];
 
 				//Updates the bars location for when how you see them when you play waveform after leaving and going back in again
-				globalScript.RpivotRotRef = rPivot.Rotation;
-				globalScript.LpivotRotRef = lPivot.Rotation;
+				PivotRotationR = rPivot.Rotation;
+				PivotRotationL = lPivot.Rotation;
 
 				//Updates the stage of the game the player is at
-                globalScript.gameState.stage = GAMESTAGE.WAVEFORM;
+				Globals.ProgressionStage = GAMESTAGE.WAVEFORM;
 
-                // show complete text
-                Label wintext = GetNode<Label>("WinText");
-                wintext.Visible = true;
+				// show complete text
+				Label wintext = GetNode<Label>("WinText");
+				wintext.Visible = true;
 				
 				gameActive = false;
 				lPivot.handleInputs = false;
 				rPivot.handleInputs = false;
+				lPivot.streamPlayer.Stop();
+				rPivot.streamPlayer.Stop();
 			}
 		}
 		else winTimer = 0.0f;
@@ -122,11 +124,6 @@ public partial class Radiotower : Node2D
 			GD.Print("ldist: ", ldist, " rdist: ", rdist);
 			GD.Print("left overlap:", lPivot.overlapsTower, " right overlap: ", rPivot.overlapsTower);
 		}
-
-		//if (Input.IsActionJustPressed("close"))
-		//{
-		//	Close();
-		//}
 	}
 
 	public Vector2 CalcIntersect()
@@ -147,16 +144,16 @@ public partial class Radiotower : Node2D
 
 	public void Close()
 	{
-        Player plr = GetNode<Player>("../Player");
-        plr.SetMovementLock(false);
-        QueueFree();
-    }
+		Player plr = GetNode<Player>("../Player");
+		plr.SetMovementLock(false);
+		QueueFree();
+	}
 
 	public void CompletedPivots()
 	{
-		rPivot.Rotation = globalScript.RpivotRotRef;
-		lPivot.Rotation = globalScript.LpivotRotRef;
-        lPivot.handleInputs = false;
-        rPivot.handleInputs = false;
-    }
+		rPivot.Rotation = PivotRotationR;
+		lPivot.Rotation = PivotRotationL;
+		lPivot.handleInputs = false;
+		rPivot.handleInputs = false;
+	}
 }

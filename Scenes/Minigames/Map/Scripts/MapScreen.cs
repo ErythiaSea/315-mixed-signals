@@ -22,7 +22,7 @@ public partial class MapScreen : BaseMinigame
 		{
 			MapButton button = child as MapButton;
 			buttonNodes.Add(button);
-            button.Pressed += OnButtonPress;
+            button.Pressed += (() => OnButtonPress(button));
 
             // assign focus to the first enabled button
             if (!button.Disabled && focusAssigned) { 
@@ -40,15 +40,20 @@ public partial class MapScreen : BaseMinigame
 		base._Process(delta);
 	}
 
-	void OnButtonPress()
+	void OnButtonPress(MapButton Cbutton)
 	{
-		foreach (MapButton button in buttonNodes) {
-			button.Disabled = true;
+		if (Cbutton.requiredDay == Globals.Day)
+		{
+            foreach (MapButton button in buttonNodes)
+            {
+                button.Disabled = true;
+            }
+            player.EmitSignal("Transition", 2, 1.0f);
+            exitTransition = TRANSITION.LEFTtoRIGHT;
+            ResourceLoader.LoadThreadedRequest(loadingPath);
+            Close(); // this function is now named poorly due to this unforseen use case - erf
         }
-		player.EmitSignal("Transition", 2, 1.0f);
-		exitTransition = TRANSITION.LEFTtoRIGHT;
-		ResourceLoader.LoadThreadedRequest(loadingPath);
-		Close(); // this function is now named poorly due to this unforseen use case - erf
+		
     }
 
     protected override void OnTransitionFinish()

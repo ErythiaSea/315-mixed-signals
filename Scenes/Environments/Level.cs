@@ -16,10 +16,10 @@ public partial class Level : Node2D
 	[Export]
 	bool cameraEnabled = true;
 
-    [Export]
-    float cameraZoom = 1.0f;
+	[Export]
+	float cameraZoom = 1.0f;
 
-    [ExportGroup("Camera Offsets")]
+	[ExportGroup("Camera Offsets")]
 	[Export]
 	float OffsetX = 0f;
 	[Export] 
@@ -39,23 +39,24 @@ public partial class Level : Node2D
 	int bottomLimit = 0;
 	
 	Player player;
+    PackedScene pauseScene;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
 		// don't execute this in editor
 		if (Engine.IsEditorHint()) return;
 
-		player = GetNode<Player>("Player");
+        player = GetNode<Player>("Player");
 
-		int spawnID = Globals.Instance.currentSpawnID;
+		int spawnID = Globals.CurrentSpawnID;
 		if (spawnID >= 0 && spawnData.Count > 0)
 		{
 			player.Position = spawnData[spawnID].spawnPosition;
 			player.SetSpriteFlipH(!spawnData[spawnID].faceLeft);
 			GD.Print("we spawn");
 		}
-		Globals.Instance.currentSpawnID = -1;
+		Globals.CurrentSpawnID = -1;
 
 		// force the camera to be disabled if limits are untouched (to mitigate user error)
 		if (leftLimit == rightLimit && leftLimit == topLimit && leftLimit == bottomLimit) {
@@ -94,4 +95,14 @@ public partial class Level : Node2D
 	}
 
 	public bool getCameraEnabled() { return cameraEnabled; }
+
+	public override void _UnhandledInput(InputEvent input)
+	{
+		if (input.IsActionPressed("pause") && !GetTree().Paused)
+		{
+			GD.Print("pausing game...");
+			Globals.PauseGame();
+            GetViewport().SetInputAsHandled();
+        }
+	}
 }

@@ -5,9 +5,12 @@ public partial class MapButton : TextureButton
 {
 	[Export]
 	PackedScene mapToLoad;
-
 	[Export]
-	int spawnPoint = -1;
+	public int requiredDay;
+	[Export]
+	Control dialogueBox;
+	[Export]
+	int spawnPoint = 0;
 
 	AnimationPlayer animPlayer;
 	MapScreen mapScreen;
@@ -45,10 +48,18 @@ public partial class MapButton : TextureButton
 
 	public void _OnPressed()
 	{
-		GD.Print(this.Name, " pressed");
-		if (Input.IsActionPressed("middle_mouse")) spawnPoint = 1;
-        Globals.Instance.nextMap = mapToLoad; // pleeeeeeease don't pass by value!
-        Globals.Instance.currentSpawnID = spawnPoint;
-        //GetTree().ChangeSceneToPacked(mapToLoad);
+		if (requiredDay == Globals.Day)
+		{
+			GD.Print("day = " + Globals.Day);
+            GD.Print(this.Name, " pressed");
+            if (Input.IsActionPressed("middle_mouse")) spawnPoint = 1;
+            TravelLoading.DestinationScene = mapToLoad; // pleeeeeeease don't pass by value!
+            Globals.CurrentSpawnID = spawnPoint;
+            //GetTree().ChangeSceneToPacked(mapToLoad);
+        }
+		else
+		{
+			dialogueBox.Call("start", "WrongDay");
+		}
     }
 }

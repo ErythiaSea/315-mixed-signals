@@ -59,6 +59,15 @@ public partial class Elevator : AnimatableBody2D
 		maxDistance = bottomY - topY;
 
 		SetWallsDisabled(true);
+
+		// Enable elevator button when progression updates past waveform
+		Globals.Instance.ProgressionChange += () =>
+		{
+			if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
+			{
+				elevatorButton.active = true;
+			}
+		};
 	}
 
 	private void ToggleElevator()
@@ -106,7 +115,10 @@ public partial class Elevator : AnimatableBody2D
 	private void FinishTravel()
 	{
 		inMotion = false;
-		elevatorButton.active = true;
+		if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM || goingUp == false)
+		{
+			elevatorButton.active = true;
+		}
 		topFloorCollision.Disabled = false;
 		SetWallsDisabled(true);
 	}

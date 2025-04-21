@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="315-mech-proto"
-run/main_scene="res://Scenes/Environments/Cabin/cabin.tscn"
+run/main_scene="res://Scenes/Menu/MainMenu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "C#", "Mobile")
 boot_splash/bg_color=Color(0.15, 0.0075, 0, 1)
 boot_splash/image="res://Scenes/Loading/BloodBoxLogo_Splash.png"
@@ -23,8 +23,8 @@ boot_splash/minimum_display_time=1750
 [autoload]
 
 Reset="*res://Scripts/Reset.cs"
-Globals="*res://Scenes/globals.tscn"
 SignalBus="*res://Scripts/SignalBus.cs"
+Globals="*res://Scenes/globals.tscn"
 
 [debug]
 
@@ -216,6 +216,11 @@ TEST={
 UI_Left={
 "deadzone": 0.5,
 "events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":13,"pressure":0.0,"pressed":true,"script":null)
+]
+}
+pause={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
 ]
 }
 

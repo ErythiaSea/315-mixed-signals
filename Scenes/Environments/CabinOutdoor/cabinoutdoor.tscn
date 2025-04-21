@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cnj8esqdgww0"]
+[gd_scene load_steps=35 format=3 uid="uid://cnj8esqdgww0"]
 
 [ext_resource type="Texture2D" uid="uid://bmij10s8rf8gm" path="res://Scenes/Environments/CabinOutdoor/base_outside.png" id="1_0a00e"]
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_4weox"]
@@ -6,11 +6,13 @@
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_nmgjp"]
 [ext_resource type="Texture2D" uid="uid://bqehodhbmv06i" path="res://Scenes/Environments/CabinOutdoor/Home_VehicleSprite_00.png" id="4_dfl0f"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_elcve"]
-[ext_resource type="AudioStream" uid="uid://dko7fvpro21fk" path="res://Audio/Music/Kinesis Stellae   Choir by Vrymaa Id-770060.wav" id="7_hnxl8"]
+[ext_resource type="AudioStream" uid="uid://gcr3f5mp0sre" path="res://Audio/Ambience/Cabin/32316__oniwe__carenginestartstop.wav" id="7_3c7j6"]
+[ext_resource type="AudioStream" uid="uid://dd6vkaf4mxsnu" path="res://Audio/Music/Kinesis Stellae Choir by Vrymaa Id-770060.ogg" id="7_888ia"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="7_ra4mx"]
 [ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="7_u12k5"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="8_cjgfj"]
 [ext_resource type="Resource" uid="uid://tvyth3g2fn8" path="res://Scenes/Environments/CabinOutdoor/Dialogue/misc dial 1 - outside.tres" id="8_ctnhm"]
+[ext_resource type="AudioStream" uid="uid://ofggrfo8xfan" path="res://Audio/Ambience/Cabin/398750__anthousai__door-open-01.wav" id="8_gk6jg"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="9_7xrxq"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="10_vfhkp"]
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="14_mtltj"]
@@ -25,6 +27,35 @@ faceLeft = false
 script = ExtResource("2_nmgjp")
 spawnPosition = Vector2(652, 303)
 faceLeft = true
+
+[sub_resource type="Environment" id="Environment_aycsk"]
+background_mode = 3
+glow_enabled = true
+glow_levels/4 = 2.0
+glow_levels/5 = 4.0
+glow_levels/6 = 8.0
+glow_levels/7 = 16.0
+glow_normalized = true
+glow_intensity = 0.4
+glow_strength = 0.3
+glow_bloom = 0.3
+glow_blend_mode = 0
+fog_mode = 1
+fog_light_color = Color(0.872069, 0.00094317, 0.923236, 1)
+fog_density = 1.0
+fog_depth_curve = 2.82843
+adjustment_enabled = true
+adjustment_brightness = 0.8
+adjustment_saturation = 1.1
+
+[sub_resource type="Gradient" id="Gradient_0eqsd"]
+offsets = PackedFloat32Array(0, 0.564935, 0.818182)
+colors = PackedColorArray(1, 1, 1, 1, 0.0454546, 0.0454546, 0.0454546, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_38v6r"]
+gradient = SubResource("Gradient_0eqsd")
+fill = 1
+fill_from = Vector2(0.527523, 0.495413)
 
 [sub_resource type="Animation" id="Animation_akrgh"]
 length = 0.001
@@ -44,7 +75,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_dldwd"]
 resource_name = "VehicleIdleAnimation"
-length = 0.33
+length = 0.7
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -53,10 +84,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.3),
+"times": PackedFloat32Array(0, 0.35, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(5018, 237), Vector2(5018, 227), Vector2(5018, 237)]
+"values": [Vector2(5018, 190), Vector2(5018, 180), Vector2(5018, 190)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rgno3"]
@@ -102,6 +133,33 @@ topLimit = -1590
 rightLimit = 5570
 bottomLimit = 540
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aycsk")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(2, 0)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Node2D"]
+color = Color(0.153, 0.357, 0.31, 1)
+blend_mode = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="Node2D"]
+position = Vector2(3159, -9.00022)
+rotation = 0.991007
+scale = Vector2(15.8825, 6.76929)
+color = Color(0.47, 0.1128, 0.154473, 1)
+energy = 0.3
+texture = SubResource("GradientTexture2D_38v6r")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Node2D"]
+position = Vector2(1380, 281)
+rotation = 0.991007
+scale = Vector2(13.3318, 14.5776)
+enabled = false
+color = Color(0, 0.423, 0.47, 1)
+energy = 0.4
+texture = SubResource("GradientTexture2D_38v6r")
+
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(1818, -508)
 texture = ExtResource("1_0a00e")
@@ -110,14 +168,14 @@ texture = ExtResource("1_0a00e")
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelCollision"]
-position = Vector2(1119.2, -0.00012207)
+position = Vector2(1119.2, 14.9999)
 scale = Vector2(2.83887, 1)
 build_mode = 1
-polygon = PackedVector2Array(-1074, 313, -314.281, 317, -227.275, 467, 1567.1, 472, 1567.1, -189, 1588.59, -187, 1590.35, 570, -1072, 568, -1130, 570, -1127.99, -202, -1075, -204)
+polygon = PackedVector2Array(-981.447, 313, -314.281, 317, -227.275, 467, 1567.1, 472, 1567.1, -189, 1588.59, -187, 1590.35, 570, -1072, 568, -1091.35, 570, -1087.47, -202, -982.856, -204)
 
 [node name="VehicleSprite" type="Sprite2D" parent="."]
 position = Vector2(5015, 146)
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.45, 0.45)
 texture = ExtResource("4_dfl0f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VehicleSprite"]
@@ -128,27 +186,32 @@ autoplay = "VehicleIdleAnimation"
 
 [node name="Player" parent="." instance=ExtResource("1_7p3ip")]
 position = Vector2(-435, 6)
-scale = Vector2(4.5, 4.5)
-movementSpeed = 900.0
+scale = Vector2(5, 5)
+movementSpeed = 950.0
 
 [node name="PlayerHead" type="Marker2D" parent="Player"]
 position = Vector2(0, -41.2)
 
 [node name="MapBox" parent="." instance=ExtResource("4_elcve")]
-position = Vector2(4994, 290)
+position = Vector2(4795, 279)
+scale = Vector2(1.535, 0.98)
 transitionType = 4
 transitionLength = 0.5
-requiredStage = 2
+requiredStage = 3
 scenePath = "res://Scenes/Minigames/Map/mapscreen.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapBox"]
 position = Vector2(2, 116)
 shape = SubResource("RectangleShape2D_rkcsa")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MapBox"]
+stream = ExtResource("7_3c7j6")
+volume_db = -10.0
+
 [node name="LevelTransition" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(-443, 57)
-transitionType = 2
-requiredStage = 5
+transitionType = 1
+requiredStage = 4
 scenePath = "res://Scenes/Environments/Cabin/cabin.tscn"
 loadInCurrent = false
 spawnPoint = 0
@@ -156,6 +219,10 @@ spawnPoint = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransition"]
 position = Vector2(6.5, 234)
 shape = SubResource("RectangleShape2D_m3gji")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LevelTransition"]
+stream = ExtResource("8_gk6jg")
+volume_db = -5.0
 
 [node name="SpawnPoints" type="Node" parent="."]
 
@@ -168,7 +235,7 @@ position = Vector2(652, 347)
 gizmo_extents = 16.9
 
 [node name="CelestialBGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_hnxl8")
+stream = ExtResource("7_888ia")
 volume_db = -38.432
 autoplay = true
 
@@ -202,7 +269,7 @@ grow_vertical = 2
 theme = ExtResource("7_u12k5")
 script = ExtResource("7_ra4mx")
 data = ExtResource("8_ctnhm")
-start_id = "0"
+start_id = "Sleep"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_kmmy1"), SubResource("RichTextEffect_4u6xp"), SubResource("RichTextEffect_a24d6")])
 
 [node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]
