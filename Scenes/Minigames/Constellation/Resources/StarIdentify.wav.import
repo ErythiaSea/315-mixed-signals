@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://clknyafcieujt"
-path="res://.godot/imported/StarIdentify.wav-963f77652f81a9940b7a80ee3a1ec857.sample"
+path="res://.godot/imported/StarIdentify.wav-b0421014a9cdd230e561d59f302ee9d6.sample"
 
 [deps]
 
-source_file="res://Scenes/Minigames/Constellation/Scripts/StarIdentify.wav"
-dest_files=["res://.godot/imported/StarIdentify.wav-963f77652f81a9940b7a80ee3a1ec857.sample"]
+source_file="res://Scenes/Minigames/Constellation/Resources/StarIdentify.wav"
+dest_files=["res://.godot/imported/StarIdentify.wav-b0421014a9cdd230e561d59f302ee9d6.sample"]
 
 [params]
 

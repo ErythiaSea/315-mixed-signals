@@ -9,11 +9,12 @@ public partial class ConstellationMinigame : BaseMinigame
 
 	double exitTimer = 0;
 
-	Panel dialogueBox;
-	TutorialButton tutorialButton;
-	CameraMovement camera;
-	StarsParent starsParent;
-	Godot.Collections.Array<Node2D> constellations;
+	//references too objects in constellation scene
+	private Panel dialogueBox;
+	private TutorialButton tutorialButton;
+	private CameraMovement camera;
+	private StarsParent constellationInstance;
+	private Godot.Collections.Array<Node2D> constellations;
 
 	// mmmmmm hardcode path :vmunch:
 	private const string outdoorCabinPath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn";
@@ -25,18 +26,20 @@ public partial class ConstellationMinigame : BaseMinigame
 
 		Globals.PushGamestate(GAMESTATE.CONSTELLATION);
 
-		constellations = GetConstellations();
-		SetupConstellation();
-
 		tutorialButton = GetNode<TutorialButton>("UICanvas/TutorialButton");
 		tutorialButton.startID = constellationTutorialStartID;
 
-		// please rename this at some point
-		camera = GetNode<CameraMovement>("eeek");
+		camera = GetNode<CameraMovement>("Camera");
 
-		starsParent = constellations[Globals.Day] as StarsParent;
-        starsParent.ConstellationCompletion += camera.DisplayConstellation;
 
+		constellations = GetConstellations();
+		SetupConstellation();
+
+		//setting the constellation based on the day the game is on i.e day 0: Pyxis, day 1: Corvus
+		constellationInstance = constellations[Globals.Day] as StarsParent;
+		constellationInstance.ConstellationCompletion += camera.DisplayConstellation;
+
+		//Shows necessary tutorial boxes
 		dialogueBox = GetNode<Panel>("UICanvas/DialogueBox");
 		if (Globals.TutorialProgress <= GAMESTAGE.CONSTELLATION)
 		{
@@ -52,12 +55,14 @@ public partial class ConstellationMinigame : BaseMinigame
 	{
 		base._Process(delta);
 
+		//if any dialogue is shown then the camera cant be moved until dialogue completed
 		if (dialogueBox.Visible)
 		{
 			camera.canMoveCam = false;
 		}
 	}
 
+	//Needs commented but i will leave this for now if its to be axed - Kyle
 	// todo: remove circular relationship between cam and parent and we can maybe axe this - eryth
 	public void ShowFinalBox()
 	{
@@ -71,11 +76,15 @@ public partial class ConstellationMinigame : BaseMinigame
 		dialogueBox.Connect("dialogue_ended", Callable.From(Close));
 	}
 
+
+	//Allows camera control
 	void RegainCameraControl()
 	{
 		camera.canMoveCam = true;
 	}
 
+
+	//Uncommented as it needs to be updated to find the constellations in a better way, this is gross dude - me - kyle {
 	private Godot.Collections.Array<Node2D> GetConstellations()
 	{
 		Godot.Collections.Array<Node2D> consts = new Godot.Collections.Array<Node2D>();
@@ -90,6 +99,10 @@ public partial class ConstellationMinigame : BaseMinigame
 		return consts;
 	}
 
+	// }
+
+
+	//Sets up the current days constellation to be played
 	private void SetupConstellation()
 	{
 		constellations[Globals.Day].Visible = true;
@@ -97,15 +110,16 @@ public partial class ConstellationMinigame : BaseMinigame
 		prt.GenerateNumbers();
 	}
 
+	//Uncommented 
 	protected override void OnTransitionFinish()
 	{
 		Globals.PopGamestate(GAMESTATE.CONSTELLATION);
 		PackedScene cabin = (PackedScene)ResourceLoader.LoadThreadedGet(outdoorCabinPath);
-		if (cabin != null)
-		{
+		if (cabin == null) return;
+	
 			// i should be shot
 			player.EmitSignal(Player.SignalName.Transition, (int)TRANSITION.TOPtoBOTTOM, 1.0f);
 			GetTree().ChangeSceneToPacked(cabin);
-		}
+		
 	}
 }
