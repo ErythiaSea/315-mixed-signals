@@ -158,7 +158,7 @@ z_index = 2
 texture = ExtResource("2_csear")
 
 [node name="TelescopeSprite" type="Sprite2D" parent="Sprites"]
-position = Vector2(-906.75, -846.333)
+position = Vector2(-935, -846.333)
 scale = Vector2(1.18163, 1.18163)
 texture = ExtResource("2_tg48q")
 
