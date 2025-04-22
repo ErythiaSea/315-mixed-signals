@@ -72,7 +72,7 @@ nodes = {
 "text": "Ok"
 }
 },
-"size": Vector2(300, 273),
+"size": Vector2(300, 289),
 "speaker": "Cassiopeia"
 },
 "1_12": {
@@ -190,7 +190,7 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 "text": "Bow"
 }
 },
-"size": Vector2(300, 273),
+"size": Vector2(300, 289),
 "speaker": "Cassiopeia"
 },
 "1_2": {
@@ -216,7 +216,7 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 "text": "Who invited you, we are having a conversation here."
 }
 },
-"size": Vector2(300, 242),
+"size": Vector2(300, 256),
 "speaker": "Cassiopeia"
 },
 "1_21": {
@@ -249,7 +249,7 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 "text": "Don't Bow"
 }
 },
-"size": Vector2(300, 273),
+"size": Vector2(300, 289),
 "speaker": "Cassiopeia"
 },
 "1_23": {
@@ -282,7 +282,7 @@ Was Pyxis talking ill of me behind my back?",
 "text": "Yes, we was talking smack about your poetry"
 }
 },
-"size": Vector2(300, 273),
+"size": Vector2(300, 289),
 "speaker": "Cassiopeia"
 },
 "1_25": {
@@ -327,7 +327,7 @@ Ahem, no worries I will be sure to punish him later.",
 "text": "No"
 }
 },
-"size": Vector2(300, 273),
+"size": Vector2(300, 289),
 "speaker": "Cassiopeia"
 },
 "1_28": {
@@ -340,7 +340,7 @@ Ahem, no worries I will be sure to punish him later.",
 "text": "I was talking with a weird kooky old man"
 }
 },
-"size": Vector2(300, 242),
+"size": Vector2(300, 256),
 "speaker": "Cassiopeia"
 },
 "1_29": {
@@ -397,7 +397,7 @@ Ahem, no worries I will be sure to punish him later.",
 "text": "You should get lost, Cassiopeia!"
 }
 },
-"size": Vector2(300, 273),
+"size": Vector2(300, 289),
 "speaker": "Cassiopeia"
 },
 "1_32": {

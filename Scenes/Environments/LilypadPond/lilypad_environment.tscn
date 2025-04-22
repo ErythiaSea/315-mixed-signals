@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://de45w11b26rfr" path="res://Scenes/Environments/LilypadPond/lilypadenv_cliffgrass.png" id="3_n7la6"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_u2itd"]
 [ext_resource type="AudioStream" uid="uid://dd6vkaf4mxsnu" path="res://Audio/Music/Kinesis Stellae Choir by Vrymaa Id-770060.ogg" id="10_iapoc"]
-[ext_resource type="Resource" uid="uid://ciinae4snmogy" path="res://Scenes/Environments/LilypadPond/Dialogue/lilypad dialogue.tres" id="11_3uaob"]
 [ext_resource type="AudioStream" uid="uid://c8eusy0cr4kfc" path="res://Audio/Ambience/Lilypad/Water, Waterfall, Waterfall, The Trolls Road, River, 10m, Loop 02 SND73480.ogg" id="11_70pbf"]
 [ext_resource type="AudioStream" uid="uid://d1dsjc5b8djm1" path="res://Audio/Ambience/Lilypad/Water, Flow, Shallow Creek, Forest, Birds, Buderim Forest, Qeensland, Australia 01 SND31676.ogg" id="12_dyj3n"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="12_f3lj2"]
@@ -20,6 +19,7 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="14_xkiew"]
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="15_b38h2"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="19_3q7ub"]
+[ext_resource type="Resource" uid="uid://v5euajow4ila" path="res://Dialogue/LilypadDialogue.tres" id="20_vtndf"]
 
 [sub_resource type="Resource" id="Resource_xpr3o"]
 script = ExtResource("2_061b7")
@@ -383,7 +383,7 @@ position = Vector2(-1115, 794)
 isOneShot = true
 isAutofire = true
 dialogueBox = NodePath("../DialogueBubble")
-startID = "0"
+startID = "ENV_START"
 timeLimit = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox"]
@@ -395,7 +395,7 @@ position = Vector2(1145, -1161)
 isOneShot = true
 isAutofire = true
 dialogueBox = NodePath("../DialogueBubble")
-startID = "1"
+startID = "ENV_MISC"
 timeLimit = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractBox2"]
@@ -416,7 +416,7 @@ fit_content = true
 autowrap_mode = 0
 custom_effects = [SubResource("RichTextEffect_6t8hi"), SubResource("RichTextEffect_y7owd"), SubResource("RichTextEffect_pi1js")]
 script = ExtResource("19_3q7ub")
-data = ExtResource("11_3uaob")
+data = ExtResource("20_vtndf")
 follow_node = NodePath("../Player/Head")
 show_speaker_name = false
 dialogue_custom_effects = [SubResource("RichTextEffect_6t8hi"), SubResource("RichTextEffect_y7owd"), SubResource("RichTextEffect_pi1js")]

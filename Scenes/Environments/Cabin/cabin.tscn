@@ -27,7 +27,7 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="17_h87pq"]
 [ext_resource type="Texture2D" uid="uid://bo65tm1j2ywal" path="res://Scenes/Environments/Cabin/Sprites/bedroom_silohette.png" id="17_l3xrp"]
 [ext_resource type="AudioStream" uid="uid://dmna7wapuwmut" path="res://Audio/Music/Zodiac Hiphop Instrumental by prazkhanal Id-787557.ogg" id="18_tgdje"]
-[ext_resource type="Resource" uid="uid://wn1h5b8ptlga" path="res://Scenes/Debug/debugdialogue.tres" id="24_33tro"]
+[ext_resource type="Resource" uid="uid://4dnj2lymr6kn" path="res://Dialogue/CabinDialogue.tres" id="27_34i7x"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="28_fg0wr"]
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/EndDay.cs" id="29_wyus1"]
 [ext_resource type="PackedScene" uid="uid://ccoch44m85xuv" path="res://Scenes/Environments/Objects/EndDayTransition.tscn" id="30_stghc"]
@@ -449,7 +449,7 @@ fit_content = true
 autowrap_mode = 0
 custom_effects = [SubResource("RichTextEffect_0u6wi"), SubResource("RichTextEffect_yh6wg"), SubResource("RichTextEffect_eewup")]
 script = ExtResource("17_h87pq")
-data = ExtResource("24_33tro")
+data = ExtResource("27_34i7x")
 follow_node = NodePath("../Player/PlayerHead")
 show_speaker_name = false
 dialogue_custom_effects = [SubResource("RichTextEffect_0u6wi"), SubResource("RichTextEffect_yh6wg"), SubResource("RichTextEffect_eewup")]
@@ -462,7 +462,7 @@ offset_top = 4284.0
 offset_right = 812.0
 offset_bottom = 4488.0
 script = ExtResource("28_fg0wr")
-data = ExtResource("24_33tro")
+data = ExtResource("27_34i7x")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_t7wmq"), SubResource("RichTextEffect_bvuge"), SubResource("RichTextEffect_f7su0")])
 
 [node name="TranspondBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite", "dialogueBox")]
@@ -501,8 +501,10 @@ collision_layer = 4
 script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/Bed")
 requiredStage = 4
+isOneShot = true
 dialogueBox = NodePath("../DialogueBubble")
 timeLimit = 2.5
+lockPlayerMovement = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BedBox"]
 shape = SubResource("RectangleShape2D_avn75")

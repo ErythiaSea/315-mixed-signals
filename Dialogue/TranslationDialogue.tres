@@ -1,0 +1,184 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://ckynjg6qn8fve"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_6uw7g"]
+
+[resource]
+script = ExtResource("1_6uw7g")
+starts = {
+"TRANSLATION_END": &"0_3",
+"TRANSLATION_ENTER": &"0_2",
+"TRANSLATION_START": &"0_1",
+"TRANSLATION_TUT": &"0_4"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-320, -460),
+"start_id": "TRANSLATION_START"
+},
+"0_2": {
+"link": &"1_3",
+"offset": Vector2(-320, -60),
+"start_id": "TRANSLATION_ENTER"
+},
+"0_3": {
+"link": &"1_5",
+"offset": Vector2(-320, 720),
+"start_id": "TRANSLATION_END"
+},
+"0_4": {
+"link": &"1_7",
+"offset": Vector2(-320, 340),
+"start_id": "TRANSLATION_TUT"
+},
+"1_1": {
+"dialogue": "This has been such a weird day. First the weird symbols and now the stars are acting up.",
+"offset": Vector2(-20, -460),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_10": {
+"dialogue": "The final translation can be submitted in the box below the original message.",
+"offset": Vector2(1000, 340),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_2": {
+"dialogue": "What could it mean? Are they related? I need to find out for my own peace of mind.",
+"offset": Vector2(320, -460),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_3": {
+"dialogue": "I still don’t have a cipher key, but maybe those anomalous stars are related to the weird message.",
+"offset": Vector2(-20, -60),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_4": {
+"dialogue": "What if I calculate the total of all the coordinates and use that as the cipher key",
+"offset": Vector2(320, -60),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_5": {
+"dialogue": "WOW... that actually worked!",
+"offset": Vector2(-20, 720),
+"options": {
+0: {
+"condition": {},
+"link": &"1_6",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_6": {
+"dialogue": "This is a real case of main character syndrome",
+"offset": Vector2(320, 720),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_7": {
+"dialogue": "To translate the message, all possible letters must first be converted from their language.",
+"offset": Vector2(-20, 340),
+"options": {
+0: {
+"condition": {},
+"link": &"1_8",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_8": {
+"dialogue": "Those letters must then have the cipher reapplied to them. For example a +2 cipher on 'T' would be a 'V', and a -2 cipher would be an 'R'.",
+"offset": Vector2(320, 340),
+"options": {
+0: {
+"condition": {},
+"link": &"1_9",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_9": {
+"dialogue": "Missing letters, if there are any, can be deducted.",
+"offset": Vector2(660, 340),
+"options": {
+0: {
+"condition": {},
+"link": &"1_10",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"2_1": {
+"comment": "Play outside Cabin after
+constellation game",
+"offset": Vector2(-320, -560),
+"size": Vector2(200, 100)
+},
+"2_2": {
+"comment": "Play this After Clicking
+the book ",
+"offset": Vector2(-320, -160),
+"size": Vector2(200, 100)
+},
+"2_3": {
+"comment": "Play this before god dialogue",
+"offset": Vector2(-320, 620),
+"size": Vector2(240, 100)
+}
+}
+variables = {}
+strays = Array[String](["2_2", "2_3", "2_1"])
+characters = ""

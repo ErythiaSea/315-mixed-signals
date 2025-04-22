@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://ugrpumyjm6ut"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_lrfve"]
+
+[resource]
+script = ExtResource("1_lrfve")
+starts = {
+"RADIO_ENTER": &"0_2",
+"RADIO_TUT": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-380, -60),
+"start_id": "RADIO_TUT"
+},
+"0_2": {
+"link": &"1_3",
+"offset": Vector2(-400, -480),
+"start_id": "RADIO_ENTER"
+},
+"1_1": {
+"dialogue": "To connect all of the stars. they must",
+"offset": Vector2(-160, -60),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_2": {
+"dialogue": "Use 'W', 'A', 'S', and 'D' to move the telescope.",
+"offset": Vector2(180, -60),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_3": {
+"dialogue": "Now where is this damn space shi- Why do the stars look like that...
+",
+"offset": Vector2(-160, -480),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_4": {
+"dialogue": "They are so damn bright!
+",
+"offset": Vector2(180, -480),
+"options": {
+0: {
+"condition": {},
+"link": &"1_5",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_5": {
+"dialogue": "I should note down these anomalies and their coordinates and report back at base.",
+"offset": Vector2(520, -480),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = ""

@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://v5euajow4ila"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_25fo0"]
+
+[resource]
+script = ExtResource("1_25fo0")
+starts = {
+"ENV_MISC": &"0_2",
+"ENV_START": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-320, -200),
+"start_id": "ENV_START"
+},
+"0_2": {
+"link": &"1_2",
+"offset": Vector2(-300, -520),
+"start_id": "ENV_MISC"
+},
+"1_1": {
+"dialogue": "I should be able to see that ship from the telescope. Just need to trek there...",
+"offset": Vector2(-100, -200),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
+},
+"1_2": {
+"dialogue": "One foot forward at a time... Need to focus… Need to not slip and fall to my death.",
+"offset": Vector2(-60, -520),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = ""

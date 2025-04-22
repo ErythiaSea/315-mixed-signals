@@ -1,0 +1,167 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dhcw342l8osod"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_het41"]
+
+[resource]
+script = ExtResource("1_het41")
+starts = {
+"TRANS2_TUT": &"0_4",
+"WAVEFORM_CLOSE": &"0_3",
+"WAVEFORM_END": &"0_2",
+"WAVEFORM_START": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-260, -140),
+"start_id": "WAVEFORM_START"
+},
+"0_2": {
+"link": &"1_3",
+"offset": Vector2(-260, 680),
+"start_id": "WAVEFORM_END"
+},
+"0_3": {
+"link": &"1_6",
+"offset": Vector2(-260, 1080),
+"start_id": "WAVEFORM_CLOSE"
+},
+"0_4": {
+"link": &"1_7",
+"offset": Vector2(-260, 260),
+"start_id": "TRANS2_TUT"
+},
+"1_1": {
+"dialogue": "This is control tower, please send over your delivery manifesto.",
+"offset": Vector2(20, -140),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_2": {
+"dialogue": "Huh? The signal seems to be a mess. Let me try this.",
+"offset": Vector2(360, -140),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_3": {
+"dialogue": "What on earth are these symbols?
+",
+"offset": Vector2(0, 680),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_4": {
+"dialogue": "What does any of this mean?",
+"offset": Vector2(340, 680),
+"options": {
+0: {
+"condition": {},
+"link": &"1_5",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_5": {
+"dialogue": "Hmm the company usually supplies a cipher key, but there doesn’t seem to be one here.
+",
+"offset": Vector2(680, 680),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_6": {
+"dialogue": "I guess I better go take a better look before they dock.",
+"offset": Vector2(0, 1080),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_7": {
+"dialogue": "To receive the message, the radiowave in the upper monitor must match that of the lower monitor.",
+"offset": Vector2(-20, 260),
+"options": {
+0: {
+"condition": {},
+"link": &"1_8",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_8": {
+"dialogue": "'A' and 'D' can be used to control the width of the wave. 'W' and 'S' can be used to control the height of the wave.",
+"offset": Vector2(320, 260),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"2_1": {
+"comment": "Play before exiting
+mini game",
+"offset": Vector2(-260, 580),
+"size": Vector2(200, 100)
+},
+"2_2": {
+"comment": "Play in cabin after 
+exiting minigame",
+"offset": Vector2(-260, 980),
+"size": Vector2(220, 100)
+},
+"2_3": {
+"comment": "Play this when entering
+the minigame",
+"offset": Vector2(-260, -240),
+"size": Vector2(200, 100)
+},
+"2_4": {
+"comment": "Play this after 
+WAVEFORM_START",
+"offset": Vector2(-260, 160),
+"size": Vector2(200, 100)
+}
+}
+variables = {}
+strays = Array[String](["2_2", "2_1", "2_3", "2_4"])
+characters = ""
