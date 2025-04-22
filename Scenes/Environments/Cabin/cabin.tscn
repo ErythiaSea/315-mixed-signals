@@ -186,9 +186,10 @@ size = Vector2(291, 55)
 [sub_resource type="CircleShape2D" id="CircleShape2D_txxlk"]
 radius = 32.249
 
-[node name="Cabin" type="Node2D" node_paths=PackedStringArray("dialogueBox", "exitInteractBox", "elevatorButtonBox")]
+[node name="Cabin" type="Node2D" node_paths=PackedStringArray("dialogueBox", "dialogueBubble", "exitInteractBox", "elevatorButtonBox")]
 script = ExtResource("1_2hyee")
 dialogueBox = NodePath("SleepDialogueBox")
+dialogueBubble = NodePath("DialogueBubble")
 translationEndStartID = "TRANSLATION_END"
 photoboardCloseStartID = "PHOTO_CLOSE"
 exitInteractBox = NodePath("LevelChange")
@@ -565,5 +566,3 @@ volume_db = -10.0
 script = ExtResource("29_wyus1")
 endTransition = ExtResource("30_stghc")
 dialogueBox = NodePath("../SleepDialogueBox")
-
-[connection signal="Interacted" from="BedBox" to="EndDay" method="EndTheDay"]
