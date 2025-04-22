@@ -190,6 +190,7 @@ radius = 32.249
 script = ExtResource("1_2hyee")
 dialogueBox = NodePath("SleepDialogueBox")
 translationEndStartID = "TRANSLATION_END"
+photoboardCloseStartID = "PHOTO_CLOSE"
 exitInteractBox = NodePath("LevelChange")
 elevatorButtonBox = NodePath("Elevator/ElevatorButton")
 spawnData = Array[Object]([SubResource("Resource_82qql")])
