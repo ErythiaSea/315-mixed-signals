@@ -205,6 +205,25 @@ public partial class Globals : Node
 
 	private void UpdateControlsText()
 	{
-		controlsText.Text = stateControlText[(int)Gamestate];
+		String newText = "";
+		//controlsText.Text = stateControlText[(int)Gamestate];
+		foreach (InputStruct input in InputData.StateInputDict[Gamestate])
+		{
+			newText += GetInputGlyphImage(input.glyphName) + input.inputText + "   ";
+		}
+		controlsText.Text = newText;
+    }
+
+	private string GetInputGlyphImage(List<string> name)
+	{
+		const string keyFolder = "res://Sprites/InputKey/";
+		string ctrlSuffix = "_ps"; // this will change based on control scheme
+
+		string imgsString = "";
+		foreach (string nameItem in name)
+		{
+			imgsString += "[img]" + keyFolder + nameItem + ctrlSuffix + ".png[/img]";
+		}
+		return imgsString;
 	}
 }

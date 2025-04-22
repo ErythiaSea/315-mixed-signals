@@ -45,7 +45,7 @@ public partial class TranspondScreen : BaseMinigame
 	{
 		base._Process(delta);
 
-		// Happens once, when 
+		// Happens once, when the transpond minigame is completed
 		if (Globals.ProgressionStage == GAMESTAGE.WAVEFORM && !transitionedBetweenMinigames)
 		{
 			transitionedBetweenMinigames = true;
@@ -59,6 +59,9 @@ public partial class TranspondScreen : BaseMinigame
 			// Call waveform tutorial dialogue if this is the first time the player has reached it
 			if (Globals.TutorialProgress <= GAMESTAGE.WAVEFORM)
 			{
+				Globals.PopGamestate(GAMESTATE.TRANSPOND);
+				Globals.PushGamestate(GAMESTATE.WAVEFORM);
+
 				dialogueBox.Call("start", waveformTutorialStartID);
 				Globals.TutorialProgress = GAMESTAGE.CONSTELLATION;
 				tutorialButton.startID = waveformTutorialStartID;
