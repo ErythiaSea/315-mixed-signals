@@ -25,6 +25,8 @@ public partial class Level : Node2D
 	[Export] 
 	float OffsetY = 0f;
 
+	[Export]
+	float musicFadeDb = 20;
 
 	// The region the camera can move around in.
 	// If this is left untouched the camera is disabled
@@ -41,9 +43,14 @@ public partial class Level : Node2D
 	Player player;
     PackedScene pauseScene;
 
+	private AudioStreamPlayer sceneMusic;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
+		if (GetNode("SceneMusic") != null)
+		{
+            sceneMusic = GetNode("SceneMusic") as AudioStreamPlayer;
+        }
 		// don't execute this in editor
 		if (Engine.IsEditorHint()) return;
 
@@ -104,5 +111,17 @@ public partial class Level : Node2D
 			Globals.PauseGame();
             GetViewport().SetInputAsHandled();
         }
+	}
+    public void FadeOutMusic()
+    {
+        Tween fade = GetTree().CreateTween();
+        fade.TweenProperty(sceneMusic, "volume_db", (sceneMusic.VolumeDb - musicFadeDb), 1f);
+    }
+
+	public void FadeInMusic()
+	{
+		GD.Print("fadeeed");
+		Tween fade = GetTree().CreateTween();
+		fade.TweenProperty(sceneMusic, "volume_db",(sceneMusic.VolumeDb + musicFadeDb) , 1f);
 	}
 }

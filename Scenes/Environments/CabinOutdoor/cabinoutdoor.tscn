@@ -234,7 +234,7 @@ gizmo_extents = 16.9
 position = Vector2(652, 347)
 gizmo_extents = 16.9
 
-[node name="CelestialBGM" type="AudioStreamPlayer" parent="."]
+[node name="SceneMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_888ia")
 volume_db = -38.432
 autoplay = true

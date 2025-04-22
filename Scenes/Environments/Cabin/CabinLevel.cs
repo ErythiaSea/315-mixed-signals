@@ -27,10 +27,13 @@ public partial class CabinLevel : Level
 
 	EndDay endDay;
 
+	AudioStreamPlayer sceneMusic;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
 		base._Ready();
+		sceneMusic = GetNode("SceneMusic") as AudioStreamPlayer;
 		endDay = GetNode<EndDay>("EndDay");
         Globals.Instance.DayChanged += OnNewDay;
 

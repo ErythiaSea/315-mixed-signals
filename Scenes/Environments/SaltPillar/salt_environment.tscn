@@ -281,7 +281,7 @@ stream = ExtResource("16_utne0")
 volume_db = -30.0
 autoplay = true
 
-[node name="BGM" type="AudioStreamPlayer" parent="."]
+[node name="SceneMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_owmvf")
 volume_db = -38.0
 autoplay = true

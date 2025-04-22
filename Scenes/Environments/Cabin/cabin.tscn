@@ -351,11 +351,12 @@ texture = ExtResource("17_l3xrp")
 region_enabled = true
 region_rect = Rect2(0, 18.6872, 3840, 2256.31)
 
-[node name="HubBGM" type="AudioStreamPlayer" parent="."]
+[node name="SceneMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 1
 stream = ExtResource("18_tgdje")
-volume_db = -23.0
+volume_db = -15.076
 autoplay = true
+parameters/looping = false
 
 [node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "wallCollision", "topFloorCollision") instance=ExtResource("14_e5y7b")]
 position = Vector2(952, 4552)
@@ -560,7 +561,8 @@ shape = SubResource("CircleShape2D_txxlk")
 stream = ExtResource("32_gh5bl")
 volume_db = -10.0
 
-[node name="EndDay" type="Node2D" parent="." node_paths=PackedStringArray("dialogueBox")]
+[node name="EndDay" type="CanvasLayer" parent="." node_paths=PackedStringArray("dialogueBox")]
+layer = 2
 script = ExtResource("29_wyus1")
 endTransition = ExtResource("30_stghc")
 dialogueBox = NodePath("../SleepDialogueBox")
