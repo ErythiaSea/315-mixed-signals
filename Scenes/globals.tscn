@@ -5,10 +5,10 @@
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_cnrc1")
+stateControlText = ["Menu ctrls", "Cutscene ctrls", "Overworld ctrls", "Transpond ctrls", "Waveform ctrls", "Constellation ctrls", "Translation ctrls", "Dialogue ctrls", "NONE state (you should not see this text in game)", "map ctrls", "photoboard controls"]
 
 [node name="GlobalsCanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
-visible = false
 
 [node name="GlobalControl" type="Control" parent="GlobalsCanvasLayer"]
 layout_mode = 3
@@ -20,7 +20,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="ControlsText" type="RichTextLabel" parent="GlobalsCanvasLayer/GlobalControl"]
-visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0

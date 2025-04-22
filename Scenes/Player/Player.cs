@@ -113,7 +113,7 @@ public partial class Player : CharacterBody2D
 	{
 		if (isAutoWalking) { AutoMovement(delta); return; }
 
-		if (isMovementLocked) {
+		if (isMovementLocked || Globals.Gamestate != GAMESTATE.OVERWORLD) {
 			playerSprite.Play("idle");
 			return;
 		}
@@ -137,6 +137,8 @@ public partial class Player : CharacterBody2D
 		if (xDirection != 0)
 		{
 			velocity.X = xDirection * movementSpeed;
+			
+			// todo: remove debug
 			if (Input.IsActionPressed("middle_mouse")) velocity.X *= 2;
 		}
 		else
@@ -244,11 +246,6 @@ public partial class Player : CharacterBody2D
 	{
 		GD.Print("dialogue");
 		isMovementLocked = false;
-	}
-
-	void OnMinigameClosed()
-	{
-
 	}
 }
 

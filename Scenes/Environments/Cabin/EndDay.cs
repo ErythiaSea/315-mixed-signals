@@ -46,6 +46,7 @@ public partial class EndDay : Node2D
 	{
 		GD.Print("called");
 		player.SetMovementLock(true);
+		Globals.PushGamestate(GAMESTATE.CUTSCENE);
 
 		if (!isClosed)
 		{
@@ -59,6 +60,7 @@ public partial class EndDay : Node2D
 		currentTrans.OpenCircle(0f, 1f, transitionTime);
 		player.SetMovementLock(false);
 		isClosed = false;
+		Globals.PopGamestate(GAMESTATE.CUTSCENE);
 	}
 
 	private void CreateTransition()

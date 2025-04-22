@@ -27,7 +27,16 @@ public enum GAMESTATE
 	CONSTELLATION = 5,
 	TRANSLATION = 6,
 	DIALOGUE = 7,
-	NONE = 8
+	NONE = 8,
+	MAP = 9,
+	PHOTOBOARD = 10
+}
+
+// i might need these for control state text later - eryth
+[Flags]
+public enum CONTEXTFLAGS
+{
+	CAN_INTERACT
 }
 
 [Tool]
@@ -70,7 +79,6 @@ public partial class Globals : Node
 			_gamestate.Clear();
 			_gamestate.Push(value);
 			Instance.EmitSignal(SignalName.GamestateChange);
-			Instance.UpdateControlsText();
 		}
 	}
 
@@ -97,6 +105,7 @@ public partial class Globals : Node
 		if (state == GAMESTATE.NONE)
 		{
 			GD.Print(_gamestate.Pop(), " was popped from the stack.");
+			Instance.EmitSignal(SignalName.GamestateChange);
 			return;
 		}
 
@@ -196,6 +205,6 @@ public partial class Globals : Node
 
 	private void UpdateControlsText()
 	{
-		//controlsText.Text = stateControlText[(int)Gamestate];
+		controlsText.Text = stateControlText[(int)Gamestate];
 	}
 }
