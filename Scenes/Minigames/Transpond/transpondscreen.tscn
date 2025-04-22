@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://dek8vr2m0s1sa" path="res://Scenes/Minigames/tutorialdialogue.tres" id="8_mkirk"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="9_gtpwd"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="10_sy41u"]
-[ext_resource type="Texture2D" uid="uid://cad0l75yjf3a4" path="res://Sprites/tutorialbutton_temp.png" id="12_ofwvt"]
+[ext_resource type="Texture2D" uid="uid://chuwfl87b6xpw" path="res://Sprites/Help_Icon_01.png" id="12_84qav"]
 [ext_resource type="Script" path="res://Scenes/Minigames/TutorialButton.cs" id="13_in4h4"]
 
 [sub_resource type="Gradient" id="Gradient_aagt1"]
@@ -127,7 +127,7 @@ offset_left = 1769.0
 offset_top = 23.0
 offset_right = -27.0
 offset_bottom = -933.0
-texture_normal = ExtResource("12_ofwvt")
+texture_normal = ExtResource("12_84qav")
 stretch_mode = 5
 script = ExtResource("13_in4h4")
 dialogueBox = NodePath("../DialogueBox")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://1ims8y73xe5o"]
+[gd_scene load_steps=20 format=3 uid="uid://1ims8y73xe5o"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Translation/TranslationCanvasUI.cs" id="1_6ebpw"]
 [ext_resource type="FontFile" uid="uid://m3h38nqxkg0o" path="res://Fonts/Monotone_Celestial_V1.otf" id="2_w7m10"]
@@ -13,9 +13,8 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="9_8jnxf"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="10_k8rjn"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="11_vjohv"]
-[ext_resource type="Texture2D" uid="uid://cad0l75yjf3a4" path="res://Sprites/tutorialbutton_temp.png" id="12_1gr56"]
 [ext_resource type="Script" path="res://Scenes/Minigames/TutorialButton.cs" id="13_xnkum"]
-[ext_resource type="Script" path="res://addons/onscreenkeyboard/onscreen_keyboard.gd" id="16_15q22"]
+[ext_resource type="Texture2D" uid="uid://chuwfl87b6xpw" path="res://Sprites/Help_Icon_01.png" id="14_w85ir"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2m5s8"]
 texture = ExtResource("4_stibd")
@@ -250,7 +249,7 @@ offset_left = 1769.0
 offset_top = 23.0
 offset_right = -23.0
 offset_bottom = -929.0
-texture_normal = ExtResource("12_1gr56")
+texture_normal = ExtResource("14_w85ir")
 stretch_mode = 5
 script = ExtResource("13_xnkum")
 startID = "tut"
@@ -262,6 +261,5 @@ offset_left = 7.0
 offset_top = 693.0
 offset_right = 753.0
 offset_bottom = 1024.0
-script = ExtResource("16_15q22")
 
 [connection signal="button_down" from="CheckAnswerButton" to="." method="AnswerButton"]
