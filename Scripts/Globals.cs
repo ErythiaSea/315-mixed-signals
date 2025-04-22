@@ -30,6 +30,14 @@ public enum GAMESTATE
 	NONE = 8
 }
 
+public enum GAMEPAD
+{
+	XBOX = 0,
+	PS = 1,
+	NINTENDO = 2,
+	OTHER = 3
+}
+
 [Tool]
 public partial class Globals : Node
 {
@@ -129,6 +137,8 @@ public partial class Globals : Node
 	// The spawn point you will appear at on level load
 	public static int CurrentSpawnID { get; set; } = -1;
 
+	public static bool isController;
+	public static GAMEPAD controllerType;
 	// The colour used for the outline of interactable objects when a custom one is not set
 	public static readonly Vector3 STANDARD_OUTLINE_COLOR = new (1.0f, 0.95f, 0.45f);
 
@@ -194,8 +204,42 @@ public partial class Globals : Node
 		GD.Print("Globals::NewDay complete");
 	}
 
-	private void UpdateControlsText()
-	{
-		//controlsText.Text = stateControlText[(int)Gamestate];
-	}
+    public override void _Input(InputEvent @event)
+    {
+		if (@event is InputEventKey || @event is InputEventMouseButton)
+		{
+			isController = false;
+		}
+		else if(@event is InputEventJoypadButton || @event is InputEventJoypadMotion)
+		{
+			isController = true;
+
+            string joyName = Input.GetJoyName(Input.GetConnectedJoypads()[0]);
+		
+            switch (joyName[0])
+            {
+				case 'P':
+					controllerType = GAMEPAD.PS;
+					break;
+				case 'X':
+					controllerType = GAMEPAD.XBOX;
+					break;
+				case 'N':
+					controllerType = GAMEPAD.NINTENDO;
+					break;
+				default:
+					controllerType = GAMEPAD.OTHER;
+					break;
+            }
+
+        }
+
+		GD.Print("Controller: " + isController);
+    }
+
+    private void UpdateControlsText()
+    {
+       //controlsText.Text = stateControlText[(int)Gamestate];
+    }
+
 }

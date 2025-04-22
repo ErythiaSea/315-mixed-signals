@@ -51,6 +51,7 @@ public partial class Player : CharacterBody2D
 
     public override void _Process(double delta)
     {
+
 		if (Globals.Gamestate != GAMESTATE.OVERWORLD || isMovementLocked) return;
 
         interactSprite.Visible = false;
