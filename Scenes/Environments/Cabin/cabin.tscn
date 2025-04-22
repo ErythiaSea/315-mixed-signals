@@ -381,10 +381,11 @@ shape = SubResource("RectangleShape2D_3sbqo")
 position = Vector2(251, -70)
 shape = SubResource("RectangleShape2D_f8yak")
 
-[node name="ElevatorButton" parent="Elevator" node_paths=PackedStringArray("objectSprite") instance=ExtResource("15_lw781")]
+[node name="ElevatorButton" parent="Elevator" node_paths=PackedStringArray("objectSprite", "dialogueBox") instance=ExtResource("15_lw781")]
 position = Vector2(-125, -11)
 objectSprite = NodePath("../Sprite2D")
 requiredStage = 1
+dialogueBox = NodePath("../../DialogueBubble")
 
 [node name="ButtonShape" type="CollisionShape2D" parent="Elevator/ElevatorButton"]
 shape = SubResource("CircleShape2D_b7gpl")

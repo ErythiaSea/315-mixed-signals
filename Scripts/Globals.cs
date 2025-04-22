@@ -32,14 +32,6 @@ public enum GAMESTATE
 	PHOTOBOARD = 10
 }
 
-public enum GAMEPAD
-{
-	XBOX = 0,
-	PS = 1,
-	NINTENDO = 2,
-	OTHER = 3
-}
-
 // i might need these for control state text later - eryth
 [Flags]
 public enum CONTEXTFLAGS
@@ -47,7 +39,6 @@ public enum CONTEXTFLAGS
 	CAN_INTERACT
 }
 
-[Tool]
 public partial class Globals : Node
 {
 	// The instance of the Globals node that does GodotObject things a static
@@ -146,8 +137,6 @@ public partial class Globals : Node
 	// The spawn point you will appear at on level load
 	public static int CurrentSpawnID { get; set; } = -1;
 
-	public static bool isController;
-	public static GAMEPAD controllerType;
 	// The colour used for the outline of interactable objects when a custom one is not set
 	public static readonly Vector3 STANDARD_OUTLINE_COLOR = new (1.0f, 0.95f, 0.45f);
 
@@ -162,7 +151,7 @@ public partial class Globals : Node
 	{
 		if (Engine.IsEditorHint())
 		{
-			GetNode<CanvasLayer>("GlobalsCanvasLayer").Visible = false;
+			//GetNode<CanvasLayer>("GlobalsCanvasLayer").Visible = false;
 			return;
 		}
 
@@ -213,61 +202,41 @@ public partial class Globals : Node
 		GD.Print("Globals::NewDay complete");
 	}
 
-	private void UpdateControlsText()
+	static public void UpdateControlsText()
 	{
+		GD.Print("updating controls text...");
 		String newText = "";
-		//controlsText.Text = stateControlText[(int)Gamestate];
-		foreach (InputStruct input in InputData.StateInputDict[Gamestate])
+		
+		foreach (InputStruct input in InputManager.StateInputDict[Gamestate])
 		{
-			newText += GetInputGlyphImage(input.glyphName) + input.inputText + "   ";
+			// ensure that the input matches our current control scheme
+			if ((input.inputMethod == INPUT_METHODS.KEYBOARD_CONTROLLER)
+				|| (input.inputMethod == INPUT_METHODS.KEYBOARD_ONLY && InputManager.IsController == false)
+				|| (input.inputMethod == INPUT_METHODS.CONTROLLER_ONLY && InputManager.IsController))
+			{
+				newText += GetInputGlyphImage(input.glyphName) + input.inputText + "   ";
+			}
 		}
-		controlsText.Text = newText;
+		Instance.controlsText.Text = newText;
     }
 
-	private string GetInputGlyphImage(List<string> name)
+	static private string GetInputGlyphImage(string name)
 	{
 		const string keyFolder = "res://Sprites/InputKey/";
-		string ctrlSuffix = "_ps"; // this will change based on control scheme
-
-		string imgsString = "";
-		foreach (string nameItem in name)
+		string ctrlSuffix = "";
+		switch (InputManager.ControllerType)
 		{
-			imgsString += "[img]" + keyFolder + nameItem + ctrlSuffix + ".png[/img]";
-		}
-		return imgsString;
-	}
-
-    public override void _Input(InputEvent @event)
-    {
-		if (@event is InputEventKey || @event is InputEventMouseButton)
-		{
-			isController = false;
-		}
-		else if(@event is InputEventJoypadButton || @event is InputEventJoypadMotion)
-		{
-			isController = true;
-
-            string joyName = Input.GetJoyName(Input.GetConnectedJoypads()[0]);
-		
-            switch (joyName[0])
-            {
-				case 'P':
-					controllerType = GAMEPAD.PS;
-					break;
-				case 'X':
-					controllerType = GAMEPAD.XBOX;
-					break;
-				case 'N':
-					controllerType = GAMEPAD.NINTENDO;
-					break;
-				default:
-					controllerType = GAMEPAD.OTHER;
-					break;
-            }
-
+			case GAMEPAD.KEYBOARD:
+				ctrlSuffix = "_kb";
+				break;
+			case GAMEPAD.PS:
+                ctrlSuffix = "_ps";
+                break;
+			default:
+                ctrlSuffix = "_ps";
+                break;
         }
 
-		GD.Print("Controller: " + isController);
-    }
-
+		return "[img]" + keyFolder + name + ctrlSuffix + ".png[/img]";
+	}
 }
