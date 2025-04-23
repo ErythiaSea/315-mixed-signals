@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=64 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_hvnuo"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="17_h87pq"]
 [ext_resource type="Texture2D" uid="uid://dxh7t7hay26m4" path="res://Scenes/Environments/Cabin/Sprites/bedroom_silohette.png" id="17_l3xrp"]
 [ext_resource type="Resource" uid="uid://wn1h5b8ptlga" path="res://Scenes/Debug/debugdialogue.tres" id="24_33tro"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="28_fg0wr"]
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/EndDay.cs" id="29_wyus1"]
 [ext_resource type="PackedScene" uid="uid://ccoch44m85xuv" path="res://Scenes/Environments/Objects/EndDayTransition.tscn" id="30_stghc"]
 
@@ -153,6 +154,15 @@ script = ExtResource("15_1s26x")
 [sub_resource type="RichTextEffect" id="RichTextEffect_eewup"]
 script = ExtResource("16_oxyx2")
 
+[sub_resource type="RichTextEffect" id="RichTextEffect_t7wmq"]
+script = ExtResource("14_tiwmt")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_bvuge"]
+script = ExtResource("15_1s26x")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_f7su0"]
+script = ExtResource("16_oxyx2")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0oee4"]
 size = Vector2(301, 37)
 
@@ -171,8 +181,10 @@ radius = 32.249
 [node name="Cabin" type="Node2D"]
 script = ExtResource("1_hvnuo")
 spawnData = Array[Object]([SubResource("Resource_66r8t")])
+OffsetX = 3.0
+OffsetY = -300.0
 rightLimit = 1920
-bottomLimit = 4773
+bottomLimit = 4950
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8vdl8")
@@ -406,8 +418,9 @@ position = Vector2(585, 4167.5)
 shape = SubResource("RectangleShape2D_8qv87")
 
 [node name="Player" parent="." instance=ExtResource("2_h3n7b")]
-position = Vector2(505, 4384)
+position = Vector2(555, 4333)
 scale = Vector2(2.5, 2.5)
+walkingParticles = null
 
 [node name="PlayerHead" type="Marker2D" parent="Player"]
 position = Vector2(-0.8, -43.2)
@@ -441,6 +454,14 @@ follow_node = NodePath("../Player/PlayerHead")
 show_speaker_name = false
 dialogue_custom_effects = [SubResource("RichTextEffect_0u6wi"), SubResource("RichTextEffect_yh6wg"), SubResource("RichTextEffect_eewup")]
 
+[node name="SleepDialogueBox" type="Panel" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("28_fg0wr")
+data = ExtResource("24_33tro")
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_t7wmq"), SubResource("RichTextEffect_bvuge"), SubResource("RichTextEffect_f7su0")])
+
 [node name="TranspondBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite")]
 position = Vector2(851, 977)
 collision_layer = 4
@@ -470,7 +491,6 @@ position = Vector2(238, 4549)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/Bed")
-requiredStage = 4
 dialogueBox = NodePath("../DialogueBubble")
 startID = "nme"
 timeLimit = 2.5
@@ -501,7 +521,6 @@ scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
 spawnPoint = 0
 dialogueBox = NodePath("../DialogueBubble")
-errorStartID = "nme"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
 shape = SubResource("RectangleShape2D_lvk1a")
@@ -520,8 +539,9 @@ objectSprite = NodePath("../Sprites/TopCallButton")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorTopCall"]
 shape = SubResource("CircleShape2D_txxlk")
 
-[node name="EndDay" type="Node2D" parent="."]
+[node name="EndDay" type="Node2D" parent="." node_paths=PackedStringArray("dialogueBox")]
 script = ExtResource("29_wyus1")
 endTransition = ExtResource("30_stghc")
+dialogueBox = NodePath("../SleepDialogueBox")
 
 [connection signal="Interacted" from="BedBox" to="EndDay" method="EndTheDay"]

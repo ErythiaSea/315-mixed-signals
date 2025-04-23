@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.ComponentModel.Design;
+using System.Threading.Tasks;
 
 public partial class EndDay : Node2D
 {
@@ -8,11 +10,17 @@ public partial class EndDay : Node2D
 	[Export]
 	float transitionTime = 3f;
 
+    [ExportSubgroup("Dialogue")]
+    // the dialogue box to trigger
+    [Export]
+    Control dialogueBox;
+
     private EndTransitionScript currentTrans;
     Player player;
 	Globals globalScript;
 	bool isClosed = false;
-	
+
+	private bool isDisplayed = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -24,20 +32,18 @@ public partial class EndDay : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(currentTrans != null)
-		{
-			GD.Print("UPDATING");
-			currentTrans.GlobalPosition = player.GlobalPosition;
-		}
+		if (currentTrans != null) isClosed = currentTrans.isClosed;
+		else return;
 
-		if (isClosed)
+		if (currentTrans.isDone)
 		{
-			//run whatever we need here
-		}
+           // dialogueBox.Call("start", "Sleep");
+        }
 	}
 
 	public void EndTheDay()
 	{
+		GD.Print("called");
 		globalScript.NewDay();
 		player.SetMovementLock(true);
 
@@ -45,8 +51,6 @@ public partial class EndDay : Node2D
 		{
             CreateTransition();
         }
-        GetTree().CreateTimer(transitionTime);
-		isClosed = true;
 	}
 
 	public void startTheDay()
@@ -57,8 +61,9 @@ public partial class EndDay : Node2D
 	private void CreateTransition()
 	{
 		EndTransitionScript transition = endTransition.Instantiate() as EndTransitionScript;
-		GetParent().AddChild(transition);
+		//transition.PivotOffset = new Vector2(transition.Size.X / 2,transition.Size.Y / 2);
+		player.AddChild(transition);
 		currentTrans = transition;
-		transition.CloseCircle(2f, 0f, transitionTime);
+		transition.CloseCircle(1f, 0f, transitionTime);
     }
 }

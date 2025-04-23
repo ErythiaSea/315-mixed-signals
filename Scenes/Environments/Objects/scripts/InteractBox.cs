@@ -169,10 +169,8 @@ public partial class InteractBox : Area2D
 
         if (!IsCorrectStage())
         {
-
-            int index = ((int)Globals.Instance.gameState.stage + 2);
             //run dialogue for telling the player what they need to do based on: Globals.Instance.gameState.stage\
-            dialogueBox.Call("start", index.ToString());
+            dialogueBox.Call("start", Globals.Instance.gameState.stage.ToString());
             return;
         }
         EmitSignal("Interacted");

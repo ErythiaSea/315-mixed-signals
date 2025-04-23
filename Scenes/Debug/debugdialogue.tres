@@ -7,10 +7,11 @@ script = ExtResource("1_5br0n")
 starts = {
 "0": &"0_1",
 "1": &"0_2",
-"2": &"0_4",
-"3": &"0_5",
-"4": &"0_6",
-"5": &"0_7",
+"CONSTELLATION": &"0_6",
+"Sleep": &"0_8",
+"TRANSLATION": &"0_7",
+"TRANSPONDING": &"0_4",
+"WAVEFORM": &"0_5",
 "nme": &"0_3"
 }
 nodes = {
@@ -32,22 +33,27 @@ nodes = {
 "0_4": {
 "link": &"1_6",
 "offset": Vector2(-580, 680),
-"start_id": "2"
+"start_id": "TRANSPONDING"
 },
 "0_5": {
 "link": &"1_7",
-"offset": Vector2(160, 680),
-"start_id": "3"
+"offset": Vector2(80, 680),
+"start_id": "WAVEFORM"
 },
 "0_6": {
 "link": &"1_8",
 "offset": Vector2(-580, 1020),
-"start_id": "4"
+"start_id": "CONSTELLATION"
 },
 "0_7": {
 "link": &"1_9",
-"offset": Vector2(160, 1020),
-"start_id": "5"
+"offset": Vector2(80, 1020),
+"start_id": "TRANSLATION"
+},
+"0_8": {
+"link": &"1_10",
+"offset": Vector2(-520, 1360),
+"start_id": "Sleep"
 },
 "1_1": {
 "dialogue": "dialogue holy crap",
@@ -66,6 +72,32 @@ nodes = {
 },
 "size": Vector2(300, 289),
 "speaker": "erg"
+},
+"1_10": {
+"dialogue": "Hey im Sleepin here!",
+"offset": Vector2(-220, 1360),
+"options": {
+0: {
+"condition": {},
+"link": &"1_11",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_11": {
+"dialogue": "Hey im Dreaming here!",
+"offset": Vector2(140, 1360),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
 },
 "1_2": {
 "dialogue": "you get me",
@@ -120,7 +152,8 @@ nodes = {
 "speaker": "!DEBUG!"
 },
 "1_6": {
-"dialogue": "No time for a nap. I need to get to work with the new signals upstairs.",
+"dialogue": "I should probably check out these new signals I'm getting[br]
+strange...",
 "offset": Vector2(-240, 680),
 "options": {
 0: {
@@ -133,8 +166,9 @@ nodes = {
 "speaker": "..."
 },
 "1_7": {
-"dialogue": "I still need to go upstairs and deal with those signals. My boss would kill me if I leave early.",
-"offset": Vector2(500, 680),
+"dialogue": "I need to tune the signal waves to know where I'm headed first[br]
+*Sigh*",
+"offset": Vector2(420, 680),
 "options": {
 0: {
 "condition": {},
@@ -170,21 +204,8 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": "..."
-},
-"2_1": {
-"comment": "Make this the dialogue
-for trying to leave early.",
-"offset": Vector2(160, 800),
-"size": Vector2(200, 100)
-},
-"2_2": {
-"comment": "This dialogue plays 
-when going for a nap
-too early",
-"offset": Vector2(-580, 800),
-"size": Vector2(200, 120)
 }
 }
 variables = {}
-strays = Array[String](["2_2", "2_1"])
+strays = Array[String]([])
 characters = ""

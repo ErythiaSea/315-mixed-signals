@@ -242,13 +242,6 @@ public partial class Player : CharacterBody2D
 		isMovementLocked = false;
 	}
 
-	public void EndDayTransition()
-	{
-	    EndTransitionScript transition = playerCamera.GetChild(1) as EndTransitionScript;
-
-		transition.isEnding = true;
-
-	}
 	void OnMinigameClosed()
 	{
 
