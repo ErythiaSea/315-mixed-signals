@@ -19,10 +19,10 @@ void vertex() {
 void fragment() {
 	// Called for every pixel the material is visible on.
 	vec2 uv = UV;
-    
+
     // If the pixel is within the progress range, apply glow
 	if(isLeft){
-		if (uv.x <= progress) 
+		if (uv.x <= progress)
 		{
         	COLOR = ApplyColor(uv,TEXTURE);
     	} else {
