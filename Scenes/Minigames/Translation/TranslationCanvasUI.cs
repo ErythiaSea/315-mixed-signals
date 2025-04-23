@@ -117,6 +117,11 @@ public partial class TranslationCanvasUI : BaseMinigame
 			GD.Print("Doesnt feel right");
 		}
 	}
+
+	public void AffectionCounter()
+	{
+
+	}
 	private void TextInitalisation()
 	{
 		if (Globals.ProgressionStage > GAMESTAGE.TRANSLATION) {

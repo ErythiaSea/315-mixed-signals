@@ -200,61 +200,61 @@ nodes = {
 "offset": Vector2(-180, -60),
 "type": 0,
 "value": "0",
-"variable": "LOVE"
+"variable": "CLOVE"
 },
 "4_2": {
 "link": &"1_4",
 "offset": Vector2(680, 380),
 "type": 2,
 "value": "1",
-"variable": "LOVE"
+"variable": "CLOVE"
 },
 "4_3": {
 "link": &"1_2",
 "offset": Vector2(680, 720),
 "type": 1,
 "value": "1",
-"variable": "LOVE"
+"variable": "CLOVE"
 },
 "4_4": {
 "link": &"1_5",
 "offset": Vector2(1880, 1240),
 "type": 1,
 "value": "1",
-"variable": "LOVE"
+"variable": "CLOVE"
 },
 "4_5": {
 "link": &"1_6",
 "offset": Vector2(1880, 900),
 "type": 2,
 "value": "1",
-"variable": "LOVE"
+"variable": "CLOVE"
 },
 "4_6": {
 "link": &"1_9",
 "offset": Vector2(3140, 1420),
 "type": 1,
 "value": "1",
-"variable": "LOVE"
+"variable": "CLOVE"
 },
 "4_7": {
 "link": &"1_8",
 "offset": Vector2(3140, 1760),
 "type": 2,
 "value": "1",
-"variable": "LOVE"
+"variable": "CLOVE"
 },
 "5_1": {
 "false": &"1_11",
 "offset": Vector2(3940, 1600),
 "operator": 2,
 "true": &"1_10",
-"value1": "LOVE",
+"value1": "CLOVE",
 "value2": "0"
 }
 }
 variables = {
-"LOVE": {
+"CLOVE": {
 "type": 2,
 "value": 0
 }

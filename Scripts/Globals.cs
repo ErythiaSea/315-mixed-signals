@@ -131,6 +131,9 @@ public partial class Globals : Node
 	public delegate void DayChangedEventHandler();
 	public static int Day { get; set; }
 
+	public int corvusLove = 0;
+	public int cassioLove= 0;
+	public int pyxisLov= 0;
 	// Tutorial progress property to track which tutorial should next be shown to the player
 	public static GAMESTAGE TutorialProgress { get; set; } = GAMESTAGE.TRANSPONDING;
 
@@ -202,6 +205,21 @@ public partial class Globals : Node
 		GD.Print("Globals::NewDay complete");
 	}
 
+	public void updateAffection(String name, int value)
+	{
+		switch (name)
+		{
+			case "CLOVE":
+				corvusLove = value;
+				break;
+			case "CALOVE":
+				cassioLove = value;
+				break;
+			case "PLOVE":
+				pyxisLov = value;
+				break;
+		}
+	}
 	static public void UpdateControlsText()
 	{
 		GD.Print("updating controls text...");
