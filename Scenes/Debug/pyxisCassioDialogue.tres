@@ -59,7 +59,7 @@ nodes = {
 },
 "1_11": {
 "dialogue": "I'm glad you agree. I'm so terribly sorry my poor little subject but I must leave you, something urgent has caught my attention.",
-"offset": Vector2(7147, 525.762),
+"offset": Vector2(7600, 520),
 "options": {
 0: {
 "condition": {},
@@ -77,7 +77,7 @@ nodes = {
 },
 "1_12": {
 "dialogue": "*Chuckles* Of course you will my dear, I'll make a little play thing out of you yet.",
-"offset": Vector2(7520, 460),
+"offset": Vector2(7980, 460),
 "options": {
 0: {
 "condition": {},
@@ -147,7 +147,7 @@ nodes = {
 },
 "1_17": {
 "dialogue": "Pixie didn't your mother tell you not to talk badly about woman?",
-"offset": Vector2(5600, 220),
+"offset": Vector2(5920, 220),
 "options": {
 0: {
 "condition": {},
@@ -181,12 +181,12 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 "options": {
 0: {
 "condition": {},
-"link": &"1_20",
+"link": &"4_10",
 "text": "Don't Bow"
 },
 1: {
 "condition": {},
-"link": &"1_21",
+"link": &"4_7",
 "text": "Bow"
 }
 },
@@ -208,7 +208,7 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 },
 "1_20": {
 "dialogue": "Oh, what an insubordinate little creature you are!",
-"offset": Vector2(4900, -460),
+"offset": Vector2(5280, -420),
 "options": {
 0: {
 "condition": {},
@@ -221,7 +221,7 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 },
 "1_21": {
 "dialogue": "Very Good, you know your place. You are just a mere mortal, nothing more than a speck in the vastness of the universe. But tonight? Tonight, I’ll let you bask in my glow.",
-"offset": Vector2(4900, -80),
+"offset": Vector2(5220, -60),
 "options": {
 0: {
 "condition": {},
@@ -269,7 +269,7 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 "1_24": {
 "dialogue": "Now tell me mortal, answer me honestly and I will show you a night in heaven.
 Was Pyxis talking ill of me behind my back?",
-"offset": Vector2(5240, -80),
+"offset": Vector2(5560, -60),
 "options": {
 0: {
 "condition": {},
@@ -287,7 +287,7 @@ Was Pyxis talking ill of me behind my back?",
 },
 "1_25": {
 "dialogue": "Oh no I feel a strong breeze sweeping me away, I will catch you later!",
-"offset": Vector2(5940, 220),
+"offset": Vector2(6260, 220),
 "options": {
 0: {
 "condition": {},
@@ -301,7 +301,7 @@ Was Pyxis talking ill of me behind my back?",
 "1_26": {
 "dialogue": "Aaaah! He got away before I could show him my wrath.
 Ahem, no worries I will be sure to punish him later.",
-"offset": Vector2(6280, 220),
+"offset": Vector2(6600, 220),
 "options": {
 0: {
 "condition": {},
@@ -314,16 +314,16 @@ Ahem, no worries I will be sure to punish him later.",
 },
 "1_27": {
 "dialogue": "That old fool Pyxis, always spouting nonsense under the guise of “poetry” can anything truly be called poetry unless it mentions me?. Who even needs a compass? Only the lost and desperate cling to them. Even bound to the sky, I reign supreme, every sailor who charts his course is guided by my beauty. If you ask me Pyxis is a waste of space amongst the cosmos. Don't you agree",
-"offset": Vector2(6700, 500),
+"offset": Vector2(6920, 500),
 "options": {
 0: {
 "condition": {},
-"link": &"1_11",
+"link": &"4_9",
 "text": "Yes"
 },
 1: {
 "condition": {},
-"link": "END",
+"link": &"4_8",
 "text": "No"
 }
 },
@@ -345,7 +345,7 @@ Ahem, no worries I will be sure to punish him later.",
 },
 "1_29": {
 "dialogue": "I will call again and when I do, you better answer.",
-"offset": Vector2(7520, 800),
+"offset": Vector2(7980, 800),
 "options": {
 0: {
 "condition": {},
@@ -371,7 +371,7 @@ Ahem, no worries I will be sure to punish him later.",
 },
 "1_30": {
 "dialogue": "My dear, it looks like a hurricane snatched your wig. You better go catch it",
-"offset": Vector2(5260, -460),
+"offset": Vector2(5640, -420),
 "options": {
 0: {
 "condition": {},
@@ -384,7 +384,7 @@ Ahem, no worries I will be sure to punish him later.",
 },
 "1_31": {
 "dialogue": "*Ahh!* How dare you insult me you wrinkly old compass!",
-"offset": Vector2(5620, -460),
+"offset": Vector2(6000, -420),
 "options": {
 0: {
 "condition": {},
@@ -403,7 +403,7 @@ Ahem, no worries I will be sure to punish him later.",
 "1_32": {
 "dialogue": "You insufferable little brat!
 I will call upon the power of a million stars and obliterate your pathetic planet! *Cassiopeia leaves*",
-"offset": Vector2(6020, -180),
+"offset": Vector2(6400, -140),
 "options": {
 0: {
 "condition": {},
@@ -416,7 +416,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 },
 "1_33": {
 "dialogue": "Don't worry my little breeze, she does not have that kind of power. Her only power is being as deluded as a gale thinking itself a typhoon.",
-"offset": Vector2(6360, -180),
+"offset": Vector2(6740, -140),
 "options": {
 0: {
 "condition": {},
@@ -429,7 +429,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 },
 "1_34": {
 "dialogue": "Thank you for sticking up for me my little breeze. I must go and attend to my godly duties compasses do not move themselves.",
-"offset": Vector2(6700, -180),
+"offset": Vector2(7080, -140),
 "options": {
 0: {
 "condition": {},
@@ -442,7 +442,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 },
 "1_35": {
 "dialogue": "You're right my little breeze, I will take this conflict away from you to keep you out of harms way.",
-"offset": Vector2(6020, -480),
+"offset": Vector2(6400, -440),
 "options": {
 0: {
 "condition": {},
@@ -455,7 +455,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 },
 "1_36": {
 "dialogue": "You want to spare this mortals life? Hmph very well then. Lets take this fight elsewhere - not that it will be much of fight.",
-"offset": Vector2(6380, -480),
+"offset": Vector2(6760, -440),
 "options": {
 0: {
 "condition": {},
@@ -491,7 +491,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 1: {
 "condition": {
 "operator": 5,
-"value1": "{{LOVE}}",
+"value1": "{{PYXLOVE}}",
 "value2": "-2"
 },
 "link": "END",
@@ -577,42 +577,70 @@ Please leave startid = err",
 "offset": Vector2(140, -160),
 "type": 1,
 "value": "1",
-"variable": "PLOVE"
+"variable": "PYXLOVE"
+},
+"4_10": {
+"link": &"1_20",
+"offset": Vector2(4840, -220),
+"type": 2,
+"value": "1",
+"variable": "CALOVE"
 },
 "4_2": {
 "link": &"1_3",
 "offset": Vector2(120, 40),
 "type": 2,
 "value": "1",
-"variable": "PLOVE"
+"variable": "PYXLOVE"
 },
 "4_3": {
 "link": &"1_7",
 "offset": Vector2(1680, -80),
 "type": 1,
 "value": "1",
-"variable": "PLOVE"
+"variable": "PYXLOVE"
 },
 "4_4": {
 "link": &"1_5",
 "offset": Vector2(1680, 60),
 "type": 2,
 "value": "1",
-"variable": "PLOVE"
+"variable": "PYXLOVE"
 },
 "4_5": {
 "link": &"1_10",
 "offset": Vector2(3100, -60),
 "type": 1,
 "value": "1",
-"variable": "PLOVE"
+"variable": "PYXLOVE"
 },
 "4_6": {
 "link": &"1_1",
 "offset": Vector2(-580, -280),
 "type": 0,
 "value": "0",
-"variable": "PLOVE"
+"variable": "PYXLOVE"
+},
+"4_7": {
+"link": &"1_21",
+"offset": Vector2(4860, -60),
+"type": 1,
+"value": "1",
+"variable": "CALOVE"
+},
+"4_8": {
+"link": "END",
+"offset": Vector2(7180, 940),
+"type": 2,
+"value": "1",
+"variable": "CALOVE"
+},
+"4_9": {
+"link": &"1_11",
+"offset": Vector2(7260, 640),
+"type": 1,
+"value": "1",
+"variable": "CALOVE"
 }
 }
 variables = {
