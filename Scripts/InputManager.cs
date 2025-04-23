@@ -89,7 +89,9 @@ public partial class InputManager : Node
         } },
         { GAMESTATE.MAP, new() {
         } },
-        { GAMESTATE.TRANSLATION, new() {
+		{ GAMESTATE.CONSTELLATION, new() {
+		} },
+		{ GAMESTATE.TRANSLATION, new() {
         } },
         { GAMESTATE.DIALOGUE, new() {
         } },

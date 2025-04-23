@@ -26,7 +26,7 @@ public partial class EndDay : Node2D
 	{
 		isDisplayed = false;
 		dialogueBox.Connect("dialogue_ended", Callable.From(startTheDay));
-		player = GetTree().Root.GetChild(3).GetNode("Player") as Player;
+		player = GetTree().Root.GetChild(-1).GetNode("Player") as Player;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -36,7 +36,7 @@ public partial class StarsParent : Node2D
 		if (IsConstellationComplete() && !hasSignalled)
 		{
 			GD.Print("Emitting signal...");
-			EmitSignal(SignalName.ConstellationCompletion, GetCenterStar());
+			EmitSignal(SignalName.ConstellationCompletion, GetConstellationCenter());
 			hasSignalled = true;
 		}	  
 	}
@@ -126,22 +126,23 @@ public partial class StarsParent : Node2D
 		return strs;
 	}
 
-	//returns the star which the camera will center over for
-	//the zoom out upon completeion of the constellation
-	//TODO: change the way this happens so it centres on a position central to them all
-	private Vector2 GetCenterStar()
+	// returns the center of the constellation for
+	// the zoom out upon completeion of the constellation
+	private Vector2 GetConstellationCenter()
 	{
-		int bestCount = 0;
-		StarNode bestStar = null;
-		for (int i = 0; i < stars.Count; i++)
+		float minX, maxX, minY, maxY;
+		minX = maxX = stars[0].Position.X;
+		minY = maxY = stars[0].Position.Y;
+
+		for (int i = 1; i < stars.Count; i++)
 		{
-			if (stars[i].adjacentStars.Count > bestCount)
-			{
-				bestCount = stars[i].adjacentStars.Count;
-				bestStar = stars[i];
-			}
+			Vector2 starPos = stars[i].Position;
+			minX = Mathf.Min(minX, starPos.X);
+			minY = Mathf.Min(minY, starPos.Y);
+			maxX = Mathf.Max(maxX, starPos.X);
+			maxY = Mathf.Max(maxY, starPos.Y);
 		}
 
-		return bestStar.GlobalPosition;
+		return new Vector2(minX + 0.5f*(maxX - minX), minY + 0.5f*(maxY - minY));
 	}
 }
