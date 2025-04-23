@@ -37,7 +37,7 @@ public partial class Reset : Node
 		// close when holding esc (todo maybe get rid of?)
 		if (Input.IsActionPressed("close"))
 		{
-			killtimer += delta;
+            killtimer += delta;
 			if (killtimer > 0.5)
 			{
 				GD.Print("kill");

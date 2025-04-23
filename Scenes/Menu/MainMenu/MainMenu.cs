@@ -82,12 +82,9 @@ public partial class MainMenu : Control
 	{
 		// spawn options menu
 		Control optionsMenu = optionsScene.Instantiate<Control>();
-
-		//optionsMenu.AnchorBottom = 0.5f;
-		//optionsMenu.AnchorLeft = 0.5f;
-		//optionsMenu.AnchorTop = 0.5f;
-		//optionsMenu.AnchorRight = 0.5f;
-
 		AddChild(optionsMenu);
+
+		// when the options menu closes, return focus to options button
+		optionsMenu.TreeExiting += () => optionsButton.GrabFocus();
 	}
 }
