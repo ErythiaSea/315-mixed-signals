@@ -249,7 +249,7 @@ nodes = {
 "offset": Vector2(3940, 1600),
 "operator": 2,
 "true": &"1_10",
-"value1": "CLOVE",
+"value1": "{{CLOVE}}",
 "value2": "0"
 }
 }

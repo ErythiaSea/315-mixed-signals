@@ -1093,4 +1093,4 @@ z_index = 2
 position = Vector2(1056.5, 551)
 scale = Vector2(0.175, 0.175)
 sprite_frames = SubResource("SpriteFrames_2w2fw")
-animation = &"0"
+animation = &"2"

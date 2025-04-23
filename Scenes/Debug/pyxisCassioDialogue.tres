@@ -181,12 +181,12 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 "options": {
 0: {
 "condition": {},
-"link": &"1_20",
+"link": &"4_7",
 "text": "Don't Bow"
 },
 1: {
 "condition": {},
-"link": &"1_21",
+"link": &"4_8",
 "text": "Bow"
 }
 },
@@ -318,12 +318,12 @@ Ahem, no worries I will be sure to punish him later.",
 "options": {
 0: {
 "condition": {},
-"link": &"1_11",
+"link": &"4_9",
 "text": "Yes"
 },
 1: {
 "condition": {},
-"link": "END",
+"link": &"4_10",
 "text": "No"
 }
 },
@@ -579,6 +579,13 @@ Please leave startid = err",
 "value": "1",
 "variable": "PLOVE"
 },
+"4_10": {
+"link": "END",
+"offset": Vector2(6840, 920),
+"type": 2,
+"value": "1",
+"variable": "CALOVE"
+},
 "4_2": {
 "link": &"1_3",
 "offset": Vector2(120, 40),
@@ -613,9 +620,34 @@ Please leave startid = err",
 "type": 0,
 "value": "0",
 "variable": "PLOVE"
+},
+"4_7": {
+"link": &"1_20",
+"offset": Vector2(4520, -480),
+"type": 2,
+"value": "1",
+"variable": "CALOVE"
+},
+"4_8": {
+"link": &"1_21",
+"offset": Vector2(4540, 120),
+"type": 1,
+"value": "1",
+"variable": "CALOVE"
+},
+"4_9": {
+"link": &"1_11",
+"offset": Vector2(6840, 340),
+"type": 1,
+"value": "1",
+"variable": "CALOVE"
 }
 }
 variables = {
+"CALOVE": {
+"type": 2,
+"value": 0
+},
 "PLOVE": {
 "type": 2,
 "value": 0

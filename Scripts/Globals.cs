@@ -133,7 +133,7 @@ public partial class Globals : Node
 
 	public int corvusLove = 0;
 	public int cassioLove= 0;
-	public int pyxisLov= 0;
+	public int pyxisLove = 0;
 	// Tutorial progress property to track which tutorial should next be shown to the player
 	public static GAMESTAGE TutorialProgress { get; set; } = GAMESTAGE.TRANSPONDING;
 
@@ -207,6 +207,7 @@ public partial class Globals : Node
 
 	public void updateAffection(String name, int value)
 	{
+		GD.Print(name, "  ", value);
 		//comment for fucking github tweak
 		switch (name)
 		{
@@ -217,7 +218,7 @@ public partial class Globals : Node
 				cassioLove = value;
 				break;
 			case "PLOVE":
-				pyxisLov = value;
+				pyxisLove = value;
 				break;
 		}
 	}
