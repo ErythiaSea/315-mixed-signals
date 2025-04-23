@@ -1,12 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://8utwt42ra3yd"]
+[gd_scene load_steps=16 format=3 uid="uid://8utwt42ra3yd"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Map/Scripts/MapScreen.cs" id="1_2j3x4"]
 [ext_resource type="Texture2D" uid="uid://b0udysporgxbf" path="res://Scenes/Minigames/Map/Sprites/Map_Background_01.png" id="2_5k782"]
 [ext_resource type="PackedScene" uid="uid://dehciflno8kex" path="res://Scenes/Minigames/Map/map_button.tscn" id="2_8d1fn"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_1ogjg"]
 [ext_resource type="Texture2D" uid="uid://b61u7xjxdv85f" path="res://Scenes/Minigames/Map/Sprites/Map_PondIcon_00.png" id="3_7rbmu"]
 [ext_resource type="PackedScene" uid="uid://dkjjkuqsupb4f" path="res://Scenes/Environments/LilypadPond/lilypad_environment.tscn" id="4_0s13x"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_ilsli"]
+[ext_resource type="Resource" uid="uid://wn1h5b8ptlga" path="res://Scenes/Debug/debugdialogue.tres" id="4_ysbx4"]
 [ext_resource type="Texture2D" uid="uid://b3bl82ittquc7" path="res://Scenes/Minigames/Map/Sprites/Map_SaltIcon_00.png" id="5_cum4x"]
 [ext_resource type="PackedScene" uid="uid://cefs7sceaq1yy" path="res://Scenes/Environments/SaltPillar/salt_environment.tscn" id="5_fwcyt"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_xpqg5"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="6_lmo2m"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_fipf4"]
+script = ExtResource("4_ilsli")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_btvjm"]
+script = ExtResource("5_xpqg5")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_neqne"]
+script = ExtResource("6_lmo2m")
 
 [node name="mapscreen" type="CanvasLayer"]
 script = ExtResource("1_2j3x4")
@@ -21,6 +35,16 @@ texture = ExtResource("2_5k782")
 [node name="Camera2D" type="Camera2D" parent="Background"]
 enabled = false
 
+[node name="DialogueBox" type="Panel" parent="."]
+visible = false
+offset_left = 644.0
+offset_top = 916.0
+offset_right = 1276.0
+offset_bottom = 1050.0
+script = ExtResource("3_1ogjg")
+data = ExtResource("4_ysbx4")
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_fipf4"), SubResource("RichTextEffect_btvjm"), SubResource("RichTextEffect_neqne")])
+
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -33,7 +57,7 @@ offset_bottom = 539.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SaltButton" parent="Buttons" instance=ExtResource("2_8d1fn")]
+[node name="SaltButton" parent="Buttons" node_paths=PackedStringArray("dialogueBox") instance=ExtResource("2_8d1fn")]
 layout_mode = 0
 offset_left = -1004.0
 offset_top = -852.0
@@ -43,9 +67,10 @@ focus_neighbor_right = NodePath("../PondButton")
 focus_neighbor_bottom = NodePath("../FossilButton")
 texture_normal = ExtResource("5_cum4x")
 mapToLoad = ExtResource("5_fwcyt")
-spawnPoint = 0
+requiredDay = 1
+dialogueBox = NodePath("../../DialogueBox")
 
-[node name="PondButton" parent="Buttons" instance=ExtResource("2_8d1fn")]
+[node name="PondButton" parent="Buttons" node_paths=PackedStringArray("dialogueBox") instance=ExtResource("2_8d1fn")]
 layout_mode = 0
 offset_left = -257.0
 offset_top = -663.0
@@ -55,9 +80,9 @@ focus_neighbor_left = NodePath("../SaltButton")
 focus_neighbor_bottom = NodePath("../FossilButton")
 texture_normal = ExtResource("3_7rbmu")
 mapToLoad = ExtResource("4_0s13x")
-spawnPoint = 0
+dialogueBox = NodePath("../../DialogueBox")
 
-[node name="FossilButton" parent="Buttons" instance=ExtResource("2_8d1fn")]
+[node name="FossilButton" parent="Buttons" node_paths=PackedStringArray("dialogueBox") instance=ExtResource("2_8d1fn")]
 layout_mode = 0
 offset_left = -1097.0
 offset_top = -530.0
@@ -67,3 +92,5 @@ focus_neighbor_left = NodePath("../SaltButton")
 focus_neighbor_top = NodePath("../SaltButton")
 focus_neighbor_right = NodePath("../PondButton")
 disabled = true
+requiredDay = 2
+dialogueBox = NodePath("../../DialogueBox")

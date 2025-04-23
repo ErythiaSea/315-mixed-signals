@@ -5,19 +5,18 @@ using System.Threading.Tasks;
 
 public partial class EndDay : Node2D
 {
-    [Export]
-    PackedScene endTransition;
+	[Export]
+	PackedScene endTransition;
 	[Export]
 	float transitionTime = 3f;
 
-    [ExportSubgroup("Dialogue")]
-    // the dialogue box to trigger
-    [Export]
-    Control dialogueBox;
+	[ExportSubgroup("Dialogue")]
+	// the dialogue box to trigger
+	[Export]
+	Control dialogueBox;
 
-    private EndTransitionScript currentTrans;
-    Player player;
-	Globals globalScript;
+	private EndTransitionScript currentTrans;
+	Player player;
 	bool isClosed = false;
 
 	private bool isDisplayed = false;
@@ -25,8 +24,9 @@ public partial class EndDay : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		player = GetTree().Root.GetChild(3).GetNode("Player") as Player;
-		globalScript = Globals.Instance;
+		isDisplayed = false;
+		dialogueBox.Connect("dialogue_ended", Callable.From(startTheDay));
+		player = GetTree().Root.GetChild(-1).GetNode("Player") as Player;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,27 +35,32 @@ public partial class EndDay : Node2D
 		if (currentTrans != null) isClosed = currentTrans.isClosed;
 		else return;
 
-		if (currentTrans.isDone)
+		if (currentTrans.isDone && !isDisplayed)
 		{
-           // dialogueBox.Call("start", "Sleep");
-        }
+		   dialogueBox.Call("start", "SLEEP");
+			isDisplayed = true;
+		}
 	}
 
 	public void EndTheDay()
 	{
 		GD.Print("called");
-		globalScript.NewDay();
 		player.SetMovementLock(true);
+		Globals.PushGamestate(GAMESTATE.CUTSCENE);
 
 		if (!isClosed)
 		{
-            CreateTransition();
-        }
+			CreateTransition();
+		}
 	}
 
 	public void startTheDay()
 	{
-		//open the circle back up
+		Globals.NewDay();
+		currentTrans.OpenCircle(0f, 1f, transitionTime);
+		player.SetMovementLock(false);
+		isClosed = false;
+		Globals.PopGamestate(GAMESTATE.CUTSCENE);
 	}
 
 	private void CreateTransition()
@@ -65,5 +70,5 @@ public partial class EndDay : Node2D
 		player.AddChild(transition);
 		currentTrans = transition;
 		transition.CloseCircle(1f, 0f, transitionTime);
-    }
+	}
 }

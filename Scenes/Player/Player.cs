@@ -43,12 +43,16 @@ public partial class Player : CharacterBody2D
 		interactArea = GetNode<Area2D>("InteractArea");
         playerCamera = GetNode<Camera2D>("PlayerCamera");
 		thisLevel = GetParent<Level>();
-        SignalBus.Instance.DialogueClosed += OnDialogueClosed;
+        SignalBus.Instance.DialogueEnded += OnDialogueEnded;
+
+		// in any scene that contains the player, overworld should be the base gamestate
+		Globals.SetGamestate(GAMESTATE.OVERWORLD);
     }
 
     public override void _Process(double delta)
     {
-		if (isMovementLocked) return;
+
+		if (Globals.Gamestate != GAMESTATE.OVERWORLD || isMovementLocked) return;
 
         interactSprite.Visible = false;
         foreach (Area2D area in interactArea.GetOverlappingAreas())
@@ -87,7 +91,7 @@ public partial class Player : CharacterBody2D
                         GD.Print("EMITTING PARTICLES");
                         GpuParticles2D particles = walkingParticles.Instantiate() as GpuParticles2D;
                         particles.Emitting = true;
-                        particles.GlobalPosition = new Vector2(GlobalPosition.X + (Mathf.Clamp(Velocity.X,-10,10)), GlobalPosition.Y + 140);
+                        particles.GlobalPosition = new Vector2(GlobalPosition.X + (Mathf.Clamp(Velocity.X,-10,10)), GlobalPosition.Y + 200);
 
 						ParticleProcessMaterial mat = particles.ProcessMaterial as ParticleProcessMaterial;
 						mat.Direction = new Vector3(-Mathf.Clamp(Velocity.X,-1,1) , mat.Direction.Y,0);
@@ -110,7 +114,7 @@ public partial class Player : CharacterBody2D
 	{
 		if (isAutoWalking) { AutoMovement(delta); return; }
 
-		if (isMovementLocked) {
+		if (isMovementLocked || Globals.Gamestate != GAMESTATE.OVERWORLD) {
 			playerSprite.Play("idle");
 			return;
 		}
@@ -134,6 +138,8 @@ public partial class Player : CharacterBody2D
 		if (xDirection != 0)
 		{
 			velocity.X = xDirection * movementSpeed;
+			
+			// todo: remove debug
 			if (Input.IsActionPressed("middle_mouse")) velocity.X *= 2;
 		}
 		else
@@ -171,6 +177,7 @@ public partial class Player : CharacterBody2D
 		MoveAndSlide();
 		if (Mathf.Abs(Position.X - autoWalkDestinationX) < 5.0f) { GD.Print("done"); isAutoWalking = false; }
 	}
+
 	public void ToggleLadder()
 	{
 		if (playerMovementState == MovementStates.FREE_MOVE) SetMovementState(MovementStates.LADDER_MOVE);
@@ -236,15 +243,10 @@ public partial class Player : CharacterBody2D
 	{
 		playerCamera.Offset = new Vector2(x, y);
 	}
-	void OnDialogueClosed()
+	void OnDialogueEnded()
 	{
 		GD.Print("dialogue");
 		isMovementLocked = false;
-	}
-
-	void OnMinigameClosed()
-	{
-
 	}
 }
 

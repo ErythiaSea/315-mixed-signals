@@ -14,6 +14,7 @@ public partial class TravelLoading : Node2D
 	private bool inTransition = false;
 
 	private WipeTransition transition;
+	public static PackedScene DestinationScene { get; set; }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -29,7 +30,7 @@ public partial class TravelLoading : Node2D
 			transitionTimer += (float)delta;
 			if (transitionTimer > transitionLength)
 			{
-                GetTree().ChangeSceneToPacked(Globals.Instance.nextMap);
+                GetTree().ChangeSceneToPacked(DestinationScene);
             }
 			return;
 		}

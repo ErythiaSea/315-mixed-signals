@@ -22,8 +22,6 @@ signal variable_changed(variable_name : String, value)
 ## The [DialogueBox] may hide based on the [member hide_on_dialogue_end] property.
 signal dialogue_ended
 
-var globalScript : Globals
-
 @export_group('Data')
 ## Contains the [param DialogueData] resource created using the Dialogue Nodes editor.
 @export var data : DialogueData :
@@ -276,6 +274,7 @@ func _on_dialogue_started(id : String):
 	dialogue_label.text = ''
 	show()
 	dialogue_started.emit(id)
+	SignalBus.DialogueStarted.emit()
 
 
 func _on_dialogue_processed(speaker : Variant, dialogue : String, options : Array[String]):
@@ -330,6 +329,7 @@ func _on_variable_changed(variable_name : String, value):
 func _on_dialogue_ended():
 	if hide_on_dialogue_end: hide()
 	dialogue_ended.emit()
+	SignalBus.DialogueEnded.emit()
 
 
 func _on_wait_finished():

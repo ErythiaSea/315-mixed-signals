@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://duhq4mg4vecmm"]
+[gd_scene load_steps=8 format=3 uid="uid://bkaw8n677l8pt"]
 
-[ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/DragParent.cs" id="1_mynxh"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/DragParent OUTDATED.cs" id="1_abl7h"]
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/Glow.gdshader" id="1_n36mt"]
 [ext_resource type="Texture2D" uid="uid://d1vrrq6aeuaqk" path="res://Scenes/Minigames/Constellation/Sprites/ConstellationLayer.png" id="2_4cuek"]
-[ext_resource type="PackedScene" uid="uid://cv381rpd6hc43" path="res://Scenes/Minigames/Constellation/DragProgressBar.tscn" id="4_u88qu"]
-[ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/NumberDisplay.cs" id="5_oh041"]
+[ext_resource type="PackedScene" uid="uid://t6cu2r4qu8q2" path="res://Scenes/Minigames/Constellation/DragProgressBar.tscn" id="4_u88qu"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/NumberDisplay OUTDATED.cs" id="5_d6mht"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ad0a8"]
 shader = ExtResource("1_n36mt")
@@ -102,7 +102,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_mynxh")
+script = ExtResource("1_abl7h")
 
 [node name="DragProgressBarRoot" parent="DragParent" instance=ExtResource("4_u88qu")]
 modulate = Color(1, 1, 1, 0.301961)
@@ -156,7 +156,9 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("5_oh041")
+script = ExtResource("5_d6mht")
+randMin = null
+randMax = null
 displaySpeed = 1.0
 
 [node name="Star1" type="Label" parent="NumberParent"]
@@ -262,5 +264,3 @@ offset_bottom = 140.0
 focus_neighbor_left = NodePath("../Star1")
 focus_neighbor_bottom = NodePath("../Star4")
 focus_mode = 2
-
-[connection signal="ConstellationCompletion" from="DragParent" to="NumberParent" method="DisplayNumbers"]

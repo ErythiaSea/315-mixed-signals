@@ -50,5 +50,3 @@ libraries = {
 "": SubResource("AnimationLibrary_0gevj")
 }
 autoplay = "MapButtonAnim"
-
-[connection signal="pressed" from="." to="." method="_OnPressed"]

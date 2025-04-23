@@ -4,21 +4,21 @@ using System;
 public partial class SignalBus : Node
 {
 	[Signal]
-	public delegate void MinigameClosedEventHandler();
+	public delegate void DialogueStartedEventHandler();
 
 	[Signal]
-	public delegate void DialogueClosedEventHandler();
+	public delegate void DialogueEndedEventHandler();
 
 	public static SignalBus Instance;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Instance = this;
-	}
+		if (Instance != null) 
+		{
+			return;
+		}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+		Instance = this;
 	}
 }

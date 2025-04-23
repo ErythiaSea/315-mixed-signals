@@ -231,5 +231,3 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_ot2jp")
 }
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="OnAnimationEnd"]

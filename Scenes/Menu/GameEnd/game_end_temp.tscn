@@ -1,0 +1,130 @@
+[gd_scene load_steps=16 format=3 uid="uid://b1rn4slyq4k2c"]
+
+[ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="1_12fph"]
+[ext_resource type="PackedScene" uid="uid://24enakva48q" path="res://Scenes/Environments/Objects/WipeTransition.tscn" id="2_0u2oc"]
+[ext_resource type="Script" path="res://Scenes/Menu/GameEnd/GameEndTemp.cs" id="2_6q7mw"]
+[ext_resource type="Texture2D" uid="uid://dk22piqob5pwn" path="res://Scenes/Menu/MainMenu/TitleScreen_Background_01.png" id="3_fu0nd"]
+[ext_resource type="Texture2D" uid="uid://pna3vlh72q07" path="res://Sprites/corvus.png" id="4_2r1g6"]
+[ext_resource type="Texture2D" uid="uid://j1jetk1c2twp" path="res://Sprites/pyxis.png" id="4_k0gpi"]
+[ext_resource type="Texture2D" uid="uid://c6umt1u0sc8gf" path="res://Sprites/cassiopeia.png" id="6_tawfy"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="8_k580x"]
+[ext_resource type="Resource" uid="uid://80lxrx40n1qm" path="res://Scenes/Menu/GameEnd/final_dialogue.tres" id="9_hmd2y"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="9_ipaju"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="10_sixsu"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="11_y5gog"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_s1hfk"]
+script = ExtResource("9_ipaju")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_xhl33"]
+script = ExtResource("10_sixsu")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_oyev6"]
+script = ExtResource("11_y5gog")
+
+[node name="GameEndTemp" type="Control" node_paths=PackedStringArray("corvusButton", "pyxisButton", "cassButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_12fph")
+script = ExtResource("2_6q7mw")
+corvusButton = NodePath("ButtonsContainer/Corvus")
+pyxisButton = NodePath("ButtonsContainer/Pyxis")
+cassButton = NodePath("ButtonsContainer/Cassiopeia")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fu0nd")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TempLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -117.0
+offset_top = 57.0
+offset_right = 118.0
+offset_bottom = 107.0
+grow_horizontal = 2
+text = "(Temporary) End Game Screen
+Choose your god!"
+horizontal_alignment = 1
+
+[node name="WipeTransition" parent="." instance=ExtResource("2_0u2oc")]
+visible = false
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 23.0
+offset_top = 266.0
+offset_right = 23.0
+offset_bottom = 916.0
+grow_horizontal = 2
+
+[node name="Corvus" type="TextureButton" parent="ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_2r1g6")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Pyxis" type="TextureButton" parent="ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_k0gpi")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Cassiopeia" type="TextureButton" parent="ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("6_tawfy")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="DialogueBox" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -644.0
+offset_top = -309.0
+offset_right = 651.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("8_k580x")
+data = ExtResource("9_hmd2y")
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_s1hfk"), SubResource("RichTextEffect_xhl33"), SubResource("RichTextEffect_oyev6")])
+
+[node name="MainMenuButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.5
+offset_top = -94.0
+offset_right = 187.5
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 180
+text = "Main Menu"

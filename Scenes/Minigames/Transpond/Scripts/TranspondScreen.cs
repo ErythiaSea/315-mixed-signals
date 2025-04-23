@@ -3,105 +3,118 @@ using System;
 
 public partial class TranspondScreen : BaseMinigame
 {
-    // The strings used for starting the dialogue for tutorials for each minigame.
-    [Export] String transpondTutorialStartID = "0";
-    [Export] String waveformTutorialStartID = "1";
-    [Export] String finalTutorialStartID = "2";
+	// The strings used for starting the dialogue for tutorials for each minigame.
+	[Export] String transpondTutorialStartID = "0";
+	[Export] String waveformTutorialStartID = "1";
+	[Export] String finalTutorialStartID = "2";
 
-    Radiotower radiotower;
-    WaveformGame waveform;
-    Sprite2D leftBox, rightBox;
-    Label radioLabel, waveLabel;
-    Panel dialogueBox;
-    TutorialButton tutorialButton;
+	Radiotower radiotower;
+	WaveformGame waveform;
+	Sprite2D leftBox, rightBox;
+	Label radioLabel, waveLabel;
+	Panel dialogueBox;
+	TutorialButton tutorialButton;
 
-    bool radiotowerComplete = false; bool waveformComplete = false;
-    double exitTimer = 0;
-    bool fade = false; float fadeTime = 0.0f;
-    bool dialogueCalled = false;
+	bool radiotowerComplete = false; bool waveformComplete = false;
+	double exitTimer = 0;
+	bool transitionedBetweenMinigames = false; float fadeTime = 0.0f;
+	bool dialogueCalled = false;
 
-    Globals globalScript;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        base._Ready();
-        globalScript = GetTree().Root.GetChild(1) as Globals;
+		base._Ready();
 
-        radiotower = GetNode<Radiotower>("radiotowerRoot");
-        waveform = GetNode<WaveformGame>("waveformRoot");
-        leftBox = GetNode<Sprite2D>("LeftBox");
-        rightBox = GetNode<Sprite2D>("RightBox");
-        radioLabel = GetNode<Label>("ControlsRadiotower");
-        waveLabel = GetNode<Label>("ControlsWaveform");
-        tutorialButton = GetNode<TutorialButton>("TutorialButton");
+		radiotower = GetNode<Radiotower>("radiotowerRoot");
+		waveform = GetNode<WaveformGame>("waveformRoot");
+		leftBox = GetNode<Sprite2D>("LeftBox");
+		rightBox = GetNode<Sprite2D>("RightBox");
+		radioLabel = GetNode<Label>("ControlsRadiotower");
+		waveLabel = GetNode<Label>("ControlsWaveform");
+		tutorialButton = GetNode<TutorialButton>("TutorialButton");
 
-        // temp hopefully
-        dialogueBox = GetNode<Panel>("DialogueBox");
+		// temp hopefully
+		dialogueBox = GetNode<Panel>("DialogueBox");
 
-        CheckStage();
-    }
+		CheckStage();
+	}
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-        if (globalScript.gameState.stage == GAMESTAGE.WAVEFORM)
-        {
-            waveLabel.Visible = true; radioLabel.Visible = false;
-            fade = true;
-            if (Globals.Instance.tutorialProgress <= GAMESTAGE.WAVEFORM)
-            {
-                dialogueBox.Call("start", waveformTutorialStartID);
-                Globals.Instance.tutorialProgress = GAMESTAGE.CONSTELLATION;
-                tutorialButton.startID = waveformTutorialStartID;
-            }
-        }
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		base._Process(delta);
 
-		if (fade)
+		// Happens once, when the transpond minigame is completed
+		if (Globals.ProgressionStage == GAMESTAGE.WAVEFORM && !transitionedBetweenMinigames)
 		{
-			fadeTime += (float)delta;
-			if (fadeTime >= 0.85f) { fade = false; fadeTime = 0.85f; }
-			leftBox.Modulate = new Color(Colors.Black, fadeTime);
-			rightBox.Modulate = new Color(Colors.Black, 0.85f - fadeTime);
+			transitionedBetweenMinigames = true;
+			waveLabel.Visible = true; radioLabel.Visible = false;
+
+			// Fade the left minigame out of view, and the right one into view
+			Tween tween = CreateTween();
+			tween.TweenProperty(leftBox, "modulate", new Color(Colors.Black, 0.85f), 1);
+			tween.TweenProperty(rightBox, "modulate", new Color(Colors.Black, 0.0f), 1);
+
+			// Call waveform tutorial dialogue if this is the first time the player has reached it
+			if (Globals.TutorialProgress <= GAMESTAGE.WAVEFORM)
+			{
+				Globals.PopGamestate(GAMESTATE.TRANSPOND);
+				Globals.PushGamestate(GAMESTATE.WAVEFORM);
+
+				dialogueBox.Call("start", waveformTutorialStartID);
+				Globals.TutorialProgress = GAMESTAGE.CONSTELLATION;
+				tutorialButton.startID = waveformTutorialStartID;
+			}
 		}
 
-        if (globalScript.gameState.stage > GAMESTAGE.WAVEFORM)
-        {
-            //Have some indication of winning!
-            exitTimer += delta;
-            if (exitTimer > 2.5) Close();
-            return;
-        }
+		if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
+		{
+			//Have some indication of winning!
+			exitTimer += delta;
+			if (exitTimer > 2.5) Close();
+			return;
+		}
 
-        radiotower.gameActive = !dialogueBox.Visible;
-        waveform.gameActive = !dialogueBox.Visible;
-    }  
+		// hacky code and will be removed in favour of Globals::Gamestate
+		radiotower.gameActive = !dialogueBox.Visible;
+		waveform.gameActive = !dialogueBox.Visible;
+	}  
 
-    private void CheckStage()
+	private void CheckStage()
+	{
+		switch (Globals.ProgressionStage)
+		{
+			case GAMESTAGE.TRANSPONDING:
+				Globals.PushGamestate(GAMESTATE.TRANSPOND);
+
+				// Show tutorial if this is the first time entering this minigame
+				if (Globals.TutorialProgress <= GAMESTAGE.TRANSPONDING)
+				{
+					dialogueBox.Call("start", transpondTutorialStartID);
+					Globals.TutorialProgress = GAMESTAGE.WAVEFORM;
+					tutorialButton.startID = transpondTutorialStartID;
+				}
+				break;
+
+			case GAMESTAGE.WAVEFORM:
+				Globals.PushGamestate(GAMESTATE.WAVEFORM);
+				radiotower.CompletedPivots();
+				waveLabel.Visible = true; radioLabel.Visible = false;
+				leftBox.Visible = true; rightBox.Visible = false;
+				tutorialButton.startID = waveformTutorialStartID;
+				transitionedBetweenMinigames = true;
+				break;
+
+			default:
+				radiotower.CompletedPivots();
+				break;
+		}
+	}
+
+    protected override void QuitMinigame()
     {
-        switch (globalScript.gameState.stage)
-        {
-            case GAMESTAGE.TRANSPONDING:
-                GD.Print("trans");
-                if (Globals.Instance.tutorialProgress <= GAMESTAGE.TRANSPONDING)
-                {
-                    dialogueBox.Call("start", transpondTutorialStartID);
-                    Globals.Instance.tutorialProgress = GAMESTAGE.WAVEFORM;
-                    tutorialButton.startID = transpondTutorialStartID;
-                }
-                break;
-            case GAMESTAGE.WAVEFORM:
-                GD.Print("wave");
-                radiotower.CompletedPivots();
-                waveLabel.Visible = true; radioLabel.Visible = false;
-                fade = true;
-                tutorialButton.startID = waveformTutorialStartID;
-                break;
-            default:
-                GD.Print("Default");
-                radiotower.CompletedPivots();
-                break;
-        }
+		Globals.PopGamestate();
+        base.QuitMinigame();
     }
 }

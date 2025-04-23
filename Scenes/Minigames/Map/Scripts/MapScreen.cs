@@ -7,7 +7,7 @@ using static Godot.Tween;
 public partial class MapScreen : BaseMinigame
 {
 	Array<MapButton> buttonNodes = new Array<MapButton>{};
-	bool p = false;
+	bool goingToTravel = false;
 
 	PackedScene travelLoading;
 	private const string loadingPath = "res://Scenes/Loading/travel_loading.tscn";
@@ -17,12 +17,14 @@ public partial class MapScreen : BaseMinigame
 	{
 		base._Ready();
 
+		Globals.PushGamestate(GAMESTATE.MAP);
+
         bool focusAssigned = false;
         foreach (Node child in GetNode("Buttons").GetChildren())
 		{
 			MapButton button = child as MapButton;
 			buttonNodes.Add(button);
-            button.Pressed += OnButtonPress;
+            button.Pressed += (() => OnButtonPress(button));
 
             // assign focus to the first enabled button
             if (!button.Disabled && focusAssigned) { 
@@ -40,19 +42,33 @@ public partial class MapScreen : BaseMinigame
 		base._Process(delta);
 	}
 
-	void OnButtonPress()
+	void OnButtonPress(MapButton Cbutton)
 	{
-		foreach (MapButton button in buttonNodes) {
-			button.Disabled = true;
+		if (Cbutton.requiredDay == Globals.Day)
+		{
+            foreach (MapButton button in buttonNodes)
+            {
+                button.Disabled = true;
+            }
+            player.EmitSignal("Transition", 2, 1.0f);
+            exitTransition = TRANSITION.LEFTtoRIGHT;
+            ResourceLoader.LoadThreadedRequest(loadingPath);
+			goingToTravel = true;
+            Close(); // this function is now named poorly due to this unforseen use case - erf
         }
-		player.EmitSignal("Transition", 2, 1.0f);
-		exitTransition = TRANSITION.LEFTtoRIGHT;
-		ResourceLoader.LoadThreadedRequest(loadingPath);
-		Close(); // this function is now named poorly due to this unforseen use case - erf
+		
     }
 
     protected override void OnTransitionFinish()
     {
-		GetTree().ChangeSceneToPacked((PackedScene)ResourceLoader.LoadThreadedGet(loadingPath));
-    }
+		if (goingToTravel)
+		{
+			GetTree().ChangeSceneToPacked((PackedScene)ResourceLoader.LoadThreadedGet(loadingPath));
+			Globals.SetGamestate(GAMESTATE.CUTSCENE);
+		}
+		else
+		{
+			Globals.PopGamestate(GAMESTATE.MAP);
+		}
+	}
 }

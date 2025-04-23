@@ -11,41 +11,39 @@ public partial class StarsParent : Node2D
 
 	[Export]
 	int randMin = -4;
-
 	[Export]
 	int randMax = 4;
-
 	[Export]
 	public float displaySpeed = 0.4f;
 
-
 	public bool hasSignalled = false;
-	// Called when the node enters the scene tree for the first time.
 
 	private Godot.Collections.Array<Label> starLabels;
-
 	private Godot.Collections.Array<StarNode> stars;
 
-	public override void _Ready()
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
 		stars = GetStars();
 		starLabels = GetLabels();
-		GD.Print(stars.Count);
-		DisplayNumbers();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-
+		//Checks if the constellation has been completed, shows the whole constellation 
+		//zoomed out if true
 		if (IsConstellationComplete() && !hasSignalled)
 		{
-			EmitSignal(SignalName.ConstellationCompletion, GetCenterStar());
+			GD.Print("Emitting signal...");
+			EmitSignal(SignalName.ConstellationCompletion, GetConstellationCenter());
 			hasSignalled = true;
-		}
-			  
+		}	  
 	}
-	public void DisplayNumbers()
+
+	//Generates random numbers within a certain range and assigns them to 
+	//a textbox which displays on star found
+	public void GenerateNumbers()
 	{
 		Godot.Collections.Array<int> randNumArray = RandomNumbers();
 
@@ -57,6 +55,8 @@ public partial class StarsParent : Node2D
 		}
 	}
 
+	//returns an array of numbers which all add up to a number thats not 0 
+	//and between -4 and 4
 	private Godot.Collections.Array<int> RandomNumbers()
 	{
 		Godot.Collections.Array<int> randNumArray = new Godot.Collections.Array<int>();
@@ -74,14 +74,13 @@ public partial class StarsParent : Node2D
 
 		} while (randNumArray.Sum() == 0 && randNumArray.Sum() < -4 && randNumArray.Sum() > 4);
 
-		GD.Print("Valid random numbers");
-
 		//updates global variable for cipher key in translation mechanic
-		Globals.Instance.cipherKey = randNumArray.Sum();
+		TranslationCanvasUI.CipherKey = randNumArray.Sum();
 		return randNumArray;
 
 	}
 	
+	//checks if all the stars completed then returns true if they are
 	private bool IsConstellationComplete()
 	{
 		int starsCompleted = 0;
@@ -98,6 +97,9 @@ public partial class StarsParent : Node2D
 
 		return false;
 	}
+	
+	//gathers all labels attached to each star and stores them 
+	//in an array
 	private Godot.Collections.Array<Label> GetLabels()
 	{
 		Godot.Collections.Array<Label> lbls = new Godot.Collections.Array<Label>();
@@ -111,6 +113,8 @@ public partial class StarsParent : Node2D
 		return lbls;
 	}
 
+	// gathers all stars that are children of this parent,
+	//stores them in array
 	private Godot.Collections.Array<StarNode> GetStars()
 	{
 		Godot.Collections.Array<StarNode> strs = new Godot.Collections.Array<StarNode>();
@@ -121,19 +125,24 @@ public partial class StarsParent : Node2D
 
 		return strs;
 	}
-	private Vector2 GetCenterStar()
+
+	// returns the center of the constellation for
+	// the zoom out upon completeion of the constellation
+	private Vector2 GetConstellationCenter()
 	{
-		int bestCount = 0;
-		StarNode bestStar = null;
-		for (int i = 0; i < stars.Count; i++)
+		float minX, maxX, minY, maxY;
+		minX = maxX = stars[0].Position.X;
+		minY = maxY = stars[0].Position.Y;
+
+		for (int i = 1; i < stars.Count; i++)
 		{
-			if (stars[i].adjacentStars.Count > bestCount)
-			{
-				bestCount = stars[i].adjacentStars.Count;
-				bestStar = stars[i];
-			}
+			Vector2 starPos = stars[i].Position;
+			minX = Mathf.Min(minX, starPos.X);
+			minY = Mathf.Min(minY, starPos.Y);
+			maxX = Mathf.Max(maxX, starPos.X);
+			maxY = Mathf.Max(maxY, starPos.Y);
 		}
 
-		return bestStar.GlobalPosition;
+		return new Vector2(minX + 0.5f*(maxX - minX), minY + 0.5f*(maxY - minY));
 	}
 }

@@ -1,9 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://1ims8y73xe5o"]
+[gd_scene load_steps=20 format=3 uid="uid://1ims8y73xe5o"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Translation/TranslationCanvasUI.cs" id="1_6ebpw"]
 [ext_resource type="FontFile" uid="uid://m3h38nqxkg0o" path="res://Fonts/Monotone_Celestial_V1.otf" id="2_w7m10"]
+[ext_resource type="Resource" uid="uid://cwyp32gw5vyln" path="res://Dialogue/CorvusDialogue.tres" id="3_me5v8"]
 [ext_resource type="FontFile" uid="uid://c6lkoenvhuw42" path="res://Fonts/Monotone_SB_V1.otf" id="3_tm1gv"]
 [ext_resource type="Texture2D" uid="uid://duka3m53mxwoc" path="res://Scenes/Minigames/Translation/Sprites/TranslationScreen_Whole.png" id="4_stibd"]
+[ext_resource type="Resource" uid="uid://bsh8hh8w8fw2m" path="res://Scenes/Debug/pyxisCassioDialogue.tres" id="4_us2el"]
 [ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="5_38cia"]
 [ext_resource type="Texture2D" uid="uid://bxsiv7gby07ys" path="res://Scenes/Minigames/Translation/Sprites/check-mark-button_2705.webp" id="5_488n3"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="6_egdpe"]
@@ -30,11 +32,13 @@ script = ExtResource("11_vjohv")
 script = ExtResource("1_6ebpw")
 messageBox = NodePath("TextVBox/VBoxContainer/MessageTextBox")
 answerBox = NodePath("TextVBox/VBoxContainer/AnswerBox")
-celHint = NodePath("HintVBox/HBoxContainer/CelestialChar")
-engHint = NodePath("HintVBox/HBoxContainer/EnglishChar")
+celHint = NodePath("HBoxContainer/BoxContainer/CelestialChar1")
+engHint = NodePath("HBoxContainer/BoxContainer/EnglishChar1")
 cipherDisplay = NodePath("CipherDisplay")
 englishFont = ExtResource("3_tm1gv")
 winInd = NodePath("WinIndicator")
+Day1Dialogue = ExtResource("3_me5v8")
+Day2Dialogue = ExtResource("4_us2el")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_right = 1920.0
@@ -72,9 +76,121 @@ scroll_active = false
 [node name="AnswerBox" type="TextEdit" parent="TextVBox/VBoxContainer"]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
+focus_neighbor_right = NodePath("../../../CheckAnswerButton")
+focus_neighbor_bottom = NodePath("../../../CheckAnswerButton")
 theme_override_fonts/font = ExtResource("3_tm1gv")
 theme_override_font_sizes/font_size = 100
 text = "awdfasdf"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 600)
+offset_left = 83.0
+offset_top = 125.0
+offset_right = 454.0
+offset_bottom = 967.0
+theme_override_constants/separation = 30
+
+[node name="BoxContainer" type="BoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="CelestialChar1" type="RichTextLabel" parent="HBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(35, 600)
+layout_mode = 2
+theme_override_constants/line_separation = -40
+theme_override_fonts/normal_font = ExtResource("2_w7m10")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]a
+b
+c
+d
+e
+f
+g
+h
+i
+j
+k
+l
+m"
+fit_content = true
+scroll_active = false
+
+[node name="EnglishChar1" type="RichTextLabel" parent="HBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(80, 600)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/line_separation = -40
+theme_override_fonts/normal_font = ExtResource("3_tm1gv")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]= A
+= B
+= C
+= D
+= E
+= F
+= G
+= H
+= I
+= J
+= K
+= L
+= M
+
+"
+
+[node name="WhiteLine" type="ColorRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="BoxContainer2" type="BoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="CelestialChar2" type="RichTextLabel" parent="HBoxContainer/BoxContainer2"]
+custom_minimum_size = Vector2(35, 600)
+layout_mode = 2
+theme_override_constants/line_separation = -40
+theme_override_fonts/normal_font = ExtResource("2_w7m10")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]n
+o
+p
+q
+r
+s
+t
+u
+v
+w
+x
+y
+z"
+
+[node name="EnglishChar2" type="RichTextLabel" parent="HBoxContainer/BoxContainer2"]
+custom_minimum_size = Vector2(80, 600)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/line_separation = -40
+theme_override_fonts/normal_font = ExtResource("3_tm1gv")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]= N
+= O
+= P
+= Q
+= R
+= S
+= T
+= U
+= V
+= W
+= X
+= Y
+= Z
+
+"
 
 [node name="HintVBox" type="VBoxContainer" parent="."]
 offset_left = 117.0
@@ -82,40 +198,13 @@ offset_top = 87.0
 offset_right = 467.0
 offset_bottom = 687.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HintVBox"]
-custom_minimum_size = Vector2(0, 600)
-layout_mode = 2
-theme_override_constants/separation = 50
-
-[node name="CelestialChar" type="RichTextLabel" parent="HintVBox/HBoxContainer"]
-custom_minimum_size = Vector2(150, 600)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_w7m10")
-theme_override_font_sizes/normal_font_size = 100
-bbcode_enabled = true
-text = "[center]
-e
-e
-e"
-
-[node name="EnglishChar" type="RichTextLabel" parent="HintVBox/HBoxContainer"]
-custom_minimum_size = Vector2(150, 600)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("3_tm1gv")
-theme_override_font_sizes/normal_font_size = 100
-bbcode_enabled = true
-text = "[center]
-e
-e
-e
-
-"
-
 [node name="CheckAnswerButton" type="Button" parent="."]
 offset_left = 1691.0
 offset_top = 925.0
 offset_right = 1843.0
 offset_bottom = 1004.0
+focus_neighbor_left = NodePath("../TextVBox/VBoxContainer/AnswerBox")
+focus_neighbor_top = NodePath("../TextVBox/VBoxContainer/AnswerBox")
 theme = ExtResource("5_38cia")
 theme_override_font_sizes/font_size = 75
 text = "Confirm"
@@ -131,6 +220,7 @@ bbcode_enabled = true
 scroll_active = false
 
 [node name="WinIndicator" type="TextureRect" parent="."]
+visible = false
 offset_left = 73.0
 offset_top = 743.0
 offset_right = 585.0
@@ -165,4 +255,3 @@ startID = "tut"
 dialogueBox = NodePath("../DialogueBox")
 
 [connection signal="button_down" from="CheckAnswerButton" to="." method="AnswerButton"]
-[connection signal="dialogue_ended" from="DialogueBox" to="." method="OnDialogueEnd"]
