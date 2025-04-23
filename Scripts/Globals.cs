@@ -27,10 +27,18 @@ public enum GAMESTATE
 	CONSTELLATION = 5,
 	TRANSLATION = 6,
 	DIALOGUE = 7,
-	NONE = 8
+	NONE = 8,
+	MAP = 9,
+	PHOTOBOARD = 10
 }
 
-[Tool]
+// i might need these for control state text later - eryth
+[Flags]
+public enum CONTEXTFLAGS
+{
+	CAN_INTERACT
+}
+
 public partial class Globals : Node
 {
 	// The instance of the Globals node that does GodotObject things a static
@@ -70,7 +78,6 @@ public partial class Globals : Node
 			_gamestate.Clear();
 			_gamestate.Push(value);
 			Instance.EmitSignal(SignalName.GamestateChange);
-			Instance.UpdateControlsText();
 		}
 	}
 
@@ -97,6 +104,7 @@ public partial class Globals : Node
 		if (state == GAMESTATE.NONE)
 		{
 			GD.Print(_gamestate.Pop(), " was popped from the stack.");
+			Instance.EmitSignal(SignalName.GamestateChange);
 			return;
 		}
 
@@ -143,7 +151,7 @@ public partial class Globals : Node
 	{
 		if (Engine.IsEditorHint())
 		{
-			GetNode<CanvasLayer>("GlobalsCanvasLayer").Visible = false;
+			//GetNode<CanvasLayer>("GlobalsCanvasLayer").Visible = false;
 			return;
 		}
 
@@ -194,8 +202,41 @@ public partial class Globals : Node
 		GD.Print("Globals::NewDay complete");
 	}
 
-	private void UpdateControlsText()
+	static public void UpdateControlsText()
 	{
-		//controlsText.Text = stateControlText[(int)Gamestate];
+		GD.Print("updating controls text...");
+		String newText = "";
+		
+		foreach (InputStruct input in InputManager.StateInputDict[Gamestate])
+		{
+			// ensure that the input matches our current control scheme
+			if ((input.inputMethod == INPUT_METHODS.KEYBOARD_CONTROLLER)
+				|| (input.inputMethod == INPUT_METHODS.KEYBOARD_ONLY && InputManager.IsController == false)
+				|| (input.inputMethod == INPUT_METHODS.CONTROLLER_ONLY && InputManager.IsController))
+			{
+				newText += GetInputGlyphImage(input.glyphName) + input.inputText + "   ";
+			}
+		}
+		Instance.controlsText.Text = newText;
+    }
+
+	static private string GetInputGlyphImage(string name)
+	{
+		const string keyFolder = "res://Sprites/InputKey/";
+		string ctrlSuffix = "";
+		switch (InputManager.ControllerType)
+		{
+			case GAMEPAD.KEYBOARD:
+				ctrlSuffix = "_kb";
+				break;
+			case GAMEPAD.PS:
+                ctrlSuffix = "_ps";
+                break;
+			default:
+                ctrlSuffix = "_ps";
+                break;
+        }
+
+		return "[img]" + keyFolder + name + ctrlSuffix + ".png[/img]";
 	}
 }

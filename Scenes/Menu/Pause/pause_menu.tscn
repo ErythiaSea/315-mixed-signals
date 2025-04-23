@@ -44,6 +44,7 @@ text = "Paused..."
 label_settings = SubResource("LabelSettings_a27i8")
 
 [node name="ButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 583.0
 offset_top = 431.0
 offset_right = 1359.0

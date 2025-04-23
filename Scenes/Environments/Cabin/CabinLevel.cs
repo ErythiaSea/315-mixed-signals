@@ -9,6 +9,9 @@ public partial class CabinLevel : Level
 	[Export]
 	Control dialogueBox;
 
+	[Export]
+	Control dialogueBubble;
+
 	// the start id for post-translation dialogue
 	[Export]
 	String translationEndStartID = "translationend";
@@ -32,15 +35,11 @@ public partial class CabinLevel : Level
 	{
 		base._Ready();
 		endDay = GetNode<EndDay>("EndDay");
-        Globals.Instance.DayChanged += OnNewDay;
 
-		Globals.Instance.ProgressionChange += () =>
-		{
-			if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
-			{
-				GetNode<InteractBox>("TranspondBox").active = false;
-			}
-		};
+        Globals.Instance.DayChanged += OnNewDay;
+		Globals.Instance.ProgressionChange += OnGamestageIncrease;
+
+		GetNode<InteractBox>("BedBox").Interacted += endDay.EndTheDay;
 	}
 
     private void OnNewDay()
@@ -65,7 +64,7 @@ public partial class CabinLevel : Level
 		GD.Print("translation complete");
 		if (Globals.ProgressionStage == GAMESTAGE.END)
 		{
-			dialogueBox.Call("start", translationEndStartID);
+			dialogueBubble.Call("start", translationEndStartID);
 		}
 	}
 
@@ -75,7 +74,23 @@ public partial class CabinLevel : Level
 		if (Globals.ProgressionStage == GAMESTAGE.BEGIN)
 		{
 			Globals.ProgressionStage = GAMESTAGE.TRANSPONDING;
-			dialogueBox.Call("start", photoboardCloseStartID);
+			dialogueBubble.Call("start", photoboardCloseStartID);
 		}
 	}
+
+	private void OnGamestageIncrease()
+	{
+        if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
+        {
+            GetNode<InteractBox>("TranspondBox").active = false;
+        }
+    }
+
+	// Disconnect custom signals as they won't be automatically disconnected
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        Globals.Instance.ProgressionChange -= OnGamestageIncrease;
+        Globals.Instance.DayChanged -= OnNewDay;
+    }
 }
