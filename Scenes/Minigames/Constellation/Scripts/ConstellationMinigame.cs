@@ -117,9 +117,12 @@ public partial class ConstellationMinigame : BaseMinigame
 		PackedScene cabin = (PackedScene)ResourceLoader.LoadThreadedGet(outdoorCabinPath);
 		if (cabin == null) return;
 	
-			// i should be shot
-			player.EmitSignal(Player.SignalName.Transition, (int)TRANSITION.TOPtoBOTTOM, 1.0f);
-			GetTree().ChangeSceneToPacked(cabin);
-		
+		// i should be shot
+		// this is a hack fix for the transition animation not playing when the next scene loads, because the
+		// scene loads after the transition finish signal is emitted, but also after the next transition starts
+		// playing. this sets the right transition state (bottom to top reverse) for the newly loaded scene
+		// we should have just made this a singleton - eryth
+		player.EmitSignal(Player.SignalName.Transition, (int)TRANSITION.TOPtoBOTTOM, 1.0f);
+		GetTree().ChangeSceneToPacked(cabin);
 	}
 }

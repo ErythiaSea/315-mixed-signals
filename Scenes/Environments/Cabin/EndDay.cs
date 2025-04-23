@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 
 public partial class EndDay : CanvasLayer
 {
-    [Export]
-    PackedScene endTransition;
+	[Export]
+	PackedScene endTransition;
 	[Export]
 	float transitionTime = 3f;
 
-    [ExportSubgroup("Dialogue")]
-    // the dialogue box to trigger
-    [Export]
-    Control dialogueBox;
+	[ExportSubgroup("Dialogue")]
+	// the dialogue box to trigger
+	[Export]
+	Control dialogueBox;
 
 	private AnimatedSprite2D calenderAnim;
 
@@ -27,8 +27,8 @@ public partial class EndDay : CanvasLayer
 	public override void _Ready()
 	{
 		isDisplayed = false;
-        dialogueBox.Connect("dialogue_ended", Callable.From(startTheDay));
-        player = GetTree().Root.GetChild(3).GetNode("Player") as Player;
+		dialogueBox.Connect("dialogue_ended", Callable.From(startTheDay));
+		player = GetTree().Root.GetChild(-1).GetNode("Player") as Player;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,11 +49,12 @@ public partial class EndDay : CanvasLayer
 	{
 		GD.Print("called");
 		player.SetMovementLock(true);
+		Globals.PushGamestate(GAMESTATE.CUTSCENE);
 
 		if (!isClosed)
 		{
-            CreateTransition();
-        }
+			CreateTransition();
+		}
 	}
 
 	public void startTheDay()
@@ -62,6 +63,7 @@ public partial class EndDay : CanvasLayer
 		currentTrans.OpenCircle(0f, 1f, transitionTime);
 		player.SetMovementLock(false);
 		isClosed = false;
+		Globals.PopGamestate(GAMESTATE.CUTSCENE);
 	}
 
 	private void CreateTransition()
