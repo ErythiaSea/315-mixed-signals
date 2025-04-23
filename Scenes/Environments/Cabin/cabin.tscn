@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/CabinLevel.cs" id="1_2hyee"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_vrtq2"]
-[ext_resource type="Texture2D" uid="uid://bvndiooefnwcn" path="res://Scenes/Environments/Cabin/Sprites/Sky_Render.png" id="3_bkt4p"]
+[ext_resource type="Texture2D" uid="uid://dypggkcy1yntw" path="res://Scenes/Environments/Cabin/Sprites/Cabin_WindowSky.png" id="3_sas5u"]
 [ext_resource type="Script" path="res://Scenes/Environments/Objects/scripts/InteractBox.cs" id="4_r0utk"]
 [ext_resource type="Texture2D" uid="uid://c7n4exllur0qf" path="res://Scenes/Environments/Cabin/Sprites/Cabin_WallCutout.png" id="4_wjyar"]
 [ext_resource type="Texture2D" uid="uid://bn181y2cglkh8" path="res://Scenes/Environments/Cabin/Sprites/Cabin_WallMounts.png" id="5_6d5l0"]
@@ -188,15 +188,15 @@ radius = 32.249
 
 [node name="Cabin" type="Node2D" node_paths=PackedStringArray("dialogueBox", "exitInteractBox", "elevatorButtonBox")]
 script = ExtResource("1_2hyee")
-dialogueBox = NodePath("SleepDialogueBox")
 translationEndStartID = "TRANSLATION_END"
 photoboardCloseStartID = "PHOTO_CLOSE"
-exitInteractBox = NodePath("LevelChange")
-elevatorButtonBox = NodePath("Elevator/ElevatorButton")
 spawnData = Array[Object]([SubResource("Resource_82qql")])
 OffsetY = -240.0
 rightLimit = 1920
 bottomLimit = 4954
+dialogueBox = NodePath("SleepDialogueBox")
+exitInteractBox = NodePath("LevelChange")
+elevatorButtonBox = NodePath("Elevator/ElevatorButton")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8vdl8")
@@ -279,9 +279,9 @@ texture_scale = 3.96
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Sky" type="Sprite2D" parent="Sprites"]
-position = Vector2(960, 613)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_bkt4p")
+position = Vector2(960, 478.34)
+scale = Vector2(0.475, 0.475)
+texture = ExtResource("3_sas5u")
 
 [node name="Wall" type="Sprite2D" parent="Sprites"]
 position = Vector2(960, 541.5)

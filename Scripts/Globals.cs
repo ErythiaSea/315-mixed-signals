@@ -67,7 +67,7 @@ public partial class Globals : Node
 	public delegate void GamestateChangeEventHandler();
 	private static Stack<GAMESTATE> _gamestate = new();
 
-    public static GAMESTATE Gamestate
+	public static GAMESTATE Gamestate
 	{
 		get
 		{
@@ -172,18 +172,18 @@ public partial class Globals : Node
 		InitialGameSetUp();
 
 		pauseMenu = ResourceLoader.Load<PackedScene>("res://Scenes/Menu/Pause/pause_menu.tscn").Instantiate<PauseMenu>();
-        pauseMenu.Hide();
-        GetNode<Control>("GlobalsCanvasLayer/GlobalControl").AddChild(pauseMenu);
-    }
+		pauseMenu.Hide();
+		GetNode<Control>("GlobalsCanvasLayer/GlobalControl").AddChild(pauseMenu);
+	}
 
-    public static void PauseGame()
-    {
+	public static void PauseGame()
+	{
 		Instance.pauseMenu.Show();
 		Instance.GetTree().Paused = true;
 		GD.Print("Game paused, current gamestate: ", Gamestate);
-    }
+	}
 
-    public static void InitialGameSetUp()
+	public static void InitialGameSetUp()
 	{
 		Day = 0;
 		ProgressionStage = GAMESTAGE.BEGIN;
@@ -204,8 +204,8 @@ public partial class Globals : Node
 		GD.Print("Globals::NewDay complete");
 	}
 
-    public override void _Input(InputEvent @event)
-    {
+	public override void _Input(InputEvent @event)
+	{
 		if (@event is InputEventKey || @event is InputEventMouseButton)
 		{
 			isController = false;
@@ -214,10 +214,10 @@ public partial class Globals : Node
 		{
 			isController = true;
 
-            string joyName = Input.GetJoyName(Input.GetConnectedJoypads()[0]);
+			string joyName = Input.GetJoyName(Input.GetConnectedJoypads()[0]);
 		
-            switch (joyName[0])
-            {
+			switch (joyName[0])
+			{
 				case 'P':
 					controllerType = GAMEPAD.PS;
 					break;
@@ -230,16 +230,16 @@ public partial class Globals : Node
 				default:
 					controllerType = GAMEPAD.OTHER;
 					break;
-            }
+			}
 
-        }
+		}
 
 		GD.Print("Controller: " + isController);
-    }
+	}
 
-    private void UpdateControlsText()
-    {
-       //controlsText.Text = stateControlText[(int)Gamestate];
-    }
+	private void UpdateControlsText()
+	{
+	   //controlsText.Text = stateControlText[(int)Gamestate];
+	}
 
 }

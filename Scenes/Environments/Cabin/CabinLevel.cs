@@ -27,12 +27,12 @@ public partial class CabinLevel : Level
 
 	EndDay endDay;
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
 	{
 		base._Ready();
 		endDay = GetNode<EndDay>("EndDay");
-        Globals.Instance.DayChanged += OnNewDay;
+		Globals.Instance.DayChanged += OnNewDay;
 
 		Globals.Instance.ProgressionChange += () =>
 		{
@@ -43,19 +43,19 @@ public partial class CabinLevel : Level
 		};
 	}
 
-    private void OnNewDay()
-    {
-        if (Globals.Day == 2)
+	private void OnNewDay()
+	{
+		if (Globals.Day == 2)
 		{
 			GD.Print("Final day, so swapping the level change scene and disabling elevator...");
 			exitInteractBox.ChangeLoadedScene(endScreenPath);
 			elevatorButtonBox.QueueFree(); // nuclear approach is, sometimes, the best
 			elevatorButtonBox = null;
 		}
-    }
+	}
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
 	{
 		base._Process(delta);
 	}

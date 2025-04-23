@@ -34,7 +34,7 @@ public partial class TranslationCanvasUI : BaseMinigame
 	[Export(PropertyHint.ResourceType, "DialogueData")]
 	Resource Day2Dialogue;
 
-    Panel dialogueBox;
+	Panel dialogueBox;
 	CabinLevel cabin;
 
 	public static int CipherKey { get; set; }
@@ -62,13 +62,13 @@ public partial class TranslationCanvasUI : BaseMinigame
 		if (Day1Dialogue == null) {
 			GD.PrintErr("day 1 dialogue not assigned, please assign in inspector!");
 		}
-        if (Day2Dialogue == null)
-        {
-            GD.PrintErr("day 2 dialogue not assigned, please assign in inspector!");
-        }
+		if (Day2Dialogue == null)
+		{
+			GD.PrintErr("day 2 dialogue not assigned, please assign in inspector!");
+		}
 
-        // load dialogue data based on day
-        dialogueBox = GetNode<Panel>("DialogueBox");
+		// load dialogue data based on day
+		dialogueBox = GetNode<Panel>("DialogueBox");
 		dialogueBox.Connect("dialogue_ended", Callable.From(OnDialogueEnd));
 		LoadDialogue();
 		if (Globals.TutorialProgress <= GAMESTAGE.TRANSLATION)
@@ -157,7 +157,7 @@ public partial class TranslationCanvasUI : BaseMinigame
 			asciiValue = ((asciiValue - 97 + CipherKey) % 26) + 97;
 
 			cipheredWord += (char)asciiValue;
-        }
+		}
 
 		return cipheredWord;
 	}

@@ -45,9 +45,9 @@ public partial class BorderDraw : CanvasLayer
 		{
 			currentContainerIndex = containerNodes[i] as Control;
 
-            currentContainerIndex.DrawRect(currentContainerIndex.GetRect(), new Godot.Color(0,0,0,1), false);
-        }
-    }
+			currentContainerIndex.DrawRect(currentContainerIndex.GetRect(), new Godot.Color(0,0,0,1), false);
+		}
+	}
 
 	private void Close()
 	{

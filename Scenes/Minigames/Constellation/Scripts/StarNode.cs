@@ -21,8 +21,8 @@ public partial class StarNode : Node2D
 	[Export]
 	public float lineSpeed = 0.5f;
 
-    public bool isFound = false;
-    
+	public bool isFound = false;
+	
 	private Sprite2D foundSprite;
 	private float timeToRegister = 2f;
 	private float timeElapsed = 0f;
