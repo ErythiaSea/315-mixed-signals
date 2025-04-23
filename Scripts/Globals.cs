@@ -207,6 +207,7 @@ public partial class Globals : Node
 
 	public void updateAffection(String name, int value)
 	{
+		//comment for fucking github tweak
 		switch (name)
 		{
 			case "CLOVE":
