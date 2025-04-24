@@ -23,14 +23,14 @@ public partial class MainMenu : Control
 		// main menu should never be on top of something so we're safe to set the gamestate
 		Globals.SetGamestate(GAMESTATE.MENU);
 
-		startButton = GetNode<Button>("ButtonContainer/StartButton");
+		startButton = GetNode<Button>("Margins/ButtonContainer/StartButton");
 		startButton.GrabFocus();
 		startButton.Pressed += _On_StartButton_Pressed;
 
-		optionsButton = GetNode<Button>("ButtonContainer/OptionsButton");
+		optionsButton = GetNode<Button>("Margins/ButtonContainer/OptionsButton");
 		optionsButton.Pressed += _On_OptionsButton_Pressed;
 
-		quitButton = GetNode<Button>("ButtonContainer/QuitButton");
+		quitButton = GetNode<Button>("Margins/ButtonContainer/QuitButton");
 
 		buttons.Add(startButton);
 		buttons.Add(quitButton);
