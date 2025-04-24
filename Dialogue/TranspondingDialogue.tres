@@ -5,46 +5,21 @@
 [resource]
 script = ExtResource("1_8ca84")
 starts = {
-"TRANS1_TUT": &"0_3",
-"TRANSPONDING_ENTER": &"0_2",
-"TRANSPONDING_START": &"0_1"
+"TRANS1_TUT": &"0_3"
 }
 nodes = {
-"0_1": {
-"link": &"1_1",
-"offset": Vector2(-320, -260),
-"start_id": "TRANSPONDING_START"
-},
-"0_2": {
-"link": &"1_2",
-"offset": Vector2(320, -260),
-"start_id": "TRANSPONDING_ENTER"
-},
 "0_3": {
-"link": &"1_3",
-"offset": Vector2(-320, 120),
+"link": &"1_1",
+"offset": Vector2(-720, 120),
 "start_id": "TRANS1_TUT"
 },
 "1_1": {
-"dialogue": "I wasn’t expecting any deliveries that early. Oh well guess I can’t complain, I finally have some work to do.",
-"offset": Vector2(-20, -260),
-"options": {
-0: {
-"condition": {},
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "..."
-},
-"1_2": {
 "dialogue": "Time to find out where I will be picking up from today. I do hope its not near the sulphur lakes.",
-"offset": Vector2(620, -260),
+"offset": Vector2(-400, 120),
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"1_3",
 "text": ""
 }
 },
@@ -90,24 +65,13 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": "TUTORIAL"
 },
-"2_1": {
-"comment": "Play this in cabin before
-entering mini game",
-"offset": Vector2(-320, -380),
-"size": Vector2(220, 120)
-},
-"2_2": {
-"comment": "Play this when entering the minigame",
-"offset": Vector2(320, -360),
-"size": Vector2(200, 100)
-},
 "2_3": {
 "comment": "Play this after
 TRANSPONDING_ENTER",
-"offset": Vector2(-320, 20),
+"offset": Vector2(-720, 20),
 "size": Vector2(220, 100)
 }
 }
 variables = {}
-strays = Array[String](["2_3", "2_1", "2_2"])
+strays = Array[String](["2_3"])
 characters = ""

@@ -6,8 +6,8 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="3_1ogjg"]
 [ext_resource type="Texture2D" uid="uid://b61u7xjxdv85f" path="res://Scenes/Minigames/Map/Sprites/Map_PondIcon_00.png" id="3_7rbmu"]
 [ext_resource type="PackedScene" uid="uid://dkjjkuqsupb4f" path="res://Scenes/Environments/LilypadPond/lilypad_environment.tscn" id="4_0s13x"]
+[ext_resource type="Resource" uid="uid://csog4q1nntebh" path="res://Dialogue/CabinOutsideDialogue.tres" id="4_4wrni"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="4_ilsli"]
-[ext_resource type="Resource" uid="uid://wn1h5b8ptlga" path="res://Scenes/Debug/debugdialogue.tres" id="4_ysbx4"]
 [ext_resource type="Texture2D" uid="uid://b3bl82ittquc7" path="res://Scenes/Minigames/Map/Sprites/Map_SaltIcon_00.png" id="5_cum4x"]
 [ext_resource type="PackedScene" uid="uid://cefs7sceaq1yy" path="res://Scenes/Environments/SaltPillar/salt_environment.tscn" id="5_fwcyt"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="5_xpqg5"]
@@ -42,7 +42,7 @@ offset_top = 916.0
 offset_right = 1276.0
 offset_bottom = 1050.0
 script = ExtResource("3_1ogjg")
-data = ExtResource("4_ysbx4")
+data = ExtResource("4_4wrni")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_fipf4"), SubResource("RichTextEffect_btvjm"), SubResource("RichTextEffect_neqne")])
 
 [node name="Buttons" type="Control" parent="."]

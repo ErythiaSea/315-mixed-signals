@@ -116,7 +116,7 @@ grow_vertical = 0
 theme = ExtResource("6_ip8fq")
 script = ExtResource("7_y3602")
 data = ExtResource("8_mkirk")
-start_id = "-1"
+start_id = "TRANS1_TUT"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_qgpgv"), SubResource("RichTextEffect_iiq5k"), SubResource("RichTextEffect_vkvdv")])
 
 [node name="TutorialButton" type="TextureButton" parent="." node_paths=PackedStringArray("dialogueBox")]

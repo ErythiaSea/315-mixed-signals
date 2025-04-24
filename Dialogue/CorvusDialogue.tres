@@ -10,8 +10,8 @@ starts = {
 }
 nodes = {
 "0_1": {
-"link": &"4_1",
-"offset": Vector2(-480, -60),
+"link": &"1_16",
+"offset": Vector2(-1080, -60),
 "start_id": "0"
 },
 "0_2": {
@@ -64,8 +64,47 @@ nodes = {
 "speaker": "Corvus"
 },
 "1_12": {
-"dialogue": "(translation tutorial dialogue would be here.)",
+"dialogue": "To translate the message, all possible letters must first be converted from their language.",
 "offset": Vector2(1240, -60),
+"options": {
+0: {
+"condition": {},
+"link": &"1_13",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
+},
+"1_13": {
+"dialogue": "Those letters must then have the cipher reapplied to them. For example a +2 cipher on 'T' would be a 'V', and a -2 cipher would be an 'R'.",
+"offset": Vector2(1580, -60),
+"options": {
+0: {
+"condition": {},
+"link": &"1_14",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_14": {
+"dialogue": "Missing letters, if there are any, can be deducted.",
+"offset": Vector2(1920, -60),
+"options": {
+0: {
+"condition": {},
+"link": &"1_15",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_15": {
+"dialogue": "The final translation can be submitted in the box below the original message.",
+"offset": Vector2(2260, -60),
 "options": {
 0: {
 "condition": {},
@@ -74,7 +113,33 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": ""
+"speaker": "TUTORIAL"
+},
+"1_16": {
+"dialogue": "WOW... that actually worked!",
+"offset": Vector2(-860, -60),
+"options": {
+0: {
+"condition": {},
+"link": &"1_17",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_17": {
+"dialogue": "This is a real case of main character syndrome!",
+"offset": Vector2(-520, -60),
+"options": {
+0: {
+"condition": {},
+"link": &"4_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
 },
 "1_2": {
 "dialogue": "The pleasure is all mine...",
@@ -190,11 +255,6 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": "Corvus"
 },
-"2_1": {
-"comment": "",
-"offset": Vector2(-480, 120),
-"size": Vector2(200, 100)
-},
 "4_1": {
 "link": &"1_1",
 "offset": Vector2(-180, -60),
@@ -259,5 +319,5 @@ variables = {
 "value": 0
 }
 }
-strays = Array[String](["2_1"])
+strays = Array[String]([])
 characters = ""

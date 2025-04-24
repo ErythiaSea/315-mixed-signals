@@ -20,21 +20,8 @@ nodes = {
 "start_id": "RADIO_ENTER"
 },
 "1_1": {
-"dialogue": "To connect all of the stars. they must",
+"dialogue": "To connect all of the stars, hover over them with the crosshair. use 'W', 'A', 'S', and 'D' to move the telescope. ",
 "offset": Vector2(-160, -60),
-"options": {
-0: {
-"condition": {},
-"link": &"1_2",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "TUTORIAL"
-},
-"1_2": {
-"dialogue": "Use 'W', 'A', 'S', and 'D' to move the telescope.",
-"offset": Vector2(180, -60),
 "options": {
 0: {
 "condition": {},

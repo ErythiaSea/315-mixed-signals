@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://8chjdgwf31cg" path="res://Scenes/Environments/CabinOutdoor/Sprites/Fullbody_Corvus_Outline.webp" id="31_svecg"]
 [ext_resource type="Texture2D" uid="uid://bpbfgwqdo4hem" path="res://Scenes/Environments/CabinOutdoor/Sprites/Fullbody_Pyxis_Outline.webp" id="33_6gvwa"]
 [ext_resource type="Texture2D" uid="uid://b2pdi0xtmj77s" path="res://Scenes/Environments/CabinOutdoor/Sprites/Fullbody_Cass_Outline.webp" id="35_mhc1m"]
+[ext_resource type="Resource" uid="uid://ckynjg6qn8fve" path="res://Dialogue/TranslationDialogue.tres" id="16_i7p77"]
 
 [sub_resource type="Resource" id="Resource_igbtt"]
 script = ExtResource("2_nmgjp")
@@ -140,6 +141,9 @@ script = ExtResource("9_7xrxq")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_scjtb"]
 script = ExtResource("10_vfhkp")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2dxn"]
+size = Vector2(111, 402)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_80khs"]
 size = Vector2(950, 482.5)
@@ -300,11 +304,30 @@ data = ExtResource("8_ctnhm")
 start_id = "Sleep"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_kmmy1"), SubResource("RichTextEffect_4u6xp"), SubResource("RichTextEffect_a24d6")])
 
+[node name="CabinOutsideDialogueBox" type="Panel" parent="CanvasLayer"]
+visible = false
+z_index = 5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -100.0
+offset_right = 250.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_u12k5")
+script = ExtResource("7_ra4mx")
+data = ExtResource("16_i7p77")
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_kmmy1"), SubResource("RichTextEffect_4u6xp"), SubResource("RichTextEffect_a24d6")])
+
 [node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]
 clip_contents = false
-offset_top = -208.0
+offset_top = -247.0
 offset_right = 116.0
-offset_bottom = -172.0
+offset_bottom = -211.0
 theme = ExtResource("14_mtltj")
 bbcode_enabled = true
 text = "Sample dialogue."
@@ -478,4 +501,17 @@ offset_right = 1920.0
 offset_bottom = 1079.0
 text = "Continue"
 
+[node name="PostConstellationDialBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("4_elcve")]
+position = Vector2(592, 264)
+requiredStage = 4
+isOneShot = true
+isAutofire = true
+dialogueBox = NodePath("../CanvasLayer/CabinOutsideDialogueBox")
+startID = "TRANSLATION_START"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PostConstellationDialBox"]
+position = Vector2(45.5, 45)
+shape = SubResource("RectangleShape2D_v2dxn")
+
 [connection signal="dialogue_ended" from="CanvasLayer/DialogueBox" to="Player" method="OnDialogueClosed"]
+[connection signal="dialogue_ended" from="CanvasLayer/CabinOutsideDialogueBox" to="Player" method="OnDialogueClosed"]
