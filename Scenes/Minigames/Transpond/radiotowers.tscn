@@ -666,6 +666,7 @@ position = Vector2(960, 540)
 texture = ExtResource("2_my68r")
 
 [node name="Reference(DeleteWhenOrganised)" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(1, 1, 0.576471, 0.215686)
 texture = ExtResource("3_tf038")
 offset = Vector2(960, 540)
@@ -834,11 +835,13 @@ offset_bottom = 634.0
 text = "Complete!"
 
 [node name="leftIndicator" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(149, 1045)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_4vx2i")
 
 [node name="rightIndicator" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1765, 1049)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_4vx2i")

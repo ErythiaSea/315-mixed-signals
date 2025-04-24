@@ -67,7 +67,7 @@ public partial class Globals : Node
 	public delegate void GamestateChangeEventHandler();
 	private static Stack<GAMESTATE> _gamestate = new();
 
-    public static GAMESTATE Gamestate
+	public static GAMESTATE Gamestate
 	{
 		get
 		{
@@ -170,18 +170,18 @@ public partial class Globals : Node
 		InitialGameSetUp();
 
 		pauseMenu = ResourceLoader.Load<PackedScene>("res://Scenes/Menu/Pause/pause_menu.tscn").Instantiate<PauseMenu>();
-        pauseMenu.Hide();
-        GetNode<Control>("GlobalsCanvasLayer/GlobalControl").AddChild(pauseMenu);
-    }
+		pauseMenu.Hide();
+		GetNode<Control>("GlobalsCanvasLayer/GlobalControl").AddChild(pauseMenu);
+	}
 
-    public static void PauseGame()
-    {
+	public static void PauseGame()
+	{
 		Instance.pauseMenu.Show();
 		Instance.GetTree().Paused = true;
 		GD.Print("Game paused, current gamestate: ", Gamestate);
-    }
+	}
 
-    public static void InitialGameSetUp()
+	public static void InitialGameSetUp()
 	{
 		Day = 0;
 		ProgressionStage = GAMESTAGE.BEGIN;
@@ -218,7 +218,7 @@ public partial class Globals : Node
 			}
 		}
 		Instance.controlsText.Text = newText;
-    }
+	}
 
 	static private string GetInputGlyphImage(string name)
 	{
@@ -230,12 +230,12 @@ public partial class Globals : Node
 				ctrlSuffix = "_kb";
 				break;
 			case GAMEPAD.PS:
-                ctrlSuffix = "_ps";
-                break;
+				ctrlSuffix = "_ps";
+				break;
 			default:
-                ctrlSuffix = "_ps";
-                break;
-        }
+				ctrlSuffix = "_ps";
+				break;
+		}
 
 		return "[img]" + keyFolder + name + ctrlSuffix + ".png[/img]";
 	}

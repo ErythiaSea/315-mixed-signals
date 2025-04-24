@@ -1,32 +1,98 @@
-[gd_scene load_steps=268 format=3 uid="uid://7aoxy6ge3j3s"]
+[gd_scene load_steps=278 format=3 uid="uid://7aoxy6ge3j3s"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Transpond/Scripts/WaveRender.cs" id="1_2ltar"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Transpond/Scripts/WaveformGame.cs" id="1_qsht6"]
-[ext_resource type="Texture2D" uid="uid://b6sls6q5rkqa4" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt2_Base.png" id="2_fbydg"]
-[ext_resource type="Texture2D" uid="uid://bpb5024lyyhod" path="res://Scenes/Minigames/Transpond/Sprites/Transponding _Frames.png" id="4_q6pb7"]
-[ext_resource type="Texture2D" uid="uid://b78atk87ycml3" path="res://Scenes/Minigames/Transpond/Sprites/Waveform_Decal/TransponderScreen_Pt2_DecBar1.png" id="5_ijic7"]
-[ext_resource type="Texture2D" uid="uid://bo8gc851oowik" path="res://Scenes/Minigames/Transpond/Sprites/Waveform_Decal/TransponderScreen_Pt2_DecBar2.png" id="6_o31ap"]
-[ext_resource type="Texture2D" uid="uid://bmcijhav3pytt" path="res://Scenes/Minigames/Transpond/Sprites/Waveform_Decal/TransponderScreen_Pt2_DecBar3.png" id="7_6jw25"]
+[ext_resource type="Texture2D" uid="uid://c0n7vgkfyygn6" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt2_Base_Clear.png" id="2_0aoqy"]
+[ext_resource type="Texture2D" uid="uid://b38h8csqom4uk" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt2_Base_Lines.png" id="3_p317l"]
+[ext_resource type="Texture2D" uid="uid://v6tcdxojw0ix" path="res://Scenes/Minigames/Transpond/Sprites/Waveform_Decal1.png" id="6_5vc5o"]
+[ext_resource type="Texture2D" uid="uid://ctycsrj4yg33s" path="res://Scenes/Minigames/Transpond/Sprites/WaveformDecal_2.png" id="6_eaw5g"]
+[ext_resource type="Texture2D" uid="uid://beg3ve66yxsur" path="res://Scenes/Minigames/Transpond/Sprites/Transponding _Expand_V2.png" id="7_jcqte"]
 [ext_resource type="Texture2D" uid="uid://cpmlww4slldrx" path="res://Scenes/Minigames/Transpond/Sprites/TS2_VicSpriteSheet_Resize.png" id="8_wx3ha"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_aytc3"]
 font_size = 32
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwabd"]
+atlas = ExtResource("6_5vc5o")
+region = Rect2(0, 0, 355, 178)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnah5"]
+atlas = ExtResource("6_5vc5o")
+region = Rect2(355, 0, 355, 178)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p2ki"]
+atlas = ExtResource("6_5vc5o")
+region = Rect2(0, 178, 355, 178)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wij80"]
+atlas = ExtResource("6_eaw5g")
+region = Rect2(0, 0, 315, 1182)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kjum"]
+atlas = ExtResource("6_eaw5g")
+region = Rect2(315, 0, 315, 1182)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qo10t"]
+atlas = ExtResource("6_eaw5g")
+region = Rect2(630, 0, 315, 1182)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nf4c"]
+atlas = ExtResource("6_eaw5g")
+region = Rect2(0, 1182, 315, 1182)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44bgl"]
+atlas = ExtResource("6_eaw5g")
+region = Rect2(315, 1182, 315, 1182)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0a85"]
+atlas = ExtResource("6_eaw5g")
+region = Rect2(630, 1182, 315, 1182)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hnwd"]
+atlas = ExtResource("6_eaw5g")
+region = Rect2(0, 2364, 315, 1182)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_36vm4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_ijic7")
+"texture": SubResource("AtlasTexture_qwabd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_o31ap")
+"texture": SubResource("AtlasTexture_nnah5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_6jw25")
+"texture": SubResource("AtlasTexture_6p2ki")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"overLay",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wij80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kjum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qo10t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nf4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44bgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0a85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hnwd")
+}],
+"loop": true,
+"name": &"smallMonitor",
+"speed": 7.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2u3cl"]
@@ -1833,15 +1899,29 @@ animations = [{
 z_index = 3
 script = ExtResource("1_qsht6")
 
-[node name="backGround" type="Sprite2D" parent="."]
+[node name="topMonitor" type="Node2D" parent="."]
+
+[node name="backGround" type="Sprite2D" parent="topMonitor"]
 position = Vector2(1420, 245)
 scale = Vector2(0.45, 0.45)
-texture = ExtResource("2_fbydg")
+texture = ExtResource("2_0aoqy")
 
-[node name="backGround2" type="Sprite2D" parent="."]
+[node name="backGround2" type="Sprite2D" parent="topMonitor"]
+position = Vector2(1420, 245)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("3_p317l")
+
+[node name="bottomMonitor" type="Node2D" parent="."]
+
+[node name="backGround2" type="Sprite2D" parent="bottomMonitor"]
 position = Vector2(1420, 745)
 scale = Vector2(0.45, 0.45)
-texture = ExtResource("2_fbydg")
+texture = ExtResource("2_0aoqy")
+
+[node name="backGround3" type="Sprite2D" parent="bottomMonitor"]
+position = Vector2(1420, 745)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("3_p317l")
 
 [node name="realwave" type="Node2D" parent="."]
 position = Vector2(1370, 770)
@@ -1890,28 +1970,39 @@ offset_right = 1086.0
 offset_bottom = 634.0
 text = "Complete!"
 
+[node name="Decal3Anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(1091, 735)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_36vm4")
+animation = &"smallMonitor"
+frame = 4
+frame_progress = 0.208135
+
 [node name="Monitors" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_q6pb7")
+texture = ExtResource("7_jcqte")
 
 [node name="DecalAnim" type="AnimatedSprite2D" parent="."]
 position = Vector2(1740, 860)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_36vm4")
-frame_progress = 0.835002
+animation = &"overLay"
+frame = 1
+frame_progress = 0.79342
 
 [node name="Decal2Anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(1740, 360)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_36vm4")
-frame_progress = 0.519167
+animation = &"overLay"
+frame_progress = 0.717304
 
 [node name="victoryAnim" type="AnimatedSprite2D" parent="."]
 position = Vector2(1422, 494)
 scale = Vector2(1.025, 1.025)
 sprite_frames = SubResource("SpriteFrames_bywr7")
 animation = &"new_animation"
-frame = 37
-frame_progress = 0.320024
+frame = 87
+frame_progress = 0.629281
