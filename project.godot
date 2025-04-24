@@ -25,6 +25,7 @@ boot_splash/minimum_display_time=1750
 Reset="*res://Scripts/Reset.cs"
 SignalBus="*res://Scripts/SignalBus.cs"
 Globals="*res://Scenes/globals.tscn"
+InputManager="*res://Scripts/InputManager.cs"
 
 [debug]
 
