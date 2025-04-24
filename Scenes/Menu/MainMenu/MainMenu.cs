@@ -50,7 +50,7 @@ public partial class MainMenu : Control
 		quitGameButton = quitPage.GetNode<Button>("QuitButton");
 
 		quitMenuButton.Pressed += () => ForwardPage(quitPage, quitGameButton);
-		quitGameButton.Pressed += QueueFree;
+		quitGameButton.Pressed += () => GetTree().Quit();
 		quitPage.GetNode<Button>("BackButton").Pressed += BackwardPage;
 
 		buttons.Add(startButton);
