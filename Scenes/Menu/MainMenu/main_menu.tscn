@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://blaixght86xlx"]
+[gd_scene load_steps=9 format=3 uid="uid://blaixght86xlx"]
 
 [ext_resource type="Script" path="res://Scenes/Menu/MainMenu/MainMenu.cs" id="2_2deir"]
 [ext_resource type="Texture2D" uid="uid://dqtmjby87s052" path="res://Scenes/Loading/BloodBoxLogo_Splash.png" id="2_4re32"]
 [ext_resource type="Texture2D" uid="uid://dk22piqob5pwn" path="res://Scenes/Menu/MainMenu/TitleScreen_Background_01.png" id="3_4yxvj"]
 [ext_resource type="PackedScene" uid="uid://qw43er1nfudg" path="res://Scenes/Menu/Options/Options.tscn" id="3_w5urq"]
+[ext_resource type="Script" path="res://Scenes/Menu/MenuButton.cs" id="6_6fr86"]
 [ext_resource type="Texture2D" uid="uid://cc3oar7yin28u" path="res://Scenes/Menu/MainMenu/MixedSignalsLogo.png" id="6_t5k7r"]
+[ext_resource type="Texture2D" uid="uid://d0c8oiytfdfut" path="res://Scenes/Menu/MainMenu/CreditsScreen_Background_01.png" id="6_wu75y"]
+[ext_resource type="Texture2D" uid="uid://oxh86fc1c0it" path="res://Scenes/Menu/MainMenu/QuitScreen_Background_01.png" id="8_v27if"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -17,81 +20,190 @@ script = ExtResource("2_2deir")
 startScene = "res://Scenes/Environments/Cabin/cabin.tscn"
 optionsScene = ExtResource("3_w5urq")
 
-[node name="MainBackground" type="Sprite2D" parent="."]
-position = Vector2(960, 541)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_4yxvj")
-
-[node name="Margins" type="MarginContainer" parent="."]
+[node name="Top" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
 
-[node name="ButtonContainer" type="VBoxContainer" parent="Margins"]
+[node name="Background" type="Sprite2D" parent="Top"]
+position = Vector2(960, 541)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_4yxvj")
+
+[node name="TeamLogo" type="TextureRect" parent="Top"]
 layout_mode = 2
+offset_left = 1649.0
+offset_top = 828.0
+offset_right = 2261.0
+offset_bottom = 1440.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_4re32")
+
+[node name="GameLogo" type="TextureRect" parent="Top"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 640.0
+offset_top = -541.0
+offset_right = 1615.0
+offset_bottom = 313.0
+grow_vertical = 2
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("6_t5k7r")
+stretch_mode = 4
+
+[node name="ButtonContainer" type="VBoxContainer" parent="Top"]
+layout_mode = 2
+offset_left = 96.0
+offset_top = 427.0
+offset_right = 409.0
+offset_bottom = 989.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/separation = 30
 
-[node name="StartButton" type="Button" parent="Margins/ButtonContainer"]
+[node name="StartButton" type="Button" parent="Top/ButtonContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../QuitButton")
 theme_override_font_sizes/font_size = 80
 text = "Start"
 alignment = 0
+script = ExtResource("6_6fr86")
 
-[node name="OptionsButton" type="Button" parent="Margins/ButtonContainer"]
+[node name="OptionsButton" type="Button" parent="Top/ButtonContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
 text = "Options"
 alignment = 0
+script = ExtResource("6_6fr86")
 
-[node name="CreditsButton" type="Button" parent="Margins/ButtonContainer"]
+[node name="CreditsButton" type="Button" parent="Top/ButtonContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
 text = "Credits"
 alignment = 0
+script = ExtResource("6_6fr86")
 
-[node name="QuitButton" type="Button" parent="Margins/ButtonContainer"]
+[node name="QuitButton" type="Button" parent="Top/ButtonContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_bottom = NodePath("../StartButton")
 theme_override_font_sizes/font_size = 80
 text = "Quit"
 alignment = 0
+script = ExtResource("6_6fr86")
 
-[node name="TeamLogo" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 1638.0
-offset_top = 827.0
-offset_right = 2250.0
-offset_bottom = 1439.0
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_4re32")
-
-[node name="GameLogo" type="TextureRect" parent="."]
+[node name="Credits" type="Control" parent="."]
+visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -287.0
-offset_top = -537.0
-offset_right = 688.0
-offset_bottom = 317.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("6_t5k7r")
-stretch_mode = 4
+
+[node name="Background" type="Sprite2D" parent="Credits"]
+position = Vector2(960, 541)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_wu75y")
+
+[node name="CreditHeader" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 1526.0
+offset_top = 89.0
+offset_right = 1879.0
+offset_bottom = 226.0
+theme_override_font_sizes/font_size = 100
+text = "Credits"
+
+[node name="CreditsText" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 707.0
+offset_top = 238.0
+offset_right = 1866.0
+offset_bottom = 1027.0
+theme_override_font_sizes/font_size = 45
+text = "Eryth Davidson - Programming
+Kyle Deans - Programming
+Luca Hendrix - Art
+Aaron Lochiel - Art
+Bethany Kinnear - Art
+Micah Meadows - Art/Design
+Ruaraidh Crichton - Audio/Design
+Axel Berglund - Production/Design
+Troy McCron - Module Tutor
+Hyper Luminal Games
+"
+horizontal_alignment = 2
+
+[node name="BackButton" type="Button" parent="Credits"]
+layout_mode = 2
+offset_left = 1550.0
+offset_top = 909.0
+offset_right = 1863.0
+offset_bottom = 1027.0
+size_flags_vertical = 3
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+theme_override_font_sizes/font_size = 80
+text = "Back"
+flat = true
+alignment = 2
+
+[node name="Quit" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Sprite2D" parent="Quit"]
+position = Vector2(960, 541)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_v27if")
+
+[node name="QuitHeader" type="Label" parent="Quit"]
+offset_left = 1520.0
+offset_top = 491.0
+offset_right = 1873.0
+offset_bottom = 628.0
+theme_override_font_sizes/font_size = 100
+text = "Quit?"
+horizontal_alignment = 2
+
+[node name="BackButton" type="Button" parent="Quit"]
+offset_left = 1550.0
+offset_top = 909.0
+offset_right = 1863.0
+offset_bottom = 1027.0
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+theme_override_font_sizes/font_size = 80
+text = "No
+"
+flat = true
+alignment = 2
+
+[node name="QuitButton" type="Button" parent="Quit"]
+offset_left = 1550.0
+offset_top = 797.0
+offset_right = 1863.0
+offset_bottom = 915.0
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../BackButton")
+theme_override_font_sizes/font_size = 80
+text = "Yes
+"
+flat = true
+alignment = 2
