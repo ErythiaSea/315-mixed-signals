@@ -62,8 +62,10 @@ public partial class EndDay : CanvasLayer
 		Globals.NewDay();
 		currentTrans.OpenCircle(0f, 1f, transitionTime);
 		player.SetMovementLock(false);
-		isClosed = false;
-		Globals.PopGamestate(GAMESTATE.CUTSCENE);
+		isClosed = false; 
+
+		Globals.Instance.CallDeferred(Globals.MethodName.PopGamestate, Variant.CreateFrom((int)GAMESTATE.CUTSCENE));
+	
 	}
 
 	private void CreateTransition()

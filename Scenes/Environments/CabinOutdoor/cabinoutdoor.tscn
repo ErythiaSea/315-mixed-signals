@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cnj8esqdgww0"]
+[gd_scene load_steps=52 format=3 uid="uid://cnj8esqdgww0"]
 
 [ext_resource type="Texture2D" uid="uid://bmij10s8rf8gm" path="res://Scenes/Environments/CabinOutdoor/base_outside.png" id="1_0a00e"]
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_4weox"]
@@ -21,9 +21,17 @@
 [ext_resource type="Shader" path="res://Scenes/Environments/CabinOutdoor/scripts/Blur.gdshader" id="19_6tiu6"]
 [ext_resource type="Texture2D" uid="uid://cc5ylwu6ngqik" path="res://Scenes/Environments/CabinOutdoor/Sprites/Group_Fullbody.png" id="19_rtfec"]
 [ext_resource type="Script" path="res://Scenes/Environments/CabinOutdoor/scripts/GodChoice.cs" id="20_vyhny"]
+[ext_resource type="Texture2D" uid="uid://c3w8g3ibu1unn" path="res://Scenes/Environments/CabinOutdoor/Sprites/PolaroidsCorvus_Accept.png" id="21_3y3kx"]
 [ext_resource type="Texture2D" uid="uid://udre4ggthd5q" path="res://Scenes/Environments/CabinOutdoor/Sprites/Fullbody_Corvus.png" id="21_7v8nr"]
+[ext_resource type="Texture2D" uid="uid://cmnhf30iptmnd" path="res://Scenes/Environments/CabinOutdoor/Sprites/Polaroids_Cass_Accept.png" id="22_e5m3p"]
 [ext_resource type="Texture2D" uid="uid://d3w8ot5vph2w4" path="res://Scenes/Environments/CabinOutdoor/Sprites/Fullbody_Pyxis.png" id="22_ngky6"]
+[ext_resource type="Texture2D" uid="uid://bjpjhgu01vvoa" path="res://Scenes/Environments/CabinOutdoor/Sprites/Polaroids_Pyxis_Accept.png" id="23_bk8bq"]
 [ext_resource type="Texture2D" uid="uid://be1rgqcvdkio7" path="res://Scenes/Environments/CabinOutdoor/Sprites/Fullbody_Cass.png" id="23_vg7f7"]
+[ext_resource type="Texture2D" uid="uid://b3aco8fyfxh8y" path="res://Scenes/Environments/CabinOutdoor/Sprites/Polaroids_Corvus_Reject.png" id="24_anbxf"]
+[ext_resource type="Texture2D" uid="uid://dgl6omacp4v3n" path="res://Scenes/Environments/CabinOutdoor/Sprites/Polaroids_Cass_Reject.png" id="25_yib7r"]
+[ext_resource type="Texture2D" uid="uid://by1xu2w3ttdi" path="res://Scenes/Environments/CabinOutdoor/Sprites/Polaroids_Pyxis_Reject.png" id="26_nt0xf"]
+[ext_resource type="Texture2D" uid="uid://br8ws1lqgu3p5" path="res://Scenes/Environments/CabinOutdoor/Sprites/Yippee.webp" id="27_8kytx"]
+[ext_resource type="Texture2D" uid="uid://1fqoooq5vqjy" path="res://Scenes/Environments/CabinOutdoor/Sprites/Yikes.webp" id="28_twvu4"]
 
 [sub_resource type="Resource" id="Resource_igbtt"]
 script = ExtResource("2_nmgjp")
@@ -315,12 +323,14 @@ position = Vector2(-1, 150)
 shape = SubResource("RectangleShape2D_80khs")
 
 [node name="GodsSprite" type="Sprite2D" parent="GodsDisplay/GodBox"]
-position = Vector2(8, 135)
-scale = Vector2(0.3, 0.3)
+position = Vector2(33, 103)
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("19_rtfec")
 
 [node name="GodsCanvas" type="CanvasLayer" parent="GodsDisplay"]
 script = ExtResource("20_vyhny")
+poloroidSprites = Array[Texture2D]([ExtResource("21_3y3kx"), ExtResource("22_e5m3p"), ExtResource("23_bk8bq"), ExtResource("24_anbxf"), ExtResource("25_yib7r"), ExtResource("26_nt0xf")])
+stampSprites = Array[Texture2D]([ExtResource("27_8kytx"), ExtResource("28_twvu4")])
 
 [node name="Choice camera" type="Camera2D" parent="GodsDisplay/GodsCanvas"]
 
@@ -338,6 +348,8 @@ offset_top = 1078.0
 offset_right = 637.0
 offset_bottom = 1728.0
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../Cassiopeia")
+focus_neighbor_right = NodePath("../Pyxis")
 texture_normal = ExtResource("21_7v8nr")
 ignore_texture_size = true
 stretch_mode = 5
@@ -372,6 +384,8 @@ offset_top = 1078.0
 offset_right = 1278.0
 offset_bottom = 1728.0
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../Corvus")
+focus_neighbor_right = NodePath("../Cassiopeia")
 texture_normal = ExtResource("22_ngky6")
 ignore_texture_size = true
 stretch_mode = 5
@@ -406,6 +420,8 @@ offset_top = 1078.0
 offset_right = 1920.0
 offset_bottom = 1728.0
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../Pyxis")
+focus_neighbor_right = NodePath("../Corvus")
 texture_normal = ExtResource("23_vg7f7")
 ignore_texture_size = true
 stretch_mode = 5
@@ -438,5 +454,17 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(953, 1431)
 rotation = 0.174533
 scale = Vector2(0.3, 0.3)
+
+[node name="Stamp" type="Sprite2D" parent="GodsDisplay/GodsCanvas/Poloroid"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-25.3743, 566.343)
+rotation = 0.011187
+
+[node name="Credits" type="Button" parent="GodsDisplay/GodsCanvas"]
+offset_left = 1788.0
+offset_top = 1015.0
+offset_right = 1920.0
+offset_bottom = 1079.0
+text = "Continue"
 
 [connection signal="dialogue_ended" from="CanvasLayer/DialogueBox" to="Player" method="OnDialogueClosed"]

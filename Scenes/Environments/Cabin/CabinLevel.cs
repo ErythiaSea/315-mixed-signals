@@ -50,7 +50,7 @@ public partial class CabinLevel : Level
         if (Globals.Day == 2)
 		{
 			GD.Print("Final day, so swapping the level change scene and disabling elevator...");
-			exitInteractBox.ChangeLoadedScene(endScreenPath);
+			//exitInteractBox.ChangeLoadedScene(endScreenPath);
 			elevatorButtonBox.QueueFree(); // nuclear approach is, sometimes, the best
 			elevatorButtonBox = null;
 		}

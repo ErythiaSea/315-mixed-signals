@@ -928,7 +928,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_evcec")
 }],
-"loop": true,
+"loop": false,
 "name": &"1",
 "speed": 5.0
 }, {
@@ -1053,12 +1053,12 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jrb3k")
 }],
-"loop": true,
+"loop": false,
 "name": &"2",
 "speed": 5.0
 }, {
 "frames": [],
-"loop": true,
+"loop": false,
 "name": &"3",
 "speed": 5.0
 }]
@@ -1077,10 +1077,10 @@ script = ExtResource("2_ds16g")
 
 [node name="SleepText" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 811.5
-offset_top = 454.0
-offset_right = 1411.5
-offset_bottom = 754.0
+offset_left = 750.0
+offset_top = 461.5
+offset_right = 1350.0
+offset_bottom = 761.5
 theme_override_colors/default_color = Color(0.882353, 0.882353, 0.882353, 0.654902)
 theme_override_font_sizes/bold_italics_font_size = 3
 theme_override_font_sizes/normal_font_size = 50
@@ -1090,7 +1090,7 @@ text = "[center]"
 [node name="Calender" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 z_index = 2
-position = Vector2(1056.5, 551)
+position = Vector2(1052, 509)
 scale = Vector2(0.175, 0.175)
 sprite_frames = SubResource("SpriteFrames_2w2fw")
-animation = &"2"
+animation = &"1"
