@@ -96,6 +96,30 @@ blur = 0.02
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_0ijxk")
 
+[node name="Corvus" type="Node2D" parent="."]
+z_index = -1
+script = ExtResource("8_pqt5s")
+
+[node name="StarNode" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(1270, -572)
+adjacentStars = [NodePath("../StarNode2"), NodePath("../StarNode4")]
+
+[node name="StarNode2" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(116, -715)
+adjacentStars = [NodePath("../StarNode3"), NodePath("../StarNode")]
+
+[node name="StarNode3" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(-133, 839)
+adjacentStars = [NodePath("../StarNode4"), NodePath("../StarNode2")]
+
+[node name="StarNode4" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(1547, 684)
+adjacentStars = [NodePath("../StarNode5"), NodePath("../StarNode3"), NodePath("../StarNode")]
+
+[node name="StarNode5" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
+position = Vector2(1685, 1297)
+adjacentStars = [NodePath("../StarNode4")]
+
 [node name="Pyxis" type="Node2D" parent="."]
 visible = false
 z_index = -1
@@ -111,27 +135,6 @@ adjacentStars = [NodePath("../StarNode"), NodePath("../StarNode3")]
 
 [node name="StarNode3" parent="Pyxis" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
 position = Vector2(1652, -255)
-adjacentStars = [NodePath("../StarNode2")]
-
-[node name="Corvus" type="Node2D" parent="."]
-visible = false
-z_index = -1
-script = ExtResource("8_pqt5s")
-
-[node name="StarNode" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(-344, 230)
-adjacentStars = [NodePath("../StarNode2")]
-
-[node name="StarNode2" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(806, 222)
-adjacentStars = [NodePath("../StarNode"), NodePath("../StarNode3"), NodePath("../StarNode4")]
-
-[node name="StarNode3" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(1635, -496)
-adjacentStars = [NodePath("../StarNode2")]
-
-[node name="StarNode4" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(1715, 772)
 adjacentStars = [NodePath("../StarNode2")]
 
 [node name="UICanvas" type="CanvasLayer" parent="."]
