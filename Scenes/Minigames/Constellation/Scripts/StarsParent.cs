@@ -105,6 +105,7 @@ public partial class StarsParent : Node2D
 		Godot.Collections.Array<Label> lbls = new Godot.Collections.Array<Label>();
 		foreach (Node2D child in GetChildren())
 		{
+			if (child is not StarNode) continue;
 			Label current = child.GetChild(2) as Label;
 			current.Modulate = new Color(current.Modulate.R, current.Modulate.G, current.Modulate.B, 0);
 			lbls.Add(current);
@@ -120,9 +121,19 @@ public partial class StarsParent : Node2D
 		Godot.Collections.Array<StarNode> strs = new Godot.Collections.Array<StarNode>();
 		foreach (Node2D child in GetChildren())
 		{
-			strs.Add(child as StarNode);
+			GD.Print(child.Name);
+			if (child as StarNode != null)
+			{
+				strs.Add(child as StarNode);
+				GD.Print(child.Name, " is starnode");
+			}
+			else
+			{
+				GD.Print(child.Name, " is not starnode");
+			}
 		}
 
+		GD.Print("stars count:", strs.Count());
 		return strs;
 	}
 
@@ -142,6 +153,7 @@ public partial class StarsParent : Node2D
 			maxX = Mathf.Max(maxX, starPos.X);
 			maxY = Mathf.Max(maxY, starPos.Y);
 		}
+		GD.Print(Name, " i can do this");
 
 		return new Vector2(minX + 0.5f*(maxX - minX), minY + 0.5f*(maxY - minY));
 	}

@@ -38,21 +38,6 @@ script = ExtResource("14_k7onu")
 [sub_resource type="RichTextEffect" id="RichTextEffect_s3dl4"]
 script = ExtResource("15_bf7ia")
 
-[sub_resource type="Animation" id="Animation_3ab0a"]
-resource_name = "victCorvus"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Corvus/CorvusFade:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.966667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_y2alv"]
 length = 0.001
 tracks/0/type = "value"
@@ -112,6 +97,21 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0)
 }
 
+[sub_resource type="Animation" id="Animation_3ab0a"]
+resource_name = "victCorvus"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Corvus/CorvusFade:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_s8ohl"]
 resource_name = "victPyxis"
 tracks/0/type = "bezier"
@@ -169,7 +169,6 @@ _data = {
 [node name="ConstellationDraw" type="CanvasLayer"]
 follow_viewport_enabled = true
 script = ExtResource("1_sd3pu")
-constellationEndStartID = ""
 exitTransition = 4
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -228,30 +227,38 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_0ijxk")
 
 [node name="Corvus" type="Node2D" parent="."]
+visible = false
 z_index = -1
 script = ExtResource("8_pqt5s")
 
 [node name="StarNode" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(1270, -572)
+position = Vector2(116, -715)
 adjacentStars = [NodePath("../StarNode2"), NodePath("../StarNode4")]
 
 [node name="StarNode2" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(116, -715)
-adjacentStars = [NodePath("../StarNode3"), NodePath("../StarNode")]
+position = Vector2(-133, 839)
+adjacentStars = [NodePath("../StarNode"), NodePath("../StarNode5")]
 
 [node name="StarNode3" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(-133, 839)
-adjacentStars = [NodePath("../StarNode4"), NodePath("../StarNode2")]
+position = Vector2(1685, 1297)
+adjacentStars = [NodePath("../StarNode5")]
 
 [node name="StarNode4" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(1547, 684)
-adjacentStars = [NodePath("../StarNode5"), NodePath("../StarNode3"), NodePath("../StarNode")]
+position = Vector2(1635, -496)
+adjacentStars = [NodePath("../StarNode"), NodePath("../StarNode5")]
 
 [node name="StarNode5" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(1685, 1297)
-adjacentStars = [NodePath("../StarNode4")]
+position = Vector2(1715, 772)
+adjacentStars = [NodePath("../StarNode3"), NodePath("../StarNode4"), NodePath("../StarNode2")]
+
+[node name="CorvusFade" type="Sprite2D" parent="Corvus"]
+visible = false
+position = Vector2(837, 357)
+rotation = -0.10472
+texture = ExtResource("12_ae74t")
 
 [node name="Pyxis" type="Node2D" parent="."]
+visible = false
 z_index = -1
 script = ExtResource("8_pqt5s")
 
@@ -268,39 +275,16 @@ position = Vector2(1652, -255)
 adjacentStars = [NodePath("../StarNode2")]
 
 [node name="PyxisFade" type="Sprite2D" parent="Pyxis"]
+visible = false
 position = Vector2(877, 323)
 rotation = 2.44346
 texture = ExtResource("11_qu5kn")
-
-[node name="Corvus" type="Node2D" parent="."]
-z_index = -1
-script = ExtResource("8_pqt5s")
-
-[node name="StarNode" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(-344, 230)
-adjacentStars = [NodePath("../StarNode2")]
-
-[node name="StarNode2" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(806, 222)
-adjacentStars = [NodePath("../StarNode"), NodePath("../StarNode3"), NodePath("../StarNode4")]
-
-[node name="StarNode3" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(1635, -496)
-adjacentStars = [NodePath("../StarNode2")]
-
-[node name="StarNode4" parent="Corvus" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(1715, 772)
-adjacentStars = [NodePath("../StarNode2")]
-
-[node name="CorvusFade" type="Sprite2D" parent="Corvus"]
-position = Vector2(837, 357)
-rotation = -0.10472
-texture = ExtResource("12_ae74t")
 
 [node name="UICanvas" type="CanvasLayer" parent="."]
 layer = 3
 
 [node name="ControlsLabel" type="Label" parent="UICanvas"]
+visible = false
 offset_left = 41.0
 offset_top = 992.0
 offset_right = 551.0

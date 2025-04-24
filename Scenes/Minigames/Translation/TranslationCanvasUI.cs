@@ -105,9 +105,11 @@ public partial class TranslationCanvasUI : BaseMinigame
 			Globals.ProgressionStage = GAMESTAGE.END;
 
 			//winInd.Visible = true;
-			GetNode<VBoxContainer>("TextVBox").Visible = false;
-			GetNode<VBoxContainer>("HintVBox").Visible = false;
-			GetNode<Button>("CheckAnswerButton").Visible = false;
+			//GetNode<VBoxContainer>("TextVBox").Visible = false;
+			//GetNode<VBoxContainer>("HintVBox").Visible = false;
+			//GetNode<Button>("CheckAnswerButton").Visible = false;
+			answerButton.Hide();
+			backButton.Hide();
 			cipherDisplay.Visible = false;
 			canClose = false;
 			dialogueBox.Call("start", "0");
@@ -180,4 +182,10 @@ public partial class TranslationCanvasUI : BaseMinigame
 				break;
 		}
 	}
+
+    protected override void QuitMinigame()
+    {
+		Globals.Instance.CallDeferred(Globals.MethodName.PopGamestate, Variant.From((int)GAMESTATE.TRANSLATION));
+        base.QuitMinigame();
+    }
 }

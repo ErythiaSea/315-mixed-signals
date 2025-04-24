@@ -47,7 +47,8 @@ public partial class CabinLevel : Level
 
 	private void OnNewDay()
 	{
-		if (Globals.Day == 2)
+        GetNode<InteractBox>("TranspondBox").active = true;
+        if (Globals.Day == 2)
 		{
 			GD.Print("Final day, so swapping the level change scene and disabling elevator...");
 			//exitInteractBox.ChangeLoadedScene(endScreenPath);

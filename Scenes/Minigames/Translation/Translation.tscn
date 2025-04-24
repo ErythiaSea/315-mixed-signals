@@ -14,10 +14,10 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="10_k8rjn"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="11_vjohv"]
 [ext_resource type="Script" path="res://Scenes/Minigames/TutorialButton.cs" id="13_xnkum"]
+[ext_resource type="Texture2D" uid="uid://chuwfl87b6xpw" path="res://Sprites/Help_Icon_01.png" id="14_w85ir"]
 [ext_resource type="Texture2D" uid="uid://7fh0bdu4d0tr" path="res://Scenes/Minigames/Translation/Sprites/TranslationVict_Compass.png" id="16_gfekc"]
 [ext_resource type="Texture2D" uid="uid://ca3tlwkbxw27u" path="res://Scenes/Minigames/Translation/Sprites/TranslationVict_Plummage.png" id="17_t48q2"]
 [ext_resource type="Texture2D" uid="uid://eoc4kpduf5r1" path="res://Scenes/Minigames/Translation/Sprites/God_Communication_Overlay.png" id="18_e66h6"]
-[ext_resource type="Texture2D" uid="uid://chuwfl87b6xpw" path="res://Sprites/Help_Icon_01.png" id="14_w85ir"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2m5s8"]
 texture = ExtResource("4_stibd")
@@ -397,7 +397,7 @@ animations = [{
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b8ika"]
 texture = ExtResource("18_e66h6")
 
-[node name="Translation" type="CanvasLayer" node_paths=PackedStringArray("messageBox", "answerBox", "celHint", "engHint", "cipherDisplay", "winInd")]
+[node name="Translation" type="CanvasLayer" node_paths=PackedStringArray("messageBox", "answerBox", "cipherDisplay")]
 script = ExtResource("1_6ebpw")
 messageBox = NodePath("TextVBox/VBoxContainer/MessageTextBox")
 answerBox = NodePath("TextVBox/VBoxContainer/AnswerBox")
@@ -632,7 +632,7 @@ color = Color(0.145098, 0.0588235, 0.00784314, 0.568627)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="victAnim"]
 sprite_frames = SubResource("SpriteFrames_ainyw")
-animation = &"Compass"
+animation = &"Plummage"
 
 [node name="godDialogue" type="PanelContainer" parent="."]
 offset_right = 1920.0

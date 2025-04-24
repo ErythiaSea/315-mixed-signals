@@ -26,7 +26,7 @@ nodes = {
 "start_id": "tut"
 },
 "1_1": {
-"dialogue": "12345 Hoh! Are you the fresh breeze that has blown onto my shores, or perhaps just another gale? Allow me to properly greet myself, I am Pyxis The Compass. ",
+"dialogue": "Hoh! Are you the fresh breeze that has blown onto my shores, or perhaps just another gale? Allow me to properly greet myself, I am Pyxis The Compass. ",
 "offset": Vector2(-260, -280),
 "options": {
 0: {

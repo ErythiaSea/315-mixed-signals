@@ -46,6 +46,9 @@ public partial class InteractBox : Area2D
 	[Export]
 	public GAMESTAGE requiredStage;
 
+	[Export]
+	public int requiredDay = -1;
+
 	// temp for scenes that reference other scenes (usually through an object of this class)
 	// to prevent circular dependencies. todo: make this suck less
 	[Export(PropertyHint.File, "*.tscn")]
@@ -166,6 +169,7 @@ public partial class InteractBox : Area2D
 
 		// Not interactable if inactive
 		if (!active) return;
+		if (requiredDay != -1 && Globals.Day != requiredDay) return;
 
 		if (!IsCorrectStage())
 		{

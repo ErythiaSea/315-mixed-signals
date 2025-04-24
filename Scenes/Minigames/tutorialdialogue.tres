@@ -83,17 +83,17 @@ nodes = {
 "speaker": "..."
 },
 "1_12": {
-"dialogue": "tutorialdialogue.tres with id 4 - constellation end dialogue here!",
+"dialogue": "I've never seen a constellation draw itself before. And what do those numbers mean??",
 "offset": Vector2(-200, 700),
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"1_22",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": "TUTORIAL"
+"speaker": "..."
 },
 "1_13": {
 "dialogue": "To find the relative sector, both of the lines attached to either radio tower must overlap on top of the correlating red box.",
@@ -227,6 +227,19 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 },
 "size": Vector2(300, 240),
 "speaker": ""
+},
+"1_22": {
+"dialogue": "Best keep note of them and head back for now, s'pose...",
+"offset": Vector2(140, 700),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
 },
 "1_3": {
 "dialogue": "Huh? The signal seems to be a mess. Let me try this.",

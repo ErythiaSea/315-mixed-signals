@@ -8,6 +8,7 @@ starts = {
 "BEGIN": &"0_1",
 "PHOTO_CLOSE": &"0_2",
 "SLEEP": &"0_4",
+"TRANSLATION_END": &"0_9",
 "TRANSLATION_ENTER": &"0_8",
 "TRANSPONDING_START": &"0_6",
 "WAKEUPDAY1": &"0_5",
@@ -54,6 +55,11 @@ nodes = {
 "link": &"1_12",
 "offset": Vector2(-400, 1080),
 "start_id": "TRANSLATION_ENTER"
+},
+"0_9": {
+"link": &"1_14",
+"offset": Vector2(620, 1080),
+"start_id": "TRANSLATION_END"
 },
 "1_1": {
 "dialogue": "All right time to clock in, better get my lanyard from the pin board.",
@@ -110,6 +116,19 @@ nodes = {
 "1_13": {
 "dialogue": "What if I calculate the total of all the coordinates and use that as the cipher key",
 "offset": Vector2(160, 1080),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_14": {
+"dialogue": "I... don't have a clue what just happened...",
+"offset": Vector2(860, 1080),
 "options": {
 0: {
 "condition": {},
