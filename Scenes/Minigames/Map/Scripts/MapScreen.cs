@@ -7,7 +7,7 @@ using static Godot.Tween;
 public partial class MapScreen : BaseMinigame
 {
 	Array<MapButton> buttonNodes = new Array<MapButton>{};
-	bool p = false;
+	bool goingToTravel = false;
 
 	PackedScene travelLoading;
 	private const string loadingPath = "res://Scenes/Loading/travel_loading.tscn";
@@ -16,6 +16,8 @@ public partial class MapScreen : BaseMinigame
     public override void _Ready()
 	{
 		base._Ready();
+
+		Globals.PushGamestate(GAMESTATE.MAP);
 
         bool focusAssigned = false;
         foreach (Node child in GetNode("Buttons").GetChildren())
@@ -51,6 +53,7 @@ public partial class MapScreen : BaseMinigame
             player.EmitSignal("Transition", 2, 1.0f);
             exitTransition = TRANSITION.LEFTtoRIGHT;
             ResourceLoader.LoadThreadedRequest(loadingPath);
+			goingToTravel = true;
             Close(); // this function is now named poorly due to this unforseen use case - erf
         }
 		
@@ -58,6 +61,14 @@ public partial class MapScreen : BaseMinigame
 
     protected override void OnTransitionFinish()
     {
-		GetTree().ChangeSceneToPacked((PackedScene)ResourceLoader.LoadThreadedGet(loadingPath));
-    }
+		if (goingToTravel)
+		{
+			GetTree().ChangeSceneToPacked((PackedScene)ResourceLoader.LoadThreadedGet(loadingPath));
+			Globals.SetGamestate(GAMESTATE.CUTSCENE);
+		}
+		else
+		{
+			Globals.PopGamestate(GAMESTATE.MAP);
+		}
+	}
 }

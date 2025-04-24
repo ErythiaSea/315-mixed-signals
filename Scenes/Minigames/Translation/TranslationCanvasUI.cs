@@ -46,6 +46,7 @@ public partial class TranslationCanvasUI : BaseMinigame
 	{
 		base._Ready();
 
+		Globals.PushGamestate(GAMESTATE.TRANSLATION);
 		answerBox.GrabFocus();
 		cabin = GetParent<CabinLevel>();
 		MinigameClosed += cabin.TranslationComplete;

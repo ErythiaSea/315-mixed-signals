@@ -27,18 +27,18 @@ public enum GAMESTATE
 	CONSTELLATION = 5,
 	TRANSLATION = 6,
 	DIALOGUE = 7,
-	NONE = 8
+	NONE = 8,
+	MAP = 9,
+	PHOTOBOARD = 10
 }
 
-public enum GAMEPAD
+// i might need these for control state text later - eryth
+[Flags]
+public enum CONTEXTFLAGS
 {
-	XBOX = 0,
-	PS = 1,
-	NINTENDO = 2,
-	OTHER = 3
+	CAN_INTERACT
 }
 
-[Tool]
 public partial class Globals : Node
 {
 	// The instance of the Globals node that does GodotObject things a static
@@ -67,7 +67,7 @@ public partial class Globals : Node
 	public delegate void GamestateChangeEventHandler();
 	private static Stack<GAMESTATE> _gamestate = new();
 
-	public static GAMESTATE Gamestate
+    public static GAMESTATE Gamestate
 	{
 		get
 		{
@@ -78,7 +78,6 @@ public partial class Globals : Node
 			_gamestate.Clear();
 			_gamestate.Push(value);
 			Instance.EmitSignal(SignalName.GamestateChange);
-			Instance.UpdateControlsText();
 		}
 	}
 
@@ -105,6 +104,7 @@ public partial class Globals : Node
 		if (state == GAMESTATE.NONE)
 		{
 			GD.Print(_gamestate.Pop(), " was popped from the stack.");
+			Instance.EmitSignal(SignalName.GamestateChange);
 			return;
 		}
 
@@ -137,8 +137,6 @@ public partial class Globals : Node
 	// The spawn point you will appear at on level load
 	public static int CurrentSpawnID { get; set; } = -1;
 
-	public static bool isController;
-	public static GAMEPAD controllerType;
 	// The colour used for the outline of interactable objects when a custom one is not set
 	public static readonly Vector3 STANDARD_OUTLINE_COLOR = new (1.0f, 0.95f, 0.45f);
 
@@ -153,7 +151,7 @@ public partial class Globals : Node
 	{
 		if (Engine.IsEditorHint())
 		{
-			GetNode<CanvasLayer>("GlobalsCanvasLayer").Visible = false;
+			//GetNode<CanvasLayer>("GlobalsCanvasLayer").Visible = false;
 			return;
 		}
 
@@ -172,18 +170,18 @@ public partial class Globals : Node
 		InitialGameSetUp();
 
 		pauseMenu = ResourceLoader.Load<PackedScene>("res://Scenes/Menu/Pause/pause_menu.tscn").Instantiate<PauseMenu>();
-		pauseMenu.Hide();
-		GetNode<Control>("GlobalsCanvasLayer/GlobalControl").AddChild(pauseMenu);
-	}
+        pauseMenu.Hide();
+        GetNode<Control>("GlobalsCanvasLayer/GlobalControl").AddChild(pauseMenu);
+    }
 
-	public static void PauseGame()
-	{
+    public static void PauseGame()
+    {
 		Instance.pauseMenu.Show();
 		Instance.GetTree().Paused = true;
 		GD.Print("Game paused, current gamestate: ", Gamestate);
-	}
+    }
 
-	public static void InitialGameSetUp()
+    public static void InitialGameSetUp()
 	{
 		Day = 0;
 		ProgressionStage = GAMESTAGE.BEGIN;
@@ -204,42 +202,41 @@ public partial class Globals : Node
 		GD.Print("Globals::NewDay complete");
 	}
 
-	public override void _Input(InputEvent @event)
+	static public void UpdateControlsText()
 	{
-		if (@event is InputEventKey || @event is InputEventMouseButton)
-		{
-			isController = false;
-		}
-		else if(@event is InputEventJoypadButton || @event is InputEventJoypadMotion)
-		{
-			isController = true;
-
-			string joyName = Input.GetJoyName(Input.GetConnectedJoypads()[0]);
+		GD.Print("updating controls text...");
+		String newText = "";
 		
-			switch (joyName[0])
+		foreach (InputStruct input in InputManager.StateInputDict[Gamestate])
+		{
+			// ensure that the input matches our current control scheme
+			if ((input.inputMethod == INPUT_METHODS.KEYBOARD_CONTROLLER)
+				|| (input.inputMethod == INPUT_METHODS.KEYBOARD_ONLY && InputManager.IsController == false)
+				|| (input.inputMethod == INPUT_METHODS.CONTROLLER_ONLY && InputManager.IsController))
 			{
-				case 'P':
-					controllerType = GAMEPAD.PS;
-					break;
-				case 'X':
-					controllerType = GAMEPAD.XBOX;
-					break;
-				case 'N':
-					controllerType = GAMEPAD.NINTENDO;
-					break;
-				default:
-					controllerType = GAMEPAD.OTHER;
-					break;
+				newText += GetInputGlyphImage(input.glyphName) + input.inputText + "   ";
 			}
-
 		}
+		Instance.controlsText.Text = newText;
+    }
 
-		GD.Print("Controller: " + isController);
-	}
-
-	private void UpdateControlsText()
+	static private string GetInputGlyphImage(string name)
 	{
-	   //controlsText.Text = stateControlText[(int)Gamestate];
-	}
+		const string keyFolder = "res://Sprites/InputKey/";
+		string ctrlSuffix = "";
+		switch (InputManager.ControllerType)
+		{
+			case GAMEPAD.KEYBOARD:
+				ctrlSuffix = "_kb";
+				break;
+			case GAMEPAD.PS:
+                ctrlSuffix = "_ps";
+                break;
+			default:
+                ctrlSuffix = "_ps";
+                break;
+        }
 
+		return "[img]" + keyFolder + name + ctrlSuffix + ".png[/img]";
+	}
 }

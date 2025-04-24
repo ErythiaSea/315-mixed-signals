@@ -9,6 +9,9 @@ public partial class CabinLevel : Level
 	[Export]
 	Control dialogueBox;
 
+	[Export]
+	Control dialogueBubble;
+
 	// the start id for post-translation dialogue
 	[Export]
 	String translationEndStartID = "translationend";
@@ -27,35 +30,31 @@ public partial class CabinLevel : Level
 
 	EndDay endDay;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
 		base._Ready();
 		endDay = GetNode<EndDay>("EndDay");
-		Globals.Instance.DayChanged += OnNewDay;
 
-		Globals.Instance.ProgressionChange += () =>
-		{
-			if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
-			{
-				GetNode<InteractBox>("TranspondBox").active = false;
-			}
-		};
+        Globals.Instance.DayChanged += OnNewDay;
+		Globals.Instance.ProgressionChange += OnGamestageIncrease;
+
+		GetNode<InteractBox>("BedBox").Interacted += endDay.EndTheDay;
 	}
 
-	private void OnNewDay()
-	{
-		if (Globals.Day == 2)
+    private void OnNewDay()
+    {
+        if (Globals.Day == 2)
 		{
 			GD.Print("Final day, so swapping the level change scene and disabling elevator...");
 			exitInteractBox.ChangeLoadedScene(endScreenPath);
 			elevatorButtonBox.QueueFree(); // nuclear approach is, sometimes, the best
 			elevatorButtonBox = null;
 		}
-	}
+    }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
 		base._Process(delta);
 	}
@@ -65,7 +64,7 @@ public partial class CabinLevel : Level
 		GD.Print("translation complete");
 		if (Globals.ProgressionStage == GAMESTAGE.END)
 		{
-			dialogueBox.Call("start", translationEndStartID);
+			dialogueBubble.Call("start", translationEndStartID);
 		}
 	}
 
@@ -75,7 +74,23 @@ public partial class CabinLevel : Level
 		if (Globals.ProgressionStage == GAMESTAGE.BEGIN)
 		{
 			Globals.ProgressionStage = GAMESTAGE.TRANSPONDING;
-			dialogueBox.Call("start", photoboardCloseStartID);
+			dialogueBubble.Call("start", photoboardCloseStartID);
 		}
 	}
+
+	private void OnGamestageIncrease()
+	{
+        if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
+        {
+            GetNode<InteractBox>("TranspondBox").active = false;
+        }
+    }
+
+	// Disconnect custom signals as they won't be automatically disconnected
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        Globals.Instance.ProgressionChange -= OnGamestageIncrease;
+        Globals.Instance.DayChanged -= OnNewDay;
+    }
 }
