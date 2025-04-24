@@ -98,7 +98,7 @@ public partial class Level : Node2D
 
 	public override void _UnhandledInput(InputEvent input)
 	{
-		if (input.IsActionPressed("pause") && !GetTree().Paused)
+		if (input.IsActionPressed("close") && !GetTree().Paused)
 		{
 			GD.Print("pausing game...");
 			Globals.PauseGame();

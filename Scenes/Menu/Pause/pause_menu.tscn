@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcs43lrr7crnf"]
+[gd_scene load_steps=3 format=3 uid="uid://dcs43lrr7crnf"]
 
-[ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="1_6nf85"]
 [ext_resource type="Script" path="res://Scenes/Menu/Pause/PauseMenu.cs" id="2_3g85y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a27i8"]
@@ -15,7 +14,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_6nf85")
 script = ExtResource("2_3g85y")
 
 [node name="ColorRect" type="ColorRect" parent="."]

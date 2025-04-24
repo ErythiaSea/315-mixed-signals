@@ -16,8 +16,10 @@ public partial class PauseMenu : Control
 	public override void _Ready()
 	{
 		resumeButton = GetNode<Button>("ButtonContainer/ResumeButton");
-		resumeButton.GrabFocus();
 		resumeButton.Pressed += UnpauseGame;
+		
+		// grab focus when the pause menu is shown
+		VisibilityChanged += () => { if (Visible) { resumeButton.GrabFocus(); } };
 
 		optionsButton = GetNode<Button>("ButtonContainer/OptionsButton");
 		optionsButton.Pressed += _On_OptionsButton_Pressed;
@@ -47,7 +49,7 @@ public partial class PauseMenu : Control
 
     public override void _UnhandledInput(InputEvent @event)
     {
-        if ((@event.IsActionPressed("pause") || @event.IsActionPressed("ui_cancel")) && GetTree().Paused)
+        if ((@event.IsActionPressed("close") || @event.IsActionPressed("ui_cancel")) && GetTree().Paused)
 		{
 			UnpauseGame();
 			GetViewport().SetInputAsHandled();

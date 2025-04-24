@@ -45,11 +45,6 @@ public partial class BaseMinigame : CanvasLayer
 			}
 			return;
 		}
-
-		if (Input.IsActionJustPressed("close")) 
-		{
-			Close();
-		}
 	}
 
 	protected void Close()
@@ -84,4 +79,14 @@ public partial class BaseMinigame : CanvasLayer
 	protected virtual void OnTransitionFinish()
 	{
 	}
+
+    public override void _UnhandledInput(InputEvent @event)
+    {
+		if (@event.IsActionPressed("close"))
+		{
+			Close();
+			GetViewport().SetInputAsHandled();
+        }
+        base._UnhandledInput(@event);
+    }
 }

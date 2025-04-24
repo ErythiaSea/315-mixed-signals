@@ -35,7 +35,7 @@ public partial class MainMenu : Control
 		currentPage = topPage;
 
 		startButton = topPage.GetNode<Button>("ButtonContainer/StartButton");
-		startButton.GrabFocus();
+		startButton.CallDeferred("grab_focus");
 		startButton.Pressed += _On_StartButton_Pressed;
 
 		optionsButton = topPage.GetNode<Button>("ButtonContainer/OptionsButton");

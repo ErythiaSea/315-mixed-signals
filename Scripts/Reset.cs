@@ -34,7 +34,7 @@ public partial class Reset : Node
 			}
 		}
 
-		// close when holding esc (todo maybe get rid of?)
+		// close when holding esc (debug)
 		if (Input.IsActionPressed("close"))
 		{
             killtimer += delta;
