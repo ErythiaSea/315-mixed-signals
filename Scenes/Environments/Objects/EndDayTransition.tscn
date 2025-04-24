@@ -930,7 +930,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"1",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1055,12 +1055,12 @@ animations = [{
 }],
 "loop": false,
 "name": &"2",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [],
 "loop": false,
 "name": &"3",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="CircleShrink" type="ColorRect"]
@@ -1093,4 +1093,4 @@ z_index = 2
 position = Vector2(1052, 509)
 scale = Vector2(0.175, 0.175)
 sprite_frames = SubResource("SpriteFrames_2w2fw")
-animation = &"1"
+animation = &"3"

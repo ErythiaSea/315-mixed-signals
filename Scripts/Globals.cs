@@ -134,6 +134,8 @@ public partial class Globals : Node
 	public int corvusLove = 0;
 	public int cassioLove= 0;
 	public int pyxisLove = 0;
+
+	public bool isGameDone = false;
 	// Tutorial progress property to track which tutorial should next be shown to the player
 	public static GAMESTAGE TutorialProgress { get; set; } = GAMESTAGE.TRANSPONDING;
 

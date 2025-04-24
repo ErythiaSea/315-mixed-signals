@@ -32,10 +32,10 @@ public partial class MainMenu : Control
 		creditPage = GetNode<Control>("Credits");
 		quitPage = GetNode<Control>("Quit");
 
-		currentPage = topPage;
-
+        quitPage.Visible = false;
+        
+		
 		startButton = topPage.GetNode<Button>("ButtonContainer/StartButton");
-		startButton.CallDeferred("grab_focus");
 		startButton.Pressed += _On_StartButton_Pressed;
 
 		optionsButton = topPage.GetNode<Button>("ButtonContainer/OptionsButton");
@@ -53,7 +53,10 @@ public partial class MainMenu : Control
 		quitGameButton.Pressed += () => GetTree().Quit();
 		quitPage.GetNode<Button>("BackButton").Pressed += BackwardPage;
 
-		buttons.Add(startButton);
+        if (Globals.Instance.isGameDone) { currentPage = creditPage; ForwardPage(creditPage,creditBackButton); creditBackButton.CallDeferred("grab_focus"); }
+        else { currentPage = topPage; currentPage = creditPage; topPage.Visible = true; creditPage.Visible = false; startButton.CallDeferred("grab_focus"); }
+
+        buttons.Add(startButton);
 		buttons.Add(quitMenuButton);
 		buttons.Add(optionsButton);
 

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using static System.Formats.Asn1.AsnWriter;
 
 
 public partial class GodChoice : CanvasLayer
@@ -9,6 +10,12 @@ public partial class GodChoice : CanvasLayer
 	public Godot.Collections.Array<Texture2D> poloroidSprites;
 	[Export]
 	public Godot.Collections.Array<Texture2D> stampSprites;
+
+    [Export(PropertyHint.File, "*.tscn")]
+    public string scenePath = null;
+
+    private PackedScene scene = null;
+    
 	private Node2D Parent;
 	private ColorRect blurRect;
 	private Sprite2D godsSprite;
@@ -25,6 +32,17 @@ public partial class GodChoice : CanvasLayer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+
+        if (scenePath != null)
+        {
+            ResourceLoader.LoadThreadedRequest(scenePath);
+        }
+
+        if (scene == null)
+        {
+            scene = (PackedScene)ResourceLoader.LoadThreadedGet(scenePath);
+        }
+        
 		godButtons = GetButtons();
 
         Parent = GetParent() as Node2D;
@@ -158,9 +176,12 @@ public partial class GodChoice : CanvasLayer
     }
 
 	public void DisplayCredits()
-	{
+    {
 		GD.Print("show credits");
-	}
+		Globals.Instance.isGameDone = true;
+        GetTree().ChangeSceneToPacked(scene);
+
+    }
 	private void DisplayEndScreen()
 	{
 		blurRect.Material = null;
@@ -172,7 +193,7 @@ public partial class GodChoice : CanvasLayer
 
 		Tween display = CreateTween();
         display.Parallel().TweenProperty(poloroid, "modulate", new Color(poloroid.Modulate.R, poloroid.Modulate.G, poloroid.Modulate.B, 1f), 2f);
-        display.Parallel().TweenProperty(poloroid,"position", new Vector2(poloroid.Position.X, 300f), 3f);
+        display.Parallel().TweenProperty(poloroid,"position", new Vector2(poloroid.Position.X, 450f), 3f);
 		display.TweenProperty(stamp,"modulate", new Color(stamp.Modulate.R, stamp.Modulate.G, stamp.Modulate.B, 1f), 2f);
         display.TweenProperty(creditsButton, "visible", true, 0.1f);
 		display.TweenProperty(creditsButton, "modulate", new Color(creditsButton.Modulate.R, creditsButton.Modulate.G, creditsButton.Modulate.B, 1f), 2f);
