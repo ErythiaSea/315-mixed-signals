@@ -1,73 +1,101 @@
-[gd_scene load_steps=4 format=3 uid="uid://qw43er1nfudg"]
+[gd_scene load_steps=5 format=3 uid="uid://qw43er1nfudg"]
 
-[ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="1_g0e0g"]
 [ext_resource type="Script" path="res://Scenes/Menu/Options/Options.cs" id="2_ffohl"]
+[ext_resource type="Script" path="res://Scenes/Menu/MenuButton.cs" id="3_b4kxl"]
 [ext_resource type="Texture2D" uid="uid://c40qyllxl7oh4" path="res://Scenes/Menu/Options/SettingsScreen_Background_01.png" id="3_l0ooh"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("masterVolumeSlider")]
+[sub_resource type="LabelSettings" id="LabelSettings_8nqpi"]
+font_size = 72
+
+[node name="OptionsRoot" type="Control"]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_ffohl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_l0ooh")
+
+[node name="Margins" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("1_g0e0g")
-script = ExtResource("2_ffohl")
-masterVolumeSlider = NodePath("Options/TabContainer/Audio/AudioSetting/Master/VolumeSlider")
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(958, 539)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_l0ooh")
-
-[node name="Options" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 96.0
-offset_top = 44.0
-offset_right = -158.0
-offset_bottom = -34.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 2
-size_flags_vertical = 4
-theme = ExtResource("1_g0e0g")
-
-[node name="TabContainer" type="TabContainer" parent="Options"]
+[node name="HeaderLabel" type="Label" parent="Margins"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.7
-focus_mode = 2
-current_tab = 0
+size_flags_horizontal = 8
+text = "Options"
+label_settings = SubResource("LabelSettings_8nqpi")
+horizontal_alignment = 2
+vertical_alignment = 1
 
-[node name="Audio" type="MarginContainer" parent="Options/TabContainer"]
+[node name="OptionsTop" type="VBoxContainer" parent="Margins"]
 layout_mode = 2
-theme_override_constants/margin_left = 70
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 70
-theme_override_constants/margin_bottom = 10
-metadata/_tab_index = 0
-
-[node name="AudioSetting" type="VBoxContainer" parent="Options/TabContainer/Audio"]
-layout_mode = 2
+size_flags_horizontal = 8
 theme_override_constants/separation = 10
+alignment = 2
 
-[node name="Master" type="HBoxContainer" parent="Options/TabContainer/Audio/AudioSetting"]
+[node name="AudioButton" type="Button" parent="Margins/OptionsTop"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../BackButton")
+theme_override_font_sizes/font_size = 36
+text = "Audio"
+flat = true
+alignment = 2
+script = ExtResource("3_b4kxl")
+
+[node name="ControlsButton" type="Button" parent="Margins/OptionsTop"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Controls"
+flat = true
+alignment = 2
+script = ExtResource("3_b4kxl")
+
+[node name="BackButton" type="Button" parent="Margins/OptionsTop"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../AudioButton")
+theme_override_font_sizes/font_size = 36
+text = "Back"
+flat = true
+alignment = 2
+script = ExtResource("3_b4kxl")
+
+[node name="OptionsAudio" type="VBoxContainer" parent="Margins"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
 theme_override_constants/separation = 10
+alignment = 2
 
-[node name="VolumeLabel" type="Label" parent="Options/TabContainer/Audio/AudioSetting/Master"]
+[node name="MasterButton" type="Button" parent="Margins/OptionsAudio" node_paths=PackedStringArray("relatedOption")]
 layout_mode = 2
-size_flags_horizontal = 2
-text = "Master Volume
-"
+focus_neighbor_top = NodePath("../BackButton")
+theme_override_font_sizes/font_size = 36
+text = "Master"
+flat = true
+alignment = 2
+script = ExtResource("3_b4kxl")
+relatedOption = NodePath("../MasterSlider")
 
-[node name="VolumeSlider" type="HSlider" parent="Options/TabContainer/Audio/AudioSetting/Master"]
+[node name="MasterSlider" type="HSlider" parent="Margins/OptionsAudio"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -75,90 +103,96 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="Music" type="HBoxContainer" parent="Options/TabContainer/Audio/AudioSetting"]
+[node name="MusicButton" type="Button" parent="Margins/OptionsAudio" node_paths=PackedStringArray("relatedOption")]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_font_sizes/font_size = 36
+text = "Music"
+flat = true
+alignment = 2
+script = ExtResource("3_b4kxl")
+relatedOption = NodePath("../MusicSlider")
 
-[node name="VolumeLabel" type="Label" parent="Options/TabContainer/Audio/AudioSetting/Music"]
-layout_mode = 2
-size_flags_horizontal = 2
-text = "Music Volume
-"
-
-[node name="VolumeSlider" type="HSlider" parent="Options/TabContainer/Audio/AudioSetting/Music"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="SFX" type="HBoxContainer" parent="Options/TabContainer/Audio/AudioSetting"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="VolumeLabel" type="Label" parent="Options/TabContainer/Audio/AudioSetting/SFX"]
-layout_mode = 2
-size_flags_horizontal = 2
-text = "Sound Effect Volume
-"
-
-[node name="VolumeSlider" type="HSlider" parent="Options/TabContainer/Audio/AudioSetting/SFX"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="Ambient" type="HBoxContainer" parent="Options/TabContainer/Audio/AudioSetting"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="VolumeLabel" type="Label" parent="Options/TabContainer/Audio/AudioSetting/Ambient"]
-layout_mode = 2
-size_flags_horizontal = 2
-text = "Ambient Volume
-"
-
-[node name="VolumeSlider" type="HSlider" parent="Options/TabContainer/Audio/AudioSetting/Ambient"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="Controls" type="MarginContainer" parent="Options/TabContainer"]
+[node name="MusicSlider" type="HSlider" parent="Margins/OptionsAudio"]
 visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 70
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 70
-theme_override_constants/margin_bottom = 10
-metadata/_tab_index = 1
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
 
-[node name="ControlSetting" type="VBoxContainer" parent="Options/TabContainer/Controls"]
+[node name="SFXButton" type="Button" parent="Margins/OptionsAudio" node_paths=PackedStringArray("relatedOption")]
 layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="ControllerLayout" type="HBoxContainer" parent="Options/TabContainer/Controls/ControlSetting"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="A_BLabel" type="Label" parent="Options/TabContainer/Controls/ControlSetting/ControllerLayout"]
-layout_mode = 2
-size_flags_horizontal = 2
-text = "Swap A/B Buttons
-"
-
-[node name="A_BButton" type="CheckButton" parent="Options/TabContainer/Controls/ControlSetting/ControllerLayout"]
-layout_mode = 2
-size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Sound Effects"
 flat = true
+alignment = 2
+script = ExtResource("3_b4kxl")
+relatedOption = NodePath("../SFXSlider")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Options"]
+[node name="SFXSlider" type="HSlider" parent="Margins/OptionsAudio"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-bbcode_enabled = true
-text = "Some option description will go here! But everything comes in time...
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
 
-The only option that works currently is the master volume slider (I think, I haven't actually tested it with headphones but it SHOULD work!!)
+[node name="EnvironmentalButton" type="Button" parent="Margins/OptionsAudio" node_paths=PackedStringArray("relatedOption")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Environmental"
+flat = true
+alignment = 2
+script = ExtResource("3_b4kxl")
+relatedOption = NodePath("../EnvironmentalSlider")
 
-This is VERY VERY VERY placeholdery UI, hope someone can figure out how to design and implement good UI because it is [b]absolutely[/b] not me!! - Eryth"
+[node name="EnvironmentalSlider" type="HSlider" parent="Margins/OptionsAudio"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="BackButton" type="Button" parent="Margins/OptionsAudio"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../MasterButton")
+theme_override_font_sizes/font_size = 36
+text = "Back"
+flat = true
+alignment = 2
+script = ExtResource("3_b4kxl")
+
+[node name="OptionsControls" type="VBoxContainer" parent="Margins"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="ABSwapButton" type="Button" parent="Margins/OptionsControls"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../BackButton")
+theme_override_font_sizes/font_size = 36
+text = "Swap A/B"
+flat = true
+alignment = 2
+script = ExtResource("3_b4kxl")
+
+[node name="BackButton" type="Button" parent="Margins/OptionsControls"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../ABSwapButton")
+theme_override_font_sizes/font_size = 36
+text = "Back"
+flat = true
+alignment = 2
+script = ExtResource("3_b4kxl")
 
 [node name="Close" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 1179.0
 offset_top = 46.0
