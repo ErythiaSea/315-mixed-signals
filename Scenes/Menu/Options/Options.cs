@@ -147,7 +147,22 @@ public partial class Options : Control
 	public override void _Process(double delta)
 	{
 		// Go back or close options if the back button is pressed
-		if (Input.IsActionJustPressed("ui_cancel"))
+		//if (Input.IsActionJustPressed("ui_cancel"))
+		//{
+		//	if (currentPage == topPage)
+		//	{
+		//		CloseOptions();
+		//	}
+		//	else
+		//	{
+		//		BackwardPage();
+		//	}
+		//}
+	}
+
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (@event.IsActionPressed("ui_cancel"))
 		{
 			if (currentPage == topPage)
 			{
@@ -157,6 +172,7 @@ public partial class Options : Control
 			{
 				BackwardPage();
 			}
+			GetViewport().SetInputAsHandled();
 		}
 	}
 }

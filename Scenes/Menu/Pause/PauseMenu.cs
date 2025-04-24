@@ -4,11 +4,6 @@ using System.Collections.Generic;
 
 public partial class PauseMenu : Control
 {
-	// scene to load on start button pressed
-	// exported so designers can change it as, e.g., intro cutscenes are added
-	[Export(PropertyHint.File, "*.tscn")]
-	string startScene = null;
-
 	// scene to instanciate on options button press
 	[Export(PropertyHint.File, "*.tscn")]
 	PackedScene optionsScene;
@@ -22,7 +17,7 @@ public partial class PauseMenu : Control
 	{
 		resumeButton = GetNode<Button>("ButtonContainer/ResumeButton");
 		resumeButton.GrabFocus();
-		resumeButton.Pressed += _On_ResumeButton_Pressed;
+		resumeButton.Pressed += UnpauseGame;
 
 		optionsButton = GetNode<Button>("ButtonContainer/OptionsButton");
 		optionsButton.Pressed += _On_OptionsButton_Pressed;
@@ -42,25 +37,6 @@ public partial class PauseMenu : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		// quit button stuff
-		if (quitButton.ButtonPressed)
-		{
-			quitTimer += delta;
-			if (quitTimer > 0.5)
-			{
-				GetTree().Quit();
-			}
-		}
-		else { quitTimer = 0; }
-
-		// each button grabs and holds focus if mouse is over it (disables keyboard/controller control)
-		foreach (Button button in buttons)
-		{
-			if (button.IsHovered())
-			{
-				button.GrabFocus();
-			}
-		}
 	}
 
 	private void UnpauseGame()
@@ -69,14 +45,9 @@ public partial class PauseMenu : Control
         GetTree().Paused = false;
     }
 
-	private void _On_ResumeButton_Pressed()
-	{
-		UnpauseGame();
-	}
-
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (@event.IsActionPressed("pause") && GetTree().Paused)
+        if ((@event.IsActionPressed("pause") || @event.IsActionPressed("ui_cancel")) && GetTree().Paused)
 		{
 			UnpauseGame();
 			GetViewport().SetInputAsHandled();
@@ -87,12 +58,9 @@ public partial class PauseMenu : Control
 	{
 		// spawn options menu
 		Control optionsMenu = optionsScene.Instantiate<Control>();
-
-		//optionsMenu.AnchorBottom = 0.5f;
-		//optionsMenu.AnchorLeft = 0.5f;
-		//optionsMenu.AnchorTop = 0.5f;
-		//optionsMenu.AnchorRight = 0.5f;
-
 		AddChild(optionsMenu);
+
+		// when the options menu closes, return focus to options button
+		optionsMenu.TreeExiting += () => optionsButton.GrabFocus();
 	}
 }

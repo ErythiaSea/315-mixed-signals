@@ -91,19 +91,6 @@ public partial class MainMenu : Control
 		focusStack.Pop().GrabFocus();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		// Go back if the back button is pressed and we're not on the top page
-		if (Input.IsActionJustPressed("ui_cancel"))
-		{
-			if (currentPage != topPage)
-			{
-				BackwardPage();
-			}
-		}
-	}
-
 	private void _On_StartButton_Pressed()
 	{
 		// grab the cabin scene as fallback
@@ -124,5 +111,18 @@ public partial class MainMenu : Control
 
 		// when the options menu closes, return focus to options button
 		optionsMenu.TreeExiting += () => optionsButton.GrabFocus();
+	}
+
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		// Go back if the back button is pressed and we're not on the top page
+		if (@event.IsActionPressed("ui_cancel"))
+		{
+			if (currentPage != topPage)
+			{
+				BackwardPage();
+			}
+			GetViewport().SetInputAsHandled();
+		}
 	}
 }
