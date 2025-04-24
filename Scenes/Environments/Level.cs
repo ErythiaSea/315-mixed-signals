@@ -41,20 +41,20 @@ public partial class Level : Node2D
 	int bottomLimit = 0;
 	
 	Player player;
-    PackedScene pauseScene;
+	PackedScene pauseScene;
 
 	private AudioStreamPlayer sceneMusic;
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
 	{
 		if (GetNode("SceneMusic") != null)
 		{
-            sceneMusic = GetNode("SceneMusic") as AudioStreamPlayer;
-        }
+			sceneMusic = GetNode("SceneMusic") as AudioStreamPlayer;
+		}
 		// don't execute this in editor
 		if (Engine.IsEditorHint()) return;
 
-        player = GetNode<Player>("Player");
+		player = GetNode<Player>("Player");
 
 		int spawnID = Globals.CurrentSpawnID;
 		if (spawnID >= 0 && spawnData.Count > 0)
@@ -109,14 +109,14 @@ public partial class Level : Node2D
 		{
 			GD.Print("pausing game...");
 			Globals.PauseGame();
-            GetViewport().SetInputAsHandled();
-        }
+			GetViewport().SetInputAsHandled();
+		}
 	}
-    public void FadeOutMusic()
-    {
-        Tween fade = GetTree().CreateTween();
-        fade.TweenProperty(sceneMusic, "volume_db", (sceneMusic.VolumeDb - musicFadeDb), 1f);
-    }
+	public void FadeOutMusic()
+	{
+		Tween fade = GetTree().CreateTween();
+		fade.TweenProperty(sceneMusic, "volume_db", (sceneMusic.VolumeDb - musicFadeDb), 1f);
+	}
 
 	public void FadeInMusic()
 	{
