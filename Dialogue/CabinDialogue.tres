@@ -8,6 +8,7 @@ starts = {
 "BEGIN": &"0_1",
 "PHOTO_CLOSE": &"0_2",
 "SLEEP": &"0_4",
+"TRANSPONDING_START": &"0_6",
 "WAKEUPDAY1": &"0_5",
 "WAKEUPDAY2": &"0_3"
 }
@@ -36,6 +37,11 @@ nodes = {
 "link": &"1_5",
 "offset": Vector2(-440, -860),
 "start_id": "WAKEUPDAY1"
+},
+"0_6": {
+"link": &"1_9",
+"offset": Vector2(-420, 380),
+"start_id": "TRANSPONDING_START"
 },
 "1_1": {
 "dialogue": "All right time to clock in, better get my lanyard from the pin board.",
@@ -141,6 +147,19 @@ nodes = {
 },
 "size": Vector2(300, 240),
 "speaker": "Boss"
+},
+"1_9": {
+"dialogue": "I wasn’t expecting any deliveries that early. Oh well guess I can’t complain, I finally have some work to do.",
+"offset": Vector2(-200, 380),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
 }
 }
 variables = {}

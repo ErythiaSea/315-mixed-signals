@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=73 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/CabinLevel.cs" id="1_2hyee"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -28,7 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://dmna7wapuwmut" path="res://Audio/Music/Zodiac Hiphop Instrumental by prazkhanal Id-787557.ogg" id="18_tgdje"]
 [ext_resource type="Texture2D" uid="uid://0a1vu5sk0nyp" path="res://Scenes/Environments/Cabin/Sprites/cabin_elevator.png" id="19_cwqwm"]
 [ext_resource type="Texture2D" uid="uid://diasqyo6bpqnm" path="res://Scenes/Environments/Cabin/Sprites/Cabin_ElevatorCover.png" id="21_8ohlt"]
-[ext_resource type="Resource" path="res://Dialogue/CabinDialogue.tres" id="27_34i7x"]
+[ext_resource type="Resource" uid="uid://4dnj2lymr6kn" path="res://Dialogue/CabinDialogue.tres" id="27_34i7x"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="28_fg0wr"]
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/EndDay.cs" id="29_wyus1"]
 [ext_resource type="PackedScene" uid="uid://ccoch44m85xuv" path="res://Scenes/Environments/Objects/EndDayTransition.tscn" id="30_stghc"]
@@ -186,6 +186,21 @@ size = Vector2(291, 55)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_txxlk"]
 radius = 32.249
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rk4s3"]
+size = Vector2(295, 423)
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_3ckrh"]
+script = ExtResource("14_tiwmt")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_71qw6"]
+script = ExtResource("15_1s26x")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_dqmte"]
+script = ExtResource("16_oxyx2")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xcrb"]
+size = Vector2(323, 422)
 
 [node name="Cabin" type="Node2D" node_paths=PackedStringArray("dialogueBox", "dialogueBubble", "exitInteractBox", "elevatorButtonBox")]
 script = ExtResource("1_2hyee")
@@ -583,3 +598,37 @@ bus = &"SFX"
 script = ExtResource("29_wyus1")
 endTransition = ExtResource("30_stghc")
 dialogueBox = NodePath("../SleepDialogueBox")
+
+[node name="WakeupBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
+position = Vector2(409, 4402)
+isOneShot = true
+isAutofire = true
+dialogueBox = NodePath("../CanvasLayer/DialogueBox")
+startID = "WAKEUPDAY1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WakeupBox"]
+position = Vector2(137.5, -75.5)
+shape = SubResource("RectangleShape2D_rk4s3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" type="Panel" parent="CanvasLayer"]
+offset_left = 576.0
+offset_top = 736.0
+offset_right = 1374.0
+offset_bottom = 954.0
+theme = ExtResource("13_haw55")
+script = ExtResource("28_fg0wr")
+data = ExtResource("27_34i7x")
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_3ckrh"), SubResource("RichTextEffect_71qw6"), SubResource("RichTextEffect_dqmte")])
+
+[node name="TransDialBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
+position = Vector2(783, 670)
+isOneShot = true
+isAutofire = true
+dialogueBox = NodePath("../CanvasLayer/DialogueBox")
+startID = "TRANSPONDING_START"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransDialBox"]
+position = Vector2(194, 66)
+shape = SubResource("RectangleShape2D_1xcrb")
