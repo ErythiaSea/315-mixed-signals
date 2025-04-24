@@ -72,7 +72,7 @@ public partial class StarsParent : Node2D
 				randNumArray.Add(randomNum);
 			}
 
-		} while (randNumArray.Sum() == 0 && randNumArray.Sum() < -4 && randNumArray.Sum() > 4);
+		} while (randNumArray.Sum() == 0 || randNumArray.Sum() < -4 || randNumArray.Sum() > 4);
 
 		//updates global variable for cipher key in translation mechanic
 		TranslationCanvasUI.CipherKey = randNumArray.Sum();
