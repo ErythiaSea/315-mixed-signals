@@ -10,10 +10,10 @@
 [ext_resource type="Script" path="res://Scenes/Minigames/Constellation/Scripts/StarsParent.cs" id="8_pqt5s"]
 [ext_resource type="PackedScene" uid="uid://bx27m71lxn4qi" path="res://Scenes/Minigames/Constellation/Objects/StarNode.tscn" id="8_s5r6a"]
 [ext_resource type="AudioStream" uid="uid://87qscn3sol8a" path="res://Scenes/Minigames/Constellation/Resources/Reveal.wav" id="9_ynrg5"]
-[ext_resource type="Texture2D" uid="uid://cad0l75yjf3a4" path="res://Sprites/tutorialbutton_temp.png" id="10_6il21"]
 [ext_resource type="Script" path="res://Scenes/Minigames/TutorialButton.cs" id="10_ikdok"]
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="11_gm0gd"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="11_nevyl"]
+[ext_resource type="Texture2D" uid="uid://chuwfl87b6xpw" path="res://Sprites/Help_Icon_01.png" id="11_r02qn"]
 [ext_resource type="Resource" uid="uid://dek8vr2m0s1sa" path="res://Scenes/Minigames/tutorialdialogue.tres" id="12_2mmrr"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="13_pj04m"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="14_k7onu"]
@@ -153,7 +153,7 @@ offset_left = 1769.0
 offset_top = 23.0
 offset_right = -23.0
 offset_bottom = -929.0
-texture_normal = ExtResource("10_6il21")
+texture_normal = ExtResource("11_r02qn")
 stretch_mode = 5
 script = ExtResource("10_ikdok")
 startID = "3"
