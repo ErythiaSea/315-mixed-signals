@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bww0l858h6hpx"]
+
+[ext_resource type="FontFile" uid="uid://c6lkoenvhuw42" path="res://Fonts/Monotone_SB_V1.otf" id="1_bpfck"]
+
+[resource]
+default_font = ExtResource("1_bpfck")
+default_font_size = 72
+/fonts/Font = ExtResource("1_bpfck")

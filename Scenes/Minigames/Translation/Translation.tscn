@@ -28,15 +28,12 @@ script = ExtResource("10_k8rjn")
 [sub_resource type="RichTextEffect" id="RichTextEffect_xkoe7"]
 script = ExtResource("11_vjohv")
 
-[node name="Translation" type="CanvasLayer" node_paths=PackedStringArray("messageBox", "answerBox", "celHint", "engHint", "cipherDisplay", "winInd")]
+[node name="Translation" type="CanvasLayer" node_paths=PackedStringArray("messageBox", "answerBox", "cipherDisplay")]
 script = ExtResource("1_6ebpw")
 messageBox = NodePath("TextVBox/VBoxContainer/MessageTextBox")
 answerBox = NodePath("TextVBox/VBoxContainer/AnswerBox")
-celHint = NodePath("HBoxContainer/BoxContainer/CelestialChar1")
-engHint = NodePath("HBoxContainer/BoxContainer/EnglishChar1")
 cipherDisplay = NodePath("CipherDisplay")
 englishFont = ExtResource("3_tm1gv")
-winInd = NodePath("WinIndicator")
 Day1Dialogue = ExtResource("3_me5v8")
 Day2Dialogue = ExtResource("4_us2el")
 

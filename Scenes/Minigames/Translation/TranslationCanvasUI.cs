@@ -14,19 +14,15 @@ public partial class TranslationCanvasUI : BaseMinigame
 	[Export]
 	RichTextLabel messageBox;
 	[Export]
-	TextEdit answerBox;
+	LineEdit answerBox;
 	[Export]
-	RichTextLabel celHint;
-	[Export]
-	RichTextLabel engHint;
-	[Export]
-	RichTextLabel cipherDisplay;
+	Label cipherDisplay;
 	[Export]
 	Font englishFont;
 	[Export]
-	TextureRect winInd;
+	BaseButton answerButton;
 	[Export]
-	BaseButton answer;
+	BaseButton backButton;
 
 	[ExportGroup("Dialogue Paths")]
 	[Export(PropertyHint.ResourceType, "DialogueData")]
@@ -49,14 +45,19 @@ public partial class TranslationCanvasUI : BaseMinigame
 		Globals.PushGamestate(GAMESTATE.TRANSLATION);
 		answerBox.GrabFocus();
 		cabin = GetParent<CabinLevel>();
-		MinigameClosed += cabin.TranslationComplete;
 
-		cipherDisplay.Clear();
+		MinigameClosed += cabin.TranslationComplete;
+		answerBox.TextSubmitted += (string text) => AnswerButton();
+		answerButton.Pressed += AnswerButton;
+		backButton.Pressed += answerBox.DeleteCharAtCaret;
+
+		//cipherDisplay.Clear();
+		cipherDisplay.Text = "";
 		messageBox.Clear();
 		answerBox.Clear();
 		//engHint.Clear();
 		//celHint.Clear();
-		winInd.Visible = false;
+		//winInd.Visible = false;
 
 		CallDeferred(nameof(TextInitalisation));
 
@@ -87,7 +88,7 @@ public partial class TranslationCanvasUI : BaseMinigame
 		if (answerBox.HasFocus() && Input.IsActionJustPressed("right"))
 		{
 			GD.Print("SHIFTING");
-			answer.GrabFocus();
+			answerButton.GrabFocus();
 		}
 	}
 
@@ -134,20 +135,10 @@ public partial class TranslationCanvasUI : BaseMinigame
 		messageBox.Text = ("[center] " + cWord);
 
 		//HintsUpdate(cWord);
-		cipherDisplay.AppendText("[center] "+ (-CipherKey).ToString());
+		//cipherDisplay.AppendText("[center] "+ (-CipherKey).ToString());
+		cipherDisplay.Text = (-CipherKey).ToString();
 	}
-	//private void HintsUpdate(string word)
-	//{
-	//	char[] charArray = word.ToCharArray();
-	//	for(int i = 0; i < charArray.Length; i++)
-	//	{
-	//		celHint.AppendText(charArray[i].ToString() + "      =");
-	//		celHint.Newline();
 
-	//		engHint.AppendText(charArray[i].ToString());
-	//		engHint.Newline();
-	//	}
-	//}
 	private string CipherWord(string word)
 	{
 		string cipheredWord = null;
