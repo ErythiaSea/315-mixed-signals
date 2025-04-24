@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://csog4q1nntebh"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_0xv14"]
+
+[resource]
+script = ExtResource("1_0xv14")
+starts = {
+"WrongDay": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-216, -160),
+"start_id": "WrongDay"
+},
+"1_1": {
+"dialogue": "I don't need to go here right now, I should explore somewhere else.",
+"offset": Vector2(0, -160),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"2_1": {
+"comment": "Play this when player tries
+to access the worng area",
+"offset": Vector2(-220, -280),
+"size": Vector2(220, 100)
+}
+}
+variables = {}
+strays = Array[String](["2_1"])
+characters = ""
