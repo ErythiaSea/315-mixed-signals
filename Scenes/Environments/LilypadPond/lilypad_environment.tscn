@@ -518,29 +518,34 @@ shape = SubResource("CircleShape2D_qricm")
 stream = ExtResource("10_iapoc")
 volume_db = -38.432
 autoplay = true
+bus = &"Music"
 
 [node name="Waterfall" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(350, 449)
 stream = ExtResource("11_70pbf")
 volume_db = -11.886
 autoplay = true
+bus = &"Environmental"
 
 [node name="Pond_River" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-1761, 1128)
 stream = ExtResource("12_dyj3n")
 volume_db = -30.91
 autoplay = true
+bus = &"Environmental"
 
 [node name="Frog" type="AudioStreamPlayer2D" parent="Pond_River"]
 position = Vector2(-296, 90)
 stream = ExtResource("13_wayi1")
 autoplay = true
+bus = &"SFX"
 
 [node name="Rain" type="AudioStreamPlayer2D" parent="Pond_River/Frog"]
 position = Vector2(-136, -660)
 stream = ExtResource("14_w6odn")
 volume_db = -18.819
 autoplay = true
+bus = &"Environmental"
 
 [node name="InteractBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("4_u2itd")]
 position = Vector2(-1115, 794)

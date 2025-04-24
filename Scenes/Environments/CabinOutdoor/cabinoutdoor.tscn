@@ -207,6 +207,7 @@ shape = SubResource("RectangleShape2D_rkcsa")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MapBox"]
 stream = ExtResource("7_3c7j6")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="LevelTransition" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(-443, 57)
@@ -223,6 +224,7 @@ shape = SubResource("RectangleShape2D_m3gji")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LevelTransition"]
 stream = ExtResource("8_gk6jg")
 volume_db = -5.0
+bus = &"SFX"
 
 [node name="SpawnPoints" type="Node" parent="."]
 
@@ -238,6 +240,7 @@ gizmo_extents = 16.9
 stream = ExtResource("7_888ia")
 volume_db = -38.432
 autoplay = true
+bus = &"Music"
 
 [node name="MiscDial Box" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("4_elcve")]
 position = Vector2(1690, 440)

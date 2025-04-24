@@ -244,62 +244,73 @@ shape = SubResource("RectangleShape2D_qrknp")
 position = Vector2(2, -92)
 stream = ExtResource("15_y3wnx")
 volume_db = 7.924
+bus = &"SFX"
 
 [node name="WavesCrashing" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(296, 1070)
 stream = ExtResource("15_epl3m")
 volume_db = -20.0
 autoplay = true
+bus = &"Environmental"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WavesCrashing"]
 position = Vector2(-2002, -17)
 stream = ExtResource("15_epl3m")
 volume_db = -20.0
 autoplay = true
+bus = &"Environmental"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="WavesCrashing/AudioStreamPlayer2D"]
 position = Vector2(3265, -2)
 stream = ExtResource("15_epl3m")
 volume_db = -20.0
 autoplay = true
+bus = &"Environmental"
 
 [node name="MoreWavesCrashing" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(314, 1069)
 stream = ExtResource("16_utne0")
 volume_db = -30.0
 autoplay = true
+bus = &"Environmental"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MoreWavesCrashing"]
 position = Vector2(1290, -16)
 stream = ExtResource("16_utne0")
 volume_db = -30.0
 autoplay = true
+bus = &"Environmental"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MoreWavesCrashing/AudioStreamPlayer2D"]
 position = Vector2(-3247, 18)
 stream = ExtResource("16_utne0")
 volume_db = -30.0
 autoplay = true
+bus = &"Environmental"
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_owmvf")
 volume_db = -38.0
 autoplay = true
+bus = &"Music"
 
 [node name="Seagulls" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(464, -761)
 stream = ExtResource("18_qewgt")
 volume_db = 11.885
 autoplay = true
+bus = &"Environmental"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Seagulls"]
 position = Vector2(1201, 197)
 stream = ExtResource("18_qewgt")
 volume_db = 11.885
 autoplay = true
+bus = &"Environmental"
 
 [node name="MoreSeagulls" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-1855, -761)
 stream = ExtResource("19_cl7gx")
 volume_db = -15.0
 autoplay = true
+bus = &"Environmental"

@@ -50,6 +50,7 @@ cameraSpeed = 15.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera"]
 stream = ExtResource("9_ynrg5")
 volume_db = -13.84
+bus = &"SFX"
 
 [node name="Parallax" type="Node2D" parent="Camera"]
 modulate = Color(0.564962, 0.564962, 0.564962, 1)

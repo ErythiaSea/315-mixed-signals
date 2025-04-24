@@ -352,6 +352,7 @@ process_mode = 1
 stream = ExtResource("18_tgdje")
 volume_db = -23.0
 autoplay = true
+bus = &"Music"
 
 [node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "wallCollision", "topFloorCollision") instance=ExtResource("14_e5y7b")]
 position = Vector2(952, 4552)
@@ -504,6 +505,7 @@ shape = SubResource("RectangleShape2D_cchka")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TranslationBox"]
 stream = ExtResource("31_3gkvo")
+bus = &"SFX"
 
 [node name="BedBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite", "dialogueBox")]
 position = Vector2(238, 4549)
@@ -550,6 +552,7 @@ shape = SubResource("RectangleShape2D_lvk1a")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LevelChange"]
 stream = ExtResource("32_rlb8a")
 volume_db = -5.0
+bus = &"SFX"
 
 [node name="ElevatorBottomCall" parent="." node_paths=PackedStringArray("objectSprite") instance=ExtResource("15_lw781")]
 position = Vector2(724, 4538)
@@ -562,6 +565,7 @@ shape = SubResource("CircleShape2D_txxlk")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ElevatorBottomCall"]
 stream = ExtResource("32_gh5bl")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="ElevatorTopCall" parent="." node_paths=PackedStringArray("objectSprite") instance=ExtResource("15_lw781")]
 position = Vector2(478, 984)
@@ -573,6 +577,7 @@ shape = SubResource("CircleShape2D_txxlk")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ElevatorTopCall"]
 stream = ExtResource("32_gh5bl")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="EndDay" type="Node2D" parent="." node_paths=PackedStringArray("dialogueBox")]
 script = ExtResource("29_wyus1")
