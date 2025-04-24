@@ -25,7 +25,7 @@ nodes = {
 },
 "0_3": {
 "link": &"1_7",
-"offset": Vector2(560, 240),
+"offset": Vector2(1400, 240),
 "start_id": "err"
 },
 "0_4": {
@@ -45,7 +45,7 @@ nodes = {
 },
 "1_1": {
 "dialogue": "(You hear an aetherial voice unlike anything you've ever heard before...)",
-"offset": Vector2(560, -440),
+"offset": Vector2(1620, -400),
 "options": {
 0: {
 "condition": {},
@@ -57,30 +57,30 @@ nodes = {
 "speaker": ""
 },
 "1_10": {
-"dialogue": "tutorialdialogue.tres with id 3 - constellation tutorial text here!",
+"dialogue": "Now where is this damn space shi- Why do the stars look like that...",
 "offset": Vector2(-200, 400),
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"1_19",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": "erf"
+"speaker": "..."
 },
 "1_11": {
-"dialogue": "tutorialdialogue.tres with id 1 - end of waveform dialogue here!",
+"dialogue": "What on earth are these symbols?",
 "offset": Vector2(-180, 100),
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"1_17",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": "erf"
+"speaker": "..."
 },
 "1_12": {
 "dialogue": "tutorialdialogue.tres with id 4 - constellation end dialogue here!",
@@ -93,12 +93,105 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": "erf"
+"speaker": "TUTORIAL"
+},
+"1_13": {
+"dialogue": "To find the relative sector, both of the lines attached to either radio tower must overlap on top of the correlating red box.",
+"offset": Vector2(160, -500),
+"options": {
+0: {
+"condition": {},
+"link": &"1_14",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_14": {
+"dialogue": "There will be sound and visuals that will alter the closest you get to the sector.",
+"offset": Vector2(500, -500),
+"options": {
+0: {
+"condition": {},
+"link": &"1_15",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_15": {
+"dialogue": "'A' and 'D' can be used to control the left dial. 'LeftMB' and 'RightMB' can be used to control the right dial.",
+"offset": Vector2(840, -500),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_16": {
+"dialogue": "'A' and 'D' can be used to control the width of the wave. 'W' and 'S' can be used to control the height of the wave.",
+"offset": Vector2(840, -200),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_17": {
+"dialogue": "What does any of this mean?",
+"offset": Vector2(160, 100),
+"options": {
+0: {
+"condition": {},
+"link": &"1_18",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_18": {
+"dialogue": "Hmm the company usually supplies a cipher key, but there doesn’t seem to be one here.
+",
+"offset": Vector2(500, 100),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_19": {
+"dialogue": "They are so damn bright!
+",
+"offset": Vector2(140, 400),
+"options": {
+0: {
+"condition": {},
+"link": &"1_20",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
 },
 "1_2": {
 "dialogue": "You must... align your antennae... with the correct radio tower...
 You'll know you've found the correct one, when... the lights at the bottom flash quickly, and... the static disappears...",
-"offset": Vector2(960, -460),
+"offset": Vector2(1980, -400),
 "options": {
 0: {
 "condition": {},
@@ -108,23 +201,49 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 },
 "size": Vector2(300, 240),
 "speaker": "???"
+},
+"1_20": {
+"dialogue": "I should note down these anomalies and their coordinates and report back at base.",
+"offset": Vector2(480, 400),
+"options": {
+0: {
+"condition": {},
+"link": &"1_21",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_21": {
+"dialogue": "To connect all of the stars, hover over them with the crosshair. use 'W', 'A', 'S', and 'D' to move the telescope. ",
+"offset": Vector2(820, 400),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
 },
 "1_3": {
-"dialogue": "To do so... you must adjust the waveform shown on top, such that it aligns with the wave on the bottom...",
-"offset": Vector2(960, -80),
+"dialogue": "Huh? The signal seems to be a mess. Let me try this.",
+"offset": Vector2(160, -200),
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"1_5",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": "???"
+"speaker": "..."
 },
 "1_4": {
 "dialogue": "(Do you want to read that again?)",
-"offset": Vector2(1480, -460),
+"offset": Vector2(1980, -100),
 "options": {
 0: {
 "condition": {},
@@ -141,21 +260,21 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 "speaker": ""
 },
 "1_5": {
-"dialogue": "Well done... You must now recieve the message transmitted to you...",
-"offset": Vector2(560, -80),
+"dialogue": "To receive the message, the radiowave in the upper monitor must match that of the lower monitor.",
+"offset": Vector2(500, -200),
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"1_16",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": "???"
+"speaker": "TUTORIAL"
 },
 "1_6": {
 "dialogue": "(Do you want to re-read that?)",
-"offset": Vector2(1340, -80),
+"offset": Vector2(1620, -100),
 "options": {
 0: {
 "condition": {},
@@ -173,7 +292,7 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 },
 "1_7": {
 "dialogue": "(Somehow, this seems wrong...)",
-"offset": Vector2(780, 240),
+"offset": Vector2(1620, 240),
 "options": {
 0: {
 "condition": {},
@@ -185,32 +304,32 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 "speaker": ""
 },
 "1_8": {
-"dialogue": "tutorialdialogue.tres with id 0 - transpond tutorial text here!",
+"dialogue": "Time to find out where I will be picking up from today. I do hope its not near the sulphur lakes.",
 "offset": Vector2(-180, -500),
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"1_13",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": "erf"
+"speaker": "..."
 },
 "1_9": {
-"dialogue": "tutorialdialogue.tres with id 1 - waveform tutorial text here!",
+"dialogue": "This is control tower, please send over your delivery manifesto.",
 "offset": Vector2(-180, -200),
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"1_3",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": "erf"
+"speaker": "..."
 }
 }
 variables = {}
-strays = Array[String](["1_2", "1_5", "1_3", "1_1", "1_6", "1_4"])
+strays = Array[String](["1_6", "1_1", "1_4", "1_2"])
 characters = ""

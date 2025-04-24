@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=75 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/CabinLevel.cs" id="1_2hyee"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -35,6 +35,7 @@
 [ext_resource type="AudioStream" uid="uid://bqlgr3jk0g4ix" path="res://Audio/Mechanics/Translation/638380__yossirafa100__soft-cover-book-open-3.wav" id="31_3gkvo"]
 [ext_resource type="AudioStream" uid="uid://cm1g34cblsmf5" path="res://Audio/Ambience/Cabin/188388__wubitog__mid-high-tone-button-click.wav" id="32_gh5bl"]
 [ext_resource type="AudioStream" uid="uid://ofggrfo8xfan" path="res://Audio/Ambience/Cabin/398750__anthousai__door-open-01.wav" id="32_rlb8a"]
+[ext_resource type="Resource" uid="uid://ckynjg6qn8fve" path="res://Dialogue/TranslationDialogue.tres" id="36_dj0ny"]
 
 [sub_resource type="Resource" id="Resource_82qql"]
 script = ExtResource("2_vrtq2")
@@ -201,6 +202,9 @@ script = ExtResource("16_oxyx2")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xcrb"]
 size = Vector2(323, 422)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7p1o"]
+size = Vector2(62, 261)
 
 [node name="Cabin" type="Node2D" node_paths=PackedStringArray("dialogueBox", "dialogueBubble", "exitInteractBox", "elevatorButtonBox")]
 script = ExtResource("1_2hyee")
@@ -603,7 +607,7 @@ dialogueBox = NodePath("../SleepDialogueBox")
 position = Vector2(409, 4402)
 isOneShot = true
 isAutofire = true
-dialogueBox = NodePath("../CanvasLayer/DialogueBox")
+dialogueBox = NodePath("../CanvasLayer/CabinDialogueBox")
 startID = "WAKEUPDAY1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WakeupBox"]
@@ -612,7 +616,7 @@ shape = SubResource("RectangleShape2D_rk4s3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="DialogueBox" type="Panel" parent="CanvasLayer"]
+[node name="CabinDialogueBox" type="Panel" parent="CanvasLayer"]
 offset_left = 576.0
 offset_top = 736.0
 offset_right = 1374.0
@@ -622,13 +626,47 @@ script = ExtResource("28_fg0wr")
 data = ExtResource("27_34i7x")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_3ckrh"), SubResource("RichTextEffect_71qw6"), SubResource("RichTextEffect_dqmte")])
 
-[node name="TransDialBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
+[node name="TranslationDialogueBox" type="Panel" parent="CanvasLayer"]
+offset_left = 576.0
+offset_top = 736.0
+offset_right = 1374.0
+offset_bottom = 954.0
+theme = ExtResource("13_haw55")
+script = ExtResource("28_fg0wr")
+data = ExtResource("36_dj0ny")
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_3ckrh"), SubResource("RichTextEffect_71qw6"), SubResource("RichTextEffect_dqmte")])
+
+[node name="TranspondDialBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
 position = Vector2(783, 670)
 isOneShot = true
 isAutofire = true
-dialogueBox = NodePath("../CanvasLayer/DialogueBox")
+dialogueBox = NodePath("../CanvasLayer/CabinDialogueBox")
 startID = "TRANSPONDING_START"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TransDialBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondDialBox"]
 position = Vector2(194, 66)
 shape = SubResource("RectangleShape2D_1xcrb")
+
+[node name="WaveformFinishBox2" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
+position = Vector2(781, 673)
+requiredStage = 3
+isOneShot = true
+isAutofire = true
+dialogueBox = NodePath("../CanvasLayer/CabinDialogueBox")
+startID = "WAVEFORM_CLOSE"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaveformFinishBox2"]
+position = Vector2(194, 66)
+shape = SubResource("RectangleShape2D_1xcrb")
+
+[node name="PreTranslationDialBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
+position = Vector2(1361, 4368)
+requiredStage = 4
+isOneShot = true
+isAutofire = true
+dialogueBox = NodePath("../CanvasLayer/TranslationDialogueBox")
+startID = "TRANSLATION_ENTER"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PreTranslationDialBox"]
+position = Vector2(45, 53)
+shape = SubResource("RectangleShape2D_i7p1o")

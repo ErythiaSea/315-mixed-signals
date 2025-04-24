@@ -39,6 +39,7 @@ script = ExtResource("15_bf7ia")
 [node name="ConstellationDraw" type="CanvasLayer"]
 follow_viewport_enabled = true
 script = ExtResource("1_sd3pu")
+constellationEndStartID = ""
 exitTransition = 4
 
 [node name="Camera" type="Camera2D" parent="."]

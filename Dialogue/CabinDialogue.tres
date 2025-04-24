@@ -8,9 +8,11 @@ starts = {
 "BEGIN": &"0_1",
 "PHOTO_CLOSE": &"0_2",
 "SLEEP": &"0_4",
+"TRANSLATION_ENTER": &"0_8",
 "TRANSPONDING_START": &"0_6",
 "WAKEUPDAY1": &"0_5",
-"WAKEUPDAY2": &"0_3"
+"WAKEUPDAY2": &"0_3",
+"WAVEFORM_CLOSE": &"0_7"
 }
 nodes = {
 "0_1": {
@@ -43,9 +45,71 @@ nodes = {
 "offset": Vector2(-420, 380),
 "start_id": "TRANSPONDING_START"
 },
+"0_7": {
+"link": &"1_11",
+"offset": Vector2(-420, 700),
+"start_id": "WAVEFORM_CLOSE"
+},
+"0_8": {
+"link": &"1_12",
+"offset": Vector2(-400, 1080),
+"start_id": "TRANSLATION_ENTER"
+},
 "1_1": {
 "dialogue": "All right time to clock in, better get my lanyard from the pin board.",
 "offset": Vector2(-240, -220),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_10": {
+"dialogue": "I guess I better go take a better look before they dock.",
+"offset": Vector2(140, 700),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_11": {
+"dialogue": "That's weird, no response just weird symbols.",
+"offset": Vector2(-200, 700),
+"options": {
+0: {
+"condition": {},
+"link": &"1_10",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_12": {
+"dialogue": "I still don’t have a cipher key, but maybe those anomalous stars are related to the weird message.",
+"offset": Vector2(-180, 1080),
+"options": {
+0: {
+"condition": {},
+"link": &"1_13",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_13": {
+"dialogue": "What if I calculate the total of all the coordinates and use that as the cipher key",
+"offset": Vector2(160, 1080),
 "options": {
 0: {
 "condition": {},

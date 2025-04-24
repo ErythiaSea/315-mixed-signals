@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://pkfkpyetdo58" path="res://Scenes/Minigames/Transpond/Sprites/waveform_gridbg.png" id="6_ftnw3"]
 [ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="6_ip8fq"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="7_y3602"]
-[ext_resource type="Resource" uid="uid://cxvnmre15ev6s" path="res://Dialogue/TranspondingDialogue.tres" id="8_ej4k6"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="8_exjkm"]
+[ext_resource type="Resource" uid="uid://dek8vr2m0s1sa" path="res://Scenes/Minigames/tutorialdialogue.tres" id="8_mkirk"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="9_gtpwd"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="10_sy41u"]
 [ext_resource type="Texture2D" uid="uid://chuwfl87b6xpw" path="res://Sprites/Help_Icon_01.png" id="12_84qav"]
@@ -115,7 +115,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("6_ip8fq")
 script = ExtResource("7_y3602")
-data = ExtResource("8_ej4k6")
+data = ExtResource("8_mkirk")
 start_id = "TRANS1_TUT"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_qgpgv"), SubResource("RichTextEffect_iiq5k"), SubResource("RichTextEffect_vkvdv")])
 
