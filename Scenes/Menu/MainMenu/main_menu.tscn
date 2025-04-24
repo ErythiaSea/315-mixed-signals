@@ -123,25 +123,46 @@ offset_bottom = 226.0
 theme_override_font_sizes/font_size = 100
 text = "Credits"
 
-[node name="CreditsText" type="Label" parent="Credits"]
+[node name="CreditsText" type="RichTextLabel" parent="Credits"]
 layout_mode = 0
 offset_left = 707.0
-offset_top = 238.0
+offset_top = 226.0
 offset_right = 1866.0
-offset_bottom = 1027.0
-theme_override_font_sizes/font_size = 45
-text = "Eryth Davidson - Programming
-Kyle Deans - Programming
-Luca Hendrix - Art
-Aaron Lochiel - Art
-Bethany Kinnear - Art
-Micah Meadows - Art/Design
-Ruaraidh Crichton - Audio/Design
-Axel Berglund - Production/Design
-Troy McCron - Module Tutor
-Hyper Luminal Games
-"
-horizontal_alignment = 2
+offset_bottom = 909.0
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "[right][b]Producer[/b]
+Axel Berglund 
+
+[b]Programmers[/b]
+Eryth Davidson 
+Kyle Deans 
+
+[b]Asset Creation[/b]
+Luca Hendrix 
+Bethany Kinnear 
+Aaron Lochiel 
+
+[b]Technical Artists[/b]
+Luca Hendrix 
+Aaron Lochiel 
+Micah Meadows 
+
+[b]Gameplay and Narrative Designers[/b]
+Axel Berglund 
+Ruaraidh Crichton 
+Micah Meadows 
+
+[b]Audio Designer[/b]
+Ruaraidh Crichton 
+
+[b]Additional Credits[/b]
+Hyper Luminal Games – Mentor
+Troy McCron - Tutor
+
+Made at Abertay University for DES315
+[/right]"
 
 [node name="BackButton" type="Button" parent="Credits"]
 layout_mode = 2

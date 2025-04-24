@@ -33,6 +33,7 @@ public partial class MainMenu : Control
 		quitPage = GetNode<Control>("Quit");
 
 		currentPage = topPage;
+		topPage.Visible = true; creditPage.Visible = false; quitPage.Visible = false;
 
 		startButton = topPage.GetNode<Button>("ButtonContainer/StartButton");
 		startButton.CallDeferred("grab_focus");
