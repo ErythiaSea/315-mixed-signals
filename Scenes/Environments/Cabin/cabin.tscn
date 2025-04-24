@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=68 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/CabinLevel.cs" id="1_2hyee"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -21,12 +21,13 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="15_1s26x"]
 [ext_resource type="Texture2D" uid="uid://dm0lfd4qddhlh" path="res://Scenes/Environments/Cabin/Sprites/bedroom_book.png" id="15_gbafl"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="15_lw781"]
-[ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://Sprites/icon.svg" id="16_7v6od"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="16_oxyx2"]
 [ext_resource type="Texture2D" uid="uid://dljep1sop1gkj" path="res://Scenes/Environments/Cabin/Sprites/bedroom_photoboard.png" id="16_stl3d"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="17_h87pq"]
 [ext_resource type="Texture2D" uid="uid://bo65tm1j2ywal" path="res://Scenes/Environments/Cabin/Sprites/bedroom_silohette.png" id="17_l3xrp"]
 [ext_resource type="AudioStream" uid="uid://dmna7wapuwmut" path="res://Audio/Music/Zodiac Hiphop Instrumental by prazkhanal Id-787557.ogg" id="18_tgdje"]
+[ext_resource type="Texture2D" uid="uid://0a1vu5sk0nyp" path="res://Scenes/Environments/Cabin/Sprites/cabin_elevator.png" id="19_cwqwm"]
+[ext_resource type="Texture2D" uid="uid://diasqyo6bpqnm" path="res://Scenes/Environments/Cabin/Sprites/Cabin_ElevatorCover.png" id="21_8ohlt"]
 [ext_resource type="Resource" uid="uid://4dnj2lymr6kn" path="res://Dialogue/CabinDialogue.tres" id="27_34i7x"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="28_fg0wr"]
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/EndDay.cs" id="29_wyus1"]
@@ -190,6 +191,7 @@ radius = 32.249
 script = ExtResource("1_2hyee")
 dialogueBox = NodePath("SleepDialogueBox")
 translationEndStartID = "TRANSLATION_END"
+photoboardCloseStartID = "PHOTO_CLOSE"
 exitInteractBox = NodePath("LevelChange")
 elevatorButtonBox = NodePath("Elevator/ElevatorButton")
 spawnData = Array[Object]([SubResource("Resource_82qql")])
@@ -344,13 +346,6 @@ position = Vector2(1634, 4125)
 scale = Vector2(0.558659, 0.558405)
 texture = ExtResource("16_stl3d")
 
-[node name="Bedroom Foreground" type="Sprite2D" parent="Sprites"]
-position = Vector2(961.889, 4108)
-scale = Vector2(0.501389, 0.501389)
-texture = ExtResource("17_l3xrp")
-region_enabled = true
-region_rect = Rect2(0, 18.6872, 3840, 2256.31)
-
 [node name="HubBGM" type="AudioStreamPlayer" parent="."]
 process_mode = 1
 stream = ExtResource("18_tgdje")
@@ -369,19 +364,19 @@ bottomY = 4552.0
 travelTime = 5.0
 
 [node name="ElevatorFloor" type="CollisionShape2D" parent="Elevator"]
-position = Vector2(47.5, 4.5)
+position = Vector2(-2.5, 4.5)
 shape = SubResource("RectangleShape2D_rsbk3")
 
 [node name="ElevatorWallL" type="CollisionShape2D" parent="Elevator"]
-position = Vector2(-155, -68)
+position = Vector2(-205, -68)
 shape = SubResource("RectangleShape2D_3sbqo")
 
 [node name="ElevatorWallR" type="CollisionShape2D" parent="Elevator"]
-position = Vector2(251, -70)
+position = Vector2(201, -70)
 shape = SubResource("RectangleShape2D_f8yak")
 
-[node name="ElevatorButton" parent="Elevator" node_paths=PackedStringArray("objectSprite", "dialogueBox") instance=ExtResource("15_lw781")]
-position = Vector2(-125, -11)
+[node name="ElevatorButton" parent="Elevator" node_paths=PackedStringArray("objectSprite") instance=ExtResource("15_lw781")]
+position = Vector2(-175, -11)
 objectSprite = NodePath("../Sprite2D")
 requiredStage = 1
 dialogueBox = NodePath("../../DialogueBubble")
@@ -391,9 +386,23 @@ shape = SubResource("CircleShape2D_b7gpl")
 
 [node name="Sprite2D" type="Sprite2D" parent="Elevator"]
 material = SubResource("ShaderMaterial_qpiuy")
-position = Vector2(47, 4)
-scale = Vector2(3.15625, 0.0799988)
-texture = ExtResource("16_7v6od")
+position = Vector2(-5, 34)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_cwqwm")
+
+[node name="BedroomElevatorCover" type="Sprite2D" parent="."]
+position = Vector2(961.889, 4108)
+scale = Vector2(0.501389, 0.501389)
+texture = ExtResource("17_l3xrp")
+region_enabled = true
+region_rect = Rect2(0, 18.6872, 3840, 2256.31)
+
+[node name="TopElevatorCover" type="Sprite2D" parent="."]
+position = Vector2(964, 412.5)
+scale = Vector2(0.5, 0.7)
+texture = ExtResource("21_8ohlt")
+region_enabled = true
+region_rect = Rect2(0, 18.6872, 3840, 2256.31)
 
 [node name="WorldCollision" type="StaticBody2D" parent="."]
 position = Vector2(396, 403)
@@ -546,6 +555,7 @@ position = Vector2(724, 4538)
 objectSprite = NodePath("../Sprites/BottomCallButton")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorBottomCall"]
+position = Vector2(-50, 0)
 shape = SubResource("CircleShape2D_txxlk")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ElevatorBottomCall"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dkjjkuqsupb4f"]
+[gd_scene load_steps=65 format=3 uid="uid://dkjjkuqsupb4f"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_tgjlw"]
 [ext_resource type="Texture2D" uid="uid://bkevc4rf8wjhe" path="res://Scenes/Environments/LilypadPond/lilypadenv_back.png" id="1_x6dd7"]
@@ -8,8 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://din6bfgvj8ksj" path="res://Scenes/Environments/Objects/sprites/telescope.png" id="2_tg48q"]
 [ext_resource type="PackedScene" uid="uid://rttkrffqrw1g" path="res://Scenes/Environments/Objects/stair_control.tscn" id="3_6n8s2"]
 [ext_resource type="Texture2D" uid="uid://de45w11b26rfr" path="res://Scenes/Environments/LilypadPond/lilypadenv_cliffgrass.png" id="3_n7la6"]
+[ext_resource type="Texture2D" uid="uid://bscwfdupdkglr" path="res://Scenes/Environments/LilypadPond/Fly Spritesheet.png" id="4_awl36"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="4_u2itd"]
+[ext_resource type="Texture2D" uid="uid://b070vtxvute0f" path="res://Scenes/Environments/LilypadPond/lilypadenv_bridge.png" id="4_ybdag"]
+[ext_resource type="Texture2D" uid="uid://7k5job0k2i3x" path="res://Scenes/Environments/LilypadPond/Frog Spritesheet.png" id="5_5e7le"]
+[ext_resource type="Texture2D" uid="uid://muj70a4g11ub" path="res://Scenes/Environments/LilypadPond/River Spritesheet.png" id="6_h615o"]
+[ext_resource type="Texture2D" uid="uid://cdmqbukbwy7ob" path="res://Scenes/Environments/LilypadPond/Waterfall Spritesheet.png" id="7_b0qjx"]
 [ext_resource type="AudioStream" uid="uid://dd6vkaf4mxsnu" path="res://Audio/Music/Kinesis Stellae Choir by Vrymaa Id-770060.ogg" id="10_iapoc"]
+[ext_resource type="Texture2D" uid="uid://b842olhylnucx" path="res://Scenes/Environments/LilypadPond/lilypadenv_treesR.png" id="10_m0mjx"]
+[ext_resource type="Resource" uid="uid://ciinae4snmogy" path="res://Scenes/Environments/LilypadPond/Dialogue/lilypad dialogue.tres" id="11_3uaob"]
 [ext_resource type="AudioStream" uid="uid://c8eusy0cr4kfc" path="res://Audio/Ambience/Lilypad/Water, Waterfall, Waterfall, The Trolls Road, River, 10m, Loop 02 SND73480.ogg" id="11_70pbf"]
 [ext_resource type="AudioStream" uid="uid://d1dsjc5b8djm1" path="res://Audio/Ambience/Lilypad/Water, Flow, Shallow Creek, Forest, Birds, Buderim Forest, Qeensland, Australia 01 SND31676.ogg" id="12_dyj3n"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="12_f3lj2"]
@@ -58,6 +65,120 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_tartr")
 fill = 1
 fill_from = Vector2(0.509174, 0.518349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36qgt"]
+atlas = ExtResource("4_awl36")
+region = Rect2(0, 0, 139, 158)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0ah2"]
+atlas = ExtResource("4_awl36")
+region = Rect2(139, 0, 139, 158)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5utis"]
+atlas = ExtResource("4_awl36")
+region = Rect2(278, 0, 139, 158)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba12c"]
+atlas = ExtResource("5_5e7le")
+region = Rect2(0, 0, 116, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku16b"]
+atlas = ExtResource("5_5e7le")
+region = Rect2(116, 0, 116, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh7vd"]
+atlas = ExtResource("5_5e7le")
+region = Rect2(232, 0, 116, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w82pq"]
+atlas = ExtResource("5_5e7le")
+region = Rect2(348, 0, 116, 118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83j2c"]
+atlas = ExtResource("6_h615o")
+region = Rect2(0, 0, 2137, 612)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_roj3o"]
+atlas = ExtResource("6_h615o")
+region = Rect2(2137, 0, 2137, 612)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpu7o"]
+atlas = ExtResource("6_h615o")
+region = Rect2(4274, 0, 2137, 612)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qmv4"]
+atlas = ExtResource("7_b0qjx")
+region = Rect2(0, 0, 1309, 2920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3ajd"]
+atlas = ExtResource("7_b0qjx")
+region = Rect2(1309, 0, 1309, 2920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dfke"]
+atlas = ExtResource("7_b0qjx")
+region = Rect2(2618, 0, 1309, 2920)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kox1c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36qgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0ah2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5utis")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba12c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ku16b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh7vd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w82pq")
+}],
+"loop": true,
+"name": &"Frog",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83j2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_roj3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpu7o")
+}],
+"loop": true,
+"name": &"River",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qmv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3ajd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dfke")
+}],
+"loop": true,
+"name": &"Waterfall",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkpum"]
 size = Vector2(150, 20)
@@ -153,12 +274,56 @@ texture = SubResource("GradientTexture2D_3mkuh")
 position = Vector2(0, -124)
 texture = ExtResource("1_x6dd7")
 
+[node name="Waterfall" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(370, 184.782)
+scale = Vector2(1.11421, 1.29672)
+sprite_frames = SubResource("SpriteFrames_kox1c")
+animation = &"Waterfall"
+autoplay = "Waterfall"
+frame = 2
+frame_progress = 0.557851
+
+[node name="Frog" type="AnimatedSprite2D" parent="Sprites"]
+z_index = 3
+position = Vector2(-2168, 973)
+scale = Vector2(1.24146, 1.33899)
+sprite_frames = SubResource("SpriteFrames_kox1c")
+animation = &"Frog"
+autoplay = "Frog"
+frame_progress = 0.952438
+
+[node name="Fly" type="AnimatedSprite2D" parent="Sprites"]
+z_index = 3
+position = Vector2(-2874, 708)
+sprite_frames = SubResource("SpriteFrames_kox1c")
+animation = &"Fly"
+autoplay = "Fly"
+frame_progress = 0.739842
+
+[node name="River" type="AnimatedSprite2D" parent="Sprites"]
+z_index = 3
+position = Vector2(1922, 1149)
+sprite_frames = SubResource("SpriteFrames_kox1c")
+animation = &"River"
+autoplay = "River"
+frame_progress = 0.469882
+
+[node name="Bridge" type="Sprite2D" parent="Sprites"]
+position = Vector2(-21, -741)
+scale = Vector2(1.00266, 1)
+texture = ExtResource("4_ybdag")
+
 [node name="Foreground" type="Sprite2D" parent="Sprites"]
 z_index = 2
 texture = ExtResource("2_csear")
 
+[node name="FrontTrees" type="Sprite2D" parent="Sprites"]
+z_index = 3
+position = Vector2(2237, 608)
+texture = ExtResource("10_m0mjx")
+
 [node name="TelescopeSprite" type="Sprite2D" parent="Sprites"]
-position = Vector2(-935, -846.333)
+position = Vector2(-940, -823)
 scale = Vector2(1.18163, 1.18163)
 texture = ExtResource("2_tg48q")
 
@@ -173,7 +338,7 @@ scenePath = "res://Scenes/Minigames/Constellation/ConstellationDraw.tscn"
 disablePlayerCam = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TelescopeBox"]
-position = Vector2(-27, 0)
+position = Vector2(-27, 42)
 shape = SubResource("RectangleShape2D_mkpum")
 
 [node name="LevelTransition" parent="." instance=ExtResource("4_u2itd")]
@@ -237,7 +402,7 @@ one_way_collision = true
 [node name="Cliff3" type="CollisionPolygon2D" parent="LevelCollision"]
 position = Vector2(-42, 21)
 build_mode = 1
-polygon = PackedVector2Array(2169, 326, 2170, 319, 2157, 318, 2071, 315, 1832, 103, 1815, 94, 1791, 80, 1537, 86, 1468, 79, 1436, 74, 1395, 57, 1343, 69, 1287, 68, 1224, 63, 1076, 61, 1072, -31, 1062, -31, 1068, 67, 1814, 108, 2067, 321)
+polygon = PackedVector2Array(2169, 326, 2170, 319, 2157, 318, 2071, 315, 1838, 114, 1813, 98, 1790, 97, 1537, 86, 1468, 79, 1436, 74, 1395, 57, 1343, 69, 1287, 68, 1224, 63, 1076, 61, 1072, -31, 1062, -31, 1068, 67, 1814, 108, 2067, 321)
 one_way_collision = true
 
 [node name="CliffStair4" type="CollisionShape2D" parent="LevelCollision"]
@@ -259,11 +424,11 @@ one_way_collision = true
 [node name="Clifftop" type="CollisionPolygon2D" parent="LevelCollision"]
 position = Vector2(-42, 21)
 build_mode = 1
-polygon = PackedVector2Array(2767, -846, 2626, -858, 2465, -874, 2302, -895, 2139, -915, 2000, -935, 1891, -955, 1785, -975, 1664, -999, 1549, -1018, 1445, -1033, 1344, -1046, 1247, -1051, 1163, -1049, 1082, -1046, 1000, -950, 930, -883, 851, -804, 763, -743, 672, -681, 583, -638, 489, -598, 382, -562, 282, -537, 175, -522, 61, -518, -35, -525, -140, -555, -226, -593, -311, -634, -377, -672, -454, -738, -996, -738, -996, -817, -1005, -817, -1006, -704, 137, -474)
+polygon = PackedVector2Array(2767, -846, 2626, -858, 2465, -874, 2302, -895, 2139, -915, 2000, -935, 1891, -955, 1785, -975, 1664, -999, 1549, -1018, 1445, -1033, 1344, -1046, 1247, -1051, 1163, -1049, 1082, -1046, 1000, -950, 930, -883, 851, -804, 763, -743, 672, -681, 583, -638, 489, -598, 382, -562, 282, -537, 175, -522, 61, -518, -35, -525, -140, -555, -226, -593, -311, -634, -377, -672, -418, -704, -996, -705, -996, -817, -1010, -817, -1010, -682, 137, -474)
 one_way_collision = true
 
 [node name="Wall1" type="CollisionShape2D" parent="LevelCollision"]
-position = Vector2(-1047, -780.5)
+position = Vector2(-1047, -753)
 shape = SubResource("RectangleShape2D_slmed")
 
 [node name="Wall2" type="CollisionShape2D" parent="LevelCollision"]
@@ -302,7 +467,7 @@ position = Vector2(-3283, -1121)
 stairToToggle = NodePath("../../LevelCollision/Wall1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StairControls/ShortcutControl"]
-position = Vector2(-2.5, 0)
+position = Vector2(-2.5, 36)
 shape = SubResource("RectangleShape2D_deeq0")
 
 [node name="StairControl5" parent="StairControls" node_paths=PackedStringArray("stairToToggle") instance=ExtResource("3_6n8s2")]
