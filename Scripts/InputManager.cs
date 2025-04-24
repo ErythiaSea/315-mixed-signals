@@ -140,6 +140,6 @@ public partial class InputManager : Node
                     break;
             }
         }
-        GD.Print("Controller: " + IsController);
+       // GD.Print("Controller: " + IsController);
     }
 }

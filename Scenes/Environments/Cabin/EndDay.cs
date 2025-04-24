@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.Design;
 using System.Threading.Tasks;
 
-public partial class EndDay : Node2D
+public partial class EndDay : CanvasLayer
 {
 	[Export]
 	PackedScene endTransition;
@@ -15,8 +15,10 @@ public partial class EndDay : Node2D
 	[Export]
 	Control dialogueBox;
 
-	private EndTransitionScript currentTrans;
-	Player player;
+	private AnimatedSprite2D calenderAnim;
+
+    private EndTransitionScript currentTrans;
+    Player player;
 	bool isClosed = false;
 
 	private bool isDisplayed = false;
@@ -37,9 +39,10 @@ public partial class EndDay : Node2D
 
 		if (currentTrans.isDone && !isDisplayed)
 		{
-		   dialogueBox.Call("start", "SLEEP");
-			isDisplayed = true;
-		}
+			dialogueBox.Call("start", "SLEEP");
+            isDisplayed = true;
+        }
+
 	}
 
 	public void EndTheDay()
@@ -59,8 +62,10 @@ public partial class EndDay : Node2D
 		Globals.NewDay();
 		currentTrans.OpenCircle(0f, 1f, transitionTime);
 		player.SetMovementLock(false);
-		isClosed = false;
-		Globals.PopGamestate(GAMESTATE.CUTSCENE);
+		isClosed = false; 
+
+		Globals.Instance.CallDeferred(Globals.MethodName.PopGamestate, Variant.CreateFrom((int)GAMESTATE.CUTSCENE));
+	
 	}
 
 	private void CreateTransition()
@@ -70,5 +75,7 @@ public partial class EndDay : Node2D
 		player.AddChild(transition);
 		currentTrans = transition;
 		transition.CloseCircle(1f, 0f, transitionTime);
-	}
+    }
+
+	
 }

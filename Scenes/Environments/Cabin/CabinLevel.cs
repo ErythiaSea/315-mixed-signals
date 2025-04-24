@@ -30,10 +30,13 @@ public partial class CabinLevel : Level
 
 	EndDay endDay;
 
+	AudioStreamPlayer sceneMusic;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
 		base._Ready();
+		sceneMusic = GetNode("SceneMusic") as AudioStreamPlayer;
 		endDay = GetNode<EndDay>("EndDay");
 
         Globals.Instance.DayChanged += OnNewDay;
@@ -47,7 +50,7 @@ public partial class CabinLevel : Level
         if (Globals.Day == 2)
 		{
 			GD.Print("Final day, so swapping the level change scene and disabling elevator...");
-			exitInteractBox.ChangeLoadedScene(endScreenPath);
+			//exitInteractBox.ChangeLoadedScene(endScreenPath);
 			elevatorButtonBox.QueueFree(); // nuclear approach is, sometimes, the best
 			elevatorButtonBox = null;
 		}

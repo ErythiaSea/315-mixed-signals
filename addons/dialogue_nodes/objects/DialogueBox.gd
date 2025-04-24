@@ -323,7 +323,10 @@ func _on_dialogue_signal(value : String):
 
 
 func _on_variable_changed(variable_name : String, value):
+	
+	Globals.updateAffection(variable_name, value);
 	variable_changed.emit(variable_name, value)
+	
 
 
 func _on_dialogue_ended():

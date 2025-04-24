@@ -252,6 +252,9 @@ public partial class InteractBox : Area2D
 	// based on the loadInCurrent bool
 	private void loadScene()
 	{
+		Level lvl = GetParent() as Level;
+		lvl.FadeOutMusic();
+
 		// Instance the scene, adjust ZIndex so it renders on top
 		if (loadInCurrent)
 		{
@@ -271,6 +274,7 @@ public partial class InteractBox : Area2D
 		{
 			Globals.CurrentSpawnID = spawnPoint;
 			GD.Print("loading new scene...");
+			//FADE MUSIC
 			GetTree().ChangeSceneToPacked(scene);
 		}
 	}
@@ -322,4 +326,6 @@ public partial class InteractBox : Area2D
         ResourceLoader.LoadThreadedRequest(scenePath);
         scene = null;
     }
+
+	
 }
