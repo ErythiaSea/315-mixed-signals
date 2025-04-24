@@ -112,9 +112,9 @@ public partial class TranspondScreen : BaseMinigame
 		}
 	}
 
-    protected override void QuitMinigame()
-    {
+	protected override void QuitMinigame()
+	{
 		Globals.PopGamestate();
-        base.QuitMinigame();
-    }
+		base.QuitMinigame();
+	}
 }

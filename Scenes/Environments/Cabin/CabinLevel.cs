@@ -39,25 +39,25 @@ public partial class CabinLevel : Level
 		sceneMusic = GetNode("SceneMusic") as AudioStreamPlayer;
 		endDay = GetNode<EndDay>("EndDay");
 
-        Globals.Instance.DayChanged += OnNewDay;
+		Globals.Instance.DayChanged += OnNewDay;
 		Globals.Instance.ProgressionChange += OnGamestageIncrease;
 
 		GetNode<InteractBox>("BedBox").Interacted += endDay.EndTheDay;
 	}
 
-    private void OnNewDay()
-    {
-        if (Globals.Day == 2)
+	private void OnNewDay()
+	{
+		if (Globals.Day == 2)
 		{
 			GD.Print("Final day, so swapping the level change scene and disabling elevator...");
 			//exitInteractBox.ChangeLoadedScene(endScreenPath);
 			elevatorButtonBox.QueueFree(); // nuclear approach is, sometimes, the best
 			elevatorButtonBox = null;
 		}
-    }
+	}
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
 	{
 		base._Process(delta);
 	}
@@ -83,17 +83,17 @@ public partial class CabinLevel : Level
 
 	private void OnGamestageIncrease()
 	{
-        if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
-        {
-            GetNode<InteractBox>("TranspondBox").active = false;
-        }
-    }
+		if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
+		{
+			GetNode<InteractBox>("TranspondBox").active = false;
+		}
+	}
 
 	// Disconnect custom signals as they won't be automatically disconnected
-    public override void _ExitTree()
-    {
-        base._ExitTree();
-        Globals.Instance.ProgressionChange -= OnGamestageIncrease;
-        Globals.Instance.DayChanged -= OnNewDay;
-    }
+	public override void _ExitTree()
+	{
+		base._ExitTree();
+		Globals.Instance.ProgressionChange -= OnGamestageIncrease;
+		Globals.Instance.DayChanged -= OnNewDay;
+	}
 }
