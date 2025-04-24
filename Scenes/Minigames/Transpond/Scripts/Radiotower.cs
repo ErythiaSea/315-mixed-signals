@@ -34,8 +34,11 @@ public partial class Radiotower : Node2D
 		rightIndicator = GetNode<Sprite2D>("rightIndicator");
 		lPivot = GetNode<RadiotowerPivot>("leftPivot");
 		rPivot = GetNode<RadiotowerPivot>("rightPivot");
-		lDistort = (AudioEffectDistortion)AudioServer.GetBusEffect(1, 0);
-		rDistort = (AudioEffectDistortion)AudioServer.GetBusEffect(2, 0);
+
+		int transpondLBusIndex = AudioServer.GetBusIndex("TranspondTowerL");
+        int transpondRBusIndex = AudioServer.GetBusIndex("TranspondTowerR");
+        lDistort = (AudioEffectDistortion)AudioServer.GetBusEffect(transpondLBusIndex, 0);
+		rDistort = (AudioEffectDistortion)AudioServer.GetBusEffect(transpondRBusIndex, 0);
 
 		towers = GetNode("towers").GetChildren();
 		idx = (int)(GD.Randi() % 8);

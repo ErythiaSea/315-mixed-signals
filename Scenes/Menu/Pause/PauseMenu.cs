@@ -8,7 +8,9 @@ public partial class PauseMenu : Control
 	[Export(PropertyHint.File, "*.tscn")]
 	PackedScene optionsScene;
 
-	Button resumeButton, optionsButton, quitButton;
+	const string mainMenuPath = "res://Scenes/Menu/MainMenu/main_menu.tscn";
+
+    Button resumeButton, optionsButton, mainMenuButton;
 	List<Button> buttons = new List<Button>{};
 	double quitTimer = 0;
 
@@ -24,10 +26,10 @@ public partial class PauseMenu : Control
 		optionsButton = GetNode<Button>("ButtonContainer/OptionsButton");
 		optionsButton.Pressed += _On_OptionsButton_Pressed;
 
-		quitButton = GetNode<Button>("ButtonContainer/QuitButton");
+		mainMenuButton = GetNode<Button>("ButtonContainer/MainMenuButton");
 
 		buttons.Add(resumeButton);
-		buttons.Add(quitButton);
+		buttons.Add(mainMenuButton);
 		buttons.Add(optionsButton);
 
 		if (optionsScene == null)
@@ -39,6 +41,18 @@ public partial class PauseMenu : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (mainMenuButton.ButtonPressed)
+		{
+			quitTimer += delta;
+		}
+		else
+		{
+			quitTimer = 0;
+		}
+		if (quitTimer > 0.5)
+		{
+			GetTree().ChangeSceneToFile(mainMenuPath);
+		}
 	}
 
 	private void UnpauseGame()
