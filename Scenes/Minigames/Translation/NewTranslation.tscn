@@ -1,0 +1,167 @@
+[gd_scene load_steps=21 format=3 uid="uid://dgsy8eo7i6nov"]
+
+[ext_resource type="Script" path="res://Scenes/Minigames/Translation/TranslationCanvasUI.cs" id="1_6c2l1"]
+[ext_resource type="FontFile" uid="uid://c6lkoenvhuw42" path="res://Fonts/Monotone_SB_V1.otf" id="2_0evcl"]
+[ext_resource type="Resource" uid="uid://cwyp32gw5vyln" path="res://Dialogue/CorvusDialogue.tres" id="3_iwoto"]
+[ext_resource type="Resource" uid="uid://bsh8hh8w8fw2m" path="res://Scenes/Debug/pyxisCassioDialogue.tres" id="4_ih0qr"]
+[ext_resource type="Texture2D" uid="uid://bdbtdsda6v0np" path="res://Scenes/Minigames/Translation/Sprites/TranslationScreen_New.png" id="5_iju3k"]
+[ext_resource type="FontFile" uid="uid://m3h38nqxkg0o" path="res://Fonts/Monotone_Celestial_V1.otf" id="6_e65ad"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Translation/AnswerBox.cs" id="7_nx382"]
+[ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="7_ytl8i"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="9_4pbac"]
+[ext_resource type="Resource" uid="uid://hopbrw1uiih8" path="res://Scenes/Debug/pyxisDialogue.tres" id="10_5dtco"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="11_ta5fi"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="12_cbtrd"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="13_lydqu"]
+[ext_resource type="Texture2D" uid="uid://chuwfl87b6xpw" path="res://Sprites/Help_Icon_01.png" id="14_lcav8"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Translation/Keyboard.cs" id="15_0sp73"]
+[ext_resource type="Script" path="res://Scenes/Minigames/TutorialButton.cs" id="15_tuxkp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uhfvq"]
+font = ExtResource("2_0evcl")
+font_size = 288
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_k5p1y"]
+script = ExtResource("11_ta5fi")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_macbo"]
+script = ExtResource("12_cbtrd")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_xkoe7"]
+script = ExtResource("13_lydqu")
+
+[node name="Translation" type="CanvasLayer" node_paths=PackedStringArray("messageBox", "answerBox", "cipherDisplay", "answerButton", "backButton")]
+script = ExtResource("1_6c2l1")
+wordList = PackedStringArray("Plumage", "Compass")
+messageBox = NodePath("MessageTextBox")
+answerBox = NodePath("AnswerBox")
+cipherDisplay = NodePath("CipherDisplay")
+englishFont = ExtResource("2_0evcl")
+answerButton = NodePath("CheckAnswerButton")
+backButton = NodePath("DeleteButton")
+Day1Dialogue = ExtResource("3_iwoto")
+Day2Dialogue = ExtResource("4_ih0qr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_iju3k")
+
+[node name="MessageTextBox" type="RichTextLabel" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 250)
+offset_left = 202.0
+offset_top = 83.0
+offset_right = 1202.0
+offset_bottom = 333.0
+theme_override_fonts/normal_font = ExtResource("6_e65ad")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[center]Hot"
+fit_content = true
+scroll_active = false
+
+[node name="AnswerBox" type="LineEdit" parent="."]
+offset_left = 333.0
+offset_top = 387.0
+offset_right = 1074.0
+offset_bottom = 541.0
+focus_neighbor_right = NodePath(".")
+focus_mode = 1
+theme_override_fonts/font = ExtResource("2_0evcl")
+theme_override_font_sizes/font_size = 100
+placeholder_text = "(Write here...)"
+alignment = 1
+context_menu_enabled = false
+script = ExtResource("7_nx382")
+
+[node name="CheckAnswerButton" type="Button" parent="."]
+offset_left = 813.0
+offset_top = 925.0
+offset_right = 965.0
+offset_bottom = 1009.0
+focus_neighbor_left = NodePath("../AnswerBox")
+focus_neighbor_top = NodePath("../AnswerBox")
+theme = ExtResource("7_ytl8i")
+theme_override_font_sizes/font_size = 75
+text = "Confirm"
+
+[node name="DeleteButton" type="Button" parent="."]
+offset_left = 989.0
+offset_top = 925.0
+offset_right = 1141.0
+offset_bottom = 1009.0
+focus_neighbor_left = NodePath("../AnswerBox")
+focus_neighbor_top = NodePath("../AnswerBox")
+theme = ExtResource("7_ytl8i")
+theme_override_font_sizes/font_size = 75
+text = "Delete
+"
+
+[node name="CipherDisplay" type="Label" parent="."]
+offset_left = 1433.0
+offset_top = 273.0
+offset_right = 1556.0
+offset_bottom = 561.0
+text = "0"
+label_settings = SubResource("LabelSettings_uhfvq")
+horizontal_alignment = 1
+
+[node name="TutorialButton" type="TextureButton" parent="." node_paths=PackedStringArray("dialogueBox")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1769.0
+offset_top = 23.0
+offset_right = -23.0
+offset_bottom = -929.0
+texture_normal = ExtResource("14_lcav8")
+stretch_mode = 5
+script = ExtResource("15_tuxkp")
+startID = "tut"
+dialogueBox = NodePath("../DialogueBox")
+
+[node name="Keyboard" type="HBoxContainer" parent="." node_paths=PackedStringArray("answerBox")]
+clip_contents = true
+offset_left = 73.0
+offset_top = 596.0
+offset_right = 1836.0
+offset_bottom = 804.0
+theme_override_constants/separation = 0
+alignment = 1
+script = ExtResource("15_0sp73")
+buttonFont = ExtResource("2_0evcl")
+answerBox = NodePath("../AnswerBox")
+
+[node name="Button" type="Button" parent="Keyboard"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0evcl")
+theme_override_font_sizes/font_size = 200
+text = "a"
+flat = true
+
+[node name="DialogueBox" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -495.0
+offset_top = -86.0
+offset_right = 495.0
+offset_bottom = 370.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_ytl8i")
+script = ExtResource("9_4pbac")
+data = ExtResource("10_5dtco")
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_k5p1y"), SubResource("RichTextEffect_macbo"), SubResource("RichTextEffect_xkoe7")])
+options_vertical = true

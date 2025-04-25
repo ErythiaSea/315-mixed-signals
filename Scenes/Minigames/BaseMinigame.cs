@@ -16,6 +16,7 @@ public partial class BaseMinigame : CanvasLayer
 	[Export]
 	public float transitionLength = 1.0f;
 
+	private Level level;
 	// whether this minigame is able to be closed
 	protected bool canClose = true;
 	// whether this minigame is able to be controlled
@@ -30,6 +31,7 @@ public partial class BaseMinigame : CanvasLayer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		level = GetParent() as Level;
 		// todo: stop doing this - erf
 		player = GetNode<Player>("../Player");
 	}
@@ -69,6 +71,7 @@ public partial class BaseMinigame : CanvasLayer
 	// todo: still doing this a crappy way for now but i'd like to do signal bus later
 	protected virtual void QuitMinigame()
 	{
+		level.FadeInMusic();
 		OnTransitionFinish();
 		player.SetMovementLock(false);
 		player.SetCameraEnabled(true);

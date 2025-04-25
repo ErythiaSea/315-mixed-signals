@@ -6,7 +6,6 @@
 script = ExtResource("1_het41")
 starts = {
 "TRANS2_TUT": &"0_4",
-"WAVEFORM_CLOSE": &"0_3",
 "WAVEFORM_END": &"0_2",
 "WAVEFORM_START": &"0_1"
 }
@@ -20,11 +19,6 @@ nodes = {
 "link": &"1_3",
 "offset": Vector2(-260, 680),
 "start_id": "WAVEFORM_END"
-},
-"0_3": {
-"link": &"1_6",
-"offset": Vector2(-260, 1080),
-"start_id": "WAVEFORM_CLOSE"
 },
 "0_4": {
 "link": &"1_7",
@@ -98,19 +92,6 @@ nodes = {
 "size": Vector2(300, 240),
 "speaker": "..."
 },
-"1_6": {
-"dialogue": "I guess I better go take a better look before they dock.",
-"offset": Vector2(0, 1080),
-"options": {
-0: {
-"condition": {},
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "..."
-},
 "1_7": {
 "dialogue": "To receive the message, the radiowave in the upper monitor must match that of the lower monitor.",
 "offset": Vector2(-20, 260),
@@ -143,12 +124,6 @@ mini game",
 "offset": Vector2(-260, 580),
 "size": Vector2(200, 100)
 },
-"2_2": {
-"comment": "Play in cabin after 
-exiting minigame",
-"offset": Vector2(-260, 980),
-"size": Vector2(220, 100)
-},
 "2_3": {
 "comment": "Play this when entering
 the minigame",
@@ -163,5 +138,5 @@ WAVEFORM_START",
 }
 }
 variables = {}
-strays = Array[String](["2_2", "2_1", "2_3", "2_4"])
+strays = Array[String](["2_1", "2_3", "2_4"])
 characters = ""

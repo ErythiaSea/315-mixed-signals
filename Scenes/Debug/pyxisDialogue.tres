@@ -265,54 +265,54 @@ Please leave startid = err",
 "offset": Vector2(140, -160),
 "type": 1,
 "value": "1",
-"variable": "LOVE"
+"variable": "PLOVE"
 },
 "4_2": {
 "link": &"1_3",
 "offset": Vector2(120, 40),
 "type": 2,
 "value": "1",
-"variable": "LOVE"
+"variable": "PLOVE"
 },
 "4_3": {
 "link": &"1_7",
 "offset": Vector2(1680, -80),
 "type": 1,
 "value": "1",
-"variable": "LOVE"
+"variable": "PLOVE"
 },
 "4_4": {
 "link": &"1_5",
 "offset": Vector2(1680, 60),
 "type": 2,
 "value": "1",
-"variable": "LOVE"
+"variable": "PLOVE"
 },
 "4_5": {
 "link": &"1_10",
 "offset": Vector2(3100, -60),
 "type": 1,
 "value": "1",
-"variable": "LOVE"
+"variable": "PLOVE"
 },
 "4_6": {
 "link": &"1_1",
 "offset": Vector2(-580, -280),
 "type": 0,
 "value": "0",
-"variable": "LOVE"
+"variable": "PLOVE"
 },
 "5_1": {
 "false": &"1_11",
 "offset": Vector2(3820, -220),
 "operator": 2,
 "true": &"1_12",
-"value1": "{{LOVE}}",
+"value1": "{{PLOVE}}",
 "value2": "2"
 }
 }
 variables = {
-"LOVE": {
+"PLOVE": {
 "type": 2,
 "value": 0
 }

@@ -451,9 +451,9 @@ position = Vector2(-766, 133)
 shape = SubResource("SegmentShape2D_7qebe")
 
 [node name="Player" parent="." instance=ExtResource("2_a0sm7")]
-position = Vector2(-2749, 554)
+position = Vector2(-2745, 554)
 scale = Vector2(3, 3)
-movementSpeed = 550.0
+movementSpeed = 650.0
 
 [node name="Head" type="Marker2D" parent="Player"]
 position = Vector2(-2.8, -44.4)
@@ -514,7 +514,7 @@ shape = SubResource("CircleShape2D_qricm")
 position = Vector2(0, -379)
 shape = SubResource("CircleShape2D_qricm")
 
-[node name="LilypadBGM" type="AudioStreamPlayer" parent="."]
+[node name="SceneMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_iapoc")
 volume_db = -38.432
 autoplay = true

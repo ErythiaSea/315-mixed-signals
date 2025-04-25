@@ -8,7 +8,12 @@ starts = {
 "BEGIN": &"0_1",
 "PHOTO_CLOSE": &"0_2",
 "SLEEP": &"0_4",
-"WAKEUP": &"0_3"
+"TRANSLATION_END": &"0_9",
+"TRANSLATION_ENTER": &"0_8",
+"TRANSPONDING_START": &"0_6",
+"WAKEUPDAY1": &"0_5",
+"WAKEUPDAY2": &"0_3",
+"WAVEFORM_CLOSE": &"0_7"
 }
 nodes = {
 "0_1": {
@@ -24,16 +29,106 @@ nodes = {
 "0_3": {
 "link": &"1_3",
 "offset": Vector2(-440, -540),
-"start_id": "WAKEUP"
+"start_id": "WAKEUPDAY2"
 },
 "0_4": {
 "link": &"1_4",
 "offset": Vector2(100, -540),
 "start_id": "SLEEP"
 },
+"0_5": {
+"link": &"1_5",
+"offset": Vector2(-440, -860),
+"start_id": "WAKEUPDAY1"
+},
+"0_6": {
+"link": &"1_9",
+"offset": Vector2(-420, 380),
+"start_id": "TRANSPONDING_START"
+},
+"0_7": {
+"link": &"1_11",
+"offset": Vector2(-420, 700),
+"start_id": "WAVEFORM_CLOSE"
+},
+"0_8": {
+"link": &"1_12",
+"offset": Vector2(-400, 1080),
+"start_id": "TRANSLATION_ENTER"
+},
+"0_9": {
+"link": &"1_14",
+"offset": Vector2(620, 1080),
+"start_id": "TRANSLATION_END"
+},
 "1_1": {
 "dialogue": "All right time to clock in, better get my lanyard from the pin board.",
 "offset": Vector2(-240, -220),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_10": {
+"dialogue": "I guess I better go take a better look before they dock.",
+"offset": Vector2(140, 700),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_11": {
+"dialogue": "That's weird, no response just weird symbols.",
+"offset": Vector2(-200, 700),
+"options": {
+0: {
+"condition": {},
+"link": &"1_10",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_12": {
+"dialogue": "I still don’t have a cipher key, but maybe those anomalous stars are related to the weird message.",
+"offset": Vector2(-180, 1080),
+"options": {
+0: {
+"condition": {},
+"link": &"1_13",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_13": {
+"dialogue": "What if I calculate the total of all the coordinates and use that as the cipher key",
+"offset": Vector2(160, 1080),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_14": {
+"dialogue": "I... don't have a clue what just happened...",
+"offset": Vector2(860, 1080),
 "options": {
 0: {
 "condition": {},
@@ -73,6 +168,72 @@ nodes = {
 "1_4": {
 "dialogue": "This is way above my pay grade...",
 "offset": Vector2(300, -540),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_5": {
+"dialogue": "You bastard, that message came through five hours ago, and you still haven’t checked it!",
+"offset": Vector2(-240, -860),
+"options": {
+0: {
+"condition": {},
+"link": &"1_6",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Boss"
+},
+"1_6": {
+"dialogue": "We’d fire you if we could but no sorry sod is desperate enough to work this quadrant.",
+"offset": Vector2(140, -860),
+"options": {
+0: {
+"condition": {},
+"link": &"1_7",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Boss"
+},
+"1_7": {
+"dialogue": "I'm sorry sir, It won't happen again.",
+"offset": Vector2(480, -860),
+"options": {
+0: {
+"condition": {},
+"link": &"1_8",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_8": {
+"dialogue": "You kids and those damn phones! Why I ought’a…
+",
+"offset": Vector2(820, -860),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Boss"
+},
+"1_9": {
+"dialogue": "I wasn’t expecting any deliveries that early. Oh well guess I can’t complain, I finally have some work to do.",
+"offset": Vector2(-200, 380),
 "options": {
 0: {
 "condition": {},

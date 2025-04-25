@@ -1,9 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://cqy8krri14xxv"]
+[gd_scene load_steps=26 format=3 uid="uid://cqy8krri14xxv"]
 
 [ext_resource type="PackedScene" uid="uid://kv3p5d4tp3k5" path="res://Scenes/Minigames/Transpond/radiotowers.tscn" id="1_okcy0"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Transpond/Scripts/TranspondScreen.cs" id="1_ouvn6"]
 [ext_resource type="PackedScene" uid="uid://7aoxy6ge3j3s" path="res://Scenes/Minigames/Transpond/waveform.tscn" id="3_xdcbw"]
-[ext_resource type="Texture2D" uid="uid://bpb5024lyyhod" path="res://Scenes/Minigames/Transpond/Sprites/Transponding _Frames.png" id="4_46uc7"]
+[ext_resource type="Texture2D" uid="uid://beg3ve66yxsur" path="res://Scenes/Minigames/Transpond/Sprites/Transponding _Expand_V2.png" id="4_2vr7q"]
 [ext_resource type="Texture2D" uid="uid://pkfkpyetdo58" path="res://Scenes/Minigames/Transpond/Sprites/waveform_gridbg.png" id="6_ftnw3"]
 [ext_resource type="Theme" uid="uid://dc6c1peo4pfyr" path="res://addons/dialogue_nodes/themes/bubbly.theme" id="6_ip8fq"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="7_y3602"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="10_sy41u"]
 [ext_resource type="Texture2D" uid="uid://chuwfl87b6xpw" path="res://Sprites/Help_Icon_01.png" id="12_84qav"]
 [ext_resource type="Script" path="res://Scenes/Minigames/TutorialButton.cs" id="13_in4h4"]
+[ext_resource type="Texture2D" uid="uid://cpe1k5tqkko17" path="res://Scenes/Minigames/Transpond/Sprites/Transponding_Victory_Corvus.png" id="14_eceop"]
+[ext_resource type="Texture2D" uid="uid://co75rqmmjff1q" path="res://Scenes/Minigames/Transpond/Sprites/Transponding_Victory_Pyxis.png" id="15_0asnm"]
 
 [sub_resource type="Gradient" id="Gradient_aagt1"]
 offsets = PackedFloat32Array(0, 0.983122, 0.995781, 1)
@@ -33,6 +35,70 @@ script = ExtResource("9_gtpwd")
 [sub_resource type="RichTextEffect" id="RichTextEffect_vkvdv"]
 script = ExtResource("10_sy41u")
 
+[sub_resource type="Animation" id="Animation_qrrbo"]
+resource_name = "Day1Complete"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("minigameComplete/Day1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 2160), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8rfhf"]
+resource_name = "Day2Complete"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("minigameComplete/Day2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mmbo2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("minigameComplete/Day1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("minigameComplete/Day2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_stbth"]
+_data = {
+"Day1Complete": SubResource("Animation_qrrbo"),
+"Day2Complete": SubResource("Animation_8rfhf"),
+"RESET": SubResource("Animation_mmbo2")
+}
+
 [node name="TranspondWhole" type="CanvasLayer"]
 script = ExtResource("1_ouvn6")
 exitTransition = 4
@@ -51,7 +117,7 @@ scale = Vector2(0.4, 0.4)
 [node name="Monitors" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_46uc7")
+texture = ExtResource("4_2vr7q")
 
 [node name="WaveBackground" type="Sprite2D" parent="."]
 visible = false
@@ -116,7 +182,7 @@ grow_vertical = 0
 theme = ExtResource("6_ip8fq")
 script = ExtResource("7_y3602")
 data = ExtResource("8_mkirk")
-start_id = "-1"
+start_id = "TRANS1_TUT"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_qgpgv"), SubResource("RichTextEffect_iiq5k"), SubResource("RichTextEffect_vkvdv")])
 
 [node name="TutorialButton" type="TextureButton" parent="." node_paths=PackedStringArray("dialogueBox")]
@@ -131,3 +197,19 @@ texture_normal = ExtResource("12_84qav")
 stretch_mode = 5
 script = ExtResource("13_in4h4")
 dialogueBox = NodePath("../DialogueBox")
+
+[node name="minigameComplete" type="Node2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+scale = Vector2(0.5, 0.5)
+
+[node name="Day1" type="Sprite2D" parent="minigameComplete"]
+texture = ExtResource("14_eceop")
+
+[node name="Day2" type="Sprite2D" parent="minigameComplete"]
+texture = ExtResource("15_0asnm")
+
+[node name="minigameCompleteAnims" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_stbth")
+}

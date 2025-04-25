@@ -14,19 +14,15 @@ public partial class TranslationCanvasUI : BaseMinigame
 	[Export]
 	RichTextLabel messageBox;
 	[Export]
-	TextEdit answerBox;
+	LineEdit answerBox;
 	[Export]
-	RichTextLabel celHint;
-	[Export]
-	RichTextLabel engHint;
-	[Export]
-	RichTextLabel cipherDisplay;
+	Label cipherDisplay;
 	[Export]
 	Font englishFont;
 	[Export]
-	TextureRect winInd;
+	BaseButton answerButton;
 	[Export]
-	BaseButton answer;
+	BaseButton backButton;
 
 	[ExportGroup("Dialogue Paths")]
 	[Export(PropertyHint.ResourceType, "DialogueData")]
@@ -34,7 +30,7 @@ public partial class TranslationCanvasUI : BaseMinigame
 	[Export(PropertyHint.ResourceType, "DialogueData")]
 	Resource Day2Dialogue;
 
-    Panel dialogueBox;
+	Panel dialogueBox;
 	CabinLevel cabin;
 
 	public static int CipherKey { get; set; }
@@ -49,27 +45,32 @@ public partial class TranslationCanvasUI : BaseMinigame
 		Globals.PushGamestate(GAMESTATE.TRANSLATION);
 		answerBox.GrabFocus();
 		cabin = GetParent<CabinLevel>();
-		MinigameClosed += cabin.TranslationComplete;
 
-		cipherDisplay.Clear();
+		MinigameClosed += cabin.TranslationComplete;
+		answerBox.TextSubmitted += (string text) => AnswerButton();
+		answerButton.Pressed += AnswerButton;
+		backButton.Pressed += answerBox.DeleteCharAtCaret;
+
+		//cipherDisplay.Clear();
+		cipherDisplay.Text = "";
 		messageBox.Clear();
 		answerBox.Clear();
 		//engHint.Clear();
 		//celHint.Clear();
-		winInd.Visible = false;
+		//winInd.Visible = false;
 
 		CallDeferred(nameof(TextInitalisation));
 
 		if (Day1Dialogue == null) {
 			GD.PrintErr("day 1 dialogue not assigned, please assign in inspector!");
 		}
-        if (Day2Dialogue == null)
-        {
-            GD.PrintErr("day 2 dialogue not assigned, please assign in inspector!");
-        }
+		if (Day2Dialogue == null)
+		{
+			GD.PrintErr("day 2 dialogue not assigned, please assign in inspector!");
+		}
 
-        // load dialogue data based on day
-        dialogueBox = GetNode<Panel>("DialogueBox");
+		// load dialogue data based on day
+		dialogueBox = GetNode<Panel>("DialogueBox");
 		dialogueBox.Connect("dialogue_ended", Callable.From(OnDialogueEnd));
 		LoadDialogue();
 		if (Globals.TutorialProgress <= GAMESTAGE.TRANSLATION)
@@ -87,7 +88,7 @@ public partial class TranslationCanvasUI : BaseMinigame
 		if (answerBox.HasFocus() && Input.IsActionJustPressed("right"))
 		{
 			GD.Print("SHIFTING");
-			answer.GrabFocus();
+			answerButton.GrabFocus();
 		}
 	}
 
@@ -104,9 +105,11 @@ public partial class TranslationCanvasUI : BaseMinigame
 			Globals.ProgressionStage = GAMESTAGE.END;
 
 			//winInd.Visible = true;
-			GetNode<VBoxContainer>("TextVBox").Visible = false;
-			GetNode<VBoxContainer>("HintVBox").Visible = false;
-			GetNode<Button>("CheckAnswerButton").Visible = false;
+			//GetNode<VBoxContainer>("TextVBox").Visible = false;
+			//GetNode<VBoxContainer>("HintVBox").Visible = false;
+			//GetNode<Button>("CheckAnswerButton").Visible = false;
+			answerButton.Hide();
+			backButton.Hide();
 			cipherDisplay.Visible = false;
 			canClose = false;
 			dialogueBox.Call("start", "0");
@@ -116,6 +119,11 @@ public partial class TranslationCanvasUI : BaseMinigame
 			dialogueBox.Call("start", "err");
 			GD.Print("Doesnt feel right");
 		}
+	}
+
+	public void AffectionCounter()
+	{
+
 	}
 	private void TextInitalisation()
 	{
@@ -129,20 +137,10 @@ public partial class TranslationCanvasUI : BaseMinigame
 		messageBox.Text = ("[center] " + cWord);
 
 		//HintsUpdate(cWord);
-		cipherDisplay.AppendText("[center] "+ (-CipherKey).ToString());
+		//cipherDisplay.AppendText("[center] "+ (-CipherKey).ToString());
+		cipherDisplay.Text = (-CipherKey).ToString();
 	}
-	//private void HintsUpdate(string word)
-	//{
-	//	char[] charArray = word.ToCharArray();
-	//	for(int i = 0; i < charArray.Length; i++)
-	//	{
-	//		celHint.AppendText(charArray[i].ToString() + "      =");
-	//		celHint.Newline();
 
-	//		engHint.AppendText(charArray[i].ToString());
-	//		engHint.Newline();
-	//	}
-	//}
 	private string CipherWord(string word)
 	{
 		string cipheredWord = null;
@@ -158,7 +156,7 @@ public partial class TranslationCanvasUI : BaseMinigame
 			asciiValue = ((asciiValue - 97 + CipherKey) % 26) + 97;
 
 			cipheredWord += (char)asciiValue;
-        }
+		}
 
 		return cipheredWord;
 	}
@@ -184,4 +182,10 @@ public partial class TranslationCanvasUI : BaseMinigame
 				break;
 		}
 	}
+
+    protected override void QuitMinigame()
+    {
+		Globals.Instance.CallDeferred(Globals.MethodName.PopGamestate, Variant.From((int)GAMESTATE.TRANSLATION));
+        base.QuitMinigame();
+    }
 }

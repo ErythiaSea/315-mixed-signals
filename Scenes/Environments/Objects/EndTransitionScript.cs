@@ -16,26 +16,32 @@ public partial class EndTransitionScript : ColorRect
 	public bool isClosed = false;
     public bool isDone = false;
 
+	private AnimatedSprite2D calenderAnim;
     private ShaderMaterial sMaterial;
 	private RichTextLabel sleepText;
 
 	private double elaspsedTime = 0;
 	private int textInd = 0;
-
-
+	private bool isAnimating = false;
+	private bool hasTextDisplayed = false;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
+		calenderAnim = GetNode("Calender") as AnimatedSprite2D;
 		sleepText = GetChild(0) as RichTextLabel;
 		sMaterial = this.Material as ShaderMaterial;
 		sMaterial.SetShaderParameter("circle_b", circleBlur);
+
+		calenderAnim.AnimationFinished += EndAnim;
+		calenderAnim.Animation = Globals.Day.ToString();
+		calenderAnim.Frame = 0;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 
-		if (isClosed && !isDone)
+		if (isClosed && !hasTextDisplayed)
 		{
 			if(textInd < textToDisplay.Length)
 			{
@@ -53,10 +59,19 @@ public partial class EndTransitionScript : ColorRect
 			else
 			{
 				fadeOutText();
-				isDone = true;
+				hasTextDisplayed = true;
             }
 		}
-       
+
+		if (hasTextDisplayed && !isAnimating)
+		{
+            Tween calender = GetTree().CreateTween();
+			calender.TweenInterval(1.0f);
+            calender.TweenProperty(calenderAnim, "modulate", new Color(calenderAnim.Modulate.R, calenderAnim.Modulate.G, calenderAnim.Modulate.B, 1f), 2f);
+
+            calender.TweenCallback(Callable.From(() => calenderAnim.Play()));
+			isAnimating = true;
+        }
 	}
 
 	//from radius to end radius of circle all within the specified range,
@@ -83,7 +98,14 @@ public partial class EndTransitionScript : ColorRect
 		sleepText.AddText(textToDisplay[ind].ToString());
 	}
 
-	private void fadeOutText()
+    public void EndAnim()
+    {
+		GD.Print("anim done");
+        Tween animEnd = GetTree().CreateTween();
+        animEnd.TweenProperty(calenderAnim, "modulate", new Color(calenderAnim.Modulate.R, calenderAnim.Modulate.G, calenderAnim.Modulate.B, 0f), 2f);
+		isDone = true;
+    }
+    private void fadeOutText()
 	{
 		Tween fade = GetTree().CreateTween();
         fade.TweenProperty(sleepText, "modulate", new Color(sleepText.Modulate.R, sleepText.Modulate.G, sleepText.Modulate.B, 0f), 1f);
@@ -97,4 +119,6 @@ public partial class EndTransitionScript : ColorRect
 	{
 		sMaterial.SetShaderParameter("circle_r", rad);
 	}
+
+
 }

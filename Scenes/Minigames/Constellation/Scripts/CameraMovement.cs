@@ -65,7 +65,7 @@ public partial class CameraMovement : Camera2D
 		canMoveCam = false;
 		Tween completion = GetTree().CreateTween();
 
-		completion.Parallel().TweenProperty(this, "zoom", new Vector2(0.35f, 0.35f), 2f);
+		completion.Parallel().TweenProperty(this, "zoom", new Vector2(0.30f, 0.30f), 2f);
 		completion.Parallel().TweenProperty(this, "position", centerStar, 1f);
 		completion.Parallel().TweenProperty(telescope, "scale", new Vector2(2.5f, 2.5f), 2f);
 		completion.TweenInterval(1.5);
