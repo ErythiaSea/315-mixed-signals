@@ -13,6 +13,7 @@ public partial class Radiotower : Node2D
 	Sprite2D leftIndicator, rightIndicator;
 	float leftTimer, leftInterval, rightTimer, rightInterval;
 	AudioEffectDistortion lDistort, rDistort;
+	AnimatedSprite2D victoryAnim;
 
 	Godot.Collections.Array<Node> towers;
 	public Node2D currentTower;
@@ -34,6 +35,7 @@ public partial class Radiotower : Node2D
 		rightIndicator = GetNode<Sprite2D>("rightIndicator");
 		lPivot = GetNode<RadiotowerPivot>("leftPivot");
 		rPivot = GetNode<RadiotowerPivot>("rightPivot");
+		victoryAnim = GetNode<AnimatedSprite2D>("victoryAnim");
 
 		int transpondLBusIndex = AudioServer.GetBusIndex("TranspondTowerL");
         int transpondRBusIndex = AudioServer.GetBusIndex("TranspondTowerR");
@@ -105,19 +107,17 @@ public partial class Radiotower : Node2D
 				//Updates the bars location for when how you see them when you play waveform after leaving and going back in again
 				PivotRotationR = rPivot.Rotation;
 				PivotRotationL = lPivot.Rotation;
-
-				//Updates the stage of the game the player is at
-				Globals.ProgressionStage = GAMESTAGE.WAVEFORM;
-
-				// show complete text
-				Label wintext = GetNode<Label>("WinText");
-				wintext.Visible = true;
 				
 				gameActive = false;
 				lPivot.handleInputs = false;
 				rPivot.handleInputs = false;
 				lPivot.streamPlayer.Stop();
 				rPivot.streamPlayer.Stop();
+
+				//Plays victory animation, then updates the stage of the game the player is at
+				victoryAnim.Show();
+                victoryAnim.Play();
+				victoryAnim.AnimationFinished += () => { Globals.ProgressionStage = GAMESTAGE.WAVEFORM; };
 			}
 		}
 		else winTimer = 0.0f;

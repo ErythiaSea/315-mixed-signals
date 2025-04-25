@@ -148,7 +148,6 @@ public partial class InteractBox : Area2D
 		// connect events to functions
 		AreaEntered += areaEntered;
 		AreaExited += areaExited;
-
 	}
 	public override void _Process(double delta)
 	{
@@ -310,8 +309,6 @@ public partial class InteractBox : Area2D
 
     private void areaExited(Area2D area)
     {
-        if (!active) return;
-
         // if it's the player's area
         if (area.GetParent<Player>() != null)
         {
@@ -324,12 +321,10 @@ public partial class InteractBox : Area2D
         }
     }
 
-    public void ChangeLoadedScene(string newScenePath)
-    {
-        scenePath = newScenePath;
-        ResourceLoader.LoadThreadedRequest(scenePath);
-        scene = null;
-    }
-
-	
+	public void ChangeLoadedScene(string newScenePath)
+	{
+		scenePath = newScenePath;
+		ResourceLoader.LoadThreadedRequest(scenePath);
+		scene = null;
+	}
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://kv3p5d4tp3k5"]
+[gd_scene load_steps=105 format=3 uid="uid://kv3p5d4tp3k5"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Transpond/Scripts/Radiotower.cs" id="1_qjh6q"]
 [ext_resource type="Texture2D" uid="uid://deq16tiwdto50" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt1_Base.png" id="2_my68r"]
@@ -17,9 +17,6 @@ radius = 44.0454
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_i4uwr"]
 b = Vector2(2595, -1.0025)
-
-[sub_resource type="LabelSettings" id="LabelSettings_6ggta"]
-font_size = 32
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k0j2"]
 size = Vector2(1560, 1560)
@@ -653,7 +650,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7nxc1")
 }],
-"loop": true,
+"loop": false,
 "name": &"TS1_VictoryAnim",
 "speed": 30.0
 }]
@@ -817,23 +814,6 @@ position = Vector2(-48.5, -48.5)
 scale = Vector2(0.242188, 0.242188)
 texture = ExtResource("7_4vx2i")
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = 33.0
-offset_top = 1013.0
-offset_right = 1109.0
-offset_bottom = 1136.0
-text = "[A]/[D] - Pivot Left    [J]/[L] - Pivot Right    Space - Confirm    [ESC] - Close"
-label_settings = SubResource("LabelSettings_6ggta")
-
-[node name="WinText" type="Label" parent="."]
-visible = false
-offset_left = 1007.0
-offset_top = 611.0
-offset_right = 1086.0
-offset_bottom = 634.0
-text = "Complete!"
-
 [node name="leftIndicator" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(149, 1045)
@@ -863,5 +843,5 @@ position = Vector2(960, 540)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_uv1d5")
 animation = &"TS1_VictoryAnim"
-frame = 5
-frame_progress = 0.639195
+frame = 9
+frame_progress = 0.0985031

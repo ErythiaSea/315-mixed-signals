@@ -1,4 +1,4 @@
-[gd_scene load_steps=278 format=3 uid="uid://7aoxy6ge3j3s"]
+[gd_scene load_steps=276 format=3 uid="uid://7aoxy6ge3j3s"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Transpond/Scripts/WaveRender.cs" id="1_2ltar"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Transpond/Scripts/WaveformGame.cs" id="1_qsht6"]
@@ -6,11 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b38h8csqom4uk" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt2_Base_Lines.png" id="3_p317l"]
 [ext_resource type="Texture2D" uid="uid://v6tcdxojw0ix" path="res://Scenes/Minigames/Transpond/Sprites/Waveform_Decal1.png" id="6_5vc5o"]
 [ext_resource type="Texture2D" uid="uid://ctycsrj4yg33s" path="res://Scenes/Minigames/Transpond/Sprites/WaveformDecal_2.png" id="6_eaw5g"]
-[ext_resource type="Texture2D" uid="uid://beg3ve66yxsur" path="res://Scenes/Minigames/Transpond/Sprites/Transponding _Expand_V2.png" id="7_jcqte"]
 [ext_resource type="Texture2D" uid="uid://cpmlww4slldrx" path="res://Scenes/Minigames/Transpond/Sprites/TS2_VicSpriteSheet_Resize.png" id="8_wx3ha"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_aytc3"]
-font_size = 32
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qwabd"]
 atlas = ExtResource("6_5vc5o")
@@ -1890,7 +1886,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d0p73")
 }],
-"loop": true,
+"loop": false,
 "name": &"new_animation",
 "speed": 30.0
 }]
@@ -1954,49 +1950,29 @@ numPoints = 600
 waveColor = Color(0.960784, 0.239216, 1, 1)
 lineThick = 4.0
 
-[node name="Label" type="Label" parent="."]
-offset_left = 20.0
-offset_top = 1014.0
-offset_right = 1116.0
-offset_bottom = 1089.0
-text = "[A]/[D] - Change Amplitude     [J]/[L] - Change Wavelength     [ESC] - Close"
-label_settings = SubResource("LabelSettings_aytc3")
-
-[node name="WinText" type="Label" parent="."]
-visible = false
-offset_left = 1007.0
-offset_top = 611.0
-offset_right = 1086.0
-offset_bottom = 634.0
-text = "Complete!"
-
 [node name="Decal3Anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(1091, 735)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_36vm4")
 animation = &"smallMonitor"
-frame = 4
-frame_progress = 0.208135
-
-[node name="Monitors" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(960, 540)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_jcqte")
+autoplay = "smallMonitor"
+frame = 5
+frame_progress = 0.767846
 
 [node name="DecalAnim" type="AnimatedSprite2D" parent="."]
 position = Vector2(1740, 860)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_36vm4")
 animation = &"overLay"
-frame = 1
-frame_progress = 0.79342
+autoplay = "overLay"
+frame_progress = 0.717983
 
 [node name="Decal2Anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(1740, 360)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_36vm4")
 animation = &"overLay"
+autoplay = "overLay"
 frame_progress = 0.717304
 
 [node name="victoryAnim" type="AnimatedSprite2D" parent="."]
@@ -2004,5 +1980,5 @@ position = Vector2(1422, 494)
 scale = Vector2(1.025, 1.025)
 sprite_frames = SubResource("SpriteFrames_bywr7")
 animation = &"new_animation"
-frame = 87
-frame_progress = 0.629281
+frame = 255
+frame_progress = 1.0

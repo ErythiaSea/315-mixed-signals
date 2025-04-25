@@ -52,6 +52,7 @@ public partial class PauseMenu : Control
 		if (quitTimer > 0.5)
 		{
 			GetTree().ChangeSceneToFile(mainMenuPath);
+			UnpauseGame();
 		}
 	}
 

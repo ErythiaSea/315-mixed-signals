@@ -31,7 +31,7 @@ script = ExtResource("12_cbtrd")
 [sub_resource type="RichTextEffect" id="RichTextEffect_xkoe7"]
 script = ExtResource("13_lydqu")
 
-[node name="Translation" type="CanvasLayer" node_paths=PackedStringArray("messageBox", "answerBox", "cipherDisplay", "answerButton", "backButton")]
+[node name="Translation" type="CanvasLayer" node_paths=PackedStringArray("messageBox", "answerBox", "cipherDisplay", "answerButton", "backButton", "keyboard")]
 script = ExtResource("1_6c2l1")
 wordList = PackedStringArray("Plumage", "Compass")
 messageBox = NodePath("MessageTextBox")
@@ -40,6 +40,7 @@ cipherDisplay = NodePath("CipherDisplay")
 englishFont = ExtResource("2_0evcl")
 answerButton = NodePath("CheckAnswerButton")
 backButton = NodePath("DeleteButton")
+keyboard = NodePath("Keyboard")
 Day1Dialogue = ExtResource("3_iwoto")
 Day2Dialogue = ExtResource("4_ih0qr")
 
