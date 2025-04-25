@@ -38,8 +38,8 @@ public partial class Radiotower : Node2D
 		victoryAnim = GetNode<AnimatedSprite2D>("victoryAnim");
 
 		int transpondLBusIndex = AudioServer.GetBusIndex("TranspondTowerL");
-        int transpondRBusIndex = AudioServer.GetBusIndex("TranspondTowerR");
-        lDistort = (AudioEffectDistortion)AudioServer.GetBusEffect(transpondLBusIndex, 0);
+		int transpondRBusIndex = AudioServer.GetBusIndex("TranspondTowerR");
+		lDistort = (AudioEffectDistortion)AudioServer.GetBusEffect(transpondLBusIndex, 0);
 		rDistort = (AudioEffectDistortion)AudioServer.GetBusEffect(transpondRBusIndex, 0);
 
 		towers = GetNode("towers").GetChildren();
