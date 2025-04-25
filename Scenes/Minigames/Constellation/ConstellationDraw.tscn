@@ -50,7 +50,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -93,7 +93,7 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 
@@ -210,6 +210,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("4_irqg6")
 
 [node name="Telescope" type="ColorRect" parent="Camera"]
+visible = false
 material = SubResource("ShaderMaterial_13kgm")
 offset_left = -1151.0
 offset_top = -652.0
@@ -252,7 +253,7 @@ position = Vector2(1715, 772)
 adjacentStars = [NodePath("../StarNode3"), NodePath("../StarNode4"), NodePath("../StarNode2")]
 
 [node name="CorvusFade" type="Sprite2D" parent="Corvus"]
-visible = false
+self_modulate = Color(1, 1, 1, 0)
 position = Vector2(837, 357)
 rotation = -0.10472
 texture = ExtResource("12_ae74t")
@@ -275,7 +276,7 @@ position = Vector2(1652, -255)
 adjacentStars = [NodePath("../StarNode2")]
 
 [node name="PyxisFade" type="Sprite2D" parent="Pyxis"]
-visible = false
+self_modulate = Color(1, 1, 1, 0)
 position = Vector2(877, 323)
 rotation = 2.44346
 texture = ExtResource("11_qu5kn")

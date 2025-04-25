@@ -109,6 +109,7 @@ public partial class TranspondScreen : BaseMinigame
 
     private void OnWaveformComplete()
     {
+		// Plays the final animation, waits 2.5s then closes
 		string animKey = (Globals.Day == 0 ? "Day1Complete" : "Day2Complete");
         animPlayer.Play(animKey);
 		animPlayer.AnimationFinished += (StringName) => {

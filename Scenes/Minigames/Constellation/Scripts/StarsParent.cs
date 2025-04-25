@@ -7,7 +7,7 @@ using System.Reflection;
 public partial class StarsParent : Node2D
 {
 	[Signal]
-	public delegate void ConstellationCompletionEventHandler(Vector2 centerStar);
+	public delegate void ConstellationCompletionEventHandler(Vector2 centerStar, Node2D fadeSprite);
 
 	[Export]
 	int randMin = -4;
@@ -21,11 +21,14 @@ public partial class StarsParent : Node2D
 	private Godot.Collections.Array<Label> starLabels;
 	private Godot.Collections.Array<StarNode> stars;
 
+	Node2D fadeSprite;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
 		stars = GetStars();
 		starLabels = GetLabels();
+		fadeSprite = GetChild<Node2D>(-1);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,7 +39,7 @@ public partial class StarsParent : Node2D
 		if (IsConstellationComplete() && !hasSignalled)
 		{
 			GD.Print("Emitting signal...");
-			EmitSignal(SignalName.ConstellationCompletion, GetConstellationCenter());
+			EmitSignal(SignalName.ConstellationCompletion, GetConstellationCenter(), fadeSprite);
 			hasSignalled = true;
 		}	  
 	}

@@ -76,13 +76,11 @@ public partial class ConstellationMinigame : BaseMinigame
 		dialogueBox.Connect("dialogue_ended", Callable.From(Close));
 	}
 
-
 	//Allows camera control
 	void RegainCameraControl()
 	{
 		camera.canMoveCam = true;
 	}
-
 
 	//Uncommented as it needs to be updated to find the constellations in a better way, this is gross dude - me - kyle {
 	private Godot.Collections.Array<Node2D> GetConstellations()
@@ -98,9 +96,6 @@ public partial class ConstellationMinigame : BaseMinigame
 
 		return consts;
 	}
-
-	// }
-
 
 	//Sets up the current days constellation to be played
 	private void SetupConstellation()
