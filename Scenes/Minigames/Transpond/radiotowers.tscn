@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://kv3p5d4tp3k5"]
+[gd_scene load_steps=105 format=3 uid="uid://kv3p5d4tp3k5"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Transpond/Scripts/Radiotower.cs" id="1_qjh6q"]
 [ext_resource type="Texture2D" uid="uid://deq16tiwdto50" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt1_Base.png" id="2_my68r"]
@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dwvosh05aqd6t" path="res://Scenes/Minigames/Transpond/Sprites/line.png" id="6_b2ab4"]
 [ext_resource type="Texture2D" uid="uid://dvej7xww4qp6n" path="res://Sprites/icon.svg" id="7_4vx2i"]
 [ext_resource type="Texture2D" uid="uid://cnau6vaf4smmw" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt1_Satellite.png" id="7_e7dg6"]
+[ext_resource type="Texture2D" uid="uid://cjqybg2o7oen" path="res://Scenes/Minigames/Transpond/Sprites/Transponding _Border.png" id="10_1xurv"]
 [ext_resource type="Texture2D" uid="uid://g0sakqd4j6n6" path="res://Scenes/Minigames/Transpond/Sprites/TS1_VicSpriteSheet_Resize.png" id="10_11tmy"]
-[ext_resource type="Texture2D" uid="uid://c1ijrrwi4sp4q" path="res://Scenes/Minigames/Transpond/Sprites/Transponder_Pivot_Mask.png" id="10_b860x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4gfr"]
 radius = 44.0454
@@ -20,9 +20,6 @@ b = Vector2(2595, -1.0025)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ggta"]
 font_size = 32
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3k0j2"]
-size = Vector2(1560, 1560)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u35se"]
 atlas = ExtResource("10_11tmy")
@@ -846,16 +843,9 @@ position = Vector2(1765, 1049)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_4vx2i")
 
-[node name="MASKPIVOTLINES" type="Area2D" parent="."]
+[node name="lineBorder" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MASKPIVOTLINES"]
-shape = SubResource("RectangleShape2D_3k0j2")
-
-[node name="ifPivotsDontOverlapThisColliderCutThemOff" type="Sprite2D" parent="MASKPIVOTLINES"]
-visible = false
-modulate = Color(1, 1, 1, 0.447059)
-texture = ExtResource("10_b860x")
+texture = ExtResource("10_1xurv")
 
 [node name="victoryAnim" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -863,5 +853,5 @@ position = Vector2(960, 540)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_uv1d5")
 animation = &"TS1_VictoryAnim"
-frame = 5
-frame_progress = 0.639195
+frame = 46
+frame_progress = 0.171401
