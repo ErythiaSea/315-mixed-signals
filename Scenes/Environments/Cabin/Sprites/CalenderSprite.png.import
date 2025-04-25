@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgllqtbvxyyqc"
-path="res://.godot/imported/CalenderSprite.png-f95117f6ac33d1209ae7db4c2aba115a.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Scenes/Environments/Cabin/Sprites/CalenderSprite.png"
-dest_files=["res://.godot/imported/CalenderSprite.png-f95117f6ac33d1209ae7db4c2aba115a.ctex"]
 
 [params]
 

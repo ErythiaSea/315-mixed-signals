@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://crdyd2l00hj4h"
-path="res://.godot/imported/SpritesheetDay2to3.png-d52c2597d450923399e1ebdc01e9e4aa.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Scenes/Environments/Cabin/Sprites/SpritesheetDay2to3.png"
-dest_files=["res://.godot/imported/SpritesheetDay2to3.png-d52c2597d450923399e1ebdc01e9e4aa.ctex"]
 
 [params]
 
