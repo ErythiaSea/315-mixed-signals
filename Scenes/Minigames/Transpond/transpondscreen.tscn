@@ -103,7 +103,7 @@ transitionLength = 0.5
 
 [node name="waveformRoot" parent="." instance=ExtResource("3_xdcbw")]
 z_index = -1
-position = Vector2(-10, 0)
+position = Vector2(1, 1)
 ampTolerance = 3.0
 wlTolerance = 3.5
 
@@ -132,9 +132,9 @@ texture = ExtResource("6_ftnw3")
 
 [node name="RightBox" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.870588)
-position = Vector2(1411, 546)
+position = Vector2(1410, 544)
 rotation = -3.14159
-scale = Vector2(14.0317, 15.6231)
+scale = Vector2(14.0317, 15.5431)
 texture = SubResource("GradientTexture2D_cqgav")
 
 [node name="LeftBox" type="Sprite2D" parent="."]

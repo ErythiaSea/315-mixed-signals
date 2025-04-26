@@ -72,7 +72,8 @@ public partial class ConstellationMinigame : BaseMinigame
 		Globals.CurrentSpawnID = 1;
 		GD.Print("loading cabin outdoor...");
 
-		dialogueBox.Call("start", constellationEndStartID);
+		// change dialogue called based on day
+		dialogueBox.Call("start", (constellationEndStartID + Globals.Day.ToString()));
 		dialogueBox.Connect("dialogue_ended", Callable.From(Close));
 	}
 
@@ -109,6 +110,12 @@ public partial class ConstellationMinigame : BaseMinigame
 	protected override void OnTransitionFinish()
 	{
 		Globals.PopGamestate(GAMESTATE.CONSTELLATION);
+		// only load a new scene if constellation was actually completed
+		if (Globals.ProgressionStage < GAMESTAGE.TRANSLATION)
+		{ 
+			return; 
+		}
+
 		PackedScene cabin = (PackedScene)ResourceLoader.LoadThreadedGet(outdoorCabinPath);
 		if (cabin == null) return;
 	

@@ -56,6 +56,11 @@ public partial class BaseMinigame : CanvasLayer
 			GD.Print("tried to close, but failed");
 			return;
 		}
+		if (Globals.Gamestate == GAMESTATE.DIALOGUE)
+		{
+			GD.Print("tried to close, but gamestate was dialogue, so it was prevented");
+			return;
+		}
 
 		if (exitTransition != TRANSITION.NONE)
 		{

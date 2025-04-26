@@ -48,6 +48,11 @@ public partial class MapButton : TextureButton
 
 	public void _OnPressed()
 	{
+		// prevent the button from doing anything if dialogue is open
+		if (Globals.Gamestate != GAMESTATE.MAP) 
+		{ 
+			return;
+		}
 		if (requiredDay == Globals.Day)
 		{
 			GD.Print("day = " + Globals.Day);

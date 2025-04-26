@@ -32,8 +32,14 @@ public partial class GodChoice : CanvasLayer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		// this does not need to exist on any other day
+		if (Globals.Day != 2)
+		{
+			return;
+		}
+
 		// request main menu scene for later
-        if (scenePath != null)
+		if (scenePath != null)
         {
             ResourceLoader.LoadThreadedRequest(scenePath);
         }

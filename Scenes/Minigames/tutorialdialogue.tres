@@ -9,7 +9,8 @@ starts = {
 "1": &"0_2",
 "2": &"0_5",
 "3": &"0_4",
-"4": &"0_6",
+"4_0": &"0_6",
+"4_1": &"0_7",
 "err": &"0_3"
 }
 nodes = {
@@ -41,7 +42,12 @@ nodes = {
 "0_6": {
 "link": &"1_12",
 "offset": Vector2(-460, 700),
-"start_id": "4"
+"start_id": "4_0"
+},
+"0_7": {
+"link": &"1_23",
+"offset": Vector2(-480, 1000),
+"start_id": "4_1"
 },
 "1_1": {
 "dialogue": "(You hear an aetherial voice unlike anything you've ever heard before...)",
@@ -241,6 +247,19 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 "size": Vector2(300, 240),
 "speaker": "..."
 },
+"1_23": {
+"dialogue": "More of this, huh? Well, I can appreciate a good telescope. Better go translate that word now I've got the key.",
+"offset": Vector2(-200, 1000),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
 "1_3": {
 "dialogue": "Huh? The signal seems to be a mess. Let me try this.",
 "offset": Vector2(160, -200),
@@ -341,8 +360,14 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 },
 "size": Vector2(300, 240),
 "speaker": "..."
+},
+"2_1": {
+"comment": "_0 = day 1
+_1 = day 2",
+"offset": Vector2(-480, 840),
+"size": Vector2(200, 100)
 }
 }
 variables = {}
-strays = Array[String](["1_6", "1_1", "1_4", "1_2"])
+strays = Array[String](["1_6", "1_1", "1_4", "1_2", "2_1"])
 characters = ""

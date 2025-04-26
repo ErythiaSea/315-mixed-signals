@@ -24,7 +24,7 @@ public partial class StarNode : Node2D
 	public bool isFound = false;
 	
 	private Sprite2D foundSprite;
-	private float timeToRegister = 2f;
+	private float timeToRegister = 0.75f;
 	private float timeElapsed = 0f;
 
 	private int indicatorCompleteCount = 0;
