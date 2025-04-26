@@ -244,17 +244,31 @@ public partial class Globals : Node
 	{
 		const string keyFolder = "res://Sprites/InputKey/";
 		string ctrlSuffix = "";
-		switch (InputManager.ControllerType)
+		if (!InputManager.IsController)
 		{
-			case GAMEPAD.KEYBOARD:
-				ctrlSuffix = "_kb";
-				break;
-			case GAMEPAD.PS:
-				ctrlSuffix = "_ps";
-				break;
-			default:
-				ctrlSuffix = "_ps";
-				break;
+			ctrlSuffix = "_kb";
+		}
+		else
+		{
+			// show the correct glyph if a/b swapped
+			if (InputManager.ConfirmCancelSwapped)
+			{
+				if (name == "confirm") { name = "cancel"; }
+				else if (name == "cancel") { name = "confirm"; }
+			}
+
+			switch (InputManager.ControllerType)
+			{
+				case GAMEPAD.KEYBOARD:
+					ctrlSuffix = "_kb";
+					break;
+				case GAMEPAD.PS:
+					ctrlSuffix = "_ps";
+					break;
+				default:
+					ctrlSuffix = "_ps";
+					break;
+			}
 		}
 
 		return "[img]" + keyFolder + name + ctrlSuffix + ".png[/img]";
