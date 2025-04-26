@@ -156,7 +156,7 @@ public partial class InputManager : Node
 
         // set controller type on game start based on initially connected pad (if any)
         // this can be changed later from settings
-        ControllerType = GAMEPAD.PS;
+        _controllerType = GAMEPAD.PS;
         if (Input.GetConnectedJoypads().Count > 0)
         {
             IsController = true;
