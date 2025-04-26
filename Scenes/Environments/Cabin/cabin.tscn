@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=74 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/CabinLevel.cs" id="1_2hyee"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -134,14 +134,8 @@ size = Vector2(6, 134.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8yak"]
 size = Vector2(8, 137.25)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b7gpl"]
-radius = 16.1245
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qpiuy"]
-shader = ExtResource("9_05epa")
-shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/line_alpha = 1.0
-shader_parameter/line_thickness = 10.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjgtr"]
+size = Vector2(45, 148)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82mfh"]
 size = Vector2(1936, 88.8125)
@@ -212,7 +206,7 @@ dialogueBox = NodePath("SleepDialogueBox")
 dialogueBubble = NodePath("DialogueBubble")
 translationEndStartID = "TRANSLATION_END"
 exitInteractBox = NodePath("LevelChange")
-elevatorButtonBox = NodePath("Elevator/ElevatorButton")
+elevatorButtonBox = NodePath("ElevatorBottomCall")
 spawnData = Array[Object]([SubResource("Resource_82qql")])
 OffsetY = -240.0
 rightLimit = 1920
@@ -379,11 +373,11 @@ volume_db = -15.076
 autoplay = true
 bus = &"Music"
 
-[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton", "wallCollision", "topFloorCollision") instance=ExtResource("14_e5y7b")]
+[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorCenter", "wallCollision", "topFloorCollision") instance=ExtResource("14_e5y7b")]
 position = Vector2(952, 4552)
 topCallButton = NodePath("../ElevatorTopCall")
 bottomCallButton = NodePath("../ElevatorBottomCall")
-elevatorButton = NodePath("ElevatorButton")
+elevatorCenter = NodePath("ElevatorCenterArea")
 wallCollision = [NodePath("ElevatorWallL"), NodePath("ElevatorWallR")]
 topFloorCollision = NodePath("../WorldCollision/CollisionShape2")
 topY = 1004.0
@@ -402,17 +396,15 @@ shape = SubResource("RectangleShape2D_3sbqo")
 position = Vector2(201, -70)
 shape = SubResource("RectangleShape2D_f8yak")
 
-[node name="ElevatorButton" parent="Elevator" node_paths=PackedStringArray("objectSprite", "dialogueBox") instance=ExtResource("15_lw781")]
-position = Vector2(-175, -11)
-objectSprite = NodePath("../Sprite2D")
-requiredStage = 1
-dialogueBox = NodePath("../../DialogueBubble")
+[node name="ElevatorCenterArea" type="Area2D" parent="Elevator"]
+position = Vector2(9, -16)
+collision_layer = 2
 
-[node name="ButtonShape" type="CollisionShape2D" parent="Elevator/ElevatorButton"]
-shape = SubResource("CircleShape2D_b7gpl")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator/ElevatorCenterArea"]
+position = Vector2(-0.5, -64)
+shape = SubResource("RectangleShape2D_cjgtr")
 
 [node name="Sprite2D" type="Sprite2D" parent="Elevator"]
-material = SubResource("ShaderMaterial_qpiuy")
 position = Vector2(-5, 34)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("19_cwqwm")
@@ -583,6 +575,7 @@ bus = &"SFX"
 [node name="ElevatorBottomCall" parent="." node_paths=PackedStringArray("objectSprite") instance=ExtResource("15_lw781")]
 position = Vector2(724, 4538)
 objectSprite = NodePath("../Sprites/BottomCallButton")
+requiredStage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorBottomCall"]
 position = Vector2(-50, 0)
@@ -596,6 +589,7 @@ bus = &"SFX"
 [node name="ElevatorTopCall" parent="." node_paths=PackedStringArray("objectSprite") instance=ExtResource("15_lw781")]
 position = Vector2(478, 984)
 objectSprite = NodePath("../Sprites/TopCallButton")
+requiredStage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorTopCall"]
 shape = SubResource("CircleShape2D_txxlk")
@@ -648,7 +642,7 @@ data = ExtResource("36_dj0ny")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_3ckrh"), SubResource("RichTextEffect_71qw6"), SubResource("RichTextEffect_dqmte")])
 
 [node name="TranspondDialBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
-position = Vector2(783, 670)
+position = Vector2(783, 636)
 requiredDay = 0
 isOneShot = true
 isAutofire = true
@@ -660,7 +654,7 @@ position = Vector2(194, 66)
 shape = SubResource("RectangleShape2D_1xcrb")
 
 [node name="WaveformFinishBox2" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
-position = Vector2(781, 673)
+position = Vector2(781, 638)
 requiredStage = 3
 requiredDay = 0
 isOneShot = true

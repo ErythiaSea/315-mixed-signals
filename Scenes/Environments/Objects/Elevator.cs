@@ -12,8 +12,12 @@ public partial class Elevator : AnimatableBody2D
 
 	// The interact box that causes the elevator to begin moving.
 	// Should be a child of this elevator.
+	//[Export]
+	//public InteractBox elevatorButton;
+
+	// The Area2D that will make the elevator move when the player reaches it.
 	[Export]
-	public InteractBox elevatorButton;
+	public Area2D elevatorCenter;
 
 	// The collision shapes that make up the walls of this elevator to be toggled when in motion
 	// (to prevent the player walking off).
@@ -41,18 +45,30 @@ public partial class Elevator : AnimatableBody2D
 	private bool inMotion = false;
 	private bool goingUp = false;
 
+	// If the elevator button was pressed, this is true until the player reaches the elevator
+	private bool readyToMove = false;
+
 	// The distance between the top and bottom floors. 
 	private float maxDistance;
 
 	// The tween used to animate position
 	private Tween tween;
 
+	// i would rather not have to do this but too late
+	Player player;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		topCallButton.Interacted += TravelToTop;
 		bottomCallButton.Interacted += TravelToBottom;
-		elevatorButton.Interacted += ToggleElevator;
+		//elevatorButton.Interacted += ToggleElevator;
+		elevatorCenter.AreaEntered += (Area2D area) => {
+			if (area.GetParent() is Player)
+			{
+				ToggleElevator();
+			}
+		};
 
 		// swap top and bottom floors if the top is below the bottom
 		if (topY > bottomY) { (topY, bottomY) = (bottomY, topY); }
@@ -61,18 +77,22 @@ public partial class Elevator : AnimatableBody2D
 		SetWallsDisabled(true);
 
 		// Enable elevator button when progression updates past waveform
-		Globals.Instance.ProgressionChange += () =>
-		{
-			if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
-			{
-				elevatorButton.active = true;
-			}
-		};
+		//Globals.Instance.ProgressionChange += () =>
+		//{
+		//	if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
+		//	{
+		//		bottomCallButton.active = true;
+		//	}
+		//};
+
+		player = GetNode<Player>("../Player");
 	}
 
 	private void ToggleElevator()
 	{
-		topFloorCollision.Disabled = true;
+		if (!readyToMove) return;
+		readyToMove = false;
+		topFloorCollision.SetDeferred("disabled", true);
 		if (goingUp) { TravelToBottom(); }
 		else { TravelToTop(); }
 	}
@@ -80,21 +100,45 @@ public partial class Elevator : AnimatableBody2D
 	private void TravelToBottom()
 	{
 		goingUp = false;
-		if (bottomY - Position.Y < 0.5f) return;
-		Travel(bottomY);
+		
+		// move the player up 
+		if (bottomY - Position.Y < 0.5f)
+		{
+			readyToMove = true;
+			player.autoWalkDestinationX = Position.X;
+			player.isAutoWalking = true;
+			return;
+		}
+		// bring the elevator down
+		else
+		{
+			Travel(bottomY);
+		}
 	}
 
 	private void TravelToTop()
 	{
 		goingUp = true;
-		if (Position.Y - topY < 0.5f) return;
-		Travel(topY);
+		// move the player down
+		if (Position.Y - topY < 0.5f)
+		{
+			readyToMove = true;
+			player.autoWalkDestinationX = Position.X;
+			player.isAutoWalking = true;
+			return;
+		}
+		// bring the elevator up
+		else
+		{
+			Travel(topY);
+		}
 	}
 
 	private void Travel(float destination)
 	{
 		inMotion = true;
-		elevatorButton.active = false;
+		//elevatorButton.active = false;
+		bottomCallButton.active = false; topCallButton.active = false;
 
 		if (tween != null) { tween.Kill(); }
 		tween = CreateTween();
@@ -115,11 +159,11 @@ public partial class Elevator : AnimatableBody2D
 	private void FinishTravel()
 	{
 		inMotion = false;
-		if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM || goingUp == false)
-		{
-			elevatorButton.active = true;
-		}
-		topFloorCollision.Disabled = false;
+		//if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM || goingUp == false)
+		//{
+		bottomCallButton.active = true; topCallButton.active = true;
+		//}
+		topFloorCollision.SetDeferred("disabled", false);
 		SetWallsDisabled(true);
 	}
 
@@ -127,7 +171,7 @@ public partial class Elevator : AnimatableBody2D
 	{
 		foreach (CollisionShape2D shape in wallCollision)
 		{
-			shape.Disabled = disabled;
+			shape.SetDeferred("disabled", disabled);
 		}
 	}
 

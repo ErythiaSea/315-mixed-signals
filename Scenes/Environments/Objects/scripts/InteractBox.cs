@@ -112,6 +112,7 @@ public partial class InteractBox : Area2D
 	float transitionTime = 0.0f;
 	bool isTransition = false;
 	private Player player;
+	private AudioStreamPlayer stream;
 
 	private Tween tween;
 	public bool isPlayerInArea = false;
@@ -144,6 +145,8 @@ public partial class InteractBox : Area2D
 				sMaterial.SetShaderParameter("line_color", new Vector3(col.X, col.Y, col.Z));
 			}
 		}
+
+		AudioStreamPlayer stream = GetNodeOrNull<AudioStreamPlayer>("AudioStreamPlayer");
 
 		// connect events to functions
 		AreaEntered += areaEntered;
@@ -178,7 +181,6 @@ public partial class InteractBox : Area2D
 		}
 		EmitSignal("Interacted");
 		
-		AudioStreamPlayer stream = GetNodeOrNull<AudioStreamPlayer>("AudioStreamPlayer");
 		if (stream != null)
 		{
 			stream.Play();

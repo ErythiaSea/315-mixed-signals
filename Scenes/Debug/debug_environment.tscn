@@ -98,11 +98,10 @@ shape = SubResource("SegmentShape2D_uumkn")
 position = Vector2(-766, 133)
 shape = SubResource("SegmentShape2D_7qebe")
 
-[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton", "elevatorButton") instance=ExtResource("2_7dhej")]
+[node name="Elevator" parent="." node_paths=PackedStringArray("topCallButton", "bottomCallButton") instance=ExtResource("2_7dhej")]
 position = Vector2(1431, 554)
 topCallButton = NodePath("../ElevatorTopCall")
 bottomCallButton = NodePath("../ElevatorBottomCall")
-elevatorButton = NodePath("ElevatorButton")
 topY = 110.0
 bottomY = 554.0
 
