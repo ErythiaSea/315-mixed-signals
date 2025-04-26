@@ -11,15 +11,13 @@ public partial class TranspondScreen : BaseMinigame
 	Radiotower radiotower;
 	WaveformGame waveform;
 	Sprite2D leftBox, rightBox;
-	Label radioLabel, waveLabel;
 	Panel dialogueBox;
 	TutorialButton tutorialButton;
+	AnimationPlayer animPlayer;
 
-	bool radiotowerComplete = false; bool waveformComplete = false;
 	double exitTimer = 0;
 	bool transitionedBetweenMinigames = false; float fadeTime = 0.0f;
 	bool dialogueCalled = false;
-
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -30,18 +28,17 @@ public partial class TranspondScreen : BaseMinigame
 		waveform = GetNode<WaveformGame>("waveformRoot");
 		leftBox = GetNode<Sprite2D>("LeftBox");
 		rightBox = GetNode<Sprite2D>("RightBox");
-		radioLabel = GetNode<Label>("ControlsRadiotower");
-		waveLabel = GetNode<Label>("ControlsWaveform");
 		tutorialButton = GetNode<TutorialButton>("TutorialButton");
+		animPlayer = GetNode<AnimationPlayer>("minigameCompleteAnims");
 
-		// temp hopefully
 		dialogueBox = GetNode<Panel>("DialogueBox");
 
+        waveform.WaveformComplete += OnWaveformComplete;
 		CheckStage();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
 		base._Process(delta);
 
@@ -49,7 +46,6 @@ public partial class TranspondScreen : BaseMinigame
 		if (Globals.ProgressionStage == GAMESTAGE.WAVEFORM && !transitionedBetweenMinigames)
 		{
 			transitionedBetweenMinigames = true;
-			waveLabel.Visible = true; radioLabel.Visible = false;
 
 			// Fade the left minigame out of view, and the right one into view
 			Tween tween = CreateTween();
@@ -68,13 +64,13 @@ public partial class TranspondScreen : BaseMinigame
 			}
 		}
 
-		if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
-		{
-			//Have some indication of winning!
-			exitTimer += delta;
-			if (exitTimer > 2.5) Close();
-			return;
-		}
+		//if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
+		//{
+		//	//Have some indication of winning!
+		//	exitTimer += delta;
+		//	if (exitTimer > 3.5) Close();
+		//	return;
+		//}
 
 		// hacky code and will be removed in favour of Globals::Gamestate
 		radiotower.gameActive = !dialogueBox.Visible;
@@ -100,7 +96,6 @@ public partial class TranspondScreen : BaseMinigame
 			case GAMESTAGE.WAVEFORM:
 				Globals.PushGamestate(GAMESTATE.WAVEFORM);
 				radiotower.CompletedPivots();
-				waveLabel.Visible = true; radioLabel.Visible = false;
 				leftBox.Visible = true; rightBox.Visible = false;
 				tutorialButton.startID = waveformTutorialStartID;
 				transitionedBetweenMinigames = true;
@@ -111,6 +106,16 @@ public partial class TranspondScreen : BaseMinigame
 				break;
 		}
 	}
+
+    private void OnWaveformComplete()
+    {
+		// Plays the final animation, waits 2.5s then closes
+		string animKey = (Globals.Day == 0 ? "Day1Complete" : "Day2Complete");
+        animPlayer.Play(animKey);
+		animPlayer.AnimationFinished += (StringName) => {
+			GetTree().CreateTimer(2.5).Timeout += Close;
+		};
+    }
 
 	protected override void QuitMinigame()
 	{

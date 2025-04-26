@@ -25,6 +25,8 @@ public partial class MainMenu : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		ResourceLoader.LoadThreadedRequest(startScene);
+
 		// main menu should never be on top of something so we're safe to set the gamestate
 		Globals.SetGamestate(GAMESTATE.MENU);
 
@@ -32,8 +34,7 @@ public partial class MainMenu : Control
 		creditPage = GetNode<Control>("Credits");
 		quitPage = GetNode<Control>("Quit");
 
-        quitPage.Visible = false;
-        
+		quitPage.Visible = false;
 		
 		startButton = topPage.GetNode<Button>("ButtonContainer/StartButton");
 		startButton.Pressed += _On_StartButton_Pressed;
@@ -53,10 +54,10 @@ public partial class MainMenu : Control
 		quitGameButton.Pressed += () => GetTree().Quit();
 		quitPage.GetNode<Button>("BackButton").Pressed += BackwardPage;
 
-        if (Globals.Instance.isGameDone) { currentPage = creditPage; ForwardPage(creditPage,creditBackButton); creditBackButton.CallDeferred("grab_focus"); }
-        else { currentPage = topPage; currentPage = creditPage; topPage.Visible = true; creditPage.Visible = false; startButton.CallDeferred("grab_focus"); }
+		if (Globals.Instance.isGameDone) { currentPage = creditPage; ForwardPage(creditPage,creditBackButton); creditBackButton.CallDeferred("grab_focus"); }
+		else { currentPage = topPage; currentPage = creditPage; topPage.Visible = true; creditPage.Visible = false; startButton.CallDeferred("grab_focus"); }
 
-        buttons.Add(startButton);
+		buttons.Add(startButton);
 		buttons.Add(quitMenuButton);
 		buttons.Add(optionsButton);
 
@@ -101,9 +102,14 @@ public partial class MainMenu : Control
 		if (startScene == null)
 		{
 			startScene = "res://Scenes/Environments/Cabin/cabin.tscn";
+			GetTree().ChangeSceneToFile(startScene);
 		}
 
-		GetTree().ChangeSceneToFile(startScene);
+		else
+		{
+			PackedScene scene = ResourceLoader.LoadThreadedGet(startScene) as PackedScene;
+			GetTree().ChangeSceneToPacked(scene);
+		}
 	}
 
 	private void _On_OptionsButton_Pressed()

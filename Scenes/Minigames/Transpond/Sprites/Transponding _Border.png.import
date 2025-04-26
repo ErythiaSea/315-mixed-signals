@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcv0in8kr4tr8"
-path="res://.godot/imported/TranslationVict_Compass.png-2fc6f15c893981382da20ae58fa74f74.ctex"
+uid="uid://cjqybg2o7oen"
+path="res://.godot/imported/Transponding _Border.png-99d6f047416ad73643f1a2fce84d0092.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Minigames/Translation/Sprites/TranslationVict_Compass.png"
-dest_files=["res://.godot/imported/TranslationVict_Compass.png-2fc6f15c893981382da20ae58fa74f74.ctex"]
+source_file="res://Scenes/Minigames/Transpond/Sprites/Transponding _Border.png"
+dest_files=["res://.godot/imported/Transponding _Border.png-99d6f047416ad73643f1a2fce84d0092.ctex"]
 
 [params]
 

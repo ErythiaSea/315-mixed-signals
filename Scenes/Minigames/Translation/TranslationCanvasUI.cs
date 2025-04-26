@@ -23,6 +23,8 @@ public partial class TranslationCanvasUI : BaseMinigame
 	BaseButton answerButton;
 	[Export]
 	BaseButton backButton;
+	[Export]
+	Keyboard keyboard;
 
 	[ExportGroup("Dialogue Paths")]
 	[Export(PropertyHint.ResourceType, "DialogueData")]
@@ -73,22 +75,17 @@ public partial class TranslationCanvasUI : BaseMinigame
 		dialogueBox = GetNode<Panel>("DialogueBox");
 		dialogueBox.Connect("dialogue_ended", Callable.From(OnDialogueEnd));
 		LoadDialogue();
+
+		// call tutorial dialogue if it's the first time doing translation
+		// otherwise, put focus where it needs to be
 		if (Globals.TutorialProgress <= GAMESTAGE.TRANSLATION)
 		{
 			Globals.TutorialProgress = GAMESTAGE.END;
 			dialogueBox.Call("start", "tut");
 		}
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		base._Process(delta);
-
-		if (answerBox.HasFocus() && Input.IsActionJustPressed("right"))
+		else
 		{
-			GD.Print("SHIFTING");
-			answerButton.GrabFocus();
+			CallDeferred(MethodName.PutFocusSomewhere);
 		}
 	}
 
@@ -121,10 +118,6 @@ public partial class TranslationCanvasUI : BaseMinigame
 		}
 	}
 
-	public void AffectionCounter()
-	{
-
-	}
 	private void TextInitalisation()
 	{
 		if (Globals.ProgressionStage > GAMESTAGE.TRANSLATION) {
@@ -167,7 +160,11 @@ public partial class TranslationCanvasUI : BaseMinigame
 		{
 			canClose = true;
 			Close();
+			return;
 		}
+
+		// assign focus when tutorial dialogue box closes
+		PutFocusSomewhere();
 	}
 
 	private void LoadDialogue()
@@ -182,6 +179,18 @@ public partial class TranslationCanvasUI : BaseMinigame
 				break;
 		}
 	}
+
+    private void PutFocusSomewhere()
+    {
+        if (InputManager.IsController)
+        {
+            keyboard.firstButton.GrabFocus();
+        }
+        else
+        {
+            answerBox.GrabFocus();
+        }
+    }
 
     protected override void QuitMinigame()
     {

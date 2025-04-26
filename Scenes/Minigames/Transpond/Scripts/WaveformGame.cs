@@ -18,6 +18,10 @@ public partial class WaveformGame : Node2D
 	bool tunedSignal = false;
 
 	public bool gameActive = false;
+	AnimatedSprite2D victoryAnim;
+
+	[Signal]
+	public delegate void WaveformCompleteEventHandler();
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -26,6 +30,8 @@ public partial class WaveformGame : Node2D
 		realWave = GetNode<WaveRender>("realwave");
 		ghostWave = GetNode<WaveRender>("ghostwave");
 		newWavelength();
+
+		victoryAnim = GetNode<AnimatedSprite2D>("victoryAnim");
 	}
 
 	void newWavelength()
@@ -108,6 +114,9 @@ public partial class WaveformGame : Node2D
 			// show completion
 			playerWave.waveColor = Colors.Green;
 			gameActive = false;
+
+			victoryAnim.Play();
+			victoryAnim.AnimationFinished += () => EmitSignal(SignalName.WaveformComplete);
 		}
 
 		// wavelength and amplitude are within range, no input this frame

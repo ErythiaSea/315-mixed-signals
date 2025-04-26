@@ -8,10 +8,12 @@ public partial class Keyboard : HBoxContainer
 	[Export]
 	LineEdit answerBox;
 
+	public Button firstButton;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Button first = new();
+		firstButton = new();
 		for (int i = 0; i < 26; i++)
 		{
 			Button kbButton = new Button();
@@ -30,10 +32,13 @@ public partial class Keyboard : HBoxContainer
 			kbButton.Pressed += () => TypeLetter(kbButton);
 			GD.Print(kbButton.Size.X);
 
-			if (i == 0) { first = kbButton; }
+			if (i == 0) { 
+				firstButton = kbButton;
+				kbButton.GrabFocus();
+			}
 			if (i == 25) { 
-				kbButton.FocusNeighborRight = first.GetPath();
-				first.FocusNeighborLeft = kbButton.GetPath();
+				kbButton.FocusNeighborRight = firstButton.GetPath();
+				firstButton.FocusNeighborLeft = kbButton.GetPath();
 			}
 		}
 	}

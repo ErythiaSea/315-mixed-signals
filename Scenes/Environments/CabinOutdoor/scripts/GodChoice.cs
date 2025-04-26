@@ -32,15 +32,10 @@ public partial class GodChoice : CanvasLayer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-
+		// request main menu scene for later
         if (scenePath != null)
         {
             ResourceLoader.LoadThreadedRequest(scenePath);
-        }
-
-        if (scene == null)
-        {
-            scene = (PackedScene)ResourceLoader.LoadThreadedGet(scenePath);
         }
         
 		godButtons = GetButtons();
@@ -199,7 +194,12 @@ public partial class GodChoice : CanvasLayer
 		display.TweenProperty(creditsButton, "modulate", new Color(creditsButton.Modulate.R, creditsButton.Modulate.G, creditsButton.Modulate.B, 1f), 2f);
 		display.TweenCallback(Callable.From(creditsButton.GrabFocus));
 
-    }
+		// at this point it's safe to get the main menu scene
+		if (scene == null)
+		{
+			scene = (PackedScene)ResourceLoader.LoadThreadedGet(scenePath);
+		}
+	}
 	private void DisplayGods()
 	{
 

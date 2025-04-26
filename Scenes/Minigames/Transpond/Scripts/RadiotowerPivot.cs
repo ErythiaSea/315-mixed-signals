@@ -11,7 +11,6 @@ public partial class RadiotowerPivot : Node2D
 	public Area2D area;
 	public Sprite2D sprite;
 	public AudioStreamPlayer2D streamPlayer;
-	AudioEffectDistortion distortEffect;
 
 	public bool overlapsTower = false;
 
@@ -36,13 +35,10 @@ public partial class RadiotowerPivot : Node2D
 			cwInput = "left_pivot_cw";
 			ccwInput = "left_pivot_ccw";
 			minRotDeg = 270; maxRotDeg = 360;
-
-
 		} else {
 			cwInput = "right_pivot_cw";
 			ccwInput = "right_pivot_ccw";
 			minRotDeg = 180; maxRotDeg = 270;
-			distortEffect = (AudioEffectDistortion)AudioServer.GetBusEffect(2, 0);
 		}
 	}
 

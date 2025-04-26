@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://c6lkoenvhuw42" path="res://Fonts/Monotone_SB_V1.otf" id="2_nkqje"]
 
 [node name="Globals" type="Node"]
+process_mode = 3
 script = ExtResource("1_cnrc1")
 stateControlText = ["Menu ctrls", "Cutscene ctrls", "Overworld ctrls", "Transpond ctrls", "Waveform ctrls", "Constellation ctrls", "Translation ctrls", "Dialogue ctrls", "NONE state (you should not see this text in game)", "map ctrls", "photoboard controls"]
 

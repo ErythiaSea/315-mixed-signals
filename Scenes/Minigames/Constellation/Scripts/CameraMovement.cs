@@ -59,7 +59,7 @@ public partial class CameraMovement : Camera2D
 	}
 
 	//Zooms out and shows the completed constellation, centered on the star with the most connections
-	public void DisplayConstellation(Vector2 centerStar)
+	public void DisplayConstellation(Vector2 centerStar, Node2D fadeSprite)
 	{
 		GD.Print("displaying constellation...");
 		canMoveCam = false;
@@ -68,9 +68,10 @@ public partial class CameraMovement : Camera2D
 		completion.Parallel().TweenProperty(this, "zoom", new Vector2(0.30f, 0.30f), 2f);
 		completion.Parallel().TweenProperty(this, "position", centerStar, 1f);
 		completion.Parallel().TweenProperty(telescope, "scale", new Vector2(2.5f, 2.5f), 2f);
-		completion.TweenInterval(1.5);
+		completion.TweenInterval(0.5);
+		completion.TweenProperty(fadeSprite, "self_modulate", new Color(1, 1, 1, 1), 1.0f);
 		completion.TweenCallback(Callable.From(minigame.ShowFinalBox));
 
-		audioStreamPlayer.Play();
-	}
+        audioStreamPlayer.Play();
+    }
 }
