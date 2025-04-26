@@ -22,6 +22,9 @@ public partial class MainMenu : Control
 	List<Button> buttons = new List<Button>{};
 	Stack<Control> focusStack;
 
+	ColorRect loadingScreen;
+
+	PackedScene scene = null;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -29,6 +32,8 @@ public partial class MainMenu : Control
 
 		// main menu should never be on top of something so we're safe to set the gamestate
 		Globals.SetGamestate(GAMESTATE.MENU);
+
+		loadingScreen = GetNode<ColorRect>("Loading");
 
 		topPage = GetNode<Control>("Top");
 		creditPage = GetNode<Control>("Credits");
@@ -97,19 +102,23 @@ public partial class MainMenu : Control
 
 	private void _On_StartButton_Pressed()
 	{
-		// grab the cabin scene as fallback
-		Globals.InitialGameSetUp();
+        Tween fade = CreateTween();
+		fade.TweenCallback(Callable.From(Globals.Instance.FadeIn));
+		
+        // grab the cabin scene as fallback
+        Globals.InitialGameSetUp();
 		if (startScene == null)
 		{
-			startScene = "res://Scenes/Environments/Cabin/cabin.tscn";
+            startScene = "res://Scenes/Environments/Cabin/cabin.tscn";
 			GetTree().ChangeSceneToFile(startScene);
 		}
-
 		else
 		{
-			PackedScene scene = ResourceLoader.LoadThreadedGet(startScene) as PackedScene;
-			GetTree().ChangeSceneToPacked(scene);
-		}
+			fade.TweenCallback(Callable.From(SceneLoading)).SetDelay(1f);
+            fade.Parallel().TweenCallback(Callable.From(Globals.Instance.FadeOut)).SetDelay(2f);
+            fade.Parallel().TweenCallback(Callable.From(() => GetTree().ChangeSceneToPacked(scene))).SetDelay(2f);
+
+        }
 	}
 
 	private void _On_OptionsButton_Pressed()
@@ -134,4 +143,9 @@ public partial class MainMenu : Control
 			GetViewport().SetInputAsHandled();
 		}
 	}
+
+	private void SceneLoading()
+	{
+        scene = ResourceLoader.LoadThreadedGet(startScene) as PackedScene;
+    }
 }

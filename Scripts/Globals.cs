@@ -48,6 +48,8 @@ public partial class Globals : Node
 	// Progression stage property, backing field and update event
 	[Signal]
 	public delegate void ProgressionChangeEventHandler();
+
+
 	private static GAMESTAGE _progressionStage;
 	public static GAMESTAGE ProgressionStage
 	{
@@ -122,7 +124,9 @@ public partial class Globals : Node
 
 	public static void SetGamestate(GAMESTATE state)
 	{
+
 		Gamestate = state;
+
 		GD.Print("Gamestate was set; ", state, " is now the only gamestate.");
 	}
 
@@ -135,6 +139,8 @@ public partial class Globals : Node
 	public int cassioLove= 0;
 	public int pyxisLove = 0;
 
+    public ColorRect loadingScreen;
+    
 	public bool isGameDone = false;
 	// Tutorial progress property to track which tutorial should next be shown to the player
 	public static GAMESTAGE TutorialProgress { get; set; } = GAMESTAGE.TRANSPONDING;
@@ -154,6 +160,8 @@ public partial class Globals : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		loadingScreen = GetChild(0).GetNode<ColorRect>("Loading");
+
 		if (Engine.IsEditorHint())
 		{
 			//GetNode<CanvasLayer>("GlobalsCanvasLayer").Visible = false;
@@ -259,4 +267,17 @@ public partial class Globals : Node
 
 		return "[img]" + keyFolder + name + ctrlSuffix + ".png[/img]";
 	}
+
+    public void FadeIn()
+    {
+		Tween fadeIn = CreateTween();
+		fadeIn.TweenProperty(loadingScreen, "modulate", new Color(loadingScreen.Modulate.R, loadingScreen.Modulate.G, loadingScreen.Modulate.B, 1f), 0.8f);
+    }
+
+	public void FadeOut()
+	{
+        Tween fadeOut = CreateTween();
+        fadeOut.TweenProperty(loadingScreen, "modulate", new Color(loadingScreen.Modulate.R, loadingScreen.Modulate.G, loadingScreen.Modulate.B, 0f), 0.8f);
+    }
+
 }

@@ -11,6 +11,13 @@ stateControlText = ["Menu ctrls", "Cutscene ctrls", "Overworld ctrls", "Transpon
 [node name="GlobalsCanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
 
+[node name="Loading" type="ColorRect" parent="GlobalsCanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1932.0
+offset_bottom = 1107.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="GlobalControl" type="Control" parent="GlobalsCanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
