@@ -607,7 +607,6 @@ dialogueBox = NodePath("../SleepDialogueBox")
 
 [node name="WakeupBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
 position = Vector2(409, 4402)
-requiredDay = 0
 isOneShot = true
 isAutofire = true
 dialogueBox = NodePath("../CanvasLayer/CabinDialogueBox")
@@ -643,7 +642,6 @@ custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_3ckrh"), Sub
 
 [node name="TranspondDialBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
 position = Vector2(783, 636)
-requiredDay = 0
 isOneShot = true
 isAutofire = true
 dialogueBox = NodePath("../CanvasLayer/CabinDialogueBox")
@@ -656,7 +654,6 @@ shape = SubResource("RectangleShape2D_1xcrb")
 [node name="WaveformFinishBox2" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
 position = Vector2(781, 638)
 requiredStage = 3
-requiredDay = 0
 isOneShot = true
 isAutofire = true
 dialogueBox = NodePath("../CanvasLayer/CabinDialogueBox")
@@ -669,7 +666,6 @@ shape = SubResource("RectangleShape2D_1xcrb")
 [node name="PreTranslationDialBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
 position = Vector2(1361, 4368)
 requiredStage = 4
-requiredDay = 0
 isOneShot = true
 isAutofire = true
 dialogueBox = NodePath("../CanvasLayer/TranslationDialogueBox")

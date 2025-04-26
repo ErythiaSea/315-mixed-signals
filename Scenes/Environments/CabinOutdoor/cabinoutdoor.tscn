@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cnj8esqdgww0"]
+[gd_scene load_steps=49 format=3 uid="uid://cnj8esqdgww0"]
 
 [ext_resource type="Texture2D" uid="uid://bmij10s8rf8gm" path="res://Scenes/Environments/CabinOutdoor/base_outside.png" id="1_0a00e"]
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_4weox"]
@@ -22,17 +22,9 @@
 [ext_resource type="Shader" path="res://Scenes/Environments/CabinOutdoor/scripts/Blur.gdshader" id="19_6tiu6"]
 [ext_resource type="Texture2D" uid="uid://cc5ylwu6ngqik" path="res://Scenes/Environments/CabinOutdoor/Sprites/Group_Fullbody.png" id="19_rtfec"]
 [ext_resource type="Script" path="res://Scenes/Environments/CabinOutdoor/scripts/GodChoice.cs" id="20_vyhny"]
-[ext_resource type="Texture2D" uid="uid://c3w8g3ibu1unn" path="res://Scenes/Environments/CabinOutdoor/Sprites/PolaroidsCorvus_Accept.png" id="21_3y3kx"]
 [ext_resource type="Texture2D" uid="uid://udre4ggthd5q" path="res://Scenes/Environments/CabinOutdoor/Sprites/Fullbody_Corvus.png" id="21_7v8nr"]
-[ext_resource type="Texture2D" uid="uid://cmnhf30iptmnd" path="res://Scenes/Environments/CabinOutdoor/Sprites/Polaroids_Cass_Accept.png" id="22_e5m3p"]
 [ext_resource type="Texture2D" uid="uid://d3w8ot5vph2w4" path="res://Scenes/Environments/CabinOutdoor/Sprites/Fullbody_Pyxis.png" id="22_ngky6"]
-[ext_resource type="Texture2D" uid="uid://bjpjhgu01vvoa" path="res://Scenes/Environments/CabinOutdoor/Sprites/Polaroids_Pyxis_Accept.png" id="23_bk8bq"]
 [ext_resource type="Texture2D" uid="uid://be1rgqcvdkio7" path="res://Scenes/Environments/CabinOutdoor/Sprites/Fullbody_Cass.png" id="23_vg7f7"]
-[ext_resource type="Texture2D" uid="uid://b3aco8fyfxh8y" path="res://Scenes/Environments/CabinOutdoor/Sprites/Polaroids_Corvus_Reject.png" id="24_anbxf"]
-[ext_resource type="Texture2D" uid="uid://dgl6omacp4v3n" path="res://Scenes/Environments/CabinOutdoor/Sprites/Polaroids_Cass_Reject.png" id="25_yib7r"]
-[ext_resource type="Texture2D" uid="uid://by1xu2w3ttdi" path="res://Scenes/Environments/CabinOutdoor/Sprites/Polaroids_Pyxis_Reject.png" id="26_nt0xf"]
-[ext_resource type="Texture2D" uid="uid://br8ws1lqgu3p5" path="res://Scenes/Environments/CabinOutdoor/Sprites/Yippee.webp" id="27_8kytx"]
-[ext_resource type="Texture2D" uid="uid://1fqoooq5vqjy" path="res://Scenes/Environments/CabinOutdoor/Sprites/Yikes.webp" id="28_twvu4"]
 [ext_resource type="Texture2D" uid="uid://8chjdgwf31cg" path="res://Scenes/Environments/CabinOutdoor/Sprites/Fullbody_Corvus_Outline.webp" id="31_svecg"]
 [ext_resource type="Texture2D" uid="uid://bpbfgwqdo4hem" path="res://Scenes/Environments/CabinOutdoor/Sprites/Fullbody_Pyxis_Outline.webp" id="33_6gvwa"]
 [ext_resource type="Texture2D" uid="uid://b2pdi0xtmj77s" path="res://Scenes/Environments/CabinOutdoor/Sprites/Fullbody_Cass_Outline.webp" id="35_mhc1m"]
@@ -358,9 +350,6 @@ texture = ExtResource("19_rtfec")
 
 [node name="GodsCanvas" type="CanvasLayer" parent="GodsDisplay"]
 script = ExtResource("20_vyhny")
-poloroidSprites = Array[Texture2D]([ExtResource("21_3y3kx"), ExtResource("22_e5m3p"), ExtResource("23_bk8bq"), ExtResource("24_anbxf"), ExtResource("25_yib7r"), ExtResource("26_nt0xf")])
-stampSprites = Array[Texture2D]([ExtResource("27_8kytx"), ExtResource("28_twvu4")])
-scenePath = "res://Scenes/Menu/MainMenu/main_menu.tscn"
 
 [node name="Choice camera" type="Camera2D" parent="GodsDisplay/GodsCanvas"]
 
@@ -504,7 +493,6 @@ text = "Continue"
 [node name="PostConstellationDialBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("4_elcve")]
 position = Vector2(592, 264)
 requiredStage = 4
-requiredDay = 0
 isOneShot = true
 isAutofire = true
 dialogueBox = NodePath("../CanvasLayer/CabinOutsideDialogueBox")

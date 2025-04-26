@@ -45,7 +45,11 @@ public partial class TranspondScreen : BaseMinigame
 		// Happens once, when the transpond minigame is completed
 		if (Globals.ProgressionStage == GAMESTAGE.WAVEFORM && !transitionedBetweenMinigames)
 		{
-			transitionedBetweenMinigames = true;
+            Tween cameraPan = CreateTween();
+            cameraPan.Parallel().TweenProperty(this, "offset", new Vector2(-400, Offset.Y), 1f);
+            dialogueBox.Position = new Vector2(600f, dialogueBox.Position.Y);
+
+            transitionedBetweenMinigames = true;
 
 			// Fade the left minigame out of view, and the right one into view
 			Tween tween = CreateTween();
@@ -79,11 +83,14 @@ public partial class TranspondScreen : BaseMinigame
 
 	private void CheckStage()
 	{
+		Tween cameraPan = CreateTween();
 		switch (Globals.ProgressionStage)
 		{
 			case GAMESTAGE.TRANSPONDING:
 				Globals.PushGamestate(GAMESTATE.TRANSPOND);
 
+				cameraPan.Parallel().TweenProperty(this, "offset", new Vector2(400, Offset.Y), 1f);
+				dialogueBox.Position = new Vector2(0f,dialogueBox.Position.Y);
 				// Show tutorial if this is the first time entering this minigame
 				if (Globals.TutorialProgress <= GAMESTAGE.TRANSPONDING)
 				{
@@ -95,7 +102,11 @@ public partial class TranspondScreen : BaseMinigame
 
 			case GAMESTAGE.WAVEFORM:
 				Globals.PushGamestate(GAMESTATE.WAVEFORM);
-				radiotower.CompletedPivots();
+
+                cameraPan.Parallel().TweenProperty(this, "offset", new Vector2(-400, Offset.Y), 1f);
+                dialogueBox.Position = new Vector2(500f, dialogueBox.Position.Y);
+
+                radiotower.CompletedPivots();
 				leftBox.Visible = true; rightBox.Visible = false;
 				tutorialButton.startID = waveformTutorialStartID;
 				transitionedBetweenMinigames = true;
