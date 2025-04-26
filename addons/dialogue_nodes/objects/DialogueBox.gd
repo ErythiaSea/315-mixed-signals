@@ -274,8 +274,8 @@ func _on_dialogue_started(id : String):
 	dialogue_label.text = ''
 	show()
 	dialogue_started.emit(id)
+	Globals.PushGamestate(7) # 7 = GAMESTATE.Dialogue
 	SignalBus.DialogueStarted.emit()
-
 
 func _on_dialogue_processed(speaker : Variant, dialogue : String, options : Array[String]):
 	# set speaker
@@ -331,6 +331,7 @@ func _on_variable_changed(variable_name : String, value):
 
 func _on_dialogue_ended():
 	if hide_on_dialogue_end: hide()
+	Globals.PopGamestate(7)
 	dialogue_ended.emit()
 	SignalBus.DialogueEnded.emit()
 

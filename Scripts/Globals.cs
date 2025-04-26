@@ -170,8 +170,6 @@ public partial class Globals : Node
 		controlsText = GetNode<RichTextLabel>("GlobalsCanvasLayer/GlobalControl/ControlsText");
 		Instance.GamestateChange += UpdateControlsText;
 
-		SignalBus.Instance.DialogueStarted += () => PushGamestate(GAMESTATE.DIALOGUE);
-		SignalBus.Instance.DialogueEnded += () => PopGamestate(GAMESTATE.DIALOGUE);
 		InitialGameSetUp();
 
 		pauseMenu = ResourceLoader.Load<PackedScene>("res://Scenes/Menu/Pause/pause_menu.tscn").Instantiate<PauseMenu>();

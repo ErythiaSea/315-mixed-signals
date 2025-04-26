@@ -169,6 +169,7 @@ _data = {
 [node name="ConstellationDraw" type="CanvasLayer"]
 follow_viewport_enabled = true
 script = ExtResource("1_sd3pu")
+constellationEndStartID = "4_"
 exitTransition = 4
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -210,12 +211,11 @@ scale = Vector2(3, 3)
 texture = ExtResource("4_irqg6")
 
 [node name="Telescope" type="ColorRect" parent="Camera"]
-visible = false
 material = SubResource("ShaderMaterial_13kgm")
-offset_left = -1151.0
-offset_top = -652.0
-offset_right = 1135.0
-offset_bottom = 643.0
+offset_left = -1142.0
+offset_top = -647.0
+offset_right = 1144.0
+offset_bottom = 648.0
 scale = Vector2(1.68, 1.68)
 pivot_offset = Vector2(1143, 647)
 mouse_filter = 2
@@ -259,6 +259,7 @@ rotation = -0.10472
 texture = ExtResource("12_ae74t")
 
 [node name="Pyxis" type="Node2D" parent="."]
+visible = false
 z_index = -1
 script = ExtResource("8_pqt5s")
 
@@ -275,6 +276,7 @@ position = Vector2(1652, -255)
 adjacentStars = [NodePath("../StarNode2")]
 
 [node name="PyxisFade" type="Sprite2D" parent="Pyxis"]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(877, 323)
 rotation = 2.44346

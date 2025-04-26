@@ -74,8 +74,7 @@ public partial class ConstellationMinigame : BaseMinigame
 
 		// change dialogue called based on day
 		dialogueBox.Call("start", (constellationEndStartID + Globals.Day.ToString()));
-		// i should be shot AGAIN! - eryth
-		dialogueBox.Connect("dialogue_ended", Callable.From(() => { GetTree().CreateTimer(0.5).Timeout += Close; }));
+		dialogueBox.Connect("dialogue_ended", Callable.From(Close));
 	}
 
 	//Allows camera control
