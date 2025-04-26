@@ -259,7 +259,6 @@ rotation = -0.10472
 texture = ExtResource("12_ae74t")
 
 [node name="Pyxis" type="Node2D" parent="."]
-visible = false
 z_index = -1
 script = ExtResource("8_pqt5s")
 
