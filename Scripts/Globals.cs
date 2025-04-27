@@ -265,21 +265,35 @@ public partial class Globals : Node
 				else if (name == "cancel") { name = "confirm"; }
 			}
 
-			switch (InputManager.ControllerType)
+			// these inputs use a common suffix as they don't vary between controllers
+			if (name == "all" || name == "vertical" || name == "horizontal")
 			{
-				case GAMEPAD.KEYBOARD:
-					ctrlSuffix = "_kb";
-					break;
-				case GAMEPAD.PS:
-					ctrlSuffix = "_ps";
-					break;
-				default:
-					ctrlSuffix = "_ps";
-					break;
+				ctrlSuffix = "_con";
+			}
+			else
+			{
+				switch (InputManager.ControllerType)
+				{
+					case GAMEPAD.KEYBOARD:
+						ctrlSuffix = "_kb";
+						break;
+					case GAMEPAD.PS:
+						ctrlSuffix = "_ps";
+						break;
+					case GAMEPAD.XBOX:
+						ctrlSuffix = "_xb";
+						break;
+					case GAMEPAD.NINTENDO:
+						ctrlSuffix = "_ns";
+						break;
+					default:
+						ctrlSuffix = "_ps";
+						break;
+				}
 			}
 		}
 
-		return "[img]" + keyFolder + name + ctrlSuffix + ".png[/img]";
+			return "[img]" + keyFolder + name + ctrlSuffix + ".png[/img]";
 	}
 
     public void FadeIn()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://30acdomxsows"
-path="res://.godot/imported/horizontal_kb.png-30b77dc95b165548f5f8b4d4fda64fde.ctex"
+uid="uid://c34x6gc0rrbkx"
+path="res://.godot/imported/confirm_xb.png-fdd0308ae4c15c4f5dfd888371953c12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/InputKey/horizontal_kb.png"
-dest_files=["res://.godot/imported/horizontal_kb.png-30b77dc95b165548f5f8b4d4fda64fde.ctex"]
+source_file="res://Sprites/InputKey/confirm_xb.png"
+dest_files=["res://.godot/imported/confirm_xb.png-fdd0308ae4c15c4f5dfd888371953c12.ctex"]
 
 [params]
 

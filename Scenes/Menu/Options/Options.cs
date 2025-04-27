@@ -185,6 +185,7 @@ public partial class Options : Control
 	private void ChangeControllerGlyph()
 	{
 		InputManager.ControllerType = (GAMEPAD)((int)(InputManager.ControllerType + 1)%3);
+		GD.Print("controller type now:", InputManager.ControllerType);
 		SetGlyphButtonText();
 	}
 

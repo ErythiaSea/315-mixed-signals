@@ -1991,5 +1991,3 @@ position = Vector2(1422, 494)
 scale = Vector2(4.1, 4.1)
 sprite_frames = SubResource("SpriteFrames_bywr7")
 animation = &"new_animation"
-frame = 178
-frame_progress = 0.220609

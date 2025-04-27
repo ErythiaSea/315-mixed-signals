@@ -111,10 +111,10 @@ public partial class InputManager : Node
         Globals.UpdateControlsText();
 	}
 
-	// there must be a better way, but i don't know it!
-	// horizontal = a/d or left/right, vertical = w/s or up/down, all = wasd/dpad
+    // there must be a better way, but i don't know it!
+    // horizontal = a/d or left/right, vertical = w/s or up/down, all = wasd/dpad
 
-	public static readonly Dictionary<GAMESTATE, List<InputStruct>> StateInputDict = new()
+    public static readonly Dictionary<GAMESTATE, List<InputStruct>> StateInputDict = new()
     {
         { GAMESTATE.MENU, new() {
             new InputStruct("vertical", "Select", INPUT_METHODS.KEYBOARD_CONTROLLER),
@@ -125,21 +125,43 @@ public partial class InputManager : Node
         } },
         { GAMESTATE.OVERWORLD, new() {
             new InputStruct("horizontal", "Move", INPUT_METHODS.KEYBOARD_CONTROLLER),
-            new InputStruct("confirm", "Interact", INPUT_METHODS.KEYBOARD_CONTROLLER)
+            new InputStruct("confirm", "Interact", INPUT_METHODS.KEYBOARD_CONTROLLER),
+            new InputStruct("pause", "Pause", INPUT_METHODS.KEYBOARD_CONTROLLER)
         } },
         { GAMESTATE.TRANSPOND, new() {
+            new InputStruct("horizontal", "Pivot Left", INPUT_METHODS.KEYBOARD_CONTROLLER),
+            new InputStruct("rpivot", "Pivot Right", INPUT_METHODS.KEYBOARD_CONTROLLER),
+            new InputStruct("pad_n", "Tutorial", INPUT_METHODS.CONTROLLER_ONLY),
+            new InputStruct("pause", "Close", INPUT_METHODS.KEYBOARD_CONTROLLER)
         } },
         { GAMESTATE.WAVEFORM, new() {
+            new InputStruct("horizontal", "Adjust Wavelength", INPUT_METHODS.KEYBOARD_CONTROLLER),
+            new InputStruct("rpivot", "Adjust Amplitude", INPUT_METHODS.KEYBOARD_CONTROLLER),
+			new InputStruct("pad_n", "Tutorial", INPUT_METHODS.CONTROLLER_ONLY),
+			new InputStruct("pause", "Close", INPUT_METHODS.KEYBOARD_CONTROLLER)
         } },
         { GAMESTATE.MAP, new() {
+            new InputStruct("all", "Select", INPUT_METHODS.CONTROLLER_ONLY),
+            new InputStruct("confirm", "Confirm", INPUT_METHODS.CONTROLLER_ONLY),
+            new InputStruct("pause", "Close", INPUT_METHODS.KEYBOARD_CONTROLLER)
         } },
-		{ GAMESTATE.CONSTELLATION, new() {
-		} },
+        { GAMESTATE.CONSTELLATION, new() {
+            new InputStruct("all", "Pan Camera", INPUT_METHODS.KEYBOARD_CONTROLLER),
+			new InputStruct("pad_n", "Tutorial", INPUT_METHODS.CONTROLLER_ONLY),
+			new InputStruct("pause", "Close", INPUT_METHODS.KEYBOARD_CONTROLLER)
+        } },
         { GAMESTATE.TRANSLATION, new() {
+            new InputStruct("all", "Select", INPUT_METHODS.CONTROLLER_ONLY),
+            new InputStruct("confirm", "Confirm", INPUT_METHODS.CONTROLLER_ONLY),
+			new InputStruct("pad_n", "Tutorial", INPUT_METHODS.CONTROLLER_ONLY),
+			new InputStruct("pause", "Close", INPUT_METHODS.KEYBOARD_CONTROLLER)
         } },
         { GAMESTATE.DIALOGUE, new() {
+            new InputStruct("confirm", "Advance", INPUT_METHODS.KEYBOARD_CONTROLLER),
+            new InputStruct("cancel", "FFWD", INPUT_METHODS.KEYBOARD_CONTROLLER)
         } },
         { GAMESTATE.PHOTOBOARD, new() {
+            new InputStruct("pause", "Close", INPUT_METHODS.KEYBOARD_CONTROLLER)
         } },
         { GAMESTATE.NONE, new() {
         } },

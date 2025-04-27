@@ -14,11 +14,8 @@ public partial class StairControl : Area2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		player = GetNode<Player>("../Player");
-		if (player == null)
-		{
-			player = GetNode<Player>("../../Player");
-        }
+		// bad code - eryth
+		player = GetNode<Player>("../../Player");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

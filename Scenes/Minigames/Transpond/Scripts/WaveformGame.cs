@@ -117,6 +117,7 @@ public partial class WaveformGame : Node2D
 			gameActive = false;
 
 			// fade out waveform lines and decal / overlay modulation change
+			victoryAnim.Show();
 			victoryAnim.Play();
 			victoryAnim.AnimationFinished += () => EmitSignal(SignalName.WaveformComplete);
 		}

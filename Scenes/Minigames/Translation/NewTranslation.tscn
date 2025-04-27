@@ -454,20 +454,23 @@ flat = true
 script = ExtResource("7_nx382")
 
 [node name="CheckAnswerButton" type="Button" parent="."]
-offset_left = 813.0
+offset_left = 635.0
 offset_top = 925.0
-offset_right = 965.0
+offset_right = 962.0
 offset_bottom = 1009.0
+focus_neighbor_left = NodePath("../DeleteButton")
+focus_neighbor_right = NodePath("../DeleteButton")
 theme = ExtResource("7_ytl8i")
 theme_override_font_sizes/font_size = 75
 text = "Confirm"
 
 [node name="DeleteButton" type="Button" parent="."]
-offset_left = 989.0
+offset_left = 1001.0
 offset_top = 925.0
-offset_right = 1141.0
+offset_right = 1283.0
 offset_bottom = 1009.0
-focus_neighbor_left = NodePath("../AnswerBox")
+focus_neighbor_left = NodePath("../CheckAnswerButton")
+focus_neighbor_right = NodePath("../CheckAnswerButton")
 theme = ExtResource("7_ytl8i")
 theme_override_font_sizes/font_size = 75
 text = "Delete

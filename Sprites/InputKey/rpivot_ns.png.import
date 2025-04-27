@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://30acdomxsows"
-path="res://.godot/imported/horizontal_kb.png-30b77dc95b165548f5f8b4d4fda64fde.ctex"
+uid="uid://bwpviodg1ddlg"
+path="res://.godot/imported/rpivot_ns.png-cfd2c6c093f2882b12222e47dc2e0f7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/InputKey/horizontal_kb.png"
-dest_files=["res://.godot/imported/horizontal_kb.png-30b77dc95b165548f5f8b4d4fda64fde.ctex"]
+source_file="res://Sprites/InputKey/rpivot_ns.png"
+dest_files=["res://.godot/imported/rpivot_ns.png-cfd2c6c093f2882b12222e47dc2e0f7a.ctex"]
 
 [params]
 
