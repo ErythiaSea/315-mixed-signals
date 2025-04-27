@@ -32,6 +32,7 @@ public partial class WaveformGame : Node2D
 		newWavelength();
 
 		victoryAnim = GetNode<AnimatedSprite2D>("victoryAnim");
+		victoryAnim.Hide();
 	}
 
 	void newWavelength()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://kv3p5d4tp3k5"]
+[gd_scene load_steps=50 format=3 uid="uid://kv3p5d4tp3k5"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Transpond/Scripts/Radiotower.cs" id="1_qjh6q"]
 [ext_resource type="Texture2D" uid="uid://deq16tiwdto50" path="res://Scenes/Minigames/Transpond/Sprites/TransponderScreen_Pt1_Base.png" id="2_my68r"]
@@ -448,6 +448,7 @@ scale = Vector2(1, 1.00222)
 texture = ExtResource("10_1xurv")
 
 [node name="victoryAnim" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(960, 540)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_uv1d5")

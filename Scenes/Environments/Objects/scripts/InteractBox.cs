@@ -289,7 +289,7 @@ public partial class InteractBox : Area2D
 		if (!active) return;
 		// if it's the player's area
 
-		if (area.GetParent<Player>() != null)
+		if (area.GetParentOrNull<Player>() != null)
 		{
 			AudioStreamPlayer2D stream = GetNodeOrNull<AudioStreamPlayer2D>("AudioStreamPlayer2D");
 			if (stream != null)

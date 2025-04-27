@@ -33,7 +33,7 @@ public partial class MainMenu : Control
 		// main menu should never be on top of something so we're safe to set the gamestate
 		Globals.SetGamestate(GAMESTATE.MENU);
 
-		loadingScreen = GetNode<ColorRect>("Loading");
+		//loadingScreen = GetNode<ColorRect>("Loading");
 
 		topPage = GetNode<Control>("Top");
 		creditPage = GetNode<Control>("Credits");

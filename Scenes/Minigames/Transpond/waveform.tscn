@@ -1886,7 +1886,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f8fa2")
 }],
-"loop": true,
+"loop": false,
 "name": &"new_animation",
 "speed": 30.0
 }]
@@ -1986,6 +1986,7 @@ autoplay = "overLay"
 frame_progress = 0.717304
 
 [node name="victoryAnim" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(1422, 494)
 scale = Vector2(4.1, 4.1)
 sprite_frames = SubResource("SpriteFrames_bywr7")
