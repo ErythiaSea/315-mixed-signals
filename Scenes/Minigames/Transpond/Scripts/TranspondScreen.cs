@@ -28,10 +28,10 @@ public partial class TranspondScreen : BaseMinigame
 		waveform = GetNode<WaveformGame>("waveformRoot");
 		leftBox = GetNode<Sprite2D>("LeftBox");
 		rightBox = GetNode<Sprite2D>("RightBox");
-		tutorialButton = GetNode<TutorialButton>("TutorialButton");
+		tutorialButton = GetNode<TutorialButton>("UICanvas/TutorialButton");
 		animPlayer = GetNode<AnimationPlayer>("minigameCompleteAnims");
 
-		dialogueBox = GetNode<Panel>("DialogueBox");
+		dialogueBox = GetNode<Panel>("UICanvas/DialogueBox");
 
         waveform.WaveformComplete += OnWaveformComplete;
 		CheckStage();
@@ -47,7 +47,7 @@ public partial class TranspondScreen : BaseMinigame
 		{
             Tween cameraPan = CreateTween();
             cameraPan.Parallel().TweenProperty(this, "offset", new Vector2(-400, Offset.Y), 1f);
-            dialogueBox.Position = new Vector2(600f, dialogueBox.Position.Y);
+            //dialogueBox.Position = new Vector2(600f, dialogueBox.Position.Y);
 
             transitionedBetweenMinigames = true;
 
@@ -90,7 +90,7 @@ public partial class TranspondScreen : BaseMinigame
 				Globals.PushGamestate(GAMESTATE.TRANSPOND);
 
 				cameraPan.Parallel().TweenProperty(this, "offset", new Vector2(400, Offset.Y), 1f);
-				dialogueBox.Position = new Vector2(0f,dialogueBox.Position.Y);
+				//dialogueBox.Position = new Vector2(0f,dialogueBox.Position.Y);
 				// Show tutorial if this is the first time entering this minigame
 				if (Globals.TutorialProgress <= GAMESTAGE.TRANSPONDING)
 				{
@@ -104,7 +104,7 @@ public partial class TranspondScreen : BaseMinigame
 				Globals.PushGamestate(GAMESTATE.WAVEFORM);
 
                 cameraPan.Parallel().TweenProperty(this, "offset", new Vector2(-400, Offset.Y), 1f);
-                dialogueBox.Position = new Vector2(500f, dialogueBox.Position.Y);
+                //dialogueBox.Position = new Vector2(500f, dialogueBox.Position.Y);
 
                 radiotower.CompletedPivots();
 				leftBox.Visible = true; rightBox.Visible = false;

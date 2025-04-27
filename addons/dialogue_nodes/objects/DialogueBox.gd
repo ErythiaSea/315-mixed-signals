@@ -256,6 +256,13 @@ func _input(event):
 			_on_wait_finished()
 
 
+## Ensures that the gamestate can never be kept as dialogue if a box is killed before it closes (i.e. due to scene transition)
+func _exit_tree() -> void:
+	if Engine.is_editor_hint(): return
+	if Globals.get("Gamestate") == 7:
+		Globals.PopGamestate(7)
+
+
 ## Starts processing the dialogue [member data], starting with the Start Node with its ID set to [param start_id].
 func start(id := start_id):
 	if not _dialogue_parser: return

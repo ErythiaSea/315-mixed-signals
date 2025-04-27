@@ -14,15 +14,25 @@ public partial class TutorialButton : TextureButton
 		if (dialogueBox == null) {
 			GD.PushWarning("No dialogue box was assigned to the tutorial button!");
 		}
+		Pressed += ShowDialogue;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	// pressing top button summons the dialogue
+	public override void _UnhandledInput(InputEvent @event)
 	{
+		if (@event is InputEventJoypadButton button)
+		{
+			if (button.ButtonIndex == JoyButton.Y)
+			{
+				ShowDialogue();
+			}
+		}
 	}
 
-	public override void _Pressed()
+	// begin the tutorial dialogue unless the gamestate is dialogue or another indesirable state
+	public void ShowDialogue()
 	{
+		if (Globals.Gamestate == GAMESTATE.DIALOGUE || Globals.Gamestate == GAMESTATE.CUTSCENE || Globals.Gamestate == GAMESTATE.MENU) { return; }
 		dialogueBox.Call("start", startID);
 	}
 }

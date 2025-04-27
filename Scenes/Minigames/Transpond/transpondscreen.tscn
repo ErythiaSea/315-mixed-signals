@@ -144,7 +144,23 @@ rotation = -3.14159
 scale = Vector2(13.6727, 15.5631)
 texture = SubResource("GradientTexture2D_cqgav")
 
-[node name="DialogueBox" type="Panel" parent="."]
+[node name="UICanvas" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="TutorialButton" type="TextureButton" parent="UICanvas" node_paths=PackedStringArray("dialogueBox")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1769.0
+offset_top = 23.0
+offset_right = -27.0
+offset_bottom = -933.0
+texture_normal = ExtResource("12_84qav")
+stretch_mode = 5
+script = ExtResource("13_in4h4")
+dialogueBox = NodePath("../DialogueBox")
+
+[node name="DialogueBox" type="Panel" parent="UICanvas"]
 visible = false
 anchors_preset = 7
 anchor_left = 0.5
@@ -162,19 +178,6 @@ script = ExtResource("7_y3602")
 data = ExtResource("8_mkirk")
 start_id = "TRANS1_TUT"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_qgpgv"), SubResource("RichTextEffect_iiq5k"), SubResource("RichTextEffect_vkvdv")])
-
-[node name="TutorialButton" type="TextureButton" parent="." node_paths=PackedStringArray("dialogueBox")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1769.0
-offset_top = 23.0
-offset_right = -27.0
-offset_bottom = -933.0
-texture_normal = ExtResource("12_84qav")
-stretch_mode = 5
-script = ExtResource("13_in4h4")
-dialogueBox = NodePath("../DialogueBox")
 
 [node name="minigameComplete" type="Node2D" parent="."]
 position = Vector2(960, 540)

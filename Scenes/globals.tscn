@@ -13,6 +13,7 @@ layer = 5
 
 [node name="Loading" type="ColorRect" parent="GlobalsCanvasLayer"]
 modulate = Color(1, 1, 1, 0)
+z_index = 12
 offset_right = 1932.0
 offset_bottom = 1107.0
 mouse_filter = 2
@@ -28,7 +29,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="ControlsText" type="RichTextLabel" parent="GlobalsCanvasLayer/GlobalControl"]
-z_index = 2
+z_index = 11
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0

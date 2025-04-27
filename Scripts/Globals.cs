@@ -32,13 +32,6 @@ public enum GAMESTATE
 	PHOTOBOARD = 10
 }
 
-// i might need these for control state text later - eryth
-[Flags]
-public enum CONTEXTFLAGS
-{
-	CAN_INTERACT
-}
-
 public partial class Globals : Node
 {
 	// The instance of the Globals node that does GodotObject things a static
@@ -189,6 +182,7 @@ public partial class Globals : Node
 	{
 		Instance.pauseMenu.Show();
 		Instance.GetTree().Paused = true;
+		PushGamestate(GAMESTATE.MENU);
 		GD.Print("Game paused, current gamestate: ", Gamestate);
 	}
 
