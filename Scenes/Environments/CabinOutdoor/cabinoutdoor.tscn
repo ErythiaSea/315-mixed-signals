@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cnj8esqdgww0"]
+[gd_scene load_steps=58 format=3 uid="uid://cnj8esqdgww0"]
 
 [ext_resource type="Texture2D" uid="uid://bmij10s8rf8gm" path="res://Scenes/Environments/CabinOutdoor/base_outside.png" id="1_0a00e"]
 [ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_4weox"]
@@ -17,7 +17,8 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="10_vfhkp"]
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="14_mtltj"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="15_5kghu"]
-[ext_resource type="Resource" uid="uid://ckynjg6qn8fve" path="res://Dialogue/TranslationDialogue.tres" id="16_i7p77"]
+[ext_resource type="Resource" path="res://Dialogue/TranslationDialogue.tres" id="16_i7p77"]
+[ext_resource type="Theme" uid="uid://v82gx6vqnjm1" path="res://addons/dialogue_nodes/themes/bubbleOnly.theme" id="17_rpj1m"]
 [ext_resource type="Script" path="res://Scenes/Environments/CabinOutdoor/scripts/GodsDisplay.cs" id="18_s8ivj"]
 [ext_resource type="Shader" path="res://Scenes/Environments/CabinOutdoor/scripts/Blur.gdshader" id="19_6tiu6"]
 [ext_resource type="Texture2D" uid="uid://cc5ylwu6ngqik" path="res://Scenes/Environments/CabinOutdoor/Sprites/Group_Fullbody.png" id="19_rtfec"]
@@ -318,17 +319,18 @@ offset_right = 250.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("7_u12k5")
+theme = ExtResource("14_mtltj")
 script = ExtResource("7_ra4mx")
 data = ExtResource("16_i7p77")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_kmmy1"), SubResource("RichTextEffect_4u6xp"), SubResource("RichTextEffect_a24d6")])
 
 [node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]
+visible = false
 clip_contents = false
 offset_top = -247.0
 offset_right = 116.0
 offset_bottom = -211.0
-theme = ExtResource("14_mtltj")
+theme = ExtResource("17_rpj1m")
 bbcode_enabled = true
 text = "Sample dialogue."
 fit_content = true

@@ -32,8 +32,8 @@ public partial class CabinLevel : Level
 
 	AudioStreamPlayer sceneMusic;
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
 	{
 		base._Ready();
 		sceneMusic = GetNode("SceneMusic") as AudioStreamPlayer;
@@ -47,8 +47,8 @@ public partial class CabinLevel : Level
 
 	private void OnNewDay()
 	{
-        GetNode<InteractBox>("TranspondBox").active = true;
-        if (Globals.Day == 2)
+		GetNode<InteractBox>("TranspondBox").active = true;
+		if (Globals.Day == 2)
 		{
 			GD.Print("Final day, so swapping the level change scene and disabling elevator...");
 			//exitInteractBox.ChangeLoadedScene(endScreenPath);

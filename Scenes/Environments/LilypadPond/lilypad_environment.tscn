@@ -23,9 +23,9 @@
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="13_wcr1k"]
 [ext_resource type="AudioStream" uid="uid://buvotqk1e00qe" path="res://Audio/Ambience/Lilypad/Rain, Vegetation, Light, Forest, Hit Leaves 03 SND3423.ogg" id="14_w6odn"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="14_xkiew"]
-[ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="15_b38h2"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="19_3q7ub"]
-[ext_resource type="Resource" uid="uid://v5euajow4ila" path="res://Dialogue/LilypadDialogue.tres" id="20_vtndf"]
+[ext_resource type="Resource" path="res://Dialogue/LilypadDialogue.tres" id="20_vtndf"]
+[ext_resource type="Theme" uid="uid://v82gx6vqnjm1" path="res://addons/dialogue_nodes/themes/bubbleOnly.theme" id="21_gvqau"]
 
 [sub_resource type="Resource" id="Resource_xpr3o"]
 script = ExtResource("2_061b7")
@@ -572,13 +572,14 @@ position = Vector2(9.25, -63)
 shape = SubResource("RectangleShape2D_3ioy7")
 
 [node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]
+visible = false
 z_index = 2
 clip_contents = false
 offset_left = 650.0
 offset_top = 296.0
 offset_right = 766.0
 offset_bottom = 332.0
-theme = ExtResource("15_b38h2")
+theme = ExtResource("21_gvqau")
 bbcode_enabled = true
 text = "Sample dialogue."
 fit_content = true

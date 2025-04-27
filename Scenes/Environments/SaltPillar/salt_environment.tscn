@@ -200,10 +200,11 @@ position = Vector2(29.5, 0)
 shape = SubResource("RectangleShape2D_a1j6n")
 
 [node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]
+top_level = true
 z_index = 2
 clip_contents = false
-offset_right = 116.0
-offset_bottom = 36.0
+offset_right = 240.0
+offset_bottom = 26.0
 theme = ExtResource("9_6maqy")
 bbcode_enabled = true
 text = "Sample dialogue."
