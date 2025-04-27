@@ -17,8 +17,8 @@ public partial class EndDay : CanvasLayer
 
 	private AnimatedSprite2D calenderAnim;
 
-    private EndTransitionScript currentTrans;
-    Player player;
+	private EndTransitionScript currentTrans;
+	Player player;
 	bool isClosed = false;
 
 	private bool isDisplayed = false;
@@ -40,8 +40,8 @@ public partial class EndDay : CanvasLayer
 		if (currentTrans.isDone && !isDisplayed)
 		{
 			dialogueBox.Call("start", "SLEEP");
-            isDisplayed = true;
-        }
+			isDisplayed = true;
+		}
 
 	}
 
@@ -75,7 +75,7 @@ public partial class EndDay : CanvasLayer
 		player.AddChild(transition);
 		currentTrans = transition;
 		transition.CloseCircle(1f, 0f, transitionTime);
-    }
+	}
 
 	
 }

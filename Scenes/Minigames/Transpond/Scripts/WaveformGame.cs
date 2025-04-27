@@ -115,6 +115,7 @@ public partial class WaveformGame : Node2D
 			playerWave.waveColor = Colors.Green;
 			gameActive = false;
 
+			// fade out waveform lines and decal / overlay modulation change
 			victoryAnim.Play();
 			victoryAnim.AnimationFinished += () => EmitSignal(SignalName.WaveformComplete);
 		}
