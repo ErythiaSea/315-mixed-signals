@@ -1089,8 +1089,11 @@ text = "[center]"
 
 [node name="Calender" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
+top_level = true
 z_index = 2
 position = Vector2(1052, 509)
 scale = Vector2(0.175, 0.175)
 sprite_frames = SubResource("SpriteFrames_2w2fw")
-animation = &"3"
+animation = &"0"
+frame = 64
+frame_progress = 1.0
