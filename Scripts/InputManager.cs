@@ -11,10 +11,10 @@ public enum INPUT_METHODS
 
 public enum GAMEPAD
 {
-    KEYBOARD = 0,
-    XBOX = 1,
-    PS = 2,
-    NINTENDO = 3,
+    XBOX = 0,
+    PS = 1,
+    NINTENDO = 2,
+    KEYBOARD = 3,
     OTHER = 4
 }
 
@@ -45,12 +45,12 @@ public partial class InputManager : Node
         {
             if (_isController == value) return;
             _isController = value;
-            //Globals.UpdateControlsText();
+            Globals.UpdateControlsText();
         }
     }
 
     // controller type property and backing field
-    private static GAMEPAD _controllerType;
+    private static GAMEPAD _controllerType; // includes keyboard
     public static GAMEPAD ControllerType
     {
         get { return _controllerType; }
@@ -65,12 +65,56 @@ public partial class InputManager : Node
         }
     }
 
-    public static bool ConfirmCancelSwapped { get; set; } = false;
+    private static bool _confirmCancelSwapped = false;
+    public static bool ConfirmCancelSwapped { 
+        get { return _confirmCancelSwapped; }
+        set
+        {
+            if (_confirmCancelSwapped == value) return;
+            _confirmCancelSwapped = value;
 
-    // there must be a better way, but i don't know it!
-    // horizontal = a/d or left/right, vertical = w/s or up/down, all = wasd/dpad
+            Instance.SwapConfirmCancel(value);
+        }
+    }
 
-    public static readonly Dictionary<GAMESTATE, List<InputStruct>> StateInputDict = new()
+	private void SwapConfirmCancel(bool on)
+	{
+        InputEventJoypadButton psX, psO;
+        psX = new();
+        psX.ButtonIndex = JoyButton.A;
+        psO = new();
+        psO.ButtonIndex = JoyButton.B;
+
+        if (on)
+        {
+            InputMap.ActionAddEvent("ui_accept", psO);
+            InputMap.ActionEraseEvent("ui_accept", psX);
+
+            InputMap.ActionAddEvent("ui_cancel", psX);
+            InputMap.ActionEraseEvent("ui_cancel", psO);
+
+            InputMap.ActionAddEvent("interact", psO);
+            InputMap.ActionEraseEvent("interact", psX);
+        }
+        else
+        {
+			InputMap.ActionAddEvent("ui_accept", psX);
+			InputMap.ActionEraseEvent("ui_accept", psO);
+
+			InputMap.ActionAddEvent("ui_cancel", psO);
+			InputMap.ActionEraseEvent("ui_cancel", psX);
+
+			InputMap.ActionAddEvent("interact", psX);
+			InputMap.ActionEraseEvent("interact", psO);
+		}
+        GD.Print("a/b successfully swapped!");
+        Globals.UpdateControlsText();
+	}
+
+	// there must be a better way, but i don't know it!
+	// horizontal = a/d or left/right, vertical = w/s or up/down, all = wasd/dpad
+
+	public static readonly Dictionary<GAMESTATE, List<InputStruct>> StateInputDict = new()
     {
         { GAMESTATE.MENU, new() {
             new InputStruct("vertical", "Select", INPUT_METHODS.KEYBOARD_CONTROLLER),
@@ -109,6 +153,32 @@ public partial class InputManager : Node
             QueueFree();
         }
         Instance = this;
+
+        // set controller type on game start based on initially connected pad (if any)
+        // this can be changed later from settings
+        _controllerType = GAMEPAD.PS;
+        if (Input.GetConnectedJoypads().Count > 0)
+        {
+            IsController = true;
+			string joyName = Input.GetJoyName(Input.GetConnectedJoypads()[0]);
+
+			switch (joyName[0])
+			{
+				case 'P':
+					ControllerType = GAMEPAD.PS;
+					break;
+				case 'X':
+					ControllerType = GAMEPAD.XBOX;
+					break;
+				case 'N':
+					ControllerType = GAMEPAD.NINTENDO;
+                    ConfirmCancelSwapped = true;
+					break;
+				default:
+					ControllerType = GAMEPAD.PS;
+					break;
+			}
+		}
     }
 
     public override void _Input(InputEvent @event)
@@ -117,28 +187,11 @@ public partial class InputManager : Node
         if (@event is InputEventKey || @event is InputEventMouseButton)
         {
             IsController = false;
-            ControllerType = GAMEPAD.KEYBOARD;
+            //ControllerType = GAMEPAD.KEYBOARD;
         }
         else if (@event is InputEventJoypadButton || (@event is InputEventJoypadMotion stickMotion && Mathf.Abs(stickMotion.AxisValue) > 0.25))
         {
             IsController = true;
-            string joyName = Input.GetJoyName(Input.GetConnectedJoypads()[0]);
-
-            switch (joyName[0])
-            {
-                case 'P':
-                    ControllerType = GAMEPAD.PS;
-                    break;
-                case 'X':
-                    ControllerType = GAMEPAD.XBOX;
-                    break;
-                case 'N':
-                    ControllerType = GAMEPAD.NINTENDO;
-                    break;
-                default:
-                    ControllerType = GAMEPAD.OTHER;
-                    break;
-            }
         }
        // GD.Print("Controller: " + IsController);
     }

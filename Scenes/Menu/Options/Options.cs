@@ -12,6 +12,7 @@ public partial class Options : Control
 
 	Button masterButton, musicButton, sfxButton, envButton;
 	Button swapABButton;
+	Button glyphButton;
 
 	Label headerLabel;
 
@@ -58,6 +59,15 @@ public partial class Options : Control
         audioPage.GetNode<Slider>("MusicSlider").ValueChanged += (value) => UpdateVolume(musicBusIdx, value);
         audioPage.GetNode<Slider>("SFXSlider").ValueChanged += (value) => UpdateVolume(sfxBusIdx, value);
         audioPage.GetNode<Slider>("EnvironmentalSlider").ValueChanged += (value) => UpdateVolume(envBusIdx, value);
+
+		// connect input settings to functions
+		swapABButton = controlsPage.GetNode<Button>("ABSwapButton");
+		swapABButton.Text = "Swap A/B: " + (InputManager.ConfirmCancelSwapped ? "Yes" : "No");
+		swapABButton.Pressed += SwapABPressed;
+
+		glyphButton = controlsPage.GetNode<Button>("GlyphsButton");
+		glyphButton.Pressed += ChangeControllerGlyph;
+		SetGlyphButtonText();
 
         // last button in each page is back, connect to backwardpage
         audioPage.GetChild<Button>(-1).Pressed += BackwardPage;
@@ -141,6 +151,41 @@ public partial class Options : Control
 	{
 		AudioServer.SetBusVolumeDb(busIdx, (float)Mathf.LinearToDb(value));
 		GD.Print("new volume of bus ", AudioServer.GetBusName(busIdx), " is: ", AudioServer.GetBusVolumeDb(busIdx));
+	}
+
+	private void SwapABPressed()
+	{
+		InputManager.ConfirmCancelSwapped = !InputManager.ConfirmCancelSwapped;
+		swapABButton.Text = "Swap A/B: " + (InputManager.ConfirmCancelSwapped ? "Yes" : "No");
+	}
+
+	private void SetGlyphButtonText()
+	{
+		string orig = "Controller Glyphs: ";
+		string type = "";
+		switch (InputManager.ControllerType)
+		{
+			case GAMEPAD.PS:
+				type = "PlayStation";
+				break;
+			case GAMEPAD.NINTENDO:
+				type = "Nintendo";
+				break;
+			case GAMEPAD.XBOX:
+				type = "Xbox";
+				break;
+			default: // should never be hit
+				type = "?";
+				break;
+		}
+		glyphButton.Text = orig + type;
+		return;
+	}
+
+	private void ChangeControllerGlyph()
+	{
+		InputManager.ControllerType = (GAMEPAD)((int)(InputManager.ControllerType + 1)%3);
+		SetGlyphButtonText();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

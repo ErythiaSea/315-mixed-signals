@@ -182,6 +182,14 @@ flat = true
 alignment = 2
 script = ExtResource("3_b4kxl")
 
+[node name="GlyphsButton" type="Button" parent="Margins/OptionsControls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Controller Glyphs"
+flat = true
+alignment = 2
+script = ExtResource("3_b4kxl")
+
 [node name="BackButton" type="Button" parent="Margins/OptionsControls"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../ABSwapButton")

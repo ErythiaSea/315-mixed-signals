@@ -7,6 +7,10 @@ public partial class Keyboard : HBoxContainer
 	Font buttonFont;
 	[Export]
 	LineEdit answerBox;
+	[Export]
+	Button confirmButton;
+	[Export]
+	Button deleteButton;
 
 	public Button firstButton;
 
@@ -22,7 +26,7 @@ public partial class Keyboard : HBoxContainer
 			kbButton.AddThemeColorOverride("font_color", Colors.Black);
             kbButton.AddThemeColorOverride("font_focus_color", Colors.DarkGoldenrod);
             kbButton.AddThemeFontOverride("font", buttonFont);
-			kbButton.AddThemeFontSizeOverride("font_size", 170);
+			kbButton.AddThemeFontSizeOverride("font_size", 90);
 			kbButton.SizeFlagsHorizontal = SizeFlags.Expand;
 			kbButton.Flat = true;
 			kbButton.CustomMinimumSize = new Vector2(Mathf.Floor(Size.X / 26.0f), 0);
@@ -32,13 +36,31 @@ public partial class Keyboard : HBoxContainer
 			kbButton.Pressed += () => TypeLetter(kbButton);
 			GD.Print(kbButton.Size.X);
 
-			if (i == 0) { 
-				firstButton = kbButton;
-				kbButton.GrabFocus();
+			if (i < 13)
+			{
+				kbButton.FocusNeighborBottom = confirmButton.GetPath();
+				if (i == 0)
+				{
+					firstButton = kbButton;
+					kbButton.GrabFocus();
+				}
+				if (i == 12)
+				{
+					confirmButton.FocusNeighborTop = kbButton.GetPath();
+				}
 			}
-			if (i == 25) { 
-				kbButton.FocusNeighborRight = firstButton.GetPath();
-				firstButton.FocusNeighborLeft = kbButton.GetPath();
+			else
+			{
+				kbButton.FocusNeighborBottom = deleteButton.GetPath();
+				if (i == 13)
+				{
+					deleteButton.FocusNeighborTop = kbButton.GetPath();
+				}
+				if (i == 25)
+				{
+					kbButton.FocusNeighborRight = firstButton.GetPath();
+					firstButton.FocusNeighborLeft = kbButton.GetPath();
+				}
 			}
 		}
 	}
