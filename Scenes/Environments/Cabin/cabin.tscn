@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dgxa5oe3n02es" path="res://Scenes/Environments/Cabin/Sprites/bedroom_background.png" id="10_wte04"]
 [ext_resource type="Texture2D" uid="uid://ca3at5rrn0nfn" path="res://Scenes/Environments/Cabin/Sprites/bedroom_elevatorbutton.png" id="11_fnn4b"]
 [ext_resource type="Texture2D" uid="uid://dlxcbppbeywmh" path="res://Scenes/Environments/Cabin Extended/base_pipes.png" id="11_o0hdm"]
-[ext_resource type="Texture2D" uid="uid://2crwnjdli60a" path="res://Sprites/elevatorbuton_temp.png" id="13_bairj"]
+[ext_resource type="Texture2D" uid="uid://bwd8gkarn2rhs" path="res://Scenes/Environments/Cabin/Sprites/top_elevatorbutton.webp" id="12_cj7mu"]
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="13_haw55"]
 [ext_resource type="PackedScene" uid="uid://1iqwcokmbvwv" path="res://Scenes/Environments/Objects/elevator.tscn" id="14_e5y7b"]
 [ext_resource type="Texture2D" uid="uid://bhieqrwdoj31n" path="res://Scenes/Environments/Cabin/Sprites/bedroom_bed.png" id="14_gtqtg"]
@@ -29,14 +29,14 @@
 [ext_resource type="Texture2D" uid="uid://0a1vu5sk0nyp" path="res://Scenes/Environments/Cabin/Sprites/cabin_elevator.png" id="19_cwqwm"]
 [ext_resource type="Texture2D" uid="uid://diasqyo6bpqnm" path="res://Scenes/Environments/Cabin/Sprites/Cabin_ElevatorCover.png" id="21_8ohlt"]
 [ext_resource type="Theme" uid="uid://v82gx6vqnjm1" path="res://addons/dialogue_nodes/themes/bubbleOnly.theme" id="22_b1gab"]
-[ext_resource type="Resource" path="res://Dialogue/CabinDialogue.tres" id="27_34i7x"]
+[ext_resource type="Resource" uid="uid://4dnj2lymr6kn" path="res://Dialogue/CabinDialogue.tres" id="27_34i7x"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="28_fg0wr"]
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/EndDay.cs" id="29_wyus1"]
 [ext_resource type="PackedScene" uid="uid://ccoch44m85xuv" path="res://Scenes/Environments/Objects/EndDayTransition.tscn" id="30_stghc"]
 [ext_resource type="AudioStream" uid="uid://bqlgr3jk0g4ix" path="res://Audio/Mechanics/Translation/638380__yossirafa100__soft-cover-book-open-3.wav" id="31_3gkvo"]
 [ext_resource type="AudioStream" uid="uid://cm1g34cblsmf5" path="res://Audio/Ambience/Cabin/188388__wubitog__mid-high-tone-button-click.wav" id="32_gh5bl"]
 [ext_resource type="AudioStream" uid="uid://ofggrfo8xfan" path="res://Audio/Ambience/Cabin/398750__anthousai__door-open-01.wav" id="32_rlb8a"]
-[ext_resource type="Resource" path="res://Dialogue/TranslationDialogue.tres" id="36_dj0ny"]
+[ext_resource type="Resource" uid="uid://ckynjg6qn8fve" path="res://Dialogue/TranslationDialogue.tres" id="36_dj0ny"]
 
 [sub_resource type="Resource" id="Resource_82qql"]
 script = ExtResource("2_vrtq2")
@@ -222,18 +222,21 @@ color = Color(0.34952, 0.2091, 0.51, 1)
 blend_mode = 2
 
 [node name="MainLight" type="PointLight2D" parent="."]
+z_index = 2
 position = Vector2(979, 451)
 color = Color(0.82, 0.75235, 0.369, 1)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_jojyq")
 
 [node name="ElevatorLights" type="Node2D" parent="."]
+z_index = 2
 
 [node name="PointLight2D" type="PointLight2D" parent="ElevatorLights"]
 position = Vector2(966, 2341)
 texture = SubResource("GradientTexture2D_q2l72")
 
 [node name="BedRoomLights" type="Node2D" parent="."]
+z_index = 2
 
 [node name="PointLight2D2" type="PointLight2D" parent="BedRoomLights"]
 position = Vector2(542, 3956)
@@ -317,8 +320,8 @@ region_rect = Rect2(0, 0, 3840, 2160)
 
 [node name="Monitors" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_5g03c")
-position = Vector2(960, 540)
-scale = Vector2(0.5, 0.5)
+position = Vector2(979.272, 727.063)
+scale = Vector2(0.344468, 0.315019)
 texture = ExtResource("7_bteuo")
 
 [node name="Pipes" type="Sprite2D" parent="Sprites"]
@@ -339,8 +342,9 @@ texture = ExtResource("11_fnn4b")
 
 [node name="TopCallButton" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_62c65")
-position = Vector2(477, 904)
-texture = ExtResource("13_bairj")
+position = Vector2(585, 771)
+scale = Vector2(0.577586, 0.577586)
+texture = ExtResource("12_cj7mu")
 
 [node name="Bed" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_4dv0e")
@@ -411,6 +415,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("19_cwqwm")
 
 [node name="BedroomElevatorCover" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(961.889, 4108)
 scale = Vector2(0.501389, 0.501389)
 texture = ExtResource("17_l3xrp")
@@ -418,6 +423,7 @@ region_enabled = true
 region_rect = Rect2(0, 18.6872, 3840, 2256.31)
 
 [node name="TopElevatorCover" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(964, 412.5)
 scale = Vector2(0.5, 0.7)
 texture = ExtResource("21_8ohlt")
@@ -506,7 +512,7 @@ scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
-position = Vector2(183, 11)
+position = Vector2(120, 11)
 shape = SubResource("RectangleShape2D_0oee4")
 
 [node name="TranslationBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite", "dialogueBox")]
@@ -593,6 +599,7 @@ objectSprite = NodePath("../Sprites/TopCallButton")
 requiredStage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorTopCall"]
+position = Vector2(108, 0)
 shape = SubResource("CircleShape2D_txxlk")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ElevatorTopCall"]
