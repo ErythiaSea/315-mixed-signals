@@ -176,6 +176,7 @@ public partial class InteractBox : Area2D
 		if (!IsCorrectStage())
 		{
 			//run dialogue for telling the player what they need to do based on: Globals.ProgressionStage\
+			GD.Print("Should say: ", Globals.ProgressionStage.ToString());
 			dialogueBox.Call("start", Globals.ProgressionStage.ToString());
 			return;
 		}

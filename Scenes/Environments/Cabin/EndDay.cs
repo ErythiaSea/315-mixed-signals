@@ -8,7 +8,7 @@ public partial class EndDay : CanvasLayer
 	[Export]
 	PackedScene endTransition;
 	[Export]
-	float transitionTime = 3f;
+	float transitionTime = 2f;
 
 	[ExportSubgroup("Dialogue")]
 	// the dialogue box to trigger
@@ -74,7 +74,7 @@ public partial class EndDay : CanvasLayer
 		//transition.PivotOffset = new Vector2(transition.Size.X / 2,transition.Size.Y / 2);
 		player.AddChild(transition);
 		currentTrans = transition;
-		transition.CloseCircle(1f, 0f, transitionTime);
+		transition.CloseCircle(0.3f, 0f, transitionTime);
 	}
 
 	
