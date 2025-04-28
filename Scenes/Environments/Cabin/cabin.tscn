@@ -502,7 +502,7 @@ data = ExtResource("27_34i7x")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_t7wmq"), SubResource("RichTextEffect_bvuge"), SubResource("RichTextEffect_f7su0")])
 
 [node name="TranspondBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite", "dialogueBox")]
-position = Vector2(851, 977)
+position = Vector2(857, 951)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/Monitors")
@@ -512,7 +512,7 @@ scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
-position = Vector2(120, 11)
+position = Vector2(120, -94)
 shape = SubResource("RectangleShape2D_0oee4")
 
 [node name="TranslationBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite", "dialogueBox")]
@@ -650,14 +650,14 @@ data = ExtResource("36_dj0ny")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_3ckrh"), SubResource("RichTextEffect_71qw6"), SubResource("RichTextEffect_dqmte")])
 
 [node name="TranspondDialBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
-position = Vector2(783, 636)
+position = Vector2(784, 635)
 isOneShot = true
 isAutofire = true
 dialogueBox = NodePath("../CanvasLayer/CabinDialogueBox")
 startID = "TRANSPONDING_START"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondDialBox"]
-position = Vector2(194, 66)
+position = Vector2(197, 80)
 shape = SubResource("RectangleShape2D_1xcrb")
 
 [node name="WaveformFinishBox2" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
@@ -669,7 +669,7 @@ dialogueBox = NodePath("../CanvasLayer/CabinDialogueBox")
 startID = "WAVEFORM_CLOSE"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaveformFinishBox2"]
-position = Vector2(194, 66)
+position = Vector2(200, 78)
 shape = SubResource("RectangleShape2D_1xcrb")
 
 [node name="PreTranslationDialBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]

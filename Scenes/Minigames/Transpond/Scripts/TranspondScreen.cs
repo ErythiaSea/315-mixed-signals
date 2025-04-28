@@ -87,6 +87,7 @@ public partial class TranspondScreen : BaseMinigame
 		switch (Globals.ProgressionStage)
 		{
 			case GAMESTAGE.TRANSPONDING:
+				
 				Globals.PushGamestate(GAMESTATE.TRANSPOND);
 
 				cameraPan.Parallel().TweenProperty(this, "offset", new Vector2(400, Offset.Y), 1f);
