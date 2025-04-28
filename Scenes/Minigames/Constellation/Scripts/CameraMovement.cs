@@ -31,6 +31,12 @@ public partial class CameraMovement : Camera2D
 		{
 			CameraInputEvents(delta);
 		}
+		// if we can't move the camera we know we may be zooming out
+		//else
+		//{
+		//	// scale the telescope rect to cam zoom
+		//	telescope.Scale = new Vector2(1.68f / (Zoom.X * 2), 1.68f / (Zoom.Y * 2));
+		//}
 
 		center = GetScreenCenterPosition();
 	}
@@ -65,9 +71,9 @@ public partial class CameraMovement : Camera2D
 		canMoveCam = false;
 		Tween completion = GetTree().CreateTween();
 
-		completion.Parallel().TweenProperty(this, "zoom", new Vector2(0.30f, 0.30f), 2f);
+		completion.Parallel().TweenProperty(this, "zoom", new Vector2(0.25f, 0.25f), 2f);
 		completion.Parallel().TweenProperty(this, "position", centerStar, 1f);
-		completion.Parallel().TweenProperty(telescope, "scale", new Vector2(2.5f, 2.5f), 2f);
+		completion.Parallel().TweenProperty(telescope, "scale", new Vector2(3.36f, 3.36f), 2f);
 		completion.TweenInterval(0.5);
 		completion.TweenProperty(fadeSprite, "self_modulate", new Color(1, 1, 1, 1), 1.0f);
 		completion.TweenCallback(Callable.From(minigame.ShowFinalBox));

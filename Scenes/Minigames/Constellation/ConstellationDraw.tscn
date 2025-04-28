@@ -191,13 +191,13 @@ scale = Vector2(0.4, 0.4)
 
 [node name="Sky" type="Parallax2D" parent="Camera/Parallax"]
 scroll_scale = Vector2(0.58, 0.58)
-repeat_size = Vector2(12300, 7500)
+repeat_size = Vector2(14350, 8745)
 repeat_times = 4
 
 [node name="SkySprite" type="Sprite2D" parent="Camera/Parallax/Sky"]
 modulate = Color(0.721569, 0.745098, 1, 1)
 position = Vector2(-2.5, 0)
-scale = Vector2(3, 3)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("3_vuskw")
 
 [node name="Stars" type="Parallax2D" parent="Camera/Parallax"]
