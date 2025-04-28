@@ -35,7 +35,7 @@
 [ext_resource type="AudioStream" uid="uid://bqlgr3jk0g4ix" path="res://Audio/Mechanics/Translation/638380__yossirafa100__soft-cover-book-open-3.wav" id="31_3gkvo"]
 [ext_resource type="AudioStream" uid="uid://cm1g34cblsmf5" path="res://Audio/Ambience/Cabin/188388__wubitog__mid-high-tone-button-click.wav" id="32_gh5bl"]
 [ext_resource type="AudioStream" uid="uid://ofggrfo8xfan" path="res://Audio/Ambience/Cabin/398750__anthousai__door-open-01.wav" id="32_rlb8a"]
-[ext_resource type="Resource" path="res://Dialogue/TranslationDialogue.tres" id="36_dj0ny"]
+[ext_resource type="Resource" uid="uid://ckynjg6qn8fve" path="res://Dialogue/TranslationDialogue.tres" id="36_dj0ny"]
 
 [sub_resource type="Resource" id="Resource_82qql"]
 script = ExtResource("2_vrtq2")
