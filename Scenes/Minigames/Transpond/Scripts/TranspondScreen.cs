@@ -113,6 +113,7 @@ public partial class TranspondScreen : BaseMinigame
 				break;
 
 			default:
+				Globals.PushGamestate(GAMESTATE.TRANSPOND);
 				radiotower.CompletedPivots();
 				break;
 		}

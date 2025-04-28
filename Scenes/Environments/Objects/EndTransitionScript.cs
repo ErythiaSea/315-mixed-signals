@@ -65,10 +65,12 @@ public partial class EndTransitionScript : ColorRect
 
 		if (hasTextDisplayed && !isAnimating)
 		{
-            Tween calender = GetTree().CreateTween();
+			//calenderAnim.Position = sleepText.Position;
+			GD.Print("DISPLAYING CALENDER");
+			GD.Print(calenderAnim.Animation, " frame: ", calenderAnim.Frame);
+            Tween calender = CreateTween();
 			calender.TweenInterval(1.0f);
-            calender.TweenProperty(calenderAnim, "modulate", new Color(calenderAnim.Modulate.R, calenderAnim.Modulate.G, calenderAnim.Modulate.B, 1f), 2f);
-
+            calender.TweenProperty(calenderAnim, "modulate", new Color(calenderAnim.Modulate.R, calenderAnim.Modulate.G, calenderAnim.Modulate.B, 0.7f), 2f);
             calender.TweenCallback(Callable.From(() => calenderAnim.Play()));
 			isAnimating = true;
         }
@@ -103,7 +105,7 @@ public partial class EndTransitionScript : ColorRect
 		GD.Print("anim done");
         Tween animEnd = GetTree().CreateTween();
         animEnd.TweenProperty(calenderAnim, "modulate", new Color(calenderAnim.Modulate.R, calenderAnim.Modulate.G, calenderAnim.Modulate.B, 0f), 2f);
-		isDone = true;
+		animEnd.TweenProperty(this, "isDone", true, 0.1f);
     }
     private void fadeOutText()
 	{
