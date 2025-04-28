@@ -184,8 +184,19 @@ func _enter_tree():
 	_sub_container.add_child(speaker_label)
 	speaker_label.text = 'Speaker'
 	
+	var margin_subcontainer = MarginContainer.new()
+	_sub_container.add_child(margin_subcontainer)
+	margin_subcontainer.set_anchors_preset(Control.PRESET_FULL_RECT)
+	margin_subcontainer.set_offsets_preset(Control.PRESET_FULL_RECT)
+	margin_subcontainer.add_theme_constant_override('margin_left', 12)
+	margin_subcontainer.add_theme_constant_override('margin_top', 8)
+	margin_subcontainer.add_theme_constant_override('margin_right', 12)
+	margin_subcontainer.add_theme_constant_override('margin_bottom', 4)
+	margin_subcontainer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	margin_subcontainer.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	
 	dialogue_label = RichTextLabel.new()
-	_sub_container.add_child(dialogue_label)
+	margin_subcontainer.add_child(dialogue_label)
 	dialogue_label.text = 'Some dialogue text to demonstrate how an actual dialogue might look like.'
 	dialogue_label.bbcode_enabled = true
 	dialogue_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -243,6 +254,13 @@ func _input(event):
 			_wait_effect.skip = true
 			await get_tree().process_frame
 			_on_wait_finished()
+
+
+## Ensures that the gamestate can never be kept as dialogue if a box is killed before it closes (i.e. due to scene transition)
+func _exit_tree() -> void:
+	if Engine.is_editor_hint(): return
+	if Globals.get("Gamestate") == 7:
+		Globals.PopGamestate(7)
 
 
 ## Starts processing the dialogue [member data], starting with the Start Node with its ID set to [param start_id].

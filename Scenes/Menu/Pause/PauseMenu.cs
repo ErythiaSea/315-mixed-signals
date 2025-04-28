@@ -58,6 +58,7 @@ public partial class PauseMenu : Control
 
 	private void UnpauseGame()
 	{
+		Globals.PopGamestate(GAMESTATE.MENU);
         Hide();
         GetTree().Paused = false;
     }

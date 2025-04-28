@@ -32,6 +32,7 @@ public partial class WaveformGame : Node2D
 		newWavelength();
 
 		victoryAnim = GetNode<AnimatedSprite2D>("victoryAnim");
+		victoryAnim.Hide();
 	}
 
 	void newWavelength()
@@ -115,6 +116,8 @@ public partial class WaveformGame : Node2D
 			playerWave.waveColor = Colors.Green;
 			gameActive = false;
 
+			// fade out waveform lines and decal / overlay modulation change
+			victoryAnim.Show();
 			victoryAnim.Play();
 			victoryAnim.AnimationFinished += () => EmitSignal(SignalName.WaveformComplete);
 		}

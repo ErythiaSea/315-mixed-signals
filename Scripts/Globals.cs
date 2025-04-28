@@ -32,13 +32,6 @@ public enum GAMESTATE
 	PHOTOBOARD = 10
 }
 
-// i might need these for control state text later - eryth
-[Flags]
-public enum CONTEXTFLAGS
-{
-	CAN_INTERACT
-}
-
 public partial class Globals : Node
 {
 	// The instance of the Globals node that does GodotObject things a static
@@ -189,6 +182,7 @@ public partial class Globals : Node
 	{
 		Instance.pauseMenu.Show();
 		Instance.GetTree().Paused = true;
+		PushGamestate(GAMESTATE.MENU);
 		GD.Print("Game paused, current gamestate: ", Gamestate);
 	}
 
@@ -252,20 +246,48 @@ public partial class Globals : Node
 	{
 		const string keyFolder = "res://Sprites/InputKey/";
 		string ctrlSuffix = "";
-		switch (InputManager.ControllerType)
+		if (!InputManager.IsController)
 		{
-			case GAMEPAD.KEYBOARD:
-				ctrlSuffix = "_kb";
-				break;
-			case GAMEPAD.PS:
-				ctrlSuffix = "_ps";
-				break;
-			default:
-				ctrlSuffix = "_ps";
-				break;
+			ctrlSuffix = "_kb";
+		}
+		else
+		{
+			// show the correct glyph if a/b swapped
+			if (InputManager.ConfirmCancelSwapped)
+			{
+				if (name == "confirm") { name = "cancel"; }
+				else if (name == "cancel") { name = "confirm"; }
+			}
+
+			// these inputs use a common suffix as they don't vary between controllers
+			if (name == "all" || name == "vertical" || name == "horizontal")
+			{
+				ctrlSuffix = "_con";
+			}
+			else
+			{
+				switch (InputManager.ControllerType)
+				{
+					case GAMEPAD.KEYBOARD:
+						ctrlSuffix = "_kb";
+						break;
+					case GAMEPAD.PS:
+						ctrlSuffix = "_ps";
+						break;
+					case GAMEPAD.XBOX:
+						ctrlSuffix = "_xb";
+						break;
+					case GAMEPAD.NINTENDO:
+						ctrlSuffix = "_ns";
+						break;
+					default:
+						ctrlSuffix = "_ps";
+						break;
+				}
+			}
 		}
 
-		return "[img]" + keyFolder + name + ctrlSuffix + ".png[/img]";
+			return "[img]" + keyFolder + name + ctrlSuffix + ".png[/img]";
 	}
 
     public void FadeIn()

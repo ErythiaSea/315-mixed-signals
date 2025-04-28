@@ -10,8 +10,8 @@
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/Outline.gdshader" id="6_jjc5l"]
 [ext_resource type="Texture2D" uid="uid://din6bfgvj8ksj" path="res://Scenes/Environments/Objects/sprites/telescope.png" id="6_pidip"]
 [ext_resource type="PackedScene" uid="uid://0v6vkbbnpoab" path="res://Scenes/Environments/Objects/interact_box.tscn" id="7_yro1e"]
-[ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="9_6maqy"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="10_u36yt"]
+[ext_resource type="Theme" uid="uid://v82gx6vqnjm1" path="res://addons/dialogue_nodes/themes/bubbleOnly.theme" id="11_3636l"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="11_o4f13"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="12_oaf7q"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="13_kkcnm"]
@@ -200,11 +200,12 @@ position = Vector2(29.5, 0)
 shape = SubResource("RectangleShape2D_a1j6n")
 
 [node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]
+top_level = true
 z_index = 2
 clip_contents = false
-offset_right = 116.0
+offset_right = 336.0
 offset_bottom = 36.0
-theme = ExtResource("9_6maqy")
+theme = ExtResource("11_3636l")
 bbcode_enabled = true
 text = "Sample dialogue."
 fit_content = true

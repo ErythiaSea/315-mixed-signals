@@ -147,7 +147,7 @@ func _enter_tree():
 			if not custom_effects.has(effect):
 				custom_effects.append(effect)
 		if not theme:
-			theme = load('res://addons/dialogue_nodes/themes/bubblyClean.theme')
+			theme = load('res://addons/dialogue_nodes/themes/bubbleOnly.theme')
 	
 	tail = Polygon2D.new()
 	add_child(tail)

@@ -36,6 +36,7 @@ public partial class Radiotower : Node2D
 		lPivot = GetNode<RadiotowerPivot>("leftPivot");
 		rPivot = GetNode<RadiotowerPivot>("rightPivot");
 		victoryAnim = GetNode<AnimatedSprite2D>("victoryAnim");
+		victoryAnim.Hide();
 
 		int transpondLBusIndex = AudioServer.GetBusIndex("TranspondTowerL");
 		int transpondRBusIndex = AudioServer.GetBusIndex("TranspondTowerR");

@@ -109,7 +109,20 @@ public partial class TranslationCanvasUI : BaseMinigame
 			backButton.Hide();
 			cipherDisplay.Visible = false;
 			canClose = false;
-			dialogueBox.Call("start", "0");
+
+			Node2D victAnim = GetNode<Node2D>("victAnim");
+			victAnim.Show();
+
+			string animName = Globals.Day == 0 ? "Plumage" : "Compass";
+			AnimatedSprite2D victSprite = victAnim.GetNode<AnimatedSprite2D>("victSprite");
+			victSprite.Play(animName);
+			victSprite.AnimationFinished += () => {
+				GetTree().CreateTimer(1.5).Timeout += () =>
+				{
+					GetNode<Control>("godDialogue").Show();
+					dialogueBox.Call("start", "0");
+				};
+			};
 		}
 		else
 		{
