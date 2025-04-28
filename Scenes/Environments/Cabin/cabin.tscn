@@ -28,14 +28,14 @@
 [ext_resource type="AudioStream" uid="uid://dmna7wapuwmut" path="res://Audio/Music/Zodiac Hiphop Instrumental by prazkhanal Id-787557.ogg" id="18_tgdje"]
 [ext_resource type="Texture2D" uid="uid://0a1vu5sk0nyp" path="res://Scenes/Environments/Cabin/Sprites/cabin_elevator.png" id="19_cwqwm"]
 [ext_resource type="Texture2D" uid="uid://diasqyo6bpqnm" path="res://Scenes/Environments/Cabin/Sprites/Cabin_ElevatorCover.png" id="21_8ohlt"]
-[ext_resource type="Resource" uid="uid://4dnj2lymr6kn" path="res://Dialogue/CabinDialogue.tres" id="27_34i7x"]
+[ext_resource type="Resource" uid="uid://d3spuu3kkehgk" path="res://Dialogue/CabinDialogue.tres" id="27_34i7x"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="28_fg0wr"]
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/EndDay.cs" id="29_wyus1"]
 [ext_resource type="PackedScene" uid="uid://ccoch44m85xuv" path="res://Scenes/Environments/Objects/EndDayTransition.tscn" id="30_stghc"]
 [ext_resource type="AudioStream" uid="uid://bqlgr3jk0g4ix" path="res://Audio/Mechanics/Translation/638380__yossirafa100__soft-cover-book-open-3.wav" id="31_3gkvo"]
 [ext_resource type="AudioStream" uid="uid://cm1g34cblsmf5" path="res://Audio/Ambience/Cabin/188388__wubitog__mid-high-tone-button-click.wav" id="32_gh5bl"]
 [ext_resource type="AudioStream" uid="uid://ofggrfo8xfan" path="res://Audio/Ambience/Cabin/398750__anthousai__door-open-01.wav" id="32_rlb8a"]
-[ext_resource type="Resource" uid="uid://ckynjg6qn8fve" path="res://Dialogue/TranslationDialogue.tres" id="36_dj0ny"]
+[ext_resource type="Resource" path="res://Dialogue/TranslationDialogue.tres" id="36_dj0ny"]
 
 [sub_resource type="Resource" id="Resource_82qql"]
 script = ExtResource("2_vrtq2")
