@@ -40,10 +40,20 @@ public partial class MapScreen : BaseMinigame
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
+
+		if(GetViewport().GuiGetFocusOwner() == null)
+		{
+			buttonNodes[Globals.Day].GrabFocus();
+		}
 	}
 
 	void OnButtonPress(MapButton Cbutton)
 	{
+        if (Globals.Gamestate != GAMESTATE.MAP)
+        {
+            return;
+        }
+        
 		if (Cbutton.requiredDay == Globals.Day)
 		{
             foreach (MapButton button in buttonNodes)
@@ -63,8 +73,9 @@ public partial class MapScreen : BaseMinigame
     {
 		if (goingToTravel)
 		{
-			GetTree().ChangeSceneToPacked((PackedScene)ResourceLoader.LoadThreadedGet(loadingPath));
-			Globals.SetGamestate(GAMESTATE.CUTSCENE);
+
+            GetTree().ChangeSceneToPacked((PackedScene)ResourceLoader.LoadThreadedGet(loadingPath));
+            Globals.SetGamestate(GAMESTATE.CUTSCENE);
 		}
 		else
 		{

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.ComponentModel.Design;
+using System.Text;
 
 
 public enum TRANSITION
@@ -87,6 +88,9 @@ public partial class InteractBox : Area2D
 
 	[ExportSubgroup("Dialogue")]
 	// the dialogue box to trigger
+	[Export]
+	bool counterDialogue;
+
 	[Export]
 	Control dialogueBox;
 
@@ -175,9 +179,11 @@ public partial class InteractBox : Area2D
 
 		if (!IsCorrectStage())
 		{
-			//run dialogue for telling the player what they need to do based on: Globals.ProgressionStage\
-			GD.Print("Should say: ", Globals.ProgressionStage.ToString());
-			dialogueBox.Call("start", Globals.ProgressionStage.ToString());
+			if (counterDialogue)
+			{
+                GD.Print("R: ", requiredStage, "  S: ", Globals.ProgressionStage.ToString());
+                dialogueBox.Call("start", Globals.ProgressionStage.ToString());
+            }
 			return;
 		}
 		EmitSignal("Interacted");
@@ -206,6 +212,8 @@ public partial class InteractBox : Area2D
 			{
 				dialogueBox.Set("time_limit", timeLimit);
 			}
+			
+
 			dialogueBox.Call("start", startID);
 			if (lockPlayerMovement) plrRef.SetMovementLock(true);
 			return;
@@ -237,6 +245,9 @@ public partial class InteractBox : Area2D
 	private bool IsCorrectStage()
 	{
 		if (requiredStage == GAMESTAGE.TRANSITION) return true;
+
+		//stops duplication of text already played at begining
+		if (requiredStage == GAMESTAGE.BEGIN && Globals.ProgressionStage > GAMESTAGE.WAVEFORM) return false;
 
 		if (requiredStage > Globals.ProgressionStage) return false;
 		else return true;

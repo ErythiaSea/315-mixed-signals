@@ -50,8 +50,10 @@ public partial class MapButton : TextureButton
 	{
 		// prevent the button from doing anything if dialogue is open
 		if (Globals.Gamestate != GAMESTATE.MAP) 
-		{ 
-			return;
+		{
+            dialogueBox.FocusMode = FocusModeEnum.All;
+            dialogueBox.GrabFocus();
+            return;
 		}
 		if (requiredDay == Globals.Day)
 		{
@@ -65,6 +67,7 @@ public partial class MapButton : TextureButton
 		else
 		{
 			dialogueBox.Call("start", "WrongDay");
+			dialogueBox.GrabFocus();
 		}
     }
 }

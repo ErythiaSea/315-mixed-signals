@@ -502,7 +502,7 @@ data = ExtResource("27_34i7x")
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_t7wmq"), SubResource("RichTextEffect_bvuge"), SubResource("RichTextEffect_f7su0")])
 
 [node name="TranspondBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite", "dialogueBox")]
-position = Vector2(857, 951)
+position = Vector2(978, 902)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/Monitors")
@@ -512,7 +512,7 @@ scenePath = "res://Scenes/Minigames/Transpond/transpondscreen.tscn"
 dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranspondBox"]
-position = Vector2(120, -94)
+position = Vector2(-2, -5)
 shape = SubResource("RectangleShape2D_0oee4")
 
 [node name="TranslationBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite", "dialogueBox")]
@@ -522,6 +522,7 @@ script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/TranslationPaper")
 requiredStage = 4
 scenePath = "res://Scenes/Minigames/Translation/NewTranslation.tscn"
+counterDialogue = true
 dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
@@ -539,6 +540,7 @@ script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/Bed")
 requiredStage = 4
 isOneShot = true
+counterDialogue = true
 dialogueBox = NodePath("../DialogueBubble")
 timeLimit = 2.5
 lockPlayerMovement = true
@@ -569,6 +571,7 @@ requiredStage = 2
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
 spawnPoint = 0
+counterDialogue = true
 dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
@@ -579,10 +582,12 @@ stream = ExtResource("32_rlb8a")
 volume_db = -5.0
 bus = &"SFX"
 
-[node name="ElevatorBottomCall" parent="." node_paths=PackedStringArray("objectSprite") instance=ExtResource("15_lw781")]
+[node name="ElevatorBottomCall" parent="." node_paths=PackedStringArray("objectSprite", "dialogueBox") instance=ExtResource("15_lw781")]
 position = Vector2(724, 4538)
 objectSprite = NodePath("../Sprites/BottomCallButton")
 requiredStage = 1
+counterDialogue = true
+dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorBottomCall"]
 position = Vector2(-50, 0)
@@ -651,6 +656,7 @@ custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_3ckrh"), Sub
 
 [node name="TranspondDialBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
 position = Vector2(784, 635)
+requiredDay = 0
 isOneShot = true
 isAutofire = true
 dialogueBox = NodePath("../CanvasLayer/CabinDialogueBox")

@@ -10,6 +10,7 @@ starts = {
 "SLEEP": &"0_4",
 "TRANSLATION_END": &"0_9",
 "TRANSLATION_ENTER": &"0_8",
+"TRANSPONDING": &"0_10",
 "TRANSPONDING_START": &"0_6",
 "WAKEUPDAY1": &"0_5",
 "WAKEUPDAY2": &"0_3",
@@ -20,6 +21,11 @@ nodes = {
 "link": &"1_1",
 "offset": Vector2(-440, -220),
 "start_id": "BEGIN"
+},
+"0_10": {
+"link": &"1_15",
+"offset": Vector2(-440, -1060),
+"start_id": "TRANSPONDING"
 },
 "0_2": {
 "link": &"1_2",
@@ -129,6 +135,19 @@ nodes = {
 "1_14": {
 "dialogue": "I... don't have a clue what just happened...",
 "offset": Vector2(860, 1080),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_15": {
+"dialogue": "I should go check those signals up top before i get in more trouble",
+"offset": Vector2(-220, -1160),
 "options": {
 0: {
 "condition": {},
