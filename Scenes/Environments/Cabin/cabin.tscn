@@ -484,6 +484,7 @@ autowrap_mode = 0
 custom_effects = [SubResource("RichTextEffect_0u6wi"), SubResource("RichTextEffect_yh6wg"), SubResource("RichTextEffect_eewup")]
 script = ExtResource("17_h87pq")
 data = ExtResource("27_34i7x")
+time_limit = 5.0
 follow_node = NodePath("../Player/PlayerHead")
 show_speaker_name = false
 dialogue_custom_effects = [SubResource("RichTextEffect_0u6wi"), SubResource("RichTextEffect_yh6wg"), SubResource("RichTextEffect_eewup")]
