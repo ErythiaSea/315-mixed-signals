@@ -116,6 +116,11 @@ public partial class WaveformGame : Node2D
 			playerWave.waveColor = Colors.Green;
 			gameActive = false;
 
+			// tween out waves
+			Tween tween = CreateTween();
+			tween.Parallel().TweenProperty(playerWave, "self_modulate:a", 0, 0.5);
+			tween.Parallel().TweenProperty(realWave, "self_modulate:a", 0, 0.5);
+
 			// fade out waveform lines and decal / overlay modulation change
 			victoryAnim.Show();
 			victoryAnim.Play();
