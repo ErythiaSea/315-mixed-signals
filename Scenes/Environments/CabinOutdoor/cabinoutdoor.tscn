@@ -309,6 +309,7 @@ start_id = "Sleep"
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_kmmy1"), SubResource("RichTextEffect_4u6xp"), SubResource("RichTextEffect_a24d6")])
 
 [node name="CabinOutsideDialogueBox" type="Panel" parent="CanvasLayer"]
+visible = false
 z_index = 5
 anchors_preset = 8
 anchor_left = 0.5
@@ -357,8 +358,8 @@ position = Vector2(-1, 150)
 shape = SubResource("RectangleShape2D_80khs")
 
 [node name="GodsSprite" type="Sprite2D" parent="GodsDisplay/GodBox"]
-position = Vector2(33, 103)
-scale = Vector2(0.35, 0.35)
+position = Vector2(88.6875, 70)
+scale = Vector2(0.384375, 0.384375)
 texture = ExtResource("19_rtfec")
 
 [node name="GodsCanvas" type="CanvasLayer" parent="GodsDisplay"]
