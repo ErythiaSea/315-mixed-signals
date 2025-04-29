@@ -6,6 +6,7 @@
 script = ExtResource("1_mme5x")
 starts = {
 "0": &"0_1",
+"err": &"0_3",
 "tut": &"0_2"
 }
 nodes = {
@@ -18,6 +19,11 @@ nodes = {
 "link": &"1_12",
 "offset": Vector2(1011.66, -65.2256),
 "start_id": "tut"
+},
+"0_3": {
+"link": &"1_18",
+"offset": Vector2(-1100, 380),
+"start_id": "err"
 },
 "1_1": {
 "dialogue": "Well, pluck my feathers, marinate me, and roast me on a grill, you are a pulchritudinous specimen, aren’t you? [br]And someone with such arresting features has equally… arresting objects in their possession. [br]Oh, forgive my immodesty, I am Corvus of the Southern Skies, beloved crow and appreciator of all beautiful things - including you. [br]Just this one time, I’ll give the Intergalactic Fright Control Department their coins, for they have brought me to you.",
@@ -135,6 +141,19 @@ nodes = {
 0: {
 "condition": {},
 "link": &"4_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_18": {
+"dialogue": "I don't think I'm translating this properly...",
+"offset": Vector2(-880, 380),
+"options": {
+0: {
+"condition": {},
+"link": "END",
 "text": ""
 }
 },
