@@ -142,7 +142,7 @@ public partial class Player : CharacterBody2D
 			velocity.X = xDirection * movementSpeed;
 			
 			// todo: remove debug
-			if (Input.IsActionPressed("middle_mouse")) velocity.X *= 2;
+			// if (Input.IsActionPressed("middle_mouse")) velocity.X *= 2;
 		}
 		else
 		{

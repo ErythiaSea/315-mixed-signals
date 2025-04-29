@@ -93,13 +93,13 @@ public partial class WaveformGame : Node2D
 		playerWave.wavelength = Mathf.Clamp(playerWave.wavelength, 5.0f, 50.0f);
 		
 		// debug
-		if (Input.IsActionJustPressed("interact"))
-		{
-			GD.Print("target w: ", targetWavelength, ", current: ", playerWave.wavelength);
-			GD.Print(Mathf.Abs(playerWave.wavelength - targetWavelength));
-			GD.Print("target a:", targetAmplitude, ", current: ", playerWave.amplitude);
-			GD.Print(Mathf.Abs(playerWave.wavelength - targetWavelength));
-		}
+		//if (Input.IsActionJustPressed("interact"))
+		//{
+		//	GD.Print("target w: ", targetWavelength, ", current: ", playerWave.wavelength);
+		//	GD.Print(Mathf.Abs(playerWave.wavelength - targetWavelength));
+		//	GD.Print("target a:", targetAmplitude, ", current: ", playerWave.amplitude);
+		//	GD.Print(Mathf.Abs(playerWave.wavelength - targetWavelength));
+		//}
 
 		if (tunedSignal)
 		{
