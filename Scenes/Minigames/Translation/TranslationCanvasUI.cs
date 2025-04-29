@@ -44,8 +44,6 @@ public partial class TranslationCanvasUI : BaseMinigame
 	{
 		base._Ready();
 
-		CipherKey = -2;
-		CipherWord("abcdefghijklmnopqrstuvwxyz");
 		Globals.PushGamestate(GAMESTATE.TRANSLATION);
 		answerBox.GrabFocus();
 		cabin = GetParent<CabinLevel>();

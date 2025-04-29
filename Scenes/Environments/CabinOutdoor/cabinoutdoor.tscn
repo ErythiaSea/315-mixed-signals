@@ -1,7 +1,7 @@
-[gd_scene load_steps=58 format=3 uid="uid://cnj8esqdgww0"]
+[gd_scene load_steps=59 format=3 uid="uid://cnj8esqdgww0"]
 
 [ext_resource type="Texture2D" uid="uid://bmij10s8rf8gm" path="res://Scenes/Environments/CabinOutdoor/base_outside.png" id="1_0a00e"]
-[ext_resource type="Script" path="res://Scenes/Environments/Level.cs" id="1_4weox"]
+[ext_resource type="Script" path="res://Scenes/Environments/CabinOutdoor/scripts/CabinOutdoorLevel.cs" id="1_4f51n"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="1_7p3ip"]
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_nmgjp"]
 [ext_resource type="Texture2D" uid="uid://bqehodhbmv06i" path="res://Scenes/Environments/CabinOutdoor/Home_VehicleSprite_00.png" id="4_dfl0f"]
@@ -76,6 +76,9 @@ colors = PackedColorArray(1, 1, 1, 1, 0.0454546, 0.0454546, 0.0454546, 1, 0, 0, 
 gradient = SubResource("Gradient_0eqsd")
 fill = 1
 fill_from = Vector2(0.527523, 0.495413)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2b3i"]
+size = Vector2(113, 1057)
 
 [sub_resource type="Animation" id="Animation_akrgh"]
 length = 0.001
@@ -154,8 +157,7 @@ shader_parameter/amount = 1.7
 size = Vector2(111, 402)
 
 [node name="cabinoutdoor" type="Node2D"]
-position = Vector2(-2, 0)
-script = ExtResource("1_4weox")
+script = ExtResource("1_4f51n")
 spawnData = Array[Object]([SubResource("Resource_igbtt"), SubResource("Resource_5o2kn")])
 cameraZoom = 0.5
 leftLimit = -1924
@@ -203,6 +205,11 @@ scale = Vector2(2.83887, 1)
 build_mode = 1
 polygon = PackedVector2Array(-981.447, 313, -314.281, 317, -227.275, 467, 1567.1, 472, 1567.1, -189, 1588.59, -187, 1590.35, 570, -1072, 568, -1091.35, 570, -1087.47, -202, -982.856, -204)
 
+[node name="carWall" type="CollisionShape2D" parent="LevelCollision"]
+position = Vector2(3949.5, -46)
+shape = SubResource("RectangleShape2D_g2b3i")
+disabled = true
+
 [node name="VehicleSprite" type="Sprite2D" parent="."]
 position = Vector2(5015, 146)
 scale = Vector2(0.45, 0.45)
@@ -242,7 +249,7 @@ bus = &"SFX"
 [node name="LevelTransition" parent="." instance=ExtResource("4_elcve")]
 position = Vector2(-443, 57)
 transitionType = 1
-requiredStage = 4
+requiredStage = 6
 scenePath = "res://Scenes/Environments/Cabin/cabin.tscn"
 loadInCurrent = false
 spawnPoint = 0

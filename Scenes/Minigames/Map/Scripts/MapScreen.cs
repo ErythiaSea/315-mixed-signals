@@ -41,7 +41,7 @@ public partial class MapScreen : BaseMinigame
 	{
 		base._Process(delta);
 
-		if(GetViewport().GuiGetFocusOwner() == null)
+		if (GetViewport().GuiGetFocusOwner() == null)
 		{
 			buttonNodes[Globals.Day].GrabFocus();
 		}

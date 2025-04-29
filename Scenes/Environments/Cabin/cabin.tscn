@@ -522,6 +522,7 @@ script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/TranslationPaper")
 requiredStage = 4
 scenePath = "res://Scenes/Minigames/Translation/NewTranslation.tscn"
+counterDialogue = true
 dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationBox"]
@@ -539,6 +540,7 @@ script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/Bed")
 requiredStage = 4
 isOneShot = true
+counterDialogue = true
 dialogueBox = NodePath("../DialogueBubble")
 timeLimit = 2.5
 lockPlayerMovement = true
@@ -553,6 +555,7 @@ script = ExtResource("4_r0utk")
 objectSprite = NodePath("../Sprites/Photoboard")
 transitionType = 3
 scenePath = "res://Scenes/Minigames/Photoboard/photoboard.tscn"
+counterDialogue = true
 dialogueBox = NodePath("../DialogueBubble")
 timeLimit = 2.5
 
@@ -569,6 +572,7 @@ requiredStage = 2
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
 spawnPoint = 0
+counterDialogue = true
 dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange"]
@@ -583,6 +587,7 @@ bus = &"SFX"
 position = Vector2(724, 4538)
 objectSprite = NodePath("../Sprites/BottomCallButton")
 requiredStage = 1
+counterDialogue = true
 dialogueBox = NodePath("../DialogueBubble")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorBottomCall"]
