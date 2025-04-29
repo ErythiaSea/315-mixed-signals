@@ -12,7 +12,7 @@
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/Outline.gdshader" id="9_05epa"]
 [ext_resource type="Texture2D" uid="uid://dgxa5oe3n02es" path="res://Scenes/Environments/Cabin/Sprites/bedroom_background.png" id="10_wte04"]
 [ext_resource type="Texture2D" uid="uid://ca3at5rrn0nfn" path="res://Scenes/Environments/Cabin/Sprites/bedroom_elevatorbutton.png" id="11_fnn4b"]
-[ext_resource type="Texture2D" uid="uid://dlxcbppbeywmh" path="res://Scenes/Environments/Cabin Extended/base_pipes.png" id="11_o0hdm"]
+[ext_resource type="Texture2D" uid="uid://dlxcbppbeywmh" path="res://Scenes/Environments/Cabin/Sprites/base_pipes.png" id="11_o0hdm"]
 [ext_resource type="Texture2D" uid="uid://bwd8gkarn2rhs" path="res://Scenes/Environments/Cabin/Sprites/top_elevatorbutton.webp" id="12_cj7mu"]
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="13_haw55"]
 [ext_resource type="PackedScene" uid="uid://1iqwcokmbvwv" path="res://Scenes/Environments/Objects/elevator.tscn" id="14_e5y7b"]

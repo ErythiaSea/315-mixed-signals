@@ -10,14 +10,15 @@ config_version=5
 
 [application]
 
-config/name="315-mech-proto"
+config/name="Mixed Signals"
+config/version="1.0.0"
 run/main_scene="res://Scenes/Menu/MainMenu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "C#", "Mobile")
 boot_splash/bg_color=Color(0.15, 0.0075, 0, 1)
 boot_splash/image="res://Scenes/Loading/BloodBoxLogo_Splash.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://Sprites/icon.svg"
+config/icon="res://Sprites/icon.png"
 boot_splash/minimum_display_time=1750
 
 [autoload]

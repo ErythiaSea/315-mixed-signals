@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://s30amg2101h7"]
+[gd_scene load_steps=7 format=3 uid="uid://s30amg2101h7"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Photoboard/Photoboard.cs" id="1_tx6o2"]
-[ext_resource type="Texture2D" uid="uid://dr72tn5u4gnwf" path="res://Scenes/Minigames/Photoboard/photoboard_temp.png" id="2_kgc6a"]
 [ext_resource type="Texture2D" uid="uid://c701u84uoree0" path="res://Scenes/Minigames/Photoboard/corkboard.png" id="3_0isww"]
 [ext_resource type="Texture2D" uid="uid://ctudexv31484t" path="res://Scenes/Minigames/Photoboard/Polaroid_Environment.png" id="3_f06dy"]
 [ext_resource type="Texture2D" uid="uid://cu468eh6ay2yo" path="res://Scenes/Minigames/Photoboard/ID_Card.png" id="4_aj3v7"]
@@ -11,10 +10,6 @@
 [node name="Photoboard" type="CanvasLayer"]
 script = ExtResource("1_tx6o2")
 exitTransition = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(960, 540)
-texture = ExtResource("2_kgc6a")
 
 [node name="Corkboard" type="Sprite2D" parent="."]
 position = Vector2(960, 540)

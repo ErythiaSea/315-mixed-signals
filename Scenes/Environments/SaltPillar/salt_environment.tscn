@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_ettdq"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_nx23b"]
 [ext_resource type="Texture2D" uid="uid://cw7e832xsjhiq" path="res://Scenes/Environments/SaltPillar/Sprites/SaltPillar_Background.png" id="3_d4sue"]
-[ext_resource type="Texture2D" uid="uid://dcwps237ql8wa" path="res://Scenes/Environments/SaltPillar/SaltPillar_Rails.png" id="4_era6n"]
+[ext_resource type="Texture2D" uid="uid://dcwps237ql8wa" path="res://Scenes/Environments/SaltPillar/Sprites/SaltPillar_Rails.png" id="4_era6n"]
 [ext_resource type="Texture2D" uid="uid://dse3q1tylua04" path="res://Scenes/Environments/SaltPillar/Sprites/SaltPillar_BackRocks.png" id="4_gigtv"]
 [ext_resource type="Texture2D" uid="uid://dtwron5jgwwek" path="res://Scenes/Environments/SaltPillar/Sprites/SaltPillar_FrontRocks.png" id="5_kf6ej"]
 [ext_resource type="Shader" path="res://Scripts/ShaderScript/Outline.gdshader" id="6_jjc5l"]
