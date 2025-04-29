@@ -54,6 +54,7 @@ public partial class Radiotower : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		GD.Print("active: ", gameActive, ", lpivot: ", lPivot.handleInputs);
 		if (Globals.ProgressionStage != GAMESTAGE.TRANSPONDING || !gameActive)
 		{
 			lPivot.handleInputs = false;
