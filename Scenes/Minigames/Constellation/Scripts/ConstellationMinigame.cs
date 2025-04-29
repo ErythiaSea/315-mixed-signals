@@ -48,6 +48,7 @@ public partial class ConstellationMinigame : BaseMinigame
 		}
 
 		dialogueBox.Connect("dialogue_ended", Callable.From(RegainCameraControl));
+		AudioServer.SetBusMute(AudioServer.GetBusIndex("Environmental"), true);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -109,7 +110,8 @@ public partial class ConstellationMinigame : BaseMinigame
 	//Uncommented 
 	protected override void OnTransitionFinish()
 	{
-		Globals.PopGamestate(GAMESTATE.CONSTELLATION);
+        AudioServer.SetBusMute(AudioServer.GetBusIndex("Environmental"), false);
+        Globals.PopGamestate(GAMESTATE.CONSTELLATION);
 		// only load a new scene if constellation was actually completed
 		if (Globals.ProgressionStage < GAMESTAGE.TRANSLATION)
 		{ 

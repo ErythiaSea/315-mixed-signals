@@ -28,7 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://dmna7wapuwmut" path="res://Audio/Music/Zodiac Hiphop Instrumental by prazkhanal Id-787557.ogg" id="18_tgdje"]
 [ext_resource type="Texture2D" uid="uid://0a1vu5sk0nyp" path="res://Scenes/Environments/Cabin/Sprites/cabin_elevator.png" id="19_cwqwm"]
 [ext_resource type="Texture2D" uid="uid://diasqyo6bpqnm" path="res://Scenes/Environments/Cabin/Sprites/Cabin_ElevatorCover.png" id="21_8ohlt"]
-[ext_resource type="Theme" uid="uid://v82gx6vqnjm1" path="res://addons/dialogue_nodes/themes/bubbleOnly.theme" id="22_b1gab"]
+[ext_resource type="Theme" uid="uid://bq3io2yj43olf" path="res://addons/dialogue_nodes/themes/bubbleOnly.theme" id="22_b1gab"]
 [ext_resource type="Resource" uid="uid://d3spuu3kkehgk" path="res://Dialogue/CabinDialogue.tres" id="27_34i7x"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="28_fg0wr"]
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/EndDay.cs" id="29_wyus1"]

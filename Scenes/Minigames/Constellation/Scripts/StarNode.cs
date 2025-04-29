@@ -87,11 +87,12 @@ public partial class StarNode : Node2D
 			  //and displays the new texture for finding it
 			if (!hasDisplayed)
 			{
+				hasDisplayed = true;
+				if (!Visible) { return; }
 				Tween transition = GetTree().CreateTween();
 				transition.Parallel().TweenProperty(GetNode("Sprite"), "modulate", Colors.Transparent, 1f);
 				transition.Parallel().TweenProperty(foundSprite, "modulate", new Color(foundSprite.Modulate.R, foundSprite.Modulate.G, foundSprite.Modulate.B, 1f), 1f);
 				transition.Parallel().TweenProperty(numberDisplay, "modulate", new Color(numberDisplay.Modulate.R, numberDisplay.Modulate.G, numberDisplay.Modulate.B, 1f), 1f);
-				hasDisplayed = true;
 				
 				audioStreamPlayer.Play();
 			}
