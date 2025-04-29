@@ -77,11 +77,14 @@ public partial class GodChoice : CanvasLayer
 			}
         }
 
-		if (creditsButton.HasFocus() && !isReady)
+		if (creditsButton.Visible && !isReady)
 		{
-			creditsButton.Pressed += DisplayCredits;
-			isReady = true;
-		}
+            if (creditsButton.HasFocus())
+            {
+                creditsButton.Pressed += DisplayCredits;
+                isReady = true;
+            }
+        }
 	}
 
 	public void BlurScene()

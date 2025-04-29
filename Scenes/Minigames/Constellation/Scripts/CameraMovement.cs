@@ -67,6 +67,8 @@ public partial class CameraMovement : Camera2D
 	//Zooms out and shows the completed constellation, centered on the star with the most connections
 	public void DisplayConstellation(Vector2 centerStar, Node2D fadeSprite)
 	{
+		fadeSprite.SelfModulate = new Color(1, 1, 1, 1);
+
 		GD.Print("displaying constellation...");
 		canMoveCam = false;
 		Tween completion = GetTree().CreateTween();
@@ -75,7 +77,7 @@ public partial class CameraMovement : Camera2D
 		completion.Parallel().TweenProperty(this, "position", centerStar, 1f);
 		completion.Parallel().TweenProperty(telescope, "scale", new Vector2(3.36f, 3.36f), 2f);
 		completion.TweenInterval(0.5);
-		completion.TweenProperty(fadeSprite, "self_modulate", new Color(1, 1, 1, 1), 1.0f);
+		completion.TweenProperty(fadeSprite, "modulate", new Color(1, 1, 1, 1), 1.0f);
 		completion.TweenCallback(Callable.From(minigame.ShowFinalBox));
 
         audioStreamPlayer.Play();
