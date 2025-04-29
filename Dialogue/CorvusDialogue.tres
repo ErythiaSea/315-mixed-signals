@@ -74,7 +74,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": ""
+"speaker": "TUTORIAL"
 },
 "1_13": {
 "dialogue": "Those letters must then have the cipher reapplied to them. For example a +2 cipher on 'T' would be a 'V', and a -2 cipher would be an 'R'.",

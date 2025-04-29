@@ -120,7 +120,7 @@ nodes = {
 "speaker": "..."
 },
 "1_13": {
-"dialogue": "What if I calculate the total of all the coordinates and use that as the cipher key",
+"dialogue": "Hmm... what if I calculate the total of all the coordinates and use that as the cipher key?",
 "offset": Vector2(160, 1080),
 "options": {
 0: {

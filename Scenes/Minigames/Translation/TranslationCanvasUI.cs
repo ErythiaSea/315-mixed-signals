@@ -140,7 +140,7 @@ public partial class TranslationCanvasUI : BaseMinigame
 
 		GD.Print("CIPHER");
 		string cWord = CipherWord(wordList[Globals.Day]);
-		messageBox.Text = ("[center] " + cWord);
+		messageBox.Text = ("[center]" + cWord);
 
 		//HintsUpdate(cWord);
 		//cipherDisplay.AppendText("[center] "+ (-CipherKey).ToString());

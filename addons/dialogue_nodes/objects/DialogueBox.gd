@@ -357,3 +357,4 @@ func _on_dialogue_ended():
 func _on_wait_finished():
 	options_container.show()
 	options_container.get_child(0).grab_focus()
+	print("this has focus: ", get_viewport().gui_get_focus_owner().name)
