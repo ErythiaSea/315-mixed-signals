@@ -24,6 +24,7 @@ public partial class GodChoice : CanvasLayer
 
 	private bool clicked = false;
 	private bool isDisplaying = false;
+	private bool isReady = false;
 
 	private Sprite2D poloroid;
 	private Sprite2D stamp;
@@ -55,6 +56,7 @@ public partial class GodChoice : CanvasLayer
 		poloroid = GetNode("Poloroid") as Sprite2D;
 		stamp = poloroid.GetNode("Stamp") as Sprite2D;
 		creditsButton = GetNode("Credits") as Button;
+		creditsButton.Visible = false;
 		SignalConnections();
 	}
 
@@ -74,6 +76,12 @@ public partial class GodChoice : CanvasLayer
 				isDisplaying = true;
 			}
         }
+
+		if (creditsButton.HasFocus() && !isReady)
+		{
+			creditsButton.Pressed += DisplayCredits;
+			isReady = true;
+		}
 	}
 
 	public void BlurScene()
@@ -190,7 +198,7 @@ public partial class GodChoice : CanvasLayer
 		poloroid.ZIndex = 1;
 		stamp.ZIndex = 1;
 		creditsButton.ZIndex = 1;
-
+		creditsButton.Visible = true;
 
 		Tween display = CreateTween();
         display.Parallel().TweenProperty(poloroid, "modulate", new Color(poloroid.Modulate.R, poloroid.Modulate.G, poloroid.Modulate.B, 1f), 2f);
@@ -277,7 +285,5 @@ public partial class GodChoice : CanvasLayer
 					break;
 			}
 		}
-
-		creditsButton.Pressed += DisplayCredits;
 	}
 }

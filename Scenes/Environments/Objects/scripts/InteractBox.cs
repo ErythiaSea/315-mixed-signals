@@ -247,7 +247,7 @@ public partial class InteractBox : Area2D
 		if (requiredStage == GAMESTAGE.TRANSITION) return true;
 
 		//stops duplication of text already played at begining
-		if (requiredStage == GAMESTAGE.BEGIN && Globals.ProgressionStage > GAMESTAGE.WAVEFORM) return false;
+		if (requiredStage == GAMESTAGE.BEGIN && Globals.ProgressionStage > GAMESTAGE.WAVEFORM && Globals.Day != 2) return false;
 
 		if (requiredStage > Globals.ProgressionStage) return false;
 		else return true;

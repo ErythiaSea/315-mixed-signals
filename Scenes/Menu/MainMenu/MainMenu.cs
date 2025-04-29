@@ -59,7 +59,11 @@ public partial class MainMenu : Control
 		quitGameButton.Pressed += () => GetTree().Quit();
 		quitPage.GetNode<Button>("BackButton").Pressed += BackwardPage;
 
-		if (Globals.Instance.isGameDone) { currentPage = creditPage; ForwardPage(creditPage,creditBackButton); creditBackButton.CallDeferred("grab_focus"); }
+        // create the focus stack
+        focusStack = new Stack<Control>();
+
+		focusStack.Push(creditsButton);
+		if (Globals.Instance.isGameDone) { currentPage = creditPage; ForwardPage(creditPage,creditBackButton); focusStack.Push(creditsButton); creditBackButton.CallDeferred("grab_focus"); }
 		else { currentPage = topPage; currentPage = creditPage; topPage.Visible = true; creditPage.Visible = false; startButton.CallDeferred("grab_focus"); }
 
 		buttons.Add(startButton);
@@ -71,8 +75,7 @@ public partial class MainMenu : Control
 			optionsScene = (PackedScene)ResourceLoader.Load("res://Scenes/Menu/Options/Options.tscn");
 		}
 
-		// create the focus stack
-		focusStack = new Stack<Control>();
+		
 	}
 
 	private void ForwardPage(Control page, Control focusReceiver)
@@ -98,6 +101,7 @@ public partial class MainMenu : Control
 
 		// return focus to whatever button put us on that page
 		focusStack.Pop().GrabFocus();
+
 	}
 
 	private void _On_StartButton_Pressed()

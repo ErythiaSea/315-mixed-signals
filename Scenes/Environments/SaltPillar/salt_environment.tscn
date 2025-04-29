@@ -219,6 +219,7 @@ dialogue_custom_effects = [SubResource("RichTextEffect_kp4e8"), SubResource("Ric
 
 [node name="DialogueBox1" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("7_yro1e")]
 position = Vector2(1828, 536)
+requiredStage = 3
 isOneShot = true
 isAutofire = true
 dialogueBox = NodePath("../DialogueBubble")
@@ -231,6 +232,7 @@ shape = SubResource("RectangleShape2D_2lsjs")
 
 [node name="DialogueBox2" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("7_yro1e")]
 position = Vector2(121, 82)
+requiredStage = 3
 isOneShot = true
 isAutofire = true
 dialogueBox = NodePath("../DialogueBubble")
