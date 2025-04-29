@@ -59,6 +59,7 @@ public partial class Options : Control
         audioPage.GetNode<Slider>("MusicSlider").ValueChanged += (value) => UpdateVolume(musicBusIdx, value);
         audioPage.GetNode<Slider>("SFXSlider").ValueChanged += (value) => UpdateVolume(sfxBusIdx, value);
         audioPage.GetNode<Slider>("EnvironmentalSlider").ValueChanged += (value) => UpdateVolume(envBusIdx, value);
+		SetVolumeSlidersToBusVolume();
 
 		// connect input settings to functions
 		swapABButton = controlsPage.GetNode<Button>("ABSwapButton");
@@ -151,6 +152,14 @@ public partial class Options : Control
 	{
 		AudioServer.SetBusVolumeDb(busIdx, (float)Mathf.LinearToDb(value));
 		GD.Print("new volume of bus ", AudioServer.GetBusName(busIdx), " is: ", AudioServer.GetBusVolumeDb(busIdx));
+	}
+
+	private void SetVolumeSlidersToBusVolume()
+	{
+		audioPage.GetNode<Slider>("MasterSlider").SetValueNoSignal(Mathf.DbToLinear(AudioServer.GetBusVolumeDb(masterBusIdx)));
+		audioPage.GetNode<Slider>("MusicSlider").SetValueNoSignal(Mathf.DbToLinear(AudioServer.GetBusVolumeDb(musicBusIdx)));
+		audioPage.GetNode<Slider>("SFXSlider").SetValueNoSignal(Mathf.DbToLinear(AudioServer.GetBusVolumeDb(sfxBusIdx)));
+		audioPage.GetNode<Slider>("EnvironmentalSlider").SetValueNoSignal(Mathf.DbToLinear(AudioServer.GetBusVolumeDb(envBusIdx)));
 	}
 
 	private void SwapABPressed()
