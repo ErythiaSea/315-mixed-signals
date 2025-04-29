@@ -116,8 +116,47 @@ Hallelujah!",
 "speaker": ""
 },
 "1_15": {
-"dialogue": "PLACEHOLDER TUTORIAL TEXT",
+"dialogue": "To translate the message, all possible letters must first be converted from their language.",
 "offset": Vector2(80, -820),
+"options": {
+0: {
+"condition": {},
+"link": &"1_16",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_16": {
+"dialogue": "Those letters must then have the cipher reapplied to them. For example a +2 cipher on 'T' would be a 'V', and a -2 cipher would be an 'R'.",
+"offset": Vector2(440, -820),
+"options": {
+0: {
+"condition": {},
+"link": &"1_17",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_17": {
+"dialogue": "Missing letters, if there are any, can be deducted.",
+"offset": Vector2(780, -820),
+"options": {
+0: {
+"condition": {},
+"link": &"1_18",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_18": {
+"dialogue": "The final translation can be submitted in the box below the original message.",
+"offset": Vector2(1120, -820),
 "options": {
 0: {
 "condition": {},
@@ -126,7 +165,7 @@ Hallelujah!",
 }
 },
 "size": Vector2(300, 240),
-"speaker": "erf"
+"speaker": "TUTORIAL"
 },
 "1_2": {
 "dialogue": "May the northern wind bless you with fortune and grace and let the south wind take you to your desired shore. You may be a gale but your winds smell of orchids, hallelujah!",

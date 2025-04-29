@@ -44,6 +44,8 @@ public partial class TranslationCanvasUI : BaseMinigame
 	{
 		base._Ready();
 
+		CipherKey = -2;
+		CipherWord("abcdefghijklmnopqrstuvwxyz");
 		Globals.PushGamestate(GAMESTATE.TRANSLATION);
 		answerBox.GrabFocus();
 		cabin = GetParent<CabinLevel>();
@@ -140,7 +142,7 @@ public partial class TranslationCanvasUI : BaseMinigame
 
 		GD.Print("CIPHER");
 		string cWord = CipherWord(wordList[Globals.Day]);
-		messageBox.Text = ("[center] " + cWord);
+		messageBox.Text = ("[center]" + cWord);
 
 		//HintsUpdate(cWord);
 		//cipherDisplay.AppendText("[center] "+ (-CipherKey).ToString());
@@ -159,11 +161,20 @@ public partial class TranslationCanvasUI : BaseMinigame
 			int asciiValue = charArray[i];
 			GD.Print("Ascii value: " + asciiValue + " char: " + charArray[i].ToString());
 
-			asciiValue = ((asciiValue - 97 + CipherKey) % 26) + 97;
+			asciiValue -= 97;
+			GD.Print("val - 97: ", asciiValue);
+			asciiValue += CipherKey;
+            GD.Print("val + ck: ", asciiValue);
+			//asciiValue %= 26;
+			asciiValue = realModulo(asciiValue, 26);
+            GD.Print("val % 26: ", asciiValue);
+			asciiValue += 97;
+            GD.Print("val + 97: ", asciiValue);
+            //asciiValue = ((asciiValue - 97 + CipherKey) % 26) + 97;
 
 			cipheredWord += (char)asciiValue;
 		}
-
+		GD.Print(cipheredWord);
 		return cipheredWord;
 	}
 
@@ -209,5 +220,11 @@ public partial class TranslationCanvasUI : BaseMinigame
     {
 		Globals.Instance.CallDeferred(Globals.MethodName.PopGamestate, Variant.From((int)GAMESTATE.TRANSLATION));
         base.QuitMinigame();
+    }
+
+	// WHY DOES % NOT WORK WITH NEGATIVES WHO DECIDED THIS WAS OK
+	private int realModulo(int x, int m)
+	{
+        return (x % m + m) % m;
     }
 }

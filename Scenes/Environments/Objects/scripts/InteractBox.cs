@@ -18,6 +18,9 @@ public partial class InteractBox : Area2D
 	[Export]
 	public bool active = true;
 
+	[Export]
+	public bool showInteractIcon = true;
+
 	// the item that will be highlighted in the overworld when the player is in this interact box
 	[Export]
 	public CanvasItem objectSprite;

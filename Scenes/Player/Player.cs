@@ -51,7 +51,6 @@ public partial class Player : CharacterBody2D
 
     public override void _Process(double delta)
     {
-
 		if (Globals.Gamestate != GAMESTATE.OVERWORLD || isMovementLocked) return;
 
         interactSprite.Visible = false;
@@ -60,7 +59,10 @@ public partial class Player : CharacterBody2D
             InteractBox interactBox = area as InteractBox;
             if (interactBox != null && interactBox.active)
             {
-                interactSprite.Visible = true;
+				if (interactBox.showInteractIcon)
+				{
+					interactSprite.Visible = true;
+				}
 				interactBox.isPlayerInArea = true;
                 if ((interactBox.isAutofire || (Input.IsActionJustPressed("interact")) && !isMovementLocked))
                 {

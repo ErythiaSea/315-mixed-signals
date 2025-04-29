@@ -32,6 +32,7 @@ public partial class TranspondScreen : BaseMinigame
 		animPlayer = GetNode<AnimationPlayer>("minigameCompleteAnims");
 
 		dialogueBox = GetNode<Panel>("UICanvas/DialogueBox");
+		dialogueBox.Connect("dialogue_ended", Callable.From(OnDialogueClose));
 
         waveform.WaveformComplete += OnWaveformComplete;
 		CheckStage();
@@ -77,8 +78,8 @@ public partial class TranspondScreen : BaseMinigame
 		//}
 
 		// hacky code and will be removed in favour of Globals::Gamestate
-		radiotower.gameActive = !dialogueBox.Visible;
-		waveform.gameActive = !dialogueBox.Visible;
+		//radiotower.gameActive = !dialogueBox.Visible;
+		//waveform.gameActive = !dialogueBox.Visible;
 	}  
 
 	private void CheckStage()
@@ -129,6 +130,20 @@ public partial class TranspondScreen : BaseMinigame
 			GetTree().CreateTimer(2.5).Timeout += Close;
 		};
     }
+
+	private void OnDialogueClose()
+	{
+		if (Globals.ProgressionStage == GAMESTAGE.TRANSPONDING)
+		{
+			radiotower.gameActive = true;
+			waveform.gameActive = false;
+		}
+		else if (Globals.ProgressionStage == GAMESTAGE.WAVEFORM)
+		{
+			waveform.gameActive = true;
+			radiotower.gameActive = false;
+		}
+	}
 
 	protected override void QuitMinigame()
 	{

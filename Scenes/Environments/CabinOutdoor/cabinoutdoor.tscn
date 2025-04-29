@@ -274,6 +274,7 @@ bus = &"Music"
 
 [node name="MiscDial Box" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("4_elcve")]
 position = Vector2(1690, 440)
+showInteractIcon = false
 requiredStage = 3
 requiredDay = 0
 isOneShot = true
@@ -507,6 +508,7 @@ text = "Continue"
 
 [node name="PostConstellationDialBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("4_elcve")]
 position = Vector2(592, 264)
+showInteractIcon = false
 requiredStage = 4
 requiredDay = 0
 isOneShot = true
