@@ -641,6 +641,7 @@ custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_3ckrh"), Sub
 
 [node name="TranspondDialBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
 position = Vector2(784, 635)
+showInteractIcon = false
 requiredDay = 0
 isOneShot = true
 isAutofire = true
@@ -653,6 +654,7 @@ shape = SubResource("RectangleShape2D_1xcrb")
 
 [node name="WaveformFinishBox2" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
 position = Vector2(781, 638)
+showInteractIcon = false
 requiredStage = 3
 requiredDay = 0
 isOneShot = true
@@ -666,6 +668,7 @@ shape = SubResource("RectangleShape2D_1xcrb")
 
 [node name="PreTranslationDialBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
 position = Vector2(1361, 4368)
+showInteractIcon = false
 requiredStage = 4
 requiredDay = 0
 isOneShot = true
