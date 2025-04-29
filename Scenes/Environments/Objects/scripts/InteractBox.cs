@@ -153,7 +153,7 @@ public partial class InteractBox : Area2D
 			}
 		}
 
-		AudioStreamPlayer stream = GetNodeOrNull<AudioStreamPlayer>("AudioStreamPlayer");
+		stream = GetNodeOrNull<AudioStreamPlayer>("AudioStreamPlayer");
 
 		// connect events to functions
 		AreaEntered += areaEntered;
