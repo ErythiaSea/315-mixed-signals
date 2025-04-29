@@ -62,20 +62,18 @@ public partial class MainMenu : Control
         // create the focus stack
         focusStack = new Stack<Control>();
 
-		focusStack.Push(creditsButton);
 		if (Globals.Instance.isGameDone) { currentPage = creditPage; ForwardPage(creditPage,creditBackButton); focusStack.Push(creditsButton); creditBackButton.CallDeferred("grab_focus"); }
 		else { currentPage = topPage; currentPage = creditPage; topPage.Visible = true; creditPage.Visible = false; startButton.CallDeferred("grab_focus"); }
 
 		buttons.Add(startButton);
 		buttons.Add(quitMenuButton);
 		buttons.Add(optionsButton);
+		buttons.Add(creditsButton);
 
 		if (optionsScene == null)
 		{
 			optionsScene = (PackedScene)ResourceLoader.Load("res://Scenes/Menu/Options/Options.tscn");
 		}
-
-		
 	}
 
 	private void ForwardPage(Control page, Control focusReceiver)
@@ -106,6 +104,7 @@ public partial class MainMenu : Control
 
 	private void _On_StartButton_Pressed()
 	{
+		SetButtonsDisabled(true);
         Tween fade = CreateTween();
 		fade.TweenCallback(Callable.From(Globals.Instance.FadeIn));
 		
@@ -121,7 +120,6 @@ public partial class MainMenu : Control
 			fade.TweenCallback(Callable.From(SceneLoading)).SetDelay(1f);
             fade.Parallel().TweenCallback(Callable.From(Globals.Instance.FadeOut)).SetDelay(2f);
             fade.Parallel().TweenCallback(Callable.From(() => GetTree().ChangeSceneToPacked(scene))).SetDelay(2f);
-
         }
 	}
 
@@ -152,4 +150,12 @@ public partial class MainMenu : Control
 	{
         scene = ResourceLoader.LoadThreadedGet(startScene) as PackedScene;
     }
+
+	private void SetButtonsDisabled(bool disabled)
+	{
+		foreach (Button button in buttons)
+		{
+			button.Disabled = disabled;
+		}
+	}
 }
