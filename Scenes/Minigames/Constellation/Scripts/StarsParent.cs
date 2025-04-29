@@ -28,7 +28,7 @@ public partial class StarsParent : Node2D
 	{
 		stars = GetStars();
 		starLabels = GetLabels();
-		fadeSprite = GetChild<Node2D>(-1);
+		fadeSprite = GetNode<Node2D>("DrawnConstellation");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
