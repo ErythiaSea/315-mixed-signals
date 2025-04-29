@@ -63,6 +63,7 @@ public partial class GodChoice : CanvasLayer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (Globals.Day != 2) { return; }
 		if (clicked)
 		{
             if (Input.IsActionPressed("close"))
@@ -77,6 +78,7 @@ public partial class GodChoice : CanvasLayer
 			}
         }
 
+		GD.Print(creditsButton.Name);
 		if (creditsButton.Visible && !isReady)
 		{
             if (creditsButton.HasFocus())
