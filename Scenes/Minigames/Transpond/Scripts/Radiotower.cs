@@ -85,15 +85,15 @@ public partial class Radiotower : Node2D
 		rightInterval = ((Mathf.Min(200.0f, rdist) + 20.0f) / 220.0f) * 0.75f;
 
 		// handle visual indicator stuff
-		leftTimer += (float)delta; rightTimer += (float)delta;
-		if (leftTimer > leftInterval) {
-			leftIndicator.Visible = !leftIndicator.Visible;
-			leftTimer = 0.0f;
-		}
-		if (rightTimer > rightInterval) {
-			rightIndicator.Visible = !rightIndicator.Visible;
-			rightTimer = 0.0f;
-		}
+		//leftTimer += (float)delta; rightTimer += (float)delta;
+		//if (leftTimer > leftInterval) {
+		//	leftIndicator.Visible = !leftIndicator.Visible;
+		//	leftTimer = 0.0f;
+		//}
+		//if (rightTimer > rightInterval) {
+		//	rightIndicator.Visible = !rightIndicator.Visible;
+		//	rightTimer = 0.0f;
+		//}
 
 		if (lPivot.overlapsTower && rPivot.overlapsTower)
 		{

@@ -211,7 +211,7 @@ public partial class Globals : Node
 	public void updateAffection(String name, int value)
 	{
 		GD.Print(name, "  ", value);
-		//comment for fucking github tweak
+		//comment for github tweak
 		switch (name)
 		{
 			case "CLOVE":
