@@ -18,7 +18,7 @@
 [ext_resource type="Theme" uid="uid://dq18l0hyb3bqt" path="res://addons/dialogue_nodes/themes/bubblyClean.theme" id="14_mtltj"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="15_5kghu"]
 [ext_resource type="Resource" uid="uid://ckynjg6qn8fve" path="res://Dialogue/TranslationDialogue.tres" id="16_i7p77"]
-[ext_resource type="Theme" uid="uid://v82gx6vqnjm1" path="res://addons/dialogue_nodes/themes/bubbleOnly.theme" id="17_rpj1m"]
+[ext_resource type="Theme" path="res://addons/dialogue_nodes/themes/bubbleOnly.theme" id="17_rpj1m"]
 [ext_resource type="Script" path="res://Scenes/Environments/CabinOutdoor/scripts/GodsDisplay.cs" id="18_s8ivj"]
 [ext_resource type="Shader" path="res://Scenes/Environments/CabinOutdoor/scripts/Blur.gdshader" id="19_6tiu6"]
 [ext_resource type="Texture2D" uid="uid://cc5ylwu6ngqik" path="res://Scenes/Environments/CabinOutdoor/Sprites/Group_Fullbody.png" id="19_rtfec"]
@@ -328,9 +328,10 @@ custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_kmmy1"), Sub
 visible = false
 clip_contents = false
 offset_top = -247.0
-offset_right = 116.0
-offset_bottom = -211.0
+offset_right = 199.0
+offset_bottom = -187.0
 theme = ExtResource("17_rpj1m")
+theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "Sample dialogue."
 fit_content = true

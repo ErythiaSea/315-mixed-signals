@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/CabinLevel.cs" id="1_2hyee"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
 [ext_resource type="Script" path="res://Scripts/SpawnData.cs" id="2_vrtq2"]
-[ext_resource type="Texture2D" uid="uid://bvndiooefnwcn" path="res://Scenes/Environments/Cabin/Sprites/Sky_Render.png" id="3_bkt4p"]
+[ext_resource type="Texture2D" uid="uid://dypggkcy1yntw" path="res://Scenes/Environments/Cabin/Sprites/Cabin_WindowSky.png" id="3_501ht"]
 [ext_resource type="Script" path="res://Scenes/Environments/Objects/scripts/InteractBox.cs" id="4_r0utk"]
 [ext_resource type="Texture2D" uid="uid://c7n4exllur0qf" path="res://Scenes/Environments/Cabin/Sprites/Cabin_WallCutout.png" id="4_wjyar"]
 [ext_resource type="Texture2D" uid="uid://bn181y2cglkh8" path="res://Scenes/Environments/Cabin/Sprites/Cabin_WallMounts.png" id="5_6d5l0"]
@@ -28,7 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://dmna7wapuwmut" path="res://Audio/Music/Zodiac Hiphop Instrumental by prazkhanal Id-787557.ogg" id="18_tgdje"]
 [ext_resource type="Texture2D" uid="uid://0a1vu5sk0nyp" path="res://Scenes/Environments/Cabin/Sprites/cabin_elevator.png" id="19_cwqwm"]
 [ext_resource type="Texture2D" uid="uid://diasqyo6bpqnm" path="res://Scenes/Environments/Cabin/Sprites/Cabin_ElevatorCover.png" id="21_8ohlt"]
-[ext_resource type="Theme" uid="uid://v82gx6vqnjm1" path="res://addons/dialogue_nodes/themes/bubbleOnly.theme" id="22_b1gab"]
+[ext_resource type="Theme" path="res://addons/dialogue_nodes/themes/bubbleOnly.theme" id="22_b1gab"]
 [ext_resource type="Resource" uid="uid://d3spuu3kkehgk" path="res://Dialogue/CabinDialogue.tres" id="27_34i7x"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBox.gd" id="28_fg0wr"]
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/EndDay.cs" id="29_wyus1"]
@@ -297,9 +297,9 @@ texture_scale = 3.96
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Sky" type="Sprite2D" parent="Sprites"]
-position = Vector2(960, 613)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_bkt4p")
+position = Vector2(969.596, 498.675)
+scale = Vector2(0.489123, 0.489123)
+texture = ExtResource("3_501ht")
 
 [node name="Wall" type="Sprite2D" parent="Sprites"]
 position = Vector2(960, 541.5)
