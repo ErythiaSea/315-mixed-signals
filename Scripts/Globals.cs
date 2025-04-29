@@ -168,7 +168,8 @@ public partial class Globals : Node
 		}
 		Instance = this;
 
-		controlsText = GetNode<RichTextLabel>("GlobalsCanvasLayer/GlobalControl/ControlsText");
+        Gamestate = GAMESTATE.MENU;
+        controlsText = GetNode<RichTextLabel>("GlobalsCanvasLayer/GlobalControl/ControlsText");
 		Instance.GamestateChange += UpdateControlsText;
 
 		InitialGameSetUp();
