@@ -562,6 +562,7 @@ shape = SubResource("RectangleShape2D_am0pj")
 
 [node name="InteractBox2" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("4_u2itd")]
 position = Vector2(1145, -1161)
+requiredStage = 3
 isOneShot = true
 isAutofire = true
 dialogueBox = NodePath("../DialogueBubble")

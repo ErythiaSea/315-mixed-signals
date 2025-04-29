@@ -451,7 +451,7 @@ position = Vector2(585, 4167.5)
 shape = SubResource("RectangleShape2D_8qv87")
 
 [node name="Player" parent="." instance=ExtResource("2_h3n7b")]
-position = Vector2(543, 4331)
+position = Vector2(543, 4339)
 scale = Vector2(3.5, 3.5)
 movementSpeed = 500.0
 walkingParticles = null
