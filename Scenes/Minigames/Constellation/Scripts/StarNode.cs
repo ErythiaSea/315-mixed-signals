@@ -88,7 +88,7 @@ public partial class StarNode : Node2D
 			if (!hasDisplayed)
 			{
 				hasDisplayed = true;
-				if (!Visible) { return; }
+				if (!IsVisibleInTree()) { return; }
 				Tween transition = GetTree().CreateTween();
 				transition.Parallel().TweenProperty(GetNode("Sprite"), "modulate", Colors.Transparent, 1f);
 				transition.Parallel().TweenProperty(foundSprite, "modulate", new Color(foundSprite.Modulate.R, foundSprite.Modulate.G, foundSprite.Modulate.B, 1f), 1f);
