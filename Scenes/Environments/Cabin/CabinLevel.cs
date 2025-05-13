@@ -50,10 +50,11 @@ public partial class CabinLevel : Level
 		GetNode<InteractBox>("TranspondBox").active = true;
 		if (Globals.Day == 2)
 		{
-			GD.Print("Final day, so swapping the level change scene and disabling elevator...");
+			GD.Print("Final day, so swapping the level change scene and disabling elevator AND translation...");
 			//exitInteractBox.ChangeLoadedScene(endScreenPath);
 			elevatorButtonBox.QueueFree(); // nuclear approach is, sometimes, the best
 			elevatorButtonBox = null;
+			GetNode<InteractBox>("TranslationBox").active = false;
 		}
 	}
 

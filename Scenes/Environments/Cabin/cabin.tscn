@@ -568,7 +568,7 @@ position = Vector2(1964, 4550)
 collision_layer = 4
 script = ExtResource("4_r0utk")
 transitionType = 2
-requiredStage = 2
+requiredStage = 3
 scenePath = "res://Scenes/Environments/CabinOutdoor/cabinoutdoor.tscn"
 loadInCurrent = false
 spawnPoint = 0
@@ -621,6 +621,7 @@ dialogueBox = NodePath("../SleepDialogueBox")
 
 [node name="WakeupBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
 position = Vector2(409, 4402)
+showInteractIcon = false
 requiredDay = 0
 isOneShot = true
 isAutofire = true

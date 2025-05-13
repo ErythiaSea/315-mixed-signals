@@ -120,17 +120,17 @@ nodes = {
 "speaker": ""
 },
 "1_15": {
-"dialogue": "startid tut - tutorial dialogue for translation goes here!",
+"dialogue": "To translate the message, all possible letters must first be converted from their language.",
 "offset": Vector2(80, -820),
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"1_37",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
-"speaker": "erf"
+"speaker": "TUTORIAL"
 },
 "1_16": {
 "dialogue": "Ahem, am I interrupting something, I could have sworn I heard my name?",

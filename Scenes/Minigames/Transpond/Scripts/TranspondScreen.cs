@@ -67,6 +67,10 @@ public partial class TranspondScreen : BaseMinigame
 				Globals.TutorialProgress = GAMESTAGE.CONSTELLATION;
 				tutorialButton.startID = waveformTutorialStartID;
 			}
+			else
+			{
+				waveform.gameActive = true;
+			}
 		}
 
 		//if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
@@ -100,6 +104,10 @@ public partial class TranspondScreen : BaseMinigame
 					Globals.TutorialProgress = GAMESTAGE.WAVEFORM;
 					tutorialButton.startID = transpondTutorialStartID;
 				}
+				else
+				{
+					radiotower.gameActive = true;
+				}
 				break;
 
 			case GAMESTAGE.WAVEFORM:
@@ -112,6 +120,7 @@ public partial class TranspondScreen : BaseMinigame
 				leftBox.Visible = true; rightBox.Visible = false;
 				tutorialButton.startID = waveformTutorialStartID;
 				transitionedBetweenMinigames = true;
+				waveform.gameActive = true;
 				break;
 
 			default:
