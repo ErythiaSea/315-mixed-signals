@@ -125,7 +125,7 @@ nodes = {
 "options": {
 0: {
 "condition": {},
-"link": &"1_37",
+"link": &"1_46",
 "text": ""
 }
 },
@@ -600,6 +600,45 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 },
 "size": Vector2(300, 240),
 "speaker": "Pyxis"
+},
+"1_46": {
+"dialogue": "Those letters must then have the cipher reapplied to them. For example a +2 cipher on \"T\" would be a \"V\", and a -2 cipher would be an \"R\".",
+"offset": Vector2(420, -820),
+"options": {
+0: {
+"condition": {},
+"link": &"1_47",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_47": {
+"dialogue": "Missing letters, if there are any, can be deducted.",
+"offset": Vector2(760, -820),
+"options": {
+0: {
+"condition": {},
+"link": &"1_48",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
+},
+"1_48": {
+"dialogue": "The final translation can be submitted in the box below the original message.",
+"offset": Vector2(1100, -820),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "TUTORIAL"
 },
 "1_5": {
 "dialogue": "Hey! Not okay! Do not treat a deity of my calibre with such disrespect. The ships at sea do not guide themselves, you know!",
