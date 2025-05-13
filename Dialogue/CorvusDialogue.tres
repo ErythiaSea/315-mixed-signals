@@ -184,7 +184,7 @@ nodes = {
 },
 1: {
 "condition": {},
-"link": &"4_5",
+"link": &"1_6",
 "text": "If only I was biofluorescent…"
 }
 },
@@ -219,7 +219,7 @@ nodes = {
 },
 "1_6": {
 "dialogue": "I cannot share my experience as I am not that kind of bird. But as a corvid, I am rather proud of my iridescent plumage - I put in considerable effort to preen often. If it’s worth anything, I found you regardless of your featherless disposition.",
-"offset": Vector2(2280, 900),
+"offset": Vector2(2020, 840),
 "options": {
 0: {
 "condition": {},
@@ -299,13 +299,6 @@ nodes = {
 "link": &"1_5",
 "offset": Vector2(1880, 1240),
 "type": 1,
-"value": "1",
-"variable": "CLOVE"
-},
-"4_5": {
-"link": &"1_6",
-"offset": Vector2(1880, 900),
-"type": 2,
 "value": "1",
 "variable": "CLOVE"
 },

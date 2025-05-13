@@ -58,26 +58,26 @@ nodes = {
 "speaker": "Pyxis"
 },
 "1_11": {
-"dialogue": "I'm glad you agree. I'm so terribly sorry my poor little subject but I must leave you, something urgent has caught my attention.",
-"offset": Vector2(7147, 525.762),
+"dialogue": "I'm glad you agree. I'm so terribly sorry my, poor little subject, but I must leave you— something urgent has caught my attention.",
+"offset": Vector2(7620, 440),
 "options": {
 0: {
 "condition": {},
 "link": &"1_12",
-"text": "Will I ever see you again my Queen?"
+"text": "Will I ever see you again, my Queen?"
 },
 1: {
 "condition": {},
 "link": &"1_29",
-"text": "Ok"
+"text": "Okay..."
 }
 },
 "size": Vector2(300, 289),
 "speaker": "Cassiopeia"
 },
 "1_12": {
-"dialogue": "*Chuckles* Of course you will my dear, I'll make a little play thing out of you yet.",
-"offset": Vector2(7520, 460),
+"dialogue": "Ahahah~ Of course you will, my dear, I'll make a little play thing out of you yet.",
+"offset": Vector2(8000, 420),
 "options": {
 0: {
 "condition": {},
@@ -89,7 +89,7 @@ nodes = {
 "speaker": "Cassiopeia"
 },
 "1_13": {
-"dialogue": " I have more! “A compass in therapy discovered its true magnetic personality.” That was not funny either…. This conversation is really taking a turn for the north…",
+"dialogue": " I have more! “A compass in therapy discovered its true magnetic personality.” That was not funny either… This conversation is really taking a turn for the north…",
 "offset": Vector2(1260, -120),
 "options": {
 0: {
@@ -146,8 +146,8 @@ nodes = {
 "speaker": "Cassiopeia"
 },
 "1_17": {
-"dialogue": "Pixie didn't your mother tell you not to talk badly about woman?",
-"offset": Vector2(5600, 220),
+"dialogue": "Pixie, didn't your mother tell you not to talk badly about women?",
+"offset": Vector2(5600, 440),
 "options": {
 0: {
 "condition": {},
@@ -159,7 +159,7 @@ nodes = {
 "speaker": "Cassiopeia"
 },
 "1_18": {
-"dialogue": "Whoa-oh, *ahem* Cassiopeia It's so delightfully exquisite to see you! We were just talking about the weather.  ",
+"dialogue": "O-oh... Ahem— Cassiopeia! It's so delightfully exquisite to see you! We were just talking about the weather.  ",
 "offset": Vector2(4160, -280),
 "options": {
 0: {
@@ -173,8 +173,8 @@ nodes = {
 },
 "1_19": {
 "dialogue": "We? Who is we?
-Oh what do we have here?
-Well aren't you a cutie?
+Oh... what do we have here?
+Well aren't you a cutie?~
 Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns over the night sky. My beauty is the very thing that lights up the darkness.
 ",
 "offset": Vector2(4500, -280),
@@ -213,14 +213,14 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 0: {
 "condition": {},
 "link": &"1_30",
-"text": "Who invited you, we are having a conversation here."
+"text": "Who invited you? We're having a conversation here."
 }
 },
 "size": Vector2(300, 256),
 "speaker": "Cassiopeia"
 },
 "1_21": {
-"dialogue": "Very Good, you know your place. You are just a mere mortal, nothing more than a speck in the vastness of the universe. But tonight? Tonight, I’ll let you bask in my glow.",
+"dialogue": "Very good, you know your place. You are just a mere mortal, nothing more than a speck in the vastness of the universe. But tonight? Tonight, I’ll let you bask in my glow.",
 "offset": Vector2(4900, -80),
 "options": {
 0: {
@@ -233,29 +233,29 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 "speaker": "Cassiopeia"
 },
 "1_22": {
-"dialogue": "Oh what do we have here?
+"dialogue": "Oh, what do we have here?
 Well aren't you a cutie?
 Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns over the night sky. My beauty is the very thing that lights up the darkness.",
 "offset": Vector2(3840, 300),
 "options": {
 0: {
 "condition": {},
-"link": &"1_23",
+"link": &"4_11",
 "text": "Bow"
 },
 1: {
 "condition": {},
-"link": "END",
+"link": &"4_12",
 "text": "Don't Bow"
 }
 },
-"size": Vector2(300, 289),
+"size": Vector2(300, 280),
 "speaker": "Cassiopeia"
 },
 "1_23": {
-"dialogue": "Very Good, you know your place. You are just a mere mortal, nothing more than a speck in the vastness of the universe. But tonight? Tonight, I’ll let you bask in my glow.
+"dialogue": "Very good, you know your place. You are just a mere mortal, nothing more than a speck in the vastness of the universe. But tonight? Tonight, I’ll let you bask in my glow.
 ",
-"offset": Vector2(4340, 300),
+"offset": Vector2(4620, 300),
 "options": {
 0: {
 "condition": {},
@@ -267,27 +267,27 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 "speaker": "Cassiopeia"
 },
 "1_24": {
-"dialogue": "Now tell me mortal, answer me honestly and I will show you a night in heaven.
+"dialogue": "Now tell me mortal, answer me honestly, and I will show you a night in heaven.
 Was Pyxis talking ill of me behind my back?",
 "offset": Vector2(5240, -80),
 "options": {
 0: {
 "condition": {},
-"link": "END",
-"text": "No, just simply talking about the weather"
+"link": &"4_13",
+"text": "No, just simply talking about the weather."
 },
 1: {
 "condition": {},
 "link": &"1_17",
-"text": "Yes, we was talking smack about your poetry"
+"text": "Yes, we were talking smack about your poetry."
 }
 },
 "size": Vector2(300, 289),
 "speaker": "Cassiopeia"
 },
 "1_25": {
-"dialogue": "Oh no I feel a strong breeze sweeping me away, I will catch you later!",
-"offset": Vector2(5940, 220),
+"dialogue": "Oh no, I feel a strong breeze sweeping me away! I will catch you later!",
+"offset": Vector2(5940, 440),
 "options": {
 0: {
 "condition": {},
@@ -299,9 +299,9 @@ Was Pyxis talking ill of me behind my back?",
 "speaker": "Pyxis"
 },
 "1_26": {
-"dialogue": "Aaaah! He got away before I could show him my wrath.
-Ahem, no worries I will be sure to punish him later.",
-"offset": Vector2(6280, 220),
+"dialogue": "Aaaah! He got away before I could show him my wrath...
+Ahem— No fret, I will be sure to punish him later.",
+"offset": Vector2(6280, 440),
 "options": {
 0: {
 "condition": {},
@@ -313,8 +313,8 @@ Ahem, no worries I will be sure to punish him later.",
 "speaker": "Cassiopeia"
 },
 "1_27": {
-"dialogue": "That old fool Pyxis, always spouting nonsense under the guise of “poetry” can anything truly be called poetry unless it mentions me?. Who even needs a compass? Only the lost and desperate cling to them. Even bound to the sky, I reign supreme, every sailor who charts his course is guided by my beauty. If you ask me Pyxis is a waste of space amongst the cosmos. Don't you agree",
-"offset": Vector2(6700, 500),
+"dialogue": "That old fool Pyxis, always spouting nonsense under the guise of “poetry” can anything truly be called poetry unless it mentions me? Who even needs a compass? Only the lost and desperate cling to them. Even bound to the sky, I reign supreme, every sailor who charts his course is guided by my beauty. If you ask me Pyxis is a waste of space amongst the cosmos. Don't you agree?",
+"offset": Vector2(6640, 620),
 "options": {
 0: {
 "condition": {},
@@ -331,21 +331,21 @@ Ahem, no worries I will be sure to punish him later.",
 "speaker": "Cassiopeia"
 },
 "1_28": {
-"dialogue": "Now where did you just come from",
-"offset": Vector2(5120, 640),
+"dialogue": "Now— where did you just come from?",
+"offset": Vector2(6140, 780),
 "options": {
 0: {
 "condition": {},
 "link": &"1_27",
-"text": "I was talking with a weird kooky old man"
+"text": "I was talking with a weird kooky old man..."
 }
 },
 "size": Vector2(300, 256),
 "speaker": "Cassiopeia"
 },
 "1_29": {
-"dialogue": "I will call again and when I do, you better answer.",
-"offset": Vector2(7520, 800),
+"dialogue": "I will call again, and when I do, you better answer.",
+"offset": Vector2(8000, 700),
 "options": {
 0: {
 "condition": {},
@@ -357,7 +357,7 @@ Ahem, no worries I will be sure to punish him later.",
 "speaker": "Cassiopeia"
 },
 "1_3": {
-"dialogue": "How dare you speak to me, Pyxis that way. May the northen storms blow away your hopes and dreams.",
+"dialogue": "How dare you speak to me, Pyxis, that way. May the northen storms blow away your hopes and dreams.",
 "offset": Vector2(500, 40),
 "options": {
 0: {
@@ -370,7 +370,7 @@ Ahem, no worries I will be sure to punish him later.",
 "speaker": "Pyxis"
 },
 "1_30": {
-"dialogue": "My dear, it looks like a hurricane snatched your wig. You better go catch it",
+"dialogue": "My dear, it looks like a hurricane snatched your wig. You better go catch it!",
 "offset": Vector2(5260, -460),
 "options": {
 0: {
@@ -383,8 +383,8 @@ Ahem, no worries I will be sure to punish him later.",
 "speaker": "Pyxis"
 },
 "1_31": {
-"dialogue": "*Ahh!* How dare you insult me you wrinkly old compass!",
-"offset": Vector2(5620, -460),
+"dialogue": "How dare you insult me, you wrinkly old compass!—",
+"offset": Vector2(6760, -460),
 "options": {
 0: {
 "condition": {},
@@ -402,12 +402,12 @@ Ahem, no worries I will be sure to punish him later.",
 },
 "1_32": {
 "dialogue": "You insufferable little brat!
-I will call upon the power of a million stars and obliterate your pathetic planet! *Cassiopeia leaves*",
-"offset": Vector2(6020, -180),
+I will call upon the power of a million stars and obliterate your pathetic planet!",
+"offset": Vector2(7160, -180),
 "options": {
 0: {
 "condition": {},
-"link": &"1_33",
+"link": &"1_37",
 "text": ""
 }
 },
@@ -415,8 +415,8 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 "speaker": "Cassiopeia"
 },
 "1_33": {
-"dialogue": "Don't worry my little breeze, she does not have that kind of power. Her only power is being as deluded as a gale thinking itself a typhoon.",
-"offset": Vector2(6360, -180),
+"dialogue": "Don't worry, my little breeze, she does not have that kind of power. Her only power is being as deluded as a gale thinking itself a typhoon.",
+"offset": Vector2(7840, -180),
 "options": {
 0: {
 "condition": {},
@@ -428,8 +428,8 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 "speaker": "Pyxis"
 },
 "1_34": {
-"dialogue": "Thank you for sticking up for me my little breeze. I must go and attend to my godly duties compasses do not move themselves.",
-"offset": Vector2(6700, -180),
+"dialogue": "Though, thank you for sticking up for me. I must now go and attend to my godly duties — compasses do not move themselves, hohoh!",
+"offset": Vector2(8180, -180),
 "options": {
 0: {
 "condition": {},
@@ -442,7 +442,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 },
 "1_35": {
 "dialogue": "You're right my little breeze, I will take this conflict away from you to keep you out of harms way.",
-"offset": Vector2(6020, -480),
+"offset": Vector2(7160, -480),
 "options": {
 0: {
 "condition": {},
@@ -454,12 +454,51 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 "speaker": "Pyxis"
 },
 "1_36": {
-"dialogue": "You want to spare this mortals life? Hmph very well then. Lets take this fight elsewhere - not that it will be much of fight.",
-"offset": Vector2(6380, -480),
+"dialogue": "You want to spare this mortal's life? Hmph... very well then. Let's take this fight elsewhere - not that it will be any contest!",
+"offset": Vector2(7520, -480),
 "options": {
 0: {
 "condition": {},
 "link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Cassiopeia"
+},
+"1_37": {
+"dialogue": "(Cassiopeia leaves.)",
+"offset": Vector2(7500, -180),
+"options": {
+0: {
+"condition": {},
+"link": &"1_33",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": ""
+},
+"1_38": {
+"dialogue": "Hrmph, and I surmise you should find ox droppings poetic, the way you speak to a lady of my caliber.",
+"offset": Vector2(7300, 960),
+"options": {
+0: {
+"condition": {},
+"link": &"5_1",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Cassiopeia"
+},
+"1_39": {
+"dialogue": "Oh, what an insubordinate little creature you are! Don't test the limits of my patience, mortal.",
+"offset": Vector2(4620, 640),
+"options": {
+0: {
+"condition": {},
+"link": &"1_28",
 "text": ""
 }
 },
@@ -479,6 +518,89 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 "size": Vector2(300, 256),
 "speaker": "Pyxis"
 },
+"1_40": {
+"dialogue": "I have nothing further to discuss with you. May clouds come twixt you and my grace.",
+"offset": Vector2(8000, 1000),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Cassiopeia"
+},
+"1_41": {
+"dialogue": "Now then, my subject, I must leave you — something urgent has caught my attention.",
+"offset": Vector2(8000, 1320),
+"options": {
+0: {
+"condition": {},
+"link": &"1_42",
+"text": "Will I see you again?"
+},
+1: {
+"condition": {},
+"link": "END",
+"text": "Okay..."
+}
+},
+"size": Vector2(300, 256),
+"speaker": "Cassiopeia"
+},
+"1_42": {
+"dialogue": "Perhaps if you wash away the foul stench of that old man, I'll consider it.",
+"offset": Vector2(8360, 1240),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Cassiopeia"
+},
+"1_43": {
+"dialogue": "Indeed! There's been many a hurricane on this one's planet as of late. I was intrigued.",
+"offset": Vector2(5920, 120),
+"options": {
+0: {
+"condition": {},
+"link": &"1_44",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
+"1_44": {
+"dialogue": "I was merely testing this mortal to see if they were worthy of my presence. Evidently not, though it surprises me not to see *you* lie. Ever the coward, Pyxis.",
+"offset": Vector2(6260, 120),
+"options": {
+0: {
+"condition": {},
+"link": &"1_45",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Cassiopeia"
+},
+"1_45": {
+"dialogue": "Your words mean nothing to me when your godhood stems from the worship of lunatics and fools!",
+"offset": Vector2(6600, 120),
+"options": {
+0: {
+"condition": {},
+"link": &"1_31",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Pyxis"
+},
 "1_5": {
 "dialogue": "Hey! Not okay! Do not treat a deity of my calibre with such disrespect. The ships at sea do not guide themselves, you know!",
 "offset": Vector2(2040, 60),
@@ -494,7 +616,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 "value1": "{{LOVE}}",
 "value2": "-2"
 },
-"link": "END",
+"link": &"1_9",
 "text": "I think I need to go..."
 }
 },
@@ -502,7 +624,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 "speaker": "Pyxis"
 },
 "1_6": {
-"dialogue": "I suppose I accept your apology, this time. Please, let us be friendly with each other. I do not wish to hurt your feeling so please do not hurt mine, little breeze.",
+"dialogue": "I suppose I accept your apology, this time. Please, let us be friendly with each other. I do not wish to hurt your feelings, so please do not hurt mine, little breeze.",
 "offset": Vector2(2400, 40),
 "options": {
 0: {
@@ -572,6 +694,12 @@ Please leave startid = err",
 "offset": Vector2(-880, -680),
 "size": Vector2(240, 120)
 },
+"2_3": {
+"comment": "lower option is meant 
+to go nowhere",
+"offset": Vector2(8340, 1540),
+"size": Vector2(200, 120)
+},
 "4_1": {
 "link": &"1_2",
 "offset": Vector2(140, -160),
@@ -580,8 +708,29 @@ Please leave startid = err",
 "variable": "PLOVE"
 },
 "4_10": {
-"link": "END",
-"offset": Vector2(6840, 920),
+"link": &"1_38",
+"offset": Vector2(6980, 940),
+"type": 2,
+"value": "1",
+"variable": "CALOVE"
+},
+"4_11": {
+"link": &"1_23",
+"offset": Vector2(4240, 380),
+"type": 1,
+"value": "1",
+"variable": "CALOVE"
+},
+"4_12": {
+"link": &"1_39",
+"offset": Vector2(4260, 640),
+"type": 2,
+"value": "1",
+"variable": "CALOVE"
+},
+"4_13": {
+"link": &"1_43",
+"offset": Vector2(5580, 120),
 "type": 2,
 "value": "1",
 "variable": "CALOVE"
@@ -637,10 +786,18 @@ Please leave startid = err",
 },
 "4_9": {
 "link": &"1_11",
-"offset": Vector2(6840, 340),
+"offset": Vector2(6980, 460),
 "type": 1,
 "value": "1",
 "variable": "CALOVE"
+},
+"5_1": {
+"false": &"1_41",
+"offset": Vector2(7660, 1020),
+"operator": 3,
+"true": &"1_40",
+"value1": "{{CALOVE}}",
+"value2": "0"
 }
 }
 variables = {
@@ -653,5 +810,5 @@ variables = {
 "value": 0
 }
 }
-strays = Array[String](["2_1", "2_2"])
+strays = Array[String](["2_1", "2_2", "2_3"])
 characters = ""

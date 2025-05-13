@@ -143,7 +143,7 @@ public partial class GodChoice : CanvasLayer
 
 	public void CorvusConfirm()
 	{
-		if(Globals.Instance.corvusLove > 2)
+		if (Globals.Instance.corvusLove >= 1)
 		{
 			poloroid.Texture = poloroidSprites[0];
 			stamp.Texture = stampSprites[0];
@@ -159,7 +159,7 @@ public partial class GodChoice : CanvasLayer
 
 	public void PyxisConfirm()
 	{
-        if (Globals.Instance.pyxisLove > 2)
+        if (Globals.Instance.pyxisLove >= 1)
         {
 			poloroid.Texture = poloroidSprites[2];
             stamp.Texture = stampSprites[0];
@@ -175,7 +175,7 @@ public partial class GodChoice : CanvasLayer
 
 	public void CassioConfirm()
 	{
-        if (Globals.Instance.cassioLove > 2)
+        if (Globals.Instance.cassioLove >= 1)
         {
 			poloroid.Texture = poloroidSprites[1];
             stamp.Texture = stampSprites[0];
