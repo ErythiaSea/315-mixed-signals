@@ -206,6 +206,7 @@ func _ready():
 		scale = Vector2.ZERO
 		modulate = Color.TRANSPARENT
 		hide()
+		visibility_changed.connect(on_visibility_changed)
 
 
 func _process(delta):
@@ -370,3 +371,8 @@ func _on_screen_exited():
 func _on_wait_finished():
 	options_container.show()
 	options_container.get_child(0).grab_focus()
+	
+
+## lord, forgive me.
+func on_visibility_changed():
+	Globals.setBubbleVisible(visible)

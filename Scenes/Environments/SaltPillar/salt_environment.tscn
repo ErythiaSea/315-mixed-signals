@@ -216,6 +216,7 @@ custom_effects = [SubResource("RichTextEffect_kp4e8"), SubResource("RichTextEffe
 script = ExtResource("13_kkcnm")
 data = ExtResource("14_kvt6g")
 follow_node = NodePath("../Player/head")
+tail_color = Color(0.25098, 0.384314, 0.235294, 1)
 show_speaker_name = false
 dialogue_custom_effects = [SubResource("RichTextEffect_kp4e8"), SubResource("RichTextEffect_3cart"), SubResource("RichTextEffect_d6pji")]
 

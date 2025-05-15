@@ -6,6 +6,7 @@
 script = ExtResource("1_oe78q")
 starts = {
 "BEGIN": &"0_1",
+"CONSTELLATION": &"0_11",
 "PHOTO_CLOSE": &"0_2",
 "SLEEP": &"0_4",
 "TRANSLATION_END": &"0_9",
@@ -14,6 +15,7 @@ starts = {
 "TRANSPONDING_START": &"0_6",
 "WAKEUPDAY1": &"0_5",
 "WAKEUPDAY2": &"0_3",
+"WAVEFORM": &"0_12",
 "WAVEFORM_CLOSE": &"0_7"
 }
 nodes = {
@@ -24,8 +26,18 @@ nodes = {
 },
 "0_10": {
 "link": &"1_15",
-"offset": Vector2(-440, -1060),
+"offset": Vector2(-460, -1160),
 "start_id": "TRANSPONDING"
+},
+"0_11": {
+"link": &"1_16",
+"offset": Vector2(160, 380),
+"start_id": "CONSTELLATION"
+},
+"0_12": {
+"link": &"1_17",
+"offset": Vector2(140, -1160),
+"start_id": "WAVEFORM"
 },
 "0_2": {
 "link": &"1_2",
@@ -146,8 +158,34 @@ nodes = {
 "speaker": "..."
 },
 "1_15": {
-"dialogue": "I should go check those signals up top before i get in more trouble",
-"offset": Vector2(-220, -1160),
+"dialogue": "I should go check those signals up top before I get in more trouble...",
+"offset": Vector2(-240, -1160),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_16": {
+"dialogue": "I've gotta head out and investigate that weird transmission I got...",
+"offset": Vector2(380, 380),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_17": {
+"dialogue": "Huh... I feel like I was doing something upstairs before I came down here.",
+"offset": Vector2(360, -1160),
 "options": {
 0: {
 "condition": {},
@@ -211,7 +249,7 @@ nodes = {
 "speaker": "Boss"
 },
 "1_6": {
-"dialogue": "We’d fire you if we could but no sorry sod is desperate enough to work this quadrant.",
+"dialogue": "We’d fire you if we could, but no sorry sod is desperate enough to work this quadrant.",
 "offset": Vector2(140, -860),
 "options": {
 0: {
@@ -251,7 +289,7 @@ nodes = {
 "speaker": "Boss"
 },
 "1_9": {
-"dialogue": "I wasn’t expecting any deliveries that early. Oh well guess I can’t complain, I finally have some work to do.",
+"dialogue": "I wasn’t expecting any deliveries that early. Oh well, guess I can’t complain, I finally have some work to do.",
 "offset": Vector2(-200, 380),
 "options": {
 0: {

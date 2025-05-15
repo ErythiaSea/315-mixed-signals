@@ -31,14 +31,26 @@ public partial class CameraMovement : Camera2D
 		{
 			CameraInputEvents(delta);
 		}
-		// if we can't move the camera we know we may be zooming out
-		//else
-		//{
-		//	// scale the telescope rect to cam zoom
-		//	telescope.Scale = new Vector2(1.68f / (Zoom.X * 2), 1.68f / (Zoom.Y * 2));
-		//}
 
 		center = GetScreenCenterPosition();
+
+		// this 4 month old game still adds its camera limits the old fashioned way
+		if (Position.X < -1850)
+		{
+			Position = new Vector2(Position.X + cameraSpeed, Position.Y);
+		}
+		if (Position.X > 2850)
+		{
+			Position = new Vector2(Position.X - cameraSpeed, Position.Y);
+		}
+		if (Position.Y < -2000)
+		{
+			Position = new Vector2(Position.X, Position.Y + cameraSpeed);
+		}
+		if (Position.Y > 2500)
+		{
+			Position = new Vector2(Position.X, Position.Y - cameraSpeed);
+		}
 	}
 	
 	// todo: make relative to deltatime

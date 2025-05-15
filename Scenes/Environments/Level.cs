@@ -57,7 +57,7 @@ public partial class Level : Node2D
 		player = GetNode<Player>("Player");
 
 		int spawnID = Globals.CurrentSpawnID;
-		if (spawnID >= 0 && spawnData.Count > 0)
+		if (spawnID >= 0 && spawnData.Count > spawnID)
 		{
 			player.Position = spawnData[spawnID].spawnPosition;
 			player.SetSpriteFlipH(!spawnData[spawnID].faceLeft);

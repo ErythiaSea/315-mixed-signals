@@ -128,6 +128,11 @@ public partial class Globals : Node
 	public delegate void DayChangedEventHandler();
 	public static int Day { get; set; }
 
+	// GROSS CODE WARNING
+	// whether a dialogue bubble is visible on screen
+	public static bool bubbleVisible = false;
+	public static void setBubbleVisible(bool vis) { bubbleVisible = vis; }
+
 	public int corvusLove = 0;
 	public int cassioLove= 0;
 	public int pyxisLove = 0;
@@ -191,6 +196,13 @@ public partial class Globals : Node
 	{
 		Day = 0;
 		ProgressionStage = GAMESTAGE.BEGIN;
+		TutorialProgress = GAMESTAGE.TRANSPONDING;
+
+		TranslationCanvasUI.CipherKey = 0;
+		Radiotower.PivotRotationL = 0f;
+		Radiotower.PivotRotationR = 0f;
+		WaveformGame.LastAmplitude = 0f;
+		WaveformGame.LastWavelength = 0f;
 	}
 
 	public static void NewDay()

@@ -607,6 +607,8 @@ scale = Vector2(2, 2)
 pivot_offset = Vector2(960, 540)
 color = Color(0, 0, 0, 1)
 script = ExtResource("2_ds16g")
+textToDisplay = "ZZZ..."
+timeToDisplay = 0.3
 
 [node name="SleepText" type="RichTextLabel" parent="."]
 layout_mode = 0

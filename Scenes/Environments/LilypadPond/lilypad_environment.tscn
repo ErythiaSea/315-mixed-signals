@@ -24,7 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://buvotqk1e00qe" path="res://Audio/Ambience/Lilypad/Rain, Vegetation, Light, Forest, Hit Leaves 03 SND3423.ogg" id="14_w6odn"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeMatrix.gd" id="14_xkiew"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueBubble.gd" id="19_3q7ub"]
-[ext_resource type="Resource" path="res://Dialogue/LilypadDialogue.tres" id="20_vtndf"]
+[ext_resource type="Resource" uid="uid://v5euajow4ila" path="res://Dialogue/LilypadDialogue.tres" id="20_vtndf"]
 [ext_resource type="Theme" uid="uid://bq3io2yj43olf" path="res://addons/dialogue_nodes/themes/bubbleOnly.theme" id="21_gvqau"]
 
 [sub_resource type="Resource" id="Resource_xpr3o"]
@@ -593,5 +593,6 @@ custom_effects = [SubResource("RichTextEffect_6t8hi"), SubResource("RichTextEffe
 script = ExtResource("19_3q7ub")
 data = ExtResource("20_vtndf")
 follow_node = NodePath("../Player/Head")
+tail_color = Color(0.25098, 0.384314, 0.235294, 1)
 show_speaker_name = false
 dialogue_custom_effects = [SubResource("RichTextEffect_6t8hi"), SubResource("RichTextEffect_y7owd"), SubResource("RichTextEffect_pi1js")]

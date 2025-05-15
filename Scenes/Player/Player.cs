@@ -47,6 +47,14 @@ public partial class Player : CharacterBody2D
 
 		// in any scene that contains the player, overworld should be the base gamestate
 		Globals.SetGamestate(GAMESTATE.OVERWORLD);
+		// and there should be no bubble, hopefully
+		Globals.bubbleVisible = false;
+
+		// face right on game start
+		if (Globals.Day == 0 && Globals.ProgressionStage == GAMESTAGE.BEGIN)
+		{
+			playerSprite.FlipH = true;
+		}
     }
 
     public override void _Process(double delta)
@@ -64,7 +72,7 @@ public partial class Player : CharacterBody2D
 					interactSprite.Visible = true;
 				}
 				interactBox.isPlayerInArea = true;
-                if ((interactBox.isAutofire || (Input.IsActionJustPressed("interact")) && !isMovementLocked))
+                if (interactBox.isAutofire || (Input.IsActionJustPressed("interact") && !Globals.bubbleVisible))
                 {
                     interactBox.Interact(this);
                 }

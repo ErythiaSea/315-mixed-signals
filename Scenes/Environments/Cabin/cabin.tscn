@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://bmbgph6qm47x0"]
+[gd_scene load_steps=71 format=3 uid="uid://bmbgph6qm47x0"]
 
 [ext_resource type="Script" path="res://Scenes/Environments/Cabin/CabinLevel.cs" id="1_2hyee"]
 [ext_resource type="PackedScene" uid="uid://bo5umns4232lg" path="res://Scenes/Player/player.tscn" id="2_h3n7b"]
@@ -158,15 +158,6 @@ script = ExtResource("15_1s26x")
 [sub_resource type="RichTextEffect" id="RichTextEffect_eewup"]
 script = ExtResource("16_oxyx2")
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_t7wmq"]
-script = ExtResource("14_tiwmt")
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_bvuge"]
-script = ExtResource("15_1s26x")
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_f7su0"]
-script = ExtResource("16_oxyx2")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0oee4"]
 size = Vector2(301, 37)
 
@@ -202,7 +193,7 @@ size = Vector2(62, 261)
 
 [node name="Cabin" type="Node2D" node_paths=PackedStringArray("dialogueBox", "dialogueBubble", "exitInteractBox", "elevatorButtonBox")]
 script = ExtResource("1_2hyee")
-dialogueBox = NodePath("SleepDialogueBox")
+dialogueBox = NodePath("CanvasLayer/CabinDialogueBox")
 dialogueBubble = NodePath("DialogueBubble")
 translationEndStartID = "TRANSLATION_END"
 exitInteractBox = NodePath("LevelChange")
@@ -451,7 +442,7 @@ position = Vector2(585, 4167.5)
 shape = SubResource("RectangleShape2D_8qv87")
 
 [node name="Player" parent="." instance=ExtResource("2_h3n7b")]
-position = Vector2(543, 4339)
+position = Vector2(428, 4339)
 scale = Vector2(3.5, 3.5)
 movementSpeed = 500.0
 walkingParticles = null
@@ -486,20 +477,9 @@ script = ExtResource("17_h87pq")
 data = ExtResource("27_34i7x")
 time_limit = 5.0
 follow_node = NodePath("../Player/PlayerHead")
+tail_color = Color(0.25098, 0.384314, 0.235294, 1)
 show_speaker_name = false
 dialogue_custom_effects = [SubResource("RichTextEffect_0u6wi"), SubResource("RichTextEffect_yh6wg"), SubResource("RichTextEffect_eewup")]
-
-[node name="SleepDialogueBox" type="Panel" parent="."]
-visible = false
-z_index = 8
-offset_left = 586.0
-offset_top = 4284.0
-offset_right = 1330.0
-offset_bottom = 4488.0
-theme = ExtResource("13_haw55")
-script = ExtResource("28_fg0wr")
-data = ExtResource("27_34i7x")
-custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_t7wmq"), SubResource("RichTextEffect_bvuge"), SubResource("RichTextEffect_f7su0")])
 
 [node name="TranspondBox" type="Area2D" parent="." node_paths=PackedStringArray("objectSprite", "dialogueBox")]
 position = Vector2(978, 902)
@@ -617,7 +597,7 @@ bus = &"SFX"
 layer = 2
 script = ExtResource("29_wyus1")
 endTransition = ExtResource("30_stghc")
-dialogueBox = NodePath("../SleepDialogueBox")
+dialogueBox = NodePath("../CanvasLayer/CabinDialogueBox")
 
 [node name="WakeupBox" parent="." node_paths=PackedStringArray("dialogueBox") instance=ExtResource("15_lw781")]
 position = Vector2(409, 4402)
@@ -633,6 +613,7 @@ position = Vector2(137.5, -75.5)
 shape = SubResource("RectangleShape2D_rk4s3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="CabinDialogueBox" type="Panel" parent="CanvasLayer"]
 visible = false

@@ -78,7 +78,6 @@ public partial class GodChoice : CanvasLayer
 			}
         }
 
-		GD.Print(creditsButton.Name);
 		if (creditsButton.Visible && !isReady)
 		{
             if (creditsButton.HasFocus())
@@ -236,6 +235,7 @@ public partial class GodChoice : CanvasLayer
         }
 
 		godButtons[0].GrabFocus();
+		display.TweenProperty(GetNode("Labels"), "modulate:a", 1f, 0.66f);
     }
 
 	private Godot.Collections.Array<TextureButton> GetButtons()

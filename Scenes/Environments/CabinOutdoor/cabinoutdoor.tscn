@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cnj8esqdgww0"]
+[gd_scene load_steps=61 format=3 uid="uid://cnj8esqdgww0"]
 
 [ext_resource type="Texture2D" uid="uid://bmij10s8rf8gm" path="res://Scenes/Environments/CabinOutdoor/base_outside.png" id="1_0a00e"]
 [ext_resource type="Script" path="res://Scenes/Environments/CabinOutdoor/scripts/CabinOutdoorLevel.cs" id="1_4f51n"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://br8ws1lqgu3p5" path="res://Scenes/Environments/CabinOutdoor/Sprites/Yippee.webp" id="29_io5qr"]
 [ext_resource type="Texture2D" uid="uid://1fqoooq5vqjy" path="res://Scenes/Environments/CabinOutdoor/Sprites/Yikes.webp" id="30_cm102"]
 [ext_resource type="Texture2D" uid="uid://8chjdgwf31cg" path="res://Scenes/Environments/CabinOutdoor/Sprites/Fullbody_Corvus_Outline.webp" id="31_svecg"]
+[ext_resource type="FontFile" uid="uid://c3v5lq2cmsbgb" path="res://Fonts/Nitti-Bold.ttf" id="32_dd6jp"]
 [ext_resource type="Texture2D" uid="uid://bpbfgwqdo4hem" path="res://Scenes/Environments/CabinOutdoor/Sprites/Fullbody_Pyxis_Outline.webp" id="33_6gvwa"]
 [ext_resource type="Texture2D" uid="uid://b2pdi0xtmj77s" path="res://Scenes/Environments/CabinOutdoor/Sprites/Fullbody_Cass_Outline.webp" id="35_mhc1m"]
 
@@ -152,6 +153,12 @@ size = Vector2(950, 482.5)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vvq3x"]
 shader = ExtResource("19_6tiu6")
 shader_parameter/amount = 1.7
+
+[sub_resource type="LabelSettings" id="LabelSettings_d2rv6"]
+font = ExtResource("32_dd6jp")
+font_size = 96
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2dxn"]
 size = Vector2(111, 402)
@@ -351,6 +358,7 @@ script = ExtResource("15_5kghu")
 data = ExtResource("8_ctnhm")
 follow_node = NodePath("../Player/PlayerHead")
 bubble_offset = 120
+tail_color = Color(0.25098, 0.384314, 0.235294, 1)
 show_speaker_name = false
 dialogue_custom_effects = [SubResource("RichTextEffect_5mvr3"), SubResource("RichTextEffect_ri5gq"), SubResource("RichTextEffect_scjtb")]
 
@@ -384,6 +392,38 @@ offset_left = -670.0
 offset_top = -702.0
 offset_right = 2916.0
 offset_bottom = 1306.0
+
+[node name="Labels" type="Control" parent="GodsDisplay/GodsCanvas"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CorvusLabel" type="Label" parent="GodsDisplay/GodsCanvas/Labels"]
+offset_left = 128.0
+offset_top = 981.0
+offset_right = 474.0
+offset_bottom = 1078.0
+text = "Corvus"
+label_settings = SubResource("LabelSettings_d2rv6")
+
+[node name="PyxisLabel" type="Label" parent="GodsDisplay/GodsCanvas/Labels"]
+offset_left = 805.0
+offset_top = 981.0
+offset_right = 1381.0
+offset_bottom = 1078.0
+text = "Pyxis
+"
+label_settings = SubResource("LabelSettings_d2rv6")
+
+[node name="CassLabel" type="Label" parent="GodsDisplay/GodsCanvas/Labels"]
+offset_left = 1300.0
+offset_top = 981.0
+offset_right = 1876.0
+offset_bottom = 1078.0
+text = "Cassiopeia"
+label_settings = SubResource("LabelSettings_d2rv6")
 
 [node name="Corvus" type="TextureButton" parent="GodsDisplay/GodsCanvas"]
 modulate = Color(1, 1, 1, 0)
@@ -521,7 +561,7 @@ requiredStage = 4
 requiredDay = 0
 isOneShot = true
 isAutofire = true
-dialogueBox = NodePath("../CanvasLayer/CabinOutsideDialogueBox")
+dialogueBox = NodePath("../DialogueBubble")
 startID = "TRANSLATION_START"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PostConstellationDialBox"]

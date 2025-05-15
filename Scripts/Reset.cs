@@ -21,9 +21,11 @@ public partial class Reset : Node
 		if (Input.IsActionJustPressed("arrow_down") && Input.IsActionPressed("arrow_up"))
 		{
 			GD.Print("day: ", Globals.Day);
-        }
+			GD.Print("state: ", Globals.Gamestate);
+			GD.Print("stage: ", Globals.ProgressionStage);
+		}
 
-		if (Input.IsActionJustPressed("TEST"))
+		if (Input.IsActionJustPressed("TEST") && Input.IsActionPressed("arrow_down") && Input.IsActionPressed("arrow_up"))
 		{
 			Globals.ProgressionStage++;
 			GD.Print("stage increased to ", Globals.ProgressionStage);
@@ -33,17 +35,5 @@ public partial class Reset : Node
 				TranslationCanvasUI.CipherKey = 6;
 			}
 		}
-
-		// close when holding esc (debug)
-		if (Input.IsActionPressed("close"))
-		{
-            killtimer += delta;
-			if (killtimer > 0.5)
-			{
-				GD.Print("kill");
-				GetTree().Quit();
-			}
-		}
-		else killtimer = 0;
 	}
 }

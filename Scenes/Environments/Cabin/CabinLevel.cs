@@ -17,7 +17,7 @@ public partial class CabinLevel : Level
 	String translationEndStartID = "translationend";
 	// the start id for post-photoboard dialogue on day 1
 	[Export]
-	String photoboardCloseStartID = "photoboardclose";
+	String photoboardCloseStartID = "PHOTO_CLOSE";
 
 	// the interact box that will summon the game end screen on day 3
 	[Export]
@@ -42,7 +42,17 @@ public partial class CabinLevel : Level
 		Globals.Instance.DayChanged += OnNewDay;
 		Globals.Instance.ProgressionChange += OnGamestageIncrease;
 
+		// call this to disable things based on gamestage
+		OnGamestageIncrease();
+
 		GetNode<InteractBox>("BedBox").Interacted += endDay.EndTheDay;
+
+		// disable dialogue triggers when re-entering cabin
+		if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
+		{
+			GetNode<InteractBox>("WaveformFinishBox2").active = false;
+			GetNode<InteractBox>("TranspondDialBox").active = false;
+		}
 	}
 
 	private void OnNewDay()
@@ -85,9 +95,15 @@ public partial class CabinLevel : Level
 
 	private void OnGamestageIncrease()
 	{
+		// disable transpond monitors after waveform
 		if (Globals.ProgressionStage > GAMESTAGE.WAVEFORM)
 		{
 			GetNode<InteractBox>("TranspondBox").active = false;
+		}
+		// disable translation after... translation...
+		if (Globals.ProgressionStage > GAMESTAGE.TRANSLATION)
+		{
+			GetNode<InteractBox>("TranslationBox").active = false;
 		}
 	}
 

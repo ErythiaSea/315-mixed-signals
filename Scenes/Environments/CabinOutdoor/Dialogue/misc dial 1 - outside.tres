@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_kcmq3")
 starts = {
-"0": &"0_1"
+"0": &"0_1",
+"TRANSLATION_START": &"0_2"
 }
 nodes = {
 "0_1": {
@@ -13,10 +14,41 @@ nodes = {
 "offset": Vector2(-360, -80),
 "start_id": "0"
 },
+"0_2": {
+"link": &"1_2",
+"offset": Vector2(-360, 300),
+"start_id": "TRANSLATION_START"
+},
 "1_1": {
 "dialogue": "Corp said they were sending me a new work car…[br]
 If they give me a Wesla, I swear…",
 "offset": Vector2(-40, -80),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_2": {
+"dialogue": "This has been such a weird day. First the weird symbols, and now the stars are acting up.",
+"offset": Vector2(-60, 300),
+"options": {
+0: {
+"condition": {},
+"link": &"1_3",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "..."
+},
+"1_3": {
+"dialogue": "What could it mean? Are these things related? I gotta find out for my own peace of mind...",
+"offset": Vector2(280, 300),
 "options": {
 0: {
 "condition": {},

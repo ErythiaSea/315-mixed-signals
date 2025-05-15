@@ -265,15 +265,15 @@ z_index = -1
 script = ExtResource("8_pqt5s")
 
 [node name="StarNode" parent="Pyxis" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(198, 928)
+position = Vector2(6, 830)
 adjacentStars = [NodePath("../StarNode2")]
 
 [node name="StarNode2" parent="Pyxis" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(617, 68)
+position = Vector2(425, -26)
 adjacentStars = [NodePath("../StarNode"), NodePath("../StarNode3")]
 
 [node name="StarNode3" parent="Pyxis" node_paths=PackedStringArray("adjacentStars") instance=ExtResource("8_s5r6a")]
-position = Vector2(1652, -255)
+position = Vector2(1460, -349)
 adjacentStars = [NodePath("../StarNode2")]
 
 [node name="DrawnConstellation" type="Sprite2D" parent="Pyxis"]
