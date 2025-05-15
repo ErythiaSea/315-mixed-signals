@@ -47,6 +47,16 @@ signal dialogue_ended
 	set(value):
 		hide_portrait = value
 		if portrait: portrait.visible = not hide_portrait
+@export var clamp_portrait := false :
+	set(value):
+		clamp_portrait = value
+		if portrait:
+			if not value:
+				portrait.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+				portrait.custom_minimum_size = Vector2(0, 0)
+			else:
+				portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+				portrait.custom_minimum_size = Vector2(300, 300)
 ## Sample portrait image that is visible in editor. This will not show in-game.
 @export var sample_portrait := preload('res://addons/dialogue_nodes/icons/Portrait.png') :
 	set(value):
@@ -166,23 +176,32 @@ func _enter_tree():
 	margin_container.add_theme_constant_override('margin_bottom', 4)
 	
 	_main_container = BoxContainer.new()
+	_main_container.vertical = true
 	margin_container.add_child(_main_container)
 	
+	speaker_label = Label.new()
+	_main_container.add_child(speaker_label)
+	speaker_label.text = 'Speaker'
+	
+	var silly_container = BoxContainer.new()
+	silly_container.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_main_container.add_child(silly_container)
+	
 	portrait = TextureRect.new()
-	_main_container.add_child(portrait)
-	portrait.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	silly_container.add_child(portrait)
 	portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
+	if not clamp_portrait:
+		portrait.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	else:
+		portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		portrait.custom_minimum_size = Vector2(300, 300)
 	portrait.texture = sample_portrait
 	portrait.visible = not hide_portrait
 	
 	_sub_container = BoxContainer.new()
-	_main_container.add_child(_sub_container)
+	silly_container.add_child(_sub_container)
 	_sub_container.vertical = true
 	_sub_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	
-	speaker_label = Label.new()
-	_sub_container.add_child(speaker_label)
-	speaker_label.text = 'Speaker'
 	
 	var margin_subcontainer = MarginContainer.new()
 	_sub_container.add_child(margin_subcontainer)

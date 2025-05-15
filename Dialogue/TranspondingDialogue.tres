@@ -14,7 +14,7 @@ nodes = {
 "start_id": "TRANS1_TUT"
 },
 "1_1": {
-"dialogue": "Time to find out where I will be picking up from today. I do hope its not near the sulphur lakes.",
+"dialogue": "Time to find out where I'll be picking up from today. Better not be near those damn sulphur lakes again.",
 "offset": Vector2(-400, 120),
 "options": {
 0: {

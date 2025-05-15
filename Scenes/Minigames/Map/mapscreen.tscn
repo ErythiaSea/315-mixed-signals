@@ -37,11 +37,11 @@ texture = ExtResource("2_5k782")
 enabled = false
 
 [node name="DialogueBox" type="Panel" parent="."]
-visible = false
-offset_left = 644.0
-offset_top = 916.0
-offset_right = 1276.0
-offset_bottom = 1050.0
+z_index = 1
+offset_left = 442.0
+offset_top = 730.0
+offset_right = 1545.0
+offset_bottom = 1054.0
 theme = ExtResource("3_vuur8")
 script = ExtResource("3_1ogjg")
 data = ExtResource("4_4wrni")

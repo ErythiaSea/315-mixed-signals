@@ -376,3 +376,4 @@ func _on_wait_finished():
 ## lord, forgive me.
 func on_visibility_changed():
 	Globals.setBubbleVisible(visible)
+	timer.stop()

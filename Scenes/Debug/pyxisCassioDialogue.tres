@@ -41,7 +41,7 @@ nodes = {
 }
 },
 "size": Vector2(340, 320),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_10": {
 "dialogue": "My cousins Puppis and Vela have been trying to explore their poetic side. They were supposedly inspired by that wretched hurricane Cassiopeia… How despicable. Her poetry is nothing more but vulgar spewings of jumbled words. And the nerve to tell me that as the number one poet in the celestial realm! Regardless if it’s self proclaimed or not… Lord compass, help our youth!
@@ -55,7 +55,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_11": {
 "dialogue": "I'm glad you agree. I'm so terribly sorry my, poor little subject, but I must leave you— something urgent has caught my attention.",
@@ -73,7 +73,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 289),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_12": {
 "dialogue": "Ahahah~ Of course you will, my dear, I'll make a little play thing out of you yet.",
@@ -86,10 +86,10 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_13": {
-"dialogue": " I have more! “A compass in therapy discovered its true magnetic personality.” That was not funny either… This conversation is really taking a turn for the north…",
+"dialogue": "I have more! “A compass in therapy discovered its true magnetic personality.” That was not funny either… This conversation is really taking a turn for the north…",
 "offset": Vector2(1260, -120),
 "options": {
 0: {
@@ -103,8 +103,8 @@ nodes = {
 "text": "Might need to work on your jokes..."
 }
 },
-"size": Vector2(300, 289),
-"speaker": "Pyxis"
+"size": Vector2(300, 360),
+"speaker": 3
 },
 "1_14": {
 "dialogue": "(I don't think I'm translating this properly...)",
@@ -143,7 +143,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_17": {
 "dialogue": "Pixie, didn't your mother tell you not to talk badly about women?",
@@ -156,7 +156,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_18": {
 "dialogue": "O-oh... Ahem— Cassiopeia! It's so delightfully exquisite to see you! We were just talking about the weather.  ",
@@ -169,7 +169,7 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_19": {
 "dialogue": "We? Who is we?
@@ -191,7 +191,7 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 }
 },
 "size": Vector2(300, 289),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_2": {
 "dialogue": "May the northern wind bless you with fortune and grace and let the south wind take you to your desired shore. You may be a gale but your winds smell of orchids, hallelujah!",
@@ -204,7 +204,7 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 }
 },
 "size": Vector2(300, 257),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_20": {
 "dialogue": "Oh, what an insubordinate little creature you are!",
@@ -213,11 +213,11 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 0: {
 "condition": {},
 "link": &"1_30",
-"text": "Who invited you? We're having a conversation here."
+"text": "Who invited you? We're having a[br]conversation here."
 }
 },
 "size": Vector2(300, 256),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_21": {
 "dialogue": "Very good, you know your place. You are just a mere mortal, nothing more than a speck in the vastness of the universe. But tonight? Tonight, I’ll let you bask in my glow.",
@@ -230,7 +230,7 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_22": {
 "dialogue": "Oh, what do we have here?
@@ -249,8 +249,8 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 "text": "Don't Bow"
 }
 },
-"size": Vector2(300, 280),
-"speaker": "Cassiopeia"
+"size": Vector2(300, 289),
+"speaker": 1
 },
 "1_23": {
 "dialogue": "Very good, you know your place. You are just a mere mortal, nothing more than a speck in the vastness of the universe. But tonight? Tonight, I’ll let you bask in my glow.
@@ -264,7 +264,7 @@ Now bow before me for I am Cassiopeia, queen of the heavens, the one who reigns 
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_24": {
 "dialogue": "Now tell me mortal, answer me honestly, and I will show you a night in heaven.
@@ -279,11 +279,11 @@ Was Pyxis talking ill of me behind my back?",
 1: {
 "condition": {},
 "link": &"1_17",
-"text": "Yes, we were talking smack about your poetry."
+"text": "Yes, we were talking smack about[br]your poetry."
 }
 },
 "size": Vector2(300, 289),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_25": {
 "dialogue": "Oh no, I feel a strong breeze sweeping me away! I will catch you later!",
@@ -296,7 +296,7 @@ Was Pyxis talking ill of me behind my back?",
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_26": {
 "dialogue": "Aaaah! He got away before I could show him my wrath...
@@ -310,7 +310,7 @@ Ahem— No fret, I will be sure to punish him later.",
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_27": {
 "dialogue": "That old fool Pyxis, always spouting nonsense under the guise of “poetry” can anything truly be called poetry unless it mentions me? Who even needs a compass? Only the lost and desperate cling to them. Even bound to the sky, I reign supreme, every sailor who charts his course is guided by my beauty. If you ask me Pyxis is a waste of space amongst the cosmos. Don't you agree?",
@@ -328,7 +328,7 @@ Ahem— No fret, I will be sure to punish him later.",
 }
 },
 "size": Vector2(300, 289),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_28": {
 "dialogue": "Now— where did you just come from?",
@@ -337,11 +337,11 @@ Ahem— No fret, I will be sure to punish him later.",
 0: {
 "condition": {},
 "link": &"1_27",
-"text": "I was talking with a weird kooky old man..."
+"text": "I was talking with a weird kooky[br]old man..."
 }
 },
 "size": Vector2(300, 256),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_29": {
 "dialogue": "I will call again, and when I do, you better answer.",
@@ -354,7 +354,7 @@ Ahem— No fret, I will be sure to punish him later.",
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_3": {
 "dialogue": "How dare you speak to me, Pyxis, that way. May the northen storms blow away your hopes and dreams.",
@@ -367,7 +367,7 @@ Ahem— No fret, I will be sure to punish him later.",
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_30": {
 "dialogue": "My dear, it looks like a hurricane snatched your wig. You better go catch it!",
@@ -380,7 +380,7 @@ Ahem— No fret, I will be sure to punish him later.",
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_31": {
 "dialogue": "How dare you insult me, you wrinkly old compass!—",
@@ -398,7 +398,7 @@ Ahem— No fret, I will be sure to punish him later.",
 }
 },
 "size": Vector2(300, 289),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_32": {
 "dialogue": "You insufferable little brat!
@@ -412,7 +412,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_33": {
 "dialogue": "Don't worry, my little breeze, she does not have that kind of power. Her only power is being as deluded as a gale thinking itself a typhoon.",
@@ -425,7 +425,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_34": {
 "dialogue": "Though, thank you for sticking up for me. I must now go and attend to my godly duties — compasses do not move themselves, hohoh!",
@@ -438,7 +438,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_35": {
 "dialogue": "You're right my little breeze, I will take this conflict away from you to keep you out of harms way.",
@@ -451,7 +451,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_36": {
 "dialogue": "You want to spare this mortal's life? Hmph... very well then. Let's take this fight elsewhere - not that it will be any contest!",
@@ -464,7 +464,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_37": {
 "dialogue": "(Cassiopeia leaves.)",
@@ -490,7 +490,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_39": {
 "dialogue": "Oh, what an insubordinate little creature you are! Don't test the limits of my patience, mortal.",
@@ -503,11 +503,11 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_4": {
 "dialogue": "Allow me to present to you a so-called “joke”. Ehm… “I'm always drawn to the North, guess I have a magnetic personality!” Ahahah! Hallelujah! Oh- That was not amusing?",
-"offset": Vector2(920, -100),
+"offset": Vector2(920, -120),
 "options": {
 0: {
 "condition": {},
@@ -515,8 +515,8 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 "text": ""
 }
 },
-"size": Vector2(300, 256),
-"speaker": "Pyxis"
+"size": Vector2(300, 320),
+"speaker": 3
 },
 "1_40": {
 "dialogue": "I have nothing further to discuss with you. May clouds come twixt you and my grace.",
@@ -529,7 +529,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_41": {
 "dialogue": "Now then, my subject, I must leave you — something urgent has caught my attention.",
@@ -546,8 +546,8 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 "text": "Okay..."
 }
 },
-"size": Vector2(300, 256),
-"speaker": "Cassiopeia"
+"size": Vector2(300, 289),
+"speaker": 1
 },
 "1_42": {
 "dialogue": "Perhaps if you wash away the foul stench of that old man, I'll consider it.",
@@ -560,7 +560,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_43": {
 "dialogue": "Indeed! There's been many a hurricane on this one's planet as of late. I was intrigued.",
@@ -573,7 +573,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_44": {
 "dialogue": "I was merely testing this mortal to see if they were worthy of my presence. Evidently not, though it surprises me not to see *you* lie. Ever the coward, Pyxis.",
@@ -586,7 +586,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Cassiopeia"
+"speaker": 1
 },
 "1_45": {
 "dialogue": "Your words mean nothing to me when your godhood stems from the worship of lunatics and fools!",
@@ -599,7 +599,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_46": {
 "dialogue": "Those letters must then have the cipher reapplied to them. For example a +2 cipher on \"T\" would be a \"V\", and a -2 cipher would be an \"R\".",
@@ -660,7 +660,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 290),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_6": {
 "dialogue": "I suppose I accept your apology, this time. Please, let us be friendly with each other. I do not wish to hurt your feelings, so please do not hurt mine, little breeze.",
@@ -673,7 +673,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_7": {
 "dialogue": "Hoh hah! I am glad you are appreciative of my little jokes. We work well together. We might need to hit the big sea for an adventure some day.",
@@ -686,7 +686,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_8": {
 "dialogue": "Do you allow me to express my current grievances with you?",
@@ -704,7 +704,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 289),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "1_9": {
 "dialogue": "Then leave and take your hurricane energy elsewhere!",
@@ -717,7 +717,7 @@ I will call upon the power of a million stars and obliterate your pathetic plane
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Pyxis"
+"speaker": 3
 },
 "2_1": {
 "comment": "The dialogue tree for Pyxis
@@ -850,4 +850,4 @@ variables = {
 }
 }
 strays = Array[String](["2_1", "2_2", "2_3"])
-characters = ""
+characters = "res://Dialogue/Characters/CharList.tres"

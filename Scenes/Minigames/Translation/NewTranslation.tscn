@@ -562,5 +562,6 @@ grow_vertical = 2
 theme = ExtResource("7_ytl8i")
 script = ExtResource("9_4pbac")
 data = ExtResource("10_5dtco")
+clamp_portrait = true
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_k5p1y"), SubResource("RichTextEffect_macbo"), SubResource("RichTextEffect_xkoe7")])
 options_vertical = true

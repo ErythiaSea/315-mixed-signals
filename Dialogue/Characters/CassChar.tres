@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://8n8b60mscj2m"]
+
+[ext_resource type="Texture2D" uid="uid://draxaljgd6h00" path="res://Sprites/cass_portrait.png" id="1_wn4cb"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/Character.gd" id="2_06dre"]
+
+[resource]
+script = ExtResource("2_06dre")
+name = "Cassiopeia"
+image = ExtResource("1_wn4cb")
+color = Color(1, 1, 1, 1)

@@ -79,7 +79,14 @@ public partial class CabinLevel : Level
 		GD.Print("translation complete");
 		if (Globals.ProgressionStage == GAMESTAGE.END)
 		{
-			dialogueBubble.Call("start", translationEndStartID);
+			if (Globals.Day == 0)
+			{
+				dialogueBubble.Call("start", translationEndStartID);
+			}
+			else if (Globals.Day == 1)
+			{
+				dialogueBubble.Call("start", "TRANSLATION_END_2");
+			}
 		}
 	}
 

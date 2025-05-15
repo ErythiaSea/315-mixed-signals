@@ -141,7 +141,7 @@ nodes = {
 "speaker": "TUTORIAL"
 },
 "1_16": {
-"dialogue": "'A' and 'D' can be used to control the width of the wave. 'W' and 'S' can be used to control the height of the wave.",
+"dialogue": "'A' and 'D' can be used to control the width of the wave. 'LMB' and 'RMB' can be used to control the height of the wave.",
 "offset": Vector2(840, -200),
 "options": {
 0: {
@@ -261,7 +261,7 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 "speaker": "..."
 },
 "1_3": {
-"dialogue": "Huh? The signal seems to be a mess. Let me try this.",
+"dialogue": "Huh? The signal seems to be a mess. Let me try this...",
 "offset": Vector2(160, -200),
 "options": {
 0: {
@@ -336,7 +336,7 @@ You'll know you've found the correct one, when... the lights at the bottom flash
 "speaker": ""
 },
 "1_8": {
-"dialogue": "Time to find out where I will be picking up from today. I do hope its not near the sulphur lakes.",
+"dialogue": "Time to find out where I'll be picking up from today. Better not be near those damn sulphur lakes again.",
 "offset": Vector2(-180, -500),
 "options": {
 0: {

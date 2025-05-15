@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://bqgesjt0fm4ao"]
+
+[ext_resource type="Texture2D" uid="uid://d2cjt80q4ikuk" path="res://Sprites/boss_portrait.png" id="1_dqc5o"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/Character.gd" id="2_7xgbj"]
+
+[resource]
+script = ExtResource("2_7xgbj")
+name = "Boss"
+image = ExtResource("1_dqc5o")
+color = Color(1, 1, 1, 1)

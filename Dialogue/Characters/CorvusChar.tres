@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://5e6dk1knvlan"]
+
+[ext_resource type="Texture2D" uid="uid://d1jrm5ficiu58" path="res://Sprites/corv_portrait.png" id="1_llx0n"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/Character.gd" id="2_xn8qd"]
+
+[resource]
+script = ExtResource("2_xn8qd")
+name = "Corvus"
+image = ExtResource("1_llx0n")
+color = Color(1, 1, 1, 1)

@@ -320,6 +320,7 @@ theme = ExtResource("7_u12k5")
 script = ExtResource("7_ra4mx")
 data = ExtResource("8_ctnhm")
 start_id = "Sleep"
+clamp_portrait = null
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_kmmy1"), SubResource("RichTextEffect_4u6xp"), SubResource("RichTextEffect_a24d6")])
 
 [node name="CabinOutsideDialogueBox" type="Panel" parent="CanvasLayer"]
@@ -339,6 +340,7 @@ grow_vertical = 2
 theme = ExtResource("14_mtltj")
 script = ExtResource("7_ra4mx")
 data = ExtResource("16_i7p77")
+clamp_portrait = null
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_kmmy1"), SubResource("RichTextEffect_4u6xp"), SubResource("RichTextEffect_a24d6")])
 
 [node name="DialogueBubble" type="RichTextLabel" parent="." node_paths=PackedStringArray("follow_node")]
@@ -401,6 +403,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="CorvusLabel" type="Label" parent="GodsDisplay/GodsCanvas/Labels"]
+layout_mode = 0
 offset_left = 128.0
 offset_top = 981.0
 offset_right = 474.0
@@ -409,6 +412,7 @@ text = "Corvus"
 label_settings = SubResource("LabelSettings_d2rv6")
 
 [node name="PyxisLabel" type="Label" parent="GodsDisplay/GodsCanvas/Labels"]
+layout_mode = 0
 offset_left = 805.0
 offset_top = 981.0
 offset_right = 1381.0
@@ -418,6 +422,7 @@ text = "Pyxis
 label_settings = SubResource("LabelSettings_d2rv6")
 
 [node name="CassLabel" type="Label" parent="GodsDisplay/GodsCanvas/Labels"]
+layout_mode = 0
 offset_left = 1300.0
 offset_top = 981.0
 offset_right = 1876.0
